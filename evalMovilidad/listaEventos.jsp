@@ -34,6 +34,7 @@
 						<option value="2010" <c:if test="${requestScope.ano==2010}">selected</c:if>>2010</option>
 						<option value="2011" <c:if test="${requestScope.ano==2011}">selected</c:if>>2011</option>
 						<option value="2012" <c:if test="${requestScope.ano==2012}">selected</c:if>>2012</option>
+						<option value="2013" <c:if test="${requestScope.ano==2013}">selected</c:if>>2013</option>
 					</select>
 				</td>
 				<th><b>Corte</b></th>
