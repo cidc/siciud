@@ -69,9 +69,9 @@ public final class ListaPropuestas_jsp extends org.apache.jasper.runtime.HttpJsp
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       cidc.general.login.Usuario loginUsuario = null;
       synchronized (session) {
@@ -81,7 +81,7 @@ public final class ListaPropuestas_jsp extends org.apache.jasper.runtime.HttpJsp
           _jspx_page_context.setAttribute("loginUsuario", loginUsuario, PageContext.SESSION_SCOPE);
         }
       }
-      out.write("\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -89,7 +89,7 @@ public final class ListaPropuestas_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\">\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction ir(){\r\n");
       out.write("\t\tif(document.filtro.num.selectedIndex==0)\r\n");
@@ -145,8 +145,8 @@ public final class ListaPropuestas_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\t\t}\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t<form name=\"filtro\" method=\"post\" action='");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
@@ -257,7 +257,7 @@ if(loginUsuario.isPerfil("13")){
           out.write("        <tr>\r\n");
           out.write("        \t<th colspan=\"3\">&nbsp;</th>\r\n");
           out.write("        \t<th align=\"center\"><b>Eval-Int</b></th>\r\n");
-          out.write("        \t<th align=\"center\"><b>Eval-Ext1</b></th>\n");
+          out.write("        \t<th align=\"center\"><b>Eval-Ext1</b></th>\r\n");
           out.write("        \t");
           if (_jspx_meth_c_005fif_005f8(_jspx_th_c_005fif_005f7, _jspx_page_context))
             return;
@@ -350,11 +350,11 @@ if(loginUsuario.isPerfil("13")){
                 if (_jspx_meth_c_005fif_005f21(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
                   return;
                 out.write("\r\n");
-                out.write("\t\t\t</td>\n");
-                out.write("\t\t\t");
+                out.write("\t\t\t</td>\r\n");
+                out.write("\t\t\t<!--");
                 if (_jspx_meth_c_005fif_005f22(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
                   return;
-                out.write("\r\n");
+                out.write("-->\r\n");
                 out.write("\t\t\t<td class=\"estado\" align=\"center\">\r\n");
                 out.write("\t\t\t\t");
                 if (_jspx_meth_c_005fif_005f29(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
@@ -374,7 +374,7 @@ if(loginUsuario.isPerfil("3")||loginUsuario.isPerfil("13")||loginUsuario.isPerfi
                 out.write("\t\t\t\t\t");
                 if (_jspx_meth_c_005fif_005f32(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
                   return;
-                out.write("\n");
+                out.write("\r\n");
                 out.write("\t\t\t\t\t");
                 if (_jspx_meth_c_005fif_005f33(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
                   return;
@@ -443,9 +443,9 @@ if(loginUsuario.isPerfil("3")||loginUsuario.isPerfil("13")||loginUsuario.isPerfi
       out.write("\t\t<input type=\"hidden\" name=\"accion\" value='7'>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"dato\" value=''>\r\n");
       out.write("\t</form>\r\n");
-      out.write("\n");
+      out.write("\r\n");
       out.write("</body>\r\n");
-      out.write("\n");
+      out.write("\r\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -999,8 +999,8 @@ if(loginUsuario.isPerfil("3")||loginUsuario.isPerfil("13")||loginUsuario.isPerfi
     int _jspx_eval_c_005fif_005f8 = _jspx_th_c_005fif_005f8.doStartTag();
     if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("        \t<th align=\"center\"><b>Eval-Ext2</b></th>\n");
+        out.write("\r\n");
+        out.write("        \t<!--th align=\"center\"><b>Eval-Ext2</b></th>-->\r\n");
         out.write("        \t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f8.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1959,38 +1959,38 @@ if(loginUsuario.isPerfil("3")||loginUsuario.isPerfil("13")||loginUsuario.isPerfi
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f22 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f22.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f22.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
-    // /adminPropuestas/ListaPropuestas.jsp(151,3) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminPropuestas/ListaPropuestas.jsp(151,7) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f22.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.ano==2012}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f22 = _jspx_th_c_005fif_005f22.doStartTag();
     if (_jspx_eval_c_005fif_005f22 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\t\t\t\n");
-        out.write("\t\t\t<td class=\"estado\" align=\"center\">\n");
+        out.write("\t\t\t\r\n");
+        out.write("\t\t\t<td class=\"estado\" align=\"center\">\r\n");
         out.write("\t\t\t\t");
         if (_jspx_meth_c_005fif_005f23(_jspx_th_c_005fif_005f22, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t");
         if (_jspx_meth_c_005fif_005f24(_jspx_th_c_005fif_005f22, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t");
         if (_jspx_meth_c_005fif_005f25(_jspx_th_c_005fif_005f22, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t");
         if (_jspx_meth_c_005fif_005f26(_jspx_th_c_005fif_005f22, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t");
         if (_jspx_meth_c_005fif_005f27(_jspx_th_c_005fif_005f22, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t");
         if (_jspx_meth_c_005fif_005f28(_jspx_th_c_005fif_005f22, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
           return true;
-        out.write("\n");
-        out.write("\t\t\t</td>\n");
+        out.write("\r\n");
+        out.write("\t\t\t</td>\r\n");
         out.write("\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f22.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
