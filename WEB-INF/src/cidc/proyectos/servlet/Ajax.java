@@ -1,12 +1,15 @@
 package cidc.proyectos.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cidc.proyectos.obj.Documento;
 import cidc.proyectos.obj.Parametros;
 import cidc.adminPropuestas.db.AdminPropuestaDB;
 import cidc.general.db.CursorDB;
@@ -33,6 +36,7 @@ public class Ajax extends ServletGeneral{
 			if(request.getParameter("para")!=null)
 				para=Integer.parseInt(request.getParameter("para"));
 			String []datos=null;
+			System.out.println("entro");
 			switch(para){
 				case Parametros.ajaxGrupos:
 						datos=request.getParameterValues("dato");

@@ -24,9 +24,11 @@ import cidc.general.servlet.ServletGeneral;
 import cidc.proyectos.db.ProyectosDB;
 import cidc.proyectos.db.ProyectosInvestigadorDB;
 import cidc.proyectos.obj.BalanceGeneral;
+import cidc.proyectos.obj.Contratacion;
 import cidc.proyectos.obj.Proyecto;
 import cidc.proyectos.obj.Parametros;
 import cidc.proyectos.obj.ProyectoGenerico;
+import cidc.proyectos.obj.Rubros;
 
 
 public class ProyectosInvestigadores extends ServletGeneral {
@@ -45,7 +47,6 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			proyecto = (ProyectoGenerico)sesion.getAttribute("proyectoInvestigador");
 		if(req.getParameter("accion")!=null)
 			accion = Integer.parseInt(req.getParameter("accion"));
-
 		switch(accion){
 			case Parametros.cmdVerProyecto:
 				sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo")));
@@ -56,10 +57,63 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				irA="/grupos/proyectos/BalanceGeneral.jsp";
 			break;
 			case Parametros.cmdListaGastosRubro:
+				sesion.removeAttribute("tipoPersona");
+				sesion.removeAttribute("tipoContratacion");
+				sesion.removeAttribute("idContrato");
+				List registroGasto = null;
+				BalanceGeneral balanc =(BalanceGeneral)sesion.getAttribute("balanceProyecto");
+				List<Rubros> lista= balanc.getListaRubros();
+				for (Rubros rubro : lista) {
+					if((rubro.getIdRubro()==Integer.parseInt(req.getParameter("idRub")))&&(rubro.getNombreRubro().equals("Personal"))){
+						registroGasto=lista;
+					}
+				}
+				sesion.setAttribute("gasto", registroGasto);
 				sesion.setAttribute("idRub",req.getParameter("idRub"));
-				req.setAttribute("listaGastosRubro",proyectosDB.getGastosRubrosDeLista((BalanceGeneral)sesion.getAttribute("balanceProyecto"),req.getParameter("idRub")));
+				sesion.setAttribute("listaGastosRubro",proyectosDB.getGastosRubrosDeLista((BalanceGeneral)sesion.getAttribute("balanceProyecto"),req.getParameter("idRub")));
 				irA="/grupos/proyectos/ListaGastos.jsp";
 			break;
+			case Parametros.ajaxTipoPersona:
+				List<Contratacion> iterador= new ArrayList<Contratacion>();
+				if(Integer.parseInt((String) req.getParameter("tipoPersona"))==1){
+					iterador.add(new Contratacion(1, "OPS"));
+					iterador.add(new Contratacion(2,"OPS-AR"));
+					iterador.add(new Contratacion(3,"OPA-AR(Par)"));
+					sesion.setAttribute("tipoPersona", 1);
+				}else{
+					sesion.setAttribute("tipoPersona", 2);
+				}
+				iterador.add(new Contratacion(4,"CPS"));
+				iterador.add(new Contratacion(5,"OC"));
+				iterador.add(new Contratacion(6,"OS"));
+				sesion.setAttribute("tipoContrato", iterador);
+				sesion.removeAttribute("idContrato");
+				irA="/grupos/proyectos/ListaGastos.jsp";
+				break;
+			case Parametros.tipoContrato:
+				int tipoCon = Integer.parseInt((String)req.getParameter("tipoContratacion"));
+				switch (tipoCon){
+					case 1:
+						sesion.setAttribute("idContrato", 1);
+					break;
+					case 2:
+						sesion.setAttribute("idContrato", 2);
+						break;
+					case 3:
+						sesion.setAttribute("idContrato", 3);
+						break;
+					case 4:
+						sesion.setAttribute("idContrato", 4);
+						break;
+					case 5:
+						sesion.setAttribute("idContrato", 5);
+						break;
+					case 6:
+						sesion.setAttribute("idContrato", 6);
+						break;
+				}
+				irA="/grupos/proyectos/ListaGastos.jsp";
+				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));
 			irA="/grupos/proyectos/ListaProyectos.jsp";
