@@ -69,10 +69,10 @@ public final class Compromisos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
@@ -83,10 +83,10 @@ public final class Compromisos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\tfunction guardar(){\r\n");
       out.write("\t\tsumaCombos();\r\n");
-      out.write("\t\t//alert(cantComp);\n");
-      out.write("\t\tcantComp=parseInt(cantComp+1);\n");
-      out.write("\t\t//alert(cantComp);\n");
-      out.write("\t\t//alert(\"Cantida de productos=\"+document.nuevo.cantComp.length);\n");
+      out.write("\t\t//alert(cantComp);\r\n");
+      out.write("\t\tcantComp=parseInt(cantComp+1);\r\n");
+      out.write("\t\t//alert(cantComp);\r\n");
+      out.write("\t\t//alert(\"Cantida de productos=\"+document.nuevo.cantComp.length);\r\n");
       out.write("\t\t//alert(\"Cantida de productos obligatorios=\"+");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
@@ -100,15 +100,15 @@ public final class Compromisos_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("';\r\n");
       out.write("\t\t\tdocument.nuevo.submit();\r\n");
-      out.write("\t\t}else{\n");
+      out.write("\t\t}else{\r\n");
       out.write("\t\t\talert(\"Según los términos de referencia de la convocatoria usted debe selecionar por lo menos \"+");
       if (_jspx_meth_c_005fout_005f2(_jspx_page_context))
         return;
-      out.write("+\" compromisos\");\n");
+      out.write("+\" compromisos\");\r\n");
       out.write("\t\t}\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
-      out.write("\tfunction sumaCombos(){\n");
+      out.write("\tfunction sumaCombos(){\r\n");
       out.write("\t\tcantComp=0;\r\n");
       out.write("\t\t//alert(\"Cantida de productos=\"+document.nuevo.cantComp.length);\r\n");
       out.write("\t\tfor(var i=1;i<document.nuevo.cantComp.length;i++){\r\n");
@@ -119,14 +119,14 @@ public final class Compromisos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\tif(document.getElementById(\"cant\"+i).value==2){\r\n");
       out.write("\t\t\t\t\t\tcantComp=cantComp+2;\r\n");
       out.write("\t\t\t\t\t}\r\n");
-      out.write("\t\t\t\t}\n");
+      out.write("\t\t\t\t}\r\n");
       out.write("\t\t\t//alert(\"suma =\"+cantComp);\t\t\t\r\n");
-      out.write("\t\t}\n");
+      out.write("\t\t}\r\n");
       out.write("\t\t\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
       out.write("\tfunction desCheck(caja,item,valor){\r\n");
-      out.write("\t//\talert(\"Estos productos son de caracter obligatorio para esta convocatoria, por tanto no se pueden desmarcar\");\n");
+      out.write("\t//\talert(\"Estos productos son de caracter obligatorio para esta convocatoria, por tanto no se pueden desmarcar\");\r\n");
       out.write("\t\t\r\n");
       out.write("\t\tif(caja.checked==true){\r\n");
       out.write("\t\t\tdocument.getElementById(item).disabled=false;\r\n");
@@ -140,8 +140,8 @@ public final class Compromisos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t//cantComp=cantComp-1;\r\n");
       out.write("\t\t}\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
@@ -226,9 +226,9 @@ public final class Compromisos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\n");
+      out.write("\r\n");
       out.write("</body>\r\n");
-      out.write("\n");
+      out.write("\r\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

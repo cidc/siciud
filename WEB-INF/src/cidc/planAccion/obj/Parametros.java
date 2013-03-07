@@ -8,6 +8,6 @@ public class Parametros {
 	public static final int CAMBIARINTERFAZ=4;
 	public static final int GENERARPDF=5;
 	public static final int ACTUALIZARACTIVIDAD=6;
-	public static final String FECHACIERRE="05-03-2013";
+	public static final String FECHACIERRE="08-03-2013";
 }
 
