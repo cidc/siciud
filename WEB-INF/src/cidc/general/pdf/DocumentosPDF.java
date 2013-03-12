@@ -195,12 +195,14 @@ public class DocumentosPDF {
 		tablaDatos.addCell(new PdfPCell(new Phrase("SUPERVISOR",texto9n)));
 		tablaDatos.addCell(new PdfPCell(new Phrase("Director del Centro de Investigaciones y Desarrollo Científico de la Universidad Distrital.",texto8)));
 
-/****/	texto.add(new Phrase("En Bogotá D.C., a los "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" del año "+global.getAnoHoy()+ " se reunieron, el(la) docente ",texto9));
+/****/	texto.add(new Phrase("En Bogotá D.C., a los "+global.getDiaFecha(proyecto.getFecActaInicio(), 0)+" días del mes de "+global.getNombreMes(proyecto.getFecActaInicio(), 1)+" del año "+global.getAnoFecha(proyecto.getFecActaInicio())+ " se reunieron, el(la) docente ",texto9));
 
 
 		if(proyecto.getNumConvocatoria().contains("12-2012")){
 			/** si es de semillero */
-			texto.add(new Phrase(proyecto.getTutor().toUpperCase()+" identificado con cédula de ciudadanía N° "+proyecto.getCedulaTutor()+" expedida en "+proyecto.getCedulaTutorDe(),texto9));
+			String cedTut=(proyecto.getCedulaTutor()==null?proyecto.getCedulaDir():proyecto.getCedulaTutor()); //si la cedula del tutor esta vacia entonces se usa la cedula del director
+			String cedTutDe=(proyecto.getCedulaTutorDe()==null?proyecto.getCedulaDirDe():proyecto.getCedulaTutorDe()); // si el lugar de expedicion del tutor esta vacio se usa el del director
+			texto.add(new Phrase(proyecto.getTutor().toUpperCase()+" identificado con cédula de ciudadanía N° "+cedTut+" expedida en "+cedTutDe,texto9));
 			texto.add(new Phrase(" en calidad de Tutor del Proyecto; El estudiante ",texto9));
 	/****/	texto.add(new Phrase(proyecto.getDirector().toLowerCase()+" identificado con cédula de ciudadanía N° "+proyecto.getCedulaDir()+" expedida en "+proyecto.getCedulaDirDe(),texto9));
 			texto.add(new Phrase(" en calidad de Investigador Principal del proyecto de investigación ",texto9));
