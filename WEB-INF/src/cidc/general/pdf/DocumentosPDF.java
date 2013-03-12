@@ -200,9 +200,9 @@ public class DocumentosPDF {
 
 		if(proyecto.getNumConvocatoria().contains("12-2012")){
 			/** si es de semillero */
-			String cedTut=(proyecto.getCedulaTutor()==null?proyecto.getCedulaDir():proyecto.getCedulaTutor()); //si la cedula del tutor esta vacia entonces se usa la cedula del director
-			String cedTutDe=(proyecto.getCedulaTutorDe()==null?proyecto.getCedulaDirDe():proyecto.getCedulaTutorDe()); // si el lugar de expedicion del tutor esta vacio se usa el del director
-			texto.add(new Phrase(proyecto.getTutor().toUpperCase()+" identificado con cédula de ciudadanía N° "+cedTut+" expedida en "+cedTutDe,texto9));
+			//String cedTut=(proyecto.getCedulaTutor()==null?proyecto.getCedulaDir():proyecto.getCedulaTutor()); //si la cedula del tutor esta vacia entonces se usa la cedula del director
+			//String cedTutDe=(proyecto.getCedulaTutorDe()==null?proyecto.getCedulaDirDe():proyecto.getCedulaTutorDe()); // si el lugar de expedicion del tutor esta vacio se usa el del director
+			texto.add(new Phrase(proyecto.getTutor().toUpperCase()+" identificado con cédula de ciudadanía N° "+proyecto.getCedulaTutor()+" expedida en "+proyecto.getCedulaTutorDe(),texto9));
 			texto.add(new Phrase(" en calidad de Tutor del Proyecto; El estudiante ",texto9));
 	/****/	texto.add(new Phrase(proyecto.getDirector().toLowerCase()+" identificado con cédula de ciudadanía N° "+proyecto.getCedulaDir()+" expedida en "+proyecto.getCedulaDirDe(),texto9));
 			texto.add(new Phrase(" en calidad de Investigador Principal del proyecto de investigación ",texto9));
