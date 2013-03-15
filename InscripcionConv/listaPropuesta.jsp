@@ -23,7 +23,7 @@ session.removeAttribute("requisitos");%>
 <c:if test="${!empty requestScope.listaPropuestas}">
 <div align="center">
 	<fieldset style="width:90%;"><legend>Información General</legend>
-	<p align="center" class="texto1">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2012 </p>
+	<p align="center" class="texto1">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2013 </p>
 	<p align="center" class="lroja3">Por favor tenga en cuenta su rol dentro del sistema antes de aplicar a la convocatoria <c:out value="${sessionScope.datosConv.convAno} ${sessionScope.datosConv.convNumero}"/>.
 		
 
@@ -61,7 +61,7 @@ session.removeAttribute("requisitos");%>
 <br><br><br>
 <div align="center">
 	<fieldset style="width: 90%"><legend>Información General</legend>
-		<p align="center" class="texto1">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2012 </p>
+		<p align="center" class="texto1">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2013 </p>
 		<p align="center" class="texto1">En estos momentos usted no tiene ninguna propuesta inscrita para la convocatoria <c:out value="${sessionScope.datosConv.convAno} ${sessionScope.datosConv.convNumero}"/>, Favor dar clik en el botón "Agregar Propuesta" para insertar una nueva propuesta</p>
 		<p align="center" class="lroja3">Por favor tenga en cuenta su rol dentro del sistema antes de aplicar a la convocatoria <c:out value="${sessionScope.datosConv.convAno} ${sessionScope.datosConv.convNumero}"/>. 
 	</fieldset>

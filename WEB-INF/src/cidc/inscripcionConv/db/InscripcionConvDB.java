@@ -925,7 +925,7 @@ public class InscripcionConvDB extends BaseDB{
 		texto.append("<b>CONSECUTIVO CIDC "+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
 		texto.append(rb1.getString("rp1")+"  <b>"+persona.getNombre()+"</b>");
 		texto.append(rb1.getString("rp2")+"");
-		texto.append(general.getConvocatoria()+"-2012.");
+		texto.append(general.getConvocatoria()+"-2013.");
 		texto.append(rb1.getString("e1"));
 		texto.append(persona.getNombre());
 /*		texto.append(rb1.getString("e2"));
@@ -933,7 +933,7 @@ public class InscripcionConvDB extends BaseDB{
 */		texto.append(rb1.getString("e3"));
 		texto.append(general.getPropuesta());
 		texto.append(rb1.getString("e4"));
-		texto.append(general.getIdPropuesta()+"-2012-CIDC <br>");
+		texto.append(general.getIdPropuesta()+"-2013-CIDC <br>");
 		//texto.append(general.getIdPropuesta()+" - "+general.getConvocatoria());
 		texto.append(rb1.getString("e5"));
 		//texto.append(rb1.getString("Documentos1"+ " "));

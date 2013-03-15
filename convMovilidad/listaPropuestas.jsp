@@ -56,7 +56,7 @@ session.removeAttribute("requisitos");
 	<input type="hidden" name="accion" value="3">
 	<input type="hidden" name="id">
 	<input type="hidden" name="estado">
-	<c:if test="${(sessionScope.datosConv.convNumero==3 and (sessionScope.persona.papel==3 or sessionScope.persona.papel==5))or(sessionScope.datosConv.convNumero==4 and (sessionScope.persona.papel!=3 and sessionScope.persona.papel!=5))}">
+	<c:if test="${((sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3) and (sessionScope.persona.papel==3 or sessionScope.persona.papel==5))or(sessionScope.datosConv.convNumero==4 and (sessionScope.persona.papel!=3 and sessionScope.persona.papel!=5))}">
 		<table align="center" class="tablas" width="90%">
 		<caption>Lista de Propuestas inscritas</caption>
 		<tr>

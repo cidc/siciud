@@ -63,9 +63,9 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       cidc.convocatorias.obj.ParametrosOBJ ParametrosOBJ = null;
       synchronized (_jspx_page_context) {
@@ -79,7 +79,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write('\n');
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\r\n");
       out.write("\tfunction info(id){\r\n");
@@ -107,18 +107,18 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\telse\r\n");
       out.write("\t\t\t\tfrm.submit();\r\n");
       out.write("\t\t}\r\n");
-      out.write("\t}\n");
-      out.write("\tfunction ver(ac,id){\n");
-      out.write("\t\tdocument.nuevo.accion.value=ac;\n");
-      out.write("\t\tdocument.nuevo.id.value=id;\n");
-      out.write("\t\t//document.lista.estado.value=st;\n");
+      out.write("\t}\r\n");
+      out.write("\tfunction ver(ac,id){\r\n");
+      out.write("\t\tdocument.nuevo.accion.value=ac;\r\n");
+      out.write("\t\tdocument.nuevo.id.value=id;\r\n");
+      out.write("\t\t//document.lista.estado.value=st;\r\n");
       out.write("\t\tdocument.nuevo.action='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("';\n");
-      out.write("\t\tdocument.nuevo.submit();\n");
+      out.write("';\r\n");
+      out.write("\t\tdocument.nuevo.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
+      out.write("</script>\r\n");
       out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("<br>\r\n");
@@ -130,44 +130,44 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<input type=\"image\" src='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
-      out.write("'>\n");
-      out.write("\t<fieldset style=\"width:590px;\">\n");
-      out.write("\t\t<div align=\"center\">\t\t\n");
-      out.write("\t\t\t<table class=\"tablas\" width=\"100%\">\n");
-      out.write("\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t<td>\n");
+      out.write("'>\r\n");
+      out.write("\t<fieldset style=\"width:590px;\">\r\n");
+      out.write("\t\t<div align=\"center\">\t\t\r\n");
+      out.write("\t\t\t<table class=\"tablas\" width=\"100%\">\r\n");
+      out.write("\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t\t<img src='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
       out.write("' onclick='ver(9,");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
-      out.write(")'>\n");
-      out.write("\t\t\t\t\t</td>\n");
-      out.write("\t\t\t\t\t<td>\n");
+      out.write(")'>\r\n");
+      out.write("\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t\t<img src='");
       if (_jspx_meth_c_005furl_005f4(_jspx_page_context))
         return;
       out.write("' onclick='ver(10,");
       if (_jspx_meth_c_005fout_005f1(_jspx_page_context))
         return;
-      out.write(")'>\n");
-      out.write("\t\t\t\t\t</td>\n");
-      out.write("\t\t\t\t\t<td>\n");
+      out.write(")'>\r\n");
+      out.write("\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t\t<img src='");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
         return;
       out.write("' onclick='ver(11,");
       if (_jspx_meth_c_005fout_005f2(_jspx_page_context))
         return;
-      out.write(")'>\n");
-      out.write("\t\t\t\t\t</td>\t\t\n");
-      out.write("\t\t\t\t</tr>\n");
-      out.write("\t\t\t</table>\t\t\n");
-      out.write("\t\t</div>\n");
+      out.write(")'>\r\n");
+      out.write("\t\t\t\t\t</td>\t\t\r\n");
+      out.write("\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t</table>\t\t\r\n");
+      out.write("\t\t</div>\r\n");
       out.write("\t</fieldset>\t\r\n");
-      out.write("\t</form>\t\n");
-      out.write("\n");
+      out.write("\t</form>\t\r\n");
+      out.write("\r\n");
       out.write("<fieldset style=\"width:590px;\">\r\n");
       out.write("\t<legend>Datos Resumen de Evento y Ponencia</legend>\r\n");
       out.write("\t\t<table class=\"tablas\" width=\"100%\">\r\n");
@@ -221,8 +221,8 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<tr><td colspan=\"4\">");
       if (_jspx_meth_c_005fout_005f9(_jspx_page_context))
         return;
-      out.write("</td></tr>\n");
-      out.write("\t\t\t<tr><td colspan=\"4\" class=\"renglones\"><b>Nombre de proyecto de investigación</b></td></tr>\n");
+      out.write("</td></tr>\r\n");
+      out.write("\t\t\t<tr><td colspan=\"4\" class=\"renglones\"><b>Nombre de proyecto de investigación</b></td></tr>\r\n");
       out.write("\t\t\t<tr><td colspan=\"4\">");
       if (_jspx_meth_c_005fout_005f10(_jspx_page_context))
         return;
@@ -327,7 +327,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t</form>\r\n");
       out.write("\t\t\t</td>\r\n");
       out.write("\t\t</tr>\r\n");
-      out.write("<!--\n");
+      out.write("<!--\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td>\r\n");
       out.write("\t\t\t\t<form action='");
@@ -355,7 +355,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t</table>\r\n");
       out.write("\t\t\t\t</form>\r\n");
       out.write("\t\t\t</td>\r\n");
-      out.write("\t\t</tr>\n");
+      out.write("\t\t</tr>\r\n");
       out.write("-->\r\n");
       out.write("\t\t");
       if (_jspx_meth_c_005fif_005f5(_jspx_page_context))
@@ -364,131 +364,130 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t");
       if (_jspx_meth_c_005fif_005f7(_jspx_page_context))
         return;
-      out.write('\n');
-      out.write('	');
-      out.write('	');
+      out.write("\r\n");
+      out.write("\t\t");
       if (_jspx_meth_c_005fif_005f9(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t<tr>\n");
-      out.write("\t\t\t\t<td>\n");
+      out.write("\r\n");
+      out.write("\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t<form action='");
       if (_jspx_meth_c_005furl_005f27(_jspx_page_context))
         return;
-      out.write("' name=\"frm9\" method=\"post\" enctype=\"multipart/form-data\">\n");
-      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"9\">\n");
-      out.write("\t\t\t\t\t\t<table width=\"100%\">\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Certificacion de participacion en activdades de investigacion en el grupo/semillero</b></td>\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Carta escaneada firmada por el Director del Grupo o Lider del semillero donde se certifique la participación del investigador en actividades de investigación dentro del grupo o semillero según el caso.</p></td>\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc9\"></td>\n");
+      out.write("' name=\"frm9\" method=\"post\" enctype=\"multipart/form-data\">\r\n");
+      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"9\">\r\n");
+      out.write("\t\t\t\t\t\t<table width=\"100%\">\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Certificacion de participacion en activdades de investigacion en el grupo/semillero</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Carta escaneada firmada por el Director del Grupo o Lider del semillero donde se certifique la participación del investigador en actividades de investigación dentro del grupo o semillero según el caso.</p></td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc9\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td width=\"75px\"><img src='");
       if (_jspx_meth_c_005furl_005f28(_jspx_page_context))
         return;
-      out.write("' onclick=\"ValidarFormulario(document.frm9.arc9,frm9)\"></td>\n");
+      out.write("' onclick=\"ValidarFormulario(document.frm9.arc9,frm9)\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t");
       if (_jspx_meth_c_005fif_005f11(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t</table>\n");
-      out.write("\t\t\t\t\t</form>\n");
-      out.write("\t\t\t\t</td>\n");
-      out.write("\t\t\t</tr>\n");
-      out.write("\t\t\t<tr>\n");
-      out.write("\t\t\t\t<td>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t</form>\r\n");
+      out.write("\t\t\t\t</td>\r\n");
+      out.write("\t\t\t</tr>\r\n");
+      out.write("\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t<form action='");
       if (_jspx_meth_c_005furl_005f30(_jspx_page_context))
         return;
-      out.write("' name=\"frm10\" method=\"post\" enctype=\"multipart/form-data\">\n");
-      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"10\">\n");
-      out.write("\t\t\t\t\t\t<table width=\"100%\">\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Certificacion de participacion en activdades de investigacion del CIDC</b></td>\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Carta escaneada donde certifique la participación en actividades avaladas por el CIDC diferentes a movilidad certificadas por el CIDC o por el Coordinador de la Unidades de Investigación de las Facultades.</p></td>\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc10\"></td>\n");
+      out.write("' name=\"frm10\" method=\"post\" enctype=\"multipart/form-data\">\r\n");
+      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"10\">\r\n");
+      out.write("\t\t\t\t\t\t<table width=\"100%\">\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Certificacion de participacion en activdades de investigacion del CIDC</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Carta escaneada donde certifique la participación en actividades avaladas por el CIDC diferentes a movilidad certificadas por el CIDC o por el Coordinador de la Unidades de Investigación de las Facultades.</p></td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc10\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td width=\"75px\"><img src='");
       if (_jspx_meth_c_005furl_005f31(_jspx_page_context))
         return;
-      out.write("' onclick=\"ValidarFormulario(document.frm10.arc10,frm10)\"></td>\n");
+      out.write("' onclick=\"ValidarFormulario(document.frm10.arc10,frm10)\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t");
       if (_jspx_meth_c_005fif_005f12(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t</table>\n");
-      out.write("\t\t\t\t\t</form>\n");
-      out.write("\t\t\t\t</td>\n");
-      out.write("\t\t\t</tr>\n");
-      out.write("\t\t\t<tr>\n");
-      out.write("\t\t\t\t<td>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t</form>\r\n");
+      out.write("\t\t\t\t</td>\r\n");
+      out.write("\t\t\t</tr>\r\n");
+      out.write("\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t<form action='");
       if (_jspx_meth_c_005furl_005f33(_jspx_page_context))
         return;
-      out.write("' name=\"frm11\" method=\"post\" enctype=\"multipart/form-data\">\n");
-      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"11\">\n");
-      out.write("\t\t\t\t\t\t<table width=\"100%\">\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Resultados Obtenidos</b></td>\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Documento escaneado donde certifique resultados obtenidos de agendas de cooperación de movilidad anteriores, reflejados en convenios, profesores visitantes, conferencistas, conformación de redes, entre otros (Un solo documento en formato PDF).</p></td>\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc11\"></td>\n");
+      out.write("' name=\"frm11\" method=\"post\" enctype=\"multipart/form-data\">\r\n");
+      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"11\">\r\n");
+      out.write("\t\t\t\t\t\t<table width=\"100%\">\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Resultados Obtenidos</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Documento escaneado donde certifique resultados obtenidos de agendas de cooperación de movilidad anteriores, reflejados en convenios, profesores visitantes, conferencistas, conformación de redes, entre otros (Un solo documento en formato PDF).</p></td>\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc11\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td width=\"75px\"><img src='");
       if (_jspx_meth_c_005furl_005f34(_jspx_page_context))
         return;
-      out.write("' onclick=\"ValidarFormulario(document.frm11.arc11,frm11)\"></td>\n");
+      out.write("' onclick=\"ValidarFormulario(document.frm11.arc11,frm11)\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t");
       if (_jspx_meth_c_005fif_005f13(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t</table>\n");
-      out.write("\t\t\t\t\t</form>\n");
-      out.write("\t\t\t\t</td>\n");
-      out.write("\t\t\t</tr>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t\t</form>\r\n");
+      out.write("\t\t\t\t</td>\r\n");
+      out.write("\t\t\t</tr>\r\n");
       out.write("\t\t");
       if (_jspx_meth_c_005fif_005f14(_jspx_page_context))
         return;
-      out.write("\t\n");
-      out.write("\t\t<tr>\n");
-      out.write("\t\t\t<td>\n");
+      out.write("\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td>\r\n");
       out.write("\t\t\t\t<form action='");
       if (_jspx_meth_c_005furl_005f39(_jspx_page_context))
         return;
-      out.write("' name=\"frm13\" method=\"post\" enctype=\"multipart/form-data\">\n");
-      out.write("\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"13\">\n");
-      out.write("\t\t\t\t\t<table width=\"100%\">\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Formato de Productividad Académica e Investigativa.</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Formato diligenciado con la productividad académica e investigativa registrada en el CvLac de COLCIENCIAS. (formato PDF)</p></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc13\"></td>\n");
+      out.write("' name=\"frm13\" method=\"post\" enctype=\"multipart/form-data\">\r\n");
+      out.write("\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"13\">\r\n");
+      out.write("\t\t\t\t\t<table width=\"100%\">\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Formato de Productividad Académica e Investigativa.</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Formato diligenciado con la productividad académica e investigativa registrada en el CvLac de COLCIENCIAS. (formato PDF)</p></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc13\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t<td width=\"75px\"><img src='");
       if (_jspx_meth_c_005furl_005f40(_jspx_page_context))
         return;
-      out.write("' onclick=\"ValidarFormulario(document.frm13.arc13,frm13)\"></td>\n");
+      out.write("' onclick=\"ValidarFormulario(document.frm13.arc13,frm13)\"></td>\r\n");
       out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fif_005f16(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t</table>\n");
-      out.write("\t\t\t\t</form>\n");
-      out.write("\t\t\t</td>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t</table>\r\n");
+      out.write("\t\t\t\t</form>\r\n");
+      out.write("\t\t\t</td>\r\n");
       out.write("\t\t</tr>\t\t\r\n");
       out.write("\t</table>\r\n");
       out.write("\t<br>\r\n");
@@ -511,7 +510,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t</form>\r\n");
       out.write("</fieldset>\r\n");
       out.write("\t<br>\r\n");
-      out.write("</body>\n");
+      out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -946,11 +945,11 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t<tr>\n");
+        out.write("\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f8(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
         out.write("\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
@@ -1037,11 +1036,11 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t<tr>\n");
+        out.write("\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f11(_jspx_th_c_005fif_005f1, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
         out.write("\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
@@ -1542,11 +1541,11 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t<tr>\n");
+        out.write("\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f23(_jspx_th_c_005fif_005f8, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
         out.write("\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f8.doAfterBody();
@@ -1608,7 +1607,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Resultados de excelencia académica del último año (Opcional teniendo en cuenta que otorga hasta 5 puntos adicionales).</p></td>\r\n");
-        out.write("\t\t\t\t\t\t</tr>\n");
+        out.write("\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc8\"></td>\r\n");
         out.write("\t\t\t\t\t\t\t\t<td width=\"75px\"><img src='");
@@ -1619,11 +1618,11 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (_jspx_meth_c_005fif_005f10(_jspx_th_c_005fif_005f9, _jspx_page_context))
           return true;
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t</tr>\n");
-        out.write("\t\t\t\t\t</table>\t\t\t\t\t\t\n");
-        out.write("\t\t\t\t\t</form>\t\n");
-        out.write("\t\t\t\t</td>\t\t\t\t\t\n");
-        out.write("\t\t\t</tr>\n");
+        out.write("\t\t\t\t\t\t</tr>\r\n");
+        out.write("\t\t\t\t\t</table>\t\t\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t</form>\t\r\n");
+        out.write("\t\t\t\t</td>\t\t\t\t\t\r\n");
+        out.write("\t\t\t</tr>\r\n");
         out.write("\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f9.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1690,11 +1689,11 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_005fif_005f10 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t\t\t\t\t\t<tr>\n");
+        out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f26(_jspx_th_c_005fif_005f10, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
         out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f10.doAfterBody();
@@ -1780,13 +1779,13 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f11 = _jspx_th_c_005fif_005f11.doStartTag();
     if (_jspx_eval_c_005fif_005f11 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f29(_jspx_th_c_005fif_005f11, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t</tr>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f11.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1871,13 +1870,13 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f12 = _jspx_th_c_005fif_005f12.doStartTag();
     if (_jspx_eval_c_005fif_005f12 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f32(_jspx_th_c_005fif_005f12, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t</tr>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f12.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1962,13 +1961,13 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f13 = _jspx_th_c_005fif_005f13.doStartTag();
     if (_jspx_eval_c_005fif_005f13 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f35(_jspx_th_c_005fif_005f13, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
-        out.write("\t\t\t\t\t\t\t\t\t\t</tr>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f13.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2015,36 +2014,36 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f14 = _jspx_th_c_005fif_005f14.doStartTag();
     if (_jspx_eval_c_005fif_005f14 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t<tr>\t\t\n");
-        out.write("\t\t\t<td>\n");
+        out.write("\r\n");
+        out.write("\t\t<tr>\t\t\r\n");
+        out.write("\t\t\t<td>\r\n");
         out.write("\t\t\t\t<form action='");
         if (_jspx_meth_c_005furl_005f36(_jspx_th_c_005fif_005f14, _jspx_page_context))
           return true;
-        out.write("' name=\"frm12\" method=\"post\" enctype=\"multipart/form-data\">\n");
-        out.write("\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"12\">\n");
-        out.write("\t\t\t\t\t<table width=\"100%\">\n");
-        out.write("\t\t\t\t\t\t<tr>\n");
-        out.write("\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Carta donde exprese no tener adjudicado otro apoyo económico en la Universidad</b></td>\n");
-        out.write("\t\t\t\t\t\t</tr>\n");
-        out.write("\t\t\t\t\t\t<tr>\n");
-        out.write("\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Carta escaneada y firmada por el investigador donde exprese que no tiene adjudicado ningún tipo de apoyo económico de otra dependencia de la universidad. Si se llega a contar con apoyo económico de otra dependencia de la universidad, se deberá aclarar los montos aprobados y la dependencia que lo apoya.</p></td>\n");
-        out.write("\t\t\t\t\t\t</tr>\n");
-        out.write("\t\t\t\t\t\t<tr>\n");
-        out.write("\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc12\"></td>\n");
+        out.write("' name=\"frm12\" method=\"post\" enctype=\"multipart/form-data\">\r\n");
+        out.write("\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"12\">\r\n");
+        out.write("\t\t\t\t\t<table width=\"100%\">\r\n");
+        out.write("\t\t\t\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Carta donde exprese no tener adjudicado otro apoyo económico en la Universidad</b></td>\r\n");
+        out.write("\t\t\t\t\t\t</tr>\r\n");
+        out.write("\t\t\t\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Carta escaneada y firmada por el investigador donde exprese que no tiene adjudicado ningún tipo de apoyo económico de otra dependencia de la universidad. Si se llega a contar con apoyo económico de otra dependencia de la universidad, se deberá aclarar los montos aprobados y la dependencia que lo apoya.</p></td>\r\n");
+        out.write("\t\t\t\t\t\t</tr>\r\n");
+        out.write("\t\t\t\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"arc12\"></td>\r\n");
         out.write("\t\t\t\t\t\t\t\t<td width=\"75px\"><img src='");
         if (_jspx_meth_c_005furl_005f37(_jspx_th_c_005fif_005f14, _jspx_page_context))
           return true;
-        out.write("' onclick=\"ValidarFormulario(document.frm12.arc12,frm12)\"></td>\n");
+        out.write("' onclick=\"ValidarFormulario(document.frm12.arc12,frm12)\"></td>\r\n");
         out.write("\t\t\t\t\t\t\t");
         if (_jspx_meth_c_005fif_005f15(_jspx_th_c_005fif_005f14, _jspx_page_context))
           return true;
-        out.write("\n");
-        out.write("\t\t\t\t\t\t</tr>\n");
-        out.write("\t\t\t\t\t</table>\t\t\t\t\t\t\n");
-        out.write("\t\t\t\t\t</form>\t\n");
-        out.write("\t\t\t\t</td>\t\t\t\t\t\n");
-        out.write("\t\t\t</tr>\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t</tr>\r\n");
+        out.write("\t\t\t\t\t</table>\t\t\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t</form>\t\r\n");
+        out.write("\t\t\t\t</td>\t\t\t\t\t\r\n");
+        out.write("\t\t\t</tr>\r\n");
         out.write("\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f14.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2110,13 +2109,13 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f15 = _jspx_th_c_005fif_005f15.doStartTag();
     if (_jspx_eval_c_005fif_005f15 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t\t\t\t\t\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f38(_jspx_th_c_005fif_005f15, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
-        out.write("\t\t\t\t\t\t\t\t</tr>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
+        out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f15.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2201,13 +2200,13 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f16 = _jspx_th_c_005fif_005f16.doStartTag();
     if (_jspx_eval_c_005fif_005f16 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t\t\t\t\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a class=\"lblanca\" href='");
         if (_jspx_meth_c_005furl_005f41(_jspx_th_c_005fif_005f16, _jspx_page_context))
           return true;
-        out.write("'>Ver Documento</a></td>\n");
-        out.write("\t\t\t\t\t\t\t</tr>\n");
+        out.write("'>Ver Documento</a></td>\r\n");
+        out.write("\t\t\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f16.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

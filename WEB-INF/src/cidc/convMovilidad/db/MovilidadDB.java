@@ -1,8 +1,6 @@
 package cidc.convMovilidad.db;
 
 import java.sql.Connection;
-
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,28 +10,16 @@ import java.util.ResourceBundle;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
-import javax.servlet.jsp.jstl.sql.Result;
-import javax.servlet.jsp.jstl.sql.ResultSupport;
 
 import cidc.convMovilidad.obj.InfoGeneral;
 import cidc.convMovilidad.obj.Requisitos;
-import cidc.convocatorias.obj.AspectosOBJ;
-import cidc.convocatorias.obj.CompromisosOBJ;
-import cidc.convocatorias.obj.ConvocatoriaOBJ;
-import cidc.convocatorias.obj.CriteriosOBJ;
-import cidc.convocatorias.obj.EjesOBJ;
-import cidc.convocatorias.obj.InsercionGralOBJ;
-import cidc.convocatorias.obj.ParametrosOBJ;
-import cidc.convocatorias.obj.RubrosOBJ;
 import cidc.evalMovilidad.db.EvalMovilidadDB;
-import cidc.evalMovilidad.servlet.EvalMovilidad;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.mails.EnvioMail2;
 import cidc.general.mails.Reporte;
 import cidc.general.obj.Globales;
 import cidc.inscripSistema.obj.Persona;
-import cidc.inscripcionConv.obj.GruposOBJ;
 import cidc.planAccion.obj.Actividades;
 
 public class MovilidadDB extends BaseDB{

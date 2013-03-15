@@ -177,7 +177,7 @@ session.removeAttribute("requisitos");
         out.write("\r\n");
         out.write("<div align=\"center\">\r\n");
         out.write("\t<fieldset style=\"width:90%;\"><legend>Información General</legend>\r\n");
-        out.write("\t<p align=\"center\" class=\"texto1\">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2012 </p>\r\n");
+        out.write("\t<p align=\"center\" class=\"texto1\">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2013 </p>\r\n");
         out.write("\t<p align=\"center\" class=\"lroja3\">Por favor tenga en cuenta su rol dentro del sistema antes de aplicar a la convocatoria ");
         if (_jspx_meth_c_005fout_005f0(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
@@ -490,7 +490,7 @@ session.removeAttribute("requisitos");
         out.write("<br><br><br>\r\n");
         out.write("<div align=\"center\">\r\n");
         out.write("\t<fieldset style=\"width: 90%\"><legend>Información General</legend>\r\n");
-        out.write("\t\t<p align=\"center\" class=\"texto1\">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2012 </p>\r\n");
+        out.write("\t\t<p align=\"center\" class=\"texto1\">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2013 </p>\r\n");
         out.write("\t\t<p align=\"center\" class=\"texto1\">En estos momentos usted no tiene ninguna propuesta inscrita para la convocatoria ");
         if (_jspx_meth_c_005fout_005f5(_jspx_th_c_005fif_005f2, _jspx_page_context))
           return true;
