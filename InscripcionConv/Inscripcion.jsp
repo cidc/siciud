@@ -47,6 +47,9 @@
 		if(document.nuevo.propDirPro.selectedIndex==0){
 			mensaje=mensaje+"\n-) Nombre del profesor Director del proyecto. (Prof. Planta)";
 		}
+		if(document.nuevo.codareasnies.selectedIndex==0){
+			mensaje=mensaje+"\n-) Área Snies";
+		}
 		/*if(document.nuevo.propAbstract.value==""){
 			mensaje=mensaje+"\n-) Abstract de la Propuesta";
 		}
@@ -460,8 +463,11 @@
 				</tr>
 				<tr>
 					<td colspan="2">							
-						<select name="areaSnies">
-							<option value="0">-------------</option>							
+						<select name="codareasnies">
+							<option value="0">-------------</option>
+							<c:forEach begin="0" items="${requestScope.areaSnies}" var="lista" varStatus="st">
+								<option style="text-transform: lowercase;" value='<c:out value="${lista.codigo}"/>' <c:if test="${sessionScope.integrante2.codareasnies==lista.codigo}">selected</c:if>><c:out value="${lista.nombre}"/></option>
+							</c:forEach>							
 						</select>				
 					</td>
 				</tr>				

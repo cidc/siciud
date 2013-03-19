@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
+import cidc.adminGrupos.obj.AreasConocimiento;
 import cidc.convMovilidad.obj.InfoGeneral;
 import cidc.convMovilidad.obj.Requisitos;
 import cidc.general.db.BaseDB;
@@ -301,7 +302,8 @@ public class InscripcionConvDB extends BaseDB{
 			ps.setInt(i++,inscripcionConvOBJ.getPropHorasInv());
 			ps.setString(i++, inscripcionConvOBJ.getProyectoinv()); // proyecto segun Plan de Accion
 			ps.setString(i++, inscripcionConvOBJ.getPropDirPro()); // Director del proyecto de inv
-			ps.setLong(i++,inscripcionConvOBJ.getPropConvId());		
+			ps.setLong(i++,inscripcionConvOBJ.getPropConvId());
+			ps.setInt(i++, inscripcionConvOBJ.getCodareasnies());
 			ps.executeUpdate();
 
 		//	System.out.println("El serial va en "+cod);
@@ -1105,6 +1107,35 @@ public class InscripcionConvDB extends BaseDB{
 			cerrar(cn);
 		}
 		return info;
+	}
+	
+	public List<AreasConocimiento> AjaxAreasSnies() {
+		List<AreasConocimiento> l=new ArrayList<AreasConocimiento>();
+		AreasConocimiento areaSNIES=null;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		try {
+			cn = cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("ajaxAreasSNIES"));			
+			rs=ps.executeQuery();
+			while(rs.next()){
+				areaSNIES=new AreasConocimiento();
+				areaSNIES.setCodigo(rs.getInt(1));
+				areaSNIES.setNombre(rs.getString(2));
+				l.add(areaSNIES);
+			}
+		} catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+	//	System.out.println(l.size());
+		return l;
 	}
 
 }

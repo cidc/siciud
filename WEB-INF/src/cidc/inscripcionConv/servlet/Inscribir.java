@@ -85,7 +85,8 @@ public class Inscribir extends ServletGeneral {
 			case ParametrosOBJ.cmdPaso0:
 				sesion.setAttribute("persona",persona);
 				sesion.setAttribute("ajaxProyCur",inscripcionConvDB.AjaxProyectoCur());
-				sesion.setAttribute("listaTotalGrupos",inscripcionConvDB.totalGruposInvestigacion());				
+				sesion.setAttribute("listaTotalGrupos",inscripcionConvDB.totalGruposInvestigacion());
+				req.setAttribute("areaSnies", inscripcionConvDB.AjaxAreasSnies());
 				if(sesion.getAttribute("ajaxGrupo")==null)
 					sesion.setAttribute("ajaxGrupo",inscripcionConvDB.AjaxGruposInvestigacion(1,1));
 				req.setAttribute("listaRubrosOBJ",inscripcionConvDB.getRubros(convocatoriaOBJ.getConvId(),1));

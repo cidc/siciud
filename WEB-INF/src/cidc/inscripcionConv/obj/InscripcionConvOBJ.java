@@ -44,6 +44,7 @@ public class InscripcionConvOBJ implements Serializable{
 
 	private int []idCompromisos;
 	private int []cantComp;
+	private int codareasnies;
 	
 	
 	public int[] getPropGrupoAsociado() {
@@ -213,5 +214,12 @@ public class InscripcionConvOBJ implements Serializable{
 	}
 	public void setProyectoinv(String proyectoinv) {
 		this.proyectoinv = proyectoinv;
-	}	
+	}
+	public int getCodareasnies() {
+		return codareasnies;
+	}
+	public void setCodareasnies(int codareasnies) {
+		this.codareasnies = codareasnies;
+	}
+	
 }
