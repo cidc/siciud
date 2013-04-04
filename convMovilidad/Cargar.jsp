@@ -119,7 +119,7 @@
 							<td colspan="2" class="renglones"><b>Carta aval Grupo / Semillero de Investigación</b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><p class="texto1j">Carta escaneada del aval del director del Grupo de Investigación para la participación en la convocatoria (formato PDF); NO se tendrán en cuenta cartas con visto bueno.</p></td>
+							<td colspan="2"><p class="texto1j">Carta de aval del Grupo o Semillero de investigación firmada por el Director o Tutor según corresponda, en donde se exprese que el estudiante o docente no tiene adjudicado ningún tipo de apoyo económico de otra dependencia de la Universidad, ni que lo está tramitando; NO se tendrán en cuenta cartas con visto bueno. (Formato PDF)</p></td>
 						</tr>
 						<tr>
 							<td><input size="60%" type="file" name="arc1"></td>
@@ -365,7 +365,7 @@
 							<td colspan="2" class="renglones"><b>Carta donde exprese no tener adjudicado otro apoyo económico en la Universidad</b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><p class="texto1j">Carta escaneada y firmada por el investigador donde exprese que no tiene adjudicado ningún tipo de apoyo económico de otra dependencia de la universidad. Si se llega a contar con apoyo económico de otra dependencia de la universidad, se deberá aclarar los montos aprobados y la dependencia que lo apoya.</p></td>
+							<td colspan="2"><p class="texto1j">Carta escaneada y firmada por el Director o Tutor según corresponda donde exprese que no tiene adjudicado ningún tipo de apoyo económico de otra dependencia de la universidad. Si se llega a contar con apoyo económico de otra dependencia de la universidad, se deberá aclarar los montos aprobados y la dependencia que lo apoya. (Formato PDF)</p></td>
 						</tr>
 						<tr>
 								<td><input size="60%" type="file" name="arc12"></td>
