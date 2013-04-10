@@ -31,12 +31,20 @@
 		return true;
 	}
 
-	function temina(){
-		alert("At least");
-		if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm4.fichero!=null || document.frm4.fichero!="") && (document.frm5.fichero!=null || document.frm5.fichero!=""))
-			document.finaliza.submit();
-		else
-			alert("Para terminar debe cargar los documentos faltantes");
+	function temina(numConv){
+		//alert("At least");
+		if(numConv!=6){
+			if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm4.fichero!=null || document.frm4.fichero!="") && (document.frm5.fichero!=null || document.frm5.fichero!=""))
+				document.finaliza.submit();
+			else
+				alert("Para terminar debe cargar los documentos faltantes");
+		}else
+			{
+			if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!=""))
+				document.finaliza.submit();
+			else
+				alert("Para terminar debe cargar los documentos faltantes");
+			}
 	}
 
 </script>
@@ -144,7 +152,7 @@
 						<input type="hidden" name="id" value="8">
 						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}" default="${sessionScope.inscripcionConvOBJ.propId}"/>'>
 							<table width="100%">
-								<th colspan="2" align="left">Actas de su institucionalización</th>
+								<th colspan="2" align="left">Actas de Institucionalización</th>
 								<tr>
 									<td colspan="2"><p class="texto1j">Anexar actas de institucionalización ante el Consejo de la Facultad de Ciencias y Educación y ante el CIDC, o evidencias que el proceso de institucionalización del
 																		proyecto de tesis ante el Consejo de la Facultad de Ciencias y Educación y ante el CIDC ya se ha solicitado.(Formato PDF)</p></td>
@@ -225,7 +233,7 @@
 						<input type="hidden" name="accion" value="1">
 						<input type="hidden" name="terminar" value="si">
 						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}"/>'>				
-						<img src='<c:url value="/comp/img/Terminar.gif" />' onclick='temina()'/>					
+						<img src='<c:url value="/comp/img/Terminar.gif" />' onclick='temina("${sessionScope.datosConv.convNumero}")'/>					
 					</form>
 					</td>
 				</tr>
