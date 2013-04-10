@@ -44,7 +44,7 @@
 <body>
 <br><br>
 	<fieldset style="width:550px;">
-    	<legend class="texto1"><b>Documento Propuesta Investigación</b></legend>
+    	<legend class="texto1"><b>Documento Propuesta Investigación </b></legend>
 			<table>
 				<tr>
 					<td colspan="2" align="justify">						
@@ -110,7 +110,7 @@
 					</td>
 				</tr>
 				</c:if>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12)}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
@@ -120,6 +120,34 @@
 								<th colspan="2" align="left">Aval grupo de investigación</th>
 								<tr>
 									<td colspan="2"><p class="texto1j">Carta de aval del grupo o semillero de investigación para la presente convocatoria, firmada por el director o tutor según corresponda.</p></td>
+								</tr>
+								<tr>
+								<c:if test="${requestScope.archivos.docAvalGrupo!=null}">
+									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docAvalGrupo}" />'>Ver Documento</a></td>
+								</c:if>
+								</tr>
+								<tr>
+									<td id="f3"><input size="60%" type="file" name="fichero"></td>
+									<td id="g3" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(3,document.frm3)"></td>
+								<td id="carga31" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
+								<td id="carga32" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
+								</tr>
+							</table>
+						</form>
+					</td>
+				</tr>				
+				</c:if>
+				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12)}">
+				<tr>
+					<td>
+						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="id" value="8">
+						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}" default="${sessionScope.inscripcionConvOBJ.propId}"/>'>
+							<table width="100%">
+								<th colspan="2" align="left">Actas de su institucionalización</th>
+								<tr>
+									<td colspan="2"><p class="texto1j">Anexar actas de institucionalización ante el Consejo de la Facultad de Ciencias y Educación y ante el CIDC, o evidencias que el proceso de institucionalización del
+																		proyecto de tesis ante el Consejo de la Facultad de Ciencias y Educación y ante el CIDC ya se ha solicitado.(Formato PDF)</p></td>
 								</tr>
 								<tr>
 								<c:if test="${requestScope.archivos.docAvalGrupo!=null}">
@@ -164,7 +192,7 @@
 					</td>
 				</tr>				
 				</c:if>				
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7)}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5  or sessionScope.datosConv.convNumero==7)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm5" method="post" enctype="multipart/form-data">
