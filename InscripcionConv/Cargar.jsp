@@ -32,19 +32,23 @@
 	}
 
 	function temina(numConv){
-		//alert("At least");
-		if(numConv!=6){
+		//alert(numConv);
+		if(numConv!=6 && numConv!=8){
 			if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm4.fichero!=null || document.frm4.fichero!="") && (document.frm5.fichero!=null || document.frm5.fichero!=""))
 				document.finaliza.submit();
 			else
 				alert("Para terminar debe cargar los documentos faltantes");
 		}else
-			{
-			if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!=""))
-				document.finaliza.submit();
+			if(numConv!=8)
+				if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!=""))
+					document.finaliza.submit();
+				else
+					alert("Para terminar debe cargar los documentos faltantes");
 			else
-				alert("Para terminar debe cargar los documentos faltantes");
-			}
+				if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!=""))
+					document.finaliza.submit();
+				else
+					alert("Para terminar debe cargar los documentos faltantes");
 	}
 
 </script>
