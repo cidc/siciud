@@ -89,11 +89,7 @@
 						</form>
 					</td>
 				</tr>
-<<<<<<< HEAD
 				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==6  or sessionScope.datosConv.convNumero==8)}">
-=======
-				<c:if test="${sessionScope.datosConv.convAno==2013 and sessionScope.datosConv.convNumero==6}">
->>>>>>> convocatoria Doctorado
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm2" method="post" enctype="multipart/form-data">
@@ -204,11 +200,7 @@
 					</td>
 				</tr>				
 				</c:if>				
-<<<<<<< HEAD
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5  or sessionScope.datosConv.convNumero==7)}">
-=======
 				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7)}">
->>>>>>> convocatoria Doctorado
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm5" method="post" enctype="multipart/form-data">
