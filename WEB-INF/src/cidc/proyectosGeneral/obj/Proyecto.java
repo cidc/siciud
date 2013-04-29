@@ -32,6 +32,8 @@ public class Proyecto implements Serializable{
 	private int flag;
 	private int tipoProyecto; //proyecto de convocatoria (1) o convenio (2)
 	private String fecEstimadoFin; //una fecha estimaci�n de fin de proyecto a partir de la duraci�n y las prorrogas
+	private String correo;
+	private String celular;
 	//*********************************************************
 	
 	//************** Listas Genéricas *************************
@@ -596,6 +598,23 @@ public class Proyecto implements Serializable{
 
 	public void setCedulaTutorDe(String cedulaTutorDe) {
 		this.cedulaTutorDe = cedulaTutorDe;
-	}		
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+	
 }
 

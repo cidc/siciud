@@ -327,6 +327,7 @@ public class AdminGruposDB extends BaseDB{
 			cn.setAutoCommit(false);
 			ps=cn.prepareStatement(rb.getString("verGrupo"));
 			ps.setLong(1, Long.parseLong(id));
+			System.out.println("consulta -->"+ps.toString());
 			rs=ps.executeQuery();
 			while(rs.next()){
 				grupo=new GrupoInvestigacion();
@@ -951,7 +952,7 @@ public class AdminGruposDB extends BaseDB{
 				ps=cn.prepareStatement(rb.getString("consultarDatosIntegranteGrupo"));
 				ps.setInt(1, Integer.parseInt(idPersona));
 		//		ps.setLong(2, idGrupo);
-				System.out.println("---stIntegrante-->"+ps.toString());
+				System.out.println("---stIntegrante :) -->"+ps.toString());
 				rs=ps.executeQuery();
 				while(rs.next()){
 					i=1;
