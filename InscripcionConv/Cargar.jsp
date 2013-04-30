@@ -125,7 +125,7 @@
 				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12)}">
 				<tr>
 					<td>
-						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
+						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm8" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="id" value="8">
 						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}" default="${sessionScope.inscripcionConvOBJ.propId}"/>'>
 							<table width="100%">
@@ -139,17 +139,17 @@
 								</c:if>
 								</tr>
 								<tr>
-									<td id="f3"><input size="60%" type="file" name="fichero"></td>
-									<td id="g3" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(3,document.frm3)"></td>
-								<td id="carga31" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
-								<td id="carga32" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
+									<td id="f8"><input size="60%" type="file" name="fichero"></td>
+									<td id="g8" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(8,document.frm8)"></td>
+								<td id="carga81" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
+								<td id="carga82" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
 								</tr>
 							</table>
 						</form>
 					</td>
 				</tr>				
 				</c:if>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12)}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 and  sessionScope.datosConv.convNumero==6 }">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
@@ -204,7 +204,7 @@
 					</td>
 				</tr>				
 				</c:if>				
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7)}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==7)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm5" method="post" enctype="multipart/form-data">
