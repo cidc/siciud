@@ -153,7 +153,7 @@
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
-						<input type="hidden" name="id" value="8">
+						<input type="hidden" name="id" value="10">
 						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}" default="${sessionScope.inscripcionConvOBJ.propId}"/>'>
 							<table width="100%">
 								<th colspan="2" align="left">Actas de Institucionalización</th>
@@ -162,8 +162,8 @@
 																		proyecto de tesis ante el Consejo de la Facultad de Ciencias y Educación y ante el CIDC ya se ha solicitado.(Formato PDF)</p></td>
 								</tr>
 								<tr>
-								<c:if test="${requestScope.archivos.docAvalGrupo!=null}">
-									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docAvalGrupo}" />'>Ver Documento</a></td>
+								<c:if test="${requestScope.archivos.docCerCurr!=null}">
+									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docCerCurr}" />'>Ver Documento</a></td>
 								</c:if>
 								</tr>
 								<tr>
