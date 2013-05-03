@@ -34,7 +34,7 @@
 	function temina(numConv){
 		//alert(numConv);
 		if(numConv!=6 && numConv!=8){
-			if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm4.fichero!=null || document.frm4.fichero!="") && (document.frm5.fichero!=null || document.frm5.fichero!=""))
+			if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm8.fichero!=null || document.frm8.fichero!="") && (document.frm4.fichero!=null || document.frm4.fichero!="") && (document.frm5.fichero!=null || document.frm5.fichero!=""))
 				document.finaliza.submit();
 			else
 				alert("Para terminar debe cargar los documentos faltantes");

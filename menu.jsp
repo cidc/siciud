@@ -68,19 +68,29 @@
 		</tr>
 	</table>
 <c:if test="${sessionScope.loginUsuario.idUsuario==0}">
-<form action="ingresoUsuario.x" method="post" target="menu">
-<input type="hidden" name="accion" value="1">
-	<table width="150px" align="left">
-		<tr><td colspan="3">&nbsp;</td></tr>
-		<tr><td colspan="3" align="center"><b>Usuario</b></td></tr>
-		<tr><td></td><td width="70%" align="center"><input class="cajas" type="text" name="usuario" size="10"></td><td></td></tr>
-		<tr><td colspan="3" align="center"><b>Clave</b></td></tr>
-		<tr><td></td><td width="70%" align="center"><input class="cajas" type="password" name="clave" size="10"></td><td></td></tr>
-		<tr><td colspan="3" align="center"><br><input type="image" src='<c:url value="/comp/img/Ingresar.gif"/>'></td></tr>
-	</table>
-</form>
-
-
+<table>
+	<tr><td>
+	<form action="ingresoUsuario.x" method="post" target="menu">
+	<input type="hidden" name="accion" value="1">
+		<table width="150px" align="left">
+			<tr><td colspan="3">&nbsp;</td></tr>
+			<tr><td colspan="3" align="center"><b>Usuario</b></td></tr>
+			<tr><td></td><td width="70%" align="center"><input class="cajas" type="text" name="usuario" size="10"></td><td></td></tr>
+			<tr><td colspan="3" align="center"><b>Clave</b></td></tr>
+			<tr><td></td><td width="70%" align="center"><input class="cajas" type="password" name="clave" size="10"></td><td></td></tr>
+			<tr><td colspan="3" align="center"><br><input type="image" src='<c:url value="/comp/img/Ingresar.gif"/>'></td></tr>
+		</table>
+	</form>
+	</td></tr>
+	<tr><td>
+	<form action="ingresoUsuario.x" method="post">
+		<input type="hidden" name="accion" value="2">
+		<table width="150px" align="left">
+			<tr><td colspan="3" align="center"><br><input type="image" src='<c:url value="/comp/img/RecuperarClave.png"/>'></td></tr>
+		</table>
+	</form>
+	</td></tr>
+</table>
 </c:if>
 
 

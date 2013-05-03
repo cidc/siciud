@@ -213,4 +213,38 @@ public class UsuarioDB extends BaseDB{
 		}
 		return user;
 	}*/
+	
+	/**
+	 * el metodo busca a una personal en la BD por su correo para que se le reestablezca la contraseña
+	 * @param correo
+	 * @return retorna un objeto de tipo usuario con los datos necesarios para reestablecer la contraseña
+	 */
+	public Usuario buscarPorCorreo(String correo){
+		Connection cn=null;
+		PreparedStatement pst=null;
+		ResultSet rs=null;
+		Usuario user=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(Parametros.userVisitante);
+			pst=cn.prepareStatement(rb.getString("buscarCorreo"));
+			pst.setString(i++, correo);
+			rs=pst.executeQuery();
+			if(rs.next()){
+				int j=1;
+				user=new Usuario();
+				user.setIdUsuario(rs.getLong(j++));
+				user.setPapel(rs.getString(j++));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+				cerrar(rs);
+				cerrar(pst);
+				cerrar(cn);
+		}
+		return user;
+		
+	}
+	
 }

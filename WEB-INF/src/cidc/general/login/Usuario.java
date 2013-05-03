@@ -10,6 +10,7 @@ public class Usuario implements Serializable {
 	private String nombre;
 	private String nick;
 	private String cedula;
+	private String papel;
 	public String getCedula() {
 		return cedula;
 	}
@@ -77,4 +78,13 @@ public class Usuario implements Serializable {
 	public void setPagina(String pagina) {
 		this.pagina = pagina;
 	}
+
+	public String getPapel() {
+		return papel;
+	}
+
+	public void setPapel(String papel) {
+		this.papel = papel;
+	}
+	
 }
