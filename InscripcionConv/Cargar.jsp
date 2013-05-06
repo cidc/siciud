@@ -33,22 +33,32 @@
 
 	function temina(numConv){
 		//alert(numConv);
-		if(numConv!=6 && numConv!=8){
+		if(numConv==5 || numConv==7){
 			if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm8.fichero!=null || document.frm8.fichero!="") && (document.frm4.fichero!=null || document.frm4.fichero!="") && (document.frm5.fichero!=null || document.frm5.fichero!=""))
 				document.finaliza.submit();
 			else
 				alert("Para terminar debe cargar los documentos faltantes");
 		}else
-			if(numConv!=8)
-				if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!=""))
-					document.finaliza.submit();
-				else
-					alert("Para terminar debe cargar los documentos faltantes");
-			else
-				if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!=""))
-					document.finaliza.submit();
-				else
-					alert("Para terminar debe cargar los documentos faltantes");
+			{
+				if(numConv==8){
+					if((document.frm11.fichero!=null || document.frm11.fichero!="")  && (document.frm2.fichero!=null || document.frm2.fichero!=""))
+						document.finaliza.submit();
+					else
+						alert("Para terminar debe cargar los documentos faltantes");
+				}
+				if(numConv==6){
+					if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!="") && (document.frm8.fichero!=null || document.frm8.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!=""))
+						document.finaliza.submit();
+					else
+						alert("Para terminar debe cargar los documentos faltantes");
+				}
+				if(numConv==13){
+					if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!="")  && (document.frm8.fichero!=null || document.frm8.fichero!="")  && (document.frm5.fichero!=null || document.frm5.fichero!=""))
+						document.finaliza.submit();
+					else
+						alert("Para terminar debe cargar los documentos faltantes");
+				}
+			}
 	}
 
 </script>
@@ -93,7 +103,7 @@
 						</form>
 					</td>
 				</tr>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==6  or sessionScope.datosConv.convNumero==8)}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==6  or sessionScope.datosConv.convNumero==8 or sessionScope.datosConv.convNumero==13)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm2" method="post" enctype="multipart/form-data">
@@ -122,7 +132,7 @@
 					</td>
 				</tr>
 				</c:if>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12)}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12 or sessionScope.datosConv.convNumero==13)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm8" method="post" enctype="multipart/form-data">
@@ -204,7 +214,7 @@
 					</td>
 				</tr>				
 				</c:if>				
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==7)}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==13)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm5" method="post" enctype="multipart/form-data">
@@ -213,7 +223,7 @@
 							<table width="100%">
 								<th colspan="2" align="left">Certificado Consejo Cirrucular.</th>
 								<tr>
-									<td colspan="2"><p class="texto1j">Certificado de aprobación del anteproyecto de grado en modalidad investigación, emitido por el Consejo Curricular al que pertenece(n) el (los) estudiante(s).</p></td>
+									<td colspan="2"><p class="texto1j">Certificado de aprobación del proyecto de grado en modalidad investigación, emitido por el Consejo Curricular al que pertenece(n) el (los) estudiante(s).</p></td>
 								</tr>
 								<tr>
 									<c:if test="${requestScope.archivos.docCerCurr!=null}">

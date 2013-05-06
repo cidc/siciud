@@ -41,9 +41,9 @@
 		if(document.nuevo.propNombre.value==""){
 			mensaje=mensaje+"\n-) Nombre de la Propuesta";
 		}
-		/*if(document.nuevo.proyectoinv.selectedIndex==0){
+		if(document.nuevo.proyectoinv.selectedIndex==0){
 			mensaje=mensaje+"\n-) Nombre del Proyecto asociado al Plan de Accion del grupo de Investigación";
-		}*/
+		}
 		if(document.nuevo.propDirPro.selectedIndex==0){
 			mensaje=mensaje+"\n-) Nombre del profesor Director del proyecto. (Prof. Planta)";
 		}
@@ -415,7 +415,7 @@
 						<textarea name="propNombre" rows="3" cols="65"></textarea>
 					</td>
 				</tr>
-				<c:if test="${sessionScope.datosConv.convAno!=2013 and sessionScope.datosConv.convNumero!=13}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 }">
 				<tr>
 					<th colspan="2"><b>Nombre del Proyecto ingresado en el Plan de Acción:</b></th>
 				</tr>			
