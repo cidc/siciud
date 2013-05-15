@@ -355,7 +355,7 @@
 					</form>
 				</td>
 			</tr>
-		<c:if test='${sessionScope.persona.papel!=3 and sessionScope.persona.papel!=8}'>
+		<c:if test='${sessionScope.persona.papel==3 and sessionScope.persona.papel==8}'>
 		<tr>		
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm12" method="post" enctype="multipart/form-data">

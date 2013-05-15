@@ -24,10 +24,10 @@ session.removeAttribute("requisitos");
 <div align="center">
 	<fieldset style="width:90%;"><legend>Información General</legend>
 	<p align="center" class="texto1">Bienvenido al sistema de inscripción para la solicitud de apoyo económico para la apropiación social del conocimiento a partir de presentación de ponencias en modalidad oral en eventos Nacionales y/o Internacionales.</p>
-	<c:if test="${(sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3 or sessionScope.datosConv.convNumero==16) and (sessionScope.persona.papel!=3 and sessionScope.persona.papel!=5)}">
+	<c:if test="${(sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3) and (sessionScope.persona.papel!=3 and sessionScope.persona.papel!=5)}">
 	<p align="center" class="lroja3">Usted no puede inscribirse en esta convocatoria debido a que su papel en el grupo <b>NO</b> es el de <b>Estudiante</b> de la Universidad Distrital. Si usted es profesor, Favor ingresar a la convocatoria de docentes. Si usted es estudiante, favor modificar el campo "papel" en sus datos personales en el menú "Mis Datos"</p>
 	</c:if>
-	<c:if test="${(sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3 or sessionScope.datosConv.convNumero==16) and (sessionScope.persona.papel==3 or sessionScope.persona.papel==5)}">
+	<c:if test="${(sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3) and (sessionScope.persona.papel==3 or sessionScope.persona.papel==5)}">
 	<p align="center" class="texto1"><br>A continuación usted encontrará el listado de propuestas que ha registrado hasta el momento en el sistema de información.</p>
 	<p align="center" class="texto1">Si desea una copia de su inscripción, puede dar click en el botón <img border="0" src='<c:url value="/comp/img/mail.gif"/>'> y esta le será enviada por correo electrónico a la dirección que tiene registrada en el sistema.</p>
 	<p align="center" class="texto1">Nota: al enviar su inscripción vía correo electrónico, usted encontrará también un código único de su inscripción, tenga en cuenta este código para preguntas, quejas o reclamos.</p>
@@ -36,10 +36,10 @@ session.removeAttribute("requisitos");
 	</div>
 	</c:if>
 
-	<c:if test="${(sessionScope.datosConv.convNumero==2 or sessionScope.datosConv.convNumero==4||sessionScope.datosConv.convNumero==8 or sessionScope.datosConv.convNumero==15) and sessionScope.persona.papel!=1 and sessionScope.persona.papel!=2 and sessionScope.persona.papel!=4  and sessionScope.persona.papel!=6}">
+	<c:if test="${(sessionScope.datosConv.convNumero==2 or sessionScope.datosConv.convNumero==4||sessionScope.datosConv.convNumero==12) and sessionScope.persona.papel!=1 and sessionScope.persona.papel!=2 and sessionScope.persona.papel!=4  and sessionScope.persona.papel!=6}">
 	<p align="center" class="lroja3">Usted no puede inscribirse en esta convocatoria debido a que su papel en el grupo <b>NO</b> es el de <b>Profesor</b> de la Universidad Distrital. Si usted es estudiante, Favor ingresar a la convocatoria de Estudiantes. Si usted es profesor, favor modificar el campo "papel" en sus datos personales en el menú "Mis Datos"</p>
 	</c:if>
-	<c:if test="${(sessionScope.datosConv.convNumero==2 or sessionScope.datosConv.convNumero==4 ||sessionScope.datosConv.convNumero==8 or sessionScope.datosConv.convNumero==15) and (sessionScope.persona.papel==1 or sessionScope.persona.papel==2 or sessionScope.persona.papel==4  or sessionScope.persona.papel==6)}">
+	<c:if test="${(sessionScope.datosConv.convNumero==2 or sessionScope.datosConv.convNumero==4 ||sessionScope.datosConv.convNumero==12) and (sessionScope.persona.papel==1 or sessionScope.persona.papel==2 or sessionScope.persona.papel==4  or sessionScope.persona.papel==6)}">
 	<p align="center" class="texto1"><br>A continuación usted encontrará el listado de propuestas que ha registrado hasta el momento en el sistema de información.</p>
 	<p align="center" class="texto1">Si desea una copia de su inscripción, puede dar click en el botón <img border="0" src='<c:url value="/comp/img/mail.gif"/>'> y esta le será enviada por correo electrónico a la dirección que tiene registrada en el sistema.</p>
 	<p align="center" class="texto1">Nota: al enviar su inscripción vía correo electrónico, usted encontrará también un código único de su inscripción, tenga en cuenta este código para preguntas, quejas o reclamos.</p>
@@ -56,7 +56,7 @@ session.removeAttribute("requisitos");
 	<input type="hidden" name="accion" value="3">
 	<input type="hidden" name="id">
 	<input type="hidden" name="estado">
-	<c:if test="${((sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3) and (sessionScope.persona.papel==3 or sessionScope.persona.papel==5))or(sessionScope.datosConv.convNumero==4 and (sessionScope.persona.papel!=3 and sessionScope.persona.papel!=5))}">
+	<c:if test="${((sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3 )and (sessionScope.persona.papel==3 or sessionScope.persona.papel==5))or((sessionScope.datosConv.convNumero==4 or sessionScope.datosConv.convNumero==12)and (sessionScope.persona.papel!=3 and sessionScope.persona.papel!=5))}">
 		<table align="center" class="tablas" width="90%">
 		<caption>Lista de Propuestas inscritas</caption>
 		<tr>
@@ -86,20 +86,20 @@ session.removeAttribute("requisitos");
 	<fieldset style="width: 90%"><legend>Información General </legend>
 		<p align="center" class="texto1">Bienvenido al sistema de inscripción para la solicitud de apoyo económico para la apropiación social del conocimiento a partir de presentación de ponencias en modalidad oral en eventos Nacionales y/o Internacionales.</p>
 
-		<c:if test="${(sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3 or sessionScope.datosConv.convNumero==16) and !(sessionScope.persona.papel==3 or sessionScope.persona.papel==5)}">
+		<c:if test="${(sessionScope.datosConv.convNumero==1 or sessionScope.datosConv.convNumero==3 ) and !(sessionScope.persona.papel==3 or sessionScope.persona.papel==5)}">
 		<p align="center" class="lroja3">Usted no puede inscribirse en esta convocatoria debido a que su papel en el grupo <b>NO</b> es el de <b>Estudiante</b> de la Universidad Distrital. Si usted es profesor, Favor ingresar a la convocatoria de docentes. Si usted es estudiante, favor modificar el campo "papel" en sus datos personales en el menú "Mis Datos"</p>
 		</c:if>
-		<c:if test="${(sessionScope.datosConv.convNumero==1 or  sessionScope.datosConv.convNumero==3 or sessionScope.datosConv.convNumero==16) and (sessionScope.persona.papel==3 or sessionScope.persona.papel==5)}">
+		<c:if test="${(sessionScope.datosConv.convNumero==1 or  sessionScope.datosConv.convNumero==3 ) and (sessionScope.persona.papel==3 or sessionScope.persona.papel==5)}">
 		<p align="center" class="texto1">En estos momentos usted no tiene ninguna propuesta inscrita, Favor dar clik en el botón "Agregar Propuesta" para insertar una nueva propuesta</p>
 		<div align="center">
 			<a href='<c:url value="/convMovilidad/Insercion.jsp"/>'><img border="0" src='<c:url value="/comp/img/AgregarPropuesta.gif"/>'></a>
 		</div>
 		</c:if>
 
-		<c:if test="${(sessionScope.datosConv.convNumero==2 || sessionScope.datosConv.convNumero==4 or sessionScope.datosConv.convNumero==15) and sessionScope.persona.papel!=1 and sessionScope.persona.papel!=2 and sessionScope.persona.papel!=4  and sessionScope.persona.papel!=6}">
+		<c:if test="${(sessionScope.datosConv.convNumero==2 || sessionScope.datosConv.convNumero==4 or sessionScope.datosConv.convNumero==12) and sessionScope.persona.papel!=1 and sessionScope.persona.papel!=2 and sessionScope.persona.papel!=4  and sessionScope.persona.papel!=6}">
 		<p align="center" class="lroja3">Usted no puede inscribirse en esta convocatoria debido a que su papel en el grupo <b>NO</b> es el de <b>Profesor</b> de la Universidad Distrital. Si usted es estudiante, Favor ingresar a la convocatoria de Estudiantes. Si usted es profesor, favor modificar el campo "papel" en sus datos personales en el menú "Mis Datos"</p>
 		</c:if>
-		<c:if test="${(sessionScope.datosConv.convNumero==2 || sessionScope.datosConv.convNumero==4 or sessionScope.datosConv.convNumero==15) and (sessionScope.persona.papel==1 or sessionScope.persona.papel==2 or sessionScope.persona.papel==4  or sessionScope.persona.papel==6)}">
+		<c:if test="${(sessionScope.datosConv.convNumero==2 || sessionScope.datosConv.convNumero==4 or sessionScope.datosConv.convNumero==12) and (sessionScope.persona.papel==1 or sessionScope.persona.papel==2 or sessionScope.persona.papel==4  or sessionScope.persona.papel==6)}">
 		<p align="center" class="texto1">En estos momentos usted no tiene ninguna propuesta inscrita, Favor dar clik en el botón "Agregar Propuesta" para insertar una nueva propuesta</p>
 		<div align="center">
 			<a href='<c:url value="/convMovilidad/Insercion.jsp"/>'><img border="0" src='<c:url value="/comp/img/AgregarPropuesta.gif"/>'></a>

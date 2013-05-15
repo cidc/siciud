@@ -49,7 +49,7 @@ public class Inscribir extends ServletGeneral {
 				}else{
 					if(convocatoriaOBJ!=null){
 						System.out.println("------>"+convocatoriaOBJ.getConvAno()+"  -- "+convocatoriaOBJ.getConvNumero());						
-						   if(convocatoriaOBJ.getConvAno()==2013 && (convocatoriaOBJ.getConvNumero()==1 || convocatoriaOBJ.getConvNumero()==2 || convocatoriaOBJ.getConvNumero()==3 || convocatoriaOBJ.getConvNumero()==4)){
+						   if(convocatoriaOBJ.getConvAno()==2013 && (convocatoriaOBJ.getConvNumero()==1 || convocatoriaOBJ.getConvNumero()==2 || convocatoriaOBJ.getConvNumero()==3 || convocatoriaOBJ.getConvNumero()==4 ||convocatoriaOBJ.getConvNumero()==12)){
 							System.out.println("Ingreso a la convocatoria de este año------>");
 							irA="/movilidad/adminMovilidad.x?accion=2";
 							sesion.setAttribute("persona",persona);
