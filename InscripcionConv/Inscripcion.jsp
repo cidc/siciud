@@ -746,7 +746,8 @@
 						</c:if>
 					</table>
 					<c:if test="${sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6 and sessionScope.datosConv.convNumero!=7 and sessionScope.datosConv.convNumero!=8 and sessionScope.datosConv.convNumero!=9 
-									and sessionScope.datosConv.convNumero!=10 and sessionScope.datosConv.convNumero!=11 and sessionScope.datosConv.convNumero!=12 and sessionScope.datosConv.convNumero!=13 and sessionScope.datosConv.convNumero!=14}">
+									and sessionScope.datosConv.convNumero!=10 and sessionScope.datosConv.convNumero!=11 and sessionScope.datosConv.convNumero!=12 and sessionScope.datosConv.convNumero!=13 and sessionScope.datosConv.convNumero!=14 
+									and sessionScope.datosConv.convNumero!=15}">
 					<table class="tablas" border="0" width="100%">
 					<caption >Rubros financiables por UD y Contrapartida</caption>
 						<tr>

@@ -64,6 +64,12 @@
 					else
 						alert("Para terminar debe cargar los documentos faltantes");
 				}
+				if(numConv==15){
+					if((document.frm11.fichero!=null || document.frm11.fichero!=""))
+						document.finaliza.submit();
+					else
+						alert("Para terminar debe cargar los documentos faltantes");
+				}
 			}
 	}
 
@@ -138,7 +144,8 @@
 					</td>
 				</tr>
 				</c:if>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12 or sessionScope.datosConv.convNumero==13)}">
+				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or 
+				sessionScope.datosConv.convNumero==12 or sessionScope.datosConv.convNumero==13 }">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm8" method="post" enctype="multipart/form-data">
