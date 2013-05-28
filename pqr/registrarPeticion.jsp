@@ -7,13 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <c:import url="/general.jsp" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<script>
+function guardar(pqrForm){
+	alert("hola");
+	document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
+	document.pqrForm.submit();
+	
+}
+</script>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Atención al Ciudadano</title> 
 </head>
 <body>
-<form name="pqrForm">
+<form name="pqrForm" method="post"action='<c:url value="/pqr/llenar.jsp.x"/>'>
 <table align="left" class="tablas" width="90%">
 	<caption>Información del Solicitante</caption>
 				<tr>
@@ -28,7 +36,7 @@
 					<td colspan="4" align="left"><c:out value="Persona"/>
 					</td>
 					<td><textarea class="area2" class="area2" style="width: 100%;"
-							name="Persona" id='persona'></textarea>
+							name="persona" id='persona'></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -46,7 +54,7 @@
 					<td colspan="4" align="left"><c:out value="Nombre / Razón Social"/>
 					</td>
 					<td><textarea class="area2" class="area2" style="width: 100%;"
-							name="n/r" id='n/r'></textarea>
+							name="nombre" id='nombre'></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -70,7 +78,7 @@
 				<tr>
 					<td colspan="4" align="left"><c:out value="Documento de Identidad / NIT"/>
 					</td>
-					<td  align="left"><INPUT NAME="nombre" MAXLENGTH="25" TYPE="TEXT" VALUE="">
+					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT" VALUE="">
 					<INPUT NAME="boton" TYPE="reset" VALUE="Limpiar"> 
 					<INPUT NAME="boton" TYPE="SUBMIT" VALUE="Buscar"> 
 					</td>
@@ -191,6 +199,9 @@
 						<input type="radio" name=myradio value="2">No
 					</td>
 				</tr>	
+				<tr>
+				<td id="g1"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(document.pqrForm)"></td>
+				</tr>
 </table>
 </form>
 </body>

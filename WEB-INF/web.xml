@@ -801,5 +801,12 @@
 	  <url-pattern>/Informes/AjaxInformes.x</url-pattern>
 	</servlet-mapping> 
 	<!-- /Modulo de creación de informes -->	
-	
+	<servlet>
+	  <servlet-name>PQR</servlet-name>
+	  <servlet-class>cidc.pqr.servlet.PqrServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>PQR</servlet-name>
+	  <url-pattern>/pqr/servlet.x</url-pattern>
+	</servlet-mapping> 
 </web-app>
