@@ -32,7 +32,8 @@ public class PqrServlet extends ServletGeneral{
 			accion=Integer.parseInt(req.getParameter("accion"));
 		HttpSession sesion=req.getSession();
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
-		Pqr pqr = (Pqr)sesion.getAttribute("PQR");
+		Pqr pqr = new Pqr();
+		pqr=(Pqr)sesion.getAttribute("pqr");
 		return null;
 	}
 }
