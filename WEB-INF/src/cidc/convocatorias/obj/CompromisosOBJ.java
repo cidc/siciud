@@ -6,6 +6,8 @@ public class CompromisosOBJ {
 	public String indicador;
 	public int obligatorio;
 	public int cantidad;
+	public int compValor;
+	public int valor;
 
 	public int getCodigo() {
 		return codigo;
@@ -18,6 +20,12 @@ public class CompromisosOBJ {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
+	public int getValor() {
+		return valor;
 	}
 	public int isObligatorio() {
 		return obligatorio;
@@ -39,5 +47,11 @@ public class CompromisosOBJ {
 	}
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
+	public int getCompValor() {
+                return compValor;
+        }
+	public void setCompValor(int compValor) {
+		this.compValor = compValor;
 	}
 }

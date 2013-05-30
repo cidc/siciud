@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+<script>
+
+	function ValidarCaja(item,max){
+		x=parseFloat(item.value);
+		var suma=0;
+		if(x>max){
+			alert("Este item no puede superar el "+max+"%");
+			item.value=max;
+		}
+		for(var i=0;i<6;i++){
+			y=document.getElementById("val"+i).value;
+			if(y!="")
+				suma=suma+parseFloat(y);
+		}
+		document.getElementById('total').innerHTML=suma;
+	}
+</script>
+
+</head>
+<body>
+<fieldset>
+	<legend>Evaluación de trayectoria y proyeccción del investigador</legend>
+	<form name="evaluar" action='<c:url value="/evalMovilidad/llenar.jsp"/>' method="post">
+	<input type="hidden" name="accion" value="2">
+		<table class="tablas">
+			<tr>
+				<td class="renglones" align="center"><b>Item a Evaluar</b></td>
+				<td class="renglones" align="center"><b>Valoración</b></td>
+				<td class="renglones" align="center"><b>Máximo</b></td>
+			</tr>
+			<tr>
+				<td>Registro de productividad durante los dos (2) últimos años registrada en CvLAC</td>
+				<td align="center" width="80px"><input class="caja11d" size="5" value="0" type="text" id="val0" name="valCri1" onKeyPress='return soloNumeros(event)' onkeyup="ValidarCaja(this,45)"> <b>%</b></td>
+				<td align="center"><b>45</b></td>
+			</tr>
+			<tr>
+				<td>Participación como investigador principal o coinvestigador en proyectos de investigación financiados por el CIDC</td>
+				<td align="center" width="80px"><input class="caja11d" size="5" value="0" type="text" id="val1" name="valCri1" onkeyup="ValidarCaja(this,35)"> <b>%</b></td>
+				<td align="center"><b>35</b></td>
+			</tr>
+			<tr>
+				<td>Participación en grupos o semilleros de investigación</td>
+				<td align="center" width="80px"><input class="caja11d" size="5" value="0" type="text" id="val2" name="valCri1" onkeyup="ValidarCaja(this,10)"> <b>%</b></td>
+				<td align="center"><b>10</b></td>
+			</tr>
+			<tr>
+				<td>Participación en eventos institucionales financiados y organizados por el CIDC</td>
+				<td align="center" width="80px"><input class="caja11d" size="5" value="0" type="text" id="val3" name="valCri1" onkeyup="ValidarCaja(this,10)"> <b>%</b></td>
+				<td align="center"><b>10</b></td>
+			</tr>
+			<tr>
+				<td>Resultados de excelencia académica en el último año</td>
+				<td align="center" width="80px"><input class="caja11d" size="5" value="0" type="text" id="val4" name="valCri1" onkeyup="ValidarCaja(this,15)"> <b>%</b></td>
+				<td align="center"><b>15</b></td>
+			</tr>
+
+			<tr>
+				<td>Participación como auxiliar de investigación en proyectos financiados por el CIDC</td>
+				<td align="center" width="80px"><input class="caja11d" size="5" value="0" type="text" id="val5" name="valCri1" onkeyup="ValidarCaja(this,20)"> <b>%</b></td>
+				<td align="center"><b>20</b></td>
+			</tr>
+			<tr>
+				<td class="renglones" align="right"><b>Total</b></td>
+				<td class="renglones" align="center"><b><span id="total">&nbsp;</span></b></td>
+				<td class="renglones">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="3">
+					<input type="image" src='<c:url value="/comp/img/Siguiente.gif"/>'>
+				</td>
+			</tr>
+
+		</table>
+</form>
+	</fieldset>
+</body>
+</html>

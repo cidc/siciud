@@ -26,16 +26,16 @@
 		}
 	}
 
-	function check(forma){
+/*	function check(forma){
 		if(forma.convPublica_.checked==true){
            forma.convPublica.value="true";
         }else{
 	       forma.convPublica.value="false";
         }
-	}
+	}*/
 	function guardar(){
 		if(ValidarFormulario(document.nuevo)){
-			check(document.nuevo);
+//			check(document.nuevo);
 			document.nuevo.action='<c:url value="/Convocatoria/llenar.jsp"/>';
 			document.nuevo.submit();
 		}
@@ -103,6 +103,12 @@
 					<img border="0" src="<c:url value="/comp/img/Rubros.gif"/>">
 				</a>
 			</td>
+			<td>
+                                <a href='<c:url value="/convocatoria/Parametrizar.x?irA=35&accion=6"/>'>
+                                        <img border="0" src="<c:url value="/comp/img/Documentos.gif"/>">
+                                </a>
+                        </td>
+
 		</tr>
 	</table>
 	<br>
@@ -142,12 +148,12 @@
 										</c:forEach>
 									</select>
 								</td>
-								<td class="renglones"><b>Publicar ahora</b></td>
+						<%--		<td class="renglones"><b>Publicar ahora</b></td>
 								<td>
 									<input type="checkbox" name="convPublica_" <c:if test="${sessionScope.convocatoriaOBJ.convPublica==true}">checked</c:if>>
 									<input type="hidden" name="convPublica" value="<c:out value="${sessionScope.convocatoriaOBJ.convPublica}"/>">
-								</td>
-								<th><b>Fecha Corte Actual</b></th>
+								</td>--%>
+							<%--	<th><b>Fecha Corte Actual</b></th>
 								<td>
 									<input type='text' name='corteActual' class='caj' readonly='true' id='f_date_a' size='13' value='<c:out value="${sessionScope.convocatoriaOBJ.corteActual}"/>'>
 									<button type='button' id='f_trigger_a'>...</button>
@@ -161,7 +167,7 @@
 							    			step           :    1
 						    			})
 					    			</script>
-								</td>
+								</td>--%>
 							</tr>
 						</table>
 					</td>

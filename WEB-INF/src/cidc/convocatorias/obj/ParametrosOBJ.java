@@ -18,5 +18,23 @@ public class ParametrosOBJ {
 	public static final int ListaAspectoComite=13;
 	public static final int AspectoComite=14;
 	public static final int cortes=16;
-
+	public static final int GuardarReq=17;
+	public static final int ModificarReq=18;
+	public static final int NuevoReq=19;
+	public static final int GuardarRub=20;
+	public static final int ModificarRub=21;
+	public static final int NuevoRub=22;
+	public static final int GuardarCom=23;
+	public static final int ModificarCom=24;
+	public static final int NuevoCom=25;
+	public static final int GuardarEje=26;
+	public static final int ModificarEje=27;
+	public static final int NuevoEje=28;
+	public static final int GuardarCrit=29;
+	public static final int ModificarCrit=30;
+	public static final int NuevoCrit=31;
+	public static final int NuevoAsp=32;
+	public static final int GuardarAsp=33;
+	public static final int ModificarAsp=34;
+	public static final int ListaDocumentosRequisito=35;
 }

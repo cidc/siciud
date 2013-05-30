@@ -33,6 +33,7 @@
         	<td class="renglones"><b>Año</b></td>
         	<td class="renglones"><b>#</b></td>
         	<td class="renglones"><b>Nombre</b></td>
+        	<td class="renglones"><b>Tipo</b></td>
         </tr>
 			<c:forEach begin="0" items="${sessionScope.listaConvOBJ}" var="lista" varStatus="st">
 				<tr>
@@ -46,6 +47,12 @@
 					<td class="listas"><c:out value="${lista.convAno}"/></td>
 					<td class="listas"><c:out value="${lista.convNumero}"/></td>
 					<td class="listas"><c:out value="${lista.convNombre}"/></td>
+					<c:if test="${lista.convTipo==2}">
+					<td class="listas">Movilidad</td>
+					</c:if>
+					<c:if test="${lista.convTipo==1}">
+					<td class="listas">Proy. Inv</td>
+					</c:if>
 				</tr>
 			</c:forEach>
 		</table>

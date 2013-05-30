@@ -1,6 +1,7 @@
 package cidc.convMovilidad.db;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,16 +11,29 @@ import java.util.ResourceBundle;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.servlet.jsp.jstl.sql.Result;
+import javax.servlet.jsp.jstl.sql.ResultSupport;
 
 import cidc.convMovilidad.obj.InfoGeneral;
 import cidc.convMovilidad.obj.Requisitos;
+import cidc.convocatorias.obj.AspectosOBJ;
+import cidc.convocatorias.obj.CompromisosOBJ;
+import cidc.convocatorias.obj.ConvocatoriaOBJ;
+import cidc.convocatorias.obj.CriteriosOBJ;
+import cidc.convocatorias.obj.EjesOBJ;
+import cidc.convocatorias.obj.InsercionGralOBJ;
+import cidc.convocatorias.obj.ParametrosOBJ;
+import cidc.convocatorias.obj.RubrosOBJ;
+import cidc.adminPropuestas.obj.PropuestaOBJ;
 import cidc.evalMovilidad.db.EvalMovilidadDB;
+import cidc.evalMovilidad.servlet.EvalMovilidad;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.mails.EnvioMail2;
 import cidc.general.mails.Reporte;
 import cidc.general.obj.Globales;
 import cidc.inscripSistema.obj.Persona;
+import cidc.inscripcionConv.obj.GruposOBJ;
 import cidc.planAccion.obj.Actividades;
 
 public class MovilidadDB extends BaseDB{
@@ -66,6 +80,7 @@ public class MovilidadDB extends BaseDB{
 			//Esta variable captura el valor de la lista de arbitraje
 			ps.setString(i++, info.getLista_arbitraje());
 			ps.setString(i++, info.getProyectoinv());
+			ps.setLong(i++,info.getPropConvId());
 			System.out.println("Consulta: "+ps);
 			ps.executeUpdate();			
 			//proporciona el ID de la propuesta
@@ -158,6 +173,34 @@ public class MovilidadDB extends BaseDB{
 		//retorno es booleana y retorna false si algo fallo
 		return retorno;
 	}
+	
+	public boolean setRequisitos(long prop,String nombre,int doc, int conv) {
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                System.out.println("nombre:"+nombre);
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("archivo_requisitos"));
+                        ps.setLong(i++,conv);
+                        ps.setLong(i++,doc);
+                        ps.setString(i++,nombre);
+                        ps.setLong(i++,prop);
+                        ps.execute();
+                        retorno=true;
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+
 	//insetar la segunta Agenda de cooperaciÃ³n
 	public boolean insertaAgenda(Requisitos requis){
 		boolean retorno=false;
@@ -224,6 +267,41 @@ public class MovilidadDB extends BaseDB{
 		}
 		return retorno;
 	}
+
+//metodo que obtiene los documentos asociados a la convocatoria
+        public List getDocumentos(int conv){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("DatosDocumentos"));
+                        ps.setInt(1,conv);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodigo(rs.getInt(i++));
+                                propuestaOBJ.setDocNombre(rs.getString(i++));
+                                propuestaOBJ.setEstado(rs.getBoolean(i++));
+                                l.add(propuestaOBJ);
+                        }
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        try{
+                                cerrar(rs);
+                                cerrar(ps);
+                                cerrar(cn);
+                        }catch (Exception e) {
+                                lanzaExcepcion(e);
+                        }
+                }
+                return l;
+        }
+
 
 	/*metodo para actualizar la informaciÃ³n del archivo que se ha cargado en el sistema*/
 	public boolean actualizaArchivo(InfoGeneral info, String nombreArchivo,String item){
@@ -337,6 +415,8 @@ public class MovilidadDB extends BaseDB{
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("consultaIndividual"));
 			ps.setLong(1,Long.parseLong(idPropuesta));
+		System.out.println("consulta2:"+ps);
+
 			rs=ps.executeQuery();
 			while(rs.next()){
 				i=1;
@@ -375,7 +455,7 @@ public class MovilidadDB extends BaseDB{
 				info.setArchivoResultados(rs.getString(i++));
 				info.setArchivoApoyos(rs.getString(i++));
 				info.setProyectoinv(rs.getString(i++));
-				info.setArchivoProduccion(rs.getString(i++));
+			//	info.setArchivoProduccion(rs.getString(i++));
 				info.setEstado(estadoPropuesta(cn, info.getIdPropuesta()));
 			}
 		} catch (Exception e) {
@@ -565,10 +645,10 @@ public class MovilidadDB extends BaseDB{
 		////System.out.println("bandera 6");
 		try {
 			//destino= nombre correo electronico, asunto, cuerpo del mensaje
-			mail.enviar(destino,"Inscripción Convocatoria Movilidad",""+texto);
+			mail.enviar(destino,"Inscripcion Convocatoria Movilidad",""+texto);
 			////System.out.println("bandera 7");
 			Reporte reporteMail=new Reporte(cursor,super.perfil);
-			reporteMail.reportar(persona.getNombre(),"Inscripción Convocatoria 2012",destino[0],consMail);
+			reporteMail.reportar(persona.getNombre(),"Inscripcion Convocatoria 2012",destino[0],consMail);
 			retorno=true;
 			//System.out.println("bandera 8");
 		} catch (AddressException e) {

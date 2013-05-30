@@ -31,54 +31,32 @@
 		return true;
 	}
 
-	function temina(numConv){
-		//alert(numConv);
-		if(numConv==5 || numConv==7){
-			if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm8.fichero!=null || document.frm8.fichero!="") && (document.frm4.fichero!=null || document.frm4.fichero!="") && (document.frm5.fichero!=null || document.frm5.fichero!=""))
-				document.finaliza.submit();
-			else
-				alert("Para terminar debe cargar los documentos faltantes");
-		}else
-			{
-				if(numConv==8){
-					if((document.frm11.fichero!=null || document.frm11.fichero!="")  && (document.frm2.fichero!=null || document.frm2.fichero!=""))
-						document.finaliza.submit();
-					else
-						alert("Para terminar debe cargar los documentos faltantes");
-				}
-				if(numConv==6){
-					if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!="") && (document.frm8.fichero!=null || document.frm8.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!=""))
-						document.finaliza.submit();
-					else
-						alert("Para terminar debe cargar los documentos faltantes");
-				}
-				if(numConv==13){
-					if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm2.fichero!=null || document.frm2.fichero!="")  && (document.frm8.fichero!=null || document.frm8.fichero!="")  && (document.frm5.fichero!=null || document.frm5.fichero!=""))
-						document.finaliza.submit();
-					else
-						alert("Para terminar debe cargar los documentos faltantes");
-				}
-				if(numConv==14){
-					if((document.frm11.fichero!=null || document.frm11.fichero!=""))
-						document.finaliza.submit();
-					else
-						alert("Para terminar debe cargar los documentos faltantes");
-				}
-				if(numConv==15){
-					if((document.frm11.fichero!=null || document.frm11.fichero!=""))
-						document.finaliza.submit();
-					else
-						alert("Para terminar debe cargar los documentos faltantes");
-				}
-			}
+	function temina(){
+		alert("At least");
+		if((document.frm11.fichero!=null || document.frm11.fichero!="") && (document.frm3.fichero!=null || document.frm3.fichero!="") && (document.frm4.fichero!=null || document.frm4.fichero!="") && (document.frm5.fichero!=null || document.frm5.fichero!=""))
+			document.finaliza.submit();
+		else
+			alert("Para terminar debe cargar los documentos faltantes");
 	}
-
+	function guardareq(caja,formulario,iddoc){
+                if(ValidarFormularioDoc(caja)){
+                        formulario.DocId.value=iddoc;
+                        formulario.submit();
+        	}
+        }
+        function ValidarFormularioDoc(forma){
+                if(forma.value==""){
+                        alert("Debe seleccionar un Archivo para cargar");
+                        return false;
+                }
+                return true;
+        }
 </script>
 </head>
 <body>
-<br><br>
+<br><br>CIDC
 	<fieldset style="width:550px;">
-    	<legend class="texto1"><b>Documento Propuesta Investigación </b></legend>
+    	<legend class="texto1"><b>Documento Propuesta Investigación</b></legend>
 			<table>
 				<tr>
 					<td colspan="2" align="justify">						
@@ -100,14 +78,14 @@
 									</td>
 								</tr>
 								<tr>
-									<c:if test="${requestScope.archivos.docCompleto!=null}">
-									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docCompleto}" />'>Ver Documento</a></td>
-								</c:if>
-								</tr>
-								<tr>
+								<c:if test='${requestScope.archivos.docCompleto==null or requestScope.archivos.docCompleto==""}'>
 									<td id="f1"><input size="60%" type="file" name="fichero"></td>
 									<td id="g1" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(1,document.frm11)"></td>
 
+								</c:if>
+								<c:if test="${requestScope.archivos.docCompleto!=null}">
+									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docCompleto}" />'>Ver Documento</a></td>
+								</c:if>
 								<td id="carga11" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
 								<td id="carga12" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
 								</tr>
@@ -115,7 +93,7 @@
 						</form>
 					</td>
 				</tr>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==6  or sessionScope.datosConv.convNumero==8 or sessionScope.datosConv.convNumero==13)}">
+				<c:if test="${sessionScope.datosConv.convAno!=2012}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm2" method="post" enctype="multipart/form-data">
@@ -126,16 +104,16 @@
 									<td colspan="2" class="renglones"><b>Documentos anexos</b></td>
 								</tr>
 								<tr>
-									<td colspan="2"><p class="texto1j">Un solo documento en formato PDF con los siguientes Datos: Carta de pertinencia social, Impacto ambiental, aporte a la educación <c:if test="${sessionScope.datosConv.convAno==2013 and sessionScope.datosConv.convNumero!=6}">y Acta de posesión (El Acta de posesión es ÚNICAMENTE para propuestas que se inscriban en la convocatoria 2009-7)</c:if></p></td>
+									<td colspan="2"><p class="texto1j">Un solo documento en formato PDF con los siguientes Datos: Carta de pertinencia social, Impacto ambiental, aporte a la educación y Acta de posesión (El Acta de posesión es ÚNICAMENTE para propuestas que se inscriban en la convocatoria 2009-7)</p></td>
 								</tr>
 								<tr>
-									<c:if test="${requestScope.archivos.docAnexo!=null}">
-									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docAnexo}" />'>Ver Documento</a></td>
-								</c:if>
-								</tr>
-								<tr>
+								<c:if test='${requestScope.archivos.docAnexo==null or requestScope.archivos.docAnexo==""}'>
 									<td id="f2"><input size="60%" type="file" name="fichero"></td>
 									<td id="g2" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(2,document.frm2)"></td>
+								</c:if>
+								<c:if test="${requestScope.archivos.docAnexo!=null}">
+									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docAnexo}" />'>Ver Documento</a></td>
+								</c:if>
 								<td id="carga21" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
 								<td id="carga22" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
 								</tr>
@@ -144,10 +122,10 @@
 					</td>
 				</tr>
 				</c:if>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==12 or sessionScope.datosConv.convNumero==13)}">
+				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==12)}">
 				<tr>
 					<td>
-						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm8" method="post" enctype="multipart/form-data">
+						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="id" value="8">
 						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}" default="${sessionScope.inscripcionConvOBJ.propId}"/>'>
 							<table width="100%">
@@ -156,41 +134,13 @@
 									<td colspan="2"><p class="texto1j">Carta de aval del grupo o semillero de investigación para la presente convocatoria, firmada por el director o tutor según corresponda.</p></td>
 								</tr>
 								<tr>
+								<c:if test='${requestScope.archivos.docAvalGrupo==null or requestScope.archivos.docAvalGrupo==""}'>
+									<td id="f3"><input size="60%" type="file" name="fichero"></td>
+									<td id="g3" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(3,document.frm3)"></td>
+								</c:if>
 								<c:if test="${requestScope.archivos.docAvalGrupo!=null}">
 									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docAvalGrupo}" />'>Ver Documento</a></td>
 								</c:if>
-								</tr>
-								<tr>
-									<td id="f8"><input size="60%" type="file" name="fichero"></td>
-									<td id="g8" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(8,document.frm8)"></td>
-								<td id="carga81" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
-								<td id="carga82" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
-								</tr>
-							</table>
-						</form>
-					</td>
-				</tr>				
-				</c:if>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and  sessionScope.datosConv.convNumero==6 }">
-				<tr>
-					<td>
-						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
-						<input type="hidden" name="id" value="10">
-						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}" default="${sessionScope.inscripcionConvOBJ.propId}"/>'>
-							<table width="100%">
-								<th colspan="2" align="left">Actas de Institucionalización</th>
-								<tr>
-									<td colspan="2"><p class="texto1j">Anexar actas de institucionalización ante el Consejo de la Facultad de Ciencias y Educación y ante el CIDC, o evidencias que el proceso de institucionalización del
-																		proyecto de tesis ante el Consejo de la Facultad de Ciencias y Educación y ante el CIDC ya se ha solicitado.(Formato PDF)</p></td>
-								</tr>
-								<tr>
-								<c:if test="${requestScope.archivos.docCerCurr!=null}">
-									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docCerCurr}" />'>Ver Documento</a></td>
-								</c:if>
-								</tr>
-								<tr>
-									<td id="f3"><input size="60%" type="file" name="fichero"></td>
-									<td id="g3" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(3,document.frm3)"></td>
 								<td id="carga31" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
 								<td id="carga32" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
 								</tr>
@@ -199,7 +149,7 @@
 					</td>
 				</tr>				
 				</c:if>	
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==7)}">
+				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm4" method="post" enctype="multipart/form-data">
@@ -211,13 +161,13 @@
 									<td colspan="2"><p class="texto1j">Carta del director del proyecto de grado en donde manifieste la intención de participar en la presente convocatoria.</p></td>
 								</tr>
 								<tr>
+								<c:if test='${requestScope.archivos.docAvalDir==null or requestScope.archivos.docAvalDir==""}'>
+									<td id="f4"><input size="60%" type="file" name="fichero"></td>
+									<td id="g4" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(4,document.frm4)"></td>
+								</c:if>
 								<c:if test="${requestScope.archivos.docAvalDir!=null}">
 									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docAvalDir}" />'>Ver Documento</a></td>
 								</c:if>
-								</tr>
-								<tr>
-									<td id="f4"><input size="60%" type="file" name="fichero"></td>
-									<td id="g4" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(4,document.frm4)"></td>
 								<td id="carga41" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
 								<td id="carga42" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
 								</tr>
@@ -226,7 +176,7 @@
 					</td>
 				</tr>				
 				</c:if>				
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==7 or sessionScope.datosConv.convNumero==13)}">
+				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm5" method="post" enctype="multipart/form-data">
@@ -235,16 +185,16 @@
 							<table width="100%">
 								<th colspan="2" align="left">Certificado Consejo Cirrucular.</th>
 								<tr>
-									<td colspan="2"><p class="texto1j">Certificado de aprobación del proyecto de grado en modalidad investigación, emitido por el Consejo Curricular al que pertenece(n) el (los) estudiante(s).</p></td>
+									<td colspan="2"><p class="texto1j">Certificado de aprobación del anteproyecto de grado en modalidad investigación, emitido por el Consejo Curricular al que pertenece(n) el (los) estudiante(s).</p></td>
 								</tr>
 								<tr>
-									<c:if test="${requestScope.archivos.docCerCurr!=null}">
-									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docCerCurr}" />'>Ver Documento</a></td>
-									</c:if>
-								</tr>
-								<tr>
+								<c:if test='${requestScope.archivos.docCerCurr==null or requestScope.archivos.docCerCurr==""}'>
 									<td id="f5"><input size="60%" type="file" name="fichero"></td>
 									<td id="g5" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(5,document.frm5)"></td>
+								</c:if>
+								<c:if test="${requestScope.archivos.docCerCurr!=null}">
+									<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Propuestas/${requestScope.archivos.docCerCurr}" />'>Ver Documento</a></td>
+								</c:if>
 								<td id="carga51" style="display:none;"><h5>Un Momento por favor....Almacenando Archivo</h5></td>
 								<td id="carga52" style="display:none;"><img  src='<c:url value="/comp/img/cargando.gif"/>'></td>
 								</tr>
@@ -253,19 +203,48 @@
 					</td>
 				</tr>				
 				</c:if>				
+<%-- --%>
+
+                <tr>
+                        <td>
+                                <form action='<c:url value="/RequisitosArchivoProy.x"/>' name="frmDoc" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="14">
+                                <input type="hidden" name="propConvId" value="${sessionScope.datosConv.convId}">
+                                <input type="hidden" name="DocId" value="${lista2.codigo}">
+				<input type="hidden" name="idPropuesta" value="${sessionScope.inscripcionConvOBJ.propId}">
+                                        <table width="100%">
+				<th colspan="2" align="center">Documentos Requeridos</th>
+                                                <c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
+                                                <tr>
+                                                        <td colspan="2" class="renglones"><b><c:out value="${lista2.docNombre}"/>-<c:out value="${sessionScope.datosConv.convId}"/>-<c:out value="${lista2.codigo}"/></b></td>
+                                                </tr>
+                                                <tr>
+                                                        <td colspan="2"><p class="texto1j">Formato PDF</p></td>
+                                                </tr>
+                                                <tr>
+                                                        <td><input size="60%" type="file" name="archivo"></td>
+                                                        <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardareq(document.frmDoc.archivo,document.frmDoc,<c:out value="${lista2.codigo}" />)"></td>
+                                        </tr>                                        </c:forEach>
+                                                </tr>
+                                        </table>
+                                </form>
+                        </td>
+                </tr>
+<%-- --%>
 				<tr>
 					<td align="center">
 					<form action='<c:url value="/inscripcionConv/Inscripcion.x" />' method="post" name="finaliza">
 						<input type="hidden" name="accion" value="1">
 						<input type="hidden" name="terminar" value="si">
 						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}"/>'>				
-						<img src='<c:url value="/comp/img/Terminar.gif" />' onclick='temina("${sessionScope.datosConv.convNumero}")'/>					
+						<img src='<c:url value="/comp/img/Terminar.gif" />' onclick='temina()'/>					
 					</form>
 					</td>
 				</tr>
+
 			</table>
 			<br>
 	</fieldset>
 	<br>
 </body>
-</html> 
+</html>

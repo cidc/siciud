@@ -63,10 +63,16 @@
 				</a>
 			</td>
 			<td>
+                                <a href='<c:url value="/convocatoria/Parametrizar.x?irA=35&accion=6"/>'>
+                                        <img border="0" src="<c:url value="/comp/img/Documentos.gif"/>">
+                                </a>
+                        </td>
+
+		<%--	<td>
 				<a href='<c:url value="/convocatoria/Parametrizar.x?irA=16&accion=6"/>'>
 					<img border="0" src="<c:url value="/comp/img/Rubros.gif"/>">
 				</a>
-			</td>
+			</td>--%>
 		</tr>
 	</table>
 </body>

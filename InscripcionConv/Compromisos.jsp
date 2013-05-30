@@ -71,6 +71,7 @@
 	<c:if test='${sessionScope.inscripcionConvOBJ!=null}'>
 	<form name="nuevo" method="post" >
 		<input type="hidden" name="accion" value='3'>
+		<input type="hidden" name="propConvId" value="${sessionScope.datosConv.convId}">
 		<table width="90%" class="tablas" align="center" cellpadding="3" cellspacing="0">
 		<caption>Compromisos del Investigador Principal</caption>
             <tr>

@@ -25,7 +25,7 @@ public class EnvioMail2 {
 	private String clave=null;
 	private String de=null;
 	private String smtpHost="mail.udistrital.edu.co";
-	private ResourceBundle rb=ResourceBundle.getBundle("cidc.general.conect");;
+	private ResourceBundle rb=ResourceBundle.getBundle("cidc.general.mails.listaCorreos");;
 
 	private class Autenticador extends Authenticator{
 		public PasswordAuthentication getPasswordAuthentication(){

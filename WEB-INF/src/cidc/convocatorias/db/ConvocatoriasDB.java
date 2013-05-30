@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import cidc.general.obj.Globales;
 import cidc.convocatorias.obj.AspectosOBJ;
 import cidc.convocatorias.obj.CompromisosOBJ;
+import cidc.convocatorias.obj.DocumentosOBJ;
 import cidc.convocatorias.obj.ConvocatoriaOBJ;
 import cidc.convocatorias.obj.CriteriosOBJ;
 import cidc.convocatorias.obj.EjesOBJ;
@@ -40,7 +41,7 @@ public class ConvocatoriasDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 	//		System.out.println("Consulta="+consulta);
-	//		System.out.println("Convocatoria="+convocatoria);
+			System.out.println("Convocatoria="+convocatoria);
 			ps=cn.prepareStatement(rb.getString("lista_criterios"+consulta));
 			if(consulta==1)
 				ps.setLong(1,convocatoria);
@@ -82,6 +83,7 @@ public class ConvocatoriasDB extends BaseDB{
 				ps.setLong(1,conv);
 			rs=ps.executeQuery();
 
+			System.out.println("tipo:"+tipo+"consulta:"+ps);
 			while(rs.next()){
 				i=1;
 				CompromisosOBJ compromisosOBJ=new CompromisosOBJ();
@@ -91,6 +93,7 @@ public class ConvocatoriasDB extends BaseDB{
 				if(tipo!=0){
 			//		System.out.println("entra");
 					compromisosOBJ.setObligatorio(rs.getInt(i++));
+					compromisosOBJ.setValor(rs.getInt(i++));
 				}
 				l.add(compromisosOBJ);
 			}
@@ -105,6 +108,47 @@ public class ConvocatoriasDB extends BaseDB{
 		}
 		return l;
 	}
+
+	        public List consultaDocumentosRequisito(int tipo, long conv){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=0;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_documentosrequisito"+tipo));
+                        if(tipo!=0)
+                                ps.setLong(1,conv);
+                        rs=ps.executeQuery();
+
+                        while(rs.next()){
+                                i=1;
+                                DocumentosOBJ documentosOBJ=new DocumentosOBJ();
+                                documentosOBJ.setCodigo(rs.getInt(i++));
+                                documentosOBJ.setNombre(rs.getString(i++));
+                               // documentosOBJ.setEstado(rs.getInt(i++));
+			//	if(tipo==0){
+                          //              documentosOBJ.setEstado(rs.getBoolean(i++));
+                            //    }
+				if(tipo!=0){
+                                	documentosOBJ.setObligatorio(rs.getInt(i++));
+				}
+                                l.add(documentosOBJ);
+                        }
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+
 	public int getCantCompromisos(long conv){
 		int i=0,retorno=0;
 		Connection cn=null;
@@ -130,7 +174,201 @@ public class ConvocatoriasDB extends BaseDB{
 		}
 		return retorno;
 	}
+//	
+        public ConvocatoriaOBJ getRequisito(int reqId){
+                ConvocatoriaOBJ convocatoriaOBJ=null;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("DatosRequisito"));
+                        ps.setInt(1,reqId);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setReqNombre(rs.getString(i++));
+                                convocatoriaOBJ.setReqEstado(rs.getBoolean(i++));
+                                convocatoriaOBJ.setReqId(rs.getInt(i++));
+                        }
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        try{
+                                cerrar(rs);
+                                cerrar(ps);
+                                cerrar(cn);
+                        }catch (Exception e) {
+                                lanzaExcepcion(e);
+                        }
+                }
+                return convocatoriaOBJ;
+        }
 
+        public ConvocatoriaOBJ getRubro(int rubId){
+                ConvocatoriaOBJ convocatoriaOBJ=null;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("DatosRubro"));
+                        ps.setInt(1,rubId);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setRubNombre(rs.getString(i++));
+                                convocatoriaOBJ.setRubId(rs.getInt(i++));
+                        }
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        try{
+                                cerrar(rs);
+                                cerrar(ps);
+                                cerrar(cn);
+                        }catch (Exception e) {
+                                lanzaExcepcion(e);
+                        }
+                }
+                return convocatoriaOBJ;
+        }
+
+        public ConvocatoriaOBJ getCompromiso(int comId){
+                ConvocatoriaOBJ convocatoriaOBJ=null;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("DatosCompromiso"));
+                        ps.setInt(1,comId);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setComNombre(rs.getString(i++));
+				convocatoriaOBJ.setComEstado(rs.getBoolean(i++));
+                                convocatoriaOBJ.setComId(rs.getInt(i++));
+                        }
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        try{
+                                cerrar(rs);
+                                cerrar(ps);
+                                cerrar(cn);
+                        }catch (Exception e) {
+                                lanzaExcepcion(e);
+                        }
+                }
+                return convocatoriaOBJ;
+        }
+
+        public ConvocatoriaOBJ getCriterio(int critId){
+                ConvocatoriaOBJ convocatoriaOBJ=null;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("DatosCriterio"));
+                        ps.setInt(1,critId);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setCritNombre(rs.getString(i++));
+                                convocatoriaOBJ.setCritEstado(rs.getBoolean(i++));
+                                convocatoriaOBJ.setCritId(rs.getInt(i++));
+                        }
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        try{
+                                cerrar(rs);
+                                cerrar(ps);
+                                cerrar(cn);
+                        }catch (Exception e) {
+                                lanzaExcepcion(e);
+                        }
+                }
+                return convocatoriaOBJ;
+        }
+
+        public ConvocatoriaOBJ getAspecto(int aspId){
+                ConvocatoriaOBJ convocatoriaOBJ=null;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("DatosAspecto"));
+                        ps.setInt(1,aspId);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setAspNombre(rs.getString(i++));
+                                convocatoriaOBJ.setAspEstado(rs.getBoolean(i++));
+                                convocatoriaOBJ.setAspId(rs.getInt(i++));
+                                convocatoriaOBJ.setCritId(rs.getInt(i++));
+                        }
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        try{
+                                cerrar(rs);
+                                cerrar(ps);
+                                cerrar(cn);
+                        }catch (Exception e) {
+                                lanzaExcepcion(e);
+                        }
+                }
+                return convocatoriaOBJ;
+        }
+
+
+        public ConvocatoriaOBJ getEje(int ejeId){
+                ConvocatoriaOBJ convocatoriaOBJ=null;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("DatosEje"));
+                        ps.setInt(1,ejeId);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setEjeNombre(rs.getString(i++));
+                                convocatoriaOBJ.setEjeEstado(rs.getBoolean(i++));
+                                convocatoriaOBJ.setEjeId(rs.getInt(i++));
+                        }
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        try{
+                                cerrar(rs);
+                                cerrar(ps);
+                                cerrar(cn);
+                        }catch (Exception e) {
+                                lanzaExcepcion(e);
+                        }
+                }
+                return convocatoriaOBJ;
+        }
+
+//
 	public List consultaEjes(int tipo,long convocatoria){
 		List l=new ArrayList();
 		Connection cn=null;
@@ -332,6 +570,7 @@ public class ConvocatoriasDB extends BaseDB{
 				convocatoriaOBJ.setConvAno(rs.getInt(i++));
 				convocatoriaOBJ.setConvNumero(rs.getInt(i++));
 				convocatoriaOBJ.setConvNombre(rs.getString(i++));
+				convocatoriaOBJ.setConvTipo(rs.getInt(i++));
 				l.add(convocatoriaOBJ);
 			}
 		} catch (SQLException e) {
@@ -346,8 +585,7 @@ public class ConvocatoriasDB extends BaseDB{
 		return l;
 	}
 
-	public boolean insertaConvocatoria(ConvocatoriaOBJ convocatoriaOBJ){
-		boolean retorno=false;
+	public List listaRequisitosDoc(long convocatoria){
 		List l=new ArrayList();
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -355,17 +593,200 @@ public class ConvocatoriasDB extends BaseDB{
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("lista_requisitosdoc"));
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				ConvocatoriaOBJ convocatoriaOBJ=new ConvocatoriaOBJ();
+				convocatoriaOBJ.setReqId(rs.getInt(i++));
+				convocatoriaOBJ.setReqNombre(rs.getString(i++));
+				convocatoriaOBJ.setReqEstado(rs.getBoolean(i++));
+				l.add(convocatoriaOBJ);
+			}
+		} catch (SQLException e) {
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return l;
+	}
+
+        public List listaRubros(long convocatoria){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_rubros"));
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                ConvocatoriaOBJ convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setRubId(rs.getInt(i++));
+                                convocatoriaOBJ.setRubNombre(rs.getString(i++));
+                                l.add(convocatoriaOBJ);
+                        }
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+        public List listaCompromisos(long convocatoria){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_compromisos"));
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                ConvocatoriaOBJ convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setComId(rs.getInt(i++));
+                                convocatoriaOBJ.setComNombre(rs.getString(i++));
+                                convocatoriaOBJ.setComEstado(rs.getBoolean(i++));
+                                l.add(convocatoriaOBJ);
+                        }
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+        public List listaCriterios(long convocatoria){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_criterios"));
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                ConvocatoriaOBJ convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setCritId(rs.getInt(i++));
+                                convocatoriaOBJ.setCritNombre(rs.getString(i++));
+                                convocatoriaOBJ.setCritEstado(rs.getBoolean(i++));
+                                l.add(convocatoriaOBJ);
+                        }
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+	public List listaAspectos(long convocatoria){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_aspectos"));
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                ConvocatoriaOBJ convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setAspId(rs.getInt(i++));
+                                convocatoriaOBJ.setAspNombre(rs.getString(i++));
+                                convocatoriaOBJ.setAspEstado(rs.getBoolean(i++));
+                                convocatoriaOBJ.setCritId(rs.getInt(i++));
+                                l.add(convocatoriaOBJ);
+                        }
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+        public List listaEjes(long convocatoria){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_ejes"));
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                ConvocatoriaOBJ convocatoriaOBJ=new ConvocatoriaOBJ();
+                                convocatoriaOBJ.setEjeId(rs.getInt(i++));
+                                convocatoriaOBJ.setEjeNombre(rs.getString(i++));
+                                convocatoriaOBJ.setEjeEstado(rs.getBoolean(i++));
+                                l.add(convocatoriaOBJ);
+                        }
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+	public boolean insertaConvocatoria(ConvocatoriaOBJ convocatoriaOBJ){
+		boolean retorno=false;
+		List l=new ArrayList();
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int i=1;
+			System.out.println("entrooo");
+		try {
+			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("inserta_convocatoria"));
 
 			ps.setInt(i++,convocatoriaOBJ.getConvAno());
 			ps.setInt(i++,convocatoriaOBJ.getConvNumero());
+			ps.setInt(i++,convocatoriaOBJ.getConvTipo());
 			ps.setString(i++,convocatoriaOBJ.getConvNombre().toLowerCase());
 			ps.setString(i++,convocatoriaOBJ.getConvCuantia());
 			ps.setLong(i++,convocatoriaOBJ.getConvDuracion());
 			ps.setString(i++,convocatoriaOBJ.getConvFecInicio());
 			ps.setString(i++,convocatoriaOBJ.getConvFecFin());
 			ps.setString(i++,convocatoriaOBJ.getConvDirigido());
-			ps.setBoolean(i++,convocatoriaOBJ.isConvPublica());
+		//	ps.setBoolean(i++,convocatoriaOBJ.isConvPublica());
 			ps.setString(i++,convocatoriaOBJ.getCorteActual());
 			ps.execute();
 			retorno=true;
@@ -419,6 +840,174 @@ public class ConvocatoriasDB extends BaseDB{
 		return retorno;
 	}
 
+	public boolean modificaRequisitoDoc(ConvocatoriaOBJ convocatoriaOBJ){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("modificar_requisitodoc"));
+			ps.setString(i++,convocatoriaOBJ.getReqNombre());
+			ps.setBoolean(i++,convocatoriaOBJ.isReqEstado());
+			ps.setInt(i++,convocatoriaOBJ.getReqId());
+			ps.execute();
+			System.out.println("ReqNombre ="+convocatoriaOBJ.getReqNombre()+"ReqId ="+convocatoriaOBJ.getReqId());
+			retorno=true;
+		} catch (SQLException e) {
+			lanzaExcepcion(e);
+			setMensaje("Ya se encuentra almacenada");
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			setMensaje("Problemas en la conexi�n a la base de datos");
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+
+        public boolean modificaRubro(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("modificar_rubro"));
+                        ps.setString(i++,convocatoriaOBJ.getRubNombre());
+                        ps.setInt(i++,convocatoriaOBJ.getRubId());
+                        ps.execute();
+                        System.out.println("RubNombre ="+convocatoriaOBJ.getRubNombre()+"RubId ="+convocatoriaOBJ.getRubId());
+                        retorno=true;
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                        setMensaje("Ya se encuentra almacenada");
+                }catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        setMensaje("Problemas en la conexi�n a la base de datos");
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean modificaCompromiso(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("modificar_compromiso"));
+                        ps.setString(i++,convocatoriaOBJ.getComNombre());
+                        ps.setBoolean(i++,convocatoriaOBJ.isComEstado());
+                        ps.setInt(i++,convocatoriaOBJ.getComId());
+                        ps.execute();
+                        System.out.println("ComNombre ="+convocatoriaOBJ.getComNombre()+"ComId ="+convocatoriaOBJ.getComId());
+                        retorno=true;
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                        setMensaje("Ya se encuentra almacenada");
+                }catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        setMensaje("Problemas en la conexi�n a la base de datos");
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean modificaCriterio(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("modificar_criterio"));
+                        ps.setString(i++,convocatoriaOBJ.getCritNombre());
+                        ps.setBoolean(i++,convocatoriaOBJ.isCritEstado());
+                        ps.setInt(i++,convocatoriaOBJ.getCritId());
+                        ps.execute();
+                        System.out.println("ComNombre ="+convocatoriaOBJ.getCritNombre()+"CritId ="+convocatoriaOBJ.getCritId());
+                        retorno=true;
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                        setMensaje("Ya se encuentra almacenada");
+                }catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        setMensaje("Problemas en la conexi�n a la base de datos");
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean modificaAspecto(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("modificar_aspecto"));
+                        ps.setString(i++,convocatoriaOBJ.getAspNombre());
+                        ps.setBoolean(i++,convocatoriaOBJ.isAspEstado());
+                        ps.setInt(i++,convocatoriaOBJ.getAspId());
+                        ps.execute();
+                        System.out.println("AspNombre ="+convocatoriaOBJ.getAspNombre()+"AspId ="+convocatoriaOBJ.getAspId());
+                        retorno=true;
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                        setMensaje("Ya se encuentra almacenada");
+                }catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        setMensaje("Problemas en la conexi�n a la base de datos");
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean modificaEje(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("modificar_eje"));
+                        ps.setString(i++,convocatoriaOBJ.getEjeNombre());
+                        ps.setBoolean(i++,convocatoriaOBJ.isEjeEstado());
+                        ps.setInt(i++,convocatoriaOBJ.getEjeId());
+                        ps.execute();
+                        System.out.println("EjeNombre ="+convocatoriaOBJ.getEjeNombre()+"EjeId ="+convocatoriaOBJ.getEjeId());
+                        retorno=true;
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                        setMensaje("Ya se encuentra almacenada");
+                }catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        setMensaje("Problemas en la conexi�n a la base de datos");
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+
 	public boolean quitarConvocatoria(long idconv){
 		boolean retorno=false;
 		Connection cn=null;
@@ -442,6 +1031,39 @@ public class ConvocatoriasDB extends BaseDB{
 		return retorno;
 	}
 
+        public List getDocConvocatoria(long id){
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                ConvocatoriaOBJ convocatoriaOBJ=null;
+		List l=new ArrayList();
+                int i=1;
+		System.out.println("entrooo");
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("getDocConvocatoria"));
+                        ps.setLong(1,id);
+                        rs=ps.executeQuery();
+		System.out.println("consulta:"+ps);
+                        while(rs.next()){
+				i=1;
+                                convocatoriaOBJ=new ConvocatoriaOBJ();
+                        //      convocatoriaOBJ.setConvTipo(rs.getString(i++));
+                                convocatoriaOBJ.setConvAd(rs.getString(i++));
+				l.add(convocatoriaOBJ);
+		System.out.println("convvv:");
+		}
+                } catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
 
 	public ConvocatoriaOBJ getConvocatoria(long id){
 		Connection cn=null;
@@ -464,6 +1086,7 @@ public class ConvocatoriasDB extends BaseDB{
 				convocatoriaOBJ.setConvId(rs.getLong(i++));
 				convocatoriaOBJ.setConvAno(rs.getInt(i++));
 				convocatoriaOBJ.setConvNumero(rs.getInt(i++));
+			//	convocatoriaOBJ.setConvTipo(rs.getString(i++));
 				convocatoriaOBJ.setConvNombre(rs.getString(i++));
 				convocatoriaOBJ.setConvCuantia(rs.getString(i++));
 				convocatoriaOBJ.setConvDuracion(rs.getInt(i++));
@@ -476,6 +1099,7 @@ public class ConvocatoriasDB extends BaseDB{
 				convocatoriaOBJ.setConvResolucion(rs.getString(i++));
 				convocatoriaOBJ.setCantProduct(rs.getInt(i++));
 				convocatoriaOBJ.setCorteActual(rs.getString(i++));
+				convocatoriaOBJ.setConvTipo(rs.getInt(i++));
 			}
 			if(convocatoriaOBJ!=null){
 				ps=cn.prepareStatement(rb.getString("getCortesConvocatoria"));
@@ -604,6 +1228,24 @@ public class ConvocatoriasDB extends BaseDB{
 					cerrar(cn);
 				}
 			break;
+			case ParametrosOBJ.ListaDocumentosRequisito:
+                                try {
+                //                      System.out.println("entra a eliminar "+convId);
+                                        ps=cn.prepareStatement(rb.getString("elimina_documento"));
+                                        ps.setLong(1,convId);
+                                        ps.execute();
+                                        retorno=true;
+                //                      System.out.println("Termina "+convId);
+                                }catch (SQLException e) {
+                                        lanzaExcepcion(e);
+                                }catch (Exception e) {
+                                        lanzaExcepcion(e);
+                                }finally{
+                                        cerrar(ps);
+                                        cerrar(cn);
+                                }
+                        break;
+
 			case ParametrosOBJ.porcentajes:
 				try {
 					ps=cn.prepareStatement(rb.getString("elimina_porcentajes"));
@@ -755,13 +1397,19 @@ public class ConvocatoriasDB extends BaseDB{
 				ps.setLong(c++,convId);
 				ps.executeUpdate();
 				ps=cn.prepareStatement(rb.getString("inserta_compromisos"));
+				
 				for(int i=0;i<insercionGralOBJ.getCompromiso().length;i++){
 					c=1;
-			//		System.out.println("inserta comp: "+insercionGralOBJ.getCompromiso()[i]+" = "+insercionGralOBJ.getObligatorio()[i]);
+					System.out.println("inserta comp: "+insercionGralOBJ.getCompromiso()[i]+" = "+insercionGralOBJ.getObligatorio()[i]);
+					System.out.println("valor1: "+insercionGralOBJ.getObservaciones()[i]);
 					ps.setLong(c++,num++);
 					ps.setLong(c++,convId);
 					ps.setLong(c++,insercionGralOBJ.getCompromiso()[i]);
 					ps.setLong(c++,insercionGralOBJ.getObligatorio()[i]);
+					ps.setString(c++,insercionGralOBJ.getObservaciones()[i]);
+					int valor = Integer.parseInt(insercionGralOBJ.getObservaciones()[i]);
+					System.out.println("valor: "+valor);
+					ps.setLong(c++,valor);
 					ps.addBatch();
 				}
 				ps.executeBatch();
@@ -822,6 +1470,57 @@ public class ConvocatoriasDB extends BaseDB{
 		}
 		return retorno;
 	}
+
+        public boolean setAdendo(long convId, String nombre) {
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+		System.out.println("nombre:"+nombre + "Convid:"+convId);
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("archivo_adendo"));
+                        ps.setString(i++,nombre);
+                        ps.setLong(i++,convId);
+                        ps.execute();
+                        retorno=true;
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public int numAdendo(long convId) {
+                int num_adendo=0;
+                Connection cn=null;
+                PreparedStatement ps=null;
+		ResultSet rs=null;
+                int i=1;
+                System.out.println("Convid:"+convId);
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("numadendo"));
+                        ps.setLong(i++,convId);
+			rs=ps.executeQuery();
+                        while(rs.next()){
+                                num_adendo=rs.getInt(1);
+                        }
+                System.out.println("Numadendo:"+num_adendo);
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return num_adendo;
+        }
 
 	public List consultaRubros(int consulta,long convocatoria){
 		List l=new ArrayList();
@@ -887,6 +1586,39 @@ public class ConvocatoriasDB extends BaseDB{
 			cerrar(cn);
 		}
 	}
+
+        public boolean insertaDocumentosRequisito(InsercionGralOBJ insercionGralOBJ, long convId) {
+                boolean retorno=false;
+		Connection cn=null;
+                PreparedStatement ps=null;
+                int num=1,c=1;
+                try {
+                        if(insercionGralOBJ.getDocumentos()!=null){
+		System.out.println("inserta compro:" );
+                                cn=cursor.getConnection(super.perfil);
+                                ps=cn.prepareStatement(rb.getString("inserta_documentosrequisito"));
+                                for(int i=0;i<insercionGralOBJ.getDocumentos().length;i++){
+
+                                        c=1;
+                                        ps.setLong(c++,convId);
+                                        ps.setLong(c++,insercionGralOBJ.getDocumentos()[i]);
+					ps.setLong(c++,insercionGralOBJ.getObligatorio()[i]);
+                                        ps.addBatch();
+                                }
+				ps.executeBatch();
+                                retorno=true;
+                        }
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+		return retorno;
+        }
+
 	public boolean insertaObservRubros(InsercionGralOBJ insercionGralOBJ, long convId) {
 		boolean retorno=false;
 		Connection cn=null;
@@ -937,6 +1669,31 @@ public class ConvocatoriasDB extends BaseDB{
 		}
 		return retorno;
 	}
+
+        public boolean actualizaEvalua(InsercionGralOBJ insercionGralOBJ, long convId) {
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("actualizaEvalua"));
+			System.out.println("entrooo a actualiza");
+                        ps.setBoolean(i++,insercionGralOBJ.getConvEvalua());
+                        ps.setLong(i++,convId);
+                        ps.executeUpdate();
+                        retorno=true;
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
 	public InsercionGralOBJ getPorcentajes(long convId) {
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -1088,5 +1845,173 @@ public class ConvocatoriasDB extends BaseDB{
 		}
 		return retorno;
 	}
+
+
+        public boolean nuevoRequisitoDoc(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+		int i=1;
+			System.out.println("entrooo a nuevo");
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                                ps=cn.prepareStatement(rb.getString("insertaRequisitoDoc"));
+                                ps.setString(i++,convocatoriaOBJ.getReqNombre());
+		                ps.setBoolean(i++,convocatoriaOBJ.isReqEstado());
+                                ps.execute();
+                        retorno=true;
+                } catch (SQLException e){
+                        System.out.println("C�digo de error= "+e.getErrorCode());
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean nuevoRubro(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                        System.out.println("entrooo a nuevo");
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                                ps=cn.prepareStatement(rb.getString("insertaRubro"));
+                                ps.setInt(i++,convocatoriaOBJ.getRubId());
+                                ps.setString(i++,convocatoriaOBJ.getRubNombre());
+                                ps.execute();
+                        retorno=true;
+                } catch (SQLException e){
+                        System.out.println("C�digo de error= "+e.getErrorCode());
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean nuevoCompromiso(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                        System.out.println("entrooo a nuevo");
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                                ps=cn.prepareStatement(rb.getString("insertaCompromiso"));
+                                ps.setInt(i++,convocatoriaOBJ.getComId());
+                                ps.setString(i++,convocatoriaOBJ.getComNombre());
+				ps.setBoolean(i++,convocatoriaOBJ.isComEstado());
+                                ps.execute();
+                        retorno=true;
+                } catch (SQLException e){
+                        System.out.println("C�digo de error= "+e.getErrorCode());
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean nuevoCriterio(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                        System.out.println("entrooo a nuevo");
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                                ps=cn.prepareStatement(rb.getString("insertaCriterio"));
+                                ps.setInt(i++,convocatoriaOBJ.getCritId());
+                                ps.setString(i++,convocatoriaOBJ.getCritNombre());
+                                ps.setBoolean(i++,convocatoriaOBJ.isCritEstado());
+                                ps.execute();
+                        retorno=true;
+                } catch (SQLException e){
+                        System.out.println("C�digo de error= "+e.getErrorCode());
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean nuevoAspecto(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                        System.out.println("entrooo a nuevo");
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                                ps=cn.prepareStatement(rb.getString("insertaAspecto"));
+                                ps.setInt(i++,convocatoriaOBJ.getAspId());
+                                ps.setString(i++,convocatoriaOBJ.getAspNombre());
+                                ps.setBoolean(i++,convocatoriaOBJ.isAspEstado());
+                                ps.setInt(i++,convocatoriaOBJ.getCritId());
+                                ps.execute();
+                        retorno=true;
+                } catch (SQLException e){
+                        System.out.println("C�digo de error= "+e.getErrorCode());
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean nuevoEje(ConvocatoriaOBJ convocatoriaOBJ){
+                boolean retorno=false;
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int i=1;
+                        System.out.println("entrooo a nuevo");
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                                ps=cn.prepareStatement(rb.getString("insertaEje"));
+                                ps.setInt(i++,convocatoriaOBJ.getEjeId());
+                                ps.setString(i++,convocatoriaOBJ.getEjeNombre());
+                                ps.setBoolean(i++,convocatoriaOBJ.isEjeEstado());
+                                ps.execute();
+                        retorno=true;
+                } catch (SQLException e){
+                        System.out.println("C�digo de error= "+e.getErrorCode());
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
 
 }

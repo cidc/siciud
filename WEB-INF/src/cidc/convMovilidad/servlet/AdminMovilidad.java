@@ -2,8 +2,6 @@ package cidc.convMovilidad.servlet;
 
 import java.io.IOException;
 
-
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -153,6 +151,12 @@ public class AdminMovilidad extends ServletGeneral {
 				
 			break;
 			case Parametros.ActializarPaso3:
+		//		int conv = Integer.parseInt(req.getParameter("conv"));
+			//	System.out.println("Conv:"+conv);
+				int conv=0;
+				if(req.getParameter("propConvId")!=null)
+				conv=Integer.parseInt(req.getParameter("propConvId"));
+				sesion.setAttribute("listaDocOBJ",movilidadDB.getDocumentos(conv));
 				irA="/convMovilidad/Cargar.jsp";
 				System.out.println("Paso 03");
 			break;

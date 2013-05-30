@@ -34,6 +34,9 @@ public class ListaConvocatoria extends ServletGeneral {
 			case 1:
 				if(req.getParameter("accion")!=null)
 					sesion.setAttribute("datosConv",convocatoriasDB.getConvocatoria(Long.parseLong(req.getParameter("ver"))));
+					
+		System.out.println("entrooo");
+					sesion.setAttribute("datosConvDoc",convocatoriasDB.getDocConvocatoria(Long.parseLong(req.getParameter("ver"))));
 			break;
 		}
 		retorno[0]="unir";

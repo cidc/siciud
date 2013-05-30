@@ -40,6 +40,20 @@
 		document.nuevo.action='<c:url value="/movilidad/adminMovilidad.x"/>';
 		document.nuevo.submit();
 	}
+	function guardar(caja,formulario,iddoc){
+                if(ValidarFormularioDoc(caja)){
+			formulario.DocId.value=iddoc;
+                        formulario.submit();
+                }
+        }
+        
+        function ValidarFormularioDoc(forma){
+                if(forma.value==""){
+                        alert("Debe seleccionar un Archivo para cargar");
+                        return false;
+                }
+                return true;
+        }
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -119,7 +133,7 @@
 							<td colspan="2" class="renglones"><b>Carta aval Grupo / Semillero de Investigación</b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><p class="texto1j">Carta de aval del Grupo o Semillero de investigación firmada por el Director o Tutor según corresponda, en donde se exprese que el estudiante o docente no tiene adjudicado ningún tipo de apoyo económico de otra dependencia de la Universidad, ni que lo está tramitando; NO se tendrán en cuenta cartas con visto bueno. (Formato PDF)</p></td>
+							<td colspan="2"><p class="texto1j">Carta escaneada del aval del director del Grupo de Investigación para la participación en la convocatoria (formato PDF); NO se tendrán en cuenta cartas con visto bueno.</p></td>
 						</tr>
 						<tr>
 							<td><input size="60%" type="file" name="arc1"></td>
@@ -355,7 +369,7 @@
 					</form>
 				</td>
 			</tr>
-		<c:if test='${sessionScope.persona.papel==3 and sessionScope.persona.papel==8}'>
+		<c:if test='${sessionScope.persona.papel!=3 and sessionScope.persona.papel!=8}'>
 		<tr>		
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm12" method="post" enctype="multipart/form-data">
@@ -365,7 +379,7 @@
 							<td colspan="2" class="renglones"><b>Carta donde exprese no tener adjudicado otro apoyo económico en la Universidad</b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><p class="texto1j">Carta escaneada y firmada por el Director o Tutor según corresponda donde exprese que no tiene adjudicado ningún tipo de apoyo económico de otra dependencia de la universidad. Si se llega a contar con apoyo económico de otra dependencia de la universidad, se deberá aclarar los montos aprobados y la dependencia que lo apoya. (Formato PDF)</p></td>
+							<td colspan="2"><p class="texto1j">Carta escaneada y firmada por el investigador donde exprese que no tiene adjudicado ningún tipo de apoyo económico de otra dependencia de la universidad. Si se llega a contar con apoyo económico de otra dependencia de la universidad, se deberá aclarar los montos aprobados y la dependencia que lo apoya.</p></td>
 						</tr>
 						<tr>
 								<td><input size="60%" type="file" name="arc12"></td>
@@ -404,7 +418,43 @@
 					</table>
 				</form>
 			</td>
-		</tr>		
+		</tr>	
+
+<%-- --%>
+                <tr>
+                        <td>
+                                <form action='<c:url value="/RequisitosArchivo.x"/>' name="frmDoc" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="14">
+                                <input type="hidden" name="propConvId" value="${sessionScope.datosConv.convId}">
+                                <input type="hidden" name="DocId" value="${lista2.codigo}">
+                                <input type="hidden" name="idPropuesta" value="<c:out value="${movilidad.idPropuesta}"/>">
+
+                                        <table width="100%">
+					 <th colspan="2" align="center">Documentos Requeridos</th>
+						<c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
+                                                <tr>
+                                                        <td colspan="2" class="renglones"><b><c:out value="${lista2.docNombre}"/>-<c:out value="${sessionScope.datosConv.convId}"/>-<c:out value="${lista2.codigo}"/></b></td>
+                                                </tr>
+                                                <tr>
+                                                        <td colspan="2"><p class="texto1j">Formato PDF</p></td>
+                                                </tr>
+                                                <tr>
+                                                        <td><input size="60%" type="file" name="archivo"></td>
+                                                        <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(document.frmDoc.archivo,document.frmDoc,<c:out value="${lista2.codigo}" />)"></td>
+					</tr>			
+					</c:forEach>
+                                              <%--  <c:if test="${sessionScope.movilidad.archivoProduccion!=null}">
+                                                        <tr>
+                                                                <td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Movilidad/${sessionScope.movilidad.archivoProduccion}" />'>Ver Documento</a></td>
+                                                        </tr>
+                                                </c:if>--%>
+                                                </tr>
+                                        </table>
+                                </form>
+                        </td>
+                </tr>
+
+<%-- --%>	
 	</table>
 	<br>
 		<form name="nuevo1" method="post" action='<c:url value="/movilidad/adminMovilidad.x"/>'>

@@ -20,6 +20,8 @@ import cidc.inscripcionConv.obj.InscripcionConvOBJ;
 import cidc.inscripcionConv.obj.ParametrosOBJ;
 import cidc.inscripSistema.obj.Persona;
 
+import cidc.convMovilidad.db.MovilidadDB;
+
 public class Inscribir extends ServletGeneral {
 
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
@@ -31,6 +33,9 @@ public class Inscribir extends ServletGeneral {
 		int accion=0;
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
+
+		System.out.println(".............");						
+		System.out.println("accion------>"+accion);						
 		HttpSession sesion=req.getSession();
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		UsuarioDB usuarioDB=new UsuarioDB(cursor,usuario.getPerfil());
@@ -49,9 +54,11 @@ public class Inscribir extends ServletGeneral {
 				}else{
 					if(convocatoriaOBJ!=null){
 						System.out.println("------>"+convocatoriaOBJ.getConvAno()+"  -- "+convocatoriaOBJ.getConvNumero());						
-						   if(convocatoriaOBJ.getConvAno()==2013 && (convocatoriaOBJ.getConvNumero()==1 || convocatoriaOBJ.getConvNumero()==2 || convocatoriaOBJ.getConvNumero()==3 || convocatoriaOBJ.getConvNumero()==4 ||convocatoriaOBJ.getConvNumero()==12)){
-							System.out.println("Ingreso a la convocatoria de este año------>");
-							irA="/movilidad/adminMovilidad.x?accion=2";
+						   //if(convocatoriaOBJ.getConvAno()==2012 && (convocatoriaOBJ.getConvNumero()==7 || convocatoriaOBJ.getConvNumero()==2 || convocatoriaOBJ.getConvNumero()==3 || convocatoriaOBJ.getConvNumero()==4)){
+						   if(convocatoriaOBJ.getConvTipo()==2){
+							System.out.println("Ingreso a la convocatorias de este año------>");
+							irA="/movilidad/adminMovilidad.x?accion=2&convano="+convocatoriaOBJ.getConvAno()+"&convnumero="+convocatoriaOBJ.getConvNumero();
+							System.out.println("irA:"+irA);
 							sesion.setAttribute("persona",persona);
 						}else{
 							if(convocatoriaOBJ.getConvAno()==2012 && convocatoriaOBJ.getConvNumero()==14){
@@ -83,10 +90,10 @@ public class Inscribir extends ServletGeneral {
 				}
 			break;
 			case ParametrosOBJ.cmdPaso0:
+			System.out.println("entroooo");						
 				sesion.setAttribute("persona",persona);
 				sesion.setAttribute("ajaxProyCur",inscripcionConvDB.AjaxProyectoCur());
-				sesion.setAttribute("listaTotalGrupos",inscripcionConvDB.totalGruposInvestigacion());
-				req.setAttribute("areaSnies", inscripcionConvDB.AjaxAreasSnies());
+				sesion.setAttribute("listaTotalGrupos",inscripcionConvDB.totalGruposInvestigacion());				
 				if(sesion.getAttribute("ajaxGrupo")==null)
 					sesion.setAttribute("ajaxGrupo",inscripcionConvDB.AjaxGruposInvestigacion(1,1));
 				req.setAttribute("listaRubrosOBJ",inscripcionConvDB.getRubros(convocatoriaOBJ.getConvId(),1));
@@ -122,6 +129,12 @@ public class Inscribir extends ServletGeneral {
 				retorno[0]="desviar";
 			break;
 			case ParametrosOBJ.cmdPaso2:
+			MovilidadDB movilidadDB=new MovilidadDB(cursor,2);
+          	        int conv=0;
+            	        if(req.getParameter("propConvId")!=null)
+                        conv=Integer.parseInt(req.getParameter("propConvId"));
+			System.out.println("entro"+conv);						
+                        sesion.setAttribute("listaDocOBJ",movilidadDB.getDocumentos(conv));
 				System.out.println("Ingreso al paso 02	");
 				inscripcionConvOBJ=(InscripcionConvOBJ)sesion.getAttribute("inscripcionConvOBJ");
 				if(inscripcionConvDB.insertaCompromisos(inscripcionConvOBJ)){
@@ -136,6 +149,7 @@ public class Inscribir extends ServletGeneral {
 				retorno[0]="desviar";
 			break;
 			case ParametrosOBJ.cmdPaso3:
+
 				String idProp=req.getParameter("idProp");
 				req.setAttribute("archivos",inscripcionConvDB.getInfoArchivos(idProp));
 				irA="/InscripcionConv/Cargar.jsp";

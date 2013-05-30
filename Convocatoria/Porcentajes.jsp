@@ -136,6 +136,12 @@
 					<img border="0" src="<c:url value="/comp/img/Rubros.gif"/>">
 				</a>
 			</td>
+			<td>
+                                <a href='<c:url value="/convocatoria/Parametrizar.x?irA=35&accion=6"/>'>
+                                        <img border="0" src="<c:url value="/comp/img/Documentos.gif"/>">
+                                </a>
+                        </td>
+
 		</tr>
 	</table>
 	<br>
@@ -162,6 +168,11 @@
 				<td align="center"><input class="caja0" type="text" name="porcentExt" size="4" onKeyPress='return soloNumeros(event)' value='<c:out value="${requestScope.porcentajes.porcentExt}"/>'><b>.Pts</b></td>
 				<td align="center"><input class="caja0" type="text" name="porcentComit" size="4" onKeyPress='return soloNumeros(event)' value='<c:out value="${requestScope.porcentajes.porcentComit}"/>'><b>.Pts</b></td>
 			</tr>
+			<c:if test='${sessionScope.convocatoriaOBJ.convTipo==1}'>
+				<tr>
+				<th align="center">Se evalua:<input type="checkbox" name="convEvalua"></th>
+				</tr>
+			</c:if>
 			<tr>
  				<td align="center" colspan="3"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()"> </td>
  			<tr>

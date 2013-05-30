@@ -213,6 +213,7 @@
 	<input type="hidden" name="accion" value="1">
 	<input type="hidden" name="fechaConv" value='<c:out value="${sessionScope.datosConv.corteActual}" />'>
 	<input type="hidden" name="idPersona" value='<c:out value="${sessionScope.persona.idPersona}" />'>
+	<input type="hidden" name="propConvId" value='<c:out value="${sessionScope.datosConv.convId}"/>'>
 <div align="center">
 <fieldset style="width:580px;">
 <div align="center">
@@ -233,6 +234,18 @@
 </c:if>
 </div>
 </fieldset>
+
+        <fieldset style="width:80%;">
+        <legend class="texto1"><b>Convocatoria a la que desea presentarse</b></legend>
+                <table cellspacing="2">
+                        <tr class="trb">
+                                <td align="center" class="texto0" width="100px"><b><c:out value="${sessionScope.datosConv.convAno}"/> - <c:out value="${sessionScope.datosConv.convNumero}"/></b></td>
+                                <td align="center"><b><c:out value="${sessionScope.datosConv.convNombre}"/></b></td>
+                        </tr>
+                </table>
+        </fieldset>
+
+
 <fieldset style="width:580px;">
 <legend>Datos Investigador</legend>
 <table class="tablas" width="100%">
@@ -502,11 +515,7 @@
 				<tr>
 					<td colspan="3">
 						<select name="proyectoinv">
-							<option value="0">---------</option>
-							<c:forEach begin="0" items="${sessionScope.ajaxProyectos}" var="lista">
-							<option value='<c:out value="${lista.idActividad}"/>'><c:out value="${lista.actividad}"/>
-							</option>
-							</c:forEach>							
+							<option value="0">--------</option>							
 						</select>				
 					</td>
 					<td width="30px" align="left"><img src='<c:url value="/comp/img/lupa3.png"/>' onclick="info(9)"></td>

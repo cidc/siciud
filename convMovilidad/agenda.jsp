@@ -137,6 +137,7 @@
 <form name="nuevo" method="post" action='<c:url value="/movilidad/adminMovilidad.x"/>'>
 	<input type="hidden" name="accion" value="">
 	<input type="hidden" name="idPersona" value='<c:out value="${sessionScope.persona.idPersona}" />'>
+	<input type="hidden" name="propConvId" value='<c:out value="${sessionScope.datosConv.convId}"/>'>
 <c:if test='${sessionScope.persona.estado}'>
 	<input type="hidden" name="id">
 	<input type="hidden" name="estado" value="1">

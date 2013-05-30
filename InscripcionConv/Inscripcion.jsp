@@ -41,14 +41,11 @@
 		if(document.nuevo.propNombre.value==""){
 			mensaje=mensaje+"\n-) Nombre de la Propuesta";
 		}
-		if(document.nuevo.proyectoinv.selectedIndex==0){
+		/*if(document.nuevo.proyectoinv.selectedIndex==0){
 			mensaje=mensaje+"\n-) Nombre del Proyecto asociado al Plan de Accion del grupo de Investigación";
-		}
+		}*/
 		if(document.nuevo.propDirPro.selectedIndex==0){
 			mensaje=mensaje+"\n-) Nombre del profesor Director del proyecto. (Prof. Planta)";
-		}
-		if(document.nuevo.codareasnies.selectedIndex==0){
-			mensaje=mensaje+"\n-) Área Snies";
 		}
 		/*if(document.nuevo.propAbstract.value==""){
 			mensaje=mensaje+"\n-) Abstract de la Propuesta";
@@ -415,7 +412,7 @@
 						<textarea name="propNombre" rows="3" cols="65"></textarea>
 					</td>
 				</tr>
-				<c:if test="${sessionScope.datosConv.convAno==2013 }">
+				<c:if test="${sessionScope.datosConv.convAno!=2012 and sessionScope.datosConv.convNumero!=13}">
 				<tr>
 					<th colspan="2"><b>Nombre del Proyecto ingresado en el Plan de Acción:</b></th>
 				</tr>			
@@ -448,7 +445,7 @@
 						<textarea name="propPalClave" rows="1" cols="65"></textarea>
 					</td>
 				</tr>	
-				<c:if test="${sessionScope.datosConv.convAno!=2013 and sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=7}">
+				<c:if test="${sessionScope.datosConv.convAno!=2012 and sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6}">
 				<tr>
 					<th colspan="2" ><b>Abstract: (Inglés)</b></th>
 				</tr>
@@ -457,24 +454,11 @@
 						<textarea name="propAbstract" rows="3" cols="65"></textarea>
 					</td>
 				</tr>
-				</c:if>
-				<tr>
-					<th colspan="2"><b>Areas SNIES del Proyecto:</b></th>
-				</tr>
-				<tr>
-					<td colspan="2">							
-						<select name="codareasnies">
-							<option value="0">-------------</option>
-							<c:forEach begin="0" items="${requestScope.areaSnies}" var="lista" varStatus="st">
-								<option style="text-transform: lowercase;" value='<c:out value="${lista.codigo}"/>' <c:if test="${sessionScope.integrante2.codareasnies==lista.codigo}">selected</c:if>><c:out value="${lista.nombre}"/></option>
-							</c:forEach>							
-						</select>				
-					</td>
-				</tr>				
+				</c:if>				
 			</table>
 
 		</fieldset>
-		<c:if test="${sessionScope.datosConv.convAno!=2013 and (sessionScope.datosConv.convNumero!=5 or sessionScope.datosConv.convNumero!=7 or sessionScope.datosConv.convNumero!=17)}">
+		<c:if test="${sessionScope.datosConv.convAno!=2012 and (sessionScope.datosConv.convNumero!=5 or sessionScope.datosConv.convNumero!=6 or sessionScope.datosConv.convNumero!=17)}">
 		<fieldset style="width:80%;">
     	<legend class="texto1"><b>Equipo de trabajo Co-Investigadores</b></legend>
 			<table class="tablas" width="100%">
@@ -745,9 +729,8 @@
 							</tr>
 						</c:if>
 					</table>
-					<c:if test="${sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6 and sessionScope.datosConv.convNumero!=7 and sessionScope.datosConv.convNumero!=8 and sessionScope.datosConv.convNumero!=9 
-									and sessionScope.datosConv.convNumero!=10 and sessionScope.datosConv.convNumero!=11 and sessionScope.datosConv.convNumero!=12 and sessionScope.datosConv.convNumero!=13 and sessionScope.datosConv.convNumero!=14 
-									and sessionScope.datosConv.convNumero!=15}">
+
+					<c:if test="${sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6 and sessionScope.datosConv.convNumero!=9 and sessionScope.datosConv.convNumero!=10 and sessionScope.datosConv.convNumero!=11 and sessionScope.datosConv.convNumero!=12 and sessionScope.datosConv.convNumero!=13}">
 					<table class="tablas" border="0" width="100%">
 					<caption >Rubros financiables por UD y Contrapartida</caption>
 						<tr>

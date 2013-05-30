@@ -82,7 +82,7 @@
 						</form>
 					</td>
 				</tr>
-				<c:if test="${sessionScope.datosConv.convAno!=2013}">
+				<c:if test="${sessionScope.datosConv.convAno!=2012}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm2" method="post" enctype="multipart/form-data">
@@ -111,7 +111,7 @@
 					</td>
 				</tr>
 				</c:if>
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==12)}">
+				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==12)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
@@ -138,7 +138,7 @@
 					</td>
 				</tr>				
 				</c:if>	
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
+				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm4" method="post" enctype="multipart/form-data">
@@ -165,7 +165,7 @@
 					</td>
 				</tr>				
 				</c:if>				
-				<c:if test="${sessionScope.datosConv.convAno==2013 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
+				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm5" method="post" enctype="multipart/form-data">

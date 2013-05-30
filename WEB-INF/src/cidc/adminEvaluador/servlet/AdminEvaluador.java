@@ -28,7 +28,7 @@ public class AdminEvaluador extends ServletGeneral {
 		int accion=0;
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
-
+		System.out.println("entra al caseEval" + accion);
 
 		retorno[0]="unir";
 		switch(accion){

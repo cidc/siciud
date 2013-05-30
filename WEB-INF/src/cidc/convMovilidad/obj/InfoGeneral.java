@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class InfoGeneral implements Serializable{
 
 	private long idPropuesta;
+	private long propConvId;
 	private long idPersona;
 	private int corte;
 	private int grupo;	
@@ -54,6 +55,9 @@ public class InfoGeneral implements Serializable{
 	
 	//formato productividad Cvlac
 	private String archivoProduccion; 
+
+ 	//Id de convocatoria
+	private long propConvId;
 	
 	public int getGrupo() {
 		return grupo;
@@ -109,6 +113,9 @@ public class InfoGeneral implements Serializable{
 	}
 	public long getIdPropuesta() {
 		return idPropuesta;
+	}
+	public long getIdConv() {
+		return propConvId;
 	}
 	public String getInstitucion() {
 		return institucion;
@@ -290,5 +297,11 @@ public class InfoGeneral implements Serializable{
 	public void setArchivoProduccion(String archivoproduccion) {
 		this.archivoProduccion = archivoproduccion;
 	}
+	public long getPropConvId() {
+                return propConvId;
+        }
+        public void setPropConvId(long propConvId) {
+                this.propConvId = propConvId;
+        }
 	
 }

@@ -6,11 +6,14 @@ public class InsercionGralOBJ {
 	public int[] ejeTematico;
 	public int[] compromiso;
 	public int[] rubros;
+	public int[] documentos;
+	public boolean[] docEstado;
 
 	public int[] critValor;
 	public double[] rubValor;
 	public float[] aspValor;
 	public int[] obligatorio;
+	public String[] observaciones;
 	public String observacion;
 
 	public double porcentInt;
@@ -28,6 +31,7 @@ public class InsercionGralOBJ {
 	public String auxApertura;
 	public String auxCierre;
 
+	public Boolean convEvalua;
 
 	public String getAuxApertura() {
 		return auxApertura;
@@ -116,6 +120,12 @@ public class InsercionGralOBJ {
 	public void setObligatorio(int[] obligatorio) {
 		this.obligatorio = obligatorio;
 	}
+	public String[] getObservaciones() {
+		return observaciones;
+	}
+	public void setObservaciones(String[] observaciones) {
+		this.observaciones = observaciones;
+	}
 	public float[] getAspValor() {
 		return aspValor;
 	}
@@ -164,7 +174,24 @@ public class InsercionGralOBJ {
 	public void setIdCorte(int idCorte) {
 		this.idCorte = idCorte;
 	}
-
+	public int[] getDocumentos() {
+		return documentos;
+	}
+	public void setDocumentos(int[] documentos) {
+		this.documentos = documentos;
+	}
+	public boolean[] getDocEstado() {
+		return docEstado;
+	}
+	public void setDocEstado(boolean[] docEstado) {
+		this.docEstado = docEstado;
+	}
+	public boolean getConvEvalua() {
+		return convEvalua;
+	}
+	public void setConvEvalua(boolean convEvalua) {
+		this.convEvalua = convEvalua;
+	}
 
 
 }

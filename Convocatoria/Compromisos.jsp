@@ -16,7 +16,9 @@
 						formulario.obligatorio[i].disabled=false;
 						if(formulario.obligatorio_[i].checked==true){
 							formulario.obligatorio[i].value="1";
-				//			alert("entraA ="+formulario.obligatorio[i].value);
+
+
+
 						}else{
 							nuevoCompromisos.obligatorio[i].value="0";
 				//			alert("entraB ="+formulario.obligatorio[i].value);
@@ -24,6 +26,10 @@
 					}else{
 						formulario.compromiso[i].disabled=true;
 						formulario.obligatorio[i].disabled=true;
+						formulario.observaciones[i].disabled=true;
+                                        //if(formulario.observaciones[i].value==""){
+                                                //formulario.observaciones[i].value="0";
+                                        //}
 					}
 				}
 			}
@@ -135,6 +141,12 @@
 					<img border="0" src="<c:url value="/comp/img/Rubros.gif"/>">
 				</a>
 			</td>
+			<td>
+                                <a href='<c:url value="/convocatoria/Parametrizar.x?irA=35&accion=6"/>'>
+                                        <img border="0" src="<c:url value="/comp/img/Documentos.gif"/>">
+                                </a>
+                        </td>
+
 		</tr>
 	</table>
 	<br>
@@ -165,6 +177,7 @@
           		<td class="renglones"><b>Nombre del Compromiso</b></td>
           		<td width="270px" class="renglones"><b>Indicador</b></td>
           		<td class="renglones"><b>Oblig.</b></td>
+          		<td class="renglones"><b>Valor</b></td>
             </tr>
 			<c:forEach begin="0" items="${requestScope.listaCompOBJ}" var="lista" varStatus="st">
 				<tr>
@@ -175,9 +188,10 @@
 					<td width="270px"><c:out value="${lista.indicador}"/></td>
 					<td align="center"><input type="checkbox" name="obligatorio_" disabled="disabled">
 						<input type="hidden" name="obligatorio" value="0">
+					<td style="width:30px;"><input type="text" name="observaciones" size="4" maxlength="5" '<c:forEach begin="0" items="${requestScope.listaCompInscOBJ}" var="lista1">' '<c:if test="${lista1.codigo==lista.codigo}">' value="${lista1.valor}" '</c:if>' '</c:forEach>'></td>
 					</td>
 				</tr>
-			</c:forEach>
+					</c:forEach>
 			<tr>
     				<td colspan="4"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()"> </td>
     			<tr>

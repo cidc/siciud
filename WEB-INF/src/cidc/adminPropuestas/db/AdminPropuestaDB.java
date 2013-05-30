@@ -45,7 +45,7 @@ public class AdminPropuestaDB extends BaseDB{
 		rb=ResourceBundle.getBundle("cidc.adminPropuestas.consultas");
 	}
 
-	public List getPropuestas(int ano,int numero,String estado){
+	public List getPropuestas(int ano,int numero,String estado,int tipo){
 		List l=new ArrayList();
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -53,12 +53,12 @@ public class AdminPropuestaDB extends BaseDB{
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
+		/*	if (tipo==1){
 			ps=cn.prepareStatement(rb.getString("getPropuestas"));
 			ps.setLong(i++,ano);
 			ps.setLong(i++,numero);
 			ps.setBoolean(i++,Boolean.parseBoolean(estado));
 			rs=ps.executeQuery();
-		//	System.out.println("");
 			while(rs.next()){
 				i=1;
 				PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
@@ -69,8 +69,30 @@ public class AdminPropuestaDB extends BaseDB{
 				propuestaOBJ.setEstadoEvalExt(rs.getInt(i++));
 				propuestaOBJ.setEstadoEvalComit(rs.getInt(i++));
 				propuestaOBJ.setPropActiva(rs.getBoolean(i++));
+				propuestaOBJ.setAno(rs.getInt(i++));
+				propuestaOBJ.setNumero(rs.getInt(i++));
+				propuestaOBJ.setConv(rs.getInt(i++));
+
 				l.add(propuestaOBJ);
 			}
+			}
+			else */
+                        ps=cn.prepareStatement(rb.getString("getPropuestasMovProy"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        ps.setLong(i++,tipo);
+                   //     ps.setBoolean(i++,Boolean.parseBoolean(estado));
+                        rs=ps.executeQuery();
+                //      System.out.println("");
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+				propuestaOBJ.setConv(rs.getInt(i++));
+			//	propuestaOBJ.setInfDocs(getDocumentos(propuestaOBJ.getIdPropuesta()));
+                                l.add(propuestaOBJ);
+                        }
+		
 		}catch (SQLException e) {
 			lanzaExcepcion(e);
 		}catch (Exception e) {
@@ -82,6 +104,437 @@ public class AdminPropuestaDB extends BaseDB{
 		}
 		return l;
 	}
+
+        public List getCalificacion(int ano,int numero,String estado,int tipo){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                      if (tipo==1){
+                        ps=cn.prepareStatement(rb.getString("getCalificacion"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setTotal1(rs.getLong(i++));
+                                propuestaOBJ.setTotal2(rs.getLong(i++));
+                                propuestaOBJ.setTotal3(rs.getLong(i++));
+                                l.add(propuestaOBJ);
+                        }
+                        }
+                        else 
+                        ps=cn.prepareStatement(rb.getString("getCalificacionMovilidad"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setEvaluador(rs.getLong(i++));
+                                propuestaOBJ.setTotal1(rs.getLong(i++));
+                                l.add(propuestaOBJ);
+                        }
+
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+        public List getCalificacionGeneral(int ano,int numero,String estado,int tipo){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                      if (tipo==1){
+                        ps=cn.prepareStatement(rb.getString("getCalificacionGeneral"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setTotal1(rs.getLong(i++));
+                                propuestaOBJ.setTotal2(rs.getLong(i++));
+                                propuestaOBJ.setTotal3(rs.getLong(i++));
+                                l.add(propuestaOBJ);
+                        }
+                        }
+                        else
+                        ps=cn.prepareStatement(rb.getString("getCalificacionMovilidadGeneral"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setEvaluador(rs.getLong(i++));
+                                propuestaOBJ.setTotal1(rs.getLong(i++));
+                                l.add(propuestaOBJ);
+                        }
+
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+        public List getCalificacionObservaciones(int ano,int numero,String estado,int tipo){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("getCalificacionObservaciones"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setConv(rs.getInt(i++));
+                                propuestaOBJ.setObserva(rs.getString(i++));
+                                l.add(propuestaOBJ);
+                        }
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+        public List getTodasPropuestas(int ano,int numero,String estado,int tipo){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                      if (tipo==1){
+                        ps=cn.prepareStatement(rb.getString("getPropuestas"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        ps.setBoolean(i++,Boolean.parseBoolean(estado));
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setConvAbierta(rs.getBoolean(i++));
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setNomPropuesta(rs.getString(i++));
+                                propuestaOBJ.setEstadoEvalInt(rs.getInt(i++));
+                                propuestaOBJ.setEstadoEvalExt(rs.getInt(i++));
+                                propuestaOBJ.setEstadoEvalComit(rs.getInt(i++));
+                                propuestaOBJ.setPropActiva(rs.getBoolean(i++));
+                                propuestaOBJ.setAno(rs.getInt(i++));
+                                propuestaOBJ.setNumero(rs.getInt(i++));
+                                propuestaOBJ.setConv(rs.getInt(i++));
+
+                                l.add(propuestaOBJ);
+                        }
+                        }
+                        else 
+                        ps=cn.prepareStatement(rb.getString("getPropuestasMovilidad"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                   //     ps.setBoolean(i++,Boolean.parseBoolean(estado));
+                        rs=ps.executeQuery();
+                //      System.out.println("");
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setConv(rs.getInt(i++));
+                        //      propuestaOBJ.setInfDocs(getDocumentos(propuestaOBJ.getIdPropuesta()));
+                                l.add(propuestaOBJ);
+                        }
+
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+       public List getPropuestasAp(int ano,int numero){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("getPropuestasAp"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        rs=ps.executeQuery();
+                        System.out.println("consultassssssss:"+ps);
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setConv(rs.getInt(i++));
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setPropuestaAp(rs.getString(i++));
+                                propuestaOBJ.setAno(rs.getInt(i++));
+                                propuestaOBJ.setNumero(rs.getInt(i++));
+                                propuestaOBJ.setObserva(rs.getString(i++));
+
+                                l.add(propuestaOBJ);
+                        }
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+	public List getDocumentos(int ano,int numero){
+		List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("DatosDocumentos"));
+			ps.setLong(i++,ano);
+			ps.setLong(i++,numero);
+                        //ps.setInt(1,codPropuesta);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+				PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setDocNombre(rs.getString(i++));
+                               // convocatoriaOBJ.setComEstado(rs.getBoolean(i++));
+                                propuestaOBJ.setCodPropuesta(rs.getInt(i++));
+				l.add(propuestaOBJ);
+                        }
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        try{
+                                cerrar(rs);
+                                cerrar(ps);
+                                cerrar(cn);
+                        }catch (Exception e) {
+                                lanzaExcepcion(e);
+                        }
+                }
+                return l;
+        }
+
+	public List ListaCriterios(int ano, int numero){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_criterios1"));
+                        ps.setInt(i++,ano);
+                        ps.setInt(i++,numero);
+                        rs=ps.executeQuery();
+
+                        while(rs.next()){
+                                i=1;
+                        //      System.out.println("encuentra criterios");
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodigo(rs.getInt(i++));
+                                propuestaOBJ.setNombre(rs.getString(i++));
+                                propuestaOBJ.setValor(rs.getFloat(i++));
+                                l.add(propuestaOBJ);
+                        }
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+	        public List ListaAspectos(int ano, int numero){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_aspectos1"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodigo(rs.getInt(i++));
+                                propuestaOBJ.setCriterio(rs.getInt(i++));
+                                propuestaOBJ.setNombre(rs.getString(i++));
+                                propuestaOBJ.setValor(rs.getFloat(i++));
+                                l.add(propuestaOBJ);
+                        }
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+                public List ListaEvaluadores(){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_evaluadores"));
+                        rs=ps.executeQuery();
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodigo(rs.getInt(i++));
+                                propuestaOBJ.setNombre(rs.getString(i++));
+                                propuestaOBJ.setApellido(rs.getString(i++));
+                                l.add(propuestaOBJ);
+                        }
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+        public List consultaCriterios(int ano,int numero){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_criterios"));
+			ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        System.out.println("entraaa a criterios");
+                        rs=ps.executeQuery();
+
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodCriterio(rs.getInt(i++));
+                                propuestaOBJ.setNomCriterio(rs.getString(i++));
+                               // PropuestaOBJ.setValCriterio(rs.getFloat(i++));
+                //                      System.out.println("ingresa valor "+criteriosOBJ.getValor());
+
+                                l.add(propuestaOBJ);
+                        }
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
+
+        public List consultaAspectos(int ano,int numero){
+                List l=new ArrayList();
+                Connection cn=null;
+                PreparedStatement ps=null;
+                ResultSet rs=null;
+                int i=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("lista_aspectos"));
+			ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        System.out.println("entraaa a aspectoss");
+                        rs=ps.executeQuery();
+
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodAspecto(rs.getInt(i++));
+                                propuestaOBJ.setNomAspecto(rs.getString(i++));
+                                propuestaOBJ.setCodCriterioAspecto(rs.getInt(i++));
+                                //propuestaOBJ.setValCriterio(rs.getFloat(i++));
+                //                      System.out.println("ingresa valor "+criteriosOBJ.getValor());
+
+                                l.add(propuestaOBJ);
+                        }
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                } catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return l;
+        }
 
 	public List ajaxNumConvocat(int conv) {
 		// TODO Auto-generated method stub
@@ -211,6 +664,214 @@ public class AdminPropuestaDB extends BaseDB{
 		}
 		return estadoPropuestaOBJ;
 	}
+
+//
+	public boolean AproboRequisitos(PropuestaOBJ propuestaOBJ){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int c=1;
+		try {
+			if(propuestaOBJ.getCodProp()!=null){
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("AprobarPropuesta"));
+			//System.out.println("Entro a consulta DB"+propuestaOBJ.getCodProp().length);
+			for(int i=0;i<propuestaOBJ.getCodProp().length;i++){
+			c=1;		
+			ps.setInt(c++,propuestaOBJ.getConvId()[i]);
+			ps.setLong(c++,propuestaOBJ.getCodProp()[i]);
+			//System.out.println("AAAA"+propuestaOBJ.isAprobo()[i]);
+			ps.setString(c++,propuestaOBJ.getPropAprobada()[i]);
+			ps.setString(c++,propuestaOBJ.getObservaciones()[i]);
+		//	ps.setInt(c++,propuestaOBJ.isAprobo()[i]);
+			System.out.println("Consulta: "+ps);
+			ps.execute();
+			}
+			retorno=true;
+			}
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+
+        public boolean EvaluacionPropuestas(PropuestaOBJ propuestaOBJ , int tipo){
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int c=1;
+		int d=1;
+                try {
+                        if(propuestaOBJ.getCodProp()!=null && tipo==2){
+                        cn=cursor.getConnection(super.perfil);
+		
+                        ps=cn.prepareStatement(rb.getString("EvaluarPropuesta"));
+                      
+                        System.out.println("ENTROOOO");
+			for(int i=0;i<propuestaOBJ.getCodEvaluador().length;i++){
+                        System.out.println("--------");
+                        c=1;
+                       	ps.setInt(c++,propuestaOBJ.getCodCrit()[i]);
+                        System.out.println("P1:"+propuestaOBJ.getCodCrit()[i]);
+                        ps.setInt(c++,propuestaOBJ.getCodAsp()[i]);
+                        System.out.println("P2:"+propuestaOBJ.getCodAsp()[i]);
+                        ps.setInt(c++,propuestaOBJ.getConvId()[i]);
+                        System.out.println("P3:"+propuestaOBJ.getConvId()[i]);
+                        ps.setLong(c++,propuestaOBJ.getCodProp()[i]);
+                        System.out.println("P4:"+propuestaOBJ.getCodProp()[i]);
+			ps.setInt(c++,propuestaOBJ.getCodEvaluador()[i]);
+                        System.out.println("P5:"+propuestaOBJ.getCodEvaluador()[i]);
+			ps.setFloat(c++,propuestaOBJ.getValorCal()[i]);
+                        System.out.println("P6:"+propuestaOBJ.getValorCal()[i]);
+                       // ps.setString(c++,propuestaOBJ.getObservaciones()[i]);
+                       // System.out.println("P7:"+propuestaOBJ.getObservaciones()[i]);
+                        System.out.println("Primera consulta"+ps);
+                        ps.execute();
+			}
+                        }
+			if(propuestaOBJ.getCodProp()!=null && tipo==1){
+                        System.out.println("Entroooo");
+                        cn=cursor.getConnection(super.perfil);
+
+                        ps=cn.prepareStatement(rb.getString("EvaluarPropuestaProy"));
+                        for(int i=0;i<propuestaOBJ.getCodProp().length;i++){
+                        c=1;
+                        ps.setInt(c++,propuestaOBJ.getCodCrit()[i]);
+                        ps.setInt(c++,propuestaOBJ.getCodAsp()[i]);
+                        ps.setInt(c++,propuestaOBJ.getConvId()[i]);
+                        ps.setLong(c++,propuestaOBJ.getCodProp()[i]);
+                        ps.setFloat(c++,propuestaOBJ.getObservaciones1()[i]);
+                        ps.setFloat(c++,propuestaOBJ.getObservaciones2()[i]);
+                        ps.setFloat(c++,propuestaOBJ.getObservaciones3()[i]);
+                      //  ps.setString(c++,propuestaOBJ.getObservaciones()[i]);
+                        ps.execute();
+                        }
+                        }
+
+			//
+			ps=cn.prepareStatement(rb.getString("CalificarPropuesta"));
+			for(int j=0;j<propuestaOBJ.getCodProp().length;j++){
+			System.out.println("Entro444444");
+                        d=1;
+			System.out.println("prueba:"+propuestaOBJ.getCodProp()[j]);
+                       	ps.setInt(d++,propuestaOBJ.getCodProp()[j]);
+			System.out.println("prueba2:"+propuestaOBJ.getConvId()[j]);
+                        ps.setInt(d++,propuestaOBJ.getConvId()[j]);
+			System.out.println("prueba3:"+propuestaOBJ.getObservaciones()[j]);
+                        ps.setString(d++,propuestaOBJ.getObservaciones()[j]);
+                        ps.execute();
+			}
+			//
+			retorno=true;
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+
+        public boolean ActualizaEvaluacionPropuestas(PropuestaOBJ propuestaOBJ , int tipo){
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int c=1;
+		int d=1;
+                try {
+                        if(propuestaOBJ.getCodProp()!=null && tipo==2){
+                        cn=cursor.getConnection(super.perfil);
+		
+                        ps=cn.prepareStatement(rb.getString("ActualizaEvaluarPropuesta"));
+                      
+                        System.out.println("ENTROOOO");
+			for(int i=0;i<propuestaOBJ.getCodEvaluador().length;i++){
+                        c=1;
+			ps.setFloat(c++,propuestaOBJ.getValorCal()[i]);
+                       	ps.setInt(c++,propuestaOBJ.getCodCrit()[i]);
+                        ps.setInt(c++,propuestaOBJ.getCodAsp()[i]);
+                        ps.setInt(c++,propuestaOBJ.getConvId()[i]);
+                        ps.setLong(c++,propuestaOBJ.getCodProp()[i]);
+			ps.setInt(c++,propuestaOBJ.getCodEvaluador()[i]);
+                        System.out.println("Primera consulta"+ps);
+                        ps.execute();
+			}
+                        }
+			if(propuestaOBJ.getCodProp()!=null && tipo==1){
+                        System.out.println("Entroooo");
+                        cn=cursor.getConnection(super.perfil);
+
+                        ps=cn.prepareStatement(rb.getString("ActualizaEvaluarPropuestaProy"));
+                        for(int i=0;i<propuestaOBJ.getCodProp().length;i++){
+                        c=1;
+                        ps.setFloat(c++,propuestaOBJ.getObservaciones1()[i]);
+                        ps.setFloat(c++,propuestaOBJ.getObservaciones2()[i]);
+                        ps.setFloat(c++,propuestaOBJ.getObservaciones3()[i]);
+                        ps.setInt(c++,propuestaOBJ.getCodCrit()[i]);
+                        ps.setInt(c++,propuestaOBJ.getCodAsp()[i]);
+                        ps.setInt(c++,propuestaOBJ.getConvId()[i]);
+                        ps.setLong(c++,propuestaOBJ.getCodProp()[i]);
+                        System.out.println("Primera consulta"+ps);
+                        ps.execute();
+                        }
+                        }
+
+			//
+			ps=cn.prepareStatement(rb.getString("ActualizaCalificarPropuesta"));
+			for(int j=0;j<propuestaOBJ.getCodPropu().length;j++){
+			System.out.println("Entro444444"+propuestaOBJ.getCodPropu().length);
+                        d=1;
+                        ps.setString(d++,propuestaOBJ.getObservaciones()[j]);
+                       	ps.setInt(d++,propuestaOBJ.getCodPropu()[j]);
+                        ps.setInt(d++,propuestaOBJ.getConvId()[j]);
+                        System.out.println("Primera consulta"+ps);
+                        ps.execute();
+			}
+			retorno=true;
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+
+        public boolean borrar(int convId){
+                boolean retorno=false;
+                Connection cn=null;
+                PreparedStatement ps=null;
+                int c=1;
+                try {
+                        cn=cursor.getConnection(super.perfil);
+                        ps=cn.prepareStatement(rb.getString("EliminarPropuesta"));
+                        ps.setInt(c++,convId);
+			System.out.println("Consulta eliminar: "+ps);
+                        ps.execute();
+                        retorno=true;
+                        
+                }catch (SQLException e) {
+                        lanzaExcepcion(e);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }finally{
+                        cerrar(ps);
+                        cerrar(cn);
+                }
+                return retorno;
+        }
+//
+
 	public EstadoPropuestaOBJ getNombrePropuesta( Connection cn, EstadoPropuestaOBJ estadoPropuestaOBJ, long prop){
 		PreparedStatement ps=null;
 		ResultSet rs=null;

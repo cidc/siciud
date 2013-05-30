@@ -17,62 +17,32 @@
 <table align="left" class="tablas" width="90%">
 	<caption>Información del Solicitante</caption>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Tipo de Solicitante"/>
+					<td colspan="4" align="left"><c:out value="Número de Documento"/>
 					</td>
-					<td><select name="tipoSol" onchange="">
-						<OPTION VALUE="ext">Externo</OPTION>
-						<OPTION VALUE="int">Interno</OPTION>
-					</select></td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Persona"/>
+					<td  align="left"><INPUT NAME="nombre" MAXLENGTH="25" TYPE="TEXT" VALUE="">
+					<INPUT NAME="boton" TYPE="reset" VALUE="Limpiar"> 
+					<INPUT NAME="boton" TYPE="SUBMIT" VALUE="Buscar"> 
 					</td>
-					<td><textarea class="area2" class="area2" style="width: 100%;"
-							name="Persona" id='persona'></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Titulo"/>
-					</td>
-					<td><select name="titulo" onchange="">
-						<OPTION VALUE="sr">Sr.</OPTION>
-						<OPTION VALUE="sra">Sra.</OPTION>
-						<OPTION VALUE="senores">Señores</OPTION>
-						<OPTION VALUE="dr">Dr.</OPTION> 
-						<OPTION VALUE="ing">Ing.</OPTION>
-					</select></td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Nombre / Razón Social"/>
-					</td>
-					<td><textarea class="area2" class="area2" style="width: 100%;"
-							name="n/r" id='n/r'></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Tipo de Persona"/>
-					</td>
-					<td><select name="tipoPersona" onchange="">
-						<OPTION VALUE="natural">Natural</OPTION> 
-						<OPTION VALUE="juridica">Jurídica</OPTION>
-					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Tipo de Documento"/>
 					</td>
 					<td><select name="tipoDoc" onchange="">
-						<OPTION VALUE="CC">Cédula de Ciudadanía</OPTION> 
-						<OPTION VALUE="TI">Tarjeta de Identidad</OPTION>
-						<OPTION VALUE="CE">Cédula de Extranjería</OPTION> 
-						<OPTION VALUE="pasaporte">Pasaporte</OPTION>
+						<option value="0">----</option>
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Documento de Identidad / NIT"/>
+					<td colspan="4" align="left"><c:out value="Nombres"/>
 					</td>
-					<td  align="left"><INPUT NAME="nombre" MAXLENGTH="25" TYPE="TEXT" VALUE="">
-					<INPUT NAME="boton" TYPE="reset" VALUE="Limpiar"> 
-					<INPUT NAME="boton" TYPE="SUBMIT" VALUE="Buscar"> 
+					<td><textarea class="area2" class="area2" style="width: 100%;"
+							name="nombres" id='nombres'></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><c:out value="Primer Apellido"/>
+					</td>
+					<td><textarea class="area2" class="area2" style="width: 100%;"
+							name="primerApellido" id='primerApellido'></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -82,25 +52,20 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Dirección"/>
+					<td colspan="4" align="left"><c:out value="Dependencia"/>
 					</td>
-					<td  align="left"><INPUT NAME="direccion" MAXLENGTH="25" TYPE="TEXT" VALUE="">
-					</td>
+					<td><select name="dependencia" onchange="">
+						<option value="0">----</option>
+					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Teléfono Móvil"/>
+					<td colspan="4" align="left"><c:out value="Tipo Solicitante"/>
 					</td>
-					<td  align="left"><INPUT NAME="celular" MAXLENGTH="25" TYPE="TEXT" VALUE="">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Ciudad"/>
-					</td>
-					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" VALUE="">
-					</td>
+					<td><select name="tipoSolicitante" onchange="">
+						<option value="0">----</option>
+					</select></td>
 				</tr>
 </table>
-<br>
 <table class="tablas" width="90%">
 	<caption>Información de la Solicitud</caption>
 				<tr>
@@ -115,20 +80,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Tipo Requerimiento"/>
+					<td colspan="4" align="left"><c:out value="Tipo Solicitud"/>
 					</td>
 					<td><select name="tipoSolicitud" onchange="">
-						<OPTION VALUE="SG">Solicitud General</OPTION> 
-						<OPTION VALUE="queja">Queja</OPTION>
-						<OPTION VALUE="reclamo">Reclamo</OPTION> 
-						<OPTION VALUE="sugerencia">Sugerencia</OPTION>
-						<OPTION VALUE="DP">Derecho de Petición</OPTION> 
-						<OPTION VALUE="SI">Solcitud de Información</OPTION>
-						<OPTION VALUE="CD">Consulta de Documentos</OPTION> 
-						<OPTION VALUE="EC">Expedición de copias</OPTION>
-						<OPTION VALUE="consulta">Consultas</OPTION> 
-						<OPTION VALUE="certificados">Certificaciones</OPTION>
-						<OPTION VALUE="otraDependenia">Solicitud de otra Dependencia</OPTION> 
+						<option value="0">----</option>
 					</select></td>
 				</tr>
 				<tr>
@@ -145,15 +100,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Escalado de otra De pendencia: "/>
-					</td>
-					<td>
-						<input type="radio" name=myradio value="1">Si
-						<input type="radio" name=myradio value="2">No
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Archivo del caso"/>
+					<td colspan="4" align="left"><c:out value="Adjunto"/>
 					</td>
 					<td><input type="file" name="datasize" size="30">
 					</td>
@@ -176,6 +123,10 @@
 					</td>
 				</tr>
 				<tr>
+					<td colspan="4" align="left"><c:out value="Se Notificarán todos los estados del caso"/>
+					</td>
+				</tr>
+				<tr>
 					<td colspan="4" align="left"><c:out value="¿Recibir notificaciones por correo electrónico?: "/>
 					</td>
 					<td>
@@ -185,10 +136,6 @@
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Si no, Se notificará al final del caso"/>
-					</td>
-					<td>
-						<input type="radio" name=myradio value="1">Si
-						<input type="radio" name=myradio value="2">No
 					</td>
 				</tr>	
 </table>

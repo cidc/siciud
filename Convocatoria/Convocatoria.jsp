@@ -28,16 +28,16 @@
 		}
 	}*/
 
-	function check(forma){
+/*	function check(forma){
 		if(forma.convPublica_.checked==true){
            forma.convPublica.value="true";
         }else{
 	       forma.convPublica.value="false";
         }
-	}
+	}*/
 	function guardar(){
 		if(ValidarFormulario(document.nuevo)){
-			check(document.nuevo);
+//			check(document.nuevo);
 			document.nuevo.action='<c:url value="/Convocatoria/llenar.jsp"/>';
 			document.nuevo.submit();
 		}
@@ -78,13 +78,20 @@
 								</c:forEach>
 							</select>
 						</td>
-						<td class="renglones"><b>Publicar ahora</b></td>
+                                                <td class="renglones"><b>Tipo</b></td>
+                                                <td>
+                                                        <select name="convTipo">
+                                                                <option value='2'/>Movilidad</option>
+                                                                <option value='1'/>Proyectos de Investigacion</option>
+                                                        </select>
+
+                                                </td>
+					<%--	<td class="renglones"><b>Publicar ahora</b></td>
 						<td>
 							<input type="checkbox" name="convPublica_">
 							<input type="hidden" name="convPublica" value="">
-						</td>
-						<th><b>Fecha Corte Actual</b></th>
-						<td>
+						</td>--%>
+					<%--	<td>
 							<input type='text' name='corteActual' class='caj' readonly='true' id='f_date_a' size='13' value='<c:out value="${sessionScope.convocatoriaOBJ.corteActual}"/>'>
 							<button type='button' id='f_trigger_a'>...</button>
 							<script type='text/javascript'>
@@ -97,7 +104,7 @@
 					    			step           :    1
 				    			})
 			    			</script>
-						</td>
+						</td>--%>
 					</tr>
 				</table>
 			</td>
@@ -128,14 +135,14 @@
 		<tr>
 			<td class="renglones"><b>Fecha de Inicio</b></td>
 			<td>
-				<input type='text' name='convFecInicio' class='caj' readonly='true' id='f_date_b' size='13'>
-				<button type='button' id='f_trigger_b'>...</button>
+				<input type='text' name='convFecInicio' class='caj' readonly='true' id='f_date_a' size='13'>
+				<button type='button' id='f_trigger_a'>...</button>
 				<script type='text/javascript'>
 	    			Calendar.setup({
 		    			inputField     :    'f_date_a',
 		    			ifFormat       :    '%Y-%m-%d',
 		    			showsTime      :    false,
-		    			button         :    'f_trigger_b',
+		    			button         :    'f_trigger_a',
 		    			singleClick    :    false,
 		    			step           :    1
 	    			})

@@ -43,7 +43,7 @@ var nav4=window.Event ? true : false;
 		var key=nav4?eve.which :eve.keyCode;
 		return(key<=13 || (key>=48 && key<=57));
 	}
-</script>
+</script>cidcs
 </head>
 <body>
 	<br>

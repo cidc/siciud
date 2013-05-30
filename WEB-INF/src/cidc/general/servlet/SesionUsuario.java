@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import cidc.adminGrupos.db.AdminGruposDB;
-import cidc.adminGrupos.db.grupo.GruposGestionDB;
 import cidc.general.db.CursorDB;
 import cidc.general.db.UsuarioDB;
 import cidc.general.inicio.CargaInicio;
@@ -38,7 +37,6 @@ public class SesionUsuario extends ServletGeneral {
 	public static String login;
 	public RequestDispatcher rd=null;
 	public AdminGruposDB adminGruposDB=null;
-	public GruposGestionDB gestionGrupoDB=null;
 
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		cursor=new CursorDB();
@@ -52,7 +50,6 @@ public class SesionUsuario extends ServletGeneral {
 		String clave=req.getParameter("clave");
 		mensaje=null;
 		retorno[0]="desviar";
-		String irA="";
 		switch (accion) {
 			case 1:
 				if(clave!=null)
@@ -70,8 +67,6 @@ public class SesionUsuario extends ServletGeneral {
 				}else{
 					super.mensaje="Usuario o Clave no son correctos";
 				}
-				//retorno[2]=super.mensaje;
-				irA=super.menu;
 			break;
 			case 0:
 				CargaInicio cargaInicio=new CargaInicio();
@@ -87,43 +82,10 @@ public class SesionUsuario extends ServletGeneral {
 				super.mensaje="Sesion Terminada";
 			//	System.out.println("termina sesion y desvia para= "+super.menu);
 			//	System.out.println("cantidad de recursos= "+user.getRecursos().size());
-				//retorno[2]=super.mensaje;
-				irA=super.menu;
-			break;
-			case 2:
-				irA="/RecordarClave.jsp";
-				//retorno[0]="unir";
-				break;
-			case 3:
-				String correo="";
-				correo=req.getParameter("correo");
-			if (!correo.isEmpty()) {
-				user=usuarioDB.buscarPorCorreo(correo);
-				if (user != null) {
-					gestionGrupoDB = new GruposGestionDB(cursor,
-							Parametros.userVisitante);
-					if (gestionGrupoDB.claveInvestigador(
-							String.valueOf(user.getIdUsuario()),
-							user.getPapel())) {
-						irA = "/menu.jsp";
-						super.mensaje = "Cambio de Contraseña Exitoso";
-					} else {
-						irA = "/RecordarClave.jsp";
-						super.mensaje = "No se Puedo Enviar La Contraseña";
-					}
-
-				} else {
-					super.mensaje = "Este Correo No Se Encuentra Registrado";
-					irA = "/RecordarClave.jsp";
-				}
-			}else{
-				irA = "/RecordarClave.jsp";
-				super.mensaje="Ingrese Un Correo Por Favor";
-			}
 			break;
 		}
 		retorno[2]=super.mensaje;
-		retorno[1]=irA;
+		retorno[1]=super.menu;
 		return retorno;
 	}
 }

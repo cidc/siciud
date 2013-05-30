@@ -60,6 +60,7 @@ public class ArchivosMovilidadServlet extends ServletGeneral {
 			            	archivoAdj=item;
 			            }
 			        }
+				System.out.println("archivoAdj:"+archivoAdj);
 			        String path=req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
 			        CargarDocumento cargaDoc=new CargarDocumento();
 			        //se almacena el documento cargado en el DD. (fisico)

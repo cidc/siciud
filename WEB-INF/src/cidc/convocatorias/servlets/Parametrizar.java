@@ -39,6 +39,7 @@ public class Parametrizar extends ServletGeneral {
 		String irA="";
 		long id=0;
 		mensaje="";
+						System.out.println("entra");
 		if(convocatoriaOBJ!=null)
 			id=convocatoriaOBJ.getConvId();
 		switch(accion){
@@ -51,6 +52,8 @@ public class Parametrizar extends ServletGeneral {
 							req.setAttribute("listaCritOBJ",convocatoriasDB.consultaCriterios(ParametrosOBJ.ListaAspecto,convocatoriaOBJ.getConvId()));
 							req.setAttribute("listaAspInscOBJ",convocatoriasDB.consultaAspectos(ParametrosOBJ.ListaAspecto,convocatoriaOBJ.getConvId()));
 							req.setAttribute("listaAspOBJ",convocatoriasDB.consultaAspectos(0,convocatoriaOBJ.getConvId()));
+
+						//	req.setAttribute("ListaCritOBJ",convocatoriasDB.consultaCriterios(ParametrosOBJ.ListaAspecto,0));
 						}
 					break;
 					case ParametrosOBJ.ListaCompromiso:
@@ -66,6 +69,7 @@ public class Parametrizar extends ServletGeneral {
 						if(id!=0){
 							req.setAttribute("ListaCritOBJ",convocatoriasDB.consultaCriterios(ParametrosOBJ.ListaCriterio,0));
 							req.setAttribute("ListaCritInscOBJ",convocatoriasDB.consultaCriterios(1,convocatoriaOBJ.getConvId()));
+							req.setAttribute("listaAspOBJ",convocatoriasDB.consultaAspectos(0,convocatoriaOBJ.getConvId()));
 						}
 					break;
 					case ParametrosOBJ.ListaEje:
@@ -82,6 +86,13 @@ public class Parametrizar extends ServletGeneral {
 							req.setAttribute("ListaRubrosInscOBJ",convocatoriasDB.consultaRubros(ParametrosOBJ.ListaRubros,convocatoriaOBJ.getConvId()));
 						}
 					break;
+					case ParametrosOBJ.ListaDocumentosRequisito:
+                                                irA="/Convocatoria/DocumentosRequisito.jsp";
+                                                if(id!=0){
+                                                        req.setAttribute("listaDocOBJ",convocatoriasDB.consultaDocumentosRequisito(0,0));
+                                                        req.setAttribute("listaDocInscOBJ",convocatoriasDB.consultaDocumentosRequisito(ParametrosOBJ.ListaDocumentosRequisito,convocatoriaOBJ.getConvId()));
+                                                }
+                                        break;
 					case ParametrosOBJ.General:
 						irA="/Convocatoria/ModificarConv.jsp";
 					break;
@@ -143,7 +154,6 @@ public class Parametrizar extends ServletGeneral {
 						req.setAttribute("listaCritOBJ",convocatoriasDB.consultaCriterios(ParametrosOBJ.ListaAspecto,convocatoriaOBJ.getConvId()));
 						req.setAttribute("listaAspInscOBJ",convocatoriasDB.consultaAspectos(ParametrosOBJ.ListaAspecto,convocatoriaOBJ.getConvId()));
 						req.setAttribute("listaAspOBJ",convocatoriasDB.consultaAspectos(0,convocatoriaOBJ.getConvId()));
-
 					break;
 					case ParametrosOBJ.ListaCompromiso:
 						irA="/Convocatoria/Compromisos.jsp";
@@ -193,6 +203,7 @@ public class Parametrizar extends ServletGeneral {
 						irA="/Convocatoria/Rubros.jsp";
 						convocatoriasDB.borrar(ParametrosOBJ.ListaRubros,convocatoriaOBJ.getConvId());
 						if(insercionGralOBJ!=null && convocatoriaOBJ!=null){
+System.out.println("-------------> "+insercionGralOBJ);
 							convocatoriasDB.insertaRubros(insercionGralOBJ,convocatoriaOBJ.getConvId());
 							convocatoriaOBJ.setObservacion(insercionGralOBJ.getObservacion());
 							mensaje="Rubros de convocatoria almacenados";
@@ -202,11 +213,29 @@ public class Parametrizar extends ServletGeneral {
 						req.setAttribute("ListaRubrosOBJ",convocatoriasDB.consultaRubros(0,0));
 						req.setAttribute("ListaRubrosInscOBJ",convocatoriasDB.consultaRubros(ParametrosOBJ.ListaRubros,convocatoriaOBJ.getConvId()));
 					break;
+                                        case ParametrosOBJ.ListaDocumentosRequisito:
+                                             irA="/Convocatoria/DocumentosRequisito.jsp";                                                if(insercionGralOBJ!=null && convocatoriaOBJ!=null){
+                                                        if(convocatoriasDB.borrar(ParametrosOBJ.ListaDocumentosRequisito,convocatoriaOBJ.getConvId())){
+                                                                if(convocatoriasDB.insertaDocumentosRequisito(insercionGralOBJ,convocatoriaOBJ.getConvId()))
+                                                                        mensaje="Documentos de convocatoria almacenados";
+                                                                else
+                                                                        mensaje="Fallo al almacenar los documentos de esta convocatoria";
+                                                        }
+                                                        else
+                                                                mensaje="Fallo al almacenar los documentos de esta convocatoria";
+                                                        req.setAttribute("listaDocOBJ",convocatoriasDB.consultaDocumentosRequisito(0,0));
+                                                        req.setAttribute("listaDocInscOBJ",convocatoriasDB.consultaDocumentosRequisito(ParametrosOBJ.ListaDocumentosRequisito,convocatoriaOBJ.getConvId()));
+                           			}else{
+                                                        mensaje="Fallo al almacenar los documentos de esta convocatoria";
+                                                }
+					break;
+
 					case ParametrosOBJ.porcentajes:
 						irA="/Convocatoria/Porcentajes.jsp";
 						convocatoriasDB.borrar(ParametrosOBJ.porcentajes,convocatoriaOBJ.getConvId());
 						if(insercionGralOBJ!=null && convocatoriaOBJ!=null){
 							convocatoriasDB.insertaPorcentajes(insercionGralOBJ,convocatoriaOBJ.getConvId());
+							convocatoriasDB.actualizaEvalua(insercionGralOBJ,convocatoriaOBJ.getConvId());
 							mensaje="Porcentajes de Evaluaci�n de convocatoria almacenados";
 						}else{
 							mensaje="Fallo al almacenar los Porcentajes de Evaluaci�n de esta convocatoria";

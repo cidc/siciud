@@ -151,6 +151,12 @@
 					<img border="0" src="<c:url value="/comp/img/Rubros.gif"/>">
 				</a>
 			</td>
+			<td>
+                                <a href='<c:url value="/convocatoria/Parametrizar.x?irA=35&accion=6"/>'>
+                                        <img border="0" src="<c:url value="/comp/img/Documentos.gif"/>">
+                                </a>
+                        </td>
+
 		</tr>
 	</table>
 	<br>
@@ -180,12 +186,37 @@
 							<td><c:out value="${st.count}"/></td>
 						 	<td><input type="checkbox" name="criterios_" onchange="checks(document.frmCriterios)"><td>
 							<td><c:out value="${lista.nombre}"/></td>
+
 							<td style="width:30px;"><input type="text" name="critValor" size="4" maxlength="5" onKeyPress='return soloNumeros(event)' onkeyup="sumar(document.frmCriterios,this)"></td>
 							<td align="left"><b>%</b>
 								<input type="hidden" name="criterios" value="<c:out value="${lista.codigo}"/>">
 							</td>
 
 						</tr>
+<%--
+		<c:forEach begin="0" items="${requestScope.listaAspOBJ}" var="lista2" varStatus="s">
+      			<c:if test="${lista.codigo==lista2.criterio}"> 
+                               <tr>
+
+<td></td>
+<td><c:out value="${s.count}"/></td>
+
+<td width="80%" align="left"><c:out value="${lista2.nombre}"/></td>
+                                                                                <td style="width:30px;">
+<input type="text" class="caja0" name="aspValor" size="4" maxlength="5" onKeyPress='return soloNumeros(event)' onkeyup="sumar(document.frmAspectos,this,<c:out value="${lista2.criterio}"/>)">
+</td>
+                                                                                <td align="left"><b>pts</b> --%>
+<%--
+                                                                                        <input type="hidden" name="aspectos" value="<c:out value="${lista2.codigo}"/>">
+
+        <input type="hidden" name="criterios" value="<c:out value="${lista2.criterio}"/>">
+
+</td>
+
+ --%>
+                                           <%--  </tr>
+                                             </c:if> 
+                                        </c:forEach> --%>
 					</c:forEach>
 					<tr>
 					<td>&nbsp;</td>

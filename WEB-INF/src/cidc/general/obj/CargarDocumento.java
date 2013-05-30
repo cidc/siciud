@@ -88,12 +88,32 @@ public class CargarDocumento{
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(10240*1024);
         factory.setRepository(sitio);
+		if (archivo !=null){
+		String fileName = archivo.getName();
+		System.out.println("archivooooo:"+fileName);
+		}
         String nombreArchivo=prefijo+idArchivo+archivo.getName().substring(archivo.getName().lastIndexOf("."),archivo.getName().length());
+		System.out.println("nombreArchivo:"+nombreArchivo);
         String ruta=path+sep+"Documentos"+sep+carpeta+sep+nombreArchivo;
+		System.out.println("ruta:"+ruta);
         archivo.write(new File(ruta));
 		return nombreArchivo;
 	}
 
+	public String cargarGenericoDocInsc(String path, FileItem archivo, String carpeta,String prefijo,long idArchivo) throws Exception{
+		File sitio=new File(path);
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setSizeThreshold(10240*1024);
+        factory.setRepository(sitio);
+		System.out.println("archivooo:"+archivo.getName().length());
+       // String nombreArchivo=prefijo+idArchivo+archivo.getName().substring(archivo.getName().lastIndexOf("."),archivo.getName().length());
+        String nombreArchivo=prefijo+idArchivo+".pdf";
+			System.out.println("nombreArchivo:"+nombreArchivo);
+        String ruta=path+sep+"Documentos"+sep+carpeta+sep+nombreArchivo;
+			System.out.println("ruta:"+ruta);
+        archivo.write(new File(ruta));
+		return nombreArchivo;
+	}
 	public String getNombreArchivo() {
 		return nombreArchivo;
 	}

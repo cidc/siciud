@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
-import cidc.adminGrupos.obj.AreasConocimiento;
 import cidc.convMovilidad.obj.InfoGeneral;
 import cidc.convMovilidad.obj.Requisitos;
 import cidc.general.db.BaseDB;
@@ -302,8 +301,7 @@ public class InscripcionConvDB extends BaseDB{
 			ps.setInt(i++,inscripcionConvOBJ.getPropHorasInv());
 			ps.setString(i++, inscripcionConvOBJ.getProyectoinv()); // proyecto segun Plan de Accion
 			ps.setString(i++, inscripcionConvOBJ.getPropDirPro()); // Director del proyecto de inv
-			ps.setLong(i++,inscripcionConvOBJ.getPropConvId());
-			ps.setInt(i++, inscripcionConvOBJ.getCodareasnies());
+			ps.setLong(i++,inscripcionConvOBJ.getPropConvId());		
 			ps.executeUpdate();
 
 		//	System.out.println("El serial va en "+cod);
@@ -927,7 +925,7 @@ public class InscripcionConvDB extends BaseDB{
 		texto.append("<b>CONSECUTIVO CIDC "+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
 		texto.append(rb1.getString("rp1")+"  <b>"+persona.getNombre()+"</b>");
 		texto.append(rb1.getString("rp2")+"");
-		texto.append(general.getConvocatoria()+"-2013.");
+		texto.append(general.getConvocatoria()+"-2012.");
 		texto.append(rb1.getString("e1"));
 		texto.append(persona.getNombre());
 /*		texto.append(rb1.getString("e2"));
@@ -935,7 +933,7 @@ public class InscripcionConvDB extends BaseDB{
 */		texto.append(rb1.getString("e3"));
 		texto.append(general.getPropuesta());
 		texto.append(rb1.getString("e4"));
-		texto.append(general.getIdPropuesta()+"-2013-CIDC <br>");
+		texto.append(general.getIdPropuesta()+"-2012-CIDC <br>");
 		//texto.append(general.getIdPropuesta()+" - "+general.getConvocatoria());
 		texto.append(rb1.getString("e5"));
 		//texto.append(rb1.getString("Documentos1"+ " "));
@@ -1107,35 +1105,6 @@ public class InscripcionConvDB extends BaseDB{
 			cerrar(cn);
 		}
 		return info;
-	}
-	
-	public List<AreasConocimiento> AjaxAreasSnies() {
-		List<AreasConocimiento> l=new ArrayList<AreasConocimiento>();
-		AreasConocimiento areaSNIES=null;
-		Connection cn=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		try {
-			cn = cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("ajaxAreasSNIES"));			
-			rs=ps.executeQuery();
-			while(rs.next()){
-				areaSNIES=new AreasConocimiento();
-				areaSNIES.setCodigo(rs.getInt(1));
-				areaSNIES.setNombre(rs.getString(2));
-				l.add(areaSNIES);
-			}
-		} catch (SQLException e) {
-			lanzaExcepcion(e);
-		}catch (Exception e) {
-			lanzaExcepcion(e);
-		}finally{
-			cerrar(rs);
-			cerrar(ps);
-			cerrar(cn);
-		}
-	//	System.out.println(l.size());
-		return l;
 	}
 
 }

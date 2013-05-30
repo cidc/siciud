@@ -54,6 +54,17 @@
 	        	<td colspan="2"><p class="texto1j"><c:out value="${sessionScope.datosConv.convNombre}"/></p></td>
 	        </tr>
 	        <tr>
+	        	<td colspan="2" class="renglones"><b>Tipo:</b></td>
+	        </tr>
+	        <tr>
+			<c:if test="${sessionScope.datosConv.convTipo==2}">
+	        	<td colspan="2"><p class="texto1j">Movilidad</p></td>
+			</c:if>
+			<c:if test="${sessionScope.datosConv.convTipo==1}">
+	        	<td colspan="2"><p class="texto1j">Proy. Inv</p></td>
+			</c:if>
+	        </tr>
+	        <tr>
 	        	<td class="renglones" width="50%"><b>Fecha Publicación:</b></td>
 	        	<td><c:out value="${sessionScope.datosConv.convFecInicio}"/></td>
 	        </tr>
@@ -92,6 +103,17 @@
 					        	</a>
 		       				</c:if>
 		    	   			</td>
+						
+                                                <c:forEach begin="0" items="${sessionScope.datosConvDoc}" var="lista2" varStatus="st"> 
+                                                        <td>
+							<a class="menu" href='<c:url value="/Documentos/Convocatorias/${lista2.convAd}"/>'>
+                                                                <img border="0" src='<c:url value="/comp/img/pdf.png"/>'> Adendo
+                                                        </a>
+							</td>
+                                                </c:forEach>
+                                                </td>
+
+
 		       			</tr>
 		       		<c:if test='${sessionScope.datosConv.convNumero==9 and sessionScope.datosConv.convAno==2011}'>
 		       		<tr>
@@ -149,7 +171,8 @@
 				     </form>
 				</td>
 			</c:if>
-			<c:if test='${sessionScope.loginUsuario.perfil!=13 and sessionScope.datosConv.inscripcion}'>
+			<%--<c:if test='${sessionScope.loginUsuario.perfil!=13 and sessionScope.datosConv.inscripcion}'>--%>
+			<c:if test='${sessionScope.loginUsuario.perfil!=13}'>
 				<td colspan="2" align="center">
 					<form action='<c:url value="/inscripcionConv/Inscripcion.x"/>'>
 				        <input type="hidden" name="accion" value="1">

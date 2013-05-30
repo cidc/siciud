@@ -137,6 +137,120 @@
 	  <servlet-name>ResolucionArchivo</servlet-name>
 	  <url-pattern>/ResolucionArchivo.x</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+          <servlet-name>AdendoArchivo</servlet-name>
+          <servlet-class>cidc.convocatorias.servlets.CargaAdendo</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>AdendoArchivo</servlet-name>
+          <url-pattern>/AdendoArchivo.x</url-pattern>
+        </servlet-mapping>
+
+	<servlet>
+          <servlet-name>RequisitosArchivo</servlet-name>
+          <servlet-class>cidc.convMovilidad.servlet.CargaRequisitos</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>RequisitosArchivo</servlet-name>
+          <url-pattern>/RequisitosArchivo.x</url-pattern>
+        </servlet-mapping>
+
+
+	<servlet>
+          <servlet-name>RequisitosArchivoProy</servlet-name>
+          <servlet-class>cidc.inscripcionConv.servlet.CargaRequisitosProy</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>RequisitosArchivoProy</servlet-name>
+          <url-pattern>/RequisitosArchivoProy.x</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+          <servlet-name>AdmRequisitosDoc</servlet-name>
+          <servlet-class>cidc.convocatorias.servlets.RequisitosDoc</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>AdmRequisitosDoc</servlet-name>
+          <url-pattern>/Administrar/AdmRequisitosDoc.x</url-pattern>
+        </servlet-mapping>
+	<servlet>
+	  <servlet-name>ListaRequisitos</servlet-name>
+	  <servlet-class>cidc.convocatorias.servlets.ListaRequisitos</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ListaRequisitos</servlet-name>
+	  <url-pattern>/convocatoria/ListaRequisitos.x</url-pattern>
+	</servlet-mapping>
+
+        <servlet>
+          <servlet-name>AdmRubros</servlet-name>
+          <servlet-class>cidc.convocatorias.servlets.Rubros</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>AdmRubros</servlet-name>
+          <url-pattern>/Administrar/AdmRubros.x</url-pattern>
+        </servlet-mapping>
+	<servlet>
+	  <servlet-name>ListaRubros</servlet-name>
+	  <servlet-class>cidc.convocatorias.servlets.ListaRubros</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ListaRubros</servlet-name>
+	  <url-pattern>/convocatoria/ListaRubros.x</url-pattern>
+	</servlet-mapping>
+
+        <servlet>
+          <servlet-name>AdmCompromisos</servlet-name>
+          <servlet-class>cidc.convocatorias.servlets.Compromisos</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>AdmCompromisos</servlet-name>
+          <url-pattern>/Administrar/AdmCompromisos.x</url-pattern>
+        </servlet-mapping>
+	<servlet>
+	  <servlet-name>ListaCompromisos</servlet-name>
+	  <servlet-class>cidc.convocatorias.servlets.ListaCompromisos</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ListaCompromisos</servlet-name>
+	  <url-pattern>/convocatoria/ListaCompromisos.x</url-pattern>
+	</servlet-mapping>
+
+        <servlet>
+          <servlet-name>AdmEjes</servlet-name>
+          <servlet-class>cidc.convocatorias.servlets.Ejes</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>AdmEjes</servlet-name>
+          <url-pattern>/Administrar/AdmEjes.x</url-pattern>
+        </servlet-mapping>
+	<servlet>
+	  <servlet-name>ListaEjes</servlet-name>
+	  <servlet-class>cidc.convocatorias.servlets.ListaEjes</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ListaEjes</servlet-name>
+	  <url-pattern>/convocatoria/ListaEjes.x</url-pattern>
+	</servlet-mapping>
+
+        <servlet>
+          <servlet-name>AdmCritAsp</servlet-name>
+          <servlet-class>cidc.convocatorias.servlets.CritAsp</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>AdmCritAsp</servlet-name>
+          <url-pattern>/Administrar/AdmCritAsp.x</url-pattern>
+        </servlet-mapping>
+	<servlet>
+	  <servlet-name>ListaCritAsp</servlet-name>
+	  <servlet-class>cidc.convocatorias.servlets.ListaCritAsp</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ListaCritAsp</servlet-name>
+	  <url-pattern>/convocatoria/ListaCritAsp.x</url-pattern>
+	</servlet-mapping>
+
 	<!-- /Convocatoria -->
 
 	<!-- Inscripción -->
@@ -228,6 +342,33 @@
 	  <servlet-name>AsignaEvaluador</servlet-name>
 	  <url-pattern>/adminAsignacion/AsignaEvaluador.x</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+	  <servlet-name>VerificaPropuestas</servlet-name>
+	  <servlet-class>cidc.adminPropuestas.servlet.VerPropuestas</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>VerificaPropuestas</servlet-name>
+	  <url-pattern>/AdminPropuestas/VerificaRequisitos.x</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	  <servlet-name>EvaluacionPropuestas</servlet-name>
+	  <servlet-class>cidc.adminPropuestas.servlet.EvaluacionPropuestas</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>EvaluacionPropuestas</servlet-name>
+	  <url-pattern>/AdminPropuestas/ComiteEvaluacion.x</url-pattern>
+	</servlet-mapping>
+
+	  <servlet>
+          <servlet-name>ResultadosEvaluacion</servlet-name>
+          <servlet-class>cidc.adminPropuestas.servlet.ResultadosEvaluacion</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>ResultadosEvaluacion</servlet-name>
+          <url-pattern>/AdminPropuestas/ResultadoEvaluacion.x</url-pattern>
+        </servlet-mapping>
 	<!-- /AdminPropuestas -->
 
 

@@ -123,7 +123,7 @@
         	<th align="center"><b>Eval-Int</b></th>
         	<th align="center"><b>Eval-Ext1</b></th>
         	<c:if test="${sessionScope.ano==2012}">
-        	<!--th align="center"><b>Eval-Ext2</b></th>-->
+        	<th align="center"><b>Eval-Ext2</b></th>
         	</c:if>
         	<th align="center"><b>Eval-Comit</b></th>
         </tr>
@@ -148,7 +148,7 @@
 				<c:if test="${lista.estadoEvalExt==5}"><img src='<c:url value="/comp/img/est4.gif"/>' onclick='ver(<c:out value="${lista.codPropuesta}"/>,2)'></c:if>
 				<c:if test="${lista.estadoEvalExt==6}"><img src='<c:url value="/comp/img/est5.gif"/>' onclick='ver(<c:out value="${lista.codPropuesta}"/>,2)'></c:if>
 			</td>
-			<!--<c:if test="${sessionScope.ano==2012}">			
+			<c:if test="${sessionScope.ano==2012}">			
 			<td class="estado" align="center">
 				<c:if test="${lista.estadoEvalExt==1}"><img src='<c:url value="/comp/img/est0.gif"/>' onclick='ver(<c:out value="${lista.codPropuesta}"/>,4)'></c:if>
 				<c:if test="${lista.estadoEvalExt==2}"><img src='<c:url value="/comp/img/est1.gif"/>' onclick='ver(<c:out value="${lista.codPropuesta}"/>,4)'></c:if>
@@ -157,7 +157,7 @@
 				<c:if test="${lista.estadoEvalExt==5}"><img src='<c:url value="/comp/img/est4.gif"/>' onclick='ver(<c:out value="${lista.codPropuesta}"/>,4)'></c:if>
 				<c:if test="${lista.estadoEvalExt==6}"><img src='<c:url value="/comp/img/est5.gif"/>' onclick='ver(<c:out value="${lista.codPropuesta}"/>,4)'></c:if>
 			</td>
-			</c:if>-->
+			</c:if>
 			<td class="estado" align="center">
 				<c:if test="${lista.estadoEvalComit==1}">
 					<img src='<c:url value="/comp/img/est0.gif"/>' onclick='ver(<c:out value="${lista.codPropuesta}"/>,3)'>

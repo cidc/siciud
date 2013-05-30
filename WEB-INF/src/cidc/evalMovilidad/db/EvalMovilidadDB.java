@@ -52,7 +52,7 @@ public class EvalMovilidadDB extends BaseDB{
 		}
 		else{
 			rol1=3;
-			rol2=5;
+			rol2=3;
 		}	
 		int i=0;
 		try {
