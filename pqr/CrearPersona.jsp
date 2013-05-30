@@ -8,6 +8,12 @@
 <c:import url="/general.jsp" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script>
+	function guardar(pqrForm){
+		//alert("hola");
+		document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
+		document.pqrForm.submit();
+		
+	}
 </script>
 <html>
 <head>
@@ -16,6 +22,7 @@
 </head>
 <body>
 <form name="pqrForm" method="post"action='<c:url value="/pqr/llenar.jsp.x"/>'>
+<input type="hidden" name="accion" value="2">
 <table align="left" class="tablas" width="90%">
 	<caption>Información del Solicitante</caption>
 				<tr>
@@ -58,8 +65,6 @@
 					<td colspan="4" align="left"><c:out value="Documento de Identidad / NIT"/>
 					</td>
 					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT" VALUE="">
-					<INPUT NAME="boton" TYPE="reset" VALUE="Limpiar"> 
-					<INPUT NAME="boton" TYPE="SUBMIT" VALUE="Buscar"> 
 					</td>
 				</tr>
 				<tr>

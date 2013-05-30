@@ -22,6 +22,7 @@ function guardar(pqrForm){
 </head>
 <body>
 <form name="pqrForm" method="post"action='<c:url value="/pqr/llenar.jsp.x"/>'>
+<input type="hidden" name="accion" value="1">
 <table align="left" class="tablas" width="90%">
 	<caption>Información del Solicitante</caption>
 				<tr>

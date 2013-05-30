@@ -34,6 +34,15 @@ public class PqrServlet extends ServletGeneral{
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		Pqr pqr = new Pqr();
 		pqr=(Pqr)sesion.getAttribute("pqr");
+		switch (accion) {
+		case 1:
+			System.out.println("caso 1");
+			break;
+		case 2:
+			System.out.println("caso 2");
+		default:
+			break;
+		}
 		return null;
 	}
 }
