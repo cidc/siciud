@@ -96,7 +96,7 @@ public class SesionUsuario extends ServletGeneral {
 				break;
 			case 3:
 				String correo="";
-				correo=req.getParameter("correo");
+				correo=req.getParameter("correo").trim();
 			if (!correo.isEmpty()) {
 				user=usuarioDB.buscarPorCorreo(correo);
 				if (user != null) {
