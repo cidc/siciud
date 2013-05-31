@@ -48,7 +48,7 @@ local.properties
 *_p.c
 *.ilk
 *.meta
-*.obj
+##*.obj
 *.pch
 *.pdb
 *.pgc
@@ -97,8 +97,8 @@ DocProject/Help/html
 publish
 
 # Others
-[Bb]in
-[Oo]bj
+#[Bb]in
+#[Oo]bj
 sql
 TestResults
 *.Cache
