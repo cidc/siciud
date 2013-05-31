@@ -29,8 +29,8 @@ function guardar(pqrForm){
 					<td colspan="4" align="left"><c:out value="Tipo de Solicitante"/>
 					</td>
 					<td><select name="tipoSol" onchange="">
-						<OPTION VALUE="ext">Externo</OPTION>
-						<OPTION VALUE="int">Interno</OPTION>
+						<OPTION VALUE="1">Externo</OPTION>
+						<OPTION VALUE="2">Interno</OPTION>
 					</select></td>
 				</tr>
 				<tr>
@@ -127,17 +127,17 @@ function guardar(pqrForm){
 					<td colspan="4" align="left"><c:out value="Tipo Requerimiento"/>
 					</td>
 					<td><select name="tipoSolicitud" onchange="">
-						<OPTION VALUE="SG">Solicitud General</OPTION> 
-						<OPTION VALUE="queja">Queja</OPTION>
-						<OPTION VALUE="reclamo">Reclamo</OPTION> 
-						<OPTION VALUE="sugerencia">Sugerencia</OPTION>
-						<OPTION VALUE="DP">Derecho de Petición</OPTION> 
-						<OPTION VALUE="SI">Solcitud de Información</OPTION>
-						<OPTION VALUE="CD">Consulta de Documentos</OPTION> 
-						<OPTION VALUE="EC">Expedición de copias</OPTION>
-						<OPTION VALUE="consulta">Consultas</OPTION> 
-						<OPTION VALUE="certificados">Certificaciones</OPTION>
-						<OPTION VALUE="otraDependenia">Solicitud de otra Dependencia</OPTION> 
+						<OPTION VALUE="11">Solicitud General</OPTION> 
+						<OPTION VALUE="1">Queja</OPTION>
+						<OPTION VALUE="2">Reclamo</OPTION> 
+						<OPTION VALUE="3">Sugerencia</OPTION>
+						<OPTION VALUE="4">Derecho de Petición</OPTION> 
+						<OPTION VALUE="5">Solcitud de Información</OPTION>
+						<OPTION VALUE="6">Consulta de Documentos</OPTION> 
+						<OPTION VALUE="7">Expedición de copias</OPTION>
+						<OPTION VALUE="8">Consultas</OPTION> 
+						<OPTION VALUE="9">Certificaciones</OPTION>
+						<OPTION VALUE="10">Solicitud de otra Dependencia</OPTION> 
 					</select></td>
 				</tr>
 				<tr>
