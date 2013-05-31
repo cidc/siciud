@@ -229,6 +229,7 @@ public class UsuarioDB extends BaseDB{
 			cn=cursor.getConnection(Parametros.userVisitante);
 			pst=cn.prepareStatement(rb.getString("buscarCorreo"));
 			pst.setString(i++, correo);
+			pst.setString(i++, correo);
 			rs=pst.executeQuery();
 			if(rs.next()){
 				int j=1;
