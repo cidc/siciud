@@ -7,6 +7,7 @@ import org.dom4j.DocumentException;
 
 import cidc.general.ws_coneccion_Bizagi.ConeccionDB_WS;
 import cidc.pqr.ws_Bizagi_obj.CasoDatos;
+import cidc.pqr.ws_Bizagi_obj.PersonaDatos;
 import cidc.pqr.xmlRespPersona.XmlRespCaso;
 
 
@@ -36,7 +37,7 @@ public List<CasoDatos> consulta(CasoDatos datos)  {
 }
 
 
-public CasoDatos  CrearCaso (CasoDatos DatosForm){
+public CasoDatos  CrearCaso (CasoDatos DatosForm, PersonaDatos persona){
 	
 	super.setConnectionWF();
 	String xmlCrearCaso= "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">"
@@ -49,15 +50,9 @@ public CasoDatos  CrearCaso (CasoDatos DatosForm){
 	        		"<TipodeRequerimiento businessKey=\"id="+DatosForm.getTipoDeRequerimiento()+"\"/>"+
 	        		"<Asunto>"+DatosForm.getAsunto()+"</Asunto>" +
 	        		"<Descripcion>"+DatosForm.getDescripcion()+"</Descripcion>"+
-	        		//"<FlagsdelCaso businessKey=\"Name='Escalado'\">"+
-	        		//"<FlagsdelCaso>"+DatosForm.getEscaladoOtraDependencia()+"</FlagsdelCaso>" +
-	        	//	"<FlagsdelCaso>"+DatosForm.getRecibirNotificacionesCorreo()+"</FlagsdelCaso>" +
+	        			"<FlagsdelCaso><EscaladodeOtraDependencia>"+DatosForm.getEscaladoOtraDependencia()+"</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+DatosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
 	        				"</SolicituddeAccionesCiuda>" +
-	        		//"<TipodeSolicitante businessKey=\"Codigo='EXT'\"/>"+
-	        	
-	        	//	 "<MediodeRecepcion businessKey=\"Codigo='TEL'\"/>"+
-	        	//"<TipodeSolicitante businessKey=\"id=2\"/>" +
-	        	//	"<Asunto>casoo</Asunto></SolicituddeAccionesCiuda>" +
+
 	        		"</Entities></Case></Cases></BizAgiWSParam>]]></arg0>"
 	        +"</soa:createCasesAsString>"
 	+"</soapenv:Body>"

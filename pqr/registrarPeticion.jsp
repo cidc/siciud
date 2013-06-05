@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-<script>
-</script>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <c:import url="/general.jsp" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script>
@@ -14,17 +11,23 @@ function guardar(pqrForm){
 	document.pqrForm.submit();
 	
 }
+
+function buscarPersona(){
+	document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
+	document.pqrForm.accion.value=3;
+	document.pqrForm.submit();
+}
 </script>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>AtenciÃ³n al Ciudadano</title> 
+<title>Atención al Ciudadano</title> 
 </head>
-<body>
+<body onLoad="mensajeAlert(document.getElementById('msg'));">
 <form name="pqrForm" method="post"action='<c:url value="/pqr/llenar.jsp.x"/>'>
 <input type="hidden" name="accion" value="1">
 <table align="left" class="tablas" width="90%">
-	<caption>InformaciÃ³n del Solicitante</caption>
+	<caption>Información del Solicitante</caption>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Tipo de Solicitante"/>
 					</td>
@@ -33,29 +36,29 @@ function guardar(pqrForm){
 						<OPTION VALUE="2">Interno</OPTION>
 					</select></td>
 				</tr>
-				<tr>
+				<!--<tr>
 					<td colspan="4" align="left"><c:out value="Persona"/>
 					</td>
 					<td><textarea class="area2" class="area2" style="width: 100%;"
 							name="persona" id='persona'></textarea>
 					</td>
-				</tr>
+				</tr>-->
 				<tr>
 					<td colspan="4" align="left"><c:out value="Titulo"/>
 					</td>
 					<td><select name="titulo" onchange="">
 						<OPTION VALUE="sr">Sr.</OPTION>
 						<OPTION VALUE="sra">Sra.</OPTION>
-						<OPTION VALUE="senores">SeÃ±ores</OPTION>
+						<OPTION VALUE="senores">Señores</OPTION>
 						<OPTION VALUE="dr">Dr.</OPTION> 
 						<OPTION VALUE="ing">Ing.</OPTION>
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Nombre / RazÃ³n Social"/>
+					<td colspan="4" align="left"><c:out value="Nombre / Razón Social"/>
 					</td>
 					<td><textarea class="area2" class="area2" style="width: 100%;"
-							name="nombre" id='nombre'></textarea>
+							name="nombre" id='nombre'><c:out value='${sessionScope.personaDatos.nombreRazonSocial}'/></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -63,78 +66,77 @@ function guardar(pqrForm){
 					</td>
 					<td><select name="tipoPersona" onchange="">
 						<OPTION VALUE="natural">Natural</OPTION> 
-						<OPTION VALUE="juridica">JurÃ­dica</OPTION>
+						<OPTION VALUE="juridica">Jurídica</OPTION>
 					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Tipo de Documento"/>
 					</td>
 					<td><select name="tipoDoc" onchange="">
-						<OPTION VALUE="CC">CÃ©dula de CiudadanÃ­a</OPTION> 
+						<OPTION VALUE="CC">Cédula de Ciudadanía</OPTION> 
 						<OPTION VALUE="TI">Tarjeta de Identidad</OPTION>
-						<OPTION VALUE="CE">CÃ©dula de ExtranjerÃ­a</OPTION> 
+						<OPTION VALUE="CE">Cédula de Extranjería</OPTION> 
 						<OPTION VALUE="pasaporte">Pasaporte</OPTION>
 					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Documento de Identidad / NIT"/>
 					</td>
-					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT" VALUE="">
-					<INPUT NAME="boton" TYPE="reset" VALUE="Limpiar"> 
-					<INPUT NAME="boton" TYPE="SUBMIT" VALUE="Buscar"> 
+					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT" VALUE='<c:out value="${sessionScope.personaDatos.documentoIdNit}"/>'>
+					<input type=image src="/siciud/comp/img/Buscar.gif" onclick="buscarPersona()" align="top"> 
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Correo ElectrÃ³nico"/>
+					<td colspan="4" align="left"><c:out value="Correo Electrónico"/>
 					</td>
-					<td  align="left"><INPUT NAME="correo" MAXLENGTH="25" TYPE="TEXT" VALUE="">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="DirecciÃ³n"/>
-					</td>
-					<td  align="left"><INPUT NAME="direccion" MAXLENGTH="25" TYPE="TEXT" VALUE="">
+					<td  align="left"><INPUT NAME="correo" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.correoElectronico}"/>">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="TelÃ©fono MÃ³vil"/>
+					<td colspan="4" align="left"><c:out value="Dirección"/>
 					</td>
-					<td  align="left"><INPUT NAME="celular" MAXLENGTH="25" TYPE="TEXT" VALUE="">
+					<td  align="left"><INPUT NAME="direccion" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.direccion}"/>">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><c:out value="Teléfono Móvil"/>
+					</td>
+					<td  align="left"><INPUT NAME="celular" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.telefonoMovil}"/>">
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Ciudad"/>
 					</td>
-					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" VALUE="">
+					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.ciudad}"/>">
 					</td>
 				</tr>
 </table>
 <br>
 <table class="tablas" width="90%">
-	<caption>InformaciÃ³n de la Solicitud</caption>
+	<caption>Información de la Solicitud</caption>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Medio de RecepciÃ³n"/>
+					<td colspan="4" align="left"><c:out value="Medio de Recepción"/>
 					</td>
 					<td>
-						<input type="radio" name=myradio value="1">TÃ©lefono
-						<input type="radio" name=myradio value="2">Carta
-						<input type="radio" name=myradio value="3">Correo ElectrÃ³nico
-						<input type="radio" name=myradio value="4">WEB
-						<input type="radio" name=myradio value="5">Verbal
+						<input type="radio" name=recepcion value="1">Télefono
+						<input type="radio" name=recepcion value="2">Carta
+						<input type="radio" name=recepcion value="3">Correo Electrónico
+						<input type="radio" name=recepcion value="4">WEB
+						<input type="radio" name=recepcion value="5">Verbal
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Tipo Requerimiento"/>
+					<td colspan="4" align="left"><c:out value="Tipo Solicitud"/>
 					</td>
 					<td><select name="tipoSolicitud" onchange="">
 						<OPTION VALUE="11">Solicitud General</OPTION> 
 						<OPTION VALUE="1">Queja</OPTION>
 						<OPTION VALUE="2">Reclamo</OPTION> 
 						<OPTION VALUE="3">Sugerencia</OPTION>
-						<OPTION VALUE="4">Derecho de PeticiÃ³n</OPTION> 
-						<OPTION VALUE="5">Solcitud de InformaciÃ³n</OPTION>
+						<OPTION VALUE="4">Derecho de Petición</OPTION> 
+						<OPTION VALUE="5">Solcitud de Información</OPTION>
 						<OPTION VALUE="6">Consulta de Documentos</OPTION> 
-						<OPTION VALUE="7">ExpediciÃ³n de copias</OPTION>
+						<OPTION VALUE="7">Expedición de copias</OPTION>
 						<OPTION VALUE="8">Consultas</OPTION> 
 						<OPTION VALUE="9">Certificaciones</OPTION>
 						<OPTION VALUE="10">Solicitud de otra Dependencia</OPTION> 
@@ -147,7 +149,7 @@ function guardar(pqrForm){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="DescripciÃ³n"/>
+					<td colspan="4" align="left"><c:out value="Descripción"/>
 					</td>
 					<td><textarea class="area2" class="area2" style="width: 100%;"
 							name="descripcion" id='descripcion'></textarea>
@@ -157,8 +159,8 @@ function guardar(pqrForm){
 					<td colspan="4" align="left"><c:out value="Escalado de otra De pendencia: "/>
 					</td>
 					<td>
-						<input type="radio" name=myradio value="1">Si
-						<input type="radio" name=myradio value="2">No
+						<input type="radio" name=escalado value="1">Si
+						<input type="radio" name=escalado value="2">No
 					</td>
 				</tr>
 				<tr>
@@ -171,33 +173,33 @@ function guardar(pqrForm){
 					<td colspan="4" align="left"><c:out value="Enviar Respuesta Por: "/>
 					</td>
 					<td>
-						<input type="radio" name=myradio value="1">TÃ©lefono
-						<input type="radio" name=myradio value="2">Carta
-						<input type="radio" name=myradio value="3">Correo ElectrÃ³nico
+						<input type="radio" name=medioRespuesta value="1">Télefono
+						<input type="radio" name=medioRespuesta value="2">Carta
+						<input type="radio" name=medioRespuesta value="3">Correo Electrónico
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="SoluciÃ³n Inmediata: "/>
+					<td colspan="4" align="left"><c:out value="Solución Inmediata: "/>
 					</td>
 					<td>
-						<input type="radio" name=myradio value="1">Si
-						<input type="radio" name=myradio value="2">No
+						<input type="radio" name=solucionImnediata value="1">Si
+						<input type="radio" name=solucionImnediata value="2">No
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Â¿Recibir notificaciones por correo electrÃ³nico?: "/>
+					<td colspan="4" align="left"><c:out value="¿Recibir notificaciones por correo electrónico?: "/>
 					</td>
 					<td>
-						<input type="radio" name=myradio value="1">Si
-						<input type="radio" name=myradio value="2">No
+						<input type="radio" name=notificacionCorreo value="1">Si
+						<input type="radio" name=notificacionCorreo value="2">No
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Si no, Se notificarÃ¡ al final del caso"/>
+					<td colspan="4" align="left"><c:out value="Si no, Se notificará al final del caso"/>
 					</td>
 					<td>
-						<input type="radio" name=myradio value="1">Si
-						<input type="radio" name=myradio value="2">No
+						<input type="radio" name=notFinCaso value="1">Si
+						<input type="radio" name=notFinCaso value="2">No
 					</td>
 				</tr>	
 				<tr>

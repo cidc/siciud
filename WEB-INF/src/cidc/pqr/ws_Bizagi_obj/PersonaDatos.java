@@ -8,11 +8,18 @@ public class PersonaDatos {
 	private String tipoDocumento;
 	private String documentoIdNit;
 	private String correoElectronico;
-	private String Direccion;
-	private String Ciudad;
+	private String direccion;
+	private String ciudad;
 	private String telefonoMovil;
+	private String personaID;
 	
 	
+	public String getPersonaID() {
+		return personaID;
+	}
+	public void setPersonaID(String personaID) {
+		this.personaID = personaID;
+	}
 	public String getTelefonoMovil() {
 		return telefonoMovil;
 	}
@@ -57,16 +64,16 @@ public class PersonaDatos {
 		this.correoElectronico = correoElectronico;
 	}
 	public String getDireccion() {
-		return Direccion;
+		return direccion;
 	}
 	public void setDireccion(String direccion) {
-		Direccion = direccion;
+		this.direccion = direccion;
 	}
 	public String getCiudad() {
-		return Ciudad;
+		return ciudad;
 	}
 	public void setCiudad(String ciudad) {
-		Ciudad = ciudad;
+		this.ciudad = ciudad;
 	}
 
 	
