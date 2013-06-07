@@ -51,7 +51,8 @@ public PersonaDatos ConsultarDatosPersona(String DocumentoID_NIT) throws Documen
 	SAXReader reader = new SAXReader();  
     Document doc = reader.read(new StringReader(DocumentoID_NIT)); 
     System.out.println(doc.asXML()+" fin");	   
-      
+ 
+    
     Namespace namespace1 = new Namespace("ns2","http://SOA.BizAgi/");
     
     /*******************ATRIBUTOS************************/
@@ -65,6 +66,7 @@ public PersonaDatos ConsultarDatosPersona(String DocumentoID_NIT) throws Documen
   	Iterator iAtributosPer = listaAtrPer.iterator();
 	while (iAtributosPer.hasNext()){
 		Attribute a =(Attribute)iAtributosPer.next(); 
+		persona.setPersonaID(a.getValue());
 	} 
 	
 	

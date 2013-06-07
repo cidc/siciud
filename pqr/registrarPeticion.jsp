@@ -20,11 +20,10 @@ function buscarPersona(){
 </script>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Atención al Ciudadano</title> 
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<form name="pqrForm" method="post"action='<c:url value="/pqr/llenar.jsp.x"/>'>
+<form name="pqrForm"  method="post" action='<c:url value="/pqr/llenar.jsp.x"/>' >
 <input type="hidden" name="accion" value="1">
 <table align="left" class="tablas" width="90%">
 	<caption>Información del Solicitante</caption>
@@ -47,11 +46,11 @@ function buscarPersona(){
 					<td colspan="4" align="left"><c:out value="Titulo"/>
 					</td>
 					<td><select name="titulo" onchange="">
-						<OPTION VALUE="sr">Sr.</OPTION>
-						<OPTION VALUE="sra">Sra.</OPTION>
-						<OPTION VALUE="senores">Señores</OPTION>
-						<OPTION VALUE="dr">Dr.</OPTION> 
-						<OPTION VALUE="ing">Ing.</OPTION>
+						<OPTION VALUE="1">Sr.</OPTION>
+						<OPTION VALUE="2">Sra.</OPTION>
+						<OPTION VALUE="3">Señores</OPTION>
+						<OPTION VALUE="4">Dr.</OPTION> 
+						<OPTION VALUE="5">Ing.</OPTION>
 					</select></td>
 				</tr>
 				<tr>
@@ -65,18 +64,18 @@ function buscarPersona(){
 					<td colspan="4" align="left"><c:out value="Tipo de Persona"/>
 					</td>
 					<td><select name="tipoPersona" onchange="">
-						<OPTION VALUE="natural">Natural</OPTION> 
-						<OPTION VALUE="juridica">Jurídica</OPTION>
+						<OPTION VALUE="51">Natural</OPTION> 
+						<OPTION VALUE="52">Jurídica</OPTION>
 					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Tipo de Documento"/>
 					</td>
 					<td><select name="tipoDoc" onchange="">
-						<OPTION VALUE="CC">Cédula de Ciudadanía</OPTION> 
-						<OPTION VALUE="TI">Tarjeta de Identidad</OPTION>
-						<OPTION VALUE="CE">Cédula de Extranjería</OPTION> 
-						<OPTION VALUE="pasaporte">Pasaporte</OPTION>
+						<OPTION VALUE="1">Cédula de Ciudadanía</OPTION> 
+						<OPTION VALUE="2">Tarjeta de Identidad</OPTION>
+						<OPTION VALUE="3">Cédula de Extranjería</OPTION> 
+						<OPTION VALUE="4">Pasaporte</OPTION>
 					</select></td>
 				</tr>
 				<tr>
@@ -89,7 +88,7 @@ function buscarPersona(){
 				<tr>
 					<td colspan="4" align="left"><c:out value="Correo Electrónico"/>
 					</td>
-					<td  align="left"><INPUT NAME="correo" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.correoElectronico}"/>">
+					<td  align="left"><INPUT NAME="correo" MAXLENGTH="50" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.correoElectronico}"/>">
 					</td>
 				</tr>
 				<tr>
@@ -126,7 +125,7 @@ function buscarPersona(){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Tipo Solicitud"/>
+					<td colspan="4" align="left"><c:out value="Tipo Requerimiento"/>
 					</td>
 					<td><select name="tipoSolicitud" onchange="">
 						<OPTION VALUE="11">Solicitud General</OPTION> 
@@ -156,50 +155,18 @@ function buscarPersona(){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Escalado de otra De pendencia: "/>
-					</td>
-					<td>
-						<input type="radio" name=escalado value="1">Si
-						<input type="radio" name=escalado value="2">No
-					</td>
-				</tr>
-				<tr>
 					<td colspan="4" align="left"><c:out value="Archivo del caso"/>
 					</td>
-					<td><input type="file" name="datasize" size="30">
+					<td><input type="file" name="archivoAdjunto" size="30">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Enviar Respuesta Por: "/>
-					</td>
-					<td>
-						<input type="radio" name=medioRespuesta value="1">Télefono
-						<input type="radio" name=medioRespuesta value="2">Carta
-						<input type="radio" name=medioRespuesta value="3">Correo Electrónico
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Solución Inmediata: "/>
-					</td>
-					<td>
-						<input type="radio" name=solucionImnediata value="1">Si
-						<input type="radio" name=solucionImnediata value="2">No
-					</td>
-				</tr>
+
 				<tr>
 					<td colspan="4" align="left"><c:out value="¿Recibir notificaciones por correo electrónico?: "/>
 					</td>
 					<td>
-						<input type="radio" name=notificacionCorreo value="1">Si
-						<input type="radio" name=notificacionCorreo value="2">No
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Si no, Se notificará al final del caso"/>
-					</td>
-					<td>
-						<input type="radio" name=notFinCaso value="1">Si
-						<input type="radio" name=notFinCaso value="2">No
+						<input type="radio" name=notificacionCorreo value="true">Si
+						<input type="radio" name=notificacionCorreo value="false">No
 					</td>
 				</tr>	
 				<tr>

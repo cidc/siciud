@@ -1,5 +1,7 @@
 package cidc.pqr.ws_Bizagi_obj;
 
+import java.io.File;
+
 public class CasoDatos {
 	
 
@@ -17,7 +19,7 @@ public class CasoDatos {
 	private String asunto;
 	private String descripcion;
 	private String escaladoOtraDependencia;
-	private String archivoCaso;//pueden ser varios
+	private File archivoCaso;
 	private String fechaOriginalSolicitud;
 	private String recibirNotificacionesCorreo;
 	private String tipodeSolicitante;
@@ -92,12 +94,7 @@ public class CasoDatos {
 	public void setEscaladoOtraDependencia(String escaladoOtraDependencia) {
 		this.escaladoOtraDependencia = escaladoOtraDependencia;
 	}
-	public String getArchivoCaso() {
-		return archivoCaso;
-	}
-	public void setArchivoCaso(String archivoCaso) {
-		this.archivoCaso = archivoCaso;
-	}
+	
 	public String getFechaOriginalSolicitud() {
 		return fechaOriginalSolicitud;
 	}
@@ -170,6 +167,12 @@ public class CasoDatos {
 	public void setDependencia(String dependencia) {
 		Dependencia = dependencia;
 	}
+	public File getArchivoCaso() {
+		return archivoCaso;
+	}
+	public void setArchivoCaso(File archivoCaso) {
+		this.archivoCaso = archivoCaso;
+	}
 
-
+	
 }

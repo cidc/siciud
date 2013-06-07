@@ -90,7 +90,7 @@ public String  CrearPersona (PersonaDatos persona){
 	                //+"<PERSONA>"
 	                +"<PERSONA businessKey=\"DocumentodeIdentidadNIT='"+persona.getDocumentoIdNit()+"'\">"
 	                 +"<Direccion>"+persona.getDireccion()+"</Direccion>"
-	                  // + "<DocumentodeIdentidadNIT>"+persona.getDocumentoIdNit()+"</DocumentodeIdentidadNIT>"
+	                 + "<DocumentodeIdentidadNIT>"+persona.getDocumentoIdNit()+"</DocumentodeIdentidadNIT>"
 	                 + "<TelefonoMovil>"+persona.getTelefonoMovil()+"</TelefonoMovil>"
 	                 +  "<NombreRazonSocial>"+persona.getNombreRazonSocial()+"</NombreRazonSocial>"
 	                 +  "<Ciudad businessKey=\"id="+persona.getCiudad()+"\"/>"

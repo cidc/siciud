@@ -1,5 +1,7 @@
 package cidc.pqr.ws_Bizagi_obj;
 
+import java.io.File;
+
 public class Pqr {
 	
 	public Pqr(){
@@ -21,12 +23,27 @@ public class Pqr {
 	private String tipoSolicitud;
 	private String asunto;
 	private String descripcion;
-	private int escalado;
+	private String escalado;
 	private int medioRespuesta;
 	private int solucionImnediata;
-	private int notificacionCorreo; 
-	private int notFinCaso;
+	private String notificacionCorreo; 
+	private String notFinCaso;
+	private File archivoAdjunto;
+	private String idCaso;
 	
+	
+	public String getIdCaso() {
+		return idCaso;
+	}
+	public void setIdCaso(String idCaso) {
+		this.idCaso = idCaso;
+	}
+	public File getArchivoAdjunto() {
+		return archivoAdjunto;
+	}
+	public void setArchivoAdjunto(File archivoAdjunto) {
+		this.archivoAdjunto = archivoAdjunto;
+	}
 	
 	public String getTipoSol() {
 		return tipoSol;
@@ -118,10 +135,10 @@ public class Pqr {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public int getEscalado() {
+	public String getEscalado() {
 		return escalado;
 	}
-	public void setEscalado(int escalado) {
+	public void setEscalado(String escalado) {
 		this.escalado = escalado;
 	}
 	public int getMedioRespuesta() {
@@ -136,16 +153,16 @@ public class Pqr {
 	public void setSolucionImnediata(int solucionImnediata) {
 		this.solucionImnediata = solucionImnediata;
 	}
-	public int getNotificacionCorreo() {
+	public String getNotificacionCorreo() {
 		return notificacionCorreo;
 	}
-	public void setNotificacionCorreo(int notificacionCorreo) {
+	public void setNotificacionCorreo(String notificacionCorreo) {
 		this.notificacionCorreo = notificacionCorreo;
 	}
-	public int getNotFinCaso() {
+	public String getNotFinCaso() {
 		return notFinCaso;
 	}
-	public void setNotFinCaso(int notFinCaso) {
+	public void setNotFinCaso(String notFinCaso) {
 		this.notFinCaso = notFinCaso;
 	}
 	
