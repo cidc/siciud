@@ -35,8 +35,11 @@ public class PqrServlet extends ServletGeneral{
 		String irA="";
 		System.out.println("kjbdlkjbv");
 		int accion=0;
+		int dato=0;
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
+		if(req.getParameter("dato")!=null)
+			dato=Integer.parseInt(req.getParameter("dato"));
 		HttpSession sesion=req.getSession();
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		Pqr pqr = new Pqr();
@@ -45,6 +48,7 @@ public class PqrServlet extends ServletGeneral{
 		PersonaDatos personaDatos =new PersonaDatos();
 		CasoDB_WS casoDB_WS = new CasoDB_WS();
        	CasoDatos casodatos = new CasoDatos();
+       	mensaje="";
        	//codigo temporal
 //       	sesion.removeAttribute("titulo");
 //       	sesion.removeAttribute("tipoPersona");
@@ -75,7 +79,7 @@ public class PqrServlet extends ServletGeneral{
 //         	System.out.println(pqr.getArchivoAdjunto().getPath());
 //         	System.out.println(pqr.getArchivoAdjunto().getCanonicalPath());
 //         	System.out.println(pqr.getArchivoAdjunto().getCanonicalFile());
-        	casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
+//        	casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
         	System.out.println(""+casodatos.getCasoId());
         	irA="/pqr/registrarPeticion.jsp";
         	if(casodatos.getCasoId()==null)
@@ -107,16 +111,13 @@ public class PqrServlet extends ServletGeneral{
 			System.out.println();
 			if(personaDatos.getPersonaID()==null)
 				mensaje="Esta persona no existe";
-			else
-				mensaje="";
 			irA="/pqr/registrarPeticion.jsp";
 			break;
-		case 4: //
+		case 4: //consultar caso
 			casodatos.setCasoId(pqr.getIdCaso());
 			//casodatos= casoDB_WS.consulta(casodatos);
 			sesion.setAttribute("respuestaConsul", casodatos);
 			irA="/pqr/consultarPeticion.jsp";
-			mensaje="";
 			break;
 		default:
 			break;

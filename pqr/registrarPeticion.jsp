@@ -17,6 +17,82 @@ function buscarPersona(){
 	document.pqrForm.accion.value=3;
 	document.pqrForm.submit();
 }
+	
+function cambiar(obj){
+	if(obj.options[obj.selectedIndex].value==1){	
+		//externo
+			document.pqrForm.tipoExterno.style.display='block';
+			document.pqrForm.tipoInterno.style.display='none';
+			//document.pqrForm.ltipoInterno.style.display='none';
+			document.getElementById("ltipoInterno").style.visibility="hidden";
+			document.getElementById("ltipoExterno").style.visibility="visible";
+			//document.pqrForm.tipoDoc.style.display='none';
+			//document.getElementById("ltipoDoc").style.visibility="hidden";
+			document.pqrForm.proyInv.style.display='none';
+			document.getElementById("lproyInv").style.visibility="hidden";
+			document.pqrForm.codigo.style.display='none';
+			document.getElementById("lcodigo").style.visibility="hidden";
+			document.pqrForm.facultad.style.display='none';
+			document.getElementById("lfacultad").style.visibility="hidden";
+			if(document.pqrForm.tipoExterno.value==2){
+				document.pqrForm.representante.style.display='block';
+				document.getElementById("lrepresentante").style.visibility="visible";
+				document.pqrForm.contacto.style.display='block';
+				document.getElementById("lcontacto").style.visibility="visible";
+			}else{
+				document.pqrForm.representante.style.display='none';
+				document.getElementById("lrepresentante").style.visibility="hidden";
+				document.pqrForm.contacto.style.display='none';
+				document.getElementById("lcontacto").style.visibility="hidden";
+			}
+		}
+		else {
+			//interno
+			document.pqrForm.tipoInterno.style.display='block';
+			document.pqrForm.tipoExterno.style.display='none';
+			//document.pqrForm.ltipoExterno.style.display='none';
+			document.getElementById("ltipoExterno").style.visibility="hidden";
+			document.getElementById("ltipoInterno").style.visibility="visible";
+			document.pqrForm.tipoDoc.style.display='block';
+			document.getElementById("ltipoDoc").style.visibility="visible";
+			document.pqrForm.proyInv.style.display='block';
+			document.getElementById("lproyInv").style.visibility="visible";
+			document.pqrForm.codigo.style.display='block';
+			document.getElementById("lcodigo").style.visibility="visible";
+			document.pqrForm.facultad.style.display='block';
+			document.getElementById("lfacultad").style.visibility="visible";
+			document.pqrForm.representante.style.display='none';
+			document.getElementById("lrepresentante").style.visibility="hidden";
+			document.pqrForm.contacto.style.display='none';
+			document.getElementById("lcontacto").style.visibility="hidden";
+			document.pqrForm.titulo.style.display='block';
+			document.getElementById("ltitulo").style.visibility="visible";
+		}	
+	
+}
+
+function externo(){
+	if(document.pqrForm.tipoExterno.value==1){
+		document.pqrForm.titulo.style.display='block';
+		document.getElementById("ltitulo").style.visibility="visible";
+		document.pqrForm.tipoDoc.style.display='block';
+		document.getElementById("ltipoDoc").style.visibility="visible";
+		document.pqrForm.representante.style.display='none';
+		document.getElementById("lrepresentante").style.visibility="hidden";
+		document.pqrForm.contacto.style.display='none';
+		document.getElementById("lcontacto").style.visibility="hidden";
+		
+	}else{
+		document.pqrForm.titulo.style.display='none';
+		document.getElementById("ltitulo").style.visibility="hidden";
+		document.pqrForm.tipoDoc.style.display='none';
+		document.getElementById("ltipoDoc").style.visibility="hidden";
+		document.pqrForm.representante.style.display='block';
+		document.getElementById("lrepresentante").style.visibility="visible";
+		document.pqrForm.contacto.style.display='block';
+		document.getElementById("lcontacto").style.visibility="visible";
+	}
+}
 </script>
 <html>
 <head>
@@ -25,25 +101,52 @@ function buscarPersona(){
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 <form name="pqrForm"  method="post" action='<c:url value="/pqr/llenar.jsp.x"/>' >
 <input type="hidden" name="accion" value="1">
+
 <table align="left" class="tablas" width="90%">
 	<caption>Información del Solicitante</caption>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Tipo de Solicitante"/>
+					<td colspan="4" align="left"><label for="ltipoSol">Tipo de Solicitud</label>
 					</td>
-					<td><select name="tipoSol" onchange="">
-						<OPTION VALUE="1">Externo</OPTION>
+					<td><select name="tipoSol" onchange="cambiar(this)">
+						<OPTION VALUE="0">-------</OPTION>
 						<OPTION VALUE="2">Interno</OPTION>
+						<OPTION VALUE="1">Externo</OPTION>
 					</select></td>
 				</tr>
-				<!--<tr>
-					<td colspan="4" align="left"><c:out value="Persona"/>
-					</td>
-					<td><textarea class="area2" class="area2" style="width: 100%;"
-							name="persona" id='persona'></textarea>
-					</td>
-				</tr>-->
 				<tr>
-					<td colspan="4" align="left"><c:out value="Titulo"/>
+					<td colspan="4" align="left"><label for="tipoInterno" id="ltipoInterno">Solicitante Interno</label>
+					</td>
+					<td><select name="tipoInterno" onchange="" >
+						<OPTION VALUE="1">Docente</OPTION>
+						<OPTION VALUE="2">Estudiante</OPTION>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="tipoExterno" id="ltipoExterno">Solicitante Externo</label>
+					</td>
+					<td><select name="tipoExterno" onchange="externo()">
+						<OPTION VALUE="1">Persona Natural</OPTION>
+						<OPTION VALUE="2">Persona Jurídica</OPTION>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="documento" id="ldocumentoIdent">Documento de Identidad / NIT *</label></td>
+					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT" VALUE='<c:out value="${sessionScope.personaDatos.documentoIdNit}"/>'>
+					<input type=image src="/siciud/comp/img/Buscar.gif" onclick="buscarPersona()" align="top"> 
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="tipoDoc" id="ltipoDoc">Tipo de Documento*</label>
+					</td>
+					<td><select name="tipoDoc" onchange="">
+						<OPTION VALUE="1">Cédula de Ciudadanía</OPTION> 
+						<OPTION VALUE="2">Tarjeta de Identidad</OPTION>
+						<OPTION VALUE="3">Cédula de Extranjería</OPTION> 
+						<OPTION VALUE="4">Pasaporte</OPTION>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="titulo" id="ltitulo">Titulo*</label>
 					</td>
 					<td><select name="titulo" onchange="">
 						<OPTION VALUE="1">Sr.</OPTION>
@@ -54,35 +157,41 @@ function buscarPersona(){
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Nombre / Razón Social"/>
-					</td>
+					<td colspan="4" align="left"><c:out value="Nombre / Razón Social"/></td>
 					<td><textarea class="area2" class="area2" style="width: 100%;"
 							name="nombre" id='nombre'><c:out value='${sessionScope.personaDatos.nombreRazonSocial}'/></textarea>
 					</td>
 				</tr>
 				<tr>
+					<td colspan="4" align="left"><label for="representante" id="lrepresentante">Representante Legal</label>
+					<td><input class="area2" class="area2" style="width: 100%;"
+							name="representante" id='representante'><c:out value=''/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="contacto" id="lcontacto" >Persona de Contacto</label>
+					<td><input class="area2" class="area2" style="width: 100%;"
+							name="contacto" id='contacto'><c:out value=''/>
+					</td>
+				</tr>
+				<!--  <tr>
 					<td colspan="4" align="left"><c:out value="Tipo de Persona"/>
 					</td>
 					<td><select name="tipoPersona" onchange="">
 						<OPTION VALUE="51">Natural</OPTION> 
 						<OPTION VALUE="52">Jurídica</OPTION>
 					</select></td>
+				</tr>-->
+				<tr>
+					<td colspan="4" align="left"><c:out value="Dirección de correspondencia"/>
+					</td>
+					<td  align="left"><INPUT NAME="direccion" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.direccion}"/>">
+					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><c:out value="Tipo de Documento"/>
+					<td colspan="4" align="left"><c:out value="Teléfono(s)"/>
 					</td>
-					<td><select name="tipoDoc" onchange="">
-						<OPTION VALUE="1">Cédula de Ciudadanía</OPTION> 
-						<OPTION VALUE="2">Tarjeta de Identidad</OPTION>
-						<OPTION VALUE="3">Cédula de Extranjería</OPTION> 
-						<OPTION VALUE="4">Pasaporte</OPTION>
-					</select></td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Documento de Identidad / NIT"/>
-					</td>
-					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT" VALUE='<c:out value="${sessionScope.personaDatos.documentoIdNit}"/>'>
-					<input type=image src="/siciud/comp/img/Buscar.gif" onclick="buscarPersona()" align="top"> 
+					<td  align="left"><INPUT NAME="celular" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.telefonoMovil}"/>">
 					</td>
 				</tr>
 				<tr>
@@ -91,22 +200,28 @@ function buscarPersona(){
 					<td  align="left"><INPUT NAME="correo" MAXLENGTH="50" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.correoElectronico}"/>">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Dirección"/>
-					</td>
-					<td  align="left"><INPUT NAME="direccion" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.direccion}"/>">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Teléfono Móvil"/>
-					</td>
-					<td  align="left"><INPUT NAME="celular" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.telefonoMovil}"/>">
-					</td>
-				</tr>
-				<tr>
+				<!--  <tr>
 					<td colspan="4" align="left"><c:out value="Ciudad"/>
 					</td>
 					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.ciudad}"/>">
+					</td>
+				</tr>-->
+				<tr>
+					<td colspan="4" align="left"><label for="proyInv" id="lproyInv">Proyecto de Investigación</label>
+					</td>
+					<td  align="left"><INPUT NAME="proyInv" MAXLENGTH="250" TYPE="TEXT" VALUE="">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="codigo" id="lcodigo">Código</label>
+					</td>
+					<td  align="left"><INPUT NAME="codigo" MAXLENGTH="25" TYPE="TEXT" VALUE="">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="facultad" id="lfacultad">Facultad</label>
+					</td>
+					<td  align="left"><INPUT NAME="facultad" MAXLENGTH="25" TYPE="TEXT" VALUE="">
 					</td>
 				</tr>
 </table>
