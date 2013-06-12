@@ -102,15 +102,20 @@ public class PqrServlet extends ServletGeneral{
 			String respuesta=personaDB_WS.CrearPersona(personaDatos);
 			if(respuesta==null)
 				mensaje="Se ha producido un error en la creación";
-			else
+			else{
 				mensaje="la creacion de la persona ha sido exitosa";
+				req.setAttribute("crearCaso", "display:none");
+			}
 			 break;
 		case 3: //buscar persona
-			personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
+			//personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
 			sesion.setAttribute("personaDatos", personaDatos);
 			System.out.println();
-			if(personaDatos.getPersonaID()==null)
+			if(personaDatos.getPersonaID()==null){
 				mensaje="Esta persona no existe";
+				sesion.setAttribute("tipoSolicitante", "display:block"); 
+			}else
+				req.setAttribute("crearCaso", "display:block");
 			irA="/pqr/registrarPeticion.jsp";
 			break;
 		case 4: //consultar caso
@@ -120,6 +125,10 @@ public class PqrServlet extends ServletGeneral{
 			irA="/pqr/consultarPeticion.jsp";
 			break;
 		default:
+			sesion.setAttribute("ocultar", "display:none");
+			sesion.setAttribute("tipoSolicitante", "display:none");
+			req.setAttribute("crearCaso", "display:none");
+			irA="/pqr/registrarPeticion.jsp";
 			break;
 		}
 
