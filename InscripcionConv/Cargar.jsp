@@ -58,13 +58,7 @@
 					else
 						alert("Para terminar debe cargar los documentos faltantes");
 				}
-				if(numConv==14){
-					if((document.frm11.fichero!=null || document.frm11.fichero!=""))
-						document.finaliza.submit();
-					else
-						alert("Para terminar debe cargar los documentos faltantes");
-				}
-				if(numConv==15){
+				if(numConv==14 || numConv==15 || numConv==16 || numConv==17 ){
 					if((document.frm11.fichero!=null || document.frm11.fichero!=""))
 						document.finaliza.submit();
 					else
