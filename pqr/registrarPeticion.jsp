@@ -14,9 +14,11 @@ function guardar(pqrForm){
 
 function crearPersona(pqrForm){
 	//alert("hola");
-	document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
-	document.pqrForm.accion.value=2;
-	document.pqrForm.submit();
+	if(validarPersona()){
+		document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
+		document.pqrForm.accion.value=2;
+		document.pqrForm.submit();
+	}	
 	
 }
 
@@ -35,6 +37,8 @@ function cambiar(obj){
 	document.getElementById("lcelular").style.display='block';
 	document.pqrForm.correo.style.display='block';
 	document.getElementById("lcorreo").style.display='block';
+	document.getElementById("bGuardar").style.display='block';
+	
 	if(obj.options[obj.selectedIndex].value==1){	
 		//externo
 			document.pqrForm.tipoExterno.style.display='block';
@@ -50,6 +54,8 @@ function cambiar(obj){
 			document.getElementById("lcodigo").style.display='none';
 			document.pqrForm.facultad.style.display='none';
 			document.getElementById("lfacultad").style.display='none';
+			document.pqrForm.ciudad.style.display='block';
+			document.getElementById("lciudad").style.display='block';
 			//2 = persona juridica
 			if(document.pqrForm.tipoExterno.value==2){
 				document.pqrForm.representante.style.display='block';
@@ -88,6 +94,8 @@ function cambiar(obj){
 			document.getElementById("lcontacto").style.display='none';
 			document.pqrForm.titulo.style.display='block';
 			document.getElementById("ltitulo").style.display='block';
+			document.pqrForm.ciudad.style.display='none';
+			document.getElementById("lciudad").style.display='none';
 		}	
 	
 }
@@ -114,6 +122,53 @@ function externo(){
 		document.getElementById("lcontacto").style.display='block';
 	}
 }
+
+function validarNro(e) {
+	var key;
+	if(window.event){ // IE
+		key = e.keyCode;
+	}
+	else if(e.which){ // Netscape/Firefox/Opera
+			key = e.which;
+		}
+
+	if (key < 48 || key > 57)
+	    {
+	    if(key == 46 || key == 8) // Detectar . (punto) y backspace (retroceso)
+	        { return true; }
+	    else 
+	        { return false; }
+	    }
+	return true;
+}
+
+function validarPersona(){
+	mensaje="";
+	if(document.pqrForm.tipoSolicitante.selectedIndex==0)
+		mensaje+="\n -Tipo de solicitud";
+	if(document.pqrForm.documento.value=="")
+		mensaje+="\n -Numero de Documento / Nit";
+	if(document.pqrForm.nombre.value=="")
+		mensaje+="\n -Nombre / Razón Social";
+	if(document.pqrForm.direccion.value=="")
+		mensaje+="\n -Dirección de Correspondencia";
+	if(document.pqrForm.celular.value=="")
+		mensaje+="\n -Teléfono";
+	if(document.pqrForm.correo.value=="")
+		mensaje+="\n -Correo Electrónico";
+	if(document.pqrForm.tipoExterno.selectedIndex!=1 && document.pqrForm.titulo.value=="")
+		mensaje+="\n -Titulo";
+	if(document.pqrForm.tipoExterno.selectedIndex==2&&document.pqrForm.representante.value=="")
+		mensaje+="\n -Representante Legal";
+	if(document.pqrForm.tipoExterno.selectedIndex==2&&document.pqrForm.contacto.value=="")
+		mensaje+="\n -Contacto";
+	if(mensaje!=""){
+		mensaje="Los siguientes campos son obligatorios: "+mensaje;
+		alert (mensaje);
+	}else
+		return true;
+	return false;
+}
 </script>
 <html>
 <head>
@@ -127,44 +182,44 @@ function externo(){
 				<tr>
 					<td colspan="4" align="left"><label for="ltipoSol" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>Tipo de Solicitud</label>
 					</td>
-					<td><select name="tipoSol" onchange="cambiar(this)" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>
+					<td><select name="tipoSolicitante" onchange="cambiar(this)" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>
 						<OPTION VALUE="0">-------</OPTION>
 						<OPTION VALUE="2">Interno</OPTION>
 						<OPTION VALUE="1">Externo</OPTION>
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="tipoInterno" id="ltipoInterno" style='<c:out value="${sessionScope.ocultar}"/>'>Solicitante Interno</label>
+					<td colspan="4" align="left"><label for="tipoInterno" id="ltipoInterno" style='<c:out value="${sessionScope.opcionales}"/>'>Solicitante Interno</label>
 					</td>
-					<td><select name="tipoInterno" style='<c:out value="${sessionScope.ocultar}"/>' >
-						<OPTION VALUE="1">Docente</OPTION>
-						<OPTION VALUE="2">Estudiante</OPTION>
+					<td><select name="tipoInterno" style='<c:out value="${sessionScope.opcionales}"/>' >
+						<OPTION VALUE="2">Docente</OPTION>
+						<OPTION VALUE="3">Estudiante</OPTION>
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="tipoExterno" id="ltipoExterno" style='<c:out value="${sessionScope.ocultar}"/>'>Solicitante Externo</label>
+					<td colspan="4" align="left"><label for="tipoExterno" id="ltipoExterno" style='<c:out value="${sessionScope.juridico}"/>'>Solicitante Externo</label>
 					</td>
-					<td><select name="tipoExterno" onchange="externo()" style='<c:out value="${sessionScope.ocultar}"/>'>
+					<td><select name="tipoExterno" onchange="externo()" style='<c:out value="${sessionScope.juridico}"/>'>
 						<OPTION VALUE="1">Persona Natural</OPTION>
 						<OPTION VALUE="2">Persona Jurídica</OPTION>
 					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><label for="documento" id="ldocumentoIdent">Documento de Identidad / NIT *</label></td>
-					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT" VALUE='<c:out value="${sessionScope.personaDatos.documentoIdNit}"/>'>
+					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT"  onkeypress="javascript:return validarNro(event)" VALUE='<c:out value="${sessionScope.personaDatos.documentoIdNit}"/>'>
 							<table>
 							<tr><td>
 							<input type=image src="/siciud/comp/img/Buscar.gif" onclick="buscarPersona()" align="top">
 							</td><td> 
-							<input type=image src="/siciud/comp/img/Guardar.gif" onclick="crearPersona()" style="<c:out value="${sessionScope.tipoSolicitante}" />">
+							<input id="bGuardar" type=image src="/siciud/comp/img/Guardar.gif" onclick="crearPersona()" style="<c:out value="${sessionScope.basico}" />">
 							</td></tr>
 							</table>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="tipoDoc" id="ltipoDoc" style='<c:out value="${sessionScope.ocultar}"/>'>Tipo de Documento*</label>
+					<td colspan="4" align="left"><label for="tipoDoc" id="ltipoDoc" style='<c:out value="${sessionScope.basico}"/>'>Tipo de Documento*</label>
 					</td>
-					<td><select name="tipoDoc" onchange="" style='<c:out value="${sessionScope.ocultar}"/>'>
+					<td><select name="tipoDoc" onchange="" style='<c:out value="${sessionScope.basico}"/>'>
 						<OPTION VALUE="1">Cédula de Ciudadanía</OPTION> 
 						<OPTION VALUE="2">Tarjeta de Identidad</OPTION>
 						<OPTION VALUE="3">Cédula de Extranjería</OPTION> 
@@ -172,9 +227,9 @@ function externo(){
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="titulo" id="ltitulo" style='<c:out value="${sessionScope.ocultar}"/>'>Titulo*</label>
+					<td colspan="4" align="left"><label for="titulo" id="ltitulo" style='<c:out value="${sessionScope.basico}"/>'>Titulo*</label>
 					</td>
-					<td><select name="titulo" onchange="" style='<c:out value="${sessionScope.ocultar}"/>'>
+					<td><select name="titulo" onchange="" style='<c:out value="${sessionScope.basico}"/>'>
 						<OPTION VALUE="1">Sr.</OPTION>
 						<OPTION VALUE="2">Sra.</OPTION>
 						<OPTION VALUE="3">Señores</OPTION>
@@ -183,63 +238,63 @@ function externo(){
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left" ><label for="nombre" id="lnombre" style='<c:out value="${sessionScope.ocultar}"/>'>Nombre / Razón Social</label>
-					<td><textarea class="area2" class="area2"  style='<c:out value="${sessionScope.ocultar}"/>'
+					<td colspan="4" align="left" ><label for="nombre" id="lnombre" style='<c:out value="${sessionScope.basico}"/>'>Nombre / Razón Social</label>
+					<td><textarea class="area2" class="area2"  style='<c:out value="${sessionScope.basico}"/>'
 							name="nombre" id='nombre'><c:out value='${sessionScope.personaDatos.nombreRazonSocial}'/></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="representante" id="lrepresentante" style='<c:out value="${sessionScope.ocultar}"/>'>Representante Legal</label>
-					<td><input class="area2" class="area2"  style='<c:out value="${sessionScope.ocultar}"/>'
+					<td colspan="4" align="left"><label for="representante" id="lrepresentante" style='<c:out value="${sessionScope.juridico}"/>'>Representante Legal</label>
+					<td><input class="area2" class="area2"  style='<c:out value="${sessionScope.juridico}"/>'
 							name="representante" id='representante'><c:out value=''/>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="contacto" id="lcontacto" style='<c:out value="${sessionScope.ocultar}"/>'>Persona de Contacto</label>
-					<td><input class="area2" class="area2"  style='<c:out value="${sessionScope.ocultar}"/>'
+					<td colspan="4" align="left"><label for="contacto" id="lcontacto" style='<c:out value="${sessionScope.juridico}"/>'>Persona de Contacto</label>
+					<td><input class="area2" class="area2"  style='<c:out value="${sessionScope.juridico}"/>'
 							name="contacto" id='contacto'><c:out value=''/>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="direccion" id="ldireccion" style='<c:out value="${sessionScope.ocultar}"/>'>Dirección de correspondencia</label>
+					<td colspan="4" align="left"><label for="direccion" id="ldireccion" style='<c:out value="${sessionScope.basico}"/>'>Dirección de correspondencia</label>
 					</td>
-					<td  align="left"><INPUT NAME="direccion" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.ocultar}"/>' VALUE="<c:out value="${sessionScope.personaDatos.direccion}"/>">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><label for="celular" id="lcelular" style='<c:out value="${sessionScope.ocultar}"/>'>Teléfono(s)</label>
-					</td>
-					<td  align="left"><INPUT NAME="celular" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.ocultar}"/>' VALUE="<c:out value="${sessionScope.personaDatos.telefonoMovil}"/>">
+					<td  align="left"><INPUT NAME="direccion" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.basico}"/>' VALUE="<c:out value="${sessionScope.personaDatos.direccion}"/>">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="correo" id="lcorreo" style='<c:out value="${sessionScope.ocultar}"/>'>Correo Electrónico</label>
+					<td colspan="4" align="left"><label for="celular" id="lcelular" style='<c:out value="${sessionScope.basico}"/>'>Teléfono(s)</label>
 					</td>
-					<td  align="left"><INPUT NAME="correo" MAXLENGTH="50" TYPE="TEXT" style='<c:out value="${sessionScope.ocultar}"/>' VALUE="<c:out value="${sessionScope.personaDatos.correoElectronico}"/>">
-					</td>
-				</tr>
-				<!--  <tr>
-					<td colspan="4" align="left"><c:out value="Ciudad"/>
-					</td>
-					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" VALUE="<c:out value="${sessionScope.personaDatos.ciudad}"/>">
-					</td>
-				</tr>-->
-				<tr>
-					<td colspan="4" align="left"><label for="proyInv" id="lproyInv" style='<c:out value="${sessionScope.ocultar}"/>'>Proyecto de Investigación</label>
-					</td>
-					<td  align="left"><INPUT NAME="proyInv" MAXLENGTH="250" TYPE="TEXT" style='<c:out value="${sessionScope.ocultar}"/>' VALUE="">
+					<td  align="left"><INPUT NAME="celular" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.basico}"/>' VALUE="<c:out value="${sessionScope.personaDatos.telefonoMovil}"/>">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="codigo" id="lcodigo" style='<c:out value="${sessionScope.ocultar}"/>'>Código</label>
+					<td colspan="4" align="left"><label for="correo" id="lcorreo" style='<c:out value="${sessionScope.basico}"/>'>Correo Electrónico</label>
 					</td>
-					<td  align="left"><INPUT NAME="codigo" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.ocultar}"/>' VALUE="">
+					<td  align="left"><INPUT NAME="correo" MAXLENGTH="50" TYPE="TEXT" style='<c:out value="${sessionScope.basico}"/>' VALUE="<c:out value="${sessionScope.personaDatos.correoElectronico}"/>">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="facultad" id="lfacultad" style='<c:out value="${sessionScope.ocultar}"/>'>Facultad</label>
+					<td colspan="4" align="left"><label for="ciudad" id="lciudad" style='<c:out value="${sessionScope.basico}"/>'>Ciudad</label>
 					</td>
-					<td  align="left"><INPUT NAME="facultad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.ocultar}"/>' VALUE="">
+					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.basico}"/>' VALUE="<c:out value="${sessionScope.personaDatos.ciudad}"/>">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="proyInv" id="lproyInv" style='<c:out value="${sessionScope.opcionales}"/>'>Proyecto de Investigación</label>
+					</td>
+					<td  align="left"><INPUT NAME="proyInv" MAXLENGTH="250" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="codigo" id="lcodigo" style='<c:out value="${sessionScope.opcionales}"/>'>Código</label>
+					</td>
+					<td  align="left"><INPUT NAME="codigo" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="facultad" id="lfacultad" style='<c:out value="${sessionScope.opcionales}"/>'>Facultad</label>
+					</td>
+					<td  align="left"><INPUT NAME="facultad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
 					</td>
 				</tr>
 </table>

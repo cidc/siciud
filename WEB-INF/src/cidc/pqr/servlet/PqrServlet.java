@@ -35,13 +35,9 @@ public class PqrServlet extends ServletGeneral{
 		String irA="";
 		System.out.println("kjbdlkjbv");
 		int accion=0;
-		int dato=0;
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
-		if(req.getParameter("dato")!=null)
-			dato=Integer.parseInt(req.getParameter("dato"));
 		HttpSession sesion=req.getSession();
-		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		Pqr pqr = new Pqr();
 		pqr=(Pqr)sesion.getAttribute("pqr");
 		PersonaDB_WS personaDB_WS = new PersonaDB_WS();
@@ -49,56 +45,57 @@ public class PqrServlet extends ServletGeneral{
 		CasoDB_WS casoDB_WS = new CasoDB_WS();
        	CasoDatos casodatos = new CasoDatos();
        	mensaje="";
-       	//codigo temporal
-//       	sesion.removeAttribute("titulo");
-//       	sesion.removeAttribute("tipoPersona");
-//       	sesion.removeAttribute("tipoDoc");
-       	//fin codigo temporal
 		switch (accion) {
 		case 1://crear caso
 			System.out.println("caso 1");
            	//System.out.println(pqr.getTipoSol());
-           	//persona.getPersonaID();
-			Date date =new Date(); 
-			//sesion.removeAttribute("personaDatos");
+           	personaDatos.getPersonaID();
 			personaDatos=(PersonaDatos)sesion.getAttribute("personaDatos");
-           	casodatos.setTipodeSolicitante(pqr.getTipoSol());
+           	casodatos.setTipodeSolicitante(pqr.getTipoSolicitante());
           	casodatos.setMedioDeRecepcion(String.valueOf(pqr.getRecepcion()));
           	casodatos.setTipoDeRequerimiento(pqr.getTipoSolicitud());
           	casodatos.setAsunto(pqr.getAsunto());
            	casodatos.setDescripcion(pqr.getDescripcion());
            	casodatos.setEscaladoOtraDependencia(String.valueOf(pqr.getEscalado()));
          	casodatos.setRecibirNotificacionesCorreo(String.valueOf(pqr.getNotificacionCorreo()));
-         	casodatos.setArchivoCaso(new File("D:/TOMCAT 6.0/webapps/siciud/Documentos/Convocatorias/Convocatoria2013-1.pdf")); 
-         	Calendar c1= Calendar.getInstance();
+         	//casodatos.setArchivoCaso(new File("D:/TOMCAT 6.0/webapps/siciud/Documentos/Convocatorias/Convocatoria2013-1.pdf"));
+         	personaDatos.setProyInv(pqr.getProyInv());
+			personaDatos.setCodigo(pqr.getCodigo());
+			personaDatos.setFaculta(pqr.getFaculta());
+			personaDatos.setTipoInterno(pqr.getTipoInterno());
+//         	Calendar c1= Calendar.getInstance();
 //         	cargar(req, String.valueOf(c1.get(Calendar.DATE)), "bizagi");
-//         	System.out.println(pqr.getArchivoAdjunto().getAbsolutePath());
-//         	System.out.println(pqr.getArchivoAdjunto().getAbsoluteFile());
-//         	System.out.println(pqr.getArchivoAdjunto().getParentFile());
-//         	System.out.println(pqr.getArchivoAdjunto().getParent());
-//         	System.out.println(pqr.getArchivoAdjunto().getPath());
-//         	System.out.println(pqr.getArchivoAdjunto().getCanonicalPath());
-//         	System.out.println(pqr.getArchivoAdjunto().getCanonicalFile());
-//        	casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
+        	casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
         	System.out.println(""+casodatos.getCasoId());
         	irA="/pqr/registrarPeticion.jsp";
         	if(casodatos.getCasoId()==null)
         		mensaje="Ha ocurrio un problema";
         	else
         		mensaje="Caso se ha creado exitosamente con codigo "+casodatos.getCasoId();
+        	sesion.setAttribute("basico", "display:none");
+        	sesion.setAttribute("juridico", "display:none");
+			sesion.setAttribute("tipoSolicitante", "display:none");
+			sesion.setAttribute("crearCaso", "display:none");
+			sesion.removeAttribute("personaDatos");
+			sesion.removeAttribute("");
+			sesion.removeAttribute("personaDatos");
 			break;
 		case 2://crear persona
 			System.out.println("caso 2");
 			irA="/pqr/CrearPersona.jsp";
 			personaDatos.setTitulo(pqr.getTitulo());
 			personaDatos.setNombreRazonSocial(pqr.getNombre());
-			personaDatos.setTipoPersona(pqr.getTipoPersona());
 			personaDatos.setTipoDocumento(pqr.getTipoDoc());
 			personaDatos.setDocumentoIdNit(pqr.getDocumento());
 			personaDatos.setCorreoElectronico(pqr.getCorreo());
 			personaDatos.setDireccion(pqr.getDireccion());
 			personaDatos.setTelefonoMovil(pqr.getCelular());
 			personaDatos.setCiudad(pqr.getCiudad());
+			personaDatos.setTipoExterno(pqr.getTipoExterno());
+			personaDatos.setRepresentante(pqr.getRepresentante());
+			personaDatos.setContacto(pqr.getContacto());
+			
+			
 			String respuesta=personaDB_WS.CrearPersona(personaDatos);
 			if(respuesta==null)
 				mensaje="Se ha producido un error en la creación";
@@ -108,14 +105,25 @@ public class PqrServlet extends ServletGeneral{
 			}
 			 break;
 		case 3: //buscar persona
-			//personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
+			personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
 			sesion.setAttribute("personaDatos", personaDatos);
 			System.out.println();
 			if(personaDatos.getPersonaID()==null){
 				mensaje="Esta persona no existe";
-				sesion.setAttribute("tipoSolicitante", "display:block"); 
-			}else
-				req.setAttribute("crearCaso", "display:block");
+				req.setAttribute("crearCaso", "display:none");
+				sesion.setAttribute("tipoSolicitante", "display:none");
+			}else{
+				sesion.setAttribute("crearCaso", "display:block");
+				sesion.setAttribute("basico", "display:block");
+				sesion.setAttribute("tipoSolicitante", "display:block");
+				if (personaDatos.getTipoInterno()==null || personaDatos.getTipoInterno().equals("0")) {
+					sesion.setAttribute("opcionales", "display:block");
+					sesion.setAttribute("juridico", "display:none");
+				} else {
+					sesion.setAttribute("opcionales", "display:none");
+					sesion.setAttribute("juridico", "display:block");
+				}
+			}
 			irA="/pqr/registrarPeticion.jsp";
 			break;
 		case 4: //consultar caso
@@ -125,7 +133,9 @@ public class PqrServlet extends ServletGeneral{
 			irA="/pqr/consultarPeticion.jsp";
 			break;
 		default:
-			sesion.setAttribute("ocultar", "display:none");
+			sesion.setAttribute("opcionales", "display:none");
+			sesion.setAttribute("basico", "display:none");
+			sesion.setAttribute("juridico", "display:none");
 			sesion.setAttribute("tipoSolicitante", "display:none");
 			req.setAttribute("crearCaso", "display:none");
 			irA="/pqr/registrarPeticion.jsp";
@@ -138,26 +148,6 @@ public class PqrServlet extends ServletGeneral{
 		retorno[2]=mensaje;
 		return retorno;
 	}
-	
-	/*public void crearListas(HttpSession sesion){
-		ArrayList<String> titulo =new ArrayList<String>();
-		titulo.add("sr");
-		titulo.add("sra");
-		titulo.add("senores");
-		titulo.add("dr");
-		titulo.add("ing");
-		sesion.setAttribute("titulo", titulo);
-		ArrayList<String> persona =new ArrayList<String>();
-		persona.add("Natural");
-		persona.add("Jurídica");
-		sesion.setAttribute("personaTipo", persona);
-		ArrayList<String> cedula= new ArrayList<String>();
-		cedula.add("Cédula de Cíudadania");
-		cedula.add("Tarjeta de Identidad");
-		cedula.add("Cédula de extranjería");
-		cedula.add("Pasaporte");
-		sesion.setAttribute("tipoDoc", cedula);
-	}*/
 	
 	public File cargar(HttpServletRequest req, String nombre, String carpeta){
 		boolean retorno=true;

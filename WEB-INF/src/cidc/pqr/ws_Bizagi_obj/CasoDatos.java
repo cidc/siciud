@@ -40,6 +40,7 @@ public class CasoDatos {
 	private String fechadeInicioEnActivadad;
 	
 	
+	
 	public String getCasoId() {
 		return casoId;
 	}

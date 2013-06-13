@@ -60,10 +60,14 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	        		"<MediodeRecepcion businessKey=\"id="+datosForm.getMedioDeRecepcion()+"\"/>"+
 	        		"<TipodeRequerimiento businessKey=\"id="+datosForm.getTipoDeRequerimiento()+"\"/>"+
 	        		"<Asunto>"+datosForm.getAsunto()+"</Asunto>" +
-//	        		"<ArchivosdelCaso><File fileName=\""+datosForm.getArchivoCaso()+"\">"+doc64+"</File></ArchivosdelCaso>"+
+	        	//	"<ArchivosdelCaso><File fileName=\""+datosForm.getArchivoCaso()+"\">"+doc64+"</File></ArchivosdelCaso>"+
 	        		"<Descripcion>"+datosForm.getDescripcion()+"</Descripcion>"+
 	        		"<FlagsdelCaso><EscaladodeOtraDependencia>"+datosForm.getEscaladoOtraDependencia()+"</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+datosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
 	        		"<Persona businesskey=\"id="+persona.getPersonaID()+"\"/>"+
+	        	//	 "<TipodeSolicitanteInterno businessKey=\"id="+persona.getTipoInterno()+"\"/>" +//---------------------------------------------------
+               //      "<ProyectodeInvestigacion>" +
+                  //           "<ProyectodeInvestigacion>"+persona.getProyInv()+"</ProyectodeInvestigacion><Codigo>"+persona.getCodigo()+"</Codigo><Facultad>"+persona.getFaculta()+"</Facultad></ProyectodeInvestigacion>"+
+	        		
 	        				"</SolicituddeAccionesCiuda>" +
 	        			
 	        					

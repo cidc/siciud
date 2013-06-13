@@ -12,8 +12,60 @@ public class PersonaDatos {
 	private String ciudad;
 	private String telefonoMovil;
 	private String personaID;
+	private String tipoInterno;
+	private String tipoExterno;
+	private String representante;
+	private String contacto;
+	private String proyInv="";
+	private String codigo="";
+	private String faculta="";
 	
 	
+	
+	
+	
+	public String getTipoInterno() {
+		return tipoInterno;
+	}
+	public void setTipoInterno(String tipoInterno) {
+		this.tipoInterno = tipoInterno;
+	}
+	public String getTipoExterno() {
+		return tipoExterno;
+	}
+	public void setTipoExterno(String tipoExterno) {
+		this.tipoExterno = tipoExterno;
+	}
+	public String getRepresentante() {
+		return representante;
+	}
+	public void setRepresentante(String representante) {
+		this.representante = representante;
+	}
+	public String getContacto() {
+		return contacto;
+	}
+	public void setContacto(String contacto) {
+		this.contacto = contacto;
+	}
+	public String getProyInv() {
+		return proyInv;
+	}
+	public void setProyInv(String proyInv) {
+		this.proyInv = proyInv;
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public String getFaculta() {
+		return faculta;
+	}
+	public void setFaculta(String faculta) {
+		this.faculta = faculta;
+	}
 	public String getPersonaID() {
 		return personaID;
 	}

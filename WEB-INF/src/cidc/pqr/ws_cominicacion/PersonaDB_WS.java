@@ -98,6 +98,8 @@ public String  CrearPersona (PersonaDatos persona){
 	                 +  "<Titulo businessKey=\"id="+persona.getTitulo()+"\"/>"
 	                 +  "<CorreoElectronico>"+persona.getCorreoElectronico()+"</CorreoElectronico>"
 	                 +  "<TipodePersona businessKey=\"id="+persona.getTipoPersona()+"\"/>"
+	                  +"<Contacto>"+persona.getContacto()+"</Contacto>"//----------------------
+                         +  "<RepresentanteLega>"+persona.getRepresentante()+"</RepresentanteLega>"//-----
 	                +"</PERSONA>"
 	             +"</Entities>"
 	          +"</BizAgiWSParam>]]>"
