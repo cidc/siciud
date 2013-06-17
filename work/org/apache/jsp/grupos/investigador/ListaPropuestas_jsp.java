@@ -66,9 +66,9 @@ public final class ListaPropuestas_jsp extends org.apache.jasper.runtime.HttpJsp
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -76,7 +76,7 @@ public final class ListaPropuestas_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\">\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction ver(prop){\r\n");
       out.write("\t\tdocument.listado.prop.value=prop;\r\n");
@@ -86,8 +86,8 @@ public final class ListaPropuestas_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("';\r\n");
       out.write("\t\tdocument.listado.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t<br>\r\n");
       out.write("\t");
@@ -100,7 +100,7 @@ public final class ListaPropuestas_jsp extends org.apache.jasper.runtime.HttpJsp
         return;
       out.write("\r\n");
       out.write("</body>\r\n");
-      out.write("\n");
+      out.write("\r\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

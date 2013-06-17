@@ -281,7 +281,14 @@
 	  <servlet-name>AdminGeneralProyectos</servlet-name>
 	  <url-pattern>/GestionGeneralProyectos/AdminGeneralProyectos.x</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>
+	  <servlet-name>ProyectosAjax</servlet-name>
+	  <servlet-class>cidc.proyectos.servlet.Ajax</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ProyectosAjax</servlet-name>
+	  <url-pattern>/ProyectosAjax.x</url-pattern>
+	</servlet-mapping>
 	<servlet>
 	  <servlet-name>AdminProyectos</servlet-name>
 	  <servlet-class>cidc.proyectos.servlet.AdminProyectos</servlet-class>

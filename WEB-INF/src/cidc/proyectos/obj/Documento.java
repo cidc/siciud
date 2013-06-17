@@ -7,7 +7,11 @@ public class Documento implements Serializable{
 	private String url;
 	private String fecha;
 	private String Observaciones;
-
+	
+	//se adicionan los siguientes paramentros para que la clase tambien sea objetos de Documentos de contratacion
+	private int id;
+	private String nombre;
+	
 	public String getFecha() {
 		return fecha;
 	}
@@ -26,4 +30,17 @@ public class Documento implements Serializable{
 	public void setObservaciones(String observaciones) {
 		Observaciones = observaciones;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 }

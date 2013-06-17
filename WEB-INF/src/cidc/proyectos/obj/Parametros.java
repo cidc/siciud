@@ -29,5 +29,7 @@ public class Parametros {
 	public static final int cmdEntregarElementos=24;
 	//comandos sevlet proyectos para investigadores
 	public static final int cmdVerProyecto=1;
+	public static final int ajaxTipoPersona=25;
+	public static final int tipoContrato=26;
 }
 
