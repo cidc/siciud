@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+
 <c:import url="/general.jsp" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script>
@@ -170,12 +171,15 @@ function validarPersona(){
 	return false;
 }
 </script>
+<link type="text/css" rel="stylesheet" href="<c:url value="/comp/css/formatos.css"/>">
+<script type="text/javascript" language="javascript" src='<c:url value="/comp/js/lytebox.js"/>'></script>
+<link rel="stylesheet" href='<c:url value="/comp/css/lytebox.css"/>' type="text/css" media="screen" />
 <html>
 <head>
 <title>Atención al Ciudadano</title> 
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<form name="pqrForm"  method="post" action='<c:url value="/pqr/llenar.jsp.x"/>' >
+<form name="pqrForm"  method="post" action='<c:url value="/pqr/llenar.jsp.x"/>'>
 <input type="hidden" name="accion" value="1">
 <table align="left" class="tablas" width="90%">
 	<caption>Información del Solicitante</caption>
@@ -184,24 +188,24 @@ function validarPersona(){
 					</td>
 					<td><select name="tipoSolicitante" onchange="cambiar(this)" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>
 						<OPTION VALUE="0">-------</OPTION>
-						<OPTION VALUE="2">Interno</OPTION>
-						<OPTION VALUE="1">Externo</OPTION>
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoPersona==2}">selected</c:if> >Interno</OPTION>
+						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoPersona==1}">selected</c:if>>Externo</OPTION>
 					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><label for="tipoInterno" id="ltipoInterno" style='<c:out value="${sessionScope.opcionales}"/>'>Solicitante Interno</label>
 					</td>
 					<td><select name="tipoInterno" style='<c:out value="${sessionScope.opcionales}"/>' >
-						<OPTION VALUE="2">Docente</OPTION>
-						<OPTION VALUE="3">Estudiante</OPTION>
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoInterno==2}">selected</c:if>>Docente</OPTION>
+						<OPTION VALUE="3" <c:if test="${sessionScope.personaDatos.tipoInterno==3}">selected</c:if>>Estudiante</OPTION>
 					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><label for="tipoExterno" id="ltipoExterno" style='<c:out value="${sessionScope.juridico}"/>'>Solicitante Externo</label>
 					</td>
 					<td><select name="tipoExterno" onchange="externo()" style='<c:out value="${sessionScope.juridico}"/>'>
-						<OPTION VALUE="1">Persona Natural</OPTION>
-						<OPTION VALUE="2">Persona Jurídica</OPTION>
+						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoExterno==1}">selected</c:if>>Persona Natural</OPTION>
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoExterno==3}">selected</c:if>>Persona Jurídica</OPTION>
 					</select></td>
 				</tr>
 				<tr>
@@ -213,6 +217,7 @@ function validarPersona(){
 							</td><td> 
 							<input id="bGuardar" type=image src="/siciud/comp/img/Guardar.gif" onclick="crearPersona()" style="<c:out value="${sessionScope.basico}" />">
 							</td></tr>
+							<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Modificación de presupuesto" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cambio.png"/>'></a></td>
 							</table>
 					</td>
 				</tr>
@@ -220,21 +225,21 @@ function validarPersona(){
 					<td colspan="4" align="left"><label for="tipoDoc" id="ltipoDoc" style='<c:out value="${sessionScope.basico}"/>'>Tipo de Documento*</label>
 					</td>
 					<td><select name="tipoDoc" onchange="" style='<c:out value="${sessionScope.basico}"/>'>
-						<OPTION VALUE="1">Cédula de Ciudadanía</OPTION> 
-						<OPTION VALUE="2">Tarjeta de Identidad</OPTION>
-						<OPTION VALUE="3">Cédula de Extranjería</OPTION> 
-						<OPTION VALUE="4">Pasaporte</OPTION>
+						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoDocumento==1}">selected</c:if>>Cédula de Ciudadanía</OPTION> 
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoDocumento==2}">selected</c:if>>Tarjeta de Identidad</OPTION>
+						<OPTION VALUE="3" <c:if test="${sessionScope.personaDatos.tipoDocumento==3}">selected</c:if>>Cédula de Extranjería</OPTION> 
+						<OPTION VALUE="4" <c:if test="${sessionScope.personaDatos.tipoDocumento==4}">selected</c:if>>Pasaporte</OPTION>
 					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><label for="titulo" id="ltitulo" style='<c:out value="${sessionScope.basico}"/>'>Titulo*</label>
 					</td>
 					<td><select name="titulo" onchange="" style='<c:out value="${sessionScope.basico}"/>'>
-						<OPTION VALUE="1">Sr.</OPTION>
-						<OPTION VALUE="2">Sra.</OPTION>
-						<OPTION VALUE="3">Señores</OPTION>
-						<OPTION VALUE="4">Dr.</OPTION> 
-						<OPTION VALUE="5">Ing.</OPTION>
+						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.titulo==1}">selected</c:if>>Sr.</OPTION>
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.titulo==2}">selected</c:if>>Sra.</OPTION>
+						<OPTION VALUE="3" <c:if test="${sessionScope.personaDatos.titulo==3}">selected</c:if>>Señores</OPTION>
+						<OPTION VALUE="4" <c:if test="${sessionScope.personaDatos.titulo==4}">selected</c:if>>Dr.</OPTION> 
+						<OPTION VALUE="5" <c:if test="${sessionScope.personaDatos.titulo==5}">selected</c:if>>Ing.</OPTION>
 					</select></td>
 				</tr>
 				<tr>
@@ -245,7 +250,7 @@ function validarPersona(){
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><label for="representante" id="lrepresentante" style='<c:out value="${sessionScope.juridico}"/>'>Representante Legal</label>
-					<td><input class="area2" class="area2"  style='<c:out value="${sessionScope.juridico}"/>'
+					<td><input width="100%" class="area2" class="area2"  style='<c:out value="${sessionScope.juridico}" />'
 							name="representante" id='representante'><c:out value=''/>
 					</td>
 				</tr>

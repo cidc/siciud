@@ -15,10 +15,16 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import cidc.convMovilidad.db.MovilidadDB;
+import cidc.convMovilidad.obj.InfoGeneral;
+import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
+import cidc.general.obj.CargarDocumento;
 import cidc.general.servlet.ServletGeneral;
 import cidc.pqr.ws_Bizagi_obj.CasoDatos;
 import cidc.pqr.ws_Bizagi_obj.PersonaDatos;
@@ -58,16 +64,15 @@ public class PqrServlet extends ServletGeneral{
            	casodatos.setDescripcion(pqr.getDescripcion());
            	casodatos.setEscaladoOtraDependencia(String.valueOf(pqr.getEscalado()));
          	casodatos.setRecibirNotificacionesCorreo(String.valueOf(pqr.getNotificacionCorreo()));
-         	//casodatos.setArchivoCaso(new File("D:/TOMCAT 6.0/webapps/siciud/Documentos/Convocatorias/Convocatoria2013-1.pdf"));
+         	casodatos.setArchivoCaso(pqr.getArchivoAdjunto());
          	personaDatos.setProyInv(pqr.getProyInv());
 			personaDatos.setCodigo(pqr.getCodigo());
 			personaDatos.setFaculta(pqr.getFaculta());
 			personaDatos.setTipoInterno(pqr.getTipoInterno());
-//         	Calendar c1= Calendar.getInstance();
-//         	cargar(req, String.valueOf(c1.get(Calendar.DATE)), "bizagi");
-        	casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
-        	System.out.println(""+casodatos.getCasoId());
-        	irA="/pqr/registrarPeticion.jsp";
+			casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
+	        System.out.println(""+casodatos.getCasoId());
+	        irA="/pqr/registrarPeticion.jsp";
+			
         	if(casodatos.getCasoId()==null)
         		mensaje="Ha ocurrio un problema";
         	else
@@ -106,9 +111,16 @@ public class PqrServlet extends ServletGeneral{
 			 break;
 		case 3: //buscar persona
 			personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
+			//codigo pruebas
+				personaDatos.setTipoPersona("1");
+				personaDatos.setTipoInterno("3");
+				personaDatos.setTipoExterno("1");
+				personaDatos.setTipoDocumento("4");
+				personaDatos.setTitulo("2");
+			//fin codigo pruebas
 			sesion.setAttribute("personaDatos", personaDatos);
 			System.out.println();
-			if(personaDatos.getPersonaID()==null){
+			if(personaDatos.getPersonaID()!=null){// debe ser ==null 
 				mensaje="Esta persona no existe";
 				req.setAttribute("crearCaso", "display:none");
 				sesion.setAttribute("tipoSolicitante", "display:none");
@@ -132,6 +144,16 @@ public class PqrServlet extends ServletGeneral{
 			sesion.setAttribute("respuestaConsul", casodatos);
 			irA="/pqr/consultarPeticion.jsp";
 			break;
+		case 5:
+			try {
+				personaDatos=(PersonaDatos)sesion.getAttribute("personaDatos");
+				Calendar c1= Calendar.getInstance();
+				cargar(req, String.valueOf(c1.get(Calendar.DATE)), "bizagi");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
 		default:
 			sesion.setAttribute("opcionales", "display:none");
 			sesion.setAttribute("basico", "display:none");
@@ -149,53 +171,46 @@ public class PqrServlet extends ServletGeneral{
 		return retorno;
 	}
 	
-	public File cargar(HttpServletRequest req, String nombre, String carpeta){
-		boolean retorno=true;
-		try {
-			String path=req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
-			path=path+sep+"Documentos"+sep+carpeta+sep;
-			System.out.println(path);
-			DiskFileUpload cargar = new DiskFileUpload();
-			DiskFileItemFactory factory = new DiskFileItemFactory();
-			factory.setSizeThreshold(10240*1024);
-		//	ServletFileUpload cargar = new ServletFileUpload(factory);
-			File sitio=new File(path);
-	        factory.setRepository(sitio);
-	        cargar.setSizeMax(10240*1024);
-	    //    upload.setFileSizeMax(1024*1024);
+	public File cargar(HttpServletRequest req, String nombre, String carpeta)
+			throws Exception {
+		boolean retorno = true;
 
-	        List listaItems = cargar.parseRequest(req);
+		HttpSession sesion = req.getSession();
+		mensaje = null;
+		String itemDoc = "";
+		DiskFileUpload fu = new DiskFileUpload();
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setSizeThreshold(1024 * 1024);
+		FileItem archivoAdj = null;
+		if (ServletFileUpload.isMultipartContent(req)) {
+			List items = new ArrayList();
+			try {
+				items = fu.parseRequest(req);
+				FileItem item = null;
+				if (items.size() > 0) {
+					Iterator iter = items.iterator();
+					while (iter.hasNext()) {
+						item = (FileItem) iter.next();
+						if (item.isFormField()) {
+							if (item.getFieldName().equals("id"))
+								itemDoc = item.getString();
+						} else {
 
-	        if(listaItems == null || listaItems.size()==0){
-	        	System.out.println("no Se encontraron archivos para cargar");
-	        	retorno=false;
-	        }
-	        else{
-		        Iterator i = listaItems.iterator();
-		        FileItem item = null;
+							archivoAdj = item;
+						}
+					}
+					CargarDocumento cargaDoc = new CargarDocumento();
+					// se almacena el documento cargado en el DD. (fisico)
+					String path = req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
+					String arch = cargaDoc.cargarGenerico(path, archivoAdj,"Bizagi", nombre, 0);
+					System.out.println("path: "+path+" archivo: "+arch);
+				}
+			} catch (FileUploadException e) {
+				baseDB.lanzaExcepcion(e);
+				mensaje = "El documento de movilidad no pudo ser almacenado";
 
-		        while (i.hasNext())
-		        {
-		        	item = (FileItem) i.next();
-		        	if (!item.isFormField()) {
-			            String nombreArchivo = item.getName();
-			            File fichero = new File(path+nombreArchivo);
-			            nombreArchivo=nombre+nombreArchivo.substring(nombreArchivo.lastIndexOf("."),nombreArchivo.length());
-			            System.out.println(nombreArchivo);
-			            fichero = new  File(sitio +(sep+ nombreArchivo));
-			            // escribimos el fichero en el disco duro del servidor
-			            item.write(fichero);
-			            System.out.println("Carga completa del Archivo --------->"+nombreArchivo);
-			            return fichero;
-		        	}
-		        }
-	        }
-	    }
-		catch(Exception e){
-	    	System.out.println("Falla la carga del Archivo");
-	    	baseDB.lanzaExcepcion(e);
-	        retorno=false;
-	    }
-	    return null;
-    }
+			}
+		}
+		return null;
+	}
 }

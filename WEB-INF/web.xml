@@ -816,4 +816,12 @@
 	  <servlet-name>PQR</servlet-name>
 	  <url-pattern>/pqr/servlet.x</url-pattern>
 	</servlet-mapping> 
+	<servlet>
+	  <servlet-name>ArchivoPqr</servlet-name>
+	  <servlet-class>cidc.pqr.servlet.ArchivoPqr</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ArchivoPqr</servlet-name>
+	  <url-pattern>/pqr/servletArchivo.x</url-pattern>
+	</servlet-mapping> 
 </web-app>
