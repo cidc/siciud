@@ -69,7 +69,9 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setCodigo(pqr.getCodigo());
 			personaDatos.setFaculta(pqr.getFaculta());
 			personaDatos.setTipoInterno(pqr.getTipoInterno());
+			casodatos.setArchivoCaso((File)sesion.getAttribute("archivo"));
 			casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
+			casodatos.getArchivoCaso().delete();
 	        System.out.println(""+casodatos.getCasoId());
 	        irA="/pqr/registrarPeticion.jsp";
 			
@@ -81,8 +83,6 @@ public class PqrServlet extends ServletGeneral{
         	sesion.setAttribute("juridico", "display:none");
 			sesion.setAttribute("tipoSolicitante", "display:none");
 			sesion.setAttribute("crearCaso", "display:none");
-			sesion.removeAttribute("personaDatos");
-			sesion.removeAttribute("");
 			sesion.removeAttribute("personaDatos");
 			break;
 		case 2://crear persona
@@ -143,16 +143,6 @@ public class PqrServlet extends ServletGeneral{
 			//casodatos= casoDB_WS.consulta(casodatos);
 			sesion.setAttribute("respuestaConsul", casodatos);
 			irA="/pqr/consultarPeticion.jsp";
-			break;
-		case 5:
-			try {
-				personaDatos=(PersonaDatos)sesion.getAttribute("personaDatos");
-				Calendar c1= Calendar.getInstance();
-				cargar(req, String.valueOf(c1.get(Calendar.DATE)), "bizagi");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			break;
 		default:
 			sesion.setAttribute("opcionales", "display:none");

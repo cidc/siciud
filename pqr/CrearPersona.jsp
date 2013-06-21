@@ -6,8 +6,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script>
 	function guardar(pqrForm){
-		alert(document.pqrForm.accion.value);
-		//document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
 		document.pqrForm.accion.value=5;
 		document.pqrForm.submit();
 		

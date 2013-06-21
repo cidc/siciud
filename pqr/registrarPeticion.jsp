@@ -217,7 +217,6 @@ function validarPersona(){
 							</td><td> 
 							<input id="bGuardar" type=image src="/siciud/comp/img/Guardar.gif" onclick="crearPersona()" style="<c:out value="${sessionScope.basico}" />">
 							</td></tr>
-							<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Modificación de presupuesto" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cambio.png"/>'></a></td>
 							</table>
 					</td>
 				</tr>
@@ -350,8 +349,7 @@ function validarPersona(){
 				<tr>
 					<td colspan="4" align="left"><c:out value="Archivo del caso"/>
 					</td>
-					<td><input type="file" name="archivoAdjunto" size="30">
-					</td>
+					<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Adjuntar archivo al caso" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cambio.png"/>'></a></td>
 				</tr>
 
 				<tr>
