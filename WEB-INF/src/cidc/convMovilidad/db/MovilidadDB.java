@@ -637,7 +637,7 @@ public class MovilidadDB extends BaseDB{
 				Actividades actividadOBJ=new Actividades();
 				actividadOBJ.setIdActividad((rs.getInt(i++)));
 				System.out.println("IdActividad "+rs.getInt(1));
-				actividadOBJ.setActividad(rs.getString(i++));
+				actividadOBJ.setActividad(rs.getString(i++).replaceAll("[\n\r]", ""));
 				System.out.println("Descripcion "+rs.getString(2));
 				l.add(actividadOBJ);
 	//			System.out.println(gruposOBJ.getNombre());
