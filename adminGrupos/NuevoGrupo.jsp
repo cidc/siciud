@@ -38,6 +38,9 @@
 		if(document.nuevo.tipo.value=="0"){
 			mensaje=mensaje+"\n-) Tipo";
 		}
+		if(document.nuevo.fechaCreacion.value==""){
+			mensaje=mensaje+"\n-) Fecha de Creación";
+		}
 		if(document.nuevo.nombDirector.value==""){
 			mensaje=mensaje+"\n-) Nombre del Director";
 		}
