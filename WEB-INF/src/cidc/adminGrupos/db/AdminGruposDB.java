@@ -166,6 +166,9 @@ public class AdminGruposDB extends BaseDB{
 			ps.setString(i++, grupoInvestigacion.getMision());
 			ps.setString(i++, grupoInvestigacion.getVision());
 			ps.setString(i++, grupoInvestigacion.getCodColciencias());
+			ps.setString(i++, grupoInvestigacion.getFechaCreacionFacultad());
+			ps.setInt(i++, grupoInvestigacion.getNumeroCIDC());
+			ps.setInt(i++, grupoInvestigacion.getNumeroFac());
 			ps.executeUpdate();
 			insertarDirectorGrupo(cn, integrante, flag);
 			cn.commit();

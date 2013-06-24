@@ -34,6 +34,9 @@ public class GrupoInvestigacion implements Serializable{
 	private int cgsareasnies;
 	private List proyectosCurriculares;
 	private List areasSNIES;
+	private String fechaCreacionFacultad;
+	private int numeroCIDC;
+	private int numeroFac;
 
 	private boolean modificable;
 
@@ -220,4 +223,23 @@ public class GrupoInvestigacion implements Serializable{
 	public void setCodAreaSNIES(int codAreaSNIES) {
 		this.codAreaSNIES = codAreaSNIES;
 	}
+	public String getFechaCreacionFacultad() {
+		return fechaCreacionFacultad;
+	}
+	public void setFechaCreacionFacultad(String fechaCreacionFacultad) {
+		this.fechaCreacionFacultad = fechaCreacionFacultad;
+	}
+	public int getNumeroCIDC() {
+		return numeroCIDC;
+	}
+	public void setNumeroCIDC(int numeroCIDC) {
+		this.numeroCIDC = numeroCIDC;
+	}
+	public int getNumeroFac() {
+		return numeroFac;
+	}
+	public void setNumeroFac(int numeroFac) {
+		this.numeroFac = numeroFac;
+	}
+	
 }
