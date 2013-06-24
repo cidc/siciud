@@ -7,14 +7,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script>
 function guardar(pqrForm){
-	//alert("hola");
-	document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
-	document.pqrForm.submit();
+	if(validarPersona()&&validarCaso()){	
+		document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
+		document.pqrForm.submit();
+	}
 	
 }
 
 function crearPersona(pqrForm){
-	//alert("hola");
 	if(validarPersona()){
 		document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
 		document.pqrForm.accion.value=2;
@@ -170,6 +170,27 @@ function validarPersona(){
 		return true;
 	return false;
 }
+
+function validarCaso(){
+	alert("requerimiento "+document.pqrForm.tipoSolicitud.selectedIndex);
+	mensaje="";
+	if(document.pqrForm.recepcion.value=="")
+		mensaje+="\n -Medio de Recepción";
+	if(document.pqrForm.tipoSolicitud.selectedIndex==0)
+		mensaje+="\n -Tipo de Requerimiento";
+	if(document.pqrForm.asunto.value=="")
+		mensaje+="\n -Asunto";
+	if(document.pqrForm.descripcion.value=="")
+		mensaje+="\n -Descripción";
+	if(document.pqrForm.notificacionCorreo.value=="")
+		mensaje+="\n -Notificación por Correo";
+	if(mensaje!=""){
+		mensaje="Los siguientes campos son obligatorios: "+mensaje;
+		alert (mensaje);
+	}else
+		return true;
+	return false;
+}
 </script>
 <link type="text/css" rel="stylesheet" href="<c:url value="/comp/css/formatos.css"/>">
 <script type="text/javascript" language="javascript" src='<c:url value="/comp/js/lytebox.js"/>'></script>
@@ -311,7 +332,7 @@ function validarPersona(){
 					<td>
 						<input type="radio" name=recepcion value="1">Télefono
 						<input type="radio" name=recepcion value="2">Carta
-						<input type="radio" name=recepcion value="3">Correo Electrónico
+						<input type="radio" name=recepcion value="3" checked>Correo Electrónico
 						<input type="radio" name=recepcion value="4">WEB
 						<input type="radio" name=recepcion value="5">Verbal
 					</td>
@@ -320,6 +341,7 @@ function validarPersona(){
 					<td colspan="4" align="left"><c:out value="Tipo Requerimiento"/>
 					</td>
 					<td><select name="tipoSolicitud" onchange="">
+						<OPTION VALUE="0">-----------------</OPTION>
 						<OPTION VALUE="11">Solicitud General</OPTION> 
 						<OPTION VALUE="1">Queja</OPTION>
 						<OPTION VALUE="2">Reclamo</OPTION> 
@@ -348,8 +370,8 @@ function validarPersona(){
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Archivo del caso"/>
-					</td>
-					<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Adjuntar archivo al caso" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cambio.png"/>'></a></td>
+					</td><c:if test="${sessionScope.archivo!=null}">Archivo Cargado Exitosamente</c:if>
+					<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Adjuntar archivo al caso" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cargar.gif"/>'></a></td>
 				</tr>
 
 				<tr>
@@ -357,7 +379,7 @@ function validarPersona(){
 					</td>
 					<td>
 						<input type="radio" name=notificacionCorreo value="true">Si
-						<input type="radio" name=notificacionCorreo value="false">No
+						<input type="radio" name=notificacionCorreo value="false" checked>No
 					</td>
 				</tr>	
 				<tr>

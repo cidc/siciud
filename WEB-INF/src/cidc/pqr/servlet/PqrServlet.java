@@ -2,29 +2,13 @@ package cidc.pqr.servlet;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
-import cidc.convMovilidad.db.MovilidadDB;
-import cidc.convMovilidad.obj.InfoGeneral;
-import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
-import cidc.general.login.Usuario;
-import cidc.general.obj.CargarDocumento;
 import cidc.general.servlet.ServletGeneral;
 import cidc.pqr.ws_Bizagi_obj.CasoDatos;
 import cidc.pqr.ws_Bizagi_obj.PersonaDatos;
@@ -71,19 +55,22 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setTipoInterno(pqr.getTipoInterno());
 			casodatos.setArchivoCaso((File)sesion.getAttribute("archivo"));
 			casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
-			casodatos.getArchivoCaso().delete();
+			if(casodatos.getArchivoCaso()!=null)
+				casodatos.getArchivoCaso().delete();
 	        System.out.println(""+casodatos.getCasoId());
 	        irA="/pqr/registrarPeticion.jsp";
 			
         	if(casodatos.getCasoId()==null)
         		mensaje="Ha ocurrio un problema";
-        	else
+        	else{
         		mensaje="Caso se ha creado exitosamente con codigo "+casodatos.getCasoId();
-        	sesion.setAttribute("basico", "display:none");
-        	sesion.setAttribute("juridico", "display:none");
-			sesion.setAttribute("tipoSolicitante", "display:none");
-			sesion.setAttribute("crearCaso", "display:none");
-			sesion.removeAttribute("personaDatos");
+        		sesion.setAttribute("basico", "display:none");
+        		sesion.setAttribute("juridico", "display:none");
+        		sesion.setAttribute("tipoSolicitante", "display:none");
+        		req.setAttribute("crearCaso", "display:none");
+        		sesion.removeAttribute("personaDatos");
+        		sesion.removeAttribute("archivo");
+        	}
 			break;
 		case 2://crear persona
 			System.out.println("caso 2");
@@ -112,15 +99,15 @@ public class PqrServlet extends ServletGeneral{
 		case 3: //buscar persona
 			personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
 			//codigo pruebas
-				personaDatos.setTipoPersona("1");
-				personaDatos.setTipoInterno("3");
-				personaDatos.setTipoExterno("1");
-				personaDatos.setTipoDocumento("4");
-				personaDatos.setTitulo("2");
+//				personaDatos.setTipoPersona("1");
+//				personaDatos.setTipoInterno("3");
+//				personaDatos.setTipoExterno("1");
+//				personaDatos.setTipoDocumento("4");
+//				personaDatos.setTitulo("2");
 			//fin codigo pruebas
 			sesion.setAttribute("personaDatos", personaDatos);
 			System.out.println();
-			if(personaDatos.getPersonaID()!=null){// debe ser ==null 
+			if(personaDatos.getPersonaID()==null){// debe ser ==null 
 				mensaje="Esta persona no existe";
 				req.setAttribute("crearCaso", "display:none");
 				sesion.setAttribute("tipoSolicitante", "display:none");
@@ -150,6 +137,7 @@ public class PqrServlet extends ServletGeneral{
 			sesion.setAttribute("juridico", "display:none");
 			sesion.setAttribute("tipoSolicitante", "display:none");
 			req.setAttribute("crearCaso", "display:none");
+			sesion.removeAttribute("archivo");
 			irA="/pqr/registrarPeticion.jsp";
 			break;
 		}
@@ -161,46 +149,5 @@ public class PqrServlet extends ServletGeneral{
 		return retorno;
 	}
 	
-	public File cargar(HttpServletRequest req, String nombre, String carpeta)
-			throws Exception {
-		boolean retorno = true;
 
-		HttpSession sesion = req.getSession();
-		mensaje = null;
-		String itemDoc = "";
-		DiskFileUpload fu = new DiskFileUpload();
-		DiskFileItemFactory factory = new DiskFileItemFactory();
-		factory.setSizeThreshold(1024 * 1024);
-		FileItem archivoAdj = null;
-		if (ServletFileUpload.isMultipartContent(req)) {
-			List items = new ArrayList();
-			try {
-				items = fu.parseRequest(req);
-				FileItem item = null;
-				if (items.size() > 0) {
-					Iterator iter = items.iterator();
-					while (iter.hasNext()) {
-						item = (FileItem) iter.next();
-						if (item.isFormField()) {
-							if (item.getFieldName().equals("id"))
-								itemDoc = item.getString();
-						} else {
-
-							archivoAdj = item;
-						}
-					}
-					CargarDocumento cargaDoc = new CargarDocumento();
-					// se almacena el documento cargado en el DD. (fisico)
-					String path = req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
-					String arch = cargaDoc.cargarGenerico(path, archivoAdj,"Bizagi", nombre, 0);
-					System.out.println("path: "+path+" archivo: "+arch);
-				}
-			} catch (FileUploadException e) {
-				baseDB.lanzaExcepcion(e);
-				mensaje = "El documento de movilidad no pudo ser almacenado";
-
-			}
-		}
-		return null;
-	}
 }

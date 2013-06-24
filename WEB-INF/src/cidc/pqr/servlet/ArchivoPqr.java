@@ -74,6 +74,7 @@ public class ArchivoPqr extends ServletGeneral{
 				mensaje = "El documento de movilidad no pudo ser almacenado";
 
 			}
+			mensaje="Documento cargado exitosamente";
 		}
 		
 		
