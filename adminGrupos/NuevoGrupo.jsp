@@ -62,6 +62,24 @@
 		return false;
 	}
 
+	function validarNro(e) {
+		var key;
+		if(window.event){ // IE
+			key = e.keyCode;
+		}
+		else if(e.which){ // Netscape/Firefox/Opera
+				key = e.which;
+			}
+	
+		if (key < 48 || key > 57)
+		    {
+		    if(key == 8) // Detectar . (punto) y backspace (retroceso)
+		        { return true; }
+		    else 
+		        { return false; }
+		    }
+		return true;
+	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -73,7 +91,7 @@
 			</td>
 		</tr>
 	</table>
-	<form name="nuevo" method="post">
+	<form name="nuevo" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="accion" value="1">
 			<table class="tablas" align="center" width="65%" >
 			<caption>Creación de Grupo/Semillero de Investigación</caption>
@@ -158,7 +176,7 @@
 											</td>
 											<td class="renglones"><b>Número de Acta CIDC</b></td>
 											<td>
-												<input type="text" name="numeroCIDC">
+												<input type="text" name="numeroCIDC" onkeypress="javascript:return validarNro(event)">
 											</td>
 											<td class="renglones"><b>Acta Comité CIDC</b></td>
 											<td>
@@ -183,7 +201,7 @@
 											</td>
 											<td class="renglones"><b>Número de acta</b></td>
 											<td>
-												<input type="text" name="numeroFac">
+												<input type="text" name="numeroFac" onkeypress="javascript:return validarNro(event)">
 											</td>
 											<td class="renglones"><b>Acta Comité Facultad</b></td>
 											<td>

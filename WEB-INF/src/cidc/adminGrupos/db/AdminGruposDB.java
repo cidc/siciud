@@ -356,6 +356,9 @@ public class AdminGruposDB extends BaseDB{
 				grupo.setCodColciencias(rs.getString(i++));
 				grupo.setCodproyCurr(rs.getInt(i++));
 				grupo.setCodAreaSNIES(rs.getInt(i++));
+				grupo.setFechaCreacionFacultad(rs.getString(i++));
+				grupo.setNumeroCIDC(rs.getInt(i++));
+				grupo.setNumeroFac(rs.getInt(i++));
 				grupo.setModificable(false);
 			}
 		}catch (SQLException e) {
@@ -396,8 +399,10 @@ public class AdminGruposDB extends BaseDB{
 			ps.setString(i++,grupo.getCodColciencias());
 			ps.setInt(i++, grupo.getCodproyCurr());
 			ps.setInt(i++, grupo.getCodAreaSNIES());			
-			ps.setLong(i++,grupo.getCodigo());	
-			
+			ps.setString(i++, grupo.getFechaCreacionFacultad());
+			ps.setLong(i++, grupo.getNumeroCIDC());
+			ps.setLong(i++, grupo.getNumeroFac());
+			ps.setLong(i++,grupo.getCodigo());
 			i=1;
 			ps.executeUpdate();
 

@@ -67,7 +67,25 @@
 	 	document.frmAjaxProyecto.target="frameOculto";
 		document.frmAjaxProyecto.submit();
 	}
-
+	
+	function validarNro(e) {
+		var key;
+		if(window.event){ // IE
+			key = e.keyCode;
+		}
+		else if(e.which){ // Netscape/Firefox/Opera
+				key = e.which;
+			}
+	
+		if (key < 48 || key > 57)
+		    {
+		    if(key == 8) // Detectar . (punto) y backspace (retroceso)
+		        { return true; }
+		    else 
+		        { return false; }
+		    }
+		return true;
+	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -165,7 +183,7 @@
 							<td colspan="5">
 								<table width="100%">
 									<tr>
-										<td class="renglones"><b>Fecha de Creación</b></td>
+										<td width="30%" class="renglones"><b>Fecha de Creación CIDC</b></td>
 										<td >
 										<input type='text' name='fechaCreacion' style="width:80%" class='caj' readonly='true' id='f_date_b' size='13' value='<c:out value="${sessionScope.grupo.fechaCreacion}"/>'>
 										<button type='button' id='f_trigger_b'>...</button>
@@ -180,20 +198,38 @@
 							    			})
 						    			</script>
 										</td>
-										<td class="renglones"><b>Estado</b></td>
+										<td class="renglones"><b>Número de Acta CIDC</b></td>
 										<td>
-											<select name="estado" style="width: 100%">
-												<option value="1" <c:if test="${sessionScope.grupo.estado==1}">selected</c:if>>Activo</option>
-												<option value="2" <c:if test="${sessionScope.grupo.estado==2}">selected</c:if>>Inactivo</option>
-											</select>
+												<input type="text" name="numeroCIDC" onkeypress="javascript:return validarNro(event)" value="${sessionScope.grupo.numeroCIDC}">
+										</td>
+									</tr>
+									<tr>
+										<td width="30%" class="renglones"><b>Fecha de Creación Facultad</b></td>
+										<td >
+											<input type='text' name='fechaCreacionFacultad' style="width:80%" class='caj' readonly='true' id='f_date_b_fac' size='13' value="${sessionScope.grupo.fechaCreacionFacultad}">
+											<button type='button' id='f_trigger_b_fac'>...</button>
+											<script type='text/javascript'>
+								    			Calendar.setup({
+									    			inputField     :    'f_date_b_fac',
+									    			ifFormat       :    '%d/%m/%Y',
+									    			showsTime      :    true,
+									    			button         :    'f_trigger_b_fac',
+									    			singleClick    :    false,
+									    			step           :    1
+								    			})
+							    			</script>
+										</td>
+										<td class="renglones"><b>Número de acta</b></td>
+										<td>
+												<input type="text" name="numeroFac" onkeypress="javascript:return validarNro(event)" value="${sessionScope.grupo.numeroFac}">
 										</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2" class="renglones"><b>Categoría Colciencias</b></td>
-							<td colspan="3">
+							<td class="renglones"><b>Categoría Colciencias</b></td>
+							<td>
 								<select name="categoria">
 									<option value="0">--------------</option>
 									<option value="1" <c:if test="${sessionScope.grupo.categoria==1}">selected</c:if>>Sin Clasificación</option>
@@ -204,6 +240,13 @@
 									<option value="4" <c:if test="${sessionScope.grupo.categoria==4}">selected</c:if>>B - Colciencias</option>
 									<option value="5" <c:if test="${sessionScope.grupo.categoria==5}">selected</c:if>>A - Colciencias</option>
 									<option value="8" <c:if test="${sessionScope.grupo.categoria==8}">selected</c:if>>A1 - Colciencias</option>
+								</select>
+							</td>
+							<td colspan="2" class="renglones"><b>Estado</b></td>
+							<td colspan="2" >
+								<select name="estado" style="width: 100%">
+									<option value="1" <c:if test="${sessionScope.grupo.estado==1}">selected</c:if>>Activo</option>
+									<option value="2" <c:if test="${sessionScope.grupo.estado==2}">selected</c:if>>Inactivo</option>
 								</select>
 							</td>
 						</tr>

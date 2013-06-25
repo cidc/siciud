@@ -37,6 +37,8 @@ public class GrupoInvestigacion implements Serializable{
 	private String fechaCreacionFacultad;
 	private int numeroCIDC;
 	private int numeroFac;
+	private String actaCidc;
+	private String actaFacultad;
 
 	private boolean modificable;
 
@@ -240,6 +242,18 @@ public class GrupoInvestigacion implements Serializable{
 	}
 	public void setNumeroFac(int numeroFac) {
 		this.numeroFac = numeroFac;
+	}
+	public String getActaCidc() {
+		return actaCidc;
+	}
+	public void setActaCidc(String actaCidc) {
+		this.actaCidc = actaCidc;
+	}
+	public String getActaFacultad() {
+		return actaFacultad;
+	}
+	public void setActaFacultad(String actaFacultad) {
+		this.actaFacultad = actaFacultad;
 	}
 	
 }
