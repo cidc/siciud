@@ -29,6 +29,45 @@
 		document.tipoPersona.accion.value = 26;
 		document.tipoPersona.submit();
 	}
+	
+	function cambiarNatural(op){
+		alert("natural");
+		var cambio="";
+		if(op==1){//1 para ocultar 2 para mostrar
+			cambio="none";
+		}else{
+			cambio="block";
+		}
+		document.tipoPersona.lexpedicion.style.display=cambio;
+		document.tipoPersona.expedicion.style.display=cambio;
+	}
+	
+	function cambiarJuridica(op){
+		alert("juridica");
+		var cambio="";
+		if(op==1){//1 para ocultar 2 para mostrar
+			cambio="none";
+		}else{
+			cambio="block";
+		}
+		document.tipoPersona.lrepresentante.style.display='block'';
+		document.tipoPersona.representante.style.display='block';
+		document.tipoPersona.lcontacto.style.display=cambio;
+		document.tipoPersona.contacto.style.display=cambio;
+	}
+	
+	function cambiarPersona(obj){
+	alert("entro");
+		if(obj.options[obj.selectedIndex].value==1){
+			alert("case 1");
+			cambiarJuridica(1);
+			cambiarnatural(2);
+		}if(obj.options[obj.selectedIndex].value==2){
+			alert("case 2");
+			cambiarJuridica(2);
+			cambiarnatural(1);
+		}
+	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -36,224 +75,91 @@
 	<form name="tipoPersona" action='<c:url value="/GestionProyectos/ProyectosInvestigador.x"/>' method="post">
 	<input type="hidden" name="accion" value="0">
 		<table width="95%" align="center" class="tablas">
-		<caption>Registro de gastos</caption>
+		<caption>Datos del Contratista</caption>
 			<tr>
-				<td align="left" ><b>Valor Total:</b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="valorTotal" MAXLENGTH="25" TYPE="TEXT" VALUE=""></b></td>
-			</tr>
-			<tr>
-				<td align="left"><b>Objeto del Contrato:</b></td>
-				<td align="left" colspan="3"><b><textarea class="area2" class="area2" style="width: 100%;"
-							name="objeto" id='objeto'></textarea></b></td>
-			</tr>
-			<tr>
-				<td align="left"><b>Detalles:</b></td>
-				<td align="left" colspan="3"><b><textarea class="area2" class="area2" style="width: 100%;"
-							name="detalles" id='detalles'></textarea></b></td>
-			</tr>
-			<tr>
-				<td align="left"><b>Valor a Pagar por Periodo:</b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="valorPeriodo" MAXLENGTH="25" TYPE="TEXT" VALUE=""></b></td>
-			</tr>
-			<tr>
-				<td align="left"><b>Forma de Pago:</b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="FormaPago" MAXLENGTH="25" TYPE="TEXT" VALUE=""></b></td>
-			</tr>
-				<tr>
-					<td  align="left"><b><c:out value="Tipo de Persona"/></b>
+				<td  align="left"><b><c:out value="Tipo de Persona"/></b>
 						</td>
-						<td><select name="tipoPersona" onchange="">
+						<td><select name="tipoPersona" onchange="cambiarPersona(this)">
 							<option value="0">----</option>
 							<option value="1">Persona Natural</option>
 							<option value="2">Persona Jurídica</option>
 						</select>
 					</td>
-					<td>
-						<img src='<c:url value="/comp/img/Terminar.gif" />' onclick='ajaxProyecto()'/>
-					</td>
-				</tr>
-			<tr>
-				<td  align="left"><b><c:out value="Tipo Contratación"/></b>
-					</td>
-				<td width="250px"><select name="tipoContratacion" onchange="">
-						<c:forEach items="${sessionScope.tipoContrato}" var="lista">
-							<option value='<c:out value="${lista.id}"/>'><c:out value="${lista.nombre}" /></option>
-						</c:forEach>
-						
-					</select>
-				</td>		
-				<td>
-						<img src='<c:url value="/comp/img/Terminar.gif" />' onclick='tipoContrato()'/>
-				</td>	
 			</tr>
-			<tr>
-			<c:if test="${sessionScope.tipoPersona!= null and sessionScope.idContrato!= null }">
-				<table width="95%" align="center" class="tablas">
-					<tr>
-						<td align="center" class="renglones"><b>Nombre del Documento</b></td>
-						<td align="center" class="renglones" ><b>Archivo</b></td>
-						<td align="center" class="renglones" ><b>Clase de Documento</b></td>
-						<td align="center" class="renglones" ><b>Fecha de Solicitud</b></td>
-					</tr>
-					<tr>
-						<td align="left"><b>Propuesta de Servicios:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					<c:if test="${sessionScope.tipoPersona==1 and sessionScope.idContrato!=3}">
-					<tr>
-						<td align="left"><b>Hoja de vida personal con soporte de experiencia:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.idContrato!=3 and sessionScope.idContrato!=2}">
-					<tr>
-						<td align="left"><b>Hoja de vida de función publica:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==1}">
-					<tr>
-						<td align="left"><b>fotocopia cédula de ciudadanía:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==1 and sessionScope.idContrato==1 and sessionScope.idContrato==4}">
-					<tr>
-						<td align="left"><b>Tarjeta profesional (si aplica):</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==1 and sessionScope.idContrato==4}">
-					<tr>
-						<td align="left"><b>Carné estudiantil:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==1 and sessionScope.idContrato==4}">
-					<tr>
-						<td align="left"><b>Recibo de pago:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==1 and sessionScope.idContrato==4}">
-					<tr>
-						<td align="left"><b>Certificado Estudiantil:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==1 and sessionScope.idContrato!=3 and sessionScope.idContrato!=2}">
-					<tr>
-						<td align="left"><b>Certificado Personeria Distrital:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.idContrato!=3 and sessionScope.idContrato!=2}">
-					<tr>
-						<td align="left"><b>Antecedentes Disciplianrios - Procuraduria:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.idContrato!=3 and sessionScope.idContrato!=2}">
-					<tr>
-						<td align="left"><b>Antecedentes Fiscales - Contraloría:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==1 and sessionScope.idContrato==1 and sessionScope.idContrato==4}">
-					<tr>
-						<td align="left"><b>Certificado de Afiliación a Salud:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==1 and sessionScope.idContrato==1 and sessionScope.idContrato==4}">
-					<tr>
-						<td align="left"><b>Certificado de Afiliación a Pensiones:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<tr>
-						<td align="left"><b>Registro Único Tributario - RUT:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					<c:if test="${sessionScope.tipoPersona==2}">
-					<tr>
-						<td align="left"><b>Portafolio Con Soportes de Experiencia:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==2}">
-					<tr>
-						<td align="left"><b>Fotocopia Cédula Representante Legal:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==2}">
-					<tr>
-						<td align="left"><b>Certificado de Pago de Parafiscales:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==2}">
-					<tr>
-						<td align="left"><b>Registro Único de Proponente - Si aplica:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-					<c:if test="${sessionScope.tipoPersona==2}">
-					<tr>
-						<td align="left"><b>Concepto Técnico - Selección del Proveedor:</b></td>
-						<td id="f2"><input type="file" name="fichero"></td>
-						<td><INPUT NAME="claseDoc" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-						<td><INPUT NAME="fechaSolicitud" MAXLENGTH="25" TYPE="TEXT" VALUE=""></td>
-					</tr>
-					</c:if>
-				</table>
-				</c:if>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lnombre">Nombres y Apellidos / Razón Social:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="nombre" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
 			</tr>
-		</table>
-		<table align="center" width="95%">
-			<tr>
-					<td align="center">				
-						<img src='<c:url value="/comp/img/Terminar.gif" />' onclick='temina()'/>					
-					</td>
+			<tr style="<c:out value="${requestScope.basico}"/>">
+				<td align="left" ><b><label for="lcedula">Número de Cedula / NIT:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="cedula" MAXLENGTH="15" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.natural}">
+				<td align="left" ><b><label for="lexpedicion">Lugar de Expedición:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="expedicion" MAXLENGTH="20" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.juridica}">
+				<td align="left" ><b><label for="lrepresentante">Representante Legal:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="representante" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="ldireccion">Dirección:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="direccion" MAXLENGTH="20" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lcorreo">Correo Electrónico:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="correo" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="ltelefono">Teléfono Fijo:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="telefono" MAXLENGTH="7" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lcelular">Teléfono Celular:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="celular" MAXLENGTH="10" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.juridica}">
+				<td align="left" ><b><label for="lcontacto">Contacto Comercial:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="contacto" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lproyecto">Nombre del Proyecto / Convenio:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="proyecto" MAXLENGTH="200" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lduracion">Duración:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="duracion" MAXLENGTH="20" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lformaPago">Forma de Pago:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="formaPago" MAXLENGTH="20" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lvalorContrato">Valor Total del Contrato:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="valorContrato" MAXLENGTH="10" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="ljustificacion">Justificación:</label></b></td>
+				<td align="left" colspan="3"><b><textarea NAME="justificacion"></textarea></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lobjetivo">Objetivo:</label></b></td>
+				<td align="left" colspan="3"><b><textarea NAME="objetivo"></textarea></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="lcargoSupervisor">Cargo del Supervisor:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="cargoSupervisor" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
+			<tr style="${requestScope.basico}">
+				<td align="left" ><b><label for="ldepSupervisor">Dependencia del Supervisor:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="depSupervisor" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			</tr>
 		</table>
 	</form>
+	
+	
+	
+	
 	<c:if test="${!empty sessionScope.listaGastosRubro}">
         <table align="center" class="tablas" width="95%" >
         <caption >Listado de Gastos Rubro</caption>

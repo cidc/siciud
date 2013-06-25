@@ -24,7 +24,7 @@ import cidc.general.servlet.ServletGeneral;
 import cidc.proyectos.db.ProyectosDB;
 import cidc.proyectos.db.ProyectosInvestigadorDB;
 import cidc.proyectos.obj.BalanceGeneral;
-import cidc.proyectos.obj.Contratacion;
+//import cidc.proyectos.obj.Contratacion;
 import cidc.proyectos.obj.Proyecto;
 import cidc.proyectos.obj.Parametros;
 import cidc.proyectos.obj.ProyectoGenerico;
@@ -71,10 +71,13 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				sesion.setAttribute("gasto", registroGasto);
 				sesion.setAttribute("idRub",req.getParameter("idRub"));
 				sesion.setAttribute("listaGastosRubro",proyectosDB.getGastosRubrosDeLista((BalanceGeneral)sesion.getAttribute("balanceProyecto"),req.getParameter("idRub")));
+				req.setAttribute("natural", "display:none");
+				req.setAttribute("juridica", "display:none");
+				req.setAttribute("basico", "display:none");
 				irA="/grupos/proyectos/ListaGastos.jsp";
 			break;
 			case Parametros.ajaxTipoPersona:
-				List<Contratacion> iterador= new ArrayList<Contratacion>();
+				/*List<Contratacion> iterador= new ArrayList<Contratacion>();
 				if(Integer.parseInt((String) req.getParameter("tipoPersona"))==1){
 					iterador.add(new Contratacion(1, "OPS"));
 					iterador.add(new Contratacion(2,"OPS-AR"));
@@ -86,7 +89,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				iterador.add(new Contratacion(4,"CPS"));
 				iterador.add(new Contratacion(5,"OC"));
 				iterador.add(new Contratacion(6,"OS"));
-				sesion.setAttribute("tipoContrato", iterador);
+				sesion.setAttribute("tipoContrato", iterador);*/
 				sesion.removeAttribute("idContrato");
 				irA="/grupos/proyectos/ListaGastos.jsp";
 				break;
