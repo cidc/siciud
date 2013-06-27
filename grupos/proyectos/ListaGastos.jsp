@@ -54,7 +54,7 @@
 		document.tipoPersona.contacto.style.display=cambio;
 	}
 	
-	function cambiarPersona(obj){
+	function cambiarPersona(){
 		if(document.tipoPersona.tipoSolicitud.value!=9){//cuendo el tipo de solicitud sea resolucion no habilitara estos campos
 			document.getElementById("lnombre").style.display='block';
 			document.tipoPersona.nombre.style.display='block';
@@ -89,12 +89,12 @@
 		document.getElementById("g1").style.display='block';
 		document.getElementById("larchivo").style.display='none';
 		document.tipoPersona.archivo.style.display='none';
-		if(obj.options[obj.selectedIndex].value==1){
+		if(document.tipoPersona.tipoPersona.value==1){
 			if(document.tipoPersona.tipoSolicitud.value!=9){
 				cambiarJuridica(1);
 				cambiarNatural(2);				
 			}
-		}if(obj.options[obj.selectedIndex].value==2){
+		}if(document.tipoPersona.tipoPersona.value==2){
 			if(document.tipoPersona.tipoSolicitud.value!=9){
 				cambiarJuridica(2);
 				cambiarNatural(1);				
@@ -131,26 +131,29 @@
 			if(document.tipoPersona.contacto.value=="")
 				mensaje+="\n -Contacto Comercial";
 		}
+		if(document.tipoPersona.cargoSupervisor.value==""){
+			mensaje+="\n -Cargo del Supervisor";
+		}
+		if(document.tipoPersona.depSupervisor.value==""){
+			mensaje+="\n -Dependencia del Supervisor";
+		}
+		if(document.tipoPersona.formaPago.value==""){
+			mensaje+="\n -Forma de Pago";
+		}
+		if(document.tipoPersona.tipoSolicitud.value==9){
+			mensaje="";
+		}
 		if(document.tipoPersona.proyecto.value==""){
 			mensaje+="\n -Proyecto";
 		}
 		if(document.tipoPersona.duracion.value==""){
 			mensaje+="\n -Duración";
 		}
-		if(document.tipoPersona.formaPago.value==""){
-			mensaje+="\n -Forma de Pago";
-		}
 		if(document.tipoPersona.valorContrato.value==""){
 			mensaje+="\n -Valor del Contrato";
 		}
 		if(document.tipoPersona.justificacion.value==""){
 			mensaje+="\n -Justificación";
-		}
-		if(document.tipoPersona.cargoSupervisor.value==""){
-			mensaje+="\n -Cargo del Supervisor";
-		}
-		if(document.tipoPersona.depSupervisor.value==""){
-			mensaje+="\n -Dependencia del Supervisor";
 		}
 		if(document.tipoPersona.objetivo.value==""){
 			mensaje+="\n -Objetivo";
@@ -191,19 +194,82 @@
 		document.tipoPersona.submit();
 	}
 	
-	function documentos(){
-		
+	function documentos(op){
+		if(op>=1&&op<=7){
+			document.getElementById("c1").style.display='block';
+			document.getElementById("c2").style.display='block';
+			document.getElementById("c3").style.display='block';
+			document.getElementById("c4").style.display='block';
+			document.getElementById("c10").style.display='block';
+			document.getElementById("c11").style.display='block';
+			document.getElementById("c15").style.display='block';
+		}if(op==1||op==2){
+			document.getElementById("c5").style.display='block';
+			document.getElementById("c9").style.display='block';
+			document.getElementById("c12").style.display='block';
+			document.getElementById("c13").style.display='block';
+		}if(op==3||op==5||op==7){
+			document.getElementById("c14").style.display='block';
+			document.getElementById("c16").style.display='block';
+			document.getElementById("c17").style.display='block';
+		}if(op==4||op==6){
+			document.getElementById("c9").style.display='block';
+		}if(op==8){
+			document.getElementById("c1").style.display='block';
+			document.getElementById("c2").style.display='block';
+			document.getElementById("c4").style.display='block';
+			document.getElementById("c6").style.display='block';
+			document.getElementById("c7").style.display='block';
+			document.getElementById("c8").style.display='block';
+			document.getElementById("c15").style.display='block';
+		}if(op==9){
+			document.getElementById("c18").style.display='block';
+			document.getElementById("c19").style.display='block';
+			document.getElementById("c20").style.display='block';
+			document.getElementById("c21").style.display='block';
+			document.getElementById("c22").style.display='block';
+			document.getElementById("c23").style.display='block';
+			document.getElementById("c24").style.display='block';
+		}
 	}
 	
-	function cambiarSolicitud(obj){
+	function cambiarSolicitud(){
 		if(document.tipoPersona.tipoSolicitud.value!=9){
 			document.tipoPersona.tipoPersona.style.display="block";	
 			document.getElementById("ltipoPersona").style.display="block";
+			if(document.tipoPersona.tipoPersona.value!=0){
+				cambiarPersona();
+			}
 		}else{
+			document.getElementById("lnombre").style.display='none';
+			document.tipoPersona.nombre.style.display='none';
+			document.getElementById("lcedula").style.display='none';
+			document.tipoPersona.cedula.style.display='none';
+			document.getElementById("ldireccion").style.display='none';
+			document.tipoPersona.direccion.style.display='none';
+			document.getElementById("lexpedicion").style.display='none';
+			document.tipoPersona.expedicion.style.display='none';
+			document.getElementById("lcorreo").style.display='none';
+			document.tipoPersona.correo.style.display='none';
+			document.getElementById("ltelefono").style.display='none';
+			document.tipoPersona.telefono.style.display='none';
+			document.getElementById("lcelular").style.display='none';
+			document.tipoPersona.celular.style.display='none';
+			document.getElementById("lformaPago").style.display='none';
+			document.tipoPersona.formaPago.style.display='none';
+			document.getElementById("lcargoSupervisor").style.display='none';
+			document.tipoPersona.cargoSupervisor.style.display='none';
+			document.getElementById("ldepSupervisor").style.display='none';
+			document.tipoPersona.depSupervisor.style.display='none';
 			document.tipoPersona.tipoPersona.style.display="none";
+			document.getElementById("lrepresentante").style.display="none";
+			document.tipoPersona.representante.style.display="none";
+			document.getElementById("lcontacto").style.display="none";
+			document.tipoPersona.contacto.style.display="none";
 			document.getElementById("ltipoPersona").style.display="none";
 			cambiarPersona(document.tipoPersona.tipoPersona);
 		}
+		documentos(document.tipoPersona.tipoSolicitud.value);
 	}
 </script>
 </head>
@@ -320,29 +386,59 @@
 				<td align="center"><label id="mensaje"  style="display:block">Señor investigador<br> Tenga en cuenta que usted deberá cargar un solo archivo el cual contenga los siguientes documentos:</label>
 			</tr>
 			<TR>
-				<td align="left">
+				<td id="c1" style="display:none" align="left">
 					<input type="checkbox" name="propuesta" value="1">Propuesta de Servicios<br>
-					<input type="checkbox" name="hojaPersonal" value="2" >Hoja de vida Personal Con Soportes <br>
-					<input type="checkbox" name="hojaPublica" value="3">Hoja de Vida Función Publica<br>
-					<input type="checkbox" name="fotocopiaCedula" value="4">Fotocopia Cédula de Ciudadanía<br>
-					<input type="checkbox" name="tarjetaProf" value="5" >Tarjeta Profesional (si aplica)<br>
-					<input type="checkbox" name="carnet" value="6">Carnet Estudiantil<br>
-					<input type="checkbox" name="recibo" value="7">Recibo de Pago<br>
-					<input type="checkbox" name="certEstudiantil" value="8" >Certificado Estudiantil<br>
-					<input type="checkbox" name="certPersoneria" value="9">Certificado Personeria Distrital<br>
-					<input type="checkbox" name="certProcuraduria" value="10">Antecedentes Disciplinarios - Procuraduría<br>
-					<input type="checkbox" name="certContraloria" value="11" >Antecedentes Fiscales - Contraloría<br>
-					<input type="checkbox" name="certSalud" value="12">Certificado de Afilicación a Salud<br>
-					<input type="checkbox" name="certPension" value="13">Certificado de Afilicación a Pensiones<br>
-					<input type="checkbox" name="certParafiscal" value="14" >Certificado de Pago de Parafiscales<br>
-					<input type="checkbox" name="rut" value="15">Registro Único Tributario - RUT<br>
-					<input type="checkbox" name="rup" value="16">Registro Único de Proponentes<br>
-					<input type="checkbox" name="proveedor" value="17" >Concepto Técnico de Selección de Proveedores<br>
-					<input type="checkbox" name="avance" value="18">Solicitud de Avance<br>
-					<input type="checkbox" name="presupuesto" value="19" >Presupuesto<br>
-					<input type="checkbox" name="pazySalvo" value="20">Paz y Salvos de Avances (Visto Bueno de Tesoreria)<br>
 				</td>
 			</TR>
+			<tr><td id="c2" style="display:none"><input type="checkbox" name="hojaPersonal" value="2" >Hoja de vida Personal Con Soportes <br>
+			</td></tr>
+			<tr><td id="c3" style="display:none"><input type="checkbox" name="hojaPublica" value="3">Hoja de Vida Función Publica<br>
+			</td></tr>
+			<tr><td id="c4" style="display:none"><input type="checkbox" name="fotocopiaCedula" value="4">Fotocopia Cédula de Ciudadanía<br>
+			</td></tr>
+			<tr><td id="c5" style="display:none"><input type="checkbox" name="tarjetaProf" value="5" >Tarjeta Profesional (si aplica)<br>
+			</td></tr>
+			<tr><td id="c6" style="display:none"><input type="checkbox" name="carnet" value="6">Carnet Estudiantil<br>
+			</td></tr>
+			<tr><td id="c7" style="display:none"><input type="checkbox" name="recibo" value="7">Recibo de Pago<br>
+			</td></tr>
+			<tr><td id="c8" style="display:none"><input type="checkbox" name="certEstudiantil" value="8" >Certificado Estudiantil<br>
+			</td></tr>
+			<tr><td id="c9" style="display:none"><input type="checkbox" name="certPersoneria" value="9">Certificado Personeria Distrital<br>
+			</td></tr>
+			<tr><td id="c10" style="display:none"><input type="checkbox" name="certProcuraduria" value="10">Antecedentes Disciplinarios - Procuraduría<br>
+			</td></tr>
+			<tr><td id="c11" style="display:none"><input type="checkbox" name="certContraloria" value="11" >Antecedentes Fiscales - Contraloría<br>
+			</td></tr>
+			<tr><td id="c12" style="display:none"><input type="checkbox" name="certSalud" value="12">Certificado de Afilicación a Salud<br>
+			</td></tr>
+			<tr><td id="c13" style="display:none"><input type="checkbox" name="certPension" value="13">Certificado de Afilicación a Pensiones<br>
+			</td></tr>
+			<tr><td id="c14" style="display:none"><input type="checkbox" name="certParafiscal" value="14" >Certificado de Pago de Parafiscales<br>
+			</td></tr>
+			<tr><td id="c15" style="display:none"><input type="checkbox" name="rut" value="15">Registro Único Tributario - RUT<br>
+			</td></tr>
+			<tr><td id="c16" style="display:none"><input type="checkbox" name="rup" value="16">Registro Único de Proponentes<br>
+			</td></tr>
+			<tr><td id="c17" style="display:none"><input type="checkbox" name="proveedor" value="17" >Concepto Técnico de Selección de Proveedores<br>
+			</td></tr>
+			<tr><td id="c18" style="display:none"><input type="checkbox" name="avance" value="18">Solicitud de Avance<br>
+			</td></tr>
+			<tr><td id="c19" style="display:none"><input type="checkbox" name="presupuesto" value="19" >Presupuesto<br>
+			</td></tr>
+			<tr><td id="c20" style="display:none"><input type="checkbox" name="pazySalvo" value="20">Paz y Salvos de Avances (Visto Bueno de Tesoreria)<br>
+			</td></tr>
+			<tr><td id="c21" style="display:none"><input type="checkbox" name="cotizacion" value="21">Cotizaciones<br>
+			</td></tr>
+			<tr><td id="c22" style="display:none"><input type="checkbox" name="avalFacultad" value="22">Aval del Consejo de Facultad (si aplica)<br>
+			</td></tr>
+			<tr><td id="c23" style="display:none"><input type="checkbox" name="avalAcademico" value="23">Aval del Consejo Académico (si aplica)<br>
+			</td></tr>
+			<tr><td id="c24" style="display:none"><input type="checkbox" name="cronograma" value="24">Cronograma<br>
+			</td></tr>
+			<tr>
+				<td id="g2"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="documentos()"></td>
+			</tr>
 		</table>
 	</form>
 	
