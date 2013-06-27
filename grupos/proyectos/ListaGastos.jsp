@@ -55,7 +55,7 @@
 	}
 	
 	function cambiarPersona(){
-		if(document.tipoPersona.tipoSolicitud.value!=9){//cuendo el tipo de solicitud sea resolucion no habilitara estos campos
+		if(document.tipoPersona.tipoSolicitud1.value!=9){//cuendo el tipo de solicitud sea resolucion no habilitara estos campos
 			document.getElementById("lnombre").style.display='block';
 			document.tipoPersona.nombre.style.display='block';
 			document.getElementById("lcedula").style.display='block';
@@ -89,13 +89,13 @@
 		document.getElementById("g1").style.display='block';
 		document.getElementById("larchivo").style.display='none';
 		document.tipoPersona.archivo.style.display='none';
-		if(document.tipoPersona.tipoPersona.value==1){
-			if(document.tipoPersona.tipoSolicitud.value!=9){
+		if(document.tipoPersona.tipoPersona1.value==1){
+			if(document.tipoPersona.tipoSolicitud1.value!=9){
 				cambiarJuridica(1);
 				cambiarNatural(2);				
 			}
-		}if(document.tipoPersona.tipoPersona.value==2){
-			if(document.tipoPersona.tipoSolicitud.value!=9){
+		}if(document.tipoPersona.tipoPersona1.value==2){
+			if(document.tipoPersona.tipoSolicitud1.value!=9){
 				cambiarJuridica(2);
 				cambiarNatural(1);				
 			}
@@ -122,10 +122,10 @@
 		if(document.tipoPersona.celular.value==""){
 			mensaje+="\n -Celular";
 		}
-		if(document.tipoPersona.tipoPersona.value==1){
+		if(document.tipoPersona.tipoPersona1.value==1){
 			if(document.tipoPersona.expedicion.value=="")
 				mensaje+="\n -Lugar de Expedición";
-		}if(document.tipoPersona.tipoPersona.value==2){
+		}if(document.tipoPersona.tipoPersona1.value==2){
 			if(document.tipoPersona.representante.value="")
 				mensaje+="\n -Representante Legal";
 			if(document.tipoPersona.contacto.value=="")
@@ -140,7 +140,7 @@
 		if(document.tipoPersona.formaPago.value==""){
 			mensaje+="\n -Forma de Pago";
 		}
-		if(document.tipoPersona.tipoSolicitud.value==9){
+		if(document.tipoPersona.tipoSolicitud1.value==9){
 			mensaje="";
 		}
 		if(document.tipoPersona.proyecto.value==""){
@@ -170,7 +170,7 @@
 	
 	function bloquear(){
 		
-		document.tipoPersona.tipoPersona.readOnly=true;
+		document.tipoPersona.tipoPersona1.readOnly=true;
 		document.tipoPersona.nombre.readOnly=true;
 		document.tipoPersona.cedula.readOnly=true;
 		document.tipoPersona.expedicion.readOnly=true;
@@ -190,7 +190,10 @@
 		document.tipoPersona.depSupervisor.readOnly=true;
 		document.tipoPersona.archivo.style.display="block";
 		document.getElementById("larchivo").style.display="block"
-		document.tipoPersona.accion.value="25";
+		document.tipoPersona.accion.value=25;
+		document.tipoPersona.tipoPersona.value=	document.tipoPersona.tipoPersona1.value;
+		document.tipoPersona.tipoSolicitud.value=document.tipoPersona.tipoSolicitud1.value;
+		alert(document.tipoPersona.tipoPersona.value);
 		document.tipoPersona.submit();
 	}
 	
@@ -234,10 +237,10 @@
 	}
 	
 	function cambiarSolicitud(){
-		if(document.tipoPersona.tipoSolicitud.value!=9){
-			document.tipoPersona.tipoPersona.style.display="block";	
-			document.getElementById("ltipoPersona").style.display="block";
-			if(document.tipoPersona.tipoPersona.value!=0){
+		if(document.tipoPersona.tipoSolicitud1.value!=9){
+			document.tipoPersona.tipoPersona1.style.display="block";	
+			document.getElementById("ltipoPersona1").style.display="block";
+			if(document.tipoPersona.tipoPersona1.value!=0){
 				cambiarPersona();
 			}
 		}else{
@@ -261,15 +264,15 @@
 			document.tipoPersona.cargoSupervisor.style.display='none';
 			document.getElementById("ldepSupervisor").style.display='none';
 			document.tipoPersona.depSupervisor.style.display='none';
-			document.tipoPersona.tipoPersona.style.display="none";
+			document.tipoPersona.tipoPersona1.style.display="none";
 			document.getElementById("lrepresentante").style.display="none";
 			document.tipoPersona.representante.style.display="none";
 			document.getElementById("lcontacto").style.display="none";
 			document.tipoPersona.contacto.style.display="none";
-			document.getElementById("ltipoPersona").style.display="none";
-			cambiarPersona(document.tipoPersona.tipoPersona);
+			document.getElementById("ltipoPersona1").style.display="none";
+			cambiarPersona(document.tipoPersona.tipoPersona1);
 		}
-		documentos(document.tipoPersona.tipoSolicitud.value);
+		documentos(document.tipoPersona.tipoSolicitud1.value);
 	}
 </script>
 </head>
@@ -277,12 +280,14 @@
 <br/>
 	<form name="tipoPersona" action='<c:url value="/grupos/proyectos/llenar.jsp"/>' method="post">
 	<input type="hidden" name="accion" value="0">
+	<input type="hidden" name="tipoSolicitud" value="">
+	<input type="hidden" name="tipoPersona" value="">
 		<table width="95%" align="center" class="tablas">
 		<caption>Datos del Contratista</caption>
 			<tr>
 				<td  align="left"><b><c:out value="Tipo de Solicitud"/></b>
 						</td>
-						<td><select name="tipoSolicitud" onchange="cambiarSolicitud(this)">
+						<td><select name="tipoSolicitud1" onchange="cambiarSolicitud(this)">
 							<option value="0">----</option>
 							<option value="1">OPS</option>
 							<option value="2">CPS-PN</option>
@@ -297,8 +302,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td  align="left"><b><label id="ltipoPersona">Tipo de Persona:</label></b></td>
-						<td><select name="tipoPersona" onchange="cambiarPersona(this)">
+				<td  align="left"><b><label id="ltipoPersona1">Tipo de Persona:</label></b></td>
+						<td><select name="tipoPersona1" onchange="cambiarPersona(this)">
 							<option value="0">----</option>
 							<option value="1">Persona Natural</option>
 							<option value="2">Persona Jurídica</option>
