@@ -1,34 +1,23 @@
 package cidc.proyectos.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.fileupload.DiskFileUpload;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
-import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
-import cidc.general.obj.CargarDocumento;
 import cidc.general.servlet.ServletGeneral;
-import cidc.proyectos.db.ProyectosDB;
 import cidc.proyectos.db.ProyectosInvestigadorDB;
 import cidc.proyectos.obj.BalanceGeneral;
-//import cidc.proyectos.obj.Contratacion;
-import cidc.proyectos.obj.Proyecto;
+import cidc.proyectos.obj.Contratacion;
 import cidc.proyectos.obj.Parametros;
 import cidc.proyectos.obj.ProyectoGenerico;
 import cidc.proyectos.obj.Rubros;
+//import cidc.proyectos.obj.Contratacion;
 
 
 public class ProyectosInvestigadores extends ServletGeneral {
@@ -74,22 +63,11 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				req.setAttribute("natural", "display:none");
 				req.setAttribute("juridica", "display:none");
 				req.setAttribute("basico", "display:none");
+				sesion.removeAttribute("contratacion");
 				irA="/grupos/proyectos/ListaGastos.jsp";
 			break;
 			case Parametros.ajaxTipoPersona:
-				/*List<Contratacion> iterador= new ArrayList<Contratacion>();
-				if(Integer.parseInt((String) req.getParameter("tipoPersona"))==1){
-					iterador.add(new Contratacion(1, "OPS"));
-					iterador.add(new Contratacion(2,"OPS-AR"));
-					iterador.add(new Contratacion(3,"OPA-AR(Par)"));
-					sesion.setAttribute("tipoPersona", 1);
-				}else{
-					sesion.setAttribute("tipoPersona", 2);
-				}
-				iterador.add(new Contratacion(4,"CPS"));
-				iterador.add(new Contratacion(5,"OC"));
-				iterador.add(new Contratacion(6,"OS"));
-				sesion.setAttribute("tipoContrato", iterador);*/
+				Contratacion cont=(Contratacion)sesion.getAttribute("contratacion");
 				sesion.removeAttribute("idContrato");
 				irA="/grupos/proyectos/ListaGastos.jsp";
 				break;

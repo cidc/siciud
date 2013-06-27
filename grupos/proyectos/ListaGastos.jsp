@@ -31,54 +31,207 @@
 	}
 	
 	function cambiarNatural(op){
-		alert("natural");
 		var cambio="";
 		if(op==1){//1 para ocultar 2 para mostrar
 			cambio="none";
 		}else{
 			cambio="block";
 		}
-		document.tipoPersona.lexpedicion.style.display=cambio;
+		document.getElementById("lexpedicion").style.display=cambio;
 		document.tipoPersona.expedicion.style.display=cambio;
 	}
 	
 	function cambiarJuridica(op){
-		alert("juridica");
 		var cambio="";
 		if(op==1){//1 para ocultar 2 para mostrar
 			cambio="none";
 		}else{
 			cambio="block";
 		}
-		document.tipoPersona.lrepresentante.style.display='block'';
-		document.tipoPersona.representante.style.display='block';
-		document.tipoPersona.lcontacto.style.display=cambio;
+		document.getElementById("lrepresentante").style.display=cambio;
+		document.tipoPersona.representante.style.display=cambio;
+		document.getElementById("lcontacto").style.display=cambio;
 		document.tipoPersona.contacto.style.display=cambio;
 	}
 	
 	function cambiarPersona(obj){
-	alert("entro");
+		if(document.tipoPersona.tipoSolicitud.value!=9){//cuendo el tipo de solicitud sea resolucion no habilitara estos campos
+			document.getElementById("lnombre").style.display='block';
+			document.tipoPersona.nombre.style.display='block';
+			document.getElementById("lcedula").style.display='block';
+			document.tipoPersona.cedula.style.display='block';
+			document.getElementById("ldireccion").style.display='block';
+			document.tipoPersona.direccion.style.display='block';
+			document.getElementById("lcorreo").style.display='block';
+			document.tipoPersona.correo.style.display='block';
+			document.getElementById("ltelefono").style.display='block';
+			document.tipoPersona.telefono.style.display='block';
+			document.getElementById("lcelular").style.display='block';
+			document.tipoPersona.celular.style.display='block';
+			document.getElementById("lformaPago").style.display='block';
+			document.tipoPersona.formaPago.style.display='block';
+			document.getElementById("lcargoSupervisor").style.display='block';
+			document.tipoPersona.cargoSupervisor.style.display='block';
+			document.getElementById("ldepSupervisor").style.display='block';
+			document.tipoPersona.depSupervisor.style.display='block';
+			
+		}
+		document.getElementById("lproyecto").style.display='block';
+		document.tipoPersona.proyecto.style.display='block';
+		document.getElementById("lduracion").style.display='block';
+		document.tipoPersona.duracion.style.display='block';
+		document.getElementById("lvalorContrato").style.display='block';
+		document.tipoPersona.valorContrato.style.display='block';
+		document.getElementById("ljustificacion").style.display='block';
+		document.tipoPersona.justificacion.style.display='block';
+		document.getElementById("lobjetivo").style.display='block';
+		document.tipoPersona.objetivo.style.display='block';
+		document.getElementById("g1").style.display='block';
+		document.getElementById("larchivo").style.display='none';
+		document.tipoPersona.archivo.style.display='none';
 		if(obj.options[obj.selectedIndex].value==1){
-			alert("case 1");
-			cambiarJuridica(1);
-			cambiarnatural(2);
+			if(document.tipoPersona.tipoSolicitud.value!=9){
+				cambiarJuridica(1);
+				cambiarNatural(2);				
+			}
 		}if(obj.options[obj.selectedIndex].value==2){
-			alert("case 2");
-			cambiarJuridica(2);
-			cambiarnatural(1);
+			if(document.tipoPersona.tipoSolicitud.value!=9){
+				cambiarJuridica(2);
+				cambiarNatural(1);				
+			}
+		}
+	}
+	
+	function validar(){
+		var mensaje="";
+		if(document.tipoPersona.nombre.value==""){
+			mensaje+="\n -Nombre / Razón Social";
+		}
+		if(document.tipoPersona.cedula.value==""){
+			mensaje+="\n -Número de Cédula / NIT";
+		}
+		if(document.tipoPersona.direccion.value==""){
+			mensaje+="\n -Dirección";
+		}
+		if(document.tipoPersona.correo.value==""){
+			mensaje+="\n -Correo";
+		}
+		if(document.tipoPersona.telefono.value==""){
+			mensaje+="\n -Teléfono";
+		}
+		if(document.tipoPersona.celular.value==""){
+			mensaje+="\n -Celular";
+		}
+		if(document.tipoPersona.tipoPersona.value==1){
+			if(document.tipoPersona.expedicion.value=="")
+				mensaje+="\n -Lugar de Expedición";
+		}if(document.tipoPersona.tipoPersona.value==2){
+			if(document.tipoPersona.representante.value="")
+				mensaje+="\n -Representante Legal";
+			if(document.tipoPersona.contacto.value=="")
+				mensaje+="\n -Contacto Comercial";
+		}
+		if(document.tipoPersona.proyecto.value==""){
+			mensaje+="\n -Proyecto";
+		}
+		if(document.tipoPersona.duracion.value==""){
+			mensaje+="\n -Duración";
+		}
+		if(document.tipoPersona.formaPago.value==""){
+			mensaje+="\n -Forma de Pago";
+		}
+		if(document.tipoPersona.valorContrato.value==""){
+			mensaje+="\n -Valor del Contrato";
+		}
+		if(document.tipoPersona.justificacion.value==""){
+			mensaje+="\n -Justificación";
+		}
+		if(document.tipoPersona.cargoSupervisor.value==""){
+			mensaje+="\n -Cargo del Supervisor";
+		}
+		if(document.tipoPersona.depSupervisor.value==""){
+			mensaje+="\n -Dependencia del Supervisor";
+		}
+		if(document.tipoPersona.objetivo.value==""){
+			mensaje+="\n -Objetivo";
+		}
+		if(mensaje!=""){
+			mensaje="Los siguientes campos son obligatorios: "+mensaje;
+			alert (mensaje);
+		}else{
+			bloquear();
+			return true;
+		}
+		return false;
+	}
+	
+	function bloquear(){
+		
+		document.tipoPersona.tipoPersona.readOnly=true;
+		document.tipoPersona.nombre.readOnly=true;
+		document.tipoPersona.cedula.readOnly=true;
+		document.tipoPersona.expedicion.readOnly=true;
+		document.tipoPersona.representante.readOnly=true;
+		document.tipoPersona.direccion.readOnly=true;
+		document.tipoPersona.correo.readOnly=true;
+		document.tipoPersona.telefono.readOnly=true;
+		document.tipoPersona.celular.readOnly=true;
+		document.tipoPersona.contacto.readOnly=true;
+		document.tipoPersona.proyecto.readOnly=true;
+		document.tipoPersona.duracion.readOnly=true;
+		document.tipoPersona.formaPago.readOnly=true;
+		document.tipoPersona.valorContrato.readOnly=true;
+		document.tipoPersona.justificacion.readOnly=true;
+		document.tipoPersona.objetivo.readOnly=true;
+		document.tipoPersona.cargoSupervisor.readOnly=true;
+		document.tipoPersona.depSupervisor.readOnly=true;
+		document.tipoPersona.archivo.style.display="block";
+		document.getElementById("larchivo").style.display="block"
+		document.tipoPersona.accion.value="25";
+		document.tipoPersona.submit();
+	}
+	
+	function documentos(){
+		
+	}
+	
+	function cambiarSolicitud(obj){
+		if(document.tipoPersona.tipoSolicitud.value!=9){
+			document.tipoPersona.tipoPersona.style.display="block";	
+			document.getElementById("ltipoPersona").style.display="block";
+		}else{
+			document.tipoPersona.tipoPersona.style.display="none";
+			document.getElementById("ltipoPersona").style.display="none";
+			cambiarPersona(document.tipoPersona.tipoPersona);
 		}
 	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br/>
-	<form name="tipoPersona" action='<c:url value="/GestionProyectos/ProyectosInvestigador.x"/>' method="post">
+	<form name="tipoPersona" action='<c:url value="/grupos/proyectos/llenar.jsp"/>' method="post">
 	<input type="hidden" name="accion" value="0">
 		<table width="95%" align="center" class="tablas">
 		<caption>Datos del Contratista</caption>
 			<tr>
-				<td  align="left"><b><c:out value="Tipo de Persona"/></b>
+				<td  align="left"><b><c:out value="Tipo de Solicitud"/></b>
 						</td>
+						<td><select name="tipoSolicitud" onchange="cambiarSolicitud(this)">
+							<option value="0">----</option>
+							<option value="1">OPS</option>
+							<option value="2">CPS-PN</option>
+							<option value="3">CPS-PJ</option>
+							<option value="4">OS-PN</option>
+							<option value="5">OS-PJ</option>
+							<option value="6">OC-PN</option>
+							<option value="7">OC-PJ</option>
+							<option value="8">OPSAR</option>
+							<option value="9">RESOLUCION DE AVANCE</option>
+						</select>
+				</td>
+			</tr>
+			<tr>
+				<td  align="left"><b><label id="ltipoPersona">Tipo de Persona:</label></b></td>
 						<td><select name="tipoPersona" onchange="cambiarPersona(this)">
 							<option value="0">----</option>
 							<option value="1">Persona Natural</option>
@@ -86,74 +239,110 @@
 						</select>
 					</td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lnombre">Nombres y Apellidos / Razón Social:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="nombre" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lnombre" style="${requestScope.basico}">Nombres y Apellidos / Razón Social:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="nombre" MAXLENGTH="50" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="<c:out value="${requestScope.basico}"/>">
-				<td align="left" ><b><label for="lcedula">Número de Cedula / NIT:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="cedula" MAXLENGTH="15" TYPE="TEXT" VALUE=""></b></td>
+			<tr>
+				<td align="left" ><b><label id="lcedula" style="${requestScope.basico}">Número de Cedula / NIT:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="cedula" MAXLENGTH="15" TYPE="TEXT" VALUE="" style="${requestScope.basico}"/></b></td>
 			</tr>
-			<tr style="${requestScope.natural}">
-				<td align="left" ><b><label for="lexpedicion">Lugar de Expedición:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="expedicion" MAXLENGTH="20" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lexpedicion" style="${requestScope.natural}">Lugar de Expedición:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="expedicion" MAXLENGTH="20" TYPE="TEXT" VALUE="" style="${requestScope.natural}"></b></td>
 			</tr>
-			<tr style="${requestScope.juridica}">
-				<td align="left" ><b><label for="lrepresentante">Representante Legal:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="representante" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lrepresentante" style="${requestScope.juridica}">Representante Legal:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="representante" MAXLENGTH="50" TYPE="TEXT" VALUE="" style="${requestScope.juridica}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="ldireccion">Dirección:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="direccion" MAXLENGTH="20" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="ldireccion" style="${requestScope.basico}">Dirección:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="direccion" MAXLENGTH="20" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lcorreo">Correo Electrónico:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="correo" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lcorreo" style="${requestScope.basico}">Correo Electrónico:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="correo" MAXLENGTH="50" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="ltelefono">Teléfono Fijo:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="telefono" MAXLENGTH="7" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="ltelefono" style="${requestScope.basico}">Teléfono Fijo:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="telefono" MAXLENGTH="7" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lcelular">Teléfono Celular:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="celular" MAXLENGTH="10" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lcelular" style="${requestScope.basico}">Teléfono Celular:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="celular" MAXLENGTH="10" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.juridica}">
-				<td align="left" ><b><label for="lcontacto">Contacto Comercial:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="contacto" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lcontacto" style="${requestScope.juridica}">Contacto Comercial:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="contacto" MAXLENGTH="50" TYPE="TEXT" VALUE="" style="${requestScope.juridica}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lproyecto">Nombre del Proyecto / Convenio:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="proyecto" MAXLENGTH="200" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lproyecto" style="${requestScope.basico}">Nombre del Proyecto / Convenio:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="proyecto" MAXLENGTH="200" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lduracion">Duración:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="duracion" MAXLENGTH="20" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lduracion" style="${requestScope.basico}">Duración:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="duracion" MAXLENGTH="20" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lformaPago">Forma de Pago:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="formaPago" MAXLENGTH="20" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lformaPago" style="${requestScope.basico}">Forma de Pago:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="formaPago" MAXLENGTH="20" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lvalorContrato">Valor Total del Contrato:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="valorContrato" MAXLENGTH="10" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="lvalorContrato" style="${requestScope.basico}">Valor Total del Contrato:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="valorContrato" MAXLENGTH="10" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="ljustificacion">Justificación:</label></b></td>
-				<td align="left" colspan="3"><b><textarea NAME="justificacion"></textarea></b></td>
+			<tr >
+				<td align="left" ><b><label id="ljustificacion" style="${requestScope.basico}">Justificación:</label></b></td>
+				<td align="left" colspan="3"><b><textarea NAME="justificacion" style="${requestScope.basico}"></textarea></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lobjetivo">Objetivo:</label></b></td>
-				<td align="left" colspan="3"><b><textarea NAME="objetivo"></textarea></b></td>
+			<tr>
+				<td align="left" ><b><label id="lobjetivo" style="${requestScope.basico}">Objetivo:</label></b></td>
+				<td align="left" colspan="3"><b><textarea NAME="objetivo" style="${requestScope.basico}" ></textarea></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="lcargoSupervisor">Cargo del Supervisor:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="cargoSupervisor" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			<tr>
+				<td align="left" ><b><label id="lcargoSupervisor" style="${requestScope.basico}">Cargo del Supervisor:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="cargoSupervisor" MAXLENGTH="50" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
-			<tr style="${requestScope.basico}">
-				<td align="left" ><b><label for="ldepSupervisor">Dependencia del Supervisor:</label></b></td>
-				<td align="left" colspan="3"><b><INPUT NAME="depSupervisor" MAXLENGTH="50" TYPE="TEXT" VALUE=""></b></td>
+			<tr >
+				<td align="left" ><b><label id="ldepSupervisor" style="${requestScope.basico}">Dependencia del Supervisor:</label></b></td>
+				<td align="left" colspan="3"><b><INPUT NAME="depSupervisor" MAXLENGTH="50" TYPE="TEXT" VALUE="" style="${requestScope.basico}"></b></td>
 			</tr>
+			<tr>
+				<td id="g1" style="${requestScope.basico}"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="validar()" ></td>
+			</tr>
+			<tr>
+				<td align="left"><label id="larchivo" style="display:none"><b>Documentos Adjuntos</b></label>
+				<td align="left" colspan="3"><input type="file" name="archivo" style="display:none"/></td>
+			</tr>
+		</table>
+		<table width="95%" align="center" class="tablas">
+			<tr>
+				<td align="center"><label id="mensaje"  style="display:block">Señor investigador<br> Tenga en cuenta que usted deberá cargar un solo archivo el cual contenga los siguientes documentos:</label>
+			</tr>
+			<TR>
+				<td align="left">
+					<input type="checkbox" name="propuesta" value="1">Propuesta de Servicios<br>
+					<input type="checkbox" name="hojaPersonal" value="2" >Hoja de vida Personal Con Soportes <br>
+					<input type="checkbox" name="hojaPublica" value="3">Hoja de Vida Función Publica<br>
+					<input type="checkbox" name="fotocopiaCedula" value="4">Fotocopia Cédula de Ciudadanía<br>
+					<input type="checkbox" name="tarjetaProf" value="5" >Tarjeta Profesional (si aplica)<br>
+					<input type="checkbox" name="carnet" value="6">Carnet Estudiantil<br>
+					<input type="checkbox" name="recibo" value="7">Recibo de Pago<br>
+					<input type="checkbox" name="certEstudiantil" value="8" >Certificado Estudiantil<br>
+					<input type="checkbox" name="certPersoneria" value="9">Certificado Personeria Distrital<br>
+					<input type="checkbox" name="certProcuraduria" value="10">Antecedentes Disciplinarios - Procuraduría<br>
+					<input type="checkbox" name="certContraloria" value="11" >Antecedentes Fiscales - Contraloría<br>
+					<input type="checkbox" name="certSalud" value="12">Certificado de Afilicación a Salud<br>
+					<input type="checkbox" name="certPension" value="13">Certificado de Afilicación a Pensiones<br>
+					<input type="checkbox" name="certParafiscal" value="14" >Certificado de Pago de Parafiscales<br>
+					<input type="checkbox" name="rut" value="15">Registro Único Tributario - RUT<br>
+					<input type="checkbox" name="rup" value="16">Registro Único de Proponentes<br>
+					<input type="checkbox" name="proveedor" value="17" >Concepto Técnico de Selección de Proveedores<br>
+					<input type="checkbox" name="avance" value="18">Solicitud de Avance<br>
+					<input type="checkbox" name="presupuesto" value="19" >Presupuesto<br>
+					<input type="checkbox" name="pazySalvo" value="20">Paz y Salvos de Avances (Visto Bueno de Tesoreria)<br>
+				</td>
+			</TR>
 		</table>
 	</form>
 	
