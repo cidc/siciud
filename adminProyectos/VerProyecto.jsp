@@ -74,17 +74,24 @@
 				</table>
 			</td>
 		</tr>
-		<tr>
-			<th><b>Facultad</b></th>
-			<th><b>Grupo/Semillero de Investigación</b></th>
-			<th><b>Proyecto Curricular</b></th>
-		</tr>
-		<tr>
-			<td><c:out value="${sessionScope.proyecto.facultad}"/></td>
-			<td><c:out value="${sessionScope.proyecto.grupoInvestigacion}"/></td>
-			<td><c:out value="${sessionScope.proyecto.proyCurricular}"/></td>
-		</tr>
-		<tr>
+				<td>
+					<table>
+
+						<tr>
+							<th><b>Documento de Identidad</b></th>
+							<th with="150px"><b>Facultad</b></th>
+							<th with="150px"><b>Grupo/Semillero de Investigación</b></th>
+							<th with="150px"><b>Proyecto Curricular</b></th>
+						</tr>
+						<tr>
+							<td><c:out value="${sessionScope.proyecto.documento}" /></td>
+							<td with="150px"><c:out value="${sessionScope.proyecto.facultad}" /></td>
+							<td with="150px"><c:out value="${sessionScope.proyecto.grupoInvestigacion}" /></td>
+							<td with="150px"><c:out value="${sessionScope.proyecto.proyCurricular}" /></td>
+						</tr>
+					</table>
+				</td>
+				<tr>
 			<td colspan="3">
 				<table width="100%">
 						<tr>

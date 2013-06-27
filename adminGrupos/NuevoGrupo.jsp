@@ -38,6 +38,9 @@
 		if(document.nuevo.tipo.value=="0"){
 			mensaje=mensaje+"\n-) Tipo";
 		}
+		if(document.nuevo.fechaCreacion.value==""){
+			mensaje=mensaje+"\n-) Fecha de Creación";
+		}
 		if(document.nuevo.nombDirector.value==""){
 			mensaje=mensaje+"\n-) Nombre del Director";
 		}
@@ -46,6 +49,9 @@
 		}
 		if(document.nuevo.tipo.value=="1" && document.nuevo.categoria.selectedIndex==0){
 			mensaje=mensaje+"\n-) Categoría Colciencias";
+		}
+		if(document.nuevo.numeroCIDC.value==""){
+			mensaje=mensaje+"\n-) Número de acta del CIDC";
 		}
 		if(mensaje!=""){
 			mensaje="Los siguientes campos son obligatorios: "+mensaje;
@@ -56,6 +62,24 @@
 		return false;
 	}
 
+	function validarNro(e) {
+		var key;
+		if(window.event){ // IE
+			key = e.keyCode;
+		}
+		else if(e.which){ // Netscape/Firefox/Opera
+				key = e.which;
+			}
+	
+		if (key < 48 || key > 57)
+		    {
+		    if(key == 8) // Detectar . (punto) y backspace (retroceso)
+		        { return true; }
+		    else 
+		        { return false; }
+		    }
+		return true;
+	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -67,7 +91,7 @@
 			</td>
 		</tr>
 	</table>
-	<form name="nuevo" method="post">
+	<form name="nuevo" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="accion" value="1">
 			<table class="tablas" align="center" width="65%" >
 			<caption>Creación de Grupo/Semillero de Investigación</caption>
@@ -120,6 +144,13 @@
 													<option value="8">A1 - Colciencias</option>
 												</select>
 											</td>
+											<td class="renglones"><b>Estado</b></td>
+											<td>
+												<select name="estado" style="width: 100%">
+													<option value="1">Activo</option>
+													<option value="2">Inactivo</option>
+												</select>
+											</td>
 										</tr>
 									</table>
 								</td>
@@ -128,7 +159,7 @@
 								<td colspan="5">
 									<table width="100%">
 										<tr>
-											<td class="renglones"><b>Fecha de Creación</b></td>
+											<td class="renglones"><b>Fecha de Creación CIDC</b></td>
 											<td >
 											<input type='text' name='fechaCreacion' class='caj' readonly='true' id='f_date_b' size='13'>
 											<button type='button' id='f_trigger_b'>...</button>
@@ -143,13 +174,39 @@
 								    			})
 							    			</script>
 											</td>
-											<td class="renglones"><b>Estado</b></td>
+											<td class="renglones"><b>Número de Acta CIDC</b></td>
 											<td>
-												<select name="estado" style="width: 100%">
-													<option value="1">Activo</option>
-													<option value="2">Inactivo</option>
-												</select>
+												<input type="text" name="numeroCIDC" onkeypress="javascript:return validarNro(event)">
 											</td>
+											<td class="renglones"><b>Acta Comité CIDC</b></td>
+											<td>
+												<input type="file" name="actaCidc" size="30%">
+											</td> 
+										</tr>
+										<tr>
+											<td class="renglones"><b>Fecha de Creación Facultad</b></td>
+											<td >
+											<input type='text' name='fechaCreacionFacultad' class='caj' readonly='true' id='f_date_b_fac' size='13'>
+											<button type='button' id='f_trigger_b_fac'>...</button>
+											<script type='text/javascript'>
+								    			Calendar.setup({
+									    			inputField     :    'f_date_b_fac',
+									    			ifFormat       :    '%d/%m/%Y',
+									    			showsTime      :    true,
+									    			button         :    'f_trigger_b_fac',
+									    			singleClick    :    false,
+									    			step           :    1
+								    			})
+							    			</script>
+											</td>
+											<td class="renglones"><b>Número de acta</b></td>
+											<td>
+												<input type="text" name="numeroFac" onkeypress="javascript:return validarNro(event)">
+											</td>
+											<td class="renglones"><b>Acta Comité Facultad</b></td>
+											<td>
+												<input type="file" name="actaFacultad" size="30%">
+											</td> 
 										</tr>
 									</table>
 								</td>
