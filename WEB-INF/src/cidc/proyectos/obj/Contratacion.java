@@ -22,6 +22,7 @@ public class Contratacion {
 	private String justificacion;
 	private String objetivo;
 	private String tipoSolicitud;
+	private String tipoPersona;
 	
 	public String getNombre() {
 		return nombre;
@@ -124,6 +125,12 @@ public class Contratacion {
 	}
 	public void setTipoSolicitud(String tipoSolicitud) {
 		this.tipoSolicitud = tipoSolicitud;
+	}
+	public String getTipoPersona() {
+		return tipoPersona;
+	}
+	public void setTipoPersona(String tipoPersona) {
+		this.tipoPersona = tipoPersona;
 	}
 	
 }

@@ -824,4 +824,12 @@
 	  <servlet-name>ArchivoPqr</servlet-name>
 	  <url-pattern>/pqr/servletArchivo.x</url-pattern>
 	</servlet-mapping> 
+	<servlet>
+	  <servlet-name>CargarAdj</servlet-name>
+	  <servlet-class>cidc.proyectos.servlet.Cargar</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>CargarAdj</servlet-name>
+	  <url-pattern>/proyectos/cargarAdj.x</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -17,7 +17,6 @@ import cidc.proyectos.obj.Contratacion;
 import cidc.proyectos.obj.Parametros;
 import cidc.proyectos.obj.ProyectoGenerico;
 import cidc.proyectos.obj.Rubros;
-//import cidc.proyectos.obj.Contratacion;
 
 
 public class ProyectosInvestigadores extends ServletGeneral {
@@ -63,37 +62,26 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				req.setAttribute("natural", "display:none");
 				req.setAttribute("juridica", "display:none");
 				req.setAttribute("basico", "display:none");
+				sesion.setAttribute("adjuntos", "display:none");
+				sesion.setAttribute("lista", "display:none");
+				sesion.setAttribute("formulario", "display:block");
 				sesion.removeAttribute("contratacion");
 				irA="/grupos/proyectos/ListaGastos.jsp";
 			break;
 			case Parametros.ajaxTipoPersona:
 				Contratacion cont=(Contratacion)sesion.getAttribute("contratacion");
-				sesion.removeAttribute("idContrato");
+				sesion.setAttribute("adjuntos", "display:none");
+				sesion.setAttribute("lista", "display:block");
+				sesion.setAttribute("formulario", "display:none");
 				irA="/grupos/proyectos/ListaGastos.jsp";
 				break;
 			case Parametros.tipoContrato:
-				int tipoCon = Integer.parseInt((String)req.getParameter("tipoContratacion"));
-				switch (tipoCon){
-					case 1:
-						sesion.setAttribute("idContrato", 1);
-					break;
-					case 2:
-						sesion.setAttribute("idContrato", 2);
-						break;
-					case 3:
-						sesion.setAttribute("idContrato", 3);
-						break;
-					case 4:
-						sesion.setAttribute("idContrato", 4);
-						break;
-					case 5:
-						sesion.setAttribute("idContrato", 5);
-						break;
-					case 6:
-						sesion.setAttribute("idContrato", 6);
-						break;
-				}
-				irA="/grupos/proyectos/ListaGastos.jsp";
+//				cont=(Contratacion)sesion.getAttribute("contratacion");
+//				CargarDocumento carg= new CargarDocumento();
+//				Date date = new Date();
+//				String nombre =String.valueOf(date.getTime());
+//				carg.cargar(req, nombre, "Bizagi");
+//				irA="/grupos/proyectos/ListaGastos.jsp";
 				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));
