@@ -91,7 +91,7 @@
 			</td>
 		</tr>
 	</table>
-	<form name="nuevo" method="post" enctype="multipart/form-data">
+	<form name="nuevo" method="post">
 	<input type="hidden" name="accion" value="1">
 			<table class="tablas" align="center" width="65%" >
 			<caption>Creación de Grupo/Semillero de Investigación</caption>
