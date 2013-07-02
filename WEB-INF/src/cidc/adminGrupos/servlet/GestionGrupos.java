@@ -47,6 +47,7 @@ public class GestionGrupos extends ServletGeneral {
 					else
 						mensaje="El Grupo no pudo ser Insertado Correctamente";
 				}
+				irA="/adminGrupos/Documentos.jsp";
 				sesion.removeAttribute("grupo");
 			break;
 			case Parametros.VistaListaGrupos:

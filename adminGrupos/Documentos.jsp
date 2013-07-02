@@ -4,15 +4,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <html>
 <head>
+<c:import url="/general.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript">
-
+	function buscarGrupo(){
+		document.buscar.action='<c:url value="/adminGrupos/AdminGrupos.x" />';
+		document.buscar.submit();
+	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 	<form name="buscar" action="">
-	<input type="hidden" name="accion" value="">
+	<input type="hidden" name="accion" value="3">
 	<table align="center" class="tablas">
 	<caption>Filtro de consulta</caption>
 		<tr>
