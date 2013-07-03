@@ -48,7 +48,7 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 		Archivo64 convertir64 = new Archivo64();
 		//String ruta = DatosForm.getArchivoCaso();
 		doc64 = convertir64.encodeFileToBase64Binary(datosForm.getArchivoCaso());
-		System.out.println(doc64);
+//		System.out.println(doc64);
 	}
 	
 	String xmlCrearCaso= "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">"
@@ -60,10 +60,11 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	        		"<MediodeRecepcion businessKey=\"id="+datosForm.getMedioDeRecepcion()+"\"/>"+
 	        		"<TipodeRequerimiento businessKey=\"id="+datosForm.getTipoDeRequerimiento()+"\"/>"+
 	        		"<Asunto>"+datosForm.getAsunto()+"</Asunto>" +
-	        	//	"<ArchivosdelCaso><File fileName=\""+datosForm.getArchivoCaso()+"\">"+doc64+"</File></ArchivosdelCaso>"+
+	        		"<ArchivosdelCaso><File fileName=\""+datosForm.getArchivoCaso().getName()+"\">"+doc64+"</File></ArchivosdelCaso>"+
 	        		"<Descripcion>"+datosForm.getDescripcion()+"</Descripcion>"+
 	        		"<FlagsdelCaso><EscaladodeOtraDependencia>"+datosForm.getEscaladoOtraDependencia()+"</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+datosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
-	        		"<Persona businesskey=\"id="+persona.getPersonaID()+"\"/>"+
+	        		"<Persona businessKey=\"id="+persona.getPersonaID()+"\"/>"+
+	        		//"<Persona businesskey=\"id="+persona.getPersonaID()+"\"/>"+
 	        	//	 "<TipodeSolicitanteInterno businessKey=\"id="+persona.getTipoInterno()+"\"/>" +//---------------------------------------------------
                //      "<ProyectodeInvestigacion>" +
                   //           "<ProyectodeInvestigacion>"+persona.getProyInv()+"</ProyectodeInvestigacion><Codigo>"+persona.getCodigo()+"</Codigo><Facultad>"+persona.getFaculta()+"</Facultad></ProyectodeInvestigacion>"+
@@ -78,7 +79,7 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 
 			String crearCaso = super.httpostConsultaEM(xmlCrearCaso);
 			XmlRespCaso casoCreado = new XmlRespCaso();
-			
+			System.out.println("xml: "+xmlCrearCaso);
 			try {
 				System.out.println(crearCaso);
 				caso = casoCreado.CrearCaso(crearCaso, datosForm);
