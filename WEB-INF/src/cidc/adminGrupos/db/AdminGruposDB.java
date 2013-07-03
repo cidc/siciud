@@ -201,7 +201,7 @@ public class AdminGruposDB extends BaseDB{
 					ps.setInt(i++, regporpag);
 					ps.setInt(i++, desde);
 					
-				
+				System.out.println(ps.toString());
 				rs=ps.executeQuery();
 				while(rs.next()){
 					i=1;

@@ -42,12 +42,13 @@ public class GestionGrupos extends ServletGeneral {
 			case Parametros.NuevoGrupo:
 				grupoInvestigacion=(GrupoInvestigacion)sesion.getAttribute("grupo");
 				if(grupoInvestigacion!=null){
-					if(adminGruposDB.nuevoGrupo(grupoInvestigacion))
+					if(!adminGruposDB.nuevoGrupo(grupoInvestigacion))
 						mensaje="Grupo Insertado Correctamente";
 					else
 						mensaje="El Grupo no pudo ser Insertado Correctamente";
 				}
 				irA="/adminGrupos/Documentos.jsp";
+				req.setAttribute("grupo","display:none");
 				sesion.removeAttribute("grupo");
 			break;
 			case Parametros.VistaListaGrupos:
@@ -215,7 +216,11 @@ public class GestionGrupos extends ServletGeneral {
 
 			break;
 			//***********************************************************************************************************	
-			
+			case Parametros.consultarGrupos:
+	        	req.setAttribute("listaGrupos", adminGruposDB.getListaGrupos(req.getParameter("facultad"),req.getParameter("tipo"),0,50));
+	        	req.setAttribute("grupo","display:block");
+	        	irA="/adminGrupos/Documentos.jsp";
+				break;
 		}
 
 		retorno[1]=irA;

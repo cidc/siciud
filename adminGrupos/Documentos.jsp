@@ -9,14 +9,36 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function buscarGrupo(){
-		document.buscar.action='<c:url value="/adminGrupos/AdminGrupos.x" />';
+		document.buscar.action='<c:url value="/adminGrupos/llenar.jsp"/>';
 		document.buscar.submit();
+	}
+	function guardar(){
+		if(ValidarFormulario(frm)){
+			frm.submit();
+		}
+	}
+	function grupoSeleccionado(){
+		document.getElementById("capaDocumentos").style.display="block";
+	}
+	function ValidarFormulario(forma){
+		if(forma.fichero.value==""){
+			alert("Debe seleccionar un Archivo para cargar");
+			return false;
+		}else{
+			archi=forma.fichero.value;
+			var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
+			if(!(ext==".pdf")){
+				alert("El archivo debe ser en formato PDF");
+				return false;
+			}
+		}
+		return true;
 	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 	<form name="buscar" action="">
-	<input type="hidden" name="accion" value="3">
+	<input type="hidden" name="accion" value="22">
 	<table align="center" class="tablas">
 	<caption>Filtro de consulta</caption>
 		<tr>
@@ -24,18 +46,18 @@
 			<td>
 				<select name="facultad">
 					<option value="0">-------------</option>
-					<option value="1" >Tecnológica</option>
-					<option value="2" >Ingeniería</option>
-					<option value="3" >Medio Ambiente</option>
-					<option value="4" >Ciencias y Educación</option>
-					<option value="5" > Artes (Asab)</option>
+					<option value="1" <c:if test="${requestScope.facultad==1}">selected</c:if>>Tecnológica</option>
+					<option value="2" <c:if test="${requestScope.facultad==2}">selected</c:if>>Ingeniería</option>
+					<option value="3" <c:if test="${requestScope.facultad==3}">selected</c:if>>Medio Ambiente</option>
+					<option value="4" <c:if test="${requestScope.facultad==4}">selected</c:if>>Ciencias y Educación</option>
+					<option value="5" <c:if test="${requestScope.facultad==5}">selected</c:if>> Artes (Asab)</option>
 				</select>
 			</td>
-			<td><b>Grupo</b><input type="radio" name="boton" value="1" ></td>
-			<td><b>Semillero</b><input type="radio" name="boton" value="2" ></td>
+			<td><b>Grupo</b><input type="radio" name="tipo" value="1" <c:if test="${requestScope.tipo==1}">checked</c:if>></td>
+			<td><b>Semillero</b><input type="radio" name="tipo" value="2" <c:if test="${requestScope.tipo==2}">checked</c:if>></td>
 			<td><img align="left" src="<c:url value="/comp/img/Buscar.gif"/>" onclick="buscarGrupo()"></td>
 		</tr>
-		<tr>
+		<tr id="comboGrupo" style="${requestScope.grupo}">
 			<td><b>Seleccione un grupo o semillero</b></td>
 			<td>
 				<select name="grupo" onchange="grupoSeleccionado()">
@@ -48,9 +70,43 @@
 		</tr>
 	</table>
 	</form>
-	<table id="tablaDoc">
-		<form name="" action=""></form>
-	</table>
-	
+	<div id="capaDocumentos" style="display:none">
+	<legend class="texto1"><b>Actas de Creación</b></legend>
+		<table>
+				<tr>
+					<td>
+					<br>
+						<form action='<c:url value="/adminGrupos/archivoActas.x"/>' name="formCIDC" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="id" value="1">
+							<table width="100%">
+								<tr>
+									<td colspan="2" class="renglones"><b>Acta de Cómite</td>
+								</tr>
+								<tr>
+									<td id="f1"><input size="60%" type="file" name="fichero"></td>
+									<td id="g1" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar()"></td>
+								</tr>
+							</table>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form action='<c:url value="/adminGrupos/archivoActas.x"/>' name="frmFac" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="id" value="2">
+							<table width="100%">
+								<tr>
+									<td colspan="2" class="renglones"><b>Acta de Facultad</b></td>
+								</tr>
+								<tr>
+									<td id="f2"><input size="60%" type="file" name="fichero"></td>
+									<td id="g2" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar()"></td>
+								</tr>
+							</table>
+						</form>
+					</td>
+				</tr>
+		</table>
+	</div>
 </body>
 </html>

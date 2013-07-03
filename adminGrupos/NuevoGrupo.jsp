@@ -24,7 +24,7 @@
 	}
 
 	function guardar(){
-		if(validar()){
+		if(!validar()){
 			document.nuevo.action='<c:url value="/adminGrupos/llenar.jsp"/>';
 			document.nuevo.submit();
 		}
