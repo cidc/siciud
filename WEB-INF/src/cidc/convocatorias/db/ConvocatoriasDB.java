@@ -1079,6 +1079,7 @@ public class ConvocatoriasDB extends BaseDB{
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("getConvocatoria"));
 			ps.setLong(1,id);
+                        System.out.println("entra a consulta "+ps);
 			rs=ps.executeQuery();
 			while(rs.next()){
 				convocatoriaOBJ=new ConvocatoriaOBJ();
@@ -1100,6 +1101,7 @@ public class ConvocatoriasDB extends BaseDB{
 				convocatoriaOBJ.setCantProduct(rs.getInt(i++));
 				convocatoriaOBJ.setCorteActual(rs.getString(i++));
 				convocatoriaOBJ.setConvTipo(rs.getInt(i++));
+				convocatoriaOBJ.setConvEvalua(rs.getBoolean(i++));
 			}
 			if(convocatoriaOBJ!=null){
 				ps=cn.prepareStatement(rb.getString("getCortesConvocatoria"));

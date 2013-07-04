@@ -41,7 +41,7 @@ public class VerPropuestas extends ServletGeneral {
 
                         case 2:
 			if(sesion.getAttribute("propuestaOBJ")!=null){
-			//	adminPropuestaDB.borrar(Integer.parseInt(req.getParameter("convId")));
+				adminPropuestaDB.borrar(Integer.parseInt(req.getParameter("convId")));
 				if(adminPropuestaDB.AproboRequisitos((PropuestaOBJ)sesion.getAttribute("propuestaOBJ")))
                                         mensaje="Propuesta aprobada Correctamente";
                                 } else

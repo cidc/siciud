@@ -62,10 +62,29 @@
                 document.listado.submit();
         }
 	        function guardar(){
+		checks(document.listado);
                 document.listado.accion.value='2';
                 document.listado.action='<c:url value="/adminPropuestas/llenar1.jsp"/>';
                 document.listado.submit();
         }
+        function checks(formulario){
+                if(formulario.propAprobada_){
+                        if(formulario.propAprobada_.length){
+                                for(var i=0;i<formulario.propAprobada_.length;i++){
+                                        if(formulario.propAprobada_[i].checked==true){
+                                                formulario.propAprobada[i].value="1";
+                                                formulario.propAprobada_[i].value="1";
+                       //                         alert("entraA ="+formulario.propAprobada_[i].value+i);
+
+                                                }else{
+                                                        formulario.propAprobada[i].value="0";
+                                                        formulario.propAprobada_[i].value="0";
+                         //                       alert("entraB ="+formulario.propAprobada[i].value+i);
+                                                }
+                                        }
+                                }
+                        }
+                }
 
 </script>
 </head>
@@ -158,18 +177,14 @@
 </td>
 			</td>
 			<td class="estado" align="center">
-			<input type="checkbox" name="propAprobada"
-	<c:forEach begin="0" items="${sessionScope.listaPropApOBJ}" var="lista6" varStatus="st">
- <c:if test="${lista.codPropuesta==lista6.codPropuesta}">checked</c:if>
-</c:forEach>
->
+			<input type="checkbox" name="propAprobada_" '<c:forEach begin="0" items="${sessionScope.listaPropApOBJ}" var="lista6" varStatus="st">
+ <c:if test="${lista.codPropuesta==lista6.codPropuesta && lista6.propuestaAp==1}">' checked '</c:if>
+</c:forEach>'
 			</td>
+			<input type="hidden" name="propAprobada">
 			<td class="estado" align="center">
 			<input type="text" name="observaciones" size="30" '<c:forEach begin="0" items="${sessionScope.listaPropApOBJ}" var="lista7" varStatus="st">' '<c:if test="${lista.codPropuesta==lista7.codPropuesta}">' value="<c:out value="${lista7.observa}"/>" '</c:if>' '</c:forEach>'>
 			</td>
-		<%--	<td class="estado" align="center">
-			<input type="checkbox" name="aprobo" size="30">
-			</td>--%>
 			<td>
 			</td>
 		</tr>

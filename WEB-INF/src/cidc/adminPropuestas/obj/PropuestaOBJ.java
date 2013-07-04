@@ -15,7 +15,7 @@ public class PropuestaOBJ {
 	private int estadoEvalExt;
 	private int estadoEvalComit;
 	private boolean propActiva;
-	private String[] propAprobada;
+	private int[] propAprobada;
 	private long codCriterio;
 	private String nomCriterio;
 	private float valCriterio;
@@ -41,7 +41,7 @@ public class PropuestaOBJ {
 	public int ano;
 	public int numero;
 	public int conv;
-        public String PropuestaAp;
+        public int PropuestaAp;
         public String PropuestaOb;
         public String observa;
 	private float[] valorCal;
@@ -91,10 +91,10 @@ public class PropuestaOBJ {
 	public void setEvaluador(long evaluador) {
 		this.evaluador = evaluador;
 	}
-	public String getPropuestaAp() {
+	public int getPropuestaAp() {
 		return PropuestaAp;
 	}
-	public void setPropuestaAp(String PropuestaAp) {
+	public void setPropuestaAp(int PropuestaAp) {
 		this.PropuestaAp = PropuestaAp;
 	}
 	public void setObserva(String observa) {
@@ -151,10 +151,10 @@ public class PropuestaOBJ {
 	public void setPropActiva(boolean propActiva) {
 		this.propActiva = propActiva;
 	}
-	public String[] getPropAprobada() {
+	public int[] getPropAprobada() {
 		return propAprobada;
 	}
-	public void setPropAprobada(String[] propAprobada) {
+	public void setPropAprobada(int[] propAprobada) {
 		this.propAprobada = propAprobada;
 	}
 	public long getCodCriterio() {

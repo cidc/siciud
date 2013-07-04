@@ -170,7 +170,7 @@
 			</tr>
 			<c:if test='${sessionScope.convocatoriaOBJ.convTipo==1}'>
 				<tr>
-				<th align="center">Se evalua:<input type="checkbox" name="convEvalua"></th>
+				<th align="center">Se evalua:<input type="checkbox" name="convEvalua" "<c:if test='${sessionScope.convocatoriaOBJ.convEvalua==true}'>" checked disabled="true""</c:if>"></th>
 				</tr>
 			</c:if>
 			<tr>

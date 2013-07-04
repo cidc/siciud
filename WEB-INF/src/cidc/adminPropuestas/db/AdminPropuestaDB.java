@@ -77,7 +77,11 @@ public class AdminPropuestaDB extends BaseDB{
 			}
 			}
 			else */
-                        ps=cn.prepareStatement(rb.getString("getPropuestasMovProy"));
+			if (tipo==1){
+                        ps=cn.prepareStatement(rb.getString("getPropuestasMovProy1"));
+			}
+			else 
+			ps=cn.prepareStatement(rb.getString("getPropuestasMovProy2"));
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
                         ps.setLong(i++,tipo);
@@ -312,7 +316,7 @@ public class AdminPropuestaDB extends BaseDB{
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
                                 propuestaOBJ.setConv(rs.getInt(i++));
                                 propuestaOBJ.setCodPropuesta(rs.getLong(i++));
-                                propuestaOBJ.setPropuestaAp(rs.getString(i++));
+                                propuestaOBJ.setPropuestaAp(rs.getInt(i++));
                                 propuestaOBJ.setAno(rs.getInt(i++));
                                 propuestaOBJ.setNumero(rs.getInt(i++));
                                 propuestaOBJ.setObserva(rs.getString(i++));
@@ -675,15 +679,13 @@ public class AdminPropuestaDB extends BaseDB{
 			if(propuestaOBJ.getCodProp()!=null){
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("AprobarPropuesta"));
-			//System.out.println("Entro a consulta DB"+propuestaOBJ.getCodProp().length);
+			System.out.println("Entro a consulta DB"+propuestaOBJ.getPropAprobada().length);
 			for(int i=0;i<propuestaOBJ.getCodProp().length;i++){
 			c=1;		
 			ps.setInt(c++,propuestaOBJ.getConvId()[i]);
 			ps.setLong(c++,propuestaOBJ.getCodProp()[i]);
-			//System.out.println("AAAA"+propuestaOBJ.isAprobo()[i]);
-			ps.setString(c++,propuestaOBJ.getPropAprobada()[i]);
+			ps.setInt(c++,propuestaOBJ.getPropAprobada()[i]);
 			ps.setString(c++,propuestaOBJ.getObservaciones()[i]);
-		//	ps.setInt(c++,propuestaOBJ.isAprobo()[i]);
 			System.out.println("Consulta: "+ps);
 			ps.execute();
 			}
