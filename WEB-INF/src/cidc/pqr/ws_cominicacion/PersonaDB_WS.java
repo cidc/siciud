@@ -107,8 +107,9 @@ public String  CrearPersona (PersonaDatos persona){
 	      +"</soa:saveEntityAsString>"
 	   +"</soapenv:Body>"
 	+"</soapenv:Envelope>";
-
+System.out.println("xml es: "+xmlCrearpersona);
 	String crearPersona = super.httpostConsultaEM(xmlCrearpersona);
+	System.out.println("RESPUESTA WS"+crearPersona);
 	XmlRespPersona personaCreada = new XmlRespPersona();
 	String mensajePerCreada = null;
 	try {

@@ -36,7 +36,7 @@ public class Pqr {
 	private String contacto;
 	private String proyInv;
 	private String codigo;
-	private String faculta;
+	private String facultad;
 	
 	
 	
@@ -77,11 +77,11 @@ public class Pqr {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	public String getFaculta() {
-		return faculta;
+	public String getFacultad() {
+		return facultad;
 	}
-	public void setFaculta(String faculta) {
-		this.faculta = faculta;
+	public void setFacultad(String faculta) {
+		this.facultad = faculta;
 	}
 	public String getIdCaso() {
 		return idCaso;

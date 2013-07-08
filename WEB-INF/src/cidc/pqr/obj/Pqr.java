@@ -6,7 +6,6 @@ public class Pqr {
 		
 	}
 	
-	private String tipoSol;
 	private String persona;
 	private String titulo;
 	private String nombre;
@@ -26,14 +25,10 @@ public class Pqr {
 	private int solucionImnediata;
 	private int notificacionCorreo; 
 	private int notFinCaso;
+	private int codigo;
+	private int facultad;
 	
-	
-	public String getTipoSol() {
-		return tipoSol;
-	}
-	public void setTipoSol(String tipoSol) {
-		this.tipoSol = tipoSol;
-	}
+
 	public String getPersona() {
 		return persona;
 	}
@@ -148,7 +143,17 @@ public class Pqr {
 	public void setNotFinCaso(int notFinCaso) {
 		this.notFinCaso = notFinCaso;
 	}
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public int getFacultad() {
+		return facultad;
+	}
+	public void setFacultad(int facultad) {
+		this.facultad = facultad;
+	}
 	
-	
-
 }

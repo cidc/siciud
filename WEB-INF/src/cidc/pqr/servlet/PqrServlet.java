@@ -51,7 +51,7 @@ public class PqrServlet extends ServletGeneral{
          	casodatos.setArchivoCaso(pqr.getArchivoAdjunto());
          	personaDatos.setProyInv(pqr.getProyInv());
 			personaDatos.setCodigo(pqr.getCodigo());
-			personaDatos.setFaculta(pqr.getFaculta());
+			personaDatos.setFacultad(pqr.getFacultad());
 			personaDatos.setTipoInterno(pqr.getTipoInterno());
 			casodatos.setArchivoCaso((File)sesion.getAttribute("archivo"));
 			casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
@@ -74,7 +74,6 @@ public class PqrServlet extends ServletGeneral{
 			break;
 		case 2://crear persona
 			System.out.println("caso 2");
-			irA="/pqr/CrearPersona.jsp";
 			personaDatos.setTitulo(pqr.getTitulo());
 			personaDatos.setNombreRazonSocial(pqr.getNombre());
 			personaDatos.setTipoDocumento(pqr.getTipoDoc());
@@ -84,20 +83,29 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setTelefonoMovil(pqr.getCelular());
 			personaDatos.setCiudad(pqr.getCiudad());
 			personaDatos.setTipoExterno(pqr.getTipoExterno());
+			personaDatos.setTipoInterno(pqr.getTipoInterno());
 			personaDatos.setRepresentante(pqr.getRepresentante());
 			personaDatos.setContacto(pqr.getContacto());
-			
-			
+			personaDatos.setCodigo(pqr.getCodigo());
+			personaDatos.setFacultad(pqr.getFacultad());
+			personaDatos.setProyInv(pqr.getProyInv());
+			if(!personaDatos.getTipoInterno().equals("0")){
+				personaDatos.setCiudad("2");
+				personaDatos.setTipoPersona("51");
+			}
+
 			String respuesta=personaDB_WS.CrearPersona(personaDatos);
-			if(respuesta==null)
+			if(respuesta!=null)//debe ser ==null
 				mensaje="Se ha producido un error en la creación";
 			else{
 				mensaje="la creacion de la persona ha sido exitosa";
-				req.setAttribute("crearCaso", "display:none");
+				req.setAttribute("crearCaso", "display:block");
 			}
+			irA="/pqr/registrarPeticion.jsp";
 			 break;
 		case 3: //buscar persona
 			personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
+			personaDatos.setDocumentoIdNit(pqr.getDocumento());
 			//codigo pruebas
 //				personaDatos.setTipoPersona("1");
 //				personaDatos.setTipoInterno("3");
@@ -108,9 +116,12 @@ public class PqrServlet extends ServletGeneral{
 			sesion.setAttribute("personaDatos", personaDatos);
 			System.out.println();
 			if(personaDatos.getPersonaID()==null){// debe ser ==null 
-				mensaje="Esta persona no existe";
+				mensaje="Esta persona NO existe, por favor registre sus DATOS";
 				req.setAttribute("crearCaso", "display:none");
-				sesion.setAttribute("tipoSolicitante", "display:none");
+				sesion.setAttribute("tipoSolicitante", "display:block");
+				req.setAttribute("botonCrear", "display:block");
+				//req.setAttribute("crearCaso", "display:none");
+				//sesion.setAttribute("tipoSolicitante", "display:none");
 			}else{
 				sesion.setAttribute("crearCaso", "display:block");
 				sesion.setAttribute("basico", "display:block");
@@ -137,6 +148,7 @@ public class PqrServlet extends ServletGeneral{
 			sesion.setAttribute("juridico", "display:none");
 			sesion.setAttribute("tipoSolicitante", "display:none");
 			req.setAttribute("crearCaso", "display:none");
+			req.setAttribute("botonCrear", "display:none");
 			sesion.removeAttribute("archivo");
 			irA="/pqr/registrarPeticion.jsp";
 			break;

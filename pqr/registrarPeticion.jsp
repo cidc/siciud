@@ -16,11 +16,14 @@ function guardar(pqrForm){
 
 function crearPersona(pqrForm){
 	if(validarPersona()){
+		alert("entra condicion");
 		document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
 		document.pqrForm.accion.value=2;
 		document.pqrForm.submit();
-	}	
-	
+	}else{	
+	alert("no entra");
+	return false;
+	}
 }
 
 function buscarPersona(){
@@ -166,9 +169,10 @@ function validarPersona(){
 	if(mensaje!=""){
 		mensaje="Los siguientes campos son obligatorios: "+mensaje;
 		alert (mensaje);
+		return false;
 	}else
 		return true;
-	return false;
+	
 }
 
 function validarCaso(){
@@ -204,6 +208,23 @@ function validarCaso(){
 <input type="hidden" name="accion" value="1">
 <table align="left" class="tablas" width="90%">
 	<caption>Información del Solicitante</caption>
+				
+				<tr>
+					<td colspan="4" align="left"><label for="documento" id="ldocumentoIdent">Documento de Identidad / NIT *</label></td>
+					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT"  onkeypress="javascript:return validarNro(event)" VALUE='<c:out value="${sessionScope.personaDatos.documentoIdNit}"/>'>
+
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="tipoDoc" id="ltipoDoc" style='<c:out value="${sessionScope.basico}"/>'>Tipo de Documento*</label>
+					</td>
+					<td><select name="tipoDoc" style='<c:out value="${sessionScope.basico}"/>'>
+						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoDocumento==1}">selected</c:if>>Cédula de Ciudadanía</OPTION> 
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoDocumento==2}">selected</c:if>>Tarjeta de Identidad</OPTION>
+						<OPTION VALUE="3" <c:if test="${sessionScope.personaDatos.tipoDocumento==3}">selected</c:if>>Cédula de Extranjería</OPTION> 
+						<OPTION VALUE="4" <c:if test="${sessionScope.personaDatos.tipoDocumento==4}">selected</c:if>>Pasaporte</OPTION>
+					</select></td>
+				</tr>
 				<tr>
 					<td colspan="4" align="left"><label for="ltipoSol" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>Tipo de Solicitud</label>
 					</td>
@@ -217,6 +238,7 @@ function validarCaso(){
 					<td colspan="4" align="left"><label for="tipoInterno" id="ltipoInterno" style='<c:out value="${sessionScope.opcionales}"/>'>Solicitante Interno</label>
 					</td>
 					<td><select name="tipoInterno" style='<c:out value="${sessionScope.opcionales}"/>' >
+						<OPTION VALUE="0">-------</OPTION>
 						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoInterno==2}">selected</c:if>>Docente</OPTION>
 						<OPTION VALUE="3" <c:if test="${sessionScope.personaDatos.tipoInterno==3}">selected</c:if>>Estudiante</OPTION>
 					</select></td>
@@ -225,36 +247,15 @@ function validarCaso(){
 					<td colspan="4" align="left"><label for="tipoExterno" id="ltipoExterno" style='<c:out value="${sessionScope.juridico}"/>'>Solicitante Externo</label>
 					</td>
 					<td><select name="tipoExterno" onchange="externo()" style='<c:out value="${sessionScope.juridico}"/>'>
-						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoExterno==1}">selected</c:if>>Persona Natural</OPTION>
-						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoExterno==3}">selected</c:if>>Persona Jurídica</OPTION>
-					</select></td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><label for="documento" id="ldocumentoIdent">Documento de Identidad / NIT *</label></td>
-					<td  align="left"><INPUT NAME="documento" MAXLENGTH="25" TYPE="TEXT"  onkeypress="javascript:return validarNro(event)" VALUE='<c:out value="${sessionScope.personaDatos.documentoIdNit}"/>'>
-							<table>
-							<tr><td>
-							<input type=image src="/siciud/comp/img/Buscar.gif" onclick="buscarPersona()" align="top">
-							</td><td> 
-							<input id="bGuardar" type=image src="/siciud/comp/img/Guardar.gif" onclick="crearPersona()" style="<c:out value="${sessionScope.basico}" />">
-							</td></tr>
-							</table>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><label for="tipoDoc" id="ltipoDoc" style='<c:out value="${sessionScope.basico}"/>'>Tipo de Documento*</label>
-					</td>
-					<td><select name="tipoDoc" onchange="" style='<c:out value="${sessionScope.basico}"/>'>
-						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoDocumento==1}">selected</c:if>>Cédula de Ciudadanía</OPTION> 
-						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoDocumento==2}">selected</c:if>>Tarjeta de Identidad</OPTION>
-						<OPTION VALUE="3" <c:if test="${sessionScope.personaDatos.tipoDocumento==3}">selected</c:if>>Cédula de Extranjería</OPTION> 
-						<OPTION VALUE="4" <c:if test="${sessionScope.personaDatos.tipoDocumento==4}">selected</c:if>>Pasaporte</OPTION>
+						<OPTION VALUE="0">-------</OPTION>
+						<OPTION VALUE="51" <c:if test="${sessionScope.personaDatos.tipoExterno==51}">selected</c:if>>Persona Natural</OPTION>
+						<OPTION VALUE="52" <c:if test="${sessionScope.personaDatos.tipoExterno==52}">selected</c:if>>Persona Jurídica</OPTION>
 					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><label for="titulo" id="ltitulo" style='<c:out value="${sessionScope.basico}"/>'>Titulo*</label>
 					</td>
-					<td><select name="titulo" onchange="" style='<c:out value="${sessionScope.basico}"/>'>
+					<td><select name="titulo"  style='<c:out value="${sessionScope.basico}"/>' >
 						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.titulo==1}">selected</c:if>>Sr.</OPTION>
 						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.titulo==2}">selected</c:if>>Sra.</OPTION>
 						<OPTION VALUE="3" <c:if test="${sessionScope.personaDatos.titulo==3}">selected</c:if>>Señores</OPTION>
@@ -322,6 +323,18 @@ function validarCaso(){
 					<td  align="left"><INPUT NAME="facultad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
 					</td>
 				</tr>
+				
+				<tr>
+					<td  align="right">
+							<table>
+							<tr><td>
+							<input type=image src="/siciud/comp/img/Buscar.gif" onclick="buscarPersona()" align="top">
+							</td><td> 
+							<img id="bGuardar" src='<c:url value="/comp/img/Guardar.gif"/>' onclick="crearPersona()" style="<c:out value="${requestScope.botonCrear}" />"/>
+							</td></tr>
+							</table>
+					</td>
+				</tr>
 </table>
 <br>
 <table class="tablas" width="90%" style="<c:out value="${requestScope.crearCaso}"/>">
@@ -358,7 +371,7 @@ function validarCaso(){
 				<tr>
 					<td colspan="4" align="left"><c:out value="Asunto"/>
 					</td>
-					<td  align="left"><INPUT NAME="asunto" MAXLENGTH="25" TYPE="TEXT" VALUE="">
+					<td  align="left"><INPUT NAME="asunto" MAXLENGTH="110" TYPE="TEXT" VALUE="">
 					</td>
 				</tr>
 				<tr>
