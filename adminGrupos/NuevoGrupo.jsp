@@ -178,10 +178,6 @@
 											<td>
 												<input type="text" name="numeroCIDC" onkeypress="javascript:return validarNro(event)">
 											</td>
-											<td class="renglones"><b>Acta Comité CIDC</b></td>
-											<td>
-												<input type="file" name="actaCidc" size="30%">
-											</td> 
 										</tr>
 										<tr>
 											<td class="renglones"><b>Fecha de Creación Facultad</b></td>
@@ -203,10 +199,6 @@
 											<td>
 												<input type="text" name="numeroFac" onkeypress="javascript:return validarNro(event)">
 											</td>
-											<td class="renglones"><b>Acta Comité Facultad</b></td>
-											<td>
-												<input type="file" name="actaFacultad" size="30%">
-											</td> 
 										</tr>
 									</table>
 								</td>
