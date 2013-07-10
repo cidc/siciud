@@ -95,7 +95,7 @@ public class PqrServlet extends ServletGeneral{
 			}
 
 			String respuesta=personaDB_WS.CrearPersona(personaDatos);
-			if(respuesta!=null)//debe ser ==null
+			if(respuesta==null)//debe ser ==null
 				mensaje="Se ha producido un error en la creación";
 			else{
 				mensaje="la creacion de la persona ha sido exitosa";

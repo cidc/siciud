@@ -42,13 +42,15 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	
 	super.setConnectionWF();
 	String doc64 ="";
+	String nombreArchivo ="";
 	if(datosForm.getArchivoCaso()==null){
 		doc64 ="";
+		nombreArchivo="";
 	}else{
 		Archivo64 convertir64 = new Archivo64();
 		//String ruta = DatosForm.getArchivoCaso();
 		doc64 = convertir64.encodeFileToBase64Binary(datosForm.getArchivoCaso());
-//		System.out.println(doc64);
+		nombreArchivo=datosForm.getArchivoCaso().getName();
 	}
 	
 	String xmlCrearCaso= "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">"
@@ -60,7 +62,7 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	        		"<MediodeRecepcion businessKey=\"id="+datosForm.getMedioDeRecepcion()+"\"/>"+
 	        		"<TipodeRequerimiento businessKey=\"id="+datosForm.getTipoDeRequerimiento()+"\"/>"+
 	        		"<Asunto>"+datosForm.getAsunto()+"</Asunto>" +
-	        		"<ArchivosdelCaso><File fileName=\""+datosForm.getArchivoCaso().getName()+"\">"+doc64+"</File></ArchivosdelCaso>"+
+	        		"<ArchivosdelCaso><File fileName=\""+nombreArchivo+"\">"+doc64+"</File></ArchivosdelCaso>"+
 	        		"<Descripcion>"+datosForm.getDescripcion()+"</Descripcion>"+
 	        		"<FlagsdelCaso><EscaladodeOtraDependencia>"+datosForm.getEscaladoOtraDependencia()+"</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+datosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
 	        		"<Persona businessKey=\"id="+persona.getPersonaID()+"\"/>"+

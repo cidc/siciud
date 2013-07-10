@@ -16,12 +16,10 @@ function guardar(pqrForm){
 
 function crearPersona(pqrForm){
 	if(validarPersona()){
-		alert("entra condicion");
 		document.pqrForm.action='<c:url value="/pqr/llenar.jsp"/>';
 		document.pqrForm.accion.value=2;
 		document.pqrForm.submit();
 	}else{	
-	alert("no entra");
 	return false;
 	}
 }
@@ -105,7 +103,7 @@ function cambiar(obj){
 }
 
 function externo(){
-	if(document.pqrForm.tipoExterno.value==1){
+	if(document.pqrForm.tipoExterno.value==51){
 		document.pqrForm.titulo.style.display='block';
 		document.getElementById("ltitulo").style.display='block';
 		document.pqrForm.tipoDoc.style.display='block';
@@ -115,7 +113,7 @@ function externo(){
 		document.pqrForm.contacto.style.display='none';
 		document.getElementById("lcontacto").style.display='none';
 		
-	}else{
+	}if(document.pqrForm.tipoExterno.value==52){
 		document.pqrForm.titulo.style.display='none';
 		document.getElementById("ltitulo").style.display='none';
 		document.pqrForm.tipoDoc.style.display='none';
@@ -176,7 +174,6 @@ function validarPersona(){
 }
 
 function validarCaso(){
-	alert("requerimiento "+document.pqrForm.tipoSolicitud.selectedIndex);
 	mensaje="";
 	if(document.pqrForm.recepcion.value=="")
 		mensaje+="\n -Medio de Recepción";
@@ -248,8 +245,8 @@ function validarCaso(){
 					</td>
 					<td><select name="tipoExterno" onchange="externo()" style='<c:out value="${sessionScope.juridico}"/>'>
 						<OPTION VALUE="0">-------</OPTION>
-						<OPTION VALUE="51" <c:if test="${sessionScope.personaDatos.tipoExterno==51}">selected</c:if>>Persona Natural</OPTION>
-						<OPTION VALUE="52" <c:if test="${sessionScope.personaDatos.tipoExterno==52}">selected</c:if>>Persona Jurídica</OPTION>
+						<OPTION VALUE="51" <c:if test="${sessionScope.personaDatos.tipoPersona==51}">selected</c:if>>Persona Natural</OPTION>
+						<OPTION VALUE="52" <c:if test="${sessionScope.personaDatos.tipoPersona==52}">selected</c:if>>Persona Jurídica</OPTION>
 					</select></td>
 				</tr>
 				<tr>
@@ -305,24 +302,7 @@ function validarCaso(){
 					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.basico}"/>' VALUE="<c:out value="${sessionScope.personaDatos.ciudad}"/>">
 					</td>
 				</tr>
-				<tr>
-					<td colspan="4" align="left"><label for="proyInv" id="lproyInv" style='<c:out value="${sessionScope.opcionales}"/>'>Proyecto de Investigación</label>
-					</td>
-					<td  align="left"><INPUT NAME="proyInv" MAXLENGTH="250" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><label for="codigo" id="lcodigo" style='<c:out value="${sessionScope.opcionales}"/>'>Código</label>
-					</td>
-					<td  align="left"><INPUT NAME="codigo" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><label for="facultad" id="lfacultad" style='<c:out value="${sessionScope.opcionales}"/>'>Facultad</label>
-					</td>
-					<td  align="left"><INPUT NAME="facultad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
-					</td>
-				</tr>
+				
 				
 				<tr>
 					<td  align="right">
@@ -367,6 +347,24 @@ function validarCaso(){
 						<OPTION VALUE="9">Certificaciones</OPTION>
 						<OPTION VALUE="10">Solicitud de otra Dependencia</OPTION> 
 					</select></td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="proyInv" id="lproyInv" style='<c:out value="${sessionScope.opcionales}"/>'>Proyecto de Investigación</label>
+					</td>
+					<td  align="left"><INPUT NAME="proyInv" MAXLENGTH="250" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="codigo" id="lcodigo" style='<c:out value="${sessionScope.opcionales}"/>'>Código</label>
+					</td>
+					<td  align="left"><INPUT NAME="codigo" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="left"><label for="facultad" id="lfacultad" style='<c:out value="${sessionScope.opcionales}"/>'>Facultad</label>
+					</td>
+					<td  align="left"><INPUT NAME="facultad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.opcionales}"/>' VALUE="">
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Asunto"/>
