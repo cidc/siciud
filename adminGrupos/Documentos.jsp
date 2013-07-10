@@ -9,16 +9,22 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function buscarGrupo(){
-		document.buscar.action='<c:url value="/adminGrupos/llenar.jsp"/>';
-		document.buscar.submit();
+	      	 if (document.buscar.tipo[0].checked ||document.buscar.tipo[1].checked){
+	      		document.buscar.action='<c:url value="/adminGrupos/llenar.jsp"/>';
+				document.buscar.submit();
+	   	}else
+			alert("Por favor seleccione Grupo o Semillero");
 	}
-	function guardar(){
+	function guardar(frm){
 		if(ValidarFormulario(frm)){
 			frm.submit();
 		}
 	}
 	function grupoSeleccionado(){
+		//alert(document.buscar.grupo.value);
 		document.getElementById("capaDocumentos").style.display="block";
+		document.formCIDC.idGrupo.value=document.buscar.grupo.value;
+		document.frmFac.idGrupo.value=document.buscar.grupo.value;
 	}
 	function ValidarFormulario(forma){
 		if(forma.fichero.value==""){
@@ -37,6 +43,15 @@
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
+<br>
+	<table width="100%">
+		<tr>
+			<td align="center">
+			<a href='<c:url value="/adminGrupos/AdminGrupos.x?accion=0" />'><img border="0" src="<c:url value="/comp/img/Home.png"/>"></a>
+			</td>
+		</tr>
+	</table>
+	<br>
 	<form name="buscar" action="">
 	<input type="hidden" name="accion" value="22">
 	<table align="center" class="tablas">
@@ -53,8 +68,8 @@
 					<option value="5" <c:if test="${requestScope.facultad==5}">selected</c:if>> Artes (Asab)</option>
 				</select>
 			</td>
-			<td><b>Grupo</b><input type="radio" name="tipo" value="1" <c:if test="${requestScope.tipo==1}">checked</c:if>></td>
-			<td><b>Semillero</b><input type="radio" name="tipo" value="2" <c:if test="${requestScope.tipo==2}">checked</c:if>></td>
+			<td><b>Grupo</b><input type="radio" name="tipo" value=1 <c:if test="${requestScope.tipo==1}">checked</c:if>></td>
+			<td><b>Semillero</b><input type="radio" name="tipo" value=2 <c:if test="${requestScope.tipo==2}">checked</c:if>></td>
 			<td><img align="left" src="<c:url value="/comp/img/Buscar.gif"/>" onclick="buscarGrupo()"></td>
 		</tr>
 		<tr id="comboGrupo" style="${requestScope.grupo}">
@@ -70,21 +85,23 @@
 		</tr>
 	</table>
 	</form>
+	<br>
 	<div id="capaDocumentos" style="display:none">
-	<legend class="texto1"><b>Actas de Creación</b></legend>
-		<table>
+		<table align="center">
+		<caption>Cargar Actas de Creación</caption>
 				<tr>
 					<td>
 					<br>
 						<form action='<c:url value="/adminGrupos/archivoActas.x"/>' name="formCIDC" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="id" value="1">
+						<input type="hidden" name="idGrupo" value="">
 							<table width="100%">
 								<tr>
 									<td colspan="2" class="renglones"><b>Acta de Cómite</td>
 								</tr>
 								<tr>
 									<td id="f1"><input size="60%" type="file" name="fichero"></td>
-									<td id="g1" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar()"></td>
+									<td id="g1" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(document.formCIDC)"></td>
 								</tr>
 							</table>
 						</form>
@@ -94,13 +111,14 @@
 					<td>
 						<form action='<c:url value="/adminGrupos/archivoActas.x"/>' name="frmFac" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="id" value="2">
+						<input type="hidden" name="idGrupo" value="">
 							<table width="100%">
 								<tr>
 									<td colspan="2" class="renglones"><b>Acta de Facultad</b></td>
 								</tr>
 								<tr>
 									<td id="f2"><input size="60%" type="file" name="fichero"></td>
-									<td id="g2" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar()"></td>
+									<td id="g2" width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(document.frmFac)"></td>
 								</tr>
 							</table>
 						</form>

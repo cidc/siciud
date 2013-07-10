@@ -16,20 +16,25 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import cidc.adminGrupos.db.AdminGruposDB;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
+import cidc.general.login.Usuario;
 import cidc.general.obj.CargarDocumento;
 import cidc.general.servlet.ServletGeneral;
 
 public class Archivos extends ServletGeneral {
 
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		String irA="";
+		String irA="/adminGrupos/Documentos.jsp";
         CargarDocumento cargarDocumento=new CargarDocumento();
         HttpSession sesion=req.getSession();
         DiskFileUpload fu = new DiskFileUpload();
 		FileItem archivoAdj=null;
-		String itemDoc=null,idProp=null;
+		String itemDoc=null;
+		String idGrupo=null;
+		final int actaCIDC=1;
+		final int actaFac=2;
         cursor=new CursorDB();
         mensaje="";
 			if (ServletFileUpload.isMultipartContent(req)){
@@ -44,8 +49,8 @@ public class Archivos extends ServletGeneral {
 				            if (item.isFormField()) {
 				            	if(item.getFieldName().equals("id"))
 				            		itemDoc=item.getString();
-				            	if(item.getFieldName().equals("idProp"))
-				            		idProp=item.getString();
+				            	if(item.getFieldName().equals("idGrupo"))
+				            		idGrupo=item.getString();
 				            }else{
 				            	archivoAdj=item;
 				            }
@@ -61,23 +66,25 @@ public class Archivos extends ServletGeneral {
 				}
 
 			}
-			Date date = new Date();
-			String nombre =String.valueOf(date.getTime());
+			
+			String nombre =idGrupo;
 			CargarDocumento cargaDoc = new CargarDocumento();
 			String arch="";
+			Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 			if(itemDoc!=null){
 				String path = req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
-				String nombreArchivo=null;
+				AdminGruposDB admin=new AdminGruposDB(cursor,usuario.getPerfil());	
 				try {
 					switch(Integer.parseInt(itemDoc)){
 						case 1:
-							irA="/adminGrupos/HomeAdminGrupos.jsp";
-							 arch = cargaDoc.cargarGenerico(path, archivoAdj,"Bizagi", "actCIDC"+nombre, 0);
-							
+							 arch = cargaDoc.cargarGenerico(path, archivoAdj,"Actas_Grupos", "actCIDC-"+nombre, 0);
+							 admin.actArchivo(Long.parseLong(idGrupo), arch,actaCIDC);
+							 mensaje="Acta de creación del Grupo/Semillero ante el CIDC cargada Exitosamente";
 						break;
 						case 2:
-							irA="/adminGrupos/HomeAdminGrupos.jsp";
-							 arch = cargaDoc.cargarGenerico(path, archivoAdj,"Bizagi", "actFAc"+nombre, 0);
+							 arch = cargaDoc.cargarGenerico(path, archivoAdj,"Actas_Grupos", "actFac-"+nombre, 0);
+							 admin.actArchivo(Long.parseLong(idGrupo), arch,actaFac);
+							 mensaje="Acta de creación del Grupo/Semillero ante el Consejo de Facultad cargada exitosamente";
 						break;
 					}
 				} catch (Exception e) {
@@ -85,6 +92,7 @@ public class Archivos extends ServletGeneral {
 					mensaje = "El documento de movilidad no pudo ser almacenado";
 				}
 			}
+		
         retorno[0]="unir";
 		retorno[1]=irA;
 		retorno[2]=mensaje;

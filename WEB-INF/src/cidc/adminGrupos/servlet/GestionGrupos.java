@@ -42,12 +42,16 @@ public class GestionGrupos extends ServletGeneral {
 			case Parametros.NuevoGrupo:
 				grupoInvestigacion=(GrupoInvestigacion)sesion.getAttribute("grupo");
 				if(grupoInvestigacion!=null){
-					if(!adminGruposDB.nuevoGrupo(grupoInvestigacion))
+					if(adminGruposDB.nuevoGrupo(grupoInvestigacion)){
 						mensaje="Grupo Insertado Correctamente";
-					else
+						irA="/adminGrupos/Documentos.jsp";
+					}
+					else{
 						mensaje="El Grupo no pudo ser Insertado Correctamente";
+						irA="/adminGrupos/NuevoGrupo.jsp";
+					}
 				}
-				irA="/adminGrupos/Documentos.jsp";
+				
 				req.setAttribute("grupo","display:none");
 				sesion.removeAttribute("grupo");
 			break;

@@ -359,6 +359,8 @@ public class AdminGruposDB extends BaseDB{
 				grupo.setFechaCreacionFacultad(rs.getString(i++));
 				grupo.setNumeroCIDC(rs.getInt(i++));
 				grupo.setNumeroFac(rs.getInt(i++));
+				grupo.setActaCidc(rs.getString(i++));
+				grupo.setActaFacultad(rs.getString(i++));
 				grupo.setModificable(false);
 			}
 		}catch (SQLException e) {
@@ -1522,6 +1524,38 @@ public class AdminGruposDB extends BaseDB{
 		}
 	//	System.out.println(l.size());
 		return l;
+	}
+	
+	/**
+	 * 
+	 * @param id id del grupo de investigacion
+	 * @param ruta del archivo
+	 * @param tipo 1= actaCIDC 2= actaFAc  
+	 * @return
+	 */
+	
+	public boolean actArchivo( long id, String ruta,int tipo) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("archivo"+tipo));
+			ps.setString(i++, ruta);
+			ps.setLong(i++, id);
+			ps.executeUpdate();
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+
 	}
 }
 

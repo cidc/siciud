@@ -202,6 +202,10 @@
 										<td>
 												<input type="text" name="numeroCIDC" onkeypress="javascript:return validarNro(event)" value="${sessionScope.grupo.numeroCIDC}">
 										</td>
+										<td class="renglones"><b>Archivo Acta CIDC</b></td>
+										<td>
+											<a href="/siciud/Documentos/Actas_Grupos/${sessionScope.grupo.actaCidc}" target="_blank"><img src="/siciud/comp/img/pdf.png" /></a>
+										</td>
 									</tr>
 									<tr>
 										<td width="30%" class="renglones"><b>Fecha de Creación Facultad</b></td>
@@ -222,6 +226,10 @@
 										<td class="renglones"><b>Número de acta</b></td>
 										<td>
 												<input type="text" name="numeroFac" onkeypress="javascript:return validarNro(event)" value="${sessionScope.grupo.numeroFac}">
+										</td>
+										<td class="renglones"><b>Archivo Acta FAcultad</b></td>
+										<td>
+											<a href="/siciud/Documentos/Actas_Grupos/${sessionScope.grupo.actaFacultad}" target="_blank"><img src="/siciud/comp/img/pdf.png" /></a>
 										</td>
 									</tr>
 								</table>

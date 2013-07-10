@@ -24,7 +24,7 @@
 	}
 
 	function guardar(){
-		if(!validar()){
+		if(validar()){
 			document.nuevo.action='<c:url value="/adminGrupos/llenar.jsp"/>';
 			document.nuevo.submit();
 		}
@@ -73,7 +73,7 @@
 	
 		if (key < 48 || key > 57)
 		    {
-		    if(key == 8) // Detectar . (punto) y backspace (retroceso)
+		    if(key == 8) // Detectar  backspace (retroceso)
 		        { return true; }
 		    else 
 		        { return false; }
