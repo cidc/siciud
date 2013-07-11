@@ -280,11 +280,12 @@ public class MovilidadDB extends BaseDB{
                         ps=cn.prepareStatement(rb.getString("DatosDocumentos"));
                         ps.setInt(1,conv);
                         rs=ps.executeQuery();
+		System.out.println("consulta2:"+ps);
                         while(rs.next()){
                                 i=1;
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
                                 propuestaOBJ.setCodigo(rs.getInt(i++));
-                                propuestaOBJ.setDocNombre(rs.getString(i++));
+                                propuestaOBJ.setDocNombre(rs.getString(i++).replaceAll(" ",""));
                                 propuestaOBJ.setEstado(rs.getBoolean(i++));
                                 l.add(propuestaOBJ);
                         }
