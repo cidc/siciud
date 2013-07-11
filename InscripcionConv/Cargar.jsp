@@ -205,17 +205,21 @@
 				</c:if>				
 <%-- --%>
 
+<%-- --%>
+
                 <tr>
                         <td>
-                                <form action='<c:url value="/RequisitosArchivoProy.x"/>' name="frmDoc" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="id" value="14">
+                        <c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
+
+                                <form action='<c:url value="/RequisitosArchivoProy.x"/>' name="${lista2.docNombre}" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="${lista2.codigo}">
                                 <input type="hidden" name="propConvId" value="${sessionScope.datosConv.convId}">
                                 <input type="hidden" name="DocId" value="${lista2.codigo}">
 				<input type="hidden" name="idPropuesta" value="${sessionScope.inscripcionConvOBJ.propId}">
+
                                         <table width="100%">
-				<th colspan="2" align="center">Documentos Requeridos</th>
-                                                <c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
-                                                <tr>
+                                         <th colspan="2" align="center">Documentos Requeridos</th>
+                                               <tr>
                                                         <td colspan="2" class="renglones"><b><c:out value="${lista2.docNombre}"/>-<c:out value="${sessionScope.datosConv.convId}"/>-<c:out value="${lista2.codigo}"/></b></td>
                                                 </tr>
                                                 <tr>
@@ -223,14 +227,19 @@
                                                 </tr>
                                                 <tr>
                                                         <td><input size="60%" type="file" name="archivo"></td>
-                                                        <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardareq(document.frmDoc.archivo,document.frmDoc,<c:out value="${lista2.codigo}" />)"></td>
-                                        </tr>                                        </c:forEach>
+                                                        <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardareq(document.${lista2.docNombre}.archivo,document.${lista2.docNombre},<c:out value="${lista2.codigo}" />)"></td>
+                                        </tr>
                                                 </tr>
                                         </table>
                                 </form>
+                                </c:forEach>
                         </td>
                 </tr>
-<%-- --%>
+
+
+
+
+
 				<tr>
 					<td align="center">
 					<form action='<c:url value="/inscripcionConv/Inscripcion.x" />' method="post" name="finaliza">

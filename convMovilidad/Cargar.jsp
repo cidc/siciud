@@ -123,7 +123,7 @@
 <fieldset style="width:590px;">
 	<legend>Documentos requeridos </legend>
 	<table class="tablas" width="100%">
-		<tr>
+		<%--<tr>
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm1" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="1">
@@ -148,6 +148,7 @@
 				</form>
 			</td>
 		</tr>
+--%>
 		<tr>
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm2" method="post" enctype="multipart/form-data">
@@ -173,7 +174,7 @@
 				</form>
 			</td>
 		</tr>
-		<tr>
+	<%--	<tr>
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm3" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="3">
@@ -195,6 +196,7 @@
 				</form>
 			</td>
 		</tr>
+--%>
 <!--
 		<tr>
 			<td>
@@ -423,15 +425,16 @@
 <%-- --%>
                 <tr>
                         <td>
-                                <form action='<c:url value="/RequisitosArchivo.x"/>' name="frmDoc" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="id" value="14">
+			<c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
+
+                                <form action='<c:url value="/RequisitosArchivo.x"/>' name="${lista2.docNombre}" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="${lista2.codigo}">
                                 <input type="hidden" name="propConvId" value="${sessionScope.datosConv.convId}">
                                 <input type="hidden" name="DocId" value="${lista2.codigo}">
                                 <input type="hidden" name="idPropuesta" value="<c:out value="${movilidad.idPropuesta}"/>">
 
                                         <table width="100%">
 					 <th colspan="2" align="center">Documentos Requeridos</th>
-						<c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
                                                 <tr>
                                                         <td colspan="2" class="renglones"><b><c:out value="${lista2.docNombre}"/>-<c:out value="${sessionScope.datosConv.convId}"/>-<c:out value="${lista2.codigo}"/></b></td>
                                                 </tr>
@@ -440,17 +443,12 @@
                                                 </tr>
                                                 <tr>
                                                         <td><input size="60%" type="file" name="archivo"></td>
-                                                        <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(document.frmDoc.archivo,document.frmDoc,<c:out value="${lista2.codigo}" />)"></td>
+                                                        <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(document.${lista2.docNombre}.archivo,document.${lista2.docNombre},<c:out value="${lista2.codigo}" />)"></td>
 					</tr>			
-					</c:forEach>
-                                              <%--  <c:if test="${sessionScope.movilidad.archivoProduccion!=null}">
-                                                        <tr>
-                                                                <td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Movilidad/${sessionScope.movilidad.archivoProduccion}" />'>Ver Documento</a></td>
-                                                        </tr>
-                                                </c:if>--%>
                                                 </tr>
                                         </table>
                                 </form>
+				</c:forEach>
                         </td>
                 </tr>
 

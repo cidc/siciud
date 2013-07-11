@@ -87,7 +87,9 @@ public class CargarDocumento{
 		File sitio=new File(path);
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(10240*1024);
-        factory.setRepository(sitio);
+       		factory.setRepository(sitio);
+		System.out.println("patho:"+path);
+		System.out.println("carpeta:"+carpeta);
 		if (archivo !=null){
 		String fileName = archivo.getName();
 		System.out.println("archivooooo:"+fileName);
