@@ -97,6 +97,8 @@ public String  CrearPersona (PersonaDatos persona){
 	                 +  "<TipodeDocumento businessKey=\"id="+persona.getTipoDocumento()+"\"/>"
 	                 +  "<Titulo businessKey=\"id="+persona.getTitulo()+"\"/>"
 	                 +  "<CorreoElectronico>"+persona.getCorreoElectronico()+"</CorreoElectronico>"
+	                 +  "<RepresentanteLega>"+persona.getRepresentante()+"</RepresentanteLega>"
+	                 +  "<Contacto>"+persona.getContacto()+"</Contacto>"
 	                 +  "<TipodePersona businessKey=\"id="+persona.getTipoPersona()+"\"/>"
 	                  +"<Contacto>"+persona.getContacto()+"</Contacto>"//----------------------
                          +  "<RepresentanteLega>"+persona.getRepresentante()+"</RepresentanteLega>"//-----

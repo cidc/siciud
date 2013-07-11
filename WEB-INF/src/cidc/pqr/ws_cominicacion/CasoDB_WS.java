@@ -43,28 +43,28 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	super.setConnectionWF();
 	String doc64 ="";
 	String nombreArchivo ="";
-	if(datosForm.getArchivoCaso()==null){
-		doc64 ="";
-		nombreArchivo="";
-	}else{
+	String cadena="";
+	if(datosForm.getArchivoCaso()!=null){
 		Archivo64 convertir64 = new Archivo64();
 		//String ruta = DatosForm.getArchivoCaso();
 		doc64 = convertir64.encodeFileToBase64Binary(datosForm.getArchivoCaso());
 		nombreArchivo=datosForm.getArchivoCaso().getName();
+		cadena="<ArchivosdelCaso><File fileName=\""+nombreArchivo+"\">"+doc64+"</File></ArchivosdelCaso>";
 	}
 	
 	String xmlCrearCaso= "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">"
     		+"<soapenv:Header/>"
 	        +"<soapenv:Body>"
 	+"<soa:createCasesAsString>"
-	        +"<!--Optional:-->"+"<arg0><![CDATA[<BizAgiWSParam><domain>domain</domain><userName>admon</userName><Cases><Case><Process>AtencionDeAccionesCiudadan</Process><Entities><SolicituddeAccionesCiuda>" +
+	        +"<!--Optional:-->"+"<arg0><![CDATA[<BizAgiWSParam><domain>UD</domain><userName>Recepcion</userName><Cases><Case><Process>AtencionDeAccionesCiudadan</Process><Entities><SolicituddeAccionesCiuda>" +
 	        		"<TipodeSolicitante businessKey=\"id="+datosForm.getTipodeSolicitante()+"\"/>" +
 	        		"<MediodeRecepcion businessKey=\"id="+datosForm.getMedioDeRecepcion()+"\"/>"+
 	        		"<TipodeRequerimiento businessKey=\"id="+datosForm.getTipoDeRequerimiento()+"\"/>"+
 	        		"<Asunto>"+datosForm.getAsunto()+"</Asunto>" +
-	        		"<ArchivosdelCaso><File fileName=\""+nombreArchivo+"\">"+doc64+"</File></ArchivosdelCaso>"+
+	        		cadena+
 	        		"<Descripcion>"+datosForm.getDescripcion()+"</Descripcion>"+
-	        		"<FlagsdelCaso><EscaladodeOtraDependencia>"+datosForm.getEscaladoOtraDependencia()+"</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+datosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
+	        		"<FlagsdelCaso><EscaladodeOtraDependencia>false</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+datosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
+	        		"<ProyectodeInvestigacion><ProyectodeInvestigacion>"+persona.getProyInv()+"</ProyectodeInvestigacion><Codigo>"+persona.getCodigo()+"</Codigo><Facultad>"+persona.getFacultad()+"</Facultad></ProyectodeInvestigacion>"+
 	        		"<Persona businessKey=\"id="+persona.getPersonaID()+"\"/>"+
 	        		//"<Persona businesskey=\"id="+persona.getPersonaID()+"\"/>"+
 	        	//	 "<TipodeSolicitanteInterno businessKey=\"id="+persona.getTipoInterno()+"\"/>" +//---------------------------------------------------
