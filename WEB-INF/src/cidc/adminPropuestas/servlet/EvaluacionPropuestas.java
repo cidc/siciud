@@ -33,13 +33,21 @@ public class EvaluacionPropuestas extends ServletGeneral {
 			case 1:
                 		System.out.println("entra a consultas...");
 				sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getPropuestas(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),Integer.parseInt(req.getParameter("tipo"))));
+                		System.out.println("entra a consultas1...");
                              	sesion.setAttribute("listaDocOBJ",adminPropuestaDB.getDocumentos(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num"))));
+                		System.out.println("entra a consultas2...");
 				sesion.setAttribute("listaCritOBJ",adminPropuestaDB.ListaCriterios(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num"))));
+                		System.out.println("entra a consultas3...");
 				sesion.setAttribute("listaAspOBJ",adminPropuestaDB.ListaAspectos(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num"))));
+                		System.out.println("entra a consultas4...");
 				sesion.setAttribute("listaEvalOBJ",adminPropuestaDB.ListaEvaluadores());
+                		System.out.println("entra a consultas5...");
 				sesion.setAttribute("listaCalOBJ",adminPropuestaDB.getCalificacionGeneral(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),Integer.parseInt(req.getParameter("tipo"))));
+                		System.out.println("entra a consultas6...");
 				sesion.setAttribute("listaCalObs",adminPropuestaDB.getCalificacionObservaciones(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),Integer.parseInt(req.getParameter("tipo"))));
+                		System.out.println("entra a consultas7...");
 				req.setAttribute("convEstado",adminPropuestaDB.estadoConvocat(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num"))));
+                		System.out.println("entra a consultas8...");
 			break;
 
                         case 2:
