@@ -87,7 +87,7 @@ public class AdminPropuestaDB extends BaseDB{
                         ps.setLong(i++,tipo);
                    //     ps.setBoolean(i++,Boolean.parseBoolean(estado));
                         rs=ps.executeQuery();
-                //      System.out.println("");
+                      System.out.println("consulta propuestas"+ps);
                         while(rs.next()){
                                 i=1;
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
@@ -171,6 +171,7 @@ public class AdminPropuestaDB extends BaseDB{
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
                         rs=ps.executeQuery();
+                      System.out.println("Proy"+ps);
                         while(rs.next()){
                                 i=1;
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
@@ -181,11 +182,12 @@ public class AdminPropuestaDB extends BaseDB{
                                 l.add(propuestaOBJ);
                         }
                         }
-                        else
+                      if (tipo==2) {
                         ps=cn.prepareStatement(rb.getString("getCalificacionMovilidadGeneral"));
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
                         rs=ps.executeQuery();
+                      System.out.println("Mov"+ps);
                         while(rs.next()){
                                 i=1;
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
@@ -194,7 +196,7 @@ public class AdminPropuestaDB extends BaseDB{
                                 propuestaOBJ.setTotal1(rs.getLong(i++));
                                 l.add(propuestaOBJ);
                         }
-
+}
                 }catch (SQLException e) {
                         lanzaExcepcion(e);
                 }catch (Exception e) {
