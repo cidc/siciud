@@ -2,21 +2,28 @@ package cidc.pqr.ws_cominicacion;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.Element;
+
+import cidc.pqr.ws_cominicacion.LeerArchivoXML;
+
 
 import cidc.general.ws_coneccion_Bizagi.ConeccionDB_WS;
 import cidc.pqr.ws_Bizagi_obj.CasoDatos;
 import cidc.pqr.ws_Bizagi_obj.PersonaDatos;
 import cidc.pqr.xmlRespPersona.XmlRespCaso;
 import cidc.pqr.ws_Bizagi_obj.Archivo64;
-
+import  cidc.pqr.ws_Bizagi_obj.ParametrosDatos;
+import cidc.pqr.xmlRespPersona.xmlRespParametros;
 
 public class CasoDB_WS extends ConeccionDB_WS {
 
 	CasoDatos caso = null;
-	
+	ParametrosDatos parametrosDatos = null;
 	
 	public CasoDatos getPersonaDatos(){
 		return caso;
@@ -94,6 +101,43 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	return caso;
 
 }
+
+public ParametrosDatos consultarCasoPQR (String numeroCaso){
+	
+	super.setConnectionEM();
+	LeerArchivoXML leerArchivoXml = new LeerArchivoXML();
+	String xmlFileName = "D:/TOMCAT 6.0/webapps/siciud/WEB-INF/src/cidc/pqr/archivosXml/consultaCasoPQR.xml";
+    Document document = leerArchivoXml.getDocument( xmlFileName );
+    List listaElementos = document.selectNodes("/soapenv:Envelope/soapenv:Body/soa:getCaseDataUsingSchemaAsString/arg0");
+    Iterator iteraElementos = listaElementos.iterator();
+	
+	while(iteraElementos.hasNext()){
+		Element e = (Element)iteraElementos.next();
+
+		e.setText(numeroCaso);
+
+	}
+
+    String xmlConsultarCasoPQR=document.asXML();
+   // System.out.println(xmlConsultarCasoPQR);
+	
+	String XmlResCrearCasoPQR = super.httpostConsultaEM(xmlConsultarCasoPQR);
+	XmlRespCaso consultadeCasoPQR = new XmlRespCaso();
+	
+	try {
+		parametrosDatos  = consultadeCasoPQR.consultaCasoPRQ(XmlResCrearCasoPQR);
+	} catch (DocumentException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	System.out.println("RESPUESTA CONSULTA CASO\n"+XmlResCrearCasoPQR);
+	
+	return parametrosDatos;
+}
+
+
+
+
 
 
 	

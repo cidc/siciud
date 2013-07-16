@@ -2,15 +2,21 @@ package cidc.pqr.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cidc.pqr.ws_cominicacion.InformacionHistorico;
+import cidc.pqr.ws_Bizagi_obj.HistoricoDatos;
+
+
 import cidc.general.db.CursorDB;
 import cidc.general.servlet.ServletGeneral;
 import cidc.pqr.ws_Bizagi_obj.CasoDatos;
+import cidc.pqr.ws_Bizagi_obj.ParametrosDatos;
 import cidc.pqr.ws_Bizagi_obj.PersonaDatos;
 import cidc.pqr.ws_Bizagi_obj.Pqr;
 import cidc.pqr.ws_cominicacion.CasoDB_WS;
@@ -137,9 +143,16 @@ public class PqrServlet extends ServletGeneral{
 			irA="/pqr/registrarPeticion.jsp";
 			break;
 		case 4: //consultar caso
-			casodatos.setCasoId(pqr.getIdCaso());
-			//casodatos= casoDB_WS.consulta(casodatos);
-			sesion.setAttribute("respuestaConsul", casodatos);
+			 System.out.println("CONSULTAR CASO PQR");
+	         casoDB_WS = new CasoDB_WS();
+	         ParametrosDatos parametrosRespuesta;
+	         parametrosRespuesta = casoDB_WS.consultarCasoPQR(req.getParameter("idCaso"));
+	         if(parametrosRespuesta!=null){
+		         InformacionHistorico historico = new InformacionHistorico();
+		         List <HistoricoDatos> historicoCaso = historico.consultarHistoricoCaso(req.getParameter("idCaso"));    
+		         req.setAttribute("respuestaConsul", crearParrafo(parametrosRespuesta, historicoCaso));
+	         }else
+	        	 mensaje="No se ha encontrado un caso con el Id "+req.getParameter("idCaso");
 			irA="/pqr/consultarPeticion.jsp";
 			break;
 		default:
@@ -161,5 +174,29 @@ public class PqrServlet extends ServletGeneral{
 		return retorno;
 	}
 	
+	public String crearParrafo(ParametrosDatos datos, List<HistoricoDatos> historico){
+		String parrafo="Estimado (a) "+datos.getPersonaNombreRazon()+"\n";
+		parrafo+="Su solicitud radicada con el número "+datos.getCasoAsociado()+" el día "+datos.getCasoFechaApertura();
+		parrafo+="está siendo atendida por "+datos.getResponsableNombre()+" y la fecha estimada de respuesta es el "+datos.getCasoFechaEstimadaCierre()+". \n";
+		parrafo+="Si requiere mayor información sobre el estado de su solicitud puede comunicare al correo electrónico: "+datos.getResponsableCorreo()+". \n";
+		parrafo+="Los datos registrados por Usted en la solicitud son los siguientes: \n";
+		parrafo+="Nombre o Razón Social:"+datos.getPersonaNombreRazon()+". \n";
+		parrafo+="Teléfono: "+datos.getPersonaTelMov()+". \n";
+		parrafo+="Correo Electrónico: "+datos.getPersonaCorreo()+" \n";
+		parrafo+="Si requiere actualizar la información indicada, favor envíe un correo electrónico a cidc@udistrital.edu.co indicando en el asunto " +
+				"\"Actualización datos de contacto\". \nCordialmente. \nEquipo Informática - CIDC.\n\nSu caso ha seguido el siguiente tramite:\n\n";
+		
+		 for (int i=0; i<historico.size();i++){
+			 
+			 parrafo+= "Accion: "+historico.get(i).getAccionHistorico()+"\n";
+			 parrafo+= "Fecha: "+historico.get(i).getFechaHistorico()+"\n";
+			 parrafo+= "Usuario: "+historico.get(i).getUsuario()+"\n";
+			 parrafo+= "\n";
+	    	 
+	    	 
+	    }
+		
+		return parrafo;
+	}
 
 }
