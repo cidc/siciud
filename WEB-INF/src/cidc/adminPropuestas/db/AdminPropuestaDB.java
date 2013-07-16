@@ -132,7 +132,7 @@ public class AdminPropuestaDB extends BaseDB{
                                 l.add(propuestaOBJ);
                         }
                         }
-                        else 
+                      if (tipo==2){
                         ps=cn.prepareStatement(rb.getString("getCalificacionMovilidad"));
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
@@ -145,7 +145,7 @@ public class AdminPropuestaDB extends BaseDB{
                                 propuestaOBJ.setTotal1(rs.getLong(i++));
                                 l.add(propuestaOBJ);
                         }
-
+}
                 }catch (SQLException e) {
                         lanzaExcepcion(e);
                 }catch (Exception e) {
