@@ -238,6 +238,7 @@ function validarCaso(){
 						<OPTION VALUE="0">-------</OPTION>
 						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoInterno==2}">selected</c:if>>Docente</OPTION>
 						<OPTION VALUE="3" <c:if test="${sessionScope.personaDatos.tipoInterno==3}">selected</c:if>>Estudiante</OPTION>
+						
 					</select></td>
 				</tr>
 				<tr>
@@ -298,9 +299,12 @@ function validarCaso(){
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><label for="ciudad" id="lciudad" style='<c:out value="${sessionScope.basico}"/>'>Ciudad</label>
-					</td>
+					<!--</td>
 					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.basico}"/>' VALUE="<c:out value="${sessionScope.personaDatos.ciudad}"/>">
-					</td>
+					</td>-->
+					<td><select name="ciudad"  style='<c:out value="${sessionScope.basico}"/>' >
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.ciudad==2}">selected</c:if>>Bogotá</OPTION>
+					</select></td>
 				</tr>
 				
 				

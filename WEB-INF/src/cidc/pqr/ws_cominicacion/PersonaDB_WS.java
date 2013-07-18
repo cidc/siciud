@@ -77,6 +77,16 @@ public PersonaDatos buscarpersona(String documento){
 
 public String  CrearPersona (PersonaDatos persona){
 	
+	String datosExterno = "";
+	
+	
+	System.out.println("TIPO DE PERSONA"+persona.getTipoExterno());
+	if (persona.getTipoExterno().equals("52")){
+		datosExterno="<RepresentanteLega>"+persona.getRepresentante()+"</RepresentanteLega>"+
+		"<Contacto>"+persona.getContacto()+"</Contacto>";		
+	}
+	
+	
 	super.setConnectionEM();
 	String xmlCrearpersona= "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">"
 	  + "<soapenv:Header/>"
@@ -97,11 +107,10 @@ public String  CrearPersona (PersonaDatos persona){
 	                 +  "<TipodeDocumento businessKey=\"id="+persona.getTipoDocumento()+"\"/>"
 	                 +  "<Titulo businessKey=\"id="+persona.getTitulo()+"\"/>"
 	                 +  "<CorreoElectronico>"+persona.getCorreoElectronico()+"</CorreoElectronico>"
-	                 +  "<RepresentanteLega>"+persona.getRepresentante()+"</RepresentanteLega>"
-	                 +  "<Contacto>"+persona.getContacto()+"</Contacto>"
-	                 +  "<TipodePersona businessKey=\"id="+persona.getTipoPersona()+"\"/>"
-	                  +"<Contacto>"+persona.getContacto()+"</Contacto>"//----------------------
-                         +  "<RepresentanteLega>"+persona.getRepresentante()+"</RepresentanteLega>"//-----
+	                 +datosExterno
+	                 +  "<TipodePersona businessKey=\"id="+persona.getTipoExterno()+"\"/>"
+	              //    +"<Contacto>"+persona.getContacto()+"</Contacto>"//----------------------
+                    //     +  "<RepresentanteLega>"+persona.getRepresentante()+"</RepresentanteLega>"//-----
 	                +"</PERSONA>"
 	             +"</Entities>"
 	          +"</BizAgiWSParam>]]>"

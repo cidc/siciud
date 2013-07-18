@@ -95,10 +95,12 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setCodigo(pqr.getCodigo());
 			personaDatos.setFacultad(pqr.getFacultad());
 			personaDatos.setProyInv(pqr.getProyInv());
-			if(!personaDatos.getTipoInterno().equals("0")){
+			personaDatos.setTipoPersona(pqr.getTipoSolicitante());
+			
+			/*if(!personaDatos.getTipoInterno().equals("0")){
 				personaDatos.setCiudad("2");
 				personaDatos.setTipoPersona("51");
-			}
+			}*/
 
 			String respuesta=personaDB_WS.CrearPersona(personaDatos);
 			if(respuesta==null)//debe ser ==null

@@ -51,19 +51,27 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	String doc64 ="";
 	String nombreArchivo ="";
 	String cadena="";
+	String cadenaTipoSolicitanteInterno="";
+
 	if(datosForm.getArchivoCaso()!=null){
 		Archivo64 convertir64 = new Archivo64();
 		//String ruta = DatosForm.getArchivoCaso();
 		doc64 = convertir64.encodeFileToBase64Binary(datosForm.getArchivoCaso());
 		nombreArchivo=datosForm.getArchivoCaso().getName();
 		cadena="<ArchivosdelCaso><File fileName=\""+nombreArchivo+"\">"+doc64+"</File></ArchivosdelCaso>";
+		
+	
+	}
+	
+	if (!persona.getTipoInterno().equals("0")){
+		cadenaTipoSolicitanteInterno= "<TipodeSolicitanteInterno businessKey=\"id="+persona.getTipoInterno()+"\"/>";
 	}
 	
 	String xmlCrearCaso= "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">"
     		+"<soapenv:Header/>"
 	        +"<soapenv:Body>"
 	+"<soa:createCasesAsString>"
-	        +"<!--Optional:-->"+"<arg0><![CDATA[<BizAgiWSParam><domain>UD</domain><userName>Recepcion</userName><Cases><Case><Process>AtencionDeAccionesCiudadan</Process><Entities><SolicituddeAccionesCiuda>" +
+	        +"<!--Optional:-->"+"<arg0><![CDATA[<BizAgiWSParam><domain>domain</domain><userName>admon</userName><Cases><Case><Process>AtencionDeAccionesCiudadan</Process><Entities><SolicituddeAccionesCiuda>" +
 	        		"<TipodeSolicitante businessKey=\"id="+datosForm.getTipodeSolicitante()+"\"/>" +
 	        		"<MediodeRecepcion businessKey=\"id="+datosForm.getMedioDeRecepcion()+"\"/>"+
 	        		"<TipodeRequerimiento businessKey=\"id="+datosForm.getTipoDeRequerimiento()+"\"/>"+
@@ -72,9 +80,9 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	        		"<Descripcion>"+datosForm.getDescripcion()+"</Descripcion>"+
 	        		"<FlagsdelCaso><EscaladodeOtraDependencia>false</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+datosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
 	        		"<ProyectodeInvestigacion><ProyectodeInvestigacion>"+persona.getProyInv()+"</ProyectodeInvestigacion><Codigo>"+persona.getCodigo()+"</Codigo><Facultad>"+persona.getFacultad()+"</Facultad></ProyectodeInvestigacion>"+
-	        		"<Persona businessKey=\"id="+persona.getPersonaID()+"\"/>"+
-	        		//"<Persona businesskey=\"id="+persona.getPersonaID()+"\"/>"+
-	        	//	 "<TipodeSolicitanteInterno businessKey=\"id="+persona.getTipoInterno()+"\"/>" +//---------------------------------------------------
+	        		"<Persona businessKey=\"id="+persona.getPersonaID()+"\"/>"+persona.getTipoInterno()+
+	        		
+	        		cadenaTipoSolicitanteInterno +//---------------------------------------------------
                //      "<ProyectodeInvestigacion>" +
                   //           "<ProyectodeInvestigacion>"+persona.getProyInv()+"</ProyectodeInvestigacion><Codigo>"+persona.getCodigo()+"</Codigo><Facultad>"+persona.getFaculta()+"</Facultad></ProyectodeInvestigacion>"+
 	        		
