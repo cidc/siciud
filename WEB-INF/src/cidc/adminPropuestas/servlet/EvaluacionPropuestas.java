@@ -78,7 +78,7 @@ public class EvaluacionPropuestas extends ServletGeneral {
 		sesion.setAttribute("tipo",req.getParameter("tipo"));
 		retorno[0]="unir";
 		retorno[1]=irA;
-		retorno[2]="";
+		retorno[2]=mensaje;
 		return retorno;
 	}
 /*

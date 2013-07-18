@@ -263,7 +263,9 @@
 	</tr>
 	</c:forEach>
 	</table>
+		<c:if test="${sessionScope.listaCalObs=='[]' and sessionScope.listaCalOBJ=='[]'}">
 		<img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()">
+		</c:if>
 		<%if(loginUsuario.isPerfil("1")){ %>
 		<img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="actualizar()">
 		<%}%>
