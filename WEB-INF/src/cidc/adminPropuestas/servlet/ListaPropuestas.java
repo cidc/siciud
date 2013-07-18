@@ -30,7 +30,7 @@ public class ListaPropuestas extends ServletGeneral {
 		req.setAttribute("listaConv",adminPropuestaDB.ajaxConv());
 		switch(accion){
 			case 1:
-				sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getPropuestas(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa")));
+				sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getPropuestasAnt(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa")));
 				req.setAttribute("convEstado",adminPropuestaDB.estadoConvocat(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num"))));
 			break;
 		}

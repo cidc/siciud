@@ -109,6 +109,44 @@ public class AdminPropuestaDB extends BaseDB{
 		return l;
 	}
 
+	public List getPropuestasAnt(int ano,int numero,String estado){
+		List l=new ArrayList();
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("getPropuestasAnt"));
+			ps.setLong(i++,ano);
+			ps.setLong(i++,numero);
+			ps.setBoolean(i++,Boolean.parseBoolean(estado));
+			rs=ps.executeQuery();
+		//	System.out.println("");
+			while(rs.next()){
+				i=1;
+				PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+				propuestaOBJ.setConvAbierta(rs.getBoolean(i++));
+				propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+				propuestaOBJ.setNomPropuesta(rs.getString(i++));
+				propuestaOBJ.setEstadoEvalInt(rs.getInt(i++));
+				propuestaOBJ.setEstadoEvalExt(rs.getInt(i++));
+				propuestaOBJ.setEstadoEvalComit(rs.getInt(i++));
+				propuestaOBJ.setPropActiva(rs.getBoolean(i++));
+				l.add(propuestaOBJ);
+			}
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return l;
+	}
+
         public List getCalificacion(int ano,int numero,String estado,int tipo){
                 List l=new ArrayList();
                 Connection cn=null;
