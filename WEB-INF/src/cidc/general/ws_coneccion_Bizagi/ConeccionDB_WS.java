@@ -38,7 +38,7 @@ public class ConeccionDB_WS {
 		
 		try {
 			HttpPost httppostWS = new HttpPost(webServiceConnection);
-			httppostWS.setHeader("Content-Type", "application/soap+xml;charset=UTF-8");
+			httppostWS.setHeader("Content-Type", "application/soap+xml;charset=ISO-8859-1");
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			try {
 				httppostWS.setEntity(new StringEntity (consultaWS));

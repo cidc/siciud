@@ -88,7 +88,10 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setDireccion(pqr.getDireccion());
 			personaDatos.setTelefonoMovil(pqr.getCelular());
 			personaDatos.setCiudad(pqr.getCiudad());
-			personaDatos.setTipoExterno(pqr.getTipoExterno());
+			if(!pqr.getTipoInterno().equals("0"))
+				personaDatos.setTipoExterno("51");
+			else
+				personaDatos.setTipoExterno(pqr.getTipoExterno());
 			personaDatos.setTipoInterno(pqr.getTipoInterno());
 			personaDatos.setRepresentante(pqr.getRepresentante());
 			personaDatos.setContacto(pqr.getContacto());
