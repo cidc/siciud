@@ -797,15 +797,22 @@ public class AdminPropuestaDB extends BaseDB{
 
 			//
 			ps=cn.prepareStatement(rb.getString("CalificarPropuesta"));
-			for(int j=0;j<propuestaOBJ.getCodProp().length;j++){
-			System.out.println("Entro444444");
+			for(int j=0;j<propuestaOBJ.getCodPropu().length;j++){
+			System.out.println("Entro444444"+propuestaOBJ.getCodProp().length);
                         d=1;
-			System.out.println("prueba:"+propuestaOBJ.getCodProp()[j]);
+			//System.out.println("prueba:"+propuestaOBJ.getCodProp()[j]);
+		//	System.out.println("pruebapropu:"+propuestaOBJ.getCodPropu()[j]);
+                        if(tipo==1){
                        	ps.setInt(d++,propuestaOBJ.getCodProp()[j]);
+			}
+			if(tipo==2){
+			ps.setInt(d++,propuestaOBJ.getCodPropu()[j]);
+			}
 			System.out.println("prueba2:"+propuestaOBJ.getConvId()[j]);
                         ps.setInt(d++,propuestaOBJ.getConvId()[j]);
 			System.out.println("prueba3:"+propuestaOBJ.getObservaciones()[j]);
                         ps.setString(d++,propuestaOBJ.getObservaciones()[j]);
+			System.out.println("Consultafinal"+ps);
                         ps.execute();
 			}
 			//
