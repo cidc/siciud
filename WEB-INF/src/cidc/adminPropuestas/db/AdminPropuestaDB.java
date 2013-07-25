@@ -217,6 +217,8 @@ public class AdminPropuestaDB extends BaseDB{
                                 propuestaOBJ.setTotal1(rs.getLong(i++));
                                 propuestaOBJ.setTotal2(rs.getLong(i++));
                                 propuestaOBJ.setTotal3(rs.getLong(i++));
+                                propuestaOBJ.setCodAspecto(rs.getLong(i++));
+                                propuestaOBJ.setCriterio(rs.getInt(i++));
                                 l.add(propuestaOBJ);
                         }
                         }
@@ -232,6 +234,8 @@ public class AdminPropuestaDB extends BaseDB{
                                 propuestaOBJ.setCodPropuesta(rs.getLong(i++));
                                 propuestaOBJ.setEvaluador(rs.getLong(i++));
                                 propuestaOBJ.setTotal1(rs.getLong(i++));
+                                propuestaOBJ.setCodAspecto(rs.getLong(i++));
+                                propuestaOBJ.setCriterio(rs.getInt(i++));
                                 l.add(propuestaOBJ);
                         }
 }

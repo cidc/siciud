@@ -209,16 +209,16 @@
 		<input type="hidden" name="codCrit" value="<c:out value="${lista3.codigo}"/>">
 		<input type="hidden" name="codAsp" value="<c:out value="${lista4.codigo}"/>">
 		<td class="estado" align="center">
-			<input type="text" name="observaciones1" id="observaciones1<%=i%>" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta}">' value="${lista6.total1}" '</c:if>' '</c:forEach>' onClick="this.form.observaciones1<%=i%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
+			<input type="text" name="observaciones1" id="observaciones1<%=i%>" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta and lista4.codigo==lista6.codAspecto and lista3.codigo==lista6.criterio}">' value="${lista6.total1}" '</c:if>' '</c:forEach>' onClick="this.form.observaciones1<%=i%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
 		</td>
 		<td class="estado" align="center">
-			<input type="text" name="observaciones2" id="observaciones2<%=i%>" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta}">' value="${lista6.total2}" '</c:if>' '</c:forEach>' onClick="this.form.observaciones2<%=i%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
+			<input type="text" name="observaciones2" id="observaciones2<%=i%>" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta and lista4.codigo==lista6.codAspecto and lista3.codigo==lista6.criterio}">' value="${lista6.total2}" '</c:if>' '</c:forEach>' onClick="this.form.observaciones2<%=i%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
 		</td>
 	<%--	<td class="estado" align="center">
 			<input type="text" name="observaciones3" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta}">' value="${lista6.total3}" '</c:if>' '</c:forEach>' value="0">
 		</td>--%>
 		<td class="estado" align="center">
-			<input type="text" name="observaciones3" id="observaciones3<%=i%>" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta}">' value="${lista6.total3}" '</c:if>' '</c:forEach>' onClick="this.form.observaciones3<%=i%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
+			<input type="text" name="observaciones3" id="observaciones3<%=i%>" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta and lista4.codigo==lista6.codAspecto and lista3.codigo==lista6.criterio}">' value="${lista6.total3}" '</c:if>' '</c:forEach>' onClick="this.form.observaciones3<%=i%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
 		</td>
 	<td><input type="text" class="txtboxetc" size="4" id="txtCal<%=i%>" name="txtCal<%=i%>" value="0"></td>
 		</c:if>
@@ -228,7 +228,7 @@
 			<div style="display:none;">	
 			<%=j =j+1%>
 			</div>
-			<input type="text" name="valorCal" id="valorCal<%=j%>" size="2" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.evaluador==lista5.codigo}">'  value="${lista6.total1}" '</c:if>' '</c:forEach>' onClick="this.form.valorCal<%=j%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
+			<input type="text" name="valorCal" id="valorCal<%=j%>" size="2" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.evaluador==lista5.codigo and lista.codPropuesta==lista6.codPropuesta and lista4.codigo==lista6.codAspecto and lista3.codigo==lista6.criterio}">'  value="${lista6.total1}" '</c:if>' '</c:forEach>' onClick="this.form.valorCal<%=j%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
 			</td>
 
 <input type="hidden" name="codProp" value="<c:out value="${lista.codPropuesta}"/>">

@@ -182,7 +182,7 @@
 		<c:if test="${tipo==2}">
 			<c:forEach begin="0" items="${sessionScope.listaEvalOBJ}" var="lista5" varStatus="st">
 			<td>
-			<input type="text" name="valorCal" size="2" '<c:forEach begin="0" items="${sessionScope.listaCalProy}" var="lista6" varStatus="st">' '<c:if test="${lista6.evaluador==lista5.codigo}">'  value="${lista6.total1}" '</c:if>' '</c:forEach>' disabled>
+			<input type="text" name="valorCal" size="2" '<c:forEach begin="0" items="${sessionScope.listaCalProy}" var="lista6" varStatus="st">' '<c:if test="${lista6.evaluador==lista5.codigo and lista6.codPropuesta==lista.codPropuesta}">'  value="${lista6.total1}" '</c:if>' '</c:forEach>' disabled>
 			</td>
 <input type="hidden" name="codProp" value="<c:out value="${lista.codPropuesta}"/>">
 <input type="hidden" name="convId" value="<c:out value="${lista.conv}"/>">
@@ -203,6 +203,7 @@
 		</c:forEach>
 		</c:if>
 		<c:if test="${tipo==2}">
+		<c:set var="sum" value="0" />
 		<c:forEach begin="0" items="${sessionScope.listaCalProy}" var="lista6" varStatus="st"> 
 		<c:if test="${lista6.codPropuesta==lista.codPropuesta}">
 		<c:set var="sum1" value="${lista6.total1}" />
