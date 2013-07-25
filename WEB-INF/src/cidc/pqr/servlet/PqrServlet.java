@@ -59,6 +59,7 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setCodigo(pqr.getCodigo());
 			personaDatos.setFacultad(pqr.getFacultad());
 			personaDatos.setTipoInterno(pqr.getTipoInterno());
+			personaDatos.setMedioRespuesta(String.valueOf(pqr.getMedioRespuesta()));
 			casodatos.setArchivoCaso((File)sesion.getAttribute("archivo"));
 			casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
 			if(casodatos.getArchivoCaso()!=null)

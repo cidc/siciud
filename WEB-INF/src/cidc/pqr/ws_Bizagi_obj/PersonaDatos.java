@@ -19,10 +19,8 @@ public class PersonaDatos {
 	private String proyInv="";
 	private String codigo="";
 	private String facultad="";
-	
-	
-	
-	
+	private String medioRespuesta="";
+		
 	
 	public String getTipoInterno() {
 		return tipoInterno;
@@ -127,10 +125,12 @@ public class PersonaDatos {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-
-	
-	
-	
-	
+	public String getMedioRespuesta() {
+		return medioRespuesta;
+	}
+	public void setMedioRespuesta(String medioRespuesta) {
+		this.medioRespuesta = medioRespuesta;
+	}
+		
 
 }

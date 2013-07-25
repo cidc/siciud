@@ -326,13 +326,13 @@ function validarCaso(){
 				<tr>
 					<td colspan="4" align="left"><c:out value="Medio de Recepción"/>
 					</td>
-					<td>
-						<input type="radio" name=recepcion value="1">Télefono
-						<input type="radio" name=recepcion value="2">Carta
-						<input type="radio" name=recepcion value="3" checked>Correo Electrónico
-						<input type="radio" name=recepcion value="4">WEB
-						<input type="radio" name=recepcion value="5">Verbal
-					</td>
+					<td><select name="recepcion" >
+						<option value="1">Télefono</option>
+						<option  value="2">Carta</option>
+						<option  value="3">Correo Electrónico</option>
+						<option  value="4" selected>WEB</option>
+						<option  value="5">Verbal</option>
+					</select></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Tipo Requerimiento"/>
@@ -388,7 +388,15 @@ function validarCaso(){
 					</td><c:if test="${sessionScope.archivo!=null}">Archivo Cargado Exitosamente</c:if>
 					<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Adjuntar archivo al caso" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cargar.gif"/>'></a></td>
 				</tr>
-
+				<tr>
+					<td colspan="4" align="left"><c:out value="Medio de Respuesta"/>
+					</td>
+					<td><select name="medioRespuesta" >
+						<option value="1">Télefono</option>
+						<option  value="2">Carta</option>
+						<option  value="3">Correo Electrónico</option>
+					</select></td>
+				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="¿Recibir notificaciones por correo electrónico?: "/>
 					</td>
