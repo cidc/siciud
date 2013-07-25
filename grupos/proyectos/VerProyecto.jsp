@@ -160,6 +160,35 @@
 				<td width="85px"><c:out value="${sessionScope.proyectoInvestigador.actaFinal.fecha}" default="--" /></td>
 				<td><c:out value="${sessionScope.proyectoInvestigador.actaFinal.observaciones}" default="--" /></td>
 			</tr>
+			<c:forEach begin="0" items="${sessionScope.proyectoDocumentos}" var="lista" varStatus="st">
+		  <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
+		  <td>
+		   		<c:if test='${lista.nombreArchivo=="" || lista.nombreArchivo==null}'>
+		  			<img border=0 src='<c:url value="/comp/img/equis1.png"/>'>
+		  		</c:if>
+		  		<c:if test='${lista.nombreArchivo!="" && lista.nombreArchivo!=null}'>
+		  			<c:if test='${lista.tipo==2||lista.tipo==3}'>	
+		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+				  	<c:if test='${lista.tipo==1}'>
+					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+					 <c:if test='${lista.tipo==21}'>
+					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Propuestas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+					 <c:if test='${lista.tipo==22}'>
+					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Contratos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+					  <c:if test='${lista.tipo==23 or lista.tipo==4 or lista.tipo==5}'>
+					 	<a href='<c:url value="/Documentos/ProyectosAntiguos/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+		  		</c:if>
+			</td>
+				<td><c:out value="${lista.nombreDocumento}"  /></td>
+			  <td align="center"><c:out value="${lista.fechaDoc}" /></td>
+			  <td><c:out value="${lista.observaciones}"  /></td>
+		  </tr>
+		  </c:forEach>
 		</table>
 		</td>
 	</tr>
