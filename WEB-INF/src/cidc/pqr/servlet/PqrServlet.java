@@ -60,6 +60,7 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setFacultad(pqr.getFacultad());
 			personaDatos.setTipoInterno(pqr.getTipoInterno());
 			personaDatos.setMedioRespuesta(String.valueOf(pqr.getMedioRespuesta()));
+			casodatos.setEscaladoOtraDependencia("no");
 			casodatos.setArchivoCaso((File)sesion.getAttribute("archivo"));
 			casodatos = casoDB_WS.CrearCaso(casodatos, personaDatos);
 			if(casodatos.getArchivoCaso()!=null)
@@ -107,12 +108,16 @@ public class PqrServlet extends ServletGeneral{
 			}*/
 
 			String respuesta=personaDB_WS.CrearPersona(personaDatos);
+			personaDatos.setTipoPersona("0");
+			sesion.setAttribute("personaDatos", personaDatos);
 			if(respuesta==null)//debe ser ==null
 				mensaje="Se ha producido un error en la creación";
 			else{
 				mensaje="la creacion de la persona ha sido exitosa";
 				req.setAttribute("crearCaso", "display:block");
+				sesion.setAttribute("basico", "display:block");
 			}
+		
 			irA="/pqr/registrarPeticion.jsp";
 			 break;
 		case 3: //buscar persona

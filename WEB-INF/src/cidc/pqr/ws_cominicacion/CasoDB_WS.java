@@ -78,7 +78,8 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 	        		"<Asunto>"+datosForm.getAsunto()+"</Asunto>" +
 	        		cadena+
 	        		"<Descripcion>"+datosForm.getDescripcion()+"</Descripcion>"+
-	        		"<FlagsdelCaso><EscaladodeOtraDependencia>false</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+datosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
+	        		"<GestiondeNotificaciones><MediodeNotificacion businessKey=\"id="+persona.getMedioRespuesta()+"\"/></GestiondeNotificaciones>"+
+	        		"<FlagsdelCaso><EscaladodeOtraDependencia>false</EscaladodeOtraDependencia><EscaladodeOtraDependencia>false</EscaladodeOtraDependencia><RecibirNotificacionesporCo>"+datosForm.getRecibirNotificacionesCorreo()+"</RecibirNotificacionesporCo></FlagsdelCaso>"+
 	        		"<ProyectodeInvestigacion><ProyectodeInvestigacion>"+persona.getProyInv()+"</ProyectodeInvestigacion><Codigo>"+persona.getCodigo()+"</Codigo><Facultad>"+persona.getFacultad()+"</Facultad></ProyectodeInvestigacion>"+
 	        		"<Persona businessKey=\"id="+persona.getPersonaID()+"\"/>"+persona.getTipoInterno()+
 	        		
