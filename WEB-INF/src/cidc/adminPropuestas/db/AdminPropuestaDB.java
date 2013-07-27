@@ -263,6 +263,7 @@ public class AdminPropuestaDB extends BaseDB{
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
                         rs=ps.executeQuery();
+			System.out.println("Consulta Observaciones:"+ps);
                         while(rs.next()){
                                 i=1;
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
