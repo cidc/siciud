@@ -258,7 +258,7 @@
 		<input type="hidden" name="codPropu" value="${lista.codPropuesta}">
 	
 		<td class="estado" align="center">
-			<input type="text" name="observaciones" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalObs}" var="lista7" varStatus="st">' '<c:if test="${lista7.codPropuesta==lista.codPropuesta}">' value="${lista7.observa}" '</c:if>' '</c:forEach>'>
+			<input type="text" name="observaciones" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalObs}" var="lista7" varStatus="st">' '<c:if test="${lista7.codPropuesta==lista.codPropuesta}">' value="${lista7.observa}" '</c:if>' '</c:forEach>' value="0">
 		</td>
 	</tr>
 	</c:forEach>
