@@ -53,9 +53,16 @@ public class ParametrosDatos {
 	private String personaTelMov;
 	private String personaCorreo;
 	private String personaNombreRazon;
+	private String personaDocumentoNIT;
 	
 	
 
+	public String getPersonaDocumentoNIT() {
+		return personaDocumentoNIT;
+	}
+	public void setPersonaDocumentoNIT(String personaDocumentoNIT) {
+		this.personaDocumentoNIT = personaDocumentoNIT;
+	}
 	public String getCierredelCasoRespuesta() {
 		return cierredelCasoRespuesta;
 	}

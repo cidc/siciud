@@ -158,18 +158,21 @@ public class PqrServlet extends ServletGeneral{
 			 System.out.println("CONSULTAR CASO PQR");
 	         casoDB_WS = new CasoDB_WS();
 	         ParametrosDatos parametrosRespuesta;
+	         int cedula=Integer.parseInt(req.getParameter("cedula"));
 	         parametrosRespuesta = casoDB_WS.consultarCasoPQR(req.getParameter("idCaso"),req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep)));
-	         if(parametrosRespuesta!=null){
+	         if(parametrosRespuesta.getPersonaDocumentoNIT()!=null && (parametrosRespuesta.getPersonaDocumentoNIT().equals(""+cedula))){
 		         InformacionHistorico historico = new InformacionHistorico();
 		         List <HistoricoDatos> historicoCaso = historico.consultarHistoricoCaso(req.getParameter("idCaso"),req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep)));    
 		         req.setAttribute("respuestaConsul", crearParrafo(parametrosRespuesta, historicoCaso));
-		         Archivo64 arch64=new Archivo64();
-		         String datos= parametrosRespuesta.getArchivoRespuestaDocumento();
-		         req.setAttribute("archRespuesta",arch64.decodificar(datos, parametrosRespuesta.getArchivoRespuestaNombre(), 
-		        		 req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep))));
+		         if(parametrosRespuesta.getArchivoRespuestaDocumento()!=null){
+			         Archivo64 arch64=new Archivo64();
+			         String datos= parametrosRespuesta.getArchivoRespuestaDocumento();
+			         req.setAttribute("archRespuesta",arch64.decodificar(datos, parametrosRespuesta.getArchivoRespuestaNombre(), 
+			        		 req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep))));
+		         }
 		         
 	         }else
-	        	 mensaje="No se ha encontrado un caso con el Id "+req.getParameter("idCaso");
+	        	 mensaje="No se ha encontrado un caso con el Id "+req.getParameter("idCaso")+ " y la cédula "+cedula;
 			irA="/pqr/consultarPeticion.jsp";
 			break;
 		case 5:

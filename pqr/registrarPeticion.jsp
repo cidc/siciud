@@ -146,8 +146,8 @@ function validarNro(e) {
 
 function validarPersona(){
 	mensaje="";
-	if(document.pqrForm.tipoSolicitante.selectedIndex==0)
-		mensaje+="\n -Tipo de solicitud";
+	//if(document.pqrForm.tipoSolicitante.selectedIndex==0)
+		//mensaje+="\n -Tipo de solicitud";
 	if(document.pqrForm.documento.value=="")
 		mensaje+="\n -Numero de Documento / Nit";
 	if(document.pqrForm.nombre.value=="")

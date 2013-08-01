@@ -7,9 +7,26 @@
 <html>
 <script>
 function buscarCaso(){
-	document.pqrConsult.action='<c:url value="/pqr/servlet.x"/>';
-	document.pqrConsult.accion.value=4;
-	document.pqrConsult.submit();
+	if(validar()){
+		document.pqrConsult.action='<c:url value="/pqr/servlet.x"/>';
+		document.pqrConsult.accion.value=4;
+		document.pqrConsult.submit();
+	}
+}
+
+function validar(){
+	mensaje="";
+	if(document.pqrConsult.idCaso.value==""){
+		mensaje+="-) Ingrese el número del caso \n";
+	}
+	if(document.pqrConsult.cedula.value==""){
+		mensaje+="-) Ingrese el número de cédula \n";
+	}
+	if(mensaje!=""){
+		alert("Los siguientes campos son obligatorios: \n"+mensaje);
+		return false
+	}
+	return true;
 }
 </script>
 <head>
@@ -26,6 +43,10 @@ function buscarCaso(){
 		</td>
 		<td  align="left"><INPUT NAME="idCaso" MAXLENGTH="25" TYPE="TEXT" VALUE=''> 
 		</td>
+	</tr>
+	<tr>
+		<td colspan="4" align="left"><c:out value="Número de Cédula"/></td>
+		<td align="left"><INPUT NAME="cedula" MAXLENGTH="25" TYPE="TEXT" VALUE=''> </td>
 	</tr>
 	<tr>
 		<td id="g1"><img src='<c:url value="/comp/img/Buscar.gif"/>' onclick="buscarCaso()"></td>

@@ -222,6 +222,14 @@ List listaNumeroCaso = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseData
 				
 			 }
 			
+			  Iterator iterDocumento = e.elementIterator("DocumentodeIdentidadNIT");
+              while (iterDocumento.hasNext()){
+                      Element eDocumento = (Element)iterDocumento.next();
+                      parametrosDatos.setPersonaDocumentoNIT(eDocumento.getText());
+                     
+                      
+               }
+			
 			}
 	    
 		return parametrosDatos;
