@@ -30,8 +30,9 @@ import cidc.pqr.ws_Bizagi_obj.Pqr;
 public class ArchivoPqr extends ServletGeneral{
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 		context=config.getServletContext();
-		String irA="/pqr/registrarPeticion.jsp";
+		String irA="/pqr/servlet.x?accion=5";
 		HttpSession sesion=req.getSession();
+		req.setAttribute("accion", 5);
 		mensaje="";
 		CasoDatos casoDatos;
 		Pqr pqr=(Pqr)sesion.getAttribute("pqr");
@@ -67,7 +68,9 @@ public class ArchivoPqr extends ServletGeneral{
 					String arch = cargaDoc.cargarGenerico(path, archivoAdj,"Bizagi", nombre, 0);
 					File file= new File(path+sep+"Documentos"+sep+"Bizagi"+sep+arch);
 					sesion.setAttribute("archivo",file);
+					sesion.setAttribute("nombreArc", archivoAdj.getName());
 					System.out.println("path: "+path+sep+"Documentos"+sep+"Bizagi"+sep+arch);
+					//sesion.setAttribute("nombreArc", file.getName());
 				}
 			} catch (Exception e) {
 				baseDB.lanzaExcepcion(e);

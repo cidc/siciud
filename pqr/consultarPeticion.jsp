@@ -28,7 +28,7 @@ function buscarCaso(){
 		</td>
 	</tr>
 	<tr>
-		<td id="g1"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="buscarCaso()"></td>
+		<td id="g1"><img src='<c:url value="/comp/img/Buscar.gif"/>' onclick="buscarCaso()"></td>
 	</tr>
 		<tr>
 					<td colspan="4" align="left"><c:out value="Estado de la Solicitud"/>
@@ -36,6 +36,10 @@ function buscarCaso(){
 					<td><textarea class="area2" class="area2" style="width: 100%;" rows="15"
 							name="respuesta" id='respuesta'><c:out value='${requestScope.respuestaConsul}'/></textarea>
 					</td>
+		</tr>
+		<tr><c:if test="${requestScope.archRespuesta!=null}">
+			<td align="right"><a target="_blank" href='<c:out value="/siciud/Documentos/Bizagi/${requestScope.archRespuesta}"/>'><img align="center" src="<c:url value="/comp/img/verPdf.png"/>"/></a></td>
+			</c:if>
 		</tr>
 </table>
 </form>

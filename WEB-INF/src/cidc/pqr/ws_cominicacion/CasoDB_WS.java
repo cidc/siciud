@@ -111,11 +111,13 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 
 }
 
-public ParametrosDatos consultarCasoPQR (String numeroCaso){
+public ParametrosDatos consultarCasoPQR (String numeroCaso, String path){
 	
 	super.setConnectionEM();
+	char sep=java.io.File.separatorChar;
+	path+=sep+"WEB-INF"+sep+"src"+sep+"cidc"+sep+"pqr"+sep+"archivosXml"+sep;
 	LeerArchivoXML leerArchivoXml = new LeerArchivoXML();
-	String xmlFileName = "D:/TOMCAT 6.0/webapps/siciud/WEB-INF/src/cidc/pqr/archivosXml/consultaCasoPQR.xml";
+	String xmlFileName = path+"consultaCasoPQR.xml";
     Document document = leerArchivoXml.getDocument( xmlFileName );
     List listaElementos = document.selectNodes("/soapenv:Envelope/soapenv:Body/soa:getCaseDataUsingSchemaAsString/arg0");
     Iterator iteraElementos = listaElementos.iterator();
@@ -139,7 +141,7 @@ public ParametrosDatos consultarCasoPQR (String numeroCaso){
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	System.out.println("RESPUESTA CONSULTA CASO\n"+XmlResCrearCasoPQR);
+	//System.out.println("RESPUESTA CONSULTA CASO\n"+XmlResCrearCasoPQR);
 	
 	return parametrosDatos;
 }

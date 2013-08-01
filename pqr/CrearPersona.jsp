@@ -6,9 +6,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script>
 	function guardar(pqrForm){
-		document.pqrForm.accion.value=5;
-		document.pqrForm.submit();
-		
+		if(validar()){
+			document.pqrForm.target="main";
+			document.pqrForm.accion.value=5;
+			document.pqrForm.submit();
+		}
+	}
+	
+	function validar(){
+		if(document.pqrForm.archivoAdjunto.value==""){
+			alert("Por favor seleccione un documento");
+			return false;
+		}
+		return true;
 	}
 </script>
 <html>

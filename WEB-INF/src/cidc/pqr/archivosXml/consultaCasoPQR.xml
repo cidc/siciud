@@ -97,7 +97,6 @@
                           <xs:element minOccurs="0" maxOccurs="unbounded" name="ROLE">
                             <xs:complexType>
                               <xs:sequence>
-                                <xs:element minOccurs="0" maxOccurs="1" name="idRole" type="xs:integer" />
                                 <xs:element minOccurs="0" maxOccurs="1" name="roleDescription" type="xs:string" />
                                 <xs:element minOccurs="0" maxOccurs="1" name="roleDisplayName" type="xs:string" />
                                 <xs:element minOccurs="0" maxOccurs="1" name="roleName" type="xs:string" />
@@ -121,10 +120,7 @@
                     <xs:element minOccurs="0" maxOccurs="1" name="Respuesta" type="xs:string" />
                     <xs:element minOccurs="0" maxOccurs="1" name="MediodeNotificaciondeCierr">
                       <xs:complexType>
-                        <xs:sequence>
-                          <xs:element minOccurs="0" maxOccurs="1" name="MediodeNotificacion" type="xs:string" />
-                          <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
-                        </xs:sequence>
+                        
                         <xs:attribute form="unqualified" name="entityName" type="xs:string" />
                       </xs:complexType>
                     </xs:element>
@@ -219,8 +215,8 @@
                   <xs:attribute form="unqualified" name="entityName" type="xs:string" />
                 </xs:complexType>
               </xs:element>
-              <xs:element minOccurs="0" maxOccurs="1" name="LogoU" type="xs:integer" />
-              <xs:element minOccurs="0" maxOccurs="1" name="Logo" type="xs:integer" />
+             
+             
               <xs:element minOccurs="0" maxOccurs="1" name="MediodeRecepcion">
                 <xs:complexType>
                   <xs:sequence>

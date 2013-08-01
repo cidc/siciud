@@ -15,6 +15,7 @@ import cidc.pqr.ws_Bizagi_obj.HistoricoDatos;
 
 import cidc.general.db.CursorDB;
 import cidc.general.servlet.ServletGeneral;
+import cidc.pqr.ws_Bizagi_obj.Archivo64;
 import cidc.pqr.ws_Bizagi_obj.CasoDatos;
 import cidc.pqr.ws_Bizagi_obj.ParametrosDatos;
 import cidc.pqr.ws_Bizagi_obj.PersonaDatos;
@@ -157,14 +158,23 @@ public class PqrServlet extends ServletGeneral{
 			 System.out.println("CONSULTAR CASO PQR");
 	         casoDB_WS = new CasoDB_WS();
 	         ParametrosDatos parametrosRespuesta;
-	         parametrosRespuesta = casoDB_WS.consultarCasoPQR(req.getParameter("idCaso"));
+	         parametrosRespuesta = casoDB_WS.consultarCasoPQR(req.getParameter("idCaso"),req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep)));
 	         if(parametrosRespuesta!=null){
 		         InformacionHistorico historico = new InformacionHistorico();
-		         List <HistoricoDatos> historicoCaso = historico.consultarHistoricoCaso(req.getParameter("idCaso"));    
+		         List <HistoricoDatos> historicoCaso = historico.consultarHistoricoCaso(req.getParameter("idCaso"),req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep)));    
 		         req.setAttribute("respuestaConsul", crearParrafo(parametrosRespuesta, historicoCaso));
+		         Archivo64 arch64=new Archivo64();
+		         String datos= parametrosRespuesta.getArchivoRespuestaDocumento();
+		         req.setAttribute("archRespuesta",arch64.decodificar(datos, parametrosRespuesta.getArchivoRespuestaNombre(), 
+		        		 req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep))));
+		         
 	         }else
 	        	 mensaje="No se ha encontrado un caso con el Id "+req.getParameter("idCaso");
 			irA="/pqr/consultarPeticion.jsp";
+			break;
+		case 5:
+			irA="/pqr/registrarPeticion.jsp";
+			mensaje="el archivo "+sesion.getAttribute("nombreArc")+" fue cargado exitosamente";
 			break;
 		default:
 			sesion.setAttribute("opcionales", "display:none");
@@ -174,6 +184,8 @@ public class PqrServlet extends ServletGeneral{
 			req.setAttribute("crearCaso", "display:none");
 			req.setAttribute("botonCrear", "display:none");
 			sesion.removeAttribute("archivo");
+			sesion.removeAttribute("nombreArc");
+			sesion.removeAttribute("personaDatos");
 			irA="/pqr/registrarPeticion.jsp";
 			break;
 		}

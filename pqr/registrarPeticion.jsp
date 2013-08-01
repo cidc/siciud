@@ -223,7 +223,7 @@ function validarCaso(){
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="ltipoSol" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>Tipo de Solicitud</label>
+					<td colspan="4" align="left"><label for="ltipoSol" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>Tipo de Solicitante</label>
 					</td>
 					<td><select name="tipoSolicitante" onchange="cambiar(this)" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>
 						<OPTION VALUE="0">-------</OPTION>
@@ -324,6 +324,13 @@ function validarCaso(){
 <table class="tablas" width="90%" style="<c:out value="${requestScope.crearCaso}"/>">
 	<caption>Información de la Solicitud</caption>
 				<tr>
+					<td colspan="4" align="left"><c:out value="Archivo del caso"/>
+					<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Adjuntar archivo al caso" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cargar.gif"/>'></a></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><c:out value="${sessionScope.nombreArc}"/></td>
+				<tr>
+				<tr>
 					<td colspan="4" align="left"><c:out value="Medio de Recepción"/>
 					</td>
 					<td><select name="recepcion" >
@@ -382,11 +389,6 @@ function validarCaso(){
 					<td><textarea class="area2" class="area2" style="width: 100%;"
 							name="descripcion" id='descripcion'></textarea>
 					</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="left"><c:out value="Archivo del caso"/>
-					</td><c:if test="${sessionScope.archivo!=null}">Archivo Cargado Exitosamente</c:if>
-					<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Adjuntar archivo al caso" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cargar.gif"/>'></a></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Medio de Respuesta"/>

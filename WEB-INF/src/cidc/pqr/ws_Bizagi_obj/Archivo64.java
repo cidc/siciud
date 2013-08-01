@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.FileOutputStream;
+import org.apache.axis.encoding.Base64;
 
-import org.apache.commons.codec.binary.Base64;
 
 
 public class Archivo64 {
@@ -14,7 +15,7 @@ public class Archivo64 {
 		public String encodeFileToBase64Binary(File file) throws IOException {
 	 
 			byte[] bytes = loadFile(file);
-			byte[] encoded = Base64.encodeBase64(bytes);
+			byte[] encoded = org.apache.commons.codec.binary.Base64.encodeBase64(bytes);
 			String encodedString = new String(encoded);
 	 
 			return encodedString;
@@ -43,4 +44,28 @@ public class Archivo64 {
 		    is.close();
 		    return bytes;
 		}
+		
+		
+		public String  decodificar  (String codificado, String nombreArchivo,String ruta){
+		
+		  try {
+			  char sep=java.io.File.separatorChar;
+		        Base64 b = new Base64();
+		        ruta+=sep+"Documentos"+sep+"Bizagi"+sep;
+		        byte[] imageBytes = b.decode(codificado); 
+		        FileOutputStream fos = new FileOutputStream(ruta+nombreArchivo+"");
+		        fos.write(imageBytes);
+		        fos.close();
+		    } catch (Exception e) {
+
+		        System.out.println("Error :::" + e);
+		        e.printStackTrace();
+		    }
+		  return nombreArchivo;
+		}
+		    
+
+		
+		
+		
 }

@@ -23,9 +23,11 @@ public class InformacionHistorico extends ConeccionDB_WS {
 	
 	
 
-	public List <HistoricoDatos> consultarHistoricoCaso(String numeroCaso)  {
+	public List <HistoricoDatos> consultarHistoricoCaso(String numeroCaso, String path)  {
 		
 		super.setConnectionEM();
+		char sep=java.io.File.separatorChar;
+		path+=sep+"WEB-INF"+sep+"src"+sep+"cidc"+sep+"pqr"+sep+"archivosXml"+sep;
 		LeerArchivoXML leerArchivoXml = new LeerArchivoXML();
 		String xmlFileName = "D:/TOMCAT 6.0/webapps/siciud/WEB-INF/src/cidc/pqr/archivosXml/consultaHistorico.xml";
 	    Document document = leerArchivoXml.getDocument( xmlFileName );

@@ -103,10 +103,6 @@
                                       <xs:element minOccurs="0" maxOccurs="1" name="Respuesta" type="xs:string" />
                                       <xs:element minOccurs="0" maxOccurs="1" name="MediodeNotificaciondeCierr">
                                         <xs:complexType>
-                                          <xs:sequence>
-                                            <xs:element minOccurs="0" maxOccurs="1" name="MediodeNotificacion" type="xs:string" />
-                                            <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
-                                          </xs:sequence>
                                           <xs:attribute form="unqualified" name="entityName" type="xs:string" />
                                         </xs:complexType>
                                       </xs:element>
@@ -316,15 +312,7 @@
                                     <xs:attribute form="unqualified" name="entityName" type="xs:string" />
                                   </xs:complexType>
                                 </xs:element>
-                                <xs:element minOccurs="0" maxOccurs="1" name="RespuestadelCliente">
-                                  <xs:complexType>
-                                    <xs:sequence>
-                                      <xs:element minOccurs="0" maxOccurs="1" name="RespuestadelRequirente" type="xs:string" />
-                                    </xs:sequence>
-                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
-                                  </xs:complexType>
-                                </xs:element>
-                                <xs:element minOccurs="0" maxOccurs="1" name="TipodeSolicitanteInterno">
+                                 <xs:element minOccurs="0" maxOccurs="1" name="TipodeSolicitanteInterno">
                                   <xs:complexType>
                                     <xs:sequence>
                                       <xs:element minOccurs="0" maxOccurs="1" name="Solicitante" type="xs:string" />
@@ -375,15 +363,7 @@
                               <xs:attribute form="unqualified" name="entityName" type="xs:string" />
                             </xs:complexType>
                           </xs:element>
-                          <xs:element minOccurs="0" maxOccurs="1" name="RFC">
-                            <xs:complexType>
-                              <xs:sequence>
-                                <xs:element minOccurs="0" maxOccurs="1" name="FechadeApertura" type="xs:dateTime" />
-                              </xs:sequence>
-                              <xs:attribute form="unqualified" name="entityName" type="xs:string" />
-                            </xs:complexType>
-                          </xs:element>
-                          <xs:element minOccurs="0" maxOccurs="1" name="Entradas">
+                                                    <xs:element minOccurs="0" maxOccurs="1" name="Entradas">
                             <xs:complexType>
                               <xs:sequence>
                                 <xs:element minOccurs="0" maxOccurs="1" name="ComentariosdeEscalamiento" type="xs:string" />
