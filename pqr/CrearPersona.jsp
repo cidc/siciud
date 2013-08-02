@@ -17,6 +17,13 @@
 		if(document.pqrForm.archivoAdjunto.value==""){
 			alert("Por favor seleccione un documento");
 			return false;
+		}{
+			archi=document.pqrForm.archivoAdjunto.value;
+			var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
+			if(!(ext==".pdf")){
+				alert("El archivo debe ser en formato PDF");
+				return false;
+			}
 		}
 		return true;
 	}
