@@ -26,7 +26,7 @@
 		if(id==15)
 			document.getElementById("carga").style.display='';
 		document.comandos.papel.value=document.nuevo.papel.value;
-		if(id==11 && document.nuevo.papel.selectedIndex==3){
+		if(id==11 && document.nuevo.papel.selectedIndex==1){
 			alert("No se puede Eliminar el Director del Grupo");
 		}else{
 			if(id==11){
