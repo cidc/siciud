@@ -141,7 +141,7 @@ public ParametrosDatos consultarCasoPQR (String numeroCaso, String path){
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	//System.out.println("RESPUESTA CONSULTA CASO\n"+XmlResCrearCasoPQR);
+	System.out.println("RESPUESTA CONSULTA CASO\n"+XmlResCrearCasoPQR);
 	
 	return parametrosDatos;
 }

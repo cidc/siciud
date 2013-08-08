@@ -203,6 +203,15 @@
                     <xs:element minOccurs="0" maxOccurs="1" name="TelefonoMovil" type="xs:string" />
                     <xs:element minOccurs="0" maxOccurs="1" name="TipodeDocumento" type="xs:integer" />
                     <xs:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="xs:string" />
+                      <xs:element minOccurs="0" maxOccurs="1" name="TipodePersona">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" maxOccurs="1" name="Titulo" type="xs:string" />
+                          <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
                     <xs:element minOccurs="0" maxOccurs="1" name="NombreRazonSocial" type="xs:string" />
                     <xs:element minOccurs="0" maxOccurs="1" name="Contacto" type="xs:string" />
                     <xs:element minOccurs="0" maxOccurs="1" name="Extension" type="xs:string" />
@@ -280,7 +289,6 @@
                           <xs:element minOccurs="0" maxOccurs="1" name="Comentarios" type="xs:string" />
                           <xs:element minOccurs="0" maxOccurs="1" name="Descripcion" type="xs:string" />
                           <xs:element minOccurs="0" maxOccurs="1" name="OficiodeRemision" type="xs:integer" />
-                          <xs:element minOccurs="0" maxOccurs="1" name="AreaalaCualseEnvialaSolici" type="xs:integer" />
                           <xs:element minOccurs="0" maxOccurs="1" name="SolicitudEnviada" type="xs:boolean" />
                           <xs:element minOccurs="0" maxOccurs="1" name="RemisiondeOficioCIDC" type="xs:string" />
                           <xs:element minOccurs="0" maxOccurs="1" name="Asunto" type="xs:string" />
