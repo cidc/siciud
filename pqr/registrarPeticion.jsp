@@ -227,8 +227,8 @@ function validarCaso(){
 					</td>
 					<td><select name="tipoSolicitante" onchange="cambiar(this)" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>
 						<OPTION VALUE="0">-------</OPTION>
-						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoPersona==2}">selected</c:if> >Interno</OPTION>
-						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoPersona==1}">selected</c:if>>Externo</OPTION>
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoPersona==null}">selected</c:if> >Interno</OPTION>
+						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoPersona!=null}">selected</c:if>>Externo</OPTION>
 					</select></td>
 				</tr>
 				<tr>

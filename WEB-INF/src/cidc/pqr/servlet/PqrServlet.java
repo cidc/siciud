@@ -144,7 +144,7 @@ public class PqrServlet extends ServletGeneral{
 				sesion.setAttribute("crearCaso", "display:block");
 				sesion.setAttribute("basico", "display:block");
 				sesion.setAttribute("tipoSolicitante", "display:block");
-				if (personaDatos.getTipoInterno()==null || personaDatos.getTipoInterno().equals("0")) {
+				if (personaDatos.getTipoInterno()!=null && personaDatos.getTipoInterno().equals("0")) {
 					sesion.setAttribute("opcionales", "display:block");
 					sesion.setAttribute("juridico", "display:none");
 				} else {
