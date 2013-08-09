@@ -201,7 +201,13 @@ public class PqrServlet extends ServletGeneral{
 	}
 	
 	public String crearParrafo(ParametrosDatos datos, List<HistoricoDatos> historico){
-		String parrafo="Estimado (a) "+datos.getPersonaNombreRazon()+"\n";
+		
+		String parrafo="PERSONA ACTUALMENTE RESPONSABLE EN EL CENTRO DE INVESTIGACIONES:\n"+
+		"Rol: "+datos.getEncargadoActualRolNombre()+"\n"+
+		"Nombre :"+datos.getEncargadoActualNombre()+"\n"+
+		"Correo electrónico :"+ datos.getEncargadoActualCorreo()+"\n"+
+		"Telefono :"+datos.getEncargadoActualTel()+"\n\n"+
+		"Estimado (a) "+datos.getPersonaNombreRazon()+"\n";
 		parrafo+="Su solicitud radicada con el número "+datos.getCasoAsociado()+" el día "+datos.getCasoFechaApertura();
 		parrafo+="está siendo atendida por "+datos.getResponsableNombre()+" y la fecha estimada de respuesta es el "+datos.getCasoFechaEstimadaCierre()+". \n";
 		parrafo+="Si requiere mayor información sobre el estado de su solicitud puede comunicare al correo electrónico: "+datos.getResponsableCorreo()+". \n";

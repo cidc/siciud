@@ -142,9 +142,56 @@ public ParametrosDatos consultarCasoPQR (String numeroCaso, String path){
 		e.printStackTrace();
 	}
 	System.out.println("RESPUESTA CONSULTA CASO\n"+XmlResCrearCasoPQR);
+	if(parametrosDatos.getPersonaDocumentoNIT()==null)
+	    consultaPQR_Scope(numeroCaso, parametrosDatos);
+	
 	
 	return parametrosDatos;
 }
+
+
+public ParametrosDatos consultaPQR_Scope(String numeroCaso, ParametrosDatos parametros_Scope){
+    
+    super.setConnectionEM();
+    
+    String xmlConsultarCasoScpe="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">" +
+            "   <soapenv:Header/>" +
+            "   <soapenv:Body>" +
+            "<soa:getCaseDataUsingXPathsAsString>" +
+            "<!--Optional:-->" +
+            "<arg0>" +
+            "<![CDATA[" +
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                    "<BizAgiWSParam>" +
+                    "<CaseInfo>" +
+                    "<CaseNumber>"+numeroCaso+"</CaseNumber>" +
+                    "<idTask>"+71+"</idTask>"+
+                    "</CaseInfo>" +
+                    "<XPaths>" +
+                    "<XPath XPath=\"SolicituddeAccionesCiuda.Persona.DocumentodeIdentidadNIT\"/>" +
+                            "<XPath XPath=\"SolicituddeAccionesCiuda.Asunto\"/>" +
+                                    "<XPath XPath=\"SolicituddeAccionesCiuda.FechadeApertura\"/>" +
+                                            "</XPaths>" +
+                                            "</BizAgiWSParam>]]>" +
+                                            "</arg0>" +
+                                            "      </soa:getCaseDataUsingXPathsAsString>" +
+                                            "   </soapenv:Body></soapenv:Envelope>";
+    
+    String consultarCasoScope = super.httpostConsultaEM(xmlConsultarCasoScpe);
+    XmlRespCaso CasoScopeConsultar = new XmlRespCaso();
+    System.out.println("RESPUESTA XML SCOPE: "+ consultarCasoScope);
+    
+    try {
+        System.out.println("RESPUESTA XML SCOPE: ");
+        parametros_Scope  = CasoScopeConsultar.consultaCasoScope(consultarCasoScope, parametros_Scope);
+    } catch (DocumentException e) {
+        
+        e.printStackTrace();
+    }
+        
+    return parametros_Scope;
+}
+
 
 
 

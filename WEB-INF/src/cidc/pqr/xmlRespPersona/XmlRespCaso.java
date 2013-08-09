@@ -232,8 +232,110 @@ List listaNumeroCaso = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseData
 			
 			}
 	    
+	    
+        List listaElementosUsuarioEsc = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseDataUsingSchemaAsStringResponse/return/BizAgiResponse/App/SolicituddeAccionesCiuda/Usuario");
+        Iterator iteraUsuarioEsc = listaElementosUsuarioEsc.iterator();
+        while(iteraUsuarioEsc.hasNext()){
+            Element e = (Element)iteraUsuarioEsc.next();
+            e.getName();            
+            
+            Iterator iterNombreUsuario = e.elementIterator("userName");
+            while (iterNombreUsuario.hasNext()){
+                Element eNombreUsuario = (Element)iterNombreUsuario.next();
+                parametrosDatos.setEncargadoActualNombre(eNombreUsuario.getText());
+                //System.out.println("Valor RESPUESTA USUARIO NOMBRE: "+eNombreUsuario.getText());
+
+             }
+            
+            Iterator iterUsuarioCorreo = e.elementIterator("contactEmail");
+            while (iterUsuarioCorreo.hasNext()){
+                Element eUsuarioCorreo = (Element)iterUsuarioCorreo.next();
+               // System.out.println("Valor RESPUESTA USUARIO EMAIL: "+eUsuarioCorreo.getText());
+                parametrosDatos.setEncargadoActualCorreo(eUsuarioCorreo.getText());
+
+             }
+            
+            Iterator iterUsuarioTel = e.elementIterator("contactCell");
+            while (iterUsuarioTel.hasNext()){
+                Element eUsuarioTel = (Element)iterUsuarioTel.next();
+               // System.out.println("Valor RESPUESTA USUARIO TELEFONO: "+eUsuarioTel.getText());
+                parametrosDatos.setEncargadoActualTel(eUsuarioTel.getText());
+                
+             }
+            
+    
+            Iterator iterUsuarioRol = e.elementIterator("Roles");
+            while (iterUsuarioRol.hasNext()){
+                Element eUsuarioRol = (Element)iterUsuarioRol.next();
+                
+                Iterator iterUsuarioRolP = eUsuarioRol.elementIterator("ROLE");
+                while (iterUsuarioRolP.hasNext()){
+                    Element eUsuarioRolP = (Element)iterUsuarioRolP.next();
+    
+                    
+                    
+                    Iterator iterUsuarioRolDisplay = eUsuarioRolP.elementIterator("roleDisplayName");
+                    while (iterUsuarioRolDisplay.hasNext()){
+                        Element eUsuarioRolDisplay = (Element)iterUsuarioRolDisplay.next();
+                       // System.out.println("Valor RESPUESTA USUARIO ROL: "+eUsuarioRolDisplay.getText());
+                        parametrosDatos.setEncargadoActualRolNombre(eUsuarioRolDisplay.getText());
+                       // System.out.println("Valor RESPUESTA USUARIO DESCRIPCION ROL: "+eUsuarioRolP.elementText("roleDescription"));
+                        parametrosDatos.setEncargadoActualRolDescripcion(eUsuarioRolP.elementText("roleDescription"));
+                        
+                    }
+                }
+                
+
+             }
+            
+            
+        }
+	    
 		return parametrosDatos;
 	}
+	
+	
+	 public ParametrosDatos consultaCasoScope(String consultarCasoScope,    ParametrosDatos parametros_Scope) throws DocumentException {
+	        
+	        SAXReader reader = new SAXReader();  
+	        System.out.println("RESPUESTA XML SCOPE1: ");
+	    //    System.out.print("\nSAX READER"+xmlResCrearCasoPQR);
+	        Document doc = reader.read(new StringReader(consultarCasoScope)); 
+	        InformacionParametros infoParametros = new InformacionParametros();
+	        ParametrosDatos parametrosDatos = new ParametrosDatos();
+	     //   System.out.println("\nSAX READER2"+doc.toString());
+
+	        Namespace namespace1 = new Namespace("ns2","http://SOA.BizAgi/");
+
+	        doc.getRootElement().add(namespace1);
+	        // TODO Auto-generated method stub
+	                
+	        List listaElementos = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseDataUsingXPathsAsStringResponse/return/BizAgiWSResponse/XPath");
+	        Iterator iteraElementos = listaElementos.iterator();
+	        
+	        int i=0;
+	        
+	        while(iteraElementos.hasNext()){
+	            Element e = (Element)iteraElementos.next();
+
+	            if(i==0){
+	        
+	                parametros_Scope.setPersonaDocumentoNIT(e.getText());
+	            }
+	            else if (i==1){
+	                 parametros_Scope.setCasoAsunto(e.getText());
+	                
+	            }
+	            else if (i==2){
+	                
+	                parametros_Scope.setCasoFechaApertura(e.getText());
+	            }
+	            i=i+1;
+	        }
+	            
+	        return parametros_Scope;        
+	        
+	    }
 
 	
 

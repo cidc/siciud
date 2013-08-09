@@ -54,9 +54,46 @@ public class ParametrosDatos {
 	private String personaCorreo;
 	private String personaNombreRazon;
 	private String personaDocumentoNIT;
+    private String encargadoActualNombre;
+    private String encargadoActualCorreo;
+    private String encargadoActualTel;
+    private String encargadoActualRolNombre;
+    private String encargadoActualRolDescripcion;
+	
 	
 	
 
+	public String getEncargadoActualNombre() {
+		return encargadoActualNombre;
+	}
+	public void setEncargadoActualNombre(String encargadoActualNombre) {
+		this.encargadoActualNombre = encargadoActualNombre;
+	}
+	public String getEncargadoActualCorreo() {
+		return encargadoActualCorreo;
+	}
+	public void setEncargadoActualCorreo(String encargadoActualCorreo) {
+		this.encargadoActualCorreo = encargadoActualCorreo;
+	}
+	public String getEncargadoActualTel() {
+		return encargadoActualTel;
+	}
+	public void setEncargadoActualTel(String encargadoActualTel) {
+		this.encargadoActualTel = encargadoActualTel;
+	}
+	public String getEncargadoActualRolNombre() {
+		return encargadoActualRolNombre;
+	}
+	public void setEncargadoActualRolNombre(String encargadoActualRolNombre) {
+		this.encargadoActualRolNombre = encargadoActualRolNombre;
+	}
+	public String getEncargadoActualRolDescripcion() {
+		return encargadoActualRolDescripcion;
+	}
+	public void setEncargadoActualRolDescripcion(
+			String encargadoActualRolDescripcion) {
+		this.encargadoActualRolDescripcion = encargadoActualRolDescripcion;
+	}
 	public String getPersonaDocumentoNIT() {
 		return personaDocumentoNIT;
 	}
