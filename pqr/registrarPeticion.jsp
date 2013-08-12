@@ -146,8 +146,6 @@ function validarNro(e) {
 
 function validarPersona(){
 	mensaje="";
-	//if(document.pqrForm.tipoSolicitante.selectedIndex==0)
-		//mensaje+="\n -Tipo de solicitud";
 	if(document.pqrForm.documento.value=="")
 		mensaje+="\n -Numero de Documento / Nit";
 	if(document.pqrForm.nombre.value=="")
@@ -158,12 +156,8 @@ function validarPersona(){
 		mensaje+="\n -Teléfono";
 	if(document.pqrForm.correo.value=="")
 		mensaje+="\n -Correo Electrónico";
-	if(document.pqrForm.tipoExterno.selectedIndex!=1 && document.pqrForm.titulo.value=="")
+	if(document.pqrForm.tipoExterno.selectedIndex!=1 && document.pqrForm.titulo.value==""&&document.getElementById("ltitulo").style.display=="block")
 		mensaje+="\n -Titulo";
-	if(document.pqrForm.tipoExterno.selectedIndex==2&&document.pqrForm.representante.value=="")
-		mensaje+="\n -Representante Legal";
-	if(document.pqrForm.tipoExterno.selectedIndex==2&&document.pqrForm.contacto.value=="")
-		mensaje+="\n -Contacto";
 	if(mensaje!=""){
 		mensaje="Los siguientes campos son obligatorios: "+mensaje;
 		alert (mensaje);
@@ -225,10 +219,10 @@ function validarCaso(){
 				<tr>
 					<td colspan="4" align="left"><label for="ltipoSol" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>Tipo de Solicitante</label>
 					</td>
-					<td><select name="tipoSolicitante" onchange="cambiar(this)" style='<c:out value="${sessionScope.tipoSolicitante}"/>'>
-						<OPTION VALUE="0">-------</OPTION>
-						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoPersona==null}">selected</c:if> >Interno</OPTION>
-						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoPersona!=null}">selected</c:if>>Externo</OPTION>
+					<td><select name="tipoSolicitante" onchange="cambiar(this)" style='<c:out value="${sessionScope.tipoSolicitante}"/>'> 
+						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.tipoPersona!=51&&sessionScope.personaDatos.tipoPersona!=52}">selected</c:if> >Interno</OPTION>
+						<OPTION VALUE="1" <c:if test="${sessionScope.personaDatos.tipoPersona==51 ||sessionScope.personaDatos.tipoPersona==52}">selected</c:if>>Externo</OPTION>
+						<OPTION VALUE="0" <c:if test="${sessionScope.personaDatos.personaID==null}">selected</c:if>>-------</OPTION>
 					</select></td>
 				</tr>
 				<tr>
@@ -268,15 +262,15 @@ function validarCaso(){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="representante" id="lrepresentante" style='<c:out value="${sessionScope.juridico}"/>'>Representante Legal</label>
-					<td><input width="100%" class="area2" class="area2"  style='<c:out value="${sessionScope.juridico}" />'
-							name="representante" id='representante'><c:out value=''/>
+					<td colspan="4" align="left"><label for="representante" id="lrepresentante" style='<c:out value="${sessionScope.complemento}"/>'>Representante Legal</label>
+					<td><input width="100%" class="area2" class="area2"  style='<c:out value="${sessionScope.complemento}" />'
+							name="representante" id='representante' value="<c:out value='${sessionScope.personaDatos.representante}'/>">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="left"><label for="contacto" id="lcontacto" style='<c:out value="${sessionScope.juridico}"/>'>Persona de Contacto</label>
-					<td><input class="area2" class="area2"  style='<c:out value="${sessionScope.juridico}"/>'
-							name="contacto" id='contacto'><c:out value=''/>
+					<td colspan="4" align="left"><label for="contacto" id="lcontacto" style='<c:out value="${sessionScope.complemento}"/>'>Persona de Contacto</label>
+					<td><input class="area2" class="area2"  style='<c:out value="${sessionScope.complemento}"/>'
+							name="contacto" id='contacto' value="<c:out value='${sessionScope.personaDatos.contacto}'/>">
 					</td>
 				</tr>
 				<tr>
