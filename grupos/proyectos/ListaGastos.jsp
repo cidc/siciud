@@ -336,7 +336,7 @@
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<br/><!-- 
+<br/>
 	<form name="tipoPersona" action='<c:url value="/grupos/proyectos/llenar.jsp"/>' method="post">
 	<input type="hidden" name="accion" value="0">
 	<input type="hidden" name="tipoSolicitud" value="">
@@ -368,7 +368,7 @@
 							<option value="2">Persona Jurídica</option>
 						</select>
 					</td> -->
-			<!-- <td  align="left"><b><label id="tipoPersona1" ></label></b></td>
+			<td  align="left"><b><label id="tipoPersona1" ></label></b></td>
 			</tr>
 			<tr >
 				<td align="left" ><b><label id="lnombre" style="${requestScope.basico}">Nombres y Apellidos / Razón Social:</label></b></td>
@@ -513,7 +513,6 @@
 		</table>
 	</form>
 	
-	-->
 	
 	
 	<c:if test="${!empty sessionScope.listaGastosRubro}">
