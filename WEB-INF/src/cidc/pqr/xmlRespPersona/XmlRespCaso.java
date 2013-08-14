@@ -244,6 +244,7 @@ List listaNumeroCaso = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseData
                 Element eNombreUsuario = (Element)iterNombreUsuario.next();
                 parametrosDatos.setEncargadoActualNombre(eNombreUsuario.getText());
                 //System.out.println("Valor RESPUESTA USUARIO NOMBRE: "+eNombreUsuario.getText());
+                parametrosDatos.setEncargadoActualNombreCompleto(e.elementText("fullName"));
 
              }
             
@@ -279,8 +280,10 @@ List listaNumeroCaso = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseData
                         Element eUsuarioRolDisplay = (Element)iterUsuarioRolDisplay.next();
                        // System.out.println("Valor RESPUESTA USUARIO ROL: "+eUsuarioRolDisplay.getText());
                         parametrosDatos.setEncargadoActualRolNombre(eUsuarioRolDisplay.getText());
+                        
                        // System.out.println("Valor RESPUESTA USUARIO DESCRIPCION ROL: "+eUsuarioRolP.elementText("roleDescription"));
                         parametrosDatos.setEncargadoActualRolDescripcion(eUsuarioRolP.elementText("roleDescription"));
+                        
                         
                     }
                 }
@@ -289,6 +292,37 @@ List listaNumeroCaso = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseData
              }
             
             
+        }
+        
+        List listaFlags = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseDataUsingSchemaAsStringResponse/return/BizAgiResponse/App/SolicituddeAccionesCiuda/FlagsdelCaso");
+        Iterator iteraFlags = listaFlags.iterator();
+        while(iteraFlags.hasNext()){
+                    Element e = (Element)iteraFlags.next();
+                    e.getName();                        
+                    System.out.println("UFLAGS ");
+                    Iterator iterFlags = e.elementIterator("PedirmasInformacion");
+                    while (iterFlags.hasNext()){
+                            Element eNombreUsuario = (Element)iterFlags.next();
+                        /*    System.out.println("Valor RESPUESTA FLAGS: "+eNombreUsuario.getText());
+                            System.out.println("Valor NOTIFICACIONES POR CORREO: "+e.elementText("RecibirNotificacionesporCo"));
+                            System.out.println("Valor CASO SUSPENDIDO: "+e.elementText("CasoSuspendido"));
+                            System.out.println("Valor SOLUCION ACEPTADA: "+e.elementText("SolucionAceptada"));
+                            System.out.println("Valor SOLUCION INMEDIATA: "+e.elementText("SolucionInmediata"));
+                            System.out.println("Valor TERMINOS EXTENDIDOS: "+e.elementText("TerminosExtendidos"));
+                            System.out.println("Valor SOLUCIONAR: "+e.elementText("Solucionar"));
+                      */
+                            parametrosDatos.setFlagSolicitarInfoRequiriente(e.elementText("SolicitarInformacionaRequi"));
+                            parametrosDatos.setFlagRecibirNotifiCorreo(e.elementText("RecibirNotificacionesporCo"));
+                            parametrosDatos.setFlagCasoSuspendido(e.elementText("CasoSuspendido"));
+                            parametrosDatos.setFlagSolucionAceptada(e.elementText("SolucionAceptada"));
+                            parametrosDatos.setFlagTerminosExtendidos(e.elementText("TerminosExtendidos"));
+                            parametrosDatos.setFlagSolucionInmediata(e.elementText("SolucionInmediata"));
+                            parametrosDatos.setFlagSolucionar(e.elementText("Solucionar"));
+                            parametrosDatos.setFlagSolucionar(e.elementText("InformacionCompleta"));
+                            
+            
+
+                     }
         }
 	    
 		return parametrosDatos;

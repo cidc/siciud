@@ -51,13 +51,15 @@ function validar(){
 	<tr>
 		<td id="g1"><img src='<c:url value="/comp/img/Buscar.gif"/>' onclick="buscarCaso()"></td>
 	</tr>
+	<c:if test="${requestScope.respuesta!=null}">
 		<tr>
-					<td colspan="4" align="left"><c:out value="Estado de la Solicitud"/>
+					<td colspan="4" align="left" ><c:out value="Estado de la Solicitud"/>
 					</td>
-					<td><textarea class="area2" class="area2" style="width: 100%;" rows="15"
+					<td><textarea class="area2" class="area2" style="width: 100%"  rows="15" 
 							name="respuesta" id='respuesta'><c:out value='${requestScope.respuestaConsul}'/></textarea>
 					</td>
 		</tr>
+	</c:if>
 		<tr><c:if test="${requestScope.archRespuesta!=null}">
 			<td align="right"><a target="_blank" href='<c:out value="/siciud/Documentos/Bizagi/${requestScope.archRespuesta}"/>'><img align="center" src="<c:url value="/comp/img/verPdf.png"/>"/></a></td>
 			</c:if>

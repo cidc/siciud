@@ -166,6 +166,7 @@ public class PqrServlet extends ServletGeneral{
 		         InformacionHistorico historico = new InformacionHistorico();
 		         List <HistoricoDatos> historicoCaso = historico.consultarHistoricoCaso(req.getParameter("idCaso"),req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep)));    
 		         req.setAttribute("respuestaConsul", crearParrafo(parametrosRespuesta, historicoCaso));
+		         req.setAttribute("respuesta", "display:block");
 		         if(parametrosRespuesta.getArchivoRespuestaDocumento()!=null){
 			         Archivo64 arch64=new Archivo64();
 			         String datos= parametrosRespuesta.getArchivoRespuestaDocumento();
@@ -205,32 +206,89 @@ public class PqrServlet extends ServletGeneral{
 	
 	public String crearParrafo(ParametrosDatos datos, List<HistoricoDatos> historico){
 		
-		String parrafo="PERSONA ACTUALMENTE RESPONSABLE EN EL CENTRO DE INVESTIGACIONES:\n"+
-		"Rol: "+datos.getEncargadoActualRolNombre()+"\n"+
-		"Nombre :"+datos.getEncargadoActualNombre()+"\n"+
-		"Correo electrónico :"+ datos.getEncargadoActualCorreo()+"\n"+
-		"Telefono :"+datos.getEncargadoActualTel()+"\n\n"+
-		"Estimado (a) "+datos.getPersonaNombreRazon()+"\n";
-		parrafo+="Su solicitud radicada con el número "+datos.getCasoAsociado()+" el día "+datos.getCasoFechaApertura();
-		parrafo+="está siendo atendida por "+datos.getResponsableNombre()+" y la fecha estimada de respuesta es el "+datos.getCasoFechaEstimadaCierre()+". \n";
-		parrafo+="Si requiere mayor información sobre el estado de su solicitud puede comunicare al correo electrónico: "+datos.getResponsableCorreo()+". \n";
-		parrafo+="Los datos registrados por Usted en la solicitud son los siguientes: \n";
-		parrafo+="Nombre o Razón Social:"+datos.getPersonaNombreRazon()+". \n";
-		parrafo+="Teléfono: "+datos.getPersonaTelMov()+". \n";
-		parrafo+="Correo Electrónico: "+datos.getPersonaCorreo()+" \n";
-		parrafo+="Si requiere actualizar la información indicada, favor envíe un correo electrónico a cidc@udistrital.edu.co indicando en el asunto " +
-				"\"Actualización datos de contacto\". \nCordialmente. \nEquipo Informática - CIDC.\n\nSu caso ha seguido el siguiente tramite:\n\n";
+		int itamano=historico.size()-1;
 		
-		 for (int i=0; i<historico.size();i++){
-			 
-			 parrafo+= "Accion: "+historico.get(i).getAccionHistorico()+"\n";
-			 parrafo+= "Fecha: "+historico.get(i).getFechaHistorico()+"\n";
-			 parrafo+= "Usuario: "+historico.get(i).getUsuario()+"\n";
-			 parrafo+= "\n";
-	    	 
-	    	 
-	    }
-		
+		String parrafo="";
+            System.out.println("Valor del elemento tamano: "+itamano);
+            //System.out.println("Valor del elemento parame REQUIREEEE: "+parametrosRespuesta.getFlagSolicitarInfoRequiriente());
+                //System.out.println("Valor del elemento histo0 REQUIREEEE: "+historicoCaso.get(itamano).getAccionHistorico());
+          
+            System.out.println("\nESTADO DEL CASO: \n");
+            
+            parrafo+="\nESTADO DEL CASO: ";
+            if(datos.getCasoAsociado()!=null && historico.size()==0){
+     
+                parrafo+="REGISTRADO (En proceso de asignación de una persona a su caso). \n";
+            }
+            else if (historico.size()>0 && (datos.getFlagSolicitarInfoRequiriente().equals("False")||datos.getFlagSolicitarInfoRequiriente().equals("")) 
+                    && !(historico.get(itamano).getAccionHistorico().equals("Solución Encontrada" ) || historico.get(itamano).getAccionHistorico().equals("Cancelado" ))){
+          
+              
+                parrafo+="EN ATENCIÓN (Su caso está en proceso de solución).\n";
+            }
+            else if (historico.size()>0 && datos.getFlagSolicitarInfoRequiriente().equals("True")){
+           
+                parrafo+="SE SOLICITA AMPLIACIÓN DE INFORMACIÓN (Se ha solicitado a usted información adicional para solucionar su caso, verifique su correo electrónico). \n";
+            }
+            else if (historico.size()>0 && historico.get(itamano).getAccionHistorico().equals("Cancelado")){
+               
+                parrafo+="CANCELADO (Su caso ha sido anulado).\n";
+            }
+            else if (historico.size()>0 && historico.get(itamano).getAccionHistorico().equals("Solución Encontrada")){
+            	parrafo+="SOLUCIONADO (Su caso ha sido atendido). \n";
+                
+            }
+            else {System.out.println("Comuniquese con el Centro de Investigaciones para obtener información de su caso - 3239300 ext 1320-1329");}
+                                           
+
+  
+            if(datos.getCasoAsociado()!=null && historico.size()==0){
+            	parrafo+="\n\nSu caso se encuentra registrado y el trascurso del día sera asignado a uno de los funcionarios del Centro de Investigaciones ";
+            	
+            }else{
+	            	if (datos.getEncargadoActualNombre()!=null){
+	   				 parrafo+="\nPERSONA ACTUALMENTE RESPONSABLE EN EL CENTRO DE INVESTIGACIONES:\n"+
+	   				//"Rol: "+datos.getEncargadoActualRolNombre()+"\n"+
+	   				"Nombre :"+datos.getEncargadoActualNombreCompleto()+"\n"+
+	   				"Correo electrónico :"+ datos.getEncargadoActualCorreo()+"\n"+
+	   				"Telefono :"+datos.getEncargadoActualTel()+"\n\n";
+	   				
+	   				}
+	   				else {
+	   					 parrafo+="\nPERSONA ACTUALMENTE RESPONSABLE EN EL CENTRO DE INVESTIGACIONES:\n"+
+	   					//"Rol: "+datos.getEncargadoActualRolNombre()+"\n"+
+	   					"Nombre :"+datos.getResponsableNombre()+"\n"+
+	   					"Correo electrónico :"+ datos.getResponsableCorreo()+"\n"+
+	   					"Telefono :"+datos.getResponsableTelefono()+"\n\n";	
+	   					
+	   					
+	   					
+	   				}
+	   				
+
+	   				parrafo+="Numero de radicado: "+datos.getCasoAsociado()+"\n";
+	   				parrafo+="Fecha de radicado: "+datos.getCasoFechaApertura().substring(0, 10)+"\n";
+	   				parrafo+="Hora de radicado: "+datos.getCasoFechaApertura().substring(11, 16)+"\n";
+	   				parrafo+="Tiempo estimado de respuesta: "+datos.getTipodeRequerimientoTiempoResp()+" dias hábiles a partir de la fecha de radicación. \n\n";
+	   				parrafo+="LOS DATOS REGISTRADOS POR USTED EN EL SISTEMA SON LOS SIGUIENTES: \n";
+	   				parrafo+="Nombre o Razón Social:"+datos.getPersonaNombreRazon()+". \n";
+	   				parrafo+="Teléfono: "+datos.getPersonaTelMov()+". \n";
+	   				parrafo+="Correo Electrónico: "+datos.getPersonaCorreo()+" \n\n";
+	   				parrafo+="Si requiere actualizar la información indicada, favor envíe un correo electrónico a cidc@udistrital.edu.co indicando en el asunto " +
+	   						"\"Actualización datos de contacto\". \n\n\nSU CASO HA SEGUIDO EL SIGUIENTE TRAMITE:\n\n";
+	   				
+	   				
+	   				 for ( itamano=0; itamano<historico.size();itamano++){
+	   					 
+	   					 parrafo+= "Accion: "+historico.get(itamano).getAccionHistorico()+"\n";
+	   					 parrafo+= "Fecha: "+historico.get(itamano).getFechaHistorico().substring(0,10)+"\n";
+	   					parrafo+= "Hora: "+historico.get(itamano).getFechaHistorico().substring(11,16)+"\n";
+	   					 parrafo+= "Usuario: "+historico.get(itamano).getUsuario()+"\n";
+	   					 parrafo+= "\n"; 
+	   			    	 
+	   			    	 
+	   			    }
+            	}
 		return parrafo;
 	}
 

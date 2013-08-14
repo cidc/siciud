@@ -99,7 +99,7 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
 			XmlRespCaso casoCreado = new XmlRespCaso();
 			System.out.println("xml: "+xmlCrearCaso);
 			try {
-				System.out.println(crearCaso);
+				//System.out.println(crearCaso);
 				caso = casoCreado.CrearCaso(crearCaso, datosForm);
 				
 			} catch (DocumentException e) {
@@ -141,7 +141,7 @@ public ParametrosDatos consultarCasoPQR (String numeroCaso, String path){
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	System.out.println("RESPUESTA CONSULTA CASO\n"+XmlResCrearCasoPQR);
+	//System.out.println("RESPUESTA CONSULTA CASO\n"+XmlResCrearCasoPQR);
 	if(parametrosDatos.getPersonaDocumentoNIT()==null)
 	    consultaPQR_Scope(numeroCaso, parametrosDatos);
 	
@@ -179,10 +179,10 @@ public ParametrosDatos consultaPQR_Scope(String numeroCaso, ParametrosDatos para
     
     String consultarCasoScope = super.httpostConsultaEM(xmlConsultarCasoScpe);
     XmlRespCaso CasoScopeConsultar = new XmlRespCaso();
-    System.out.println("RESPUESTA XML SCOPE: "+ consultarCasoScope);
+  //  System.out.println("RESPUESTA XML SCOPE: "+ consultarCasoScope);
     
     try {
-        System.out.println("RESPUESTA XML SCOPE: ");
+    //    System.out.println("RESPUESTA XML SCOPE: ");
         parametros_Scope  = CasoScopeConsultar.consultaCasoScope(consultarCasoScope, parametros_Scope);
     } catch (DocumentException e) {
         

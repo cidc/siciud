@@ -160,8 +160,8 @@ function validarPersona(){
 		mensaje+="\n -Titulo";
 	if(mensaje!=""){
 		mensaje="Los siguientes campos son obligatorios: "+mensaje;
-		alert (mensaje);
-		return false;
+	alert (mensaje);
+	return false;
 	}else
 		return true;
 	
