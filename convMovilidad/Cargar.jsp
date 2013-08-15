@@ -149,7 +149,7 @@
 			</td>
 		</tr>
 --%>
-		<tr>
+<%--		<tr>
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm2" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="2">
@@ -173,7 +173,7 @@
 					</table>
 				</form>
 			</td>
-		</tr>
+		</tr> --%>
 	<%--	<tr>
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm3" method="post" enctype="multipart/form-data">
@@ -197,7 +197,7 @@
 			</td>
 		</tr>
 --%>
-<!--
+<%--
 		<tr>
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm4" method="post" enctype="multipart/form-data">
@@ -222,8 +222,8 @@
 				</form>
 			</td>
 		</tr>
--->
-		<c:if test='${sessionScope.persona.papel!=3 and sessionScope.persona.papel!=8}'>
+--%>
+<%--		<c:if test='${sessionScope.persona.papel!=3 and sessionScope.persona.papel!=8}'>
 		<tr>
 			<td>
 				<form action='<c:url value="/movilidad/ArchivosMovilidad.x"/>' name="frm5" method="post" enctype="multipart/form-data">
@@ -421,7 +421,7 @@
 				</form>
 			</td>
 		</tr>	
-
+--%>
 <%-- --%>
                 <tr>
                         <td>

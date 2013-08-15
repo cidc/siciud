@@ -63,10 +63,10 @@
 						La carga de estos documentos la puede hacer en cualquier momento, pero debe ser antes de la fecha de corte de la convocatoria, de lo contrario su propuesta no será tenida en cuenta en el proceso de evaluación.
 					</td>
 				</tr>
-				<tr>
+	<%--			<tr>
 					<td>
 					<br>
-						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm11" method="post" enctype="multipart/form-data">
+					<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm11" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="id" value="6">
 						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}" default="${sessionScope.inscripcionConvOBJ.propId}"/>'>
 							<table width="100%">
@@ -92,8 +92,8 @@
 							</table>
 						</form>
 					</td>
-				</tr>
-				<c:if test="${sessionScope.datosConv.convAno!=2012}">
+				</tr>--%>
+			<%--	<c:if test="${sessionScope.datosConv.convAno!=2012}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm2" method="post" enctype="multipart/form-data">
@@ -121,8 +121,8 @@
 						</form>
 					</td>
 				</tr>
-				</c:if>
-				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==12)}">
+				</c:if>--%>
+		<%--	<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6 or sessionScope.datosConv.convNumero==12)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm3" method="post" enctype="multipart/form-data">
@@ -148,8 +148,8 @@
 						</form>
 					</td>
 				</tr>				
-				</c:if>	
-				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
+				</c:if>--%>	
+				<%--<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm4" method="post" enctype="multipart/form-data">
@@ -175,8 +175,8 @@
 						</form>
 					</td>
 				</tr>				
-				</c:if>				
-				<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
+				</c:if>	--%>			
+			<%--	<c:if test="${sessionScope.datosConv.convAno==2012 and (sessionScope.datosConv.convNumero==5 or sessionScope.datosConv.convNumero==6)}">
 				<tr>
 					<td>
 						<form action='<c:url value="/inscripcionConv/Propuesta.x"/>' name="frm5" method="post" enctype="multipart/form-data">
@@ -202,7 +202,7 @@
 						</form>
 					</td>
 				</tr>				
-				</c:if>				
+				</c:if>	--%>			
 <%-- --%>
 
 <%-- --%>
