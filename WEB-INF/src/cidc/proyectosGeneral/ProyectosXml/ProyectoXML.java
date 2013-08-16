@@ -2,17 +2,17 @@ package cidc.proyectosGeneral.ProyectosXml;
 
 import org.dom4j.DocumentException;
 
-import cidc.proyectosGeneral.obj.ProyectoDatos;
+import cidc.proyectos.obj.ProyectoGenerico;
 import cidc.general.ws_coneccion_Bizagi.ConeccionDB_WS;
 import cidc.proyectosGeneral.ProyectosXml.XmlRespProyecto;
 
 
 public class ProyectoXML extends ConeccionDB_WS {
 
-	ProyectoDatos proyecto = null;
+	//ProyectoDatos proyecto = null;
 	
 	
-	public String crearProyectoBizagi (ProyectoDatos infoProyecto){
+	public String crearProyectoBizagi (ProyectoGenerico infoProyecto){
 		super.setConnectionEM();
 		
 		String xmlCrearProyecto ="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">" +
@@ -20,17 +20,19 @@ public class ProyectoXML extends ConeccionDB_WS {
 				"<soapenv:Body>" +
 				"<soa:saveEntityAsString>" +
 				"<arg0><![CDATA[<BizAgiWSParam><Entities>" +
-				"<Proyecto businesskey=\"CodigodelProyecto='"+infoProyecto.getCodigoProyecto()+"'\">" +
-				"<CodigodelProyecto>"+infoProyecto.getCodigoProyecto()+"</CodigodelProyecto>" +
-				"<NombredelProyecto>"+infoProyecto.getNombreProyecto()+"</NombredelProyecto>" +
-				"<ProyectodelCIDC>"+infoProyecto.getProyectodelCIDC()+"</ProyectodelCIDC>"+
-				"<DirectordeProyecto>"+infoProyecto.getDirectorProyecto()+"</DirectordeProyecto>" +
+				"<Proyecto businessKey=\"CodigodelProyecto='"+infoProyecto.getCodigo()+"'\">" +
+				"<CodigodelProyecto>"+infoProyecto.getCodigo()+"</CodigodelProyecto>" +
+				"<NombredelProyecto>"+infoProyecto.getNombre()+"</NombredelProyecto>" +
+				//"<ProyectodelCIDC>"+infoProyecto.getTipo2()+"</ProyectodelCIDC>"+
+				"<DirectordeProyecto>"+infoProyecto.getDirector()+"</DirectordeProyecto>" +
 				"</Proyecto>" +
 				"</Entities></BizAgiWSParam>]]>" +
 				"</arg0>" +
 				"</soa:saveEntityAsString></soapenv:Body></soapenv:Envelope>";
 		
+		System.out.println("respuestaXML: "+xmlCrearProyecto);
 		String crearProyecto = super.httpostConsultaEM(xmlCrearProyecto);
+	
 		System.out.println(crearProyecto);
 		XmlRespProyecto proyectoCreado = new XmlRespProyecto();
 		String MensajeProyectoCreado = null;
@@ -44,7 +46,7 @@ public class ProyectoXML extends ConeccionDB_WS {
 		}
 	
 	
-	public ProyectoDatos consultarProyectoBizagi (String codigoProyecto, ProyectoDatos datosProyecto)	{
+	public ProyectoGenerico consultarProyectoBizagi (String codigoProyecto, ProyectoGenerico datosProyecto)	{
 		
 		XmlRespProyecto proyectoBuscado = new XmlRespProyecto();
 		super.setConnectionEM();

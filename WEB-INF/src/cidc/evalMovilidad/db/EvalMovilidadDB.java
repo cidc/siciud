@@ -63,7 +63,7 @@ public class EvalMovilidadDB extends BaseDB{
 			ps.setInt(3,rol1);			
 			ps.setInt(4,rol2);
 			ps.setLong(5, idEval);
-
+System.out.println(ps.toString());
 			rs=ps.executeQuery();
 			while(rs.next()){
 				i=1;

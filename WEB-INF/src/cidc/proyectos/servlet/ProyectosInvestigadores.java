@@ -17,6 +17,7 @@ import cidc.proyectos.obj.Contratacion;
 import cidc.proyectos.obj.Parametros;
 import cidc.proyectos.obj.ProyectoGenerico;
 import cidc.proyectos.obj.Rubros;
+import cidc.proyectosGeneral.ProyectosXml.ProyectoXML;
 
 
 public class ProyectosInvestigadores extends ServletGeneral {
@@ -37,7 +38,11 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			accion = Integer.parseInt(req.getParameter("accion"));
 		switch(accion){
 			case Parametros.cmdVerProyecto:
-				sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo")));
+				ProyectoGenerico proyectoGen=proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo"));
+				sesion.setAttribute("proyectoInvestigador", proyectoGen);
+				ProyectoXML proy=new ProyectoXML();
+				String resp2=proy.crearProyectoBizagi(proyectoGen);
+				System.out.println("resp crear proy "+resp2);
 				irA="/grupos/proyectos/VerProyecto.jsp";
 			break;
 			case Parametros.cmdBalanceGral:
