@@ -29,7 +29,7 @@ public class InformacionHistorico extends ConeccionDB_WS {
 		char sep=java.io.File.separatorChar;
 		path+=sep+"WEB-INF"+sep+"src"+sep+"cidc"+sep+"pqr"+sep+"archivosXml"+sep;
 		LeerArchivoXML leerArchivoXml = new LeerArchivoXML();
-		String xmlFileName = "D:/TOMCAT 6.0/webapps/siciud/WEB-INF/src/cidc/pqr/archivosXml/consultaHistorico.xml";
+		String xmlFileName = "/usr/local/tomcat/webapps/siciud/WEB-INF/src/cidc/pqr/archivosXml/consultaHistorico.xml";
 	    Document document = leerArchivoXml.getDocument( xmlFileName );
 	    List listaElementos = document.selectNodes("/soapenv:Envelope/soapenv:Body/soa:getCaseDataUsingSchemaAsString/arg0");
 	    Iterator iteraElementos = listaElementos.iterator();
