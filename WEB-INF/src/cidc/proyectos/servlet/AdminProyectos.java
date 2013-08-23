@@ -34,7 +34,7 @@ public class AdminProyectos extends ServletGeneral {
 		Proyecto proyecto=(Proyecto)sesion.getAttribute("proyecto");
 		int accion=0;
 		long id=0;
-	//	System.out.println("entra al busca "+req.getAttribute("accion"));
+		System.out.println("entra al busca "+req.getAttribute("accion"));
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
 		if(req.getAttribute("accion")!=null && accion==0)

@@ -1,0 +1,398 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soa="http://SOA.BizAgi/">
+<soapenv:Header/>
+<soapenv:Body>
+<soa:getCaseDataUsingSchemaAsString>
+<arg0>1153</arg0>
+<arg1><![CDATA[
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="App">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="SolicituddeAccionesCiuda">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoriadelCaso">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoricodeCasosdeAtenci">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" maxOccurs="1" name="Usuario" type="xs:string" />
+                          <xs:element minOccurs="0" maxOccurs="1" name="SolicituddeAccionesCiuda">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" maxOccurs="1" name="TipodeRequerimiento">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Dependencia">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="locDisplayName" type="xs:string" />
+                                          </xs:sequence>
+                                          <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="MaximoDiasExtension" type="xs:integer" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="TipodeRequerimiento" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="TiempodeActividadSoluciona" type="xs:integer" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="TiempodeSolucionInterna" type="xs:integer" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="TiempodeAlarma" type="xs:integer" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Area">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="areaDisplayName" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="areaDescription" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="areaName" type="xs:string" />
+                                          </xs:sequence>
+                                          <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="TiempodeRespuesta" type="xs:integer" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="TiempodeAlarmaInterna" type="xs:integer" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="Responsable">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="contactCell" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="contactEmail" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="fullName" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="ProyectodeInvestigacion">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="ProyectodeInvestigacion" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="Asunto" type="xs:string" />
+                                <xs:element minOccurs="0" maxOccurs="1" name="Estado">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Estado" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="ArchivosdelCaso" type="xs:integer" />
+                                <xs:element minOccurs="0" maxOccurs="1" name="Usuario">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="contactCell" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="contactEmail" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="fullName" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="CierredelCaso">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="LeccionesAprendidas" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="ArchivodeMejora" type="xs:integer" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="ArchivodeRespuesta" type="xs:integer" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Mejora" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Respuesta" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="MediodeNotificaciondeCierr">
+                                        <xs:complexType>
+                                          <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="FechadeSoluciondelCaso" type="xs:dateTime" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="RazonesdeCierredelCaso" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="ResponsabledeMejora">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="contactCell" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="contactEmail" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="idUser" type="xs:integer" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="fullName" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="unbounded" name="Roles">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="ROLE">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element minOccurs="0" maxOccurs="1" name="idRole" type="xs:integer" />
+                                                        <xs:element minOccurs="0" maxOccurs="1" name="roleDisplayName" type="xs:string" />
+                                                        <xs:element minOccurs="0" maxOccurs="1" name="roleName" type="xs:string" />
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="GestiondeNotificaciones">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="EmaildeDestino" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Remitente">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="contactCell" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="contactEmail" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="fullName" type="xs:string" />
+                                          </xs:sequence>
+                                          <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="MediodeNotificacion">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="Medio" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
+                                          </xs:sequence>
+                                          <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="DependenciaSolicitante">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Dependencia" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="FlagsdelCaso">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="SolicitarInfoaOtrasDepende" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="PedirmasInformacion" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="RecibirNotificacionesporCo" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Documentar" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="PrimeraVez" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="CasoSuspendido" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="AdelantarLlamada" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="EscalarAsignar" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="InformacionCompleta" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="EscaladodeOtraDependencia" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="SolucionInmediata" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="ContactardeNuevo" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="SolucionAceptada" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Escalado" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Documentado" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Resumir" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="TerminosExtendidos" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="EnviarSolicituddeMejora" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="SolucionNotificada" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Solucionar" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="SolicitarInformacionaRequi" type="xs:boolean" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="Persona">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Cargo" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="DocumentodeIdentidadNIT" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="CorreoElectronico" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Contacto" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="MediodeRecepcion">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Medio" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="AsignadoOriginal">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="userName" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="notifByCell" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="notifByEmail" type="xs:boolean" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="contactCell" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="idArea">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="areaDisplayName" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="areaName" type="xs:string" />
+                                          </xs:sequence>
+                                          <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="contactEmail" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="idBossUser">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="idBossUser">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" maxOccurs="1" name="fullName" type="xs:string" />
+                                                </xs:sequence>
+                                                <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="fullName" type="xs:string" />
+                                          </xs:sequence>
+                                          <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="fullName" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="Roles">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="unbounded" name="ROLE">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" maxOccurs="1" name="idRole" type="xs:integer" />
+                                                  <xs:element minOccurs="0" maxOccurs="1" name="roleDescription" type="xs:string" />
+                                                  <xs:element minOccurs="0" maxOccurs="1" name="roleDisplayName" type="xs:string" />
+                                                  <xs:element minOccurs="0" maxOccurs="1" name="roleName" type="xs:string" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="Skills">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="unbounded" name="SKILL">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" maxOccurs="1" name="skillDescription" type="xs:string" />
+                                                  <xs:element minOccurs="0" maxOccurs="1" name="skillName" type="xs:string" />
+                                                  <xs:element minOccurs="0" maxOccurs="1" name="skillDisplayName" type="xs:string" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="Area">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="idArea" type="xs:integer" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="areaDisplayName" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="areaDescription" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="costArea" type="xs:decimal" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="areaName" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="Accion">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Accion" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="AccionManual" type="xs:boolean" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                 <xs:element minOccurs="0" maxOccurs="1" name="TipodeSolicitanteInterno">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Solicitante" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="1" name="TipodeSolicitante">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="1" name="TipodeSolicitante" type="xs:string" />
+                                      <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoriadelCaso">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoricodeCasosdeAtenci">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" maxOccurs="1" name="Usuario" type="xs:string" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="SolicituddeAccionesCiuda" type="xs:integer" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="Checks" type="xs:boolean" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="Accion" type="xs:integer" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="RFC" type="xs:integer" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="Entradas" type="xs:integer" />
+                                            <xs:element minOccurs="0" maxOccurs="1" name="Fecha" type="xs:dateTime" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" maxOccurs="1" name="Checks" type="xs:boolean" />
+                          <xs:element minOccurs="0" maxOccurs="1" name="Accion">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" maxOccurs="1" name="Codigo" type="xs:string" />
+                                <xs:element minOccurs="0" maxOccurs="1" name="Accion" type="xs:string" />
+                                <xs:element minOccurs="0" maxOccurs="1" name="AccionManual" type="xs:boolean" />
+                              </xs:sequence>
+                              <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                                                    <xs:element minOccurs="0" maxOccurs="1" name="Entradas">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" maxOccurs="1" name="ComentariosdeEscalamiento" type="xs:string" />
+                                <xs:element minOccurs="0" maxOccurs="1" name="SoluciondelCaso" type="xs:string" />
+                                <xs:element minOccurs="0" maxOccurs="1" name="Adjuntos" type="xs:integer" />
+                                <xs:element minOccurs="0" maxOccurs="1" name="ComentariosInformacion" type="xs:string" />
+                                <xs:element minOccurs="0" maxOccurs="1" name="Comentarios" type="xs:string" />
+                              </xs:sequence>
+                              <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" maxOccurs="1" name="Fecha" type="xs:dateTime" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute form="unqualified" name="entityName" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+]]></arg1>
+</soa:getCaseDataUsingSchemaAsString>
+</soapenv:Body>
+</soapenv:Envelope>
+
+
