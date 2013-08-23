@@ -256,7 +256,7 @@ List listaNumeroCaso = doc.selectNodes("/soap:Envelope/soap:Body/ns2:getCaseData
 
              }
             
-            Iterator iterUsuarioTel = e.elementIterator("contactCell");
+            Iterator iterUsuarioTel = e.elementIterator("Celular");
             while (iterUsuarioTel.hasNext()){
                 Element eUsuarioTel = (Element)iterUsuarioTel.next();
                // System.out.println("Valor RESPUESTA USUARIO TELEFONO: "+eUsuarioTel.getText());
