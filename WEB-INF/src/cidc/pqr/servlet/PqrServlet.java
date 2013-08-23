@@ -208,6 +208,12 @@ public class PqrServlet extends ServletGeneral{
 		return retorno;
 	}
 	
+	/**
+	 * crea el parrafo de respuesta
+	 * @param datos
+	 * @param historico
+	 * @return
+	 */
 	public String crearParrafo(ParametrosDatos datos, List<HistoricoDatos> historico){
 		
 		int itamano=historico.size()-1;

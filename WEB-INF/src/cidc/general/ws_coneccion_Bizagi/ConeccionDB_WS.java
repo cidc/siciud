@@ -18,10 +18,10 @@ public class ConeccionDB_WS {
 	
 	String webServiceConnection = null;
 	
-//	final String EM= "http://200.69.103.29:22018/BizAgi-war/WebServices/EntityManagerSOA";
-//	final String WF= "http://200.69.103.29:22018/BizAgi-war/WebServices/WorkflowEngineSOA";
-	final String EM= "http://10.20.230.79:8080/BizAgi-war/WebServices/EntityManagerSOA";
-	final String WF= "http://10.20.230.79:8080/BizAgi-war/WebServices/WorkflowEngineSOA";
+	final String EM= "http://200.69.103.29:22034/BizAgi-war/WebServices/EntityManagerSOA";
+	final String WF= "http://200.69.103.29:22034/BizAgi-war/WebServices/WorkflowEngineSOA";
+//	final String EM= "http://10.20.230.79:8080/BizAgi-war/WebServices/EntityManagerSOA";
+//	final String WF= "http://10.20.230.79:8080/BizAgi-war/WebServices/WorkflowEngineSOA";
 	
 	public void setConnectionEM() {
 		webServiceConnection=EM;
