@@ -6,6 +6,7 @@ public class Pqr {
 		
 	}
 	
+	private String tipoSol;
 	private String persona;
 	private String titulo;
 	private String nombre;
@@ -28,7 +29,13 @@ public class Pqr {
 	private int codigo;
 	private int facultad;
 	
-
+	
+	public String getTipoSol() {
+		return tipoSol;
+	}
+	public void setTipoSol(String tipoSol) {
+		this.tipoSol = tipoSol;
+	}
 	public String getPersona() {
 		return persona;
 	}

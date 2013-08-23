@@ -1,8 +1,8 @@
 package cidc.proyectos.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +17,8 @@ import cidc.proyectos.obj.Contratacion;
 import cidc.proyectos.obj.Parametros;
 import cidc.proyectos.obj.ProyectoGenerico;
 import cidc.proyectos.obj.Rubros;
+import cidc.proyectosGeneral.db.ProyectosGeneralDB;
+
 
 
 public class ProyectosInvestigadores extends ServletGeneral {
@@ -30,6 +32,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 		HttpSession sesion=req.getSession();
 		usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		ProyectosInvestigadorDB proyectosDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
+		ProyectosGeneralDB proyGeneral=new ProyectosGeneralDB(cursor, usuario.getPerfil());
 		ProyectoGenerico proyecto =null;
 		if(sesion.getAttribute("proyectoInvestigador")!=null)
 			proyecto = (ProyectoGenerico)sesion.getAttribute("proyectoInvestigador");
@@ -37,6 +40,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			accion = Integer.parseInt(req.getParameter("accion"));
 		switch(accion){
 			case Parametros.cmdVerProyecto:
+				sesion.setAttribute("proyectoDocumentos", proyGeneral.getListaDocAnexos(Long.parseLong(req.getParameter("id")),Integer.parseInt(req.getParameter("tipo"))));
 				sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo")));
 				irA="/grupos/proyectos/VerProyecto.jsp";
 			break;

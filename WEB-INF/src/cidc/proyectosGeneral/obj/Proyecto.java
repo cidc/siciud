@@ -34,6 +34,8 @@ public class Proyecto implements Serializable{
 	private String fecEstimadoFin; //una fecha estimaci�n de fin de proyecto a partir de la duraci�n y las prorrogas
 	private String correo;
 	private String celular;
+	private String documento;
+	
 	//*********************************************************
 	
 	//************** Listas Genéricas *************************
@@ -614,6 +616,14 @@ public class Proyecto implements Serializable{
 
 	public void setCelular(String celular) {
 		this.celular = celular;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 	
 }

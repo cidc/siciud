@@ -832,4 +832,12 @@
 	  <servlet-name>CargarAdj</servlet-name>
 	  <url-pattern>/proyectos/cargarAdj.x</url-pattern>
 	</servlet-mapping>
+	<servlet>
+	  <servlet-name>ArchivoActas</servlet-name>
+	  <servlet-class>cidc.adminGrupos.servlet.Archivos</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ArchivoActas</servlet-name>
+	  <url-pattern>/adminGrupos/archivoActas.x</url-pattern>
+	</servlet-mapping> 
 </web-app>
