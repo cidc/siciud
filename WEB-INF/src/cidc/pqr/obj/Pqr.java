@@ -26,6 +26,8 @@ public class Pqr {
 	private int solucionImnediata;
 	private int notificacionCorreo; 
 	private int notFinCaso;
+	private int codigo;
+	private int facultad;
 	
 	
 	public String getTipoSol() {
@@ -148,7 +150,17 @@ public class Pqr {
 	public void setNotFinCaso(int notFinCaso) {
 		this.notFinCaso = notFinCaso;
 	}
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public int getFacultad() {
+		return facultad;
+	}
+	public void setFacultad(int facultad) {
+		this.facultad = facultad;
+	}
 	
-	
-
 }

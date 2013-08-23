@@ -71,23 +71,30 @@ public class ServletGeneral extends HttpServlet {
 	throws ServletException,
 	IOException {
 	// TODO Auto-generated method stub
-	String[] retorno =operaciones(req, resp);
-	if(retorno!=null){
-		  if(retorno[0].equals("unir")){
-			//  System.out.println("une con "+retorno[1]);
-			  rd=context.getRequestDispatcher(retorno[1]);
-			  req.setAttribute("msg",retorno[2]);
-			  rd.include(req,resp);
-		  }else{
-			  rd=context.getRequestDispatcher(retorno[1]);
-			  req.setAttribute("msg",retorno[2]);
-			  rd.forward(req,resp);
+	String[] retorno;
+	try {
+		retorno = operaciones(req, resp);
+		if(retorno!=null){
+			  if(retorno[0].equals("unir")){
+				//  System.out.println("une con "+retorno[1]);
+				  rd=context.getRequestDispatcher(retorno[1]);
+				  req.setAttribute("msg",retorno[2]);
+				  rd.include(req,resp);
+			  }else{
+				  rd=context.getRequestDispatcher(retorno[1]);
+				  req.setAttribute("msg",retorno[2]);
+				  rd.forward(req,resp);
+			  }
 		  }
-	  }
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
 //	System.out.println("termina");
 	}
 	
-	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException, ClassNotFoundException {
 		return null;
 	}
 	

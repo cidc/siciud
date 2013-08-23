@@ -71,6 +71,7 @@
 			<tr>
 				<td align="center" class="renglones"><b>Rubro</b></td>
 				<td align="center" class="renglones" width="75px"><b>Aprobado</b></td>
+				<td align="center" class="renglones" width="75px"><b>Comprometido</b></td>
 				<td align="center" class="renglones" width="75px"><b>Ejecutado</b></td>
 				<td align="center" class="renglones" width="75px"><b>Saldo</b></td>
 				<td align="center" class="renglones" width="5px"><b>*</b></td>
@@ -79,6 +80,7 @@
 			<tr >
 				<td><c:out value="${lista.nombreRubro}"/></td>
 				<td class="listas" width="75px" align="right"><c:out value="${lista.valorRubro}"/></td>
+				<td width="75px" align="right"><c:out value=""/></td>
 				<td width="75px" align="right"><c:out value="${lista.valorEjecutado}"/></td>
 				<td width="75px" align="right"><c:out value="${lista.valorSaldo}"/></td>
 				<td width="5px" align="center"><img src='<c:url value="/comp/img/find.png"/>' onclick='registros(<c:out value="${lista.idRubro}"/>)'></td>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
@@ -39,5 +38,24 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/standard-1.0.4.jar"/>
 	<classpathentry kind="src" path="WEB-INF/src"/>
 	<classpathentry kind="src" output="work" path="work"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/commons-httpclient-3.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/fluent-hc-4.2.5.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/httpclient-4.0-alpha2.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/httpclient-4.0-alpha3.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/httpclient-4.0-alpha4.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/httpclient-4.2.5.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/httpclient-cache-4.2.5.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/httpmime-4.2.5.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/jaxen-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/org.apache.servicemix.bundles.httpcore-4.0-alpha6_1.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bizagi/xom-1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre6"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/httpcore-4.0-alpha6.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/axis.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
