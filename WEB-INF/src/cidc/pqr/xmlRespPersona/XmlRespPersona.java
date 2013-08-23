@@ -73,7 +73,7 @@ public PersonaDatos ConsultarDatosPersona(String DocumentoID_NIT) throws Documen
  	Iterator iAtributosCiud = listaAtrCiudad.iterator();
 	while (iAtributosCiud.hasNext()){
 		Attribute a =(Attribute)iAtributosCiud.next(); 
-		persona.setCiudad(a.getValue());
+		persona.setCiudadID(a.getValue());
 	}
 	
 	

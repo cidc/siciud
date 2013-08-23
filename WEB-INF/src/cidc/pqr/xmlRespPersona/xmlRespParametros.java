@@ -80,7 +80,7 @@ public class xmlRespParametros {
 					parametrosDatos.setResponsableCorreo(eCorreoResp.getText());
 				}
 				
-				Iterator itTelRespon = e.elementIterator("contactCell");
+				Iterator itTelRespon = e.elementIterator("Celular");
 				while (itTelRespon.hasNext()){
 					Element eTeloResp = (Element)itTelRespon.next();
 					parametrosDatos.setResponsableTelefono(eTeloResp.getText());

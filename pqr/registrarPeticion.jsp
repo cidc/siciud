@@ -297,7 +297,9 @@ function validarCaso(){
 					<td  align="left"><INPUT NAME="ciudad" MAXLENGTH="25" TYPE="TEXT" style='<c:out value="${sessionScope.basico}"/>' VALUE="<c:out value="${sessionScope.personaDatos.ciudad}"/>">
 					</td>-->
 					<td><select name="ciudad"  style='<c:out value="${sessionScope.basico}"/>' >
-						<OPTION VALUE="2" <c:if test="${sessionScope.personaDatos.ciudad==2}">selected</c:if>>Bogotá</OPTION>
+						<c:forEach begin="0" items="${sessionScope.personaDatos.ciudad}" var="lista">
+						<option value="${lista.idAtributo}" <c:if test="${lista.idAtributo==sessionScope.personaDatos.ciudadID}">selected</c:if>><c:out value="${lista.nombreAtributo}"/></option>
+						</c:forEach>
 					</select></td>
 				</tr>
 				

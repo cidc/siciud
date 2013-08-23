@@ -17,10 +17,12 @@ import cidc.general.db.CursorDB;
 import cidc.general.servlet.ServletGeneral;
 import cidc.pqr.ws_Bizagi_obj.Archivo64;
 import cidc.pqr.ws_Bizagi_obj.CasoDatos;
+import cidc.pqr.ws_Bizagi_obj.ListasAtributosDatos;
 import cidc.pqr.ws_Bizagi_obj.ParametrosDatos;
 import cidc.pqr.ws_Bizagi_obj.PersonaDatos;
 import cidc.pqr.ws_Bizagi_obj.Pqr;
 import cidc.pqr.ws_cominicacion.CasoDB_WS;
+import cidc.pqr.ws_cominicacion.ListasAtributos;
 import cidc.pqr.ws_cominicacion.PersonaDB_WS;
 
 public class PqrServlet extends ServletGeneral{
@@ -92,7 +94,7 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setCorreoElectronico(pqr.getCorreo());
 			personaDatos.setDireccion(pqr.getDireccion());
 			personaDatos.setTelefonoMovil(pqr.getCelular());
-			personaDatos.setCiudad(pqr.getCiudad());
+			personaDatos.setCiudadID(pqr.getCiudad());
 			if(!pqr.getTipoInterno().equals("0"))
 				personaDatos.setTipoExterno("101");
 			else
@@ -122,6 +124,8 @@ public class PqrServlet extends ServletGeneral{
 		case 3: //buscar persona
 			personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
 			personaDatos.setDocumentoIdNit(pqr.getDocumento());
+			 ListasAtributos lista=new ListasAtributos();
+			personaDatos.setCiudad(lista.consultarAtributos("Ciudad"));
 			//codigo pruebas
 //				personaDatos.setTipoPersona("1");
 //				personaDatos.setTipoInterno("3");
@@ -272,7 +276,7 @@ public class PqrServlet extends ServletGeneral{
 	   				parrafo+="Tiempo estimado de respuesta: "+datos.getTipodeRequerimientoTiempoResp()+" dias hábiles a partir de la fecha de radicación. \n\n";
 	   				parrafo+="LOS DATOS REGISTRADOS POR USTED EN EL SISTEMA SON LOS SIGUIENTES: \n";
 	   				parrafo+="Nombre o Razón Social:"+datos.getPersonaNombreRazon()+". \n";
-	   				parrafo+="Teléfono: "+datos.getPersonaTelMov()+". \n";
+	   				parrafo+="Teléfono: 3239300 ext "+datos.getPersonaTelMov()+". \n";
 	   				parrafo+="Correo Electrónico: "+datos.getPersonaCorreo()+" \n\n";
 	   				parrafo+="Si requiere actualizar la información indicada, favor envíe un correo electrónico a cidc@udistrital.edu.co indicando en el asunto " +
 	   						"\"Actualización datos de contacto\". \n\n\nSU CASO HA SEGUIDO EL SIGUIENTE TRAMITE:\n\n";
