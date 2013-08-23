@@ -71,7 +71,7 @@ public CasoDatos  CrearCaso (CasoDatos datosForm, PersonaDatos persona) throws I
     		+"<soapenv:Header/>"
 	        +"<soapenv:Body>"
 	+"<soa:createCasesAsString>"
-	        +"<!--Optional:-->"+"<arg0><![CDATA[<BizAgiWSParam><domain>domain</domain><userName>admon</userName><Cases><Case><Process>AtencionDeAccionesCiudadan</Process><Entities><SolicituddeAccionesCiuda>" +
+	        +"<!--Optional:-->"+"<arg0><![CDATA[<BizAgiWSParam><domain>UD</domain><userName>solicitante</userName><Cases><Case><Process>AtencionDeAccionesCiudadan</Process><Entities><SolicituddeAccionesCiuda>" +
 	        		"<TipodeSolicitante businessKey=\"id="+datosForm.getTipodeSolicitante()+"\"/>" +
 	        		"<MediodeRecepcion businessKey=\"id="+datosForm.getMedioDeRecepcion()+"\"/>"+
 	        		"<TipodeRequerimiento businessKey=\"id="+datosForm.getTipoDeRequerimiento()+"\"/>"+
