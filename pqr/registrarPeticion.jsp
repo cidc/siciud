@@ -29,6 +29,11 @@ function buscarPersona(){
 	document.pqrForm.accion.value=3;
 	document.pqrForm.submit();
 }
+
+function documento(){
+	document.pqrForm.action='<c:url value="/pqr/CargaArchivos.jsp"/>';
+	document.pqrForm.submit();
+}
 	
 function cambiar(obj){
 	document.pqrForm.nombre.style.display='block';
@@ -319,7 +324,7 @@ function validarCaso(){
 	<caption>Información de la Solicitud</caption>
 				<tr>
 					<td colspan="4" align="left"><c:out value="Archivo del caso"/>
-					<td><a href='<c:url value="/pqr/CrearPersona.jsp"/>' target="_parent" rel="lyteframe" title="Adjuntar archivo al caso" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/Cargar.gif"/>'></a></td>
+					<td><img border="0" src='<c:url value="/comp/img/Cargar.gif"/>' onclick="documento()"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right"><c:out value="${sessionScope.nombreArc}"/></td>
