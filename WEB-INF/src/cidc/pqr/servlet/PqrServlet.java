@@ -28,11 +28,10 @@ import cidc.pqr.ws_cominicacion.PersonaDB_WS;
 public class PqrServlet extends ServletGeneral{
 
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		System.out.println("Ingreso al Servlet =========>");
+		System.out.println("Ingreso al Servlet =========> pqrservlet.x");
 		context=config.getServletContext();
 		cursor=new CursorDB();
 		String irA="";
-		System.out.println("kjbdlkjbv");
 		int accion=0;
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
