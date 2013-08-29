@@ -7,7 +7,6 @@
 <script>
 	function guardar(pqrForm){
 		if(validar()){
-			document.pqrForm.target="main";
 			document.pqrForm.accion.value=5;
 			document.pqrForm.submit();
 		}
