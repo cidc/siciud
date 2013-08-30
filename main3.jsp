@@ -27,7 +27,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td align="center"><br><br><img src="/siciud/comp/img/Imagen-Home.gif"></td>
+		<td align="center"><br><br><img src="/siciud/comp/img/Imagen-Home.png"></td>
 	</tr>
 </table>
 <br>

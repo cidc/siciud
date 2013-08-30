@@ -10,12 +10,12 @@
 <fmt:formatDate value="${now}" type="time" timeStyle="short" pattern="yyyy" var="ano"/>
 
 </head>
-	<body onLoad="mensajeAlert(document.getElementById('msg'));">
+	<body onLoad="mensajeAlert(document.getElementById('msg'));">2
 	<br>
 		<table align="center">
 			<tr>
 				<td align="center"><br>
-					<img border="0" src="/siciud/comp/img/Imagen-Home.gif">
+					<img border="0" src="/siciud/comp/img/Imagen-Home.png">
 				</td>
 			</tr>
 		</table>
