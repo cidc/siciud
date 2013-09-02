@@ -25,7 +25,7 @@ var bgc = "white" // background color of the item
 var tc = "black" // text color of the item
 
 var over_bgc = "white";
-var over_tc = "red";
+var over_tc = "green";
 
 function color(obj) {
  document.getElementById(obj).style.backgroundColor = over_bgc;
