@@ -41,8 +41,8 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				ProyectoGenerico proyectoGen=proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo"));
 				sesion.setAttribute("proyectoInvestigador", proyectoGen);
 				ProyectoXML proy=new ProyectoXML();
-				String resp2=proy.crearProyectoBizagi(proyectoGen);
-				System.out.println("resp crear proy "+resp2);
+				//String resp2=proy.crearProyectoBizagi(proyectoGen);
+				//System.out.println("resp crear proy "+resp2);
 				irA="/grupos/proyectos/VerProyecto.jsp";
 			break;
 			case Parametros.cmdBalanceGral:
