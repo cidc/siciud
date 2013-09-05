@@ -75,7 +75,7 @@ public class PqrServlet extends ServletGeneral{
         	if(casodatos.getCasoId()==null)
         		mensaje="Ha ocurrio un problema";
         	else{
-        		mensaje="Caso se ha creado exitosamente con codigo "+casodatos.getCasoId();
+        		mensaje="Su petición se ha registrado exitosamente con código "+casodatos.getCasoId()+"\n Por fovar guarde este número para consultar el estado de su solicitud";
         		sesion.setAttribute("basico", "display:none");
         		sesion.setAttribute("juridico", "display:none");
         		sesion.setAttribute("tipoSolicitante", "display:none");
@@ -114,7 +114,7 @@ public class PqrServlet extends ServletGeneral{
 			if(respuesta==null)//debe ser ==null
 				mensaje="Se ha producido un error en la creación";
 			else{
-				mensaje="la creacion de la persona ha sido exitosa";
+				mensaje="Sus datos personales ha sido registrados exitosamente";
 				req.setAttribute("crearCaso", "display:block");
 				sesion.setAttribute("basico", "display:block");
 			}
@@ -135,7 +135,7 @@ public class PqrServlet extends ServletGeneral{
 			sesion.setAttribute("personaDatos", personaDatos);
 			System.out.println();
 			if(personaDatos.getPersonaID()==null){// debe ser ==null 
-				mensaje="Esta persona NO existe, por favor registre sus DATOS";
+				mensaje="No existe ningun usuario con este documento de identidad,\n por favor registre sus datos";
 				req.setAttribute("crearCaso", "display:none");
 				sesion.setAttribute("tipoSolicitante", "display:block");
 				req.setAttribute("botonCrear", "display:block");
@@ -178,7 +178,7 @@ public class PqrServlet extends ServletGeneral{
 		         }
 		         
 	         }else
-	        	 mensaje="No se ha encontrado un caso con el Id "+req.getParameter("idCaso")+ " y la cédula "+cedula;
+	        	 mensaje="No se ha encontrado la solicitud con número "+req.getParameter("idCaso")+ " y la cédula "+cedula;
 			irA="/pqr/consultarPeticion.jsp";
 			break;
 		case 5:
