@@ -166,6 +166,9 @@ public class AdminGruposDB extends BaseDB{
 			ps.setString(i++, grupoInvestigacion.getMision());
 			ps.setString(i++, grupoInvestigacion.getVision());
 			ps.setString(i++, grupoInvestigacion.getCodColciencias());
+			ps.setString(i++, grupoInvestigacion.getFechaCreacionFacultad());
+			ps.setInt(i++, grupoInvestigacion.getNumeroCIDC());
+			ps.setInt(i++, grupoInvestigacion.getNumeroFac());
 			ps.executeUpdate();
 			insertarDirectorGrupo(cn, integrante, flag);
 			cn.commit();
@@ -198,7 +201,7 @@ public class AdminGruposDB extends BaseDB{
 					ps.setInt(i++, regporpag);
 					ps.setInt(i++, desde);
 					
-				
+				System.out.println(ps.toString());
 				rs=ps.executeQuery();
 				while(rs.next()){
 					i=1;
@@ -353,6 +356,11 @@ public class AdminGruposDB extends BaseDB{
 				grupo.setCodColciencias(rs.getString(i++));
 				grupo.setCodproyCurr(rs.getInt(i++));
 				grupo.setCodAreaSNIES(rs.getInt(i++));
+				grupo.setFechaCreacionFacultad(rs.getString(i++));
+				grupo.setNumeroCIDC(rs.getInt(i++));
+				grupo.setNumeroFac(rs.getInt(i++));
+				grupo.setActaCidc(rs.getString(i++));
+				grupo.setActaFacultad(rs.getString(i++));
 				grupo.setModificable(false);
 			}
 		}catch (SQLException e) {
@@ -393,8 +401,10 @@ public class AdminGruposDB extends BaseDB{
 			ps.setString(i++,grupo.getCodColciencias());
 			ps.setInt(i++, grupo.getCodproyCurr());
 			ps.setInt(i++, grupo.getCodAreaSNIES());			
-			ps.setLong(i++,grupo.getCodigo());	
-			
+			ps.setString(i++, grupo.getFechaCreacionFacultad());
+			ps.setLong(i++, grupo.getNumeroCIDC());
+			ps.setLong(i++, grupo.getNumeroFac());
+			ps.setLong(i++,grupo.getCodigo());
 			i=1;
 			ps.executeUpdate();
 
@@ -1514,6 +1524,38 @@ public class AdminGruposDB extends BaseDB{
 		}
 	//	System.out.println(l.size());
 		return l;
+	}
+	
+	/**
+	 * 
+	 * @param id id del grupo de investigacion
+	 * @param ruta del archivo
+	 * @param tipo 1= actaCIDC 2= actaFAc  
+	 * @return
+	 */
+	
+	public boolean actArchivo( long id, String ruta,int tipo) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("archivo"+tipo));
+			ps.setString(i++, ruta);
+			ps.setLong(i++, id);
+			ps.executeUpdate();
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+
 	}
 }
 

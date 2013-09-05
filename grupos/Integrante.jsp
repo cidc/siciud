@@ -26,11 +26,11 @@
 		if(id==15)
 			document.getElementById("carga").style.display='';
 		document.comandos.papel.value=document.nuevo.papel.value;
-		if(id==11 && document.nuevo.papel.selectedIndex==3){
+		if(id==11 && document.nuevo.papel.selectedIndex==1){
 			alert("No se puede Eliminar el Director del Grupo");
 		}else{
 			if(id==11){
-				if(confirm("Desea eliminar esta persona del Grupo?")){
+				if(confirm("Esta opción solo se debe utilizar para vinculaciones erróneas \n en cualquier otro caso utilizar el campo fecha de salida del grupo")){
 				document.comandos.submit();
 				}
 			}else{
