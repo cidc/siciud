@@ -157,7 +157,7 @@
 
 			</tr>
 			<tr>
-				<td colspan="5" align="center"><img src='<c:url value="/comp/img/RegistroGasto.gif" />' onclick="enviar()"></td>
+				<td colspan="5" align="center"><img src='<c:url value="/comp/img/RegistraGasto.gif" />' onclick="enviar()"></td>
 			</tr>
 		</table>
 	</form>
