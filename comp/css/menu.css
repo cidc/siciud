@@ -34,9 +34,10 @@
 		-moz-border-radius: 10px;
 		background-image:url("/siciud/comp/img/menu.gif");
 		margin-top:1px;
-		border:1px solid gray;
+		/*border:1px solid gray;*/
 		/*border-color: #F8F4F4;*/
 		/*font-weight:bold;*/
+		font-weight:bold;
 		font-family: verdana;
 		font-size: 12px;
 		color: #000000;
@@ -47,6 +48,7 @@
 		font-family: verdana;
 		font-size: 12px;
 		background-color: #FFFFFF;
+		margin-left: 15px;
 		/*background-image:url("/Icaro/menu/submenu.gif");*/
 	}
 	#dhtmlgoodies_slidedown_menu .slMenuItem_depth3{	/* Sub menu items */

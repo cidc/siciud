@@ -85,6 +85,24 @@
 				</table>
 			</td>
 		</tr>
+		<tr>
+			<td class="texto">11-2013</td>
+			<td class="texto" width="450px"><p class="parjust">Apoyo para la socialización, divulgación y difusión de resultados de proyectos de investigación o creación alcanzados por estudiantes que se encuentren registrados en el sistema de investigaciones de la Universidad Distrital Francisco José De Caldas a ser presentados en eventos académicos, científicos, artísticos y culturales nacionales o internacionales<p></td>
+			<td width="155px">
+				<table width="100%">
+					<tr><td class="texto">16 Agosto 2013</td><td align="center"><img border="0" src='<c:url value="/comp/img/Ver.gif" />' onclick="ver(1,11,4,2013)"></td></tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="texto">12-2013</td>
+			<td class="texto" width="450px"><p class="parjust">Apoyo para la socialización, divulgación y difusión de resultados de proyectos de investigación o creación alcanzados por docentes que se encuentren registrados en el sistema de investigaciones de la Universidad Distrital Francisco José De Caldas a ser presentados en eventos académicos, científicos, artísticos y culturales nacionales o internacionales<p></td>
+			<td width="155px">
+				<table width="100%">
+					<tr><td class="texto">16 Agosto 2013</td><td align="center"><img border="0" src='<c:url value="/comp/img/Ver.gif" />' onclick="ver(1,12,4,2013)"></td></tr>
+				</table>
+			</td>
+		</tr>
 	</table>
 </form>
 </body>
