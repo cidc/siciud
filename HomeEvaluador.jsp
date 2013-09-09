@@ -16,7 +16,7 @@
 </div>
 <table align="center" >
 	<tr>
-		<td align="center"><img src="/siciud/comp/img/Imagen-Home.gif"></td>
+		<td align="center"><img src="/siciud/comp/img/Imagen-Home.png"></td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2"><a href='<c:url value="/Documentos/InstructivoIntegrante.pdf"/>'><img border="0" src='<c:url value="/comp/img/pdf.png"/>'> Instructivo Directores de Grupos y/o Semilleros de Investigación</a></td>

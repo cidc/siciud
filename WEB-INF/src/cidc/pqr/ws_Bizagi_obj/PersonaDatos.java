@@ -1,4 +1,9 @@
 package cidc.pqr.ws_Bizagi_obj;
+
+import java.util.List;
+
+import cidc.pqr.ws_cominicacion.ListasAtributos;
+
 //personaobj
 public class PersonaDatos {
 	
@@ -9,7 +14,7 @@ public class PersonaDatos {
 	private String documentoIdNit;
 	private String correoElectronico;
 	private String direccion;
-	private String ciudad;
+	private List<ListasAtributosDatos> ciudad;
 	private String telefonoMovil;
 	private String personaID;
 	private String tipoInterno;
@@ -20,6 +25,7 @@ public class PersonaDatos {
 	private String codigo="";
 	private String facultad="";
 	private String medioRespuesta="";
+	private String ciudadID="";
 		
 	
 	public String getTipoInterno() {
@@ -119,10 +125,10 @@ public class PersonaDatos {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public String getCiudad() {
+	public List<ListasAtributosDatos> getCiudad() {
 		return ciudad;
 	}
-	public void setCiudad(String ciudad) {
+	public void setCiudad(List<ListasAtributosDatos> ciudad) {
 		this.ciudad = ciudad;
 	}
 	public String getMedioRespuesta() {
@@ -130,6 +136,12 @@ public class PersonaDatos {
 	}
 	public void setMedioRespuesta(String medioRespuesta) {
 		this.medioRespuesta = medioRespuesta;
+	}
+	public String getCiudadID() {
+		return ciudadID;
+	}
+	public void setCiudadID(String ciudadID) {
+		this.ciudadID = ciudadID;
 	}
 		
 

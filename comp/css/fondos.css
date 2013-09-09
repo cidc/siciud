@@ -14,7 +14,7 @@ BODY{
 	font-family:Verdana;
 }
 CAPTION{
-		BACKGROUND: #23b0be;
+		BACKGROUND: #60ae30;
 		font-weight:bold;
 	    font-size: 13px;
 		color: #000000;
@@ -67,13 +67,17 @@ legend{
 }
 A:link{
 	text-decoration: none;
-	color:#000000;
+	color:#FFFFFF; 
 	font-size: 10;
 }
+
 A.paginacion{
 	text-decoration: none;
 	color:#FF0000;
 	font-size: 10;
 }
 
-A:visited { text-decoration: none }
+A:visited { 
+	text-decoration: none;
+	 
+}

@@ -17,10 +17,12 @@ import cidc.general.db.CursorDB;
 import cidc.general.servlet.ServletGeneral;
 import cidc.pqr.ws_Bizagi_obj.Archivo64;
 import cidc.pqr.ws_Bizagi_obj.CasoDatos;
+import cidc.pqr.ws_Bizagi_obj.ListasAtributosDatos;
 import cidc.pqr.ws_Bizagi_obj.ParametrosDatos;
 import cidc.pqr.ws_Bizagi_obj.PersonaDatos;
 import cidc.pqr.ws_Bizagi_obj.Pqr;
 import cidc.pqr.ws_cominicacion.CasoDB_WS;
+import cidc.pqr.ws_cominicacion.ListasAtributos;
 import cidc.pqr.ws_cominicacion.PersonaDB_WS;
 
 public class PqrServlet extends ServletGeneral{
@@ -73,7 +75,7 @@ public class PqrServlet extends ServletGeneral{
         	if(casodatos.getCasoId()==null)
         		mensaje="Ha ocurrio un problema";
         	else{
-        		mensaje="Caso se ha creado exitosamente con codigo "+casodatos.getCasoId();
+        		mensaje="Su petición se ha registrado exitosamente con código "+casodatos.getCasoId()+"\n Por fovar guarde este número para consultar el estado de su solicitud";
         		sesion.setAttribute("basico", "display:none");
         		sesion.setAttribute("juridico", "display:none");
         		sesion.setAttribute("tipoSolicitante", "display:none");
@@ -91,7 +93,7 @@ public class PqrServlet extends ServletGeneral{
 			personaDatos.setCorreoElectronico(pqr.getCorreo());
 			personaDatos.setDireccion(pqr.getDireccion());
 			personaDatos.setTelefonoMovil(pqr.getCelular());
-			personaDatos.setCiudad(pqr.getCiudad());
+			personaDatos.setCiudadID(pqr.getCiudad());
 			if(!pqr.getTipoInterno().equals("0"))
 				personaDatos.setTipoExterno("101");
 			else
@@ -112,7 +114,7 @@ public class PqrServlet extends ServletGeneral{
 			if(respuesta==null)//debe ser ==null
 				mensaje="Se ha producido un error en la creación";
 			else{
-				mensaje="la creacion de la persona ha sido exitosa";
+				mensaje="Sus datos personales ha sido registrados exitosamente";
 				req.setAttribute("crearCaso", "display:block");
 				sesion.setAttribute("basico", "display:block");
 			}
@@ -121,6 +123,8 @@ public class PqrServlet extends ServletGeneral{
 		case 3: //buscar persona
 			personaDatos=personaDB_WS.buscarpersona(pqr.getDocumento());
 			personaDatos.setDocumentoIdNit(pqr.getDocumento());
+			 ListasAtributos lista=new ListasAtributos();
+			personaDatos.setCiudad(lista.consultarAtributos("Ciudad"));
 			//codigo pruebas
 //				personaDatos.setTipoPersona("1");
 //				personaDatos.setTipoInterno("3");
@@ -131,7 +135,7 @@ public class PqrServlet extends ServletGeneral{
 			sesion.setAttribute("personaDatos", personaDatos);
 			System.out.println();
 			if(personaDatos.getPersonaID()==null){// debe ser ==null 
-				mensaje="Esta persona NO existe, por favor registre sus DATOS";
+				mensaje="No existe ningun usuario con este documento de identidad,\n por favor registre sus datos";
 				req.setAttribute("crearCaso", "display:none");
 				sesion.setAttribute("tipoSolicitante", "display:block");
 				req.setAttribute("botonCrear", "display:block");
@@ -174,7 +178,7 @@ public class PqrServlet extends ServletGeneral{
 		         }
 		         
 	         }else
-	        	 mensaje="No se ha encontrado un caso con el Id "+req.getParameter("idCaso")+ " y la cédula "+cedula;
+	        	 mensaje="No se ha encontrado la solicitud con número "+req.getParameter("idCaso")+ " y la cédula "+cedula;
 			irA="/pqr/consultarPeticion.jsp";
 			break;
 		case 5:
@@ -203,6 +207,12 @@ public class PqrServlet extends ServletGeneral{
 		return retorno;
 	}
 	
+	/**
+	 * crea el parrafo de respuesta
+	 * @param datos
+	 * @param historico
+	 * @return
+	 */
 	public String crearParrafo(ParametrosDatos datos, List<HistoricoDatos> historico){
 		
 		int itamano=historico.size()-1;
@@ -271,7 +281,7 @@ public class PqrServlet extends ServletGeneral{
 	   				parrafo+="Tiempo estimado de respuesta: "+datos.getTipodeRequerimientoTiempoResp()+" dias hábiles a partir de la fecha de radicación. \n\n";
 	   				parrafo+="LOS DATOS REGISTRADOS POR USTED EN EL SISTEMA SON LOS SIGUIENTES: \n";
 	   				parrafo+="Nombre o Razón Social:"+datos.getPersonaNombreRazon()+". \n";
-	   				parrafo+="Teléfono: "+datos.getPersonaTelMov()+". \n";
+	   				parrafo+="Teléfono: 3239300 ext "+datos.getPersonaTelMov()+". \n";
 	   				parrafo+="Correo Electrónico: "+datos.getPersonaCorreo()+" \n\n";
 	   				parrafo+="Si requiere actualizar la información indicada, favor envíe un correo electrónico a cidc@udistrital.edu.co indicando en el asunto " +
 	   						"\"Actualización datos de contacto\". \n\n\nSU CASO HA SEGUIDO EL SIGUIENTE TRAMITE:\n\n";

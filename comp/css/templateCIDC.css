@@ -23,14 +23,14 @@ body {
 a:link, a:visited {
 	text-decoration: none;
 	font-weight: normal;
-	color: #cd6620;
+	color: #60ae30;
 	font-size: 11px;
 }
 
 a:hover {
 	text-decoration: underline;
 	font-weight: normal;
-	color: #ac5419;
+	color: #60ae30;
 	font-size: 11px;
 }
 
@@ -863,13 +863,13 @@ CAPTION {
 a.linkGrupo:link, a.linkGrupo:visited {
 	text-decoration: none;
 	font-weight: normal;
-	color: #cd6620;
+	color: #60ae30;
 	font-size: 13px;
 }
 
 a.linkGrupo:hover {
 	text-decoration: underline;
 	font-weight: normal;
-	color: #ac5419;
+	color: #60ae30;
 	font-size: 13px;
 }
