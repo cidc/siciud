@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.displaytag.util.ParamEncoder;
+
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.servlet.ServletGeneral;
@@ -92,6 +94,10 @@ public class ProyectosInvestigadores extends ServletGeneral {
 //				String nombre =String.valueOf(date.getTime());
 //				carg.cargar(req, nombre, "Bizagi");
 //				irA="/grupos/proyectos/ListaGastos.jsp";
+				break;
+			case Parametros.infoRubroSolicitado:
+				System.out.println("ingreso al servlet");
+				irA="/grupos/proyectos/InfoSolicitud.jsp";
 				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));
