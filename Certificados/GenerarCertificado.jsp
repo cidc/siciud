@@ -31,7 +31,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body>Pertenencia Grupos
 <div align="center">
 <fieldset style="width:580px;">
 <form name="nuevo" method="post" action='<c:url value="/certificados/llenar.jsp"/>'>
