@@ -25,7 +25,7 @@
 	<input type="hidden" name="conv" value='<c:out value="${requestScope.conv}"/>'>
 
 	<table align="center" class="tablas" cellspacing="1" width="95%">
-		<caption>Proyectos Inscritas</caption>
+		<caption>Proyectos Inscritos</caption>
 		<tr>
 			<td class="renglones"><b>#</b></td>
 			<td align="center" class="renglones"><b>Nombre Ponencia</b></td>
@@ -37,7 +37,7 @@
 			<td class="texto"><c:out value="${st.count}"/></td>
 			<td class="texto"><c:out value="${lista.nombrePropuesta}"/></td>
 			<td width="170px" class="texto"><c:out value="${lista.nombreInvestigador}"/></td>
-			<td ><img border="0" src="/Resultados/comp/img/esc.png" onclick="ver(<c:out value="${lista.idPropuesta}"/>)"></td>
+			<td ><img border="0" src="/siciud/comp/img/Ver.gif" onclick="ver(<c:out value="${lista.idPropuesta}"/>)"></td>
 		</tr>
 		</c:forEach>
 	</table>
