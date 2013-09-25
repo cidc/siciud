@@ -24,7 +24,7 @@ public class Firmar {
 	public String firmarPDF(File documento,String ruta) throws IOException{
 		rb=ResourceBundle.getBundle("cidc.general.conect");
 
-		KeyStoreTools kst = new KeyStoreTools("webapps/siciud/CIDCks", rb.getString("clave2"));
+		KeyStoreTools kst = new KeyStoreTools("/usr/local/tomcat/webapps/siciud/CIDCks", rb.getString("clave2"));
         String alias = rb.getString("clave1");
         //Add pivate/certificate from PKCS#12 certificate (.pfx o . p12)
         try {
