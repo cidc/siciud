@@ -269,7 +269,7 @@ public class GenerarCertificados {
 			tablaFirma.setWidths(new int[] {400});
 			tablaFirma.setTotalWidth(400);
 			Image firmaD=null;
-			firmaD=Image.getInstance(ruta+"comp"+sep+"img"+sep+"firma_Director.png");
+			firmaD=Image.getInstance(ruta+sep+"comp"+sep+"img"+sep+"firma_Director.png");
 			firmaD.setBorder(0);
 			firmaD.setAbsolutePosition(0, 0);
 			firmaD.scalePercent(20);
