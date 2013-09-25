@@ -495,14 +495,14 @@ public class GenerarCertificados {
 		
 	}
 	
-	public String marcaAgua(String path){
+	public String marcaAgua(String ruta, String path){
 		try {
-			String[] nombre= path.split("pdf");
+			String[] nombre= ruta.split("pdf");
 			String cadena =nombre[0].substring(0, nombre[0].length()-1);
-		  PdfReader pdfReader = new PdfReader(path);
+		  PdfReader pdfReader = new PdfReader(ruta);
 		  cadena+="_";
 	      PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileOutputStream(cadena+".pdf"));
-	      Image image = Image.getInstance("D:/TOMCAT 6.0/webapps/siciud/comp/img/water.jpg");
+	      Image image = Image.getInstance(path+"/comp/img/water.jpg");
 	      for(int i=1; i<= pdfReader.getNumberOfPages(); i++){
 	          PdfContentByte content = pdfStamper.getUnderContent(i);
 	          image.setAbsolutePosition(10f, 8f);
@@ -511,7 +511,7 @@ public class GenerarCertificados {
 	      }
 	      pdfStamper.close();
 	      pdfReader.close();
-	      File file = new File(path);
+	      File file = new File(ruta);
 		  file.delete();
 	      System.out.println("finaliza con exiito");
 	      return cadena+".pdf";

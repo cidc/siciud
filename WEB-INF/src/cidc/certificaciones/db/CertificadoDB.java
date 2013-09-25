@@ -83,10 +83,10 @@ public class CertificadoDB extends BaseDB{
 					certificado.setConsCert(consec);
 				certificado.setCod_verificacion("CIDC_"+certificado.getTipo()+"_"+consec+"_"+ano);
 				String dir=path+sep+"FirmaCIDC.pfx";
-				path+=sep+"Documentos"+sep+"Certificados"+sep+"CIDC_"+certificado.getTipo()+"_"+certificado.getConsCert()+"_"+ano+".pdf";
+				String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+"CIDC_"+certificado.getTipo()+"_"+certificado.getConsCert()+"_"+ano+".pdf";
 				generador=new GenerarCertificados();
-				generador.crearCertificadoPertenencia(certificado, path, resp);
-				if(!insertaCertificadoBD(certificado,generador.marcaAgua(path),dir)){
+				generador.crearCertificadoPertenencia(certificado, ruta, resp);
+				if(!insertaCertificadoBD(certificado,generador.marcaAgua(ruta,path),dir)){
 					return null;
 				}
 				break;
