@@ -44,7 +44,7 @@ public class Firmar {
             Logger.getLogger(Firmar.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
-        File file = new File("D:/TOMCAT 6.0/webapps/siciud/CIDCks");
+        File file = new File("/usr/local/tomcat/webapps/siciud/CIDCks");
         file.delete();
 		
         PrivateKey key =  (PrivateKey) kst.getKey(alias, rb.getString("clave1").toCharArray());
