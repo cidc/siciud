@@ -73,7 +73,7 @@ public class GenerarCertificados {
 	 * @param path
 	 * @param resp
 	 */
-	public void crearPazySalvo(CertificacionesOBJ certificado, String path, HttpServletResponse resp){
+	public void crearPazySalvo(CertificacionesOBJ certificado, String path, HttpServletResponse resp, String ruta){
 		System.out.println("Creando Certificado Paz y Salvo");
 		String contenido=""; 
 		numCertificado=certificado.getConsCert()+" de "+Calendar.getInstance().get(Calendar.YEAR);
@@ -159,7 +159,7 @@ public class GenerarCertificados {
 			certificado.setCuerpo_cer(contenido);
 			inicarDocumentoCertificado(resp,path,certificado.getCod_verificacion());
 			agregarContenido(textoDocumento);
-			agregarPieDePagina();
+			agregarPieDePagina(ruta);
 			document.close();
 		} catch (DocumentException e) {
 			e.printStackTrace();
@@ -262,14 +262,14 @@ public class GenerarCertificados {
 		}
 	}
 	
-	private void agregarPieDePagina() {
+	private void agregarPieDePagina(String ruta) {
 		
 		try {
 			PdfPTable tablaFirma= new PdfPTable(1);
 			tablaFirma.setWidths(new int[] {400});
 			tablaFirma.setTotalWidth(400);
 			Image firmaD=null;
-			firmaD=Image.getInstance("D:/TOMCAT 6.0/webapps/siciud/"+"comp"+sep+"img"+sep+"firma_Director.png");
+			firmaD=Image.getInstance(ruta+"comp"+sep+"img"+sep+"firma_Director.png");
 			firmaD.setBorder(0);
 			firmaD.setAbsolutePosition(0, 0);
 			firmaD.scalePercent(20);
@@ -369,7 +369,7 @@ public class GenerarCertificados {
 	 * @param resp
 	 * @return
 	 */
-	public HttpServletResponse crearCertificadoPertenencia(CertificacionesOBJ certificado, String path,  HttpServletResponse resp){
+	public HttpServletResponse crearCertificadoPertenencia(CertificacionesOBJ certificado, String path,  HttpServletResponse resp, String ruta){
 		System.out.println("Creando Certificado Pertenencia a Grupo/Semillero de Investigación");
 		String contenido=""; 
 		numCertificado=certificado.getConsCert()+" de "+global.getAnoHoy();
@@ -483,7 +483,7 @@ public class GenerarCertificados {
 			certificado.setCuerpo_cer(contenido);
 			inicarDocumentoCertificado(resp,path,certificado.getCod_verificacion());
 			agregarContenido(textoDocumento);
-			agregarPieDePagina();
+			agregarPieDePagina(ruta);
 			document.close();
 			
 		} catch (DocumentException e) {
