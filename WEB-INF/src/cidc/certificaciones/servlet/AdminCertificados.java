@@ -41,10 +41,10 @@ public class AdminCertificados extends ServletGeneral{
 		CertificadoDB certificadodb=new CertificadoDB(cursor,usuario.getPerfil()); 
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
-		else
-			accion=5;
-	
-		String irA="/Certificados/GenerarCertificado.jsp";
+		else if(usuario.getNick()!=null&&!usuario.getNick().equals("")){
+			accion=4;
+		}
+		String irA="";
 		switch(accion){
 		case Parametros.BUSCARCERTIFICADOSPERSONA: 
 			System.out.println("ID PERSONA --->"+usuario.getIdUsuario());
@@ -86,14 +86,6 @@ public class AdminCertificados extends ServletGeneral{
 			mensaje="Hizo el mapeo del Certificado";	
 			System.out.println(irA);
 		break;
-		case 5:
-//			System.out.println("caso 05 --->");
-//			personaid1= buscarPersona(usuario.getIdUsuario(), persona, usuarioDB, sesion);
-//			System.out.println(personaid1);
-			irA="/Certificados/BuscarCertificados.jsp";
-//			mensaje="Busqueda de Certificados";		
-			sesion.removeAttribute("listacertificados");
-		break;
 		case Parametros.BUSCARCERTIFICADOS:
 			personaid1= buscarPersona(usuario.getIdUsuario(), persona, usuarioDB, sesion);
 			//persona=usuarioDB.getPersona(usuario.getIdUsuario());
@@ -129,6 +121,11 @@ public class AdminCertificados extends ServletGeneral{
 			irA="/certificaciones/CertificadosDoc.x?accion=9&accion2="+req.getParameter("codProy");
 			mensaje="Hizo el mapeo del Certificado";	
 			System.out.println(irA);
+		break;
+		default:
+			irA="/Certificados/BuscarCertificados.jsp";
+			sesion.removeAttribute("listacertificados");
+			break;
 		}
 		accion=0;
 		retorno[0]="";

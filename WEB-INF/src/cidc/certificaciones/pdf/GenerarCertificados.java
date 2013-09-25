@@ -386,7 +386,7 @@ public class GenerarCertificados {
 		clausulasinicio.add(new Phrase(" identificado(a) con la cédula de ciudadanía N° "+certificado.getCedula()+" de "+ certificado.getNumCedDe()+" ",texto10));
 		clausulasinicio.add(new Phrase((certificado.getFechaSalida()!=null?"pertenecio":"pertenece"),texto10));
 		clausulasinicio.add(new Phrase(" desde el "+global.getDiaFecha(certificado.getFechaIngreso(), 1) +" de "+global.getNombreMes(certificado.getFechaIngreso(), 1) +" de "+ global.getAnoFecha(certificado.getFechaIngreso())+" ",texto10));
-		if(certificado.getFechaSalida()!=null){
+		if(certificado.getFechaSalida()!=null&&!certificado.getFechaSalida().equals("")){
 			clausulasinicio.add(new Phrase(" hasta el "+global.getDiaFecha(certificado.getFechaSalida(), 1) +" de "+global.getNombreMes(certificado.getFechaSalida(), 1) +" de "+ global.getAnoFecha(certificado.getFechaSalida())+" ",texto10));
 		}			
 		clausulasinicio.add(new Phrase("en calidad de "+certificado.getPapel()+" al "+certificado.getTipoGrupo()+" de investigación ",texto10));
