@@ -85,7 +85,7 @@ public class CertificadoDB extends BaseDB{
 				String dir=path+sep+"FirmaCIDC.pfx";
 				String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+"CIDC_"+certificado.getTipo()+"_"+certificado.getConsCert()+"_"+ano+".pdf";
 				generador=new GenerarCertificados();
-				generador.crearCertificadoPertenencia(certificado, ruta, resp);
+				generador.crearCertificadoPertenencia(certificado, ruta, resp,path);
 				if(!insertaCertificadoBD(certificado,generador.marcaAgua(ruta,path),dir)){
 					return null;
 				}
@@ -320,10 +320,10 @@ public class CertificadoDB extends BaseDB{
 			}
 			certificado.setCod_verificacion("CIDC_"+certificado.getTipo()+"_"+consec+"_"+ano);
 			String dir=path+sep+"ks";
-			path+=sep+"Documentos"+sep+"Certificados"+sep+"CIDC_"+certificado.getTipo()+"_"+certificado.getConsCert()+"_"+ano+".pdf";
+			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+"CIDC_"+certificado.getTipo()+"_"+certificado.getConsCert()+"_"+ano+".pdf";
 			GenerarCertificados cert= new GenerarCertificados();
-			cert.crearPazySalvo(certificado, path, resp);
-			insertaCertificadoBD(certificado,path,dir);
+			cert.crearPazySalvo(certificado, ruta, resp,path);
+			insertaCertificadoBD(certificado,ruta,dir);
 		} catch (Exception e) {
 			lanzaExcepcion(e);
 		}finally{
