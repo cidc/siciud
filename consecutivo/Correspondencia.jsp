@@ -15,11 +15,7 @@
 	}
 	
 	function ValidarFormulario(){
-		if(document.ingresar.remitente.value==""){
-			alert("Por favor diligencie todos los campos");
-			return false;
-			
-		}else if(document.ingresar.destinatario.value==""){
+		if(document.ingresar.destinatario.value==""){
 			alert("Por favor diligencie todos los campos");
 			return false;
 		}else if(document.ingresar.observaciones.value==""){
@@ -56,12 +52,10 @@
 	<table align="center">
 		<caption>Nuevo Registro</caption>
 		<tr>
-			<td align="center" class="renglones" >Remitente</td>
 			<td align="center" class="renglones" >Destinatario</td>
 			<td align="center" class="renglones" >Observacion</td>
 		</tr>
 		<tr>
-			<td><input type="text" name="remitente" maxlength="50" size="50"/></td>
 			<td><input type="text" name="destinatario" maxlength="50" size="50"/></td>
 			<td style="width:400px"><textarea name="observaciones" rows="2" ></textarea></td>
 		</tr>

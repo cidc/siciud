@@ -27,14 +27,15 @@ public class Correspondencia extends ServletGeneral{
 			accion=Integer.parseInt(req.getParameter("accion"));
 		switch(accion){
 		case INGRESARCONSECUTIVO:
-			if(cons.insertarRegistro("1", req.getParameter("remitente"), req.getParameter("destinatario"), req.getParameter("observaciones"))){
+			if(cons.insertarRegistro("1", req.getParameter("remitente"), usuario.getNombre(), req.getParameter("observaciones"))){
 				mensaje="insercion exitosa";
 			}
 			else
 				mensaje="ha ocurrido un error";
 			irA="/consecutivo/Correspondencia.jsp";
+			sesion.setAttribute("listaConsecutivos", cons.ObtenerUltimos());
 			break;
-			default:
+		default:
 				sesion.setAttribute("listaConsecutivos", cons.ObtenerUltimos());
 				irA="/consecutivo/Correspondencia.jsp";
 				mensaje="";

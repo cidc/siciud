@@ -53,8 +53,9 @@ public class CorrespondenciaDB extends BaseDB{
 			ps=cn.prepareStatement(rb.getString("insertar"));
 			ps.setString(1, cod);
 			ps.setString(2, remitente);
-			ps.setString(3, obs);
-			ps.executeQuery();
+			ps.setString(3, dest);
+			ps.setString(4, obs);
+			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			lanzaExcepcion(e);
