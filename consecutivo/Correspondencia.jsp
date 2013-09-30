@@ -9,8 +9,11 @@
 <script>
 	function guardar(){
 		if(ValidarFormulario()){
-			document.ingresar.action='<c:url value="/Consecutivo/correspondencia.x"/>';
-			document.ingresar.submit();
+			if(confirm("¿Desea asignar este consecutivo?")){
+				document.ingresar.action='<c:url value="/Consecutivo/correspondencia.x"/>';
+				document.ingresar.submit();
+			}else
+				return false;
 		}
 	}
 	
@@ -24,12 +27,19 @@
 		}
 		return true;
 	}
+	
+	function buscar(){
+		document.ingresar.action='<c:url value="/correspondecia/Buscar.jsp"/>';
+		document.ingresar.submit();
+	}
 </script>
 <body>
 <br/>
 <br/>
 <br/>
-	<table align="center">
+<img src="<c:url value="/comp/img/Buscar.gif"/>" onclick="">
+
+	<table align="center" class="tablas">
 		<caption>Consecutivos de Correspondencia</caption>
 		<tr>
 			<td align="center" class="renglones" >Número</td>
@@ -42,14 +52,14 @@
 			<td align="center"><c:out value="${lista.cod}" /></td>
 			<td align="center" style="width:140px"><c:out value="${lista.remitente}" /></td>
 			<td align="center" style="width:140px"><c:out value="${lista.destinatario}" /></td>
-			<td align="center" ><c:out value="${lista.observaciones}" /></td>
+			<td align="center" style="width:600px"><c:out value="${lista.observaciones}" /></td>
 		</tr>
 		</c:forEach>
 	</table>
 <br/>
 	<form name="ingresar">
 	<input type="hidden" name="accion" value="1">
-	<table align="center">
+	<table align="center" class="tablas">
 		<caption>Nuevo Registro</caption>
 		<tr>
 			<td align="center" class="renglones" >Destinatario</td>

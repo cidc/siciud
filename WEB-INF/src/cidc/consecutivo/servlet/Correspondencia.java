@@ -27,7 +27,8 @@ public class Correspondencia extends ServletGeneral{
 			accion=Integer.parseInt(req.getParameter("accion"));
 		switch(accion){
 		case INGRESARCONSECUTIVO:
-			if(cons.insertarRegistro("1", req.getParameter("remitente"), usuario.getNombre(), req.getParameter("observaciones"))){
+			usuario=cons.consultaUsuario(usuario);
+			if(cons.insertarRegistro(usuario.getNombre() , req.getParameter("destinatario"), req.getParameter("observaciones"))){
 				mensaje="insercion exitosa";
 			}
 			else
