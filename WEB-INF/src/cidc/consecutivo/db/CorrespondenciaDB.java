@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.itextpdf.text.pdf.PdfDocument.Destination;
+
 import cidc.consecutivo.obj.CorrespondenciaObj;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
@@ -97,5 +99,50 @@ public class CorrespondenciaDB extends BaseDB{
 			cerrar(cn);
 		}
 		return user;
+	}
+	
+	public List<CorrespondenciaObj> consultarFiltro(String cod, String remitente,  String detinatario,  String observacion){
+		List<CorrespondenciaObj> miLista= null;
+		Connection cn =null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("consultaFiltro"));
+			if(cod=="")
+				ps.setString(1, "%");
+			else
+				ps.setString(1, "%"+cod+"%");
+			if(remitente=="")
+				ps.setString(2, "%");
+			else
+				ps.setString(2, "%"+remitente+"%");
+			if(detinatario=="")
+				ps.setString(3, "%");
+			else
+				ps.setString(3, "%"+detinatario+"%");
+			if(observacion=="")
+				ps.setString(4, "%");
+			else
+				ps.setString(4, "%"+observacion+"%");
+			rs=ps.executeQuery();
+			System.out.println("consulta: "+ps.toString());
+			miLista = new ArrayList<CorrespondenciaObj>();
+			while(rs.next()){
+				CorrespondenciaObj cons=new CorrespondenciaObj();
+				cons.setCod(rs.getString(1));
+				cons.setRemitente(rs.getString(2));
+				cons.setDestinatario(rs.getString(3));
+				cons.setObservaciones(rs.getString(4));
+				miLista.add(cons);
+				
+			}
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return miLista;
 	}
 }

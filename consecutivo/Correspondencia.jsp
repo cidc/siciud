@@ -29,7 +29,7 @@
 	}
 	
 	function buscar(){
-		document.ingresar.action='<c:url value="/correspondecia/Buscar.jsp"/>';
+		document.ingresar.action='<c:url value="/consecutivo/Buscar.jsp"/>';
 		document.ingresar.submit();
 	}
 </script>
@@ -37,7 +37,7 @@
 <br/>
 <br/>
 <br/>
-<img src="<c:url value="/comp/img/Buscar.gif"/>" onclick="">
+<img src="<c:url value="/comp/img/Buscar.gif"/>" onclick="buscar()">
 
 	<table align="center" class="tablas">
 		<caption>Consecutivos de Correspondencia</caption>
@@ -45,9 +45,9 @@
 			<td align="center" class="renglones" >Número</td>
 			<td align="center" class="renglones" >Remitente</td>
 			<td align="center" class="renglones" >Destinatario</td>
-			<td align="center" class="renglones" >Observacion</td>
+			<td align="center" class="renglones" >Asunto</td>
 		</tr>
-		<c:forEach items="${sessionScope.listaConsecutivos}" var="lista" begin="0">
+		<c:forEach items="${requestScope.listaConsecutivos}" var="lista" begin="0">
 		<tr>
 			<td align="center"><c:out value="${lista.cod}" /></td>
 			<td align="center" style="width:140px"><c:out value="${lista.remitente}" /></td>
@@ -63,11 +63,11 @@
 		<caption>Nuevo Registro</caption>
 		<tr>
 			<td align="center" class="renglones" >Destinatario</td>
-			<td align="center" class="renglones" >Observacion</td>
+			<td align="center" class="renglones" >Asunto</td>
 		</tr>
 		<tr>
 			<td><input type="text" name="destinatario" maxlength="50" size="50"/></td>
-			<td style="width:400px"><textarea name="observaciones" rows="2" ></textarea></td>
+			<td style="width:400px"><textarea name="observaciones" rows="2" maxlength="140" size="140"></textarea></td>
 		</tr>
 		<tr>
 			<td align="center" colspan="3"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()"></td>

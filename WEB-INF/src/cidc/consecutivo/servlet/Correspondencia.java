@@ -15,6 +15,7 @@ public class Correspondencia extends ServletGeneral{
 	 */
 	private static final long serialVersionUID = 1L;
 	private static final int INGRESARCONSECUTIVO=1;
+	private static final int FILTRODEBUSQUEDA=2;
 	
 	public String[] operaciones(HttpServletRequest req, HttpServletResponse resp){
 		int accion=0;
@@ -34,14 +35,19 @@ public class Correspondencia extends ServletGeneral{
 			else
 				mensaje="ha ocurrido un error";
 			irA="/consecutivo/Correspondencia.jsp";
-			sesion.setAttribute("listaConsecutivos", cons.ObtenerUltimos());
+			req.setAttribute("listaConsecutivos", cons.ObtenerUltimos());
+			break;
+		case FILTRODEBUSQUEDA:
+			req.setAttribute("listaFiltro", cons.consultarFiltro(req.getParameter("cod"), req.getParameter("remitente"), req.getParameter("destinatario"), req.getParameter("observaciones")));
+			irA="/consecutivo/Buscar.jsp";
 			break;
 		default:
-				sesion.setAttribute("listaConsecutivos", cons.ObtenerUltimos());
+				req.setAttribute("listaConsecutivos", cons.ObtenerUltimos());
 				irA="/consecutivo/Correspondencia.jsp";
 				mensaje="";
 		}
 		accion=0;
+		req.removeAttribute("accion");
 		retorno[0]="";
 		retorno[1]=irA;
 		retorno[2]=mensaje;
