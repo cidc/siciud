@@ -148,7 +148,7 @@
 			<c:if test="${sessionScope.InfoA.papel!=3 and sessionScope.InfoA.papel!=8 and sessionScope.InfoA.papel!=9 and sessionScope.InfoA.papel!=10}">	
 			<tr>
 				<!-- Especificar el nuevo documento carta donde certifica no tener apoyos económicos-->
-				<td class="renglones" width="200px"><b>Carta donde expresa no tener adjudicado otro apoyo económico.</b></td>
+				<td class="renglones" width="200px"><b>Formato Productividad Académica.</b></td>
 				<c:if test="${sessionScope.InfoA.listadDoc[10]!=null}">
 				<td><a href='<c:url value="/Documentos/Movilidad/${sessionScope.InfoA.listadDoc[10]}"/>'><img border="0"  src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 				</c:if>
