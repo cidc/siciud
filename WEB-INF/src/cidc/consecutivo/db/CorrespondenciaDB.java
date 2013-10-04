@@ -57,7 +57,7 @@ public class CorrespondenciaDB extends BaseDB{
 		int secuencia=0;
 		try {
 			cn = cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("consultaSeq"));
+			ps=cn.prepareStatement(rb.getString("ConsultaLast"));
 			rs=ps.executeQuery();
 			while(rs.next()){
 				secuencia=rs.getInt(1);
@@ -65,11 +65,29 @@ public class CorrespondenciaDB extends BaseDB{
 			Globales glob= new Globales();
 			String cod=glob.codigo(String.valueOf(secuencia));
 			ps=cn.prepareStatement(rb.getString("insertar"));
-			ps.setString(1,cod);
-			ps.setString(2, remitente);
-			ps.setString(3, dest);
-			ps.setString(4, obs);
+			ps.setInt(1, secuencia);
+			ps.setString(2,cod);
+			ps.setString(3, remitente);
+			ps.setString(4, dest);
+			ps.setString(5, obs);
 			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return false;
+	}
+	
+	public boolean aumentaConsecutivo(){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		try {
+			cn = cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("aumentarSeq"));
+			ps.execute();
 			return true;
 		} catch (Exception e) {
 			lanzaExcepcion(e);
@@ -101,7 +119,7 @@ public class CorrespondenciaDB extends BaseDB{
 		return user;
 	}
 	
-	public List<CorrespondenciaObj> consultarFiltro(String cod, String remitente,  String detinatario,  String observacion){
+	public List<CorrespondenciaObj> consultarFiltro(String cod, String remitente,  String detinatario,  String observacion, String fecha){
 		List<CorrespondenciaObj> miLista= null;
 		Connection cn =null;
 		PreparedStatement ps=null;
@@ -125,6 +143,7 @@ public class CorrespondenciaDB extends BaseDB{
 				ps.setString(4, "%");
 			else
 				ps.setString(4, "%"+observacion+"%");
+			ps.setString(5, "%"+fecha+"%");
 			rs=ps.executeQuery();
 			System.out.println("consulta: "+ps.toString());
 			miLista = new ArrayList<CorrespondenciaObj>();
@@ -144,5 +163,44 @@ public class CorrespondenciaDB extends BaseDB{
 			cerrar(cn);
 		}
 		return miLista;
+	}
+	
+	public int consultarAño(){
+		Connection cn=null;
+		ResultSet rs=null;
+		PreparedStatement ps=null;
+		int year=0;
+		try {
+			String cod="";
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("consultaUltimoCod"));
+			rs=ps.executeQuery();
+			while(rs.next()){
+				cod=rs.getString(1);
+			}
+			 year=Integer.parseInt(cod.substring(10, 14));
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return year;
+	}
+	
+	public void reiniciarNumeracion(){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("reiniciarConsecutivo"));
+			ps.executeQuery();
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+	
 	}
 }

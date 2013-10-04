@@ -7,15 +7,17 @@ public class CorrespondenciaObj {
 	private String remitente;
 	private String destinatario;
 	private String observaciones;
+	private int ano;
 	
 	public CorrespondenciaObj(int id, String cod, String remitente,
-			String destinatario, String observaciones) {
+			String destinatario, String observaciones,int ano) {
 		super();
 		this.id = id;
 		this.cod = cod;
 		this.remitente = remitente;
 		this.destinatario = destinatario;
 		this.observaciones = observaciones;
+		this.ano=ano;
 	}
 	
 	public CorrespondenciaObj() {
@@ -60,5 +62,13 @@ public class CorrespondenciaObj {
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
-	
+	public int getAno() {
+		return ano;
+	}
+
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+
+
 }

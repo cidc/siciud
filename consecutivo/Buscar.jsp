@@ -10,7 +10,7 @@
 
 	function buscar(){
 		document.busqueda.accion.value=2;
-		document.busqueda.action='<c:url value="/Consecutivo/correspondencia.x"/>';
+		document.busqueda.action='<c:url value="/consecutivo/llenar.jsp"/>';
 		document.busqueda.submit();
 	}
 
@@ -33,7 +33,18 @@
 			<td align="center"><input type="text" name="observaciones"></td>
 		</tr>
 		<tr>
-		<td align="center" colspan="3"><img src='<c:url value="/comp/img/Buscar.gif"/>' onclick="buscar()"></TD>
+			<td align="center" class="renglones" colspan="2">Año</td>
+			<td colspan="2">
+				<select class="combo" name="ano" >
+				<option value="">------</option>
+				<c:forEach items="${sessionScope.listAno}" var="lista" varStatus="st">
+					<option value="${lista}"><c:out value="${lista}"/></option>
+				</c:forEach>
+				</select>
+			</td>
+		</tr>
+		<tr>
+		<td align="center" colspan="4"><img src='<c:url value="/comp/img/Buscar.gif"/>' onclick="buscar()"></TD>
 		</tr>
 		</table>
 	</form>
@@ -56,9 +67,6 @@
 		</tr>
 		</c:forEach>
 	</table>
-	</c:if>
-	<c:if test="${requestScope.listaFiltro==null}">
-	<p align="center" >La consulta no arrojo resultados</p>
 	</c:if>
 </body>
 </html>
