@@ -6,7 +6,7 @@
 <jsp:useBean id="ParametrosOBJ" scope="page" class="cidc.convocatorias.obj.ParametrosOBJ"/>
 <c:import url="/general.jsp"/>
 </head>
-<body onLoad="mensajeAlert(document.getElementById('msg'));">
+<body onLoad="mensajeAlert(document.getElementById('msg'));">dfgsdfgsdfg
 <br>
 	<form name="nuevo" method="post" action='<c:url value="/movilidad/evalMovilidad.x"/>'>
 		<input type="hidden" name="accion" value="0">
@@ -145,9 +145,8 @@
 					<td align="center"><img src='<c:url value="/comp/img/equis1.png"/>'></td>
 				</c:if>
 			</tr>
-			<c:if test="${sessionScope.InfoA.papel!=3 and sessionScope.InfoA.papel!=8 and sessionScope.InfoA.papel!=9 and sessionScope.InfoA.papel!=10}">	
 			<tr>
-				<!-- Especificar el nuevo documento carta donde certifica no tener apoyos económicos-->
+				<!-- formato de productividad academica e investigativa-->
 				<td class="renglones" width="200px"><b>Formato Productividad Académica.</b></td>
 				<c:if test="${sessionScope.InfoA.listadDoc[10]!=null}">
 				<td><a href='<c:url value="/Documentos/Movilidad/${sessionScope.InfoA.listadDoc[10]}"/>'><img border="0"  src='<c:url value="/comp/img/pdf.png"/>'></a></td>
@@ -155,8 +154,7 @@
 				<c:if test="${sessionScope.InfoA.listadDoc[10]==null}">
 					<td align="center"><img src='<c:url value="/comp/img/equis1.png"/>'></td>
 				</c:if>
-			</tr>
-			</c:if>			
+			</tr>		
 		</table>
 	</fieldset>
 	<legend>Participación en eventos Financiados por el CIDC</legend>
