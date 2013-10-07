@@ -6,7 +6,7 @@
 <jsp:useBean id="ParametrosOBJ" scope="page" class="cidc.convocatorias.obj.ParametrosOBJ"/>
 <c:import url="/general.jsp"/>
 </head>
-<body onLoad="mensajeAlert(document.getElementById('msg'));">dfgsdfgsdfg
+<body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br>
 	<form name="nuevo" method="post" action='<c:url value="/movilidad/evalMovilidad.x"/>'>
 		<input type="hidden" name="accion" value="0">
