@@ -5,6 +5,8 @@
 <html>
 <head>
 <link type="text/css" rel="stylesheet" href="<c:url value="/comp/css/formatos.css"/>">
+<script type="text/javascript" language="javascript" src='<c:url value="/comp/js/lytebox.js"/>'></script>
+<link rel="stylesheet" href='<c:url value="/comp/css/lytebox.css"/>' type="text/css" media="screen" />
 <c:import url="/general.jsp"/>
 <script>
 	function comando(id){
@@ -29,6 +31,11 @@
 		document.documentosAdj.accion.value = 26;
 		if(validacionAdj(op))
 			document.documentosAdj.submit();
+	}
+	
+	function infoAdicional(){
+		document.rubroSolicitado.accion.value = 27;
+		document.rubroSolicitado.submit();
 	}
 	
 	function cambiarNatural(op){
@@ -297,6 +304,11 @@
 		return false;
 	}
 	
+	function mostrar(){
+		document.tipoPersona.style.display='block';
+		document.nuevaSolicitud.style.display='none';
+	}
+	
 	function cambiarSolicitud(){
 		if(document.tipoPersona.tipoSolicitud1.value!=9){
 			if(document.tipoPersona.tipoSolicitud1.value!=0){
@@ -336,8 +348,9 @@
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<br/><!-- 
-	<form name="tipoPersona" action='<c:url value="/grupos/proyectos/llenar.jsp"/>' method="post">
+<br/>
+	<img id="nuevaSolicitud" src='<c:url value="/comp/img/Guardar.gif"/>' onclick="mostrar()"/>
+	<form name="tipoPersona" action='<c:url value="/grupos/proyectos/llenar.jsp"/>' method="post" style="display:none"> 
 	<input type="hidden" name="accion" value="0">
 	<input type="hidden" name="tipoSolicitud" value="">
 	<input type="hidden" name="tipoPersona" value="">
@@ -368,7 +381,7 @@
 							<option value="2">Persona Jurídica</option>
 						</select>
 					</td> -->
-			<!-- <td  align="left"><b><label id="tipoPersona1" ></label></b></td>
+			<td  align="left"><b><label id="tipoPersona1" ></label></b></td>
 			</tr>
 			<tr >
 				<td align="left" ><b><label id="lnombre" style="${requestScope.basico}">Nombres y Apellidos / Razón Social:</label></b></td>
@@ -512,10 +525,46 @@
 			</tr>
 		</table>
 	</form>
-	
-	-->
-	
-	
+
+	<form name="rubroSolicitado" action='<c:url value="/GestionProyectos/ProyectosInvestigador.x"/>' method="post">
+		<input type="hidden" name="accion" value="">
+		<c:if test="${1==1}">
+			<table align="center" class="tablas" width="95%">
+				<caption>Listado de Rubros Solicitados</caption>
+				<tr>
+					<th align="right" width="10px"><b>#</b></th>
+					<th align="center" width="75px"><b>Fecha</b></th>
+					<th align="center" width="75px"><b>Valor</b></th>
+					<th align="center"><b>Descripción</b></th>
+					<th align="center" width="100px"><b>Estado</b></th>
+					<th align="center" width="100px"><b>Ver</b></th>
+				</tr>
+				<tr>
+						<td width="10px" class="listas"><c:out value="${st.count}" /></td>
+						<td width="75px" class="listas"><c:out value="hoy" /></td>
+						<td width="75px" class="listas" align="right"><c:out value="mucho dinero" /></td>
+						<td class="listas"><c:out value="sin descripcion" /></td>
+						<td class="listas" width="100px"><c:out value="activo" /></td>
+						<td><img src='<c:url value="/comp/img/find.gif"/>' onclick="infoAdicional()"></td>
+					</tr>
+				<c:forEach begin="0" items="" var="lista" varStatus="st">
+					<tr>
+						<td width="10px" class="listas"><c:out value="${st.count}" /></td>
+						<td width="75px" class="listas"><c:out value="" /></td>
+						<td width="75px" class="listas" align="right"><c:out value="" /></td>
+						<td class="listas"><c:out value="" /></td>
+						<td class="listas" width="100px"><c:out value="" /></td>
+						<td><a href='<c:url value="/GestionProyectos/ProyectosInvestigador.x?accion=27"/>' target="_parent" rel="lyteframe" title="Información General" rev="width: 700px; height: 400px; scrolling: auto;"><img border="0" src='<c:url value="/comp/img/find.gif"/>'></a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
+		<c:if test="">
+			<h4 align="center">No hay solicitudes registradas para este rubro</h4>
+		</c:if>
+	</form>
+
+
 	<c:if test="${!empty sessionScope.listaGastosRubro}">
         <table align="center" class="tablas" width="95%" >
         <caption >Listado de Gastos Rubro</caption>

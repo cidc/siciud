@@ -133,6 +133,7 @@
 
 	<form name="estadoBandera" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
      	<input type="hidden" name="accion" value="5">
+     	<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
      		<table width="95%" class="tablas" align="center">
      			<CAPTION>Estado de revisión del proyecto</CAPTION>
   					<tr>
@@ -163,6 +164,7 @@
 	     			<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Guardar.gif"/>'></td>
      			</tr>
      		</table>
+     		</c:if>
      	</form>
 
      	<form name="observProyect" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
