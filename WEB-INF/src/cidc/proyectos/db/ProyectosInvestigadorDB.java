@@ -137,6 +137,7 @@ public class ProyectosInvestigadorDB extends BaseDB {
 					proyecto.setObservacionDigit(rs.getString(i++));
 				/*************Asignando el valor aprobado en letras******************************/
 				valor=rs.getString(i++);
+				proyecto.setTipo2(rs.getInt(i++));
 				if(valor!="" && valor!=null)
 					valor=g.moneda(valor);
 				proyecto.setValorLetras(valor);

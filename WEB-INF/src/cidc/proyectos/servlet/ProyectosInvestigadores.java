@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.displaytag.util.ParamEncoder;
+
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.servlet.ServletGeneral;
@@ -17,6 +19,7 @@ import cidc.proyectos.obj.Contratacion;
 import cidc.proyectos.obj.Parametros;
 import cidc.proyectos.obj.ProyectoGenerico;
 import cidc.proyectos.obj.Rubros;
+import cidc.proyectosGeneral.ProyectosXml.ProyectoXML;
 import cidc.proyectosGeneral.db.ProyectosGeneralDB;
 
 
@@ -40,6 +43,11 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			accion = Integer.parseInt(req.getParameter("accion"));
 		switch(accion){
 			case Parametros.cmdVerProyecto:
+				ProyectoGenerico proyectoGen=proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo"));
+				sesion.setAttribute("proyectoInvestigador", proyectoGen);
+				ProyectoXML proy=new ProyectoXML();
+				//String resp2=proy.crearProyectoBizagi(proyectoGen);
+				//System.out.println("resp crear proy "+resp2);
 				sesion.setAttribute("proyectoDocumentos", proyGeneral.getListaDocAnexos(Long.parseLong(req.getParameter("id")),Integer.parseInt(req.getParameter("tipo"))));
 				sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo")));
 				irA="/grupos/proyectos/VerProyecto.jsp";
@@ -86,6 +94,10 @@ public class ProyectosInvestigadores extends ServletGeneral {
 //				String nombre =String.valueOf(date.getTime());
 //				carg.cargar(req, nombre, "Bizagi");
 //				irA="/grupos/proyectos/ListaGastos.jsp";
+				break;
+			case Parametros.infoRubroSolicitado:
+				System.out.println("ingreso al servlet");
+				irA="/grupos/proyectos/InfoSolicitud.jsp";
 				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));
