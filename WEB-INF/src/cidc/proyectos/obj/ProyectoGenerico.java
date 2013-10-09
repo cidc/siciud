@@ -37,6 +37,7 @@ public class ProyectoGenerico implements Serializable{
 
 	private int flag;
 	private int tipo; //1) nuevo 2) antiguo
+	private int tipo2; // 1)proyecto  2)convenio
 
 	private List compromisosConv=null;
 	private List documentos=null;
@@ -248,6 +249,13 @@ public class ProyectoGenerico implements Serializable{
 	public void setPropuesta(Documento propuesta) {
 		this.propuesta = propuesta;
 	}
+	public int getTipo2() {
+		return tipo2;
+	}
+	public void setTipo2(int tipo2) {
+		this.tipo2 = tipo2;
+	}
+	
 
 }
 
