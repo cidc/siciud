@@ -840,4 +840,12 @@
 	  <servlet-name>ArchivoActas</servlet-name>
 	  <url-pattern>/adminGrupos/archivoActas.x</url-pattern>
 	</servlet-mapping> 
+	<servlet>
+	<servlet-name>correspondencia</servlet-name>
+	<servlet-class>cidc.consecutivo.servlet.Correspondencia</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>correspondencia</servlet-name>
+		<url-pattern>/Consecutivo/correspondencia.x</url-pattern>
+	</servlet-mapping>
 </web-app>
