@@ -15,6 +15,7 @@ public class ExtraDocProyecto implements Serializable{
 	private String nombreDocumento;
 	private String nombreObservaciones;
 	private String usuario;
+	private int tipoProyecto; // 1 si es un proycto de convocatoria. 2 si es proyecto antiguo
 	
 	public String getUsuario() {
 		return usuario;
@@ -81,6 +82,12 @@ public class ExtraDocProyecto implements Serializable{
 	}
 	public void setNombreObservaciones(String nombreObservaciones) {
 		this.nombreObservaciones = nombreObservaciones;
+	}
+	public int getTipoProyecto() {
+		return tipoProyecto;
+	}
+	public void setTipoProyecto(int tipoProyecto) {
+		this.tipoProyecto = tipoProyecto;
 	}
 			
 }

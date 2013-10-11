@@ -647,7 +647,8 @@ public class ProyectosGeneralDB extends BaseDB {
 				documento.setTipo(rs.getInt(i++));
 				documento.setEstado(rs.getInt(i++));
 				documento.setFechaCarga(rs.getString(i++));
-				documento.setUsuario(rs.getString(i++));				
+				documento.setUsuario(rs.getString(i++));
+				documento.setTipoProyecto(tipoProyecto);
 				lista.add(documento);
 			}
 		} catch (SQLException e) {
