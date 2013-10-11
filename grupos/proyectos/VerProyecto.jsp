@@ -15,7 +15,7 @@
 </script>
 <c:import url="/general.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Proyecto Antiguo Comité</title>
+<title>Proyecto Antiguo Comité</title> 
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br>
@@ -33,7 +33,7 @@
 <br>
 <form name="form1">
 <table class="tablas" align="center" width="90%">
-	<CAPTION>Consulta Proyecto de Investigación Antiguo</CAPTION>
+	<CAPTION>Consulta Proyecto de Investigación</CAPTION>
 	<tr>
 		<td>
 		<table width="100%">
@@ -170,8 +170,11 @@
 		  			<c:if test='${lista.tipo==2||lista.tipo==3}'>	
 		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
-				  	<c:if test='${lista.tipo==1}'>
+				  	<c:if test='${lista.tipo==1 and lista.tipoProyecto==2}'>
 					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+					 <c:if test='${lista.tipo==1 and lista.tipoProyecto==1}'>
+					  <a href='<c:url value="/Documentos/Proyectos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
 					 <c:if test='${lista.tipo==21}'>
 					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Propuestas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
