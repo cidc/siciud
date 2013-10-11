@@ -15,7 +15,7 @@
 </script>
 <c:import url="/general.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Proyecto Antiguo Comité</title>
+<title>Proyecto Antiguo Comité</title> 
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br>
