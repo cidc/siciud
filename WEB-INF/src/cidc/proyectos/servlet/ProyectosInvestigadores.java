@@ -19,7 +19,7 @@ import cidc.proyectos.obj.Contratacion;
 import cidc.proyectos.obj.Parametros;
 import cidc.proyectos.obj.ProyectoGenerico;
 import cidc.proyectos.obj.Rubros;
-import cidc.proyectosGeneral.ProyectosXml.ProyectoXML;
+//import cidc.proyectosGeneral.ProyectosXml.ProyectoXML;
 import cidc.proyectosGeneral.db.ProyectosGeneralDB;
 
 
@@ -45,7 +45,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			case Parametros.cmdVerProyecto:
 				ProyectoGenerico proyectoGen=proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo"));
 				sesion.setAttribute("proyectoInvestigador", proyectoGen);
-				ProyectoXML proy=new ProyectoXML();
+				//ProyectoXML proy=new ProyectoXML();
 				//String resp2=proy.crearProyectoBizagi(proyectoGen);
 				//System.out.println("resp crear proy "+resp2);
 				sesion.setAttribute("proyectoDocumentos", proyGeneral.getListaDocAnexos(Long.parseLong(req.getParameter("id")),Integer.parseInt(req.getParameter("tipo"))));
