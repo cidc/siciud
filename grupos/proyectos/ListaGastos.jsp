@@ -349,6 +349,7 @@
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br/>
+<!--
 	<img id="nuevaSolicitud" src='<c:url value="/comp/img/Guardar.gif"/>' onclick="mostrar()"/>
 	<form name="tipoPersona" action='<c:url value="/grupos/proyectos/llenar.jsp"/>' method="post" style="display:none"> 
 	<input type="hidden" name="accion" value="0">
@@ -374,14 +375,14 @@
 				</td>
 			</tr>
 			<tr>
-				<td  align="left"><b><label id="ltipoPersona1">Tipo de Persona:</label></b></td>
+				<td  align="left"><b><label id="ltipoPersona1">Tipo de Persona:</label></b></td>-->
 						<!-- <td><select name="tipoPersona1" onchange="cambiarPersona(this)"> ESTE BLOQUE ESTA COMENTADO TAL VEZ SE NECESITE DESPUES
 							<option value="0">----</option>
 							<option value="1">Persona Natural</option>
 							<option value="2">Persona Jurídica</option>
 						</select>
 					</td> -->
-			<td  align="left"><b><label id="tipoPersona1" ></label></b></td>
+			<!-- <td  align="left"><b><label id="tipoPersona1" ></label></b></td>
 			</tr>
 			<tr >
 				<td align="left" ><b><label id="lnombre" style="${requestScope.basico}">Nombres y Apellidos / Razón Social:</label></b></td>
@@ -563,8 +564,8 @@
 			<h4 align="center">No hay solicitudes registradas para este rubro</h4>
 		</c:if>
 	</form>
-
-
+  
+ -->
 	<c:if test="${!empty sessionScope.listaGastosRubro}">
         <table align="center" class="tablas" width="95%" >
         <caption >Listado de Gastos Rubro</caption>
