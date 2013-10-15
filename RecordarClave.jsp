@@ -23,7 +23,7 @@
 			<tr><td colspan="3" align="center"><b>Correo Electronico</b></td></tr>
 			<tr><td></td><td width="70%" align="center"><input class="cajas" type="text" name="correo" size="10"></td><td></td></tr>
 			<tr><td colspan="3" align="center"><br><input type="image" src='<c:url value="/comp/img/RecuperarClave.png"/>'></td></tr> 
-			<tr><td colspan="3" align="center"><br><a href="/siciud/menu.jsp"><img src="/siciud/comp/img/Atras2.gif"/></a></td></tr> 
+			<tr><td colspan="3" align="center"><br><a href="/siciud/menu.jsp"><img src="/siciud/comp/img/Atras.gif"/></a></td></tr> 
 		</table>
 	</form>
 </body>
