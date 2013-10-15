@@ -48,6 +48,7 @@ public class Correspondencia extends ServletGeneral{
 			CorrespondenciaObj obj =(CorrespondenciaObj) sesion.getAttribute("datosConsecutivo");
 			req.setAttribute("listaFiltro", cons.consultarFiltro(obj));
 			irA="/consecutivo/Buscar.jsp";
+			sesion.removeAttribute("datosConsecutivo");
 			mensaje="";
 			break;
 		default:
