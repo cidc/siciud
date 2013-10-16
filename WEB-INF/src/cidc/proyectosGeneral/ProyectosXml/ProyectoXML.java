@@ -46,40 +46,40 @@ public class ProyectoXML extends ConeccionDB_WS {
 		}
 	
 	
-	public ProyectoGenerico consultarProyectoBizagi (String codigoProyecto, ProyectoGenerico datosProyecto)	{
-		
-		XmlRespProyecto proyectoBuscado = new XmlRespProyecto();
-		super.setConnectionEM();
-		
-		String xmlBusquedaProyecto="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">" +
-				"<soapenv:Header/>" +
-				"<soapenv:Body>" +
-				"<soa:getEntitiesAsString>" +
-				"<arg0>" +
-				"<![CDATA[<BizAgiWSParam>" +
-				"<EntityData>" +
-				"<EntityName>Proyecto</EntityName>" +
-				"<Filters>CodigodelProyecto='"+codigoProyecto+"'</Filters>" +
-				"</EntityData>" +
-				"</BizAgiWSParam>]]>" +
-				"</arg0>" +
-				"</soa:getEntitiesAsString></soapenv:Body></soapenv:Envelope>";
-	
-		String consultarPersona = super.httpostConsultaEM(xmlBusquedaProyecto);
-		System.out.println("respuestaXML: "+consultarPersona);
-		
-		try {
-			proyecto = proyectoBuscado.respuestaConsultaProyecto(consultarPersona, datosProyecto);
-			
-			
-		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return proyecto;
-		
-		
-	}
+//	public ProyectoGenerico consultarProyectoBizagi (String codigoProyecto, ProyectoGenerico datosProyecto)	{
+//		
+//		XmlRespProyecto proyectoBuscado = new XmlRespProyecto();
+//		super.setConnectionEM();
+//		
+//		String xmlBusquedaProyecto="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">" +
+//				"<soapenv:Header/>" +
+//				"<soapenv:Body>" +
+//				"<soa:getEntitiesAsString>" +
+//				"<arg0>" +
+//				"<![CDATA[<BizAgiWSParam>" +
+//				"<EntityData>" +
+//				"<EntityName>Proyecto</EntityName>" +
+//				"<Filters>CodigodelProyecto='"+codigoProyecto+"'</Filters>" +
+//				"</EntityData>" +
+//				"</BizAgiWSParam>]]>" +
+//				"</arg0>" +
+//				"</soa:getEntitiesAsString></soapenv:Body></soapenv:Envelope>";
+//	
+//		String consultarPersona = super.httpostConsultaEM(xmlBusquedaProyecto);
+//		System.out.println("respuestaXML: "+consultarPersona);
+//		
+//		try {
+//			proyecto = proyectoBuscado.respuestaConsultaProyecto(consultarPersona, datosProyecto);
+//			
+//			
+//		} catch (DocumentException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return proyecto;
+//		
+//		
+//	}
 	
 	
 	
