@@ -25,6 +25,7 @@ public class Firmar {
 		rb=ResourceBundle.getBundle("cidc.general.conect");
 
 		KeyStoreTools kst = new KeyStoreTools("/usr/local/tomcat/webapps/siciud/CIDCks", rb.getString("clave2"));
+//		KeyStoreTools kst = new KeyStoreTools("D:/TOMCAT 6.0/webapps/siciud/CIDCks", rb.getString("clave2"));
         String alias = rb.getString("clave1");
         //Add pivate/certificate from PKCS#12 certificate (.pfx o . p12)
         try {
@@ -45,6 +46,7 @@ public class Firmar {
         }
 		
         File file = new File("/usr/local/tomcat/webapps/siciud/CIDCks");
+//        File file = new File("D:/TOMCAT 6.0/webapps/siciud/CIDCks");
         file.delete();
 		
         PrivateKey key =  (PrivateKey) kst.getKey(alias, rb.getString("clave1").toCharArray());
