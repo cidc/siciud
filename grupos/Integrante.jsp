@@ -86,6 +86,8 @@
 		}
 		if(document.nuevo.codareasnies.selectedIndex==0){
 			ms=ms+"\n-) Área Snies";
+		}if(document.nuevo.fechaVinculacion.value==""){
+			ms=ms+"\n-) Fecha de vinculación";
 		}
 
 		if(document.nuevo.cvlac.value!=""){
@@ -312,7 +314,7 @@
 							</select>
 						</td>
 						<td>
-							<input type='text' name='fechaVinculacion' class='caj' readonly='true' id='f_date_b' size='13' value='<c:out value="${sessionScope.integrante2.fechaVinculacion}" default="${hoy}"/>'>
+							<input type='text' name='fechaVinculacion' class='caj' readonly='true' id='f_date_b' size='13' value='<c:out value="${sessionScope.integrante2.fechaVinculacion}" />'>
 							<button type="button" id='f_trigger_b' >...</button>
 							<script type='text/javascript'>
 				    			Calendar.setup({
