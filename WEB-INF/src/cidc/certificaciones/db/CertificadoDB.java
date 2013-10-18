@@ -61,7 +61,8 @@ public class CertificadoDB extends BaseDB{
 			System.out.println("Consulta: "+ps);
 			rs=ps.executeQuery();
 			while(rs.next()){
-				consec=rs.getString(i++);				
+				consec=rs.getString(i++);
+				certificado.setId_certificaciones(Integer.parseInt(consec));
 				certificado.setNombreGrupo(rs.getString(i++));
 				certificado.setIdGrupo(rs.getInt(i++));
 				certificado.setNombre(rs.getString(i++));
@@ -131,6 +132,7 @@ public class CertificadoDB extends BaseDB{
 			ps.setString(6, url);
 //			ps.setString(6, dir);
 			ps.setInt(7, certificado.getIdGrupo());
+			ps.setInt(8, certificado.getId_certificaciones());
 			ps.execute();
 			ps=cn.prepareStatement(rb.getString("Certificado++"));
 			ps.execute();
