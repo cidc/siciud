@@ -267,7 +267,7 @@ public class GenerarCertificados {
 		try {
 			PdfPTable tablaFirma= new PdfPTable(1);
 			tablaFirma.setWidths(new int[] {400});
-			tablaFirma.setTotalWidth(400);
+			tablaFirma.setTotalWidth(600);
 			Image firmaD=null;
 			firmaD=Image.getInstance(ruta+sep+"comp"+sep+"img"+sep+"firma_Director.png");
 			firmaD.setBorder(0);
@@ -298,26 +298,23 @@ public class GenerarCertificados {
 			PdfPCell vacia1=new PdfPCell(new Phrase("\n\n\n\n\n\n",texto10));
 			vacia1.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(vacia1);
-			PdfPCell fecha = new PdfPCell((new Phrase("Este certificado fue firmado digitalmente el "+global.getDiaHoy()+" días del mes de "
-					+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10s)));
-			fecha.setHorizontalAlignment(Element.ALIGN_CENTER);
+			PdfPCell fecha = new PdfPCell((new Phrase("Nota 1: Este certificado fue firmado digitalmente el "+global.getDiaHoy()+" días del mes de "
+					+global.getNombreMesHoy()+" de "+global.getAnoHoy()+", en ejercicio de la autorizacion establecida en la resolución de rectoria No. 413 del " +
+							"del 17 de Julio de 2013\n\n",texto10)));
+			fecha.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			fecha.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(fecha);
-			tablaFirma.addCell(vacia1);
-			PdfPCell frase1=new PdfPCell(new Phrase("La autenticidad del contenido y la validez de la firma digital utilizada",texto8));
-			frase1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+			PdfPCell frase1=new PdfPCell(new Phrase("Nota 2: El contenido y la validez de la firma digital utilizada pueden ser verificadas en el portal web del " +
+					"Centro de Investigaciones y Desarrollo Científico",texto10));
+			frase1.setHorizontalAlignment(Element.ALIGN_LEFT);
 			frase1.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(frase1);
-			PdfPCell frase2=new PdfPCell(new Phrase("pueden ser verificadas en el portal web del Centro de Investigaciones y Desarrollo Científico",texto8));
-			frase2.setHorizontalAlignment(Element.ALIGN_RIGHT);
-			frase2.setBorder(Rectangle.NO_BORDER);
-			tablaFirma.addCell(frase2);
-			PdfPCell frase3=new PdfPCell(new Phrase("http://cidc.udistrital.edu.co/web/",texto8));
-			frase3.setHorizontalAlignment(Element.ALIGN_RIGHT);
+			PdfPCell frase3=new PdfPCell(new Phrase("http://cidc.udistrital.edu.co/web/",texto9));
+			frase3.setHorizontalAlignment(Element.ALIGN_LEFT);
 			frase3.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(frase3);
-			PdfPCell frase4=new PdfPCell(new Phrase("Ingresando el número de certificado en la opción: Servicios / Certificados en línea / Verificar certificado",texto8));
-			frase4.setHorizontalAlignment(Element.ALIGN_RIGHT);
+			PdfPCell frase4=new PdfPCell(new Phrase("Ingresando el número de certificado en la opción: Servicios / Certificados en línea / Verificar certificado",texto10));
+			frase4.setHorizontalAlignment(Element.ALIGN_LEFT);
 			frase4.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(frase4);
 			document.add(tablaFirma);
