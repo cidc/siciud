@@ -321,7 +321,7 @@ public class CertificadoDB extends BaseDB{
 				certificado.setConsCert(consec);
 			}
 			certificado.setCod_verificacion("CIDC_"+certificado.getTipo()+"_"+consec+"_"+ano);
-			String dir=path+sep+"ks";
+			String dir=path+sep+"FirmaCIDC.pfx";
 			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+"CIDC_"+certificado.getTipo()+"_"+certificado.getConsCert()+"_"+ano+".pdf";
 			GenerarCertificados cert= new GenerarCertificados();
 			cert.crearPazySalvo(certificado, ruta, resp,path);

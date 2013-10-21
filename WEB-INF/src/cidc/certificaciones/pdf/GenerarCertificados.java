@@ -88,7 +88,7 @@ public class GenerarCertificados {
 		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
 		clausulasinicio.add(new Phrase("El(La) investigador(a) ",texto10));
 		clausulasinicio.add(new Phrase("Persona de Prueba",texto10n));
-		clausulasinicio.add(new Phrase(" identificado(a) con la cÃ©dula de ciudadanÃ­a No.101010101 de Bogota, ",texto10));
+		clausulasinicio.add(new Phrase(" identificado(a) con la cédula de ciudadanía No.101010101 de Bogota, ",texto10));
 		clausulasinicio.add(new Phrase("a la fecha, se encuentra a ",texto10));
 		clausulasinicio.add(new Phrase("PAZ Y SALVO",texto10n));
 		clausulasinicio.add(new Phrase(" por concepto de proyectos de investigación en el Centro de Investigación y Desarrollo Científico. ",texto10));
@@ -98,70 +98,16 @@ public class GenerarCertificados {
 		
 		textoDocumento[0]=clausulasinicio;
 		textoDocumento[1]=clausulas;
-//		PdfPTable tablaFirmas =new PdfPTable(2);
-		PdfPTable tablaEscudo =new PdfPTable(1);
-		PdfPCell c0 = null;
-        Image firmaD=null;
-        
-        try {
-        	/*tablaEscudo.setWidths(new float[]{(rectangulo.getLeft()+rectangulo.getRight()-120)});
-        	tablaEscudo.setTotalWidth((rectangulo.getLeft()+rectangulo.getRight()-120));*/
-			tablaEscudo.setWidths(new int[]{200});
-			tablaEscudo.setTotalWidth(450);
-			tablaEscudo.getDefaultCell().setFixedHeight(70);
-			
-			firmaD=Image.getInstance(path.substring(0,path.lastIndexOf("Documentos"))+sep+"comp"+sep+"img"+sep+"firma_Director.png");
-			firmaD.setBorder(0);
-			tablaEscudo.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-			tablaEscudo.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);			
-			
-			//      tablaFirmas.setWidths(new int[]{200,200});
-			//      tablaFirmas.setTotalWidth(450);
-			//      tablaFirmas.setLockedWidth(true);
-			//      tablaFirmas.getDefaultCell().setFixedHeight(10);
-			//      tablaFirmas.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-			tablaEscudo.writeSelectedRows(0, 5, 72, 780 , writer.getDirectContent());
-		} catch (DocumentException e1) {
-			
-			e1.printStackTrace();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-        PdfPTable tablaBlanca =new PdfPTable(1);
-        PdfPCell celdaVacia=new PdfPCell(new Phrase("\n....\n",texto15Blanca));
-        
-        celdaVacia.setBorder(Rectangle.NO_BORDER);
-        tablaBlanca.addCell(celdaVacia);
-        PdfPCell celdaGenerica=new PdfPCell();
-        PdfPCell celdaTablaVacia=new PdfPCell(tablaBlanca);
-        celdaTablaVacia.setBorder(Rectangle.NO_BORDER);
-        celdaGenerica.setBorder(Rectangle.NO_BORDER);
-		
-        PdfPCell ralla1=new PdfPCell(new Phrase("_________________________________ ",texto10n));
-        PdfPCell directorCIDC=new PdfPCell(new Phrase(rbDir.getString("directorCIDC").toUpperCase(),texto10n));
-		PdfPCell tituloCIDC=new PdfPCell(new Phrase("Director Centro de Investigaciones",texto10));
-		
-		ralla1.setHorizontalAlignment(Element.ALIGN_CENTER);
-		ralla1.setBorder(Rectangle.NO_BORDER);		
-		
-		directorCIDC.setHorizontalAlignment(Element.ALIGN_CENTER);
-		directorCIDC.setBorder(Rectangle.NO_BORDER);		
-		
-		tituloCIDC.setHorizontalAlignment(Element.ALIGN_CENTER);
-		tituloCIDC.setBorder(Rectangle.NO_BORDER);		
-		
-		tablaEscudo.addCell(firmaD);		
-		tablaEscudo.addCell(ralla1);		
-		tablaEscudo.addCell(directorCIDC);		
-		tablaEscudo.addCell(tituloCIDC);		
+
 		try {
 			certificado.setCuerpo_cer(contenido);
 			inicarDocumentoCertificado(resp,path,certificado.getCod_verificacion());
 			agregarContenido(textoDocumento);
 			agregarPieDePagina(ruta);
 			document.close();
+			
 		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("-Certificado Electronico creado->");
@@ -406,76 +352,6 @@ public class GenerarCertificados {
 		textoDocumento[0]=clausulasinicio;
 		textoDocumento[1]=clausulas;
 		
-//		PdfPTable tablaFirmas =new PdfPTable(2);
-//		PdfPTable tablaEscudo =new PdfPTable(1);
-//		//Rectangle rectangulo=this.writer.getPageSize();
-//		PdfPCell c0 = null;
-//        Image firmaD=null;
-		
-		
-//		try {			
-//			/*tablaEscudo.setWidths(new float[]{(rectangulo.getLeft()+rectangulo.getRight()-120)});
-//			tablaEscudo.setTotalWidth((rectangulo.getLeft()+rectangulo.getRight()-120));*/
-////			tablaEscudo.setWidths(new int[]{200});
-////			tablaEscudo.setTotalWidth(450);
-////			tablaEscudo.getDefaultCell().setFixedHeight(70);
-////			
-////			firmaD=Image.getInstance(path.substring(0,path.lastIndexOf("Documentos"))+sep+"comp"+sep+"img"+sep+"firma_Director.png");
-////			firmaD.setBorder(0);
-////			firmaD.setAbsolutePosition(0, 0);
-////			tablaEscudo.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-////			tablaEscudo.getDefaultCell().setHorizontalAlignment(Element.ALIGN_LEFT);			
-////			
-////			tablaFirmas.setWidths(new int[]{200,200});
-////			tablaFirmas.setTotalWidth(450);
-////			tablaFirmas.setLockedWidth(true);
-////			tablaFirmas.getDefaultCell().setFixedHeight(10);
-////			tablaFirmas.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-//			//tablaEscudo.writeSelectedRows(0, 5, 0, 780 , writer.getDirectContent());
-//		} catch (DocumentException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}catch (Exception e) {
-//			// TODO: handle exception
-//		}
-		
-//        PdfPTable tablaBlanca =new PdfPTable(1);
-//        PdfPCell celdaVacia=new PdfPCell(new Phrase("\n....\n",texto15Blanca));
-//        
-//        celdaVacia.setBorder(Rectangle.NO_BORDER);
-//        tablaBlanca.addCell(celdaVacia);
-//        PdfPCell celdaGenerica=new PdfPCell();
-//        PdfPCell celdaTablaVacia=new PdfPCell(tablaBlanca);
-//        celdaTablaVacia.setBorder(Rectangle.NO_BORDER);
-//        celdaGenerica.setBorder(Rectangle.NO_BORDER);
-		
-//        PdfPCell vacio=new PdfPCell(new Phrase("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
-//        		"\n\n\n\n\n\n\n\n\n\n\n\n\n",texto10n));
-//        vacio.setHorizontalAlignment(Element.ALIGN_LEFT);
-//        vacio.setBorder(Rectangle.NO_BORDER);
-//        
-//        PdfPCell ralla1=new PdfPCell(new Phrase("_______________________________",texto10n));
-//		PdfPCell directorCIDC=new PdfPCell(new Phrase(rbDir.getString("directorCIDC").toUpperCase(),texto10n));
-//		PdfPCell tituloCIDC=new PdfPCell(new Phrase("Director Centro de Investigaciones",texto10));
-//		
-//		ralla1.setHorizontalAlignment(Element.ALIGN_LEFT);
-//		ralla1.setBorder(Rectangle.NO_BORDER);		
-//		
-//		directorCIDC.setHorizontalAlignment(Element.ALIGN_LEFT);
-//		directorCIDC.setBorder(Rectangle.NO_BORDER);		
-//		
-//		tituloCIDC.setHorizontalAlignment(Element.ALIGN_LEFT);
-//		tituloCIDC.setBorder(Rectangle.NO_BORDER);	
-//		
-//		tablaEscudo.addCell(vacio);
-//		tablaEscudo.addCell(firmaD);		
-//		tablaEscudo.addCell(ralla1);		
-//		tablaEscudo.addCell(directorCIDC);		
-//		tablaEscudo.addCell(tituloCIDC);
-		
-	
-		
-		//*********************************+
 		try {
 			certificado.setCuerpo_cer(contenido);
 			inicarDocumentoCertificado(resp,path,certificado.getCod_verificacion());
