@@ -3,6 +3,9 @@ package cidc.general.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
@@ -112,6 +115,7 @@ public class UsuarioDB extends BaseDB{
 	}
 
 
+	@SuppressWarnings("static-access")
 	public Usuario consultar(String nickname,String clave){
 		Connection cn=null;
 		PreparedStatement pst=null;
@@ -144,6 +148,9 @@ public class UsuarioDB extends BaseDB{
 					super.setMensaje("Usuario no encontrado...");
 				else{
 					i=0;
+					pst=cn.prepareStatement(rb.getString("guardarRegistro"));
+					pst.setInt(1, (int) user.getIdUsuario());
+					pst.execute();
 			//		String []perfiles=new String[3];
 			//		System.out.println("Cadena= "+user.getPerfilComp());
 					StringTokenizer token=new StringTokenizer(user.getPerfilComp(),",");
