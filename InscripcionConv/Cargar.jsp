@@ -64,6 +64,12 @@
 					else
 						alert("Para terminar debe cargar los documentos faltantes");
 				}
+				if(numConv==20){
+					if((document.frm11.fichero!=null || document.frm11.fichero!=""))
+						document.finaliza.submit();
+					else
+						alert("Para terminar debe cargar los documentos faltantes");
+				}
 			}
 	}
 
