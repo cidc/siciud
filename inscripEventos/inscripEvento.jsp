@@ -10,7 +10,7 @@
 <fmt:formatDate value="${now}" type="time" timeStyle="short" pattern="yyyy" var="ano"/>
 
 </head>
-	<body onLoad="mensajeAlert(document.getElementById('msg'));">2
+	<body onLoad="mensajeAlert(document.getElementById('msg'));">
 	<br>
 		<table align="center">
 			<tr>
