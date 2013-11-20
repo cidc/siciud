@@ -284,7 +284,7 @@ public class CertificadoDB extends BaseDB{
 				int i=1;
 				proy = new Proyecto();
 				proy.setEstado(rs.getInt(i++));
-				aPaz=((proy.getEstado()!=3&&proy.getEstado()!=7)?false:true);
+				aPaz=((proy.getEstado()!=3)?false:true);
 				if(!aPaz)
 					break;
 			}
@@ -314,6 +314,7 @@ public class CertificadoDB extends BaseDB{
 			rs=ps.executeQuery();
 			while(rs.next()){
 				consec = rs.getString(i++);
+				certificado.setId_certificaciones(Integer.parseInt(consec));
 				certificado.setNombre(rs.getString(i++));
 				certificado.setCedula(rs.getString(i++));
 				certificado.setNumCedDe(rs.getString(i++));

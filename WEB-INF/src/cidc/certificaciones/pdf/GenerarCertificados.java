@@ -87,11 +87,11 @@ public class GenerarCertificados {
 		clausulasinicio.add(new Phrase("\n\nNúmero de Verificación: "+certificado.getCod_verificacion()+"\n",texto10n));
 		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
 		clausulasinicio.add(new Phrase("El(La) investigador(a) ",texto10));
-		clausulasinicio.add(new Phrase("Persona de Prueba",texto10n));
-		clausulasinicio.add(new Phrase(" identificado(a) con la cédula de ciudadanía No.101010101 de Bogota, ",texto10));
+		clausulasinicio.add(new Phrase(certificado.getNombre().toUpperCase(),texto10n));
+		clausulasinicio.add(new Phrase(" identificado(a) con la cédula de ciudadanía "+certificado.getCedula()+" de "+certificado.numCedDe+", ",texto10));
 		clausulasinicio.add(new Phrase("a la fecha, se encuentra a ",texto10));
 		clausulasinicio.add(new Phrase("PAZ Y SALVO",texto10n));
-		clausulasinicio.add(new Phrase(" por concepto de proyectos de investigación en el Centro de Investigación y Desarrollo Científico. ",texto10));
+		clausulasinicio.add(new Phrase(" por todo concepto en el Centro de Investigación y Desarrollo Científico. ",texto10));
 		clausulasinicio.add(new Phrase("Se expide la presente a solicitud del (de la) interesado(a) a los ",texto10));
 		clausulasinicio.add(new Phrase(" "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10));
 		contenido=clausulasinicio.toString();
