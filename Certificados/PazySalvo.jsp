@@ -108,8 +108,8 @@
 				<h3 align="center">Para poder generar un certificado en línea, favor actualizar la información que se encuentra señalada en rojo. Esto lo puede hacer mediante el link "Mis Grupos" del menu principal</h3>
 			</c:if>
 			<c:if test='${!sessionScope.paz}'>
-				<h3 align="center">Lo sentimos, el certificado no se puede generar debido a que usted no se encuentra a paz y salvo.
-						Para solucionar esto por favor comuniquese con el Gestor Académico del CIDC</h3>
+				<h3 align="center">Lo sentimos, el certificado no se puede generar debido a que usted no se encuentra a paz y salvo financiera y/o académicamente.
+						Por favor comuniquese con el Gestor Académico del CIDC</h3>
 			</c:if>
 	</form>
 </fieldset>

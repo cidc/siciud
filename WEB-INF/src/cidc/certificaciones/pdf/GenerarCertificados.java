@@ -92,7 +92,7 @@ public class GenerarCertificados {
 		clausulasinicio.add(new Phrase("a la fecha, se encuentra a ",texto10));
 		clausulasinicio.add(new Phrase("PAZ Y SALVO",texto10n));
 		clausulasinicio.add(new Phrase(" por todo concepto en el Centro de Investigación y Desarrollo Científico. ",texto10));
-		clausulasinicio.add(new Phrase("Se expide la presente a solicitud del (de la) interesado(a) a los ",texto10));
+		clausulasinicio.add(new Phrase("\n\nSe expide la presente a solicitud del (de la) interesado(a) a los ",texto10));
 		clausulasinicio.add(new Phrase(" "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10));
 		contenido=clausulasinicio.toString();
 		
@@ -245,7 +245,7 @@ public class GenerarCertificados {
 			vacia1.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(vacia1);
 			PdfPCell fecha = new PdfPCell((new Phrase("Nota 1: Este certificado fue firmado digitalmente el "+global.getDiaHoy()+" días del mes de "
-					+global.getNombreMesHoy()+" de "+global.getAnoHoy()+", en ejercicio de la autorizacion establecida en la resolución de rectoria No. 413 del " +
+					+global.getNombreMesHoy()+" de "+global.getAnoHoy()+", en ejercicio de la autorización establecida en la resolución de rectoría No. 413 " +
 							"del 17 de Julio de 2013\n\n",texto10)));
 			fecha.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			fecha.setBorder(Rectangle.NO_BORDER);
