@@ -29,6 +29,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.Barcode128;
+import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -84,9 +85,9 @@ public class GenerarCertificados {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		String formattedDate = sdf.format(date);		
-		clausulasinicio.add(new Phrase("\n\nNúmero de Verificación: "+certificado.getCod_verificacion()+"\n",texto10n));
-		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
-		clausulasinicio.add(new Phrase("El(La) investigador(a) ",texto10));
+//		clausulasinicio.add(new Phrase("\n\nNúmero de Verificación: "+certificado.getCod_verificacion()+"\n",texto10n));
+//		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
+		clausulasinicio.add(new Phrase("\n\n\n\nEl(La) investigador(a) ",texto10));
 		clausulasinicio.add(new Phrase(certificado.getNombre().toUpperCase(),texto10n));
 		clausulasinicio.add(new Phrase(" identificado(a) con la cédula de ciudadanía "+certificado.getCedula()+" de "+certificado.numCedDe+", ",texto10));
 		clausulasinicio.add(new Phrase("a la fecha, se encuentra a ",texto10));
@@ -174,7 +175,7 @@ public class GenerarCertificados {
 		PdfPTable tablaEscudo =new PdfPTable(1);
 		tablaEscudo.setWidths(new float[]{(rectangulo.getLeft()+rectangulo.getRight()-120)});
 		tablaEscudo.setTotalWidth((rectangulo.getLeft()+rectangulo.getRight()-120));
-		tablaEscudo.getDefaultCell().setFixedHeight(70);
+		//tablaEscudo.getDefaultCell().setFixedHeight(70);
 					
 		try {				
 			
@@ -183,7 +184,17 @@ public class GenerarCertificados {
 			tablaEscudo.getDefaultCell().setBorder(Rectangle.NO_BORDER);
 			tablaEscudo.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
 			tablaEscudo.addCell(escudo);
-			tablaEscudo.addCell(codigoBarras(codigo));
+			PdfPTable codigos = new PdfPTable(2);
+			codigos.addCell(codigoBarras(codigo));
+			
+	        //BarcodeQRCode qrcode = new BarcodeQRCode("hola mundo", 1, 1, null);
+	        Image img = Image.getInstance("D:/Users/Administrador/Desktop/qr_img.png");
+	        img.scalePercent(30);
+	        PdfPCell Qr =new PdfPCell(img);
+	        Qr.setHorizontalAlignment(Element.ALIGN_RIGHT);
+	        Qr.setBorder(Rectangle.NO_BORDER);
+	        codigos.addCell(Qr);
+	        tablaEscudo.addCell(codigos);
 			c0=new PdfPCell(new Paragraph("\nEL SUSCRITO DIRECTOR DEL",texto11n));
 			c0.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c0.setBorder(Rectangle.NO_BORDER);
@@ -198,7 +209,7 @@ public class GenerarCertificados {
 			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c2.setBorder(Rectangle.NO_BORDER);
 			tablaEscudo.addCell(c2);
-			tablaEscudo.writeSelectedRows(0, 5, 72, 780 , writer.getDirectContent());
+			tablaEscudo.writeSelectedRows(0, 5, 72, 790 , writer.getDirectContent());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -408,6 +419,7 @@ public class GenerarCertificados {
 	  image.setAlignment(Element.ALIGN_LEFT);
 	  PdfPCell cell = new PdfPCell(image);
 	  cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+	  cell.setVerticalAlignment(Element.ALIGN_CENTER);
 	  cell.setBorder(Rectangle.NO_BORDER);
 	  return cell;
 	}
