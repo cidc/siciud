@@ -188,7 +188,7 @@ public class GenerarCertificados {
 			codigos.addCell(codigoBarras(codigo));
 			
 	        //BarcodeQRCode qrcode = new BarcodeQRCode("hola mundo", 1, 1, null);
-	        Image img = Image.getInstance("D:/Users/Administrador/Desktop/qr_img.png");
+	        Image img = Image.getInstance(path.substring(0,path.lastIndexOf("Documentos"))+sep+"comp"+sep+"img"+sep+"qr_img.png");
 	        img.scalePercent(30);
 	        PdfPCell Qr =new PdfPCell(img);
 	        Qr.setHorizontalAlignment(Element.ALIGN_RIGHT);
