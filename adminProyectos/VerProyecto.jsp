@@ -106,6 +106,7 @@
 							</c:if>
 							</td>
 							<td ><c:out value="${sessionScope.proyecto.numConvocatoria} - ${sessionScope.proyecto.convocatoria}"/></td>
+							<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
 							<td width="125px" align="center">
 								<select name="estado">
 									  <option value="0" <c:if test="${sessionScope.proyecto.estado==0}">selected</c:if>>------------</option>
@@ -118,6 +119,19 @@
 			                          <option value="7" <c:if test="${sessionScope.proyecto.estado==7}">selected</c:if>>Proc. Finalización</option>
 								</select>
 							</td>
+							</c:if>
+							<c:if test="${sessionScope.loginUsuario.idUsuario!=5452 and sessionScope.loginUsuario.idUsuario!=3944}">
+							<td width="125px" align="center">
+									  <c:if test="${sessionScope.proyecto.estado==0}">------------</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==1}">Aprobado</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==2}">Vigente</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==3}">Finalizado</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==4}">Cancelado </c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==5}">En Prueba</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==6}">Aplazado</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==7}">Proc. Finalización</c:if>
+							</td>
+							</c:if>
 						</tr>
 				</table>
 			</td>
@@ -133,7 +147,6 @@
 
 	<form name="estadoBandera" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
      	<input type="hidden" name="accion" value="5">
-     	<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
      		<table width="95%" class="tablas" align="center">
      			<CAPTION>Estado de revisión del proyecto</CAPTION>
   					<tr>
@@ -161,10 +174,11 @@
      				<td>Necesita atención del Comité de investigaciones</td>
      			</tr>
      			<tr>
+     			<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
 	     			<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Guardar.gif"/>'></td>
+	     		</c:if>
      			</tr>
      		</table>
-     		</c:if>
      	</form>
 
      	<form name="observProyect" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
