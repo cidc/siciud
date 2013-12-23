@@ -1,6 +1,5 @@
 package cidc.certificaciones.pdf;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,8 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import cidc.certificaciones.obj.CertificacionesOBJ;
 import cidc.general.obj.Globales;
-import cidc.proyectosGeneral.obj.CoInvest;
-import cidc.proyectosGeneral.obj.Proyecto;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -29,18 +26,12 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.Barcode128;
-import com.itextpdf.text.pdf.BarcodeQRCode;
-import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
-import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.RandomAccessFileOrArray;
-import com.itextpdf.text.pdf.codec.TiffImage;
-import com.lowagie.text.Watermark;
 
 public class GenerarCertificados {
 

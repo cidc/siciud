@@ -7,7 +7,7 @@
 
 	<!-- Duración de la sesion-->
 	<session-config>
-		<session-timeout>35</session-timeout>
+		<session-timeout>120</session-timeout>
 	</session-config>
 	<!-- Duración de la sesion-->
 
