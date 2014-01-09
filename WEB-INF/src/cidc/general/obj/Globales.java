@@ -367,7 +367,7 @@ public class Globales{
 		int year=cal.get(Calendar.YEAR);
 		Formatter fmt = new Formatter();
 		fmt.format("%04d",Integer.parseInt(cod));
-		cod="CIDC_"+fmt+"_"+year;
+		cod="VIICEPS_"+fmt+"_"+year;
 		System.out.println("El numero formateado " + cod);
 		return cod;
 	}
