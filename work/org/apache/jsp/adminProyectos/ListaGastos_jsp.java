@@ -78,8 +78,8 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       cidc.general.obj.Globales globales = null;
       synchronized (_jspx_page_context) {
@@ -90,19 +90,19 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
         }
       }
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("\">\n");
+      out.write("\">\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
       out.write("\">\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction comando(id){\r\n");
       out.write("\t\tdocument.gastos.accion.value=id;\r\n");
@@ -118,18 +118,18 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\tdocument.gastos.submit();\r\n");
       out.write("\t\t}\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
-      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
+      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\"> \r\n");
       out.write("\r\n");
       out.write("\t<form name=\"gastos\" method=\"post\" action='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
-      out.write("'>\n");
-      out.write("\t<!--");
+      out.write("'>\r\n");
+      out.write("\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
-      out.write("-->\n");
+      out.write("\r\n");
       out.write("\t<input type=\"hidden\" name=\"accion\" value='8'>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"idGasto\" value=''>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"id\" value='");
@@ -139,9 +139,9 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<input type=\"hidden\" name=\"idRub\" value='");
       if (_jspx_meth_c_005fout_005f1(_jspx_page_context))
         return;
-      out.write("'>\n");
+      out.write("'>\r\n");
       out.write("\t\t\r\n");
-      out.write("\t\t<div align=\"center\" class=\"\">\n");
+      out.write("\t\t<div align=\"center\" class=\"\">\r\n");
       out.write("\t\t");
       //  c:if
       org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
@@ -152,13 +152,13 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
       if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t<fieldset style=\"width:1000px;\">\r\n");
           out.write("\t        <table align=\"center\" class=\"tablas\" width=\"95%\" >\t        \r\n");
           out.write("\t        <caption >Listado de Gastos Rubro ");
           if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fif_005f1, _jspx_page_context))
             return;
-          out.write("</caption>\n");
+          out.write("</caption>\r\n");
           out.write("\t\t\t\t");
           //  display:table
           org.displaytag.tags.TableTag _jspx_th_display_005ftable_005f0 = (org.displaytag.tags.TableTag) _005fjspx_005ftagPool_005fdisplay_005ftable_0026_005fstyle_005frequestURI_005fpagesize_005fname_005fid_005fexport_005fclass.get(org.displaytag.tags.TableTag.class);
@@ -190,43 +190,43 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
             data = (java.lang.Object) _jspx_page_context.findAttribute("data");
             data_rowNum = (java.lang.Integer) _jspx_page_context.findAttribute("data_rowNum");
             do {
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t");
               if (_jspx_meth_display_005fsetProperty_005f0(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\t\t \t\t\t\t \t\n");
+              out.write("\t\t \t\t\t\t \t\r\n");
               out.write("\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f0(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f1(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f2(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f3(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f4(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f5(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f6(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\t\t\t\t\t  \t\t\t\t\n");
+              out.write("\t\t\t\t\t  \t\t\t\t\r\n");
               out.write("\t\t\t    \t\t");
               if (_jspx_meth_display_005fsetProperty_005f1(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t");
               int evalDoAfterBody = _jspx_th_display_005ftable_005f0.doAfterBody();
               data = (java.lang.Object) _jspx_page_context.findAttribute("data");
@@ -244,7 +244,7 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
           }
           _005fjspx_005ftagPool_005fdisplay_005ftable_0026_005fstyle_005frequestURI_005fpagesize_005fname_005fid_005fexport_005fclass.reuse(_jspx_th_display_005ftable_005f0);
           out.write("\t\r\n");
-          out.write("\t\t\t</table>\n");
+          out.write("\t\t\t</table>\r\n");
           out.write("\t\t</fieldset>\r\n");
           out.write("\t\t");
           int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
@@ -257,7 +257,7 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       }
       _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
-      out.write("\n");
+      out.write("\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</form>\r\n");
       out.write("\t");
@@ -392,25 +392,25 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /adminProyectos/ListaGastos.jsp(28,5) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto.estado==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminProyectos/ListaGastos.jsp(28,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto.estado!=3}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("-->\n");
-        out.write("\t\t<table>\n");
-        out.write("\t\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t<table>\r\n");
+        out.write("\t\t\t<tr>\r\n");
         out.write("\t\t\t\t<td><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f4(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' onclick=\"comando(12)\"></td>\t\t\t\t\n");
+        out.write("' onclick=\"comando(12)\"></td>\t\t\t\t\r\n");
         out.write("\t\t\t\t<td><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f5(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' onclick=\"comando(10)\"></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t</table>\n");
-        out.write("\t<!--");
+        out.write("' onclick=\"comando(10)\"></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table>\r\n");
+        out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -743,11 +743,11 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
         _jspx_th_display_005fcolumn_005f5.doInitBody();
       }
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t\t");
         if (_jspx_meth_c_005fif_005f2(_jspx_th_display_005fcolumn_005f5, _jspx_page_context))
           return true;
-        out.write("\t\t\t\t\t\t\n");
+        out.write("\t\t\t\t\t\t\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_display_005fcolumn_005f5.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -778,14 +778,14 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
     if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t\t\t<img src='");
         if (_jspx_meth_c_005furl_005f6(_jspx_th_c_005fif_005f2, _jspx_page_context))
           return true;
         out.write("' onclick='eliminar(\"");
         if (_jspx_meth_c_005fout_005f5(_jspx_th_c_005fif_005f2, _jspx_page_context))
           return true;
-        out.write("\")'>\n");
+        out.write("\")'>\r\n");
         out.write("\t\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -858,23 +858,23 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
         _jspx_th_display_005fcolumn_005f6.doInitBody();
       }
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t");
         if (_jspx_meth_c_005fif_005f3(_jspx_th_display_005fcolumn_005f6, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t");
         if (_jspx_meth_c_005fif_005f4(_jspx_th_display_005fcolumn_005f6, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t");
         if (_jspx_meth_c_005fif_005f5(_jspx_th_display_005fcolumn_005f6, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t");
         if (_jspx_meth_c_005fif_005f6(_jspx_th_display_005fcolumn_005f6, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_display_005fcolumn_005f6.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -905,11 +905,11 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
     if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t\t<img src='");
         if (_jspx_meth_c_005furl_005f7(_jspx_th_c_005fif_005f3, _jspx_page_context))
           return true;
-        out.write("' alt=\"Proyecto Investigación\" title=\"Proyecto Investigación\">\n");
+        out.write("' alt=\"Proyecto Investigación\" title=\"Proyecto Investigación\">\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f3.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -956,11 +956,11 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
     if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t\t<img src='");
         if (_jspx_meth_c_005furl_005f8(_jspx_th_c_005fif_005f4, _jspx_page_context))
           return true;
-        out.write("' alt=\"Biblioteca\" title=\"Biblioteca\">\n");
+        out.write("' alt=\"Biblioteca\" title=\"Biblioteca\">\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f4.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1007,11 +1007,11 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
     if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t\t<img src='");
         if (_jspx_meth_c_005furl_005f9(_jspx_th_c_005fif_005f5, _jspx_page_context))
           return true;
-        out.write("' alt=\"Grupo Investigación\" title=\"Grupo Investigación\">\n");
+        out.write("' alt=\"Grupo Investigación\" title=\"Grupo Investigación\">\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f5.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1058,11 +1058,11 @@ public final class ListaGastos_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
     if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t\t<img src='");
         if (_jspx_meth_c_005furl_005f10(_jspx_th_c_005fif_005f6, _jspx_page_context))
           return true;
-        out.write("' alt=\"Almacen\" title=\"Almacen\">\n");
+        out.write("' alt=\"Almacen\" title=\"Almacen\">\r\n");
         out.write("\t\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f6.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
