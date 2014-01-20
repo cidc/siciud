@@ -250,7 +250,7 @@ public class GruposGestionDB extends BaseDB{
 		EnvioMail envioMail=new EnvioMail("general");
 		//System.out.println("Bandera 9-2");
 		StringBuffer texto=new StringBuffer();
-		texto.append("<br>CIDC-SI "+datos[0]+"-"+global.getAnoCortoHoy()+"<br><br>");
+		texto.append("<br>SICIUD-"+datos[0]+"-"+global.getAnoCortoHoy()+"<br><br>");
 		texto.append(rb.getString("cg1"));
 		texto.append(" "+datos[2]);
 		texto.append(rb.getString("cg2"));

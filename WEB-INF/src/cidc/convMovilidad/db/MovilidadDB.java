@@ -487,7 +487,7 @@ public class MovilidadDB extends BaseDB{
 		Globales gl=new Globales();
 		//System.out.println("bandera 3");
 		StringBuffer texto=new StringBuffer();
-		texto.append("<b>CIDC "+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
+		texto.append("<b>SICIUD"+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
 		texto.append(rb1.getString("rp1")+"  <b>"+persona.getNombre()+"</b>");
 		texto.append(rb1.getString("rp2"));
 		texto.append(rb1.getString("e1"));

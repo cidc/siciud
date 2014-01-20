@@ -19,7 +19,7 @@ public class EnvioMail {
 	private String usuario=null;
 	private String clave=null;
 	private String de=null;
-	private String smtpHost="mail.udistrital.edu.co";
+	private String smtpHost="smtp.gmail.com";
 	private ResourceBundle rb=ResourceBundle.getBundle("cidc.general.conect");
 
 	private class Autenticador extends Authenticator{
@@ -31,7 +31,7 @@ public class EnvioMail {
 	public EnvioMail(String cuenta){
 		this.usuario=rb.getString(cuenta);
 		this.clave=rb.getString(cuenta+"Key");
-		this.de="Centro Investigaciones SICIUD<"+usuario+">";
+		this.de="Dirección de la gestión de programas científicos de investigación de pregrado y postgrado<"+usuario+">";
 	}
 
 	public boolean enviar(String[] destinatarios, String asunto, String texto) throws MessagingException,AddressException{
@@ -45,6 +45,7 @@ public class EnvioMail {
 		Properties propiedades=System.getProperties();
 		propiedades.put("mail.smtp.host",smtpHost);
 		propiedades.put("mail.smtp.auth","true");
+		propiedades.put("mail.smtp.starttls.enable","true");
 		Authenticator identificador =new Autenticador();
 		Session sesion=Session.getInstance(propiedades,identificador);
 

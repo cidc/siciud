@@ -87,7 +87,7 @@
 		<input type="hidden" name="accion" value="2">
 		<table width="150px" align="left">
 			<tr><td colspan="3" align="center"><br><input type="image" src='<c:url value="/comp/img/RecuperarClave.png"/>'></td></tr>
-		</table>
+		</table> 
 	</form>
 	</td></tr>
 </table>

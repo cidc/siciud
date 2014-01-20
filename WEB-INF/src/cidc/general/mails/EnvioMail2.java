@@ -24,7 +24,7 @@ public class EnvioMail2 {
 	private String usuario=null;
 	private String clave=null;
 	private String de=null;
-	private String smtpHost="mail.udistrital.edu.co";
+	private String smtpHost="smtp.gmail.com";
 	private ResourceBundle rb=ResourceBundle.getBundle("cidc.general.conect");;
 
 	private class Autenticador extends Authenticator{
@@ -40,7 +40,7 @@ public class EnvioMail2 {
 		//System.out.println("Bandera 9-1-2 "+usuario);
 		this.clave=rb.getString(cuenta+"Key");
 		//System.out.println("Bandera 9-1-3 "+clave);
-		this.de="Centro Investigaciones SICIUD<"+usuario+">";
+		this.de="Dirección de la gestión de programas científicos de investigación de pregrado y postgrado<"+usuario+">";
 		//System.out.println("desde "+this.de);
 	}
 
@@ -70,6 +70,7 @@ public class EnvioMail2 {
 		propiedades.put("mail.smtp.host",smtpHost);
 		propiedades.put("mail.smtp.auth","true");
 		propiedades.put("mail.smtp.port","25");
+		propiedades.put("mail.smtp.starttls.enable","true");
 		Authenticator identificador =new Autenticador();
 		Session sesion=Session.getDefaultInstance(propiedades,identificador);
 	//	sesion.setDebug(true);

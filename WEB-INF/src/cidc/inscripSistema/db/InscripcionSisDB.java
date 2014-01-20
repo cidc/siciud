@@ -176,7 +176,7 @@ public class InscripcionSisDB extends BaseDB{
 		String []direccion={mail};
 		StringBuffer texto=new StringBuffer();
 		Globales global=new Globales();
-		texto.append("CIDC-SI "+idMail+"-"+global.getAnoCortoHoy()+"<br><br>");
+		texto.append("SICIUD-"+idMail+"-"+global.getAnoCortoHoy()+"<br><br>");
 
 		texto.append(rb.getString("is1"));
 		texto.append(nombre);
