@@ -32,5 +32,11 @@ public class Operaciones {
 		else
 			return true;
 	}
+	
+	public int anoActual(){
+		Calendar c1=Calendar.getInstance();
+		int fechaActual=c1.get(Calendar.YEAR);
+		return fechaActual;
+	}
 
 }

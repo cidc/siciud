@@ -50,7 +50,7 @@ public class CorrespondenciaDB extends BaseDB{
 		return registro;
 	}
 	
-	public boolean insertarRegistro(String remitente, String dest, String obs){
+	public boolean insertarRegistro(String remitente, String dest, String obs, int year){
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -70,6 +70,7 @@ public class CorrespondenciaDB extends BaseDB{
 			ps.setString(3, remitente);
 			ps.setString(4, dest);
 			ps.setString(5, obs);
+			ps.setInt(6, year);
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {

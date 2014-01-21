@@ -36,7 +36,7 @@ public class Correspondencia extends ServletGeneral{
 			}
 			usuario = cons.consultaUsuario(usuario);
 			if (cons.insertarRegistro(usuario.getNombre(), req.getParameter("destinatario"),
-					req.getParameter("observaciones"))) {
+					req.getParameter("observaciones"),otr.anoActual())) {
 				cons.aumentaConsecutivo();
 				mensaje = "El consecutivo se ha registrado correctamente";
 			} else
