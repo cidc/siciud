@@ -108,7 +108,43 @@
 		</table>
 		</td>
 	</tr>
-
+	</table>
+	<table class="tablas" align="center" width="90%">
+<form action='<c:url value="/GestionGeneralProyectos/CargarDocumento.x"/>' name="frmCargaDoc" method="post" enctype="multipart/form-data" accept="utf-8" accept-charset="utf-8">
+		<input type="hidden" name="accion" value="1">
+		<table align="center" width="90%" class="tablas">
+		<caption>Cargar Documento</caption>
+			<tr>
+				<td colspan="2">
+					<table width="100%" border="1">
+						<tr>
+							<th>Tipo</th>
+							<td>
+								<select name="tipo" style="width:120px;" onchange="cambioTipo(this)" >
+									<option value="0">----------------</option>
+									<option value="2">Informe Final</option>
+									<option value="3">Informe Parcial</option>
+								</select>		
+								<th ><b>Documento</b></th>
+								<td ><input type="file" name="archivo" style="width: 100%"></td>						
+							</td>
+						</tr>					
+					</table>
+				</td>
+			</tr>			
+			<tr>
+				<th colspan="2"><b>Observaciones</b></th>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="observaciones" ></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="enviarDocumento()"></td>
+			</tr>
+		</table>
+	</form>
+	</table>
+	<table class="tablas" align="center" width="90%">
 	<tr>
 		<td>
 		<table width="100%">
@@ -252,6 +288,7 @@
 		</td>
 	</tr>
 	</c:if>
+	
 </table>
 </form>
 
