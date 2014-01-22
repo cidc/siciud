@@ -12,6 +12,29 @@
 		    document.formTab.accion.value = num;
 			document.formTab.submit();
 		}
+	    
+	    function enviarDocumento(){
+	    	alert("entre");
+			var msg="";
+				document.frmCargaDoc.accion.value="4";	
+			if(document.frmCargaDoc.archivo.value=="")
+				msg=msg+"-) Seleccionar un documento para cargar\n";
+			else{
+				archi=document.frmCargaDoc.archivo.value;
+				var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
+				if(!(ext==".pdf"))
+					msg=msg+"-) El archivo debe ser en formato PDF\n";
+			}
+			if(document.frmCargaDoc.observaciones.value=="")
+				msg=msg+"-) Observaciones del documento\n";
+			if(msg!=""){
+				msg="Los siguientes campos son obligatorios\n"+msg;	
+				alert(msg);
+			}else{
+				document.frmCargaDoc.submit();
+			}
+			
+		}
 </script>
 <c:import url="/general.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -31,7 +54,8 @@
 </form>
 
 <br>
-<form name="form1">
+<form action='<c:url value="/GestionProyectos/ProyectosInvestigador.x"/>' name="frmCargaDoc" method="post" enctype="multipart/form-data" accept="utf-8" accept-charset="utf-8">
+<input type="hidden" name="accion" value="1">
 <table class="tablas" align="center" width="90%">
 	<CAPTION>Consulta Proyecto de Investigación</CAPTION>
 	<tr>
@@ -110,8 +134,6 @@
 	</tr>
 	</table>
 	<table class="tablas" align="center" width="90%">
-<form action='<c:url value="/GestionGeneralProyectos/CargarDocumento.x"/>' name="frmCargaDoc" method="post" enctype="multipart/form-data" accept="utf-8" accept-charset="utf-8">
-		<input type="hidden" name="accion" value="1">
 		<table align="center" width="90%" class="tablas">
 		<caption>Cargar Documento</caption>
 			<tr>
@@ -142,7 +164,6 @@
 				<td colspan="2" align="center"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="enviarDocumento()"></td>
 			</tr>
 		</table>
-	</form>
 	</table>
 	<table class="tablas" align="center" width="90%">
 	<tr>

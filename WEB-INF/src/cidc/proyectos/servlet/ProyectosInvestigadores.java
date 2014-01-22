@@ -12,6 +12,7 @@ import org.displaytag.util.ParamEncoder;
 
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
+import cidc.general.obj.CargarDocumento;
 import cidc.general.servlet.ServletGeneral;
 import cidc.proyectos.db.ProyectosInvestigadorDB;
 import cidc.proyectos.obj.BalanceGeneral;
@@ -37,6 +38,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 		ProyectosInvestigadorDB proyectosDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
 		ProyectosGeneralDB proyGeneral=new ProyectosGeneralDB(cursor, usuario.getPerfil());
 		ProyectoGenerico proyecto =null;
+		String path=super.context.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
 		if(sesion.getAttribute("proyectoInvestigador")!=null)
 			proyecto = (ProyectoGenerico)sesion.getAttribute("proyectoInvestigador");
 		if(req.getParameter("accion")!=null)
@@ -98,6 +100,13 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			case Parametros.infoRubroSolicitado:
 				System.out.println("ingreso al servlet");
 				irA="/grupos/proyectos/InfoSolicitud.jsp";
+				break;
+			case Parametros.cargarInforme:
+				String nombre="Informe_"+proyecto.getIdProyecto()+"_"; 
+			if(proyGeneral.nuevaCargaDocProyecto(cargaDocumento(path,nombre,"Proyectos/Informes",archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacion,proyecto),proyecto,usuario.getIdUsuario()))
+					mensaje="Documento Cargado Satisfactoriamente";
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));
