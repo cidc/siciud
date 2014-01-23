@@ -14,9 +14,7 @@
 		}
 	    
 	    function enviarDocumento(){
-	    	alert("entre");
 			var msg="";
-				document.frmCargaDoc.accion.value="4";	
 			if(document.frmCargaDoc.archivo.value=="")
 				msg=msg+"-) Seleccionar un documento para cargar\n";
 			else{
@@ -54,8 +52,8 @@
 </form>
 
 <br>
-<form action='<c:url value="/GestionProyectos/ProyectosInvestigador.x"/>' name="frmCargaDoc" method="post" enctype="multipart/form-data" accept="utf-8" accept-charset="utf-8">
-<input type="hidden" name="accion" value="1">
+<form action='<c:url value="/proyectos/CargarInformes.x"/>' name="frmCargaDoc" method="post" enctype="multipart/form-data" accept="utf-8" accept-charset="utf-8">
+<input type="hidden" name="accion" value="28">
 <table class="tablas" align="center" width="90%">
 	<CAPTION>Consulta Proyecto de Investigación</CAPTION>
 	<tr>

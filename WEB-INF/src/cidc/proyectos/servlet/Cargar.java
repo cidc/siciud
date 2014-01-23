@@ -14,6 +14,11 @@ import cidc.general.servlet.ServletGeneral;
 import cidc.proyectos.obj.Contratacion;
 
 public class Cargar extends ServletGeneral{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 		String irA="/grupos/proyectos/ListaGastos.jsp";
 		cursor=new CursorDB();

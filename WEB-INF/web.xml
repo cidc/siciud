@@ -848,4 +848,12 @@
 		<servlet-name>correspondencia</servlet-name>
 		<url-pattern>/Consecutivo/correspondencia.x</url-pattern>
 	</servlet-mapping>
+	<servlet>
+	  <servlet-name>ArchivoInformes</servlet-name>
+	  <servlet-class>cidc.proyectos.servlet.CargarInformes</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ArchivoInformes</servlet-name>
+	  <url-pattern>/proyectos/CargarInformes.x</url-pattern>
+	</servlet-mapping>
 </web-app>
