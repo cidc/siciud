@@ -142,8 +142,8 @@
 							<td>
 								<select name="tipo" style="width:120px;" onchange="cambioTipo(this)" >
 									<option value="0">----------------</option>
-									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>
+									<option value="2">Informe Final</option>
 								</select>		
 								<th ><b>Documento</b></th>
 								<td ><input type="file" name="archivo" style="width: 100%"></td>						
@@ -222,8 +222,14 @@
 		  			<img border=0 src='<c:url value="/comp/img/equis1.png"/>'>
 		  		</c:if>
 		  		<c:if test='${lista.nombreArchivo!="" && lista.nombreArchivo!=null}'>
-		  			<c:if test='${lista.tipo==2||lista.tipo==3}'>	
+		  			<c:if test='${sessionScope.proyectoInvestigador.tipo==1&&(lista.tipo==3||lista.tipo==2)}'>	
+		  			<a href='<c:url value="/Documentos/Proyectos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+		  			<c:if test='${sessionScope.proyectoInvestigador.tipo==2&&lista.tipo==3}'>	
 		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+					 <c:if test='${sessionScope.proyectoInvestigador.tipo==2&&lista.tipo==2}'>	
+		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/InformesFinales/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
 				  	<c:if test='${lista.tipo==1 and lista.tipoProyecto==2}'>
 					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>

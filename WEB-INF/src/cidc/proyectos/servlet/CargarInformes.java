@@ -15,10 +15,12 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import cidc.adminInformes.obj.Parametros;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.obj.CargarDocumento;
+import cidc.general.obj.Globales;
 import cidc.general.servlet.ServletGeneral;
 import cidc.proyectos.db.ProyectosInvestigadorDB;
 import cidc.proyectos.obj.ProyectoGenerico;
@@ -42,8 +44,8 @@ public class CargarInformes extends ServletGeneral{
 		int accion=0;
 		HttpSession sesion=req.getSession();
 		usuario=(Usuario)sesion.getAttribute("loginUsuario");
-		ProyectosInvestigadorDB proyectosDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
 		ProyectosGeneralDB proyGeneral=new ProyectosGeneralDB(cursor, usuario.getPerfil());
+		ProyectosInvestigadorDB proyectosDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
 		ProyectoGenerico proyecto =null;
 		String path=super.context.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
 		if(sesion.getAttribute("proyectoInvestigador")!=null)
@@ -53,7 +55,6 @@ public class CargarInformes extends ServletGeneral{
 		FileItem archivoAdj=null;
         cursor=new CursorDB();
         proyectoGeneralDB=new ProyectosGeneralDB(cursor,usuario.getPerfil());
-        
         mensaje="";        	
 
 		if (ServletFileUpload.isMultipartContent(req)){
@@ -92,27 +93,27 @@ public class CargarInformes extends ServletGeneral{
 		String carpeta="";
 		if(proyecto.getTipo()==1)
 			carpeta="Proyectos/Informes";
-		else
-			carpeta="ProyectosAntiguos/Informes";
+		else {
+			if (docNuevo.getTipo()!=2) {
+				carpeta = "ProyectosAntiguos/Informes";
+			}else
+				carpeta = "ProyectosAntiguos/InformesFinales";
+		}
 		switch(accion){
 			case cidc.proyectos.obj.Parametros.cargarInforme:
-				String nombre="Informe_"+proyecto.getIdProyecto()+"_"+proyGeneral.getIdNuevoDoc(cidc.adminInformes.obj.Parametros.insertarDocumentoActaFinalizacion,proyecto.getTipo());
-				CargarDocumento crg= new CargarDocumento();
-				ExtraDocProyecto doc=new ExtraDocProyecto();
-				if(crg.cargar(req, nombre, carpeta)){
-					Proyecto proy =new Proyecto();
-					proy.setClaseProyecto(proyecto.getTipo());
-					proy.setId((int)proyecto.getIdProyecto());
-					proyGeneral.nuevaCargaDocProyecto(doc, proy, usuario.getIdUsuario());
-//					sesion.setAttribute("proyectoDocumentos", proyGeneral.getListaDocAnexos(Long.parseLong(req.getParameter("id")),Integer.parseInt(req.getParameter("tipo"))));
-//					sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo")));
+				String nombre="Informe_"+proyecto.getIdProyecto()+"_";
+				Proyecto proy =new Proyecto();
+				proy.setClaseProyecto(proyecto.getTipo());
+				proy.setId((int)proyecto.getIdProyecto());
+				docNuevo.setFechaDoc(new Globales().getFechaSimpleHoy());
+				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta,archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacion,proy),proy,usuario.getIdUsuario())){
+					sesion.setAttribute("proyectoDocumentos", proyGeneral.getListaDocAnexos(((proyecto.getIdProyecto())),proyecto.getTipo()));
+					sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(String.valueOf(proyecto.getIdProyecto()),String.valueOf(proyecto.getTipo())));
 					mensaje="Documento Cargado Satisfactoriamente";
-				}
-				else
+				}else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 				irA="/grupos/proyectos/VerProyecto.jsp";
-				break;
-					
+				break;		
 		}
 
 		retorno[0]="desviar";
@@ -120,5 +121,22 @@ public class CargarInformes extends ServletGeneral{
 		retorno[2]=mensaje;
 		return retorno;
 		}
+	
+	public ExtraDocProyecto cargaDocumento(String path, String nombre,String carpeta,FileItem archivoAdj, ExtraDocProyecto documento, int tipo, Proyecto proyecto){ 
+		cursor=new CursorDB();
+		if(documento!=null){			
+			 try {
+				 documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,proyectoGeneralDB.getIdNuevoDoc(tipo,proyecto.getClaseProyecto())));
+				  mensaje="Documento Cargado Satisfactoriamente";
+		     } catch (Exception e) {
+				// TODO Auto-generated catch block
+				baseDB=new BaseDB(cursor,1);
+				baseDB.lanzaExcepcion(e);
+				mensaje="No se pudo completar la carga del documento\nFavor volver a intentar";
+			}
+	       // req.setAttribute("archivos",inscripcionConvDB.getInfoArchivos(""+idProp));		        
+		}
+		return documento;
+	}
 
 }

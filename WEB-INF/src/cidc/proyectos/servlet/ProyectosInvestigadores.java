@@ -108,30 +108,6 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				System.out.println("ingreso al servlet");
 				irA="/grupos/proyectos/InfoSolicitud.jsp";
 				break;
-			case Parametros.cargarInforme:
-				String nombre="Informe_"+proyecto.getIdProyecto()+"_"+proyGeneral.getIdNuevoDoc(cidc.adminInformes.obj.Parametros.insertarDocumentoActaFinalizacion,proyecto.getTipo());
-				CargarDocumento crg= new CargarDocumento();
-				ExtraDocProyecto doc=new ExtraDocProyecto();
-				if(crg.cargar(req, nombre, "Proyectos/Informes")){
-					doc=obtenerDatos(req, doc);
-//					System.out.println(req.getParameter("tipo"));
-//					doc.setTipo(Integer.parseInt(req.getParameter("tipo")));
-//					doc.setNombreArchivo(nombre);
-//					doc.setFechaDoc("123456");
-//					doc.setObservaciones(req.getParameter("observaciones"));
-//					doc.setEstado(1);//hace referencia al estado "Revisado"
-					Proyecto proy =new Proyecto();
-					proy.setClaseProyecto(proyecto.getTipo());
-					proy.setId((int)proyecto.getIdProyecto());
-					proyGeneral.nuevaCargaDocProyecto(doc, proy, usuario.getIdUsuario());
-//					sesion.setAttribute("proyectoDocumentos", proyGeneral.getListaDocAnexos(Long.parseLong(req.getParameter("id")),Integer.parseInt(req.getParameter("tipo"))));
-//					sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo")));
-					mensaje="Documento Cargado Satisfactoriamente";
-				}
-				else
-					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
-				irA="/grupos/proyectos/VerProyecto.jsp";
-				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));
 			irA="/grupos/proyectos/ListaProyectos.jsp";
