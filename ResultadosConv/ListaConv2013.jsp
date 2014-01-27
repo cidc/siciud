@@ -49,8 +49,6 @@
 				</table>
 			</td>
 		</tr>
-<<<<<<< HEAD
-=======
 		<tr class="trb">
 			<td class="texto">03-2013</td>
 			<td class="texto" width="450px"><p class="parjust">Apoyo para la socialización, divulgación y difusión de resultados de proyectos de investigación o creación, alcanzados por estudiantes que se encuentren registrados en el sistema de investigaciones de la Universidad Distrital Francisco José de Caldas a ser presentados en eventos académicos, científicos, artísticos y culturales nacionales o internacionales.<p></td>
@@ -123,7 +121,6 @@
 				</table>
 			</td>
 		</tr>
->>>>>>> master
 	</table>
 </form>
 </body>
