@@ -179,7 +179,7 @@
 				        <table  align="center" width="400px">
 			        		<tr>
 			        			<td align="center">
-			        				<input type="image"  src="<c:url value="/comp/img/Inscripcion.gif"/>" >
+			        				<input type="image"  src="<c:url value="/comp/img/Inscribir.gif"/>" >
 					        	</td>
 					       </tr>
 					     </table>

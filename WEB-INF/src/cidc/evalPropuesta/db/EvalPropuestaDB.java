@@ -665,7 +665,7 @@ public class EvalPropuestaDB extends BaseDB {
 			Globales global=new Globales();
 			EnvioMail2 envioMail=new EnvioMail2("siciud");
 			StringBuffer texto=new StringBuffer();
-			texto.append("<br>CIDC-SI "+datos[0]+"-"+global.getAnoCortoHoy()+"<br><br>");
+			texto.append("<br>SICIUD-"+datos[0]+"-"+global.getAnoCortoHoy()+"<br><br>");
 			texto.append(rb.getString("rp1"));
 			texto.append(datos[2]);
 			texto.append(rb.getString("rp2"));

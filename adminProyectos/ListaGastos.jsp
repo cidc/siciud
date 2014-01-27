@@ -22,17 +22,17 @@
 	}
 </script>
 </head>
-<body onLoad="mensajeAlert(document.getElementById('msg'));">
+<body onLoad="mensajeAlert(document.getElementById('msg'));"> 
 
 	<form name="gastos" method="post" action='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x"/>'>
-	<!--<c:if test="${sessionScope.proyecto.estado==2}">-->
+	<c:if test="${sessionScope.proyecto.estado!=3}">
 		<table>
 			<tr>
 				<td><input type="image" src='<c:url value="/comp/img/RegistraGasto.gif" />' onclick="comando(12)"></td>				
 				<td><input type="image" src='<c:url value="/comp/img/EntregaElementos.gif" />' onclick="comando(10)"></td>
 			</tr>
 		</table>
-	<!--</c:if>-->
+	</c:if>
 	<input type="hidden" name="accion" value='8'>
 		<input type="hidden" name="idGasto" value=''>
 		<input type="hidden" name="id" value='<c:out value="${sessionScope.proyecto.id}"/>'>

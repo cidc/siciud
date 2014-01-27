@@ -389,7 +389,7 @@ public class AdminArticuloRevistaDB extends BaseDB{
 		String []direcciones={datos[1]};
 		ResourceBundle rb=ResourceBundle.getBundle("cidc.general.mails.correoEvaluadores");
 		Globales global=new Globales();
-		String consecutivo="\nCIDC-SI "+datos[2]+"-"+global.getAnoCortoHoy()+"\n\n";
+		String consecutivo="\nSICIUD-"+datos[2]+"-"+global.getAnoCortoHoy()+"\n\n";
 		EnvioMail2 envioMail=new EnvioMail2("academico");
 		String texto=consecutivo;
 		texto+=rb.getString("f1");

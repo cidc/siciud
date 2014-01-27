@@ -63,7 +63,7 @@ public class EvalMovilidadDB extends BaseDB{
 			ps.setInt(3,rol1);			
 			ps.setInt(4,rol2);
 			ps.setLong(5, idEval);
-
+System.out.println(ps.toString());
 			rs=ps.executeQuery();
 			while(rs.next()){
 				i=1;
@@ -119,7 +119,7 @@ public class EvalMovilidadDB extends BaseDB{
 				documentos[7]=rs.getString(i++);//Certificación de Grupo
 				documentos[8]=rs.getString(i++);//certificacion CIDC
 				documentos[9]=rs.getString(i++);//resultados obtenidos
-				documentos[10]=rs.getString(i++);//carta apoyo económico
+				documentos[10]=rs.getString(i++);//formato productividad
 				trayect.setListadDoc(documentos);
 				trayect.setListadEventos(getEventos(Long.parseLong(idProp)));
 			}

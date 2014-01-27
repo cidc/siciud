@@ -42,7 +42,7 @@ function estado(val,id,tipo){
 		<td><c:out value="${lista.descripcion}"/></td>
 		<td align="center"><c:out value="${lista.asigPor}"/></td>
 		<c:if test="${lista.estado==1}">
-		<td><img src='<c:url value="/comp/img/Ok.gif"/>' onclick="estado(2,<c:out value="${lista.idNotificacion}"/>)" ></td>
+		<td><img src='<c:url value="/comp/img/ok.png"/>' onclick="estado(2,<c:out value="${lista.idNotificacion}"/>)" ></td>
 		</c:if>
 		<c:if test="${lista.estado==2}">
 		<td><img src='<c:url value="/comp/img/Equis.gif"/>' onclick="estado(3,<c:out value="${lista.idNotificacion}"/>)"></td>

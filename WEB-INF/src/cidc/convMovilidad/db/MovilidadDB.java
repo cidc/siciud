@@ -568,7 +568,7 @@ public class MovilidadDB extends BaseDB{
 		Globales gl=new Globales();
 		//System.out.println("bandera 3");
 		StringBuffer texto=new StringBuffer();
-		texto.append("<b>CIDC "+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
+		texto.append("<b>SICIUD"+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
 		texto.append(rb1.getString("rp1")+"  <b>"+persona.getNombre()+"</b>");
 		texto.append(rb1.getString("rp2"));
 		texto.append(rb1.getString("e1"));
@@ -718,7 +718,7 @@ public class MovilidadDB extends BaseDB{
 				Actividades actividadOBJ=new Actividades();
 				actividadOBJ.setIdActividad((rs.getInt(i++)));
 				System.out.println("IdActividad "+rs.getInt(1));
-				actividadOBJ.setActividad(rs.getString(i++));
+				actividadOBJ.setActividad(rs.getString(i++).replaceAll("[\n\r]", ""));
 				System.out.println("Descripcion "+rs.getString(2));
 				l.add(actividadOBJ);
 	//			System.out.println(gruposOBJ.getNombre());

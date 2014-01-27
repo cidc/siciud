@@ -3,6 +3,9 @@ package cidc.general.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
@@ -112,6 +115,7 @@ public class UsuarioDB extends BaseDB{
 	}
 
 
+	@SuppressWarnings("static-access")
 	public Usuario consultar(String nickname,String clave){
 		Connection cn=null;
 		PreparedStatement pst=null;
@@ -144,6 +148,9 @@ public class UsuarioDB extends BaseDB{
 					super.setMensaje("Usuario no encontrado...");
 				else{
 					i=0;
+					pst=cn.prepareStatement(rb.getString("guardarRegistro"));
+					pst.setInt(1, (int) user.getIdUsuario());
+					pst.execute();
 			//		String []perfiles=new String[3];
 			//		System.out.println("Cadena= "+user.getPerfilComp());
 					StringTokenizer token=new StringTokenizer(user.getPerfilComp(),",");
@@ -213,4 +220,40 @@ public class UsuarioDB extends BaseDB{
 		}
 		return user;
 	}*/
+	
+	/**
+	 * el metodo busca a una personal en la BD por su correo para que se le reestablezca la contraseña
+	 * @param correo
+	 * @return retorna un objeto de tipo usuario con los datos necesarios para reestablecer la contraseña
+	 */
+	public Usuario buscarPorCorreo(String correo){
+		Connection cn=null;
+		PreparedStatement pst=null;
+		ResultSet rs=null;
+		Usuario user=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(Parametros.userVisitante);
+			pst=cn.prepareStatement(rb.getString("buscarCorreo"));
+			pst.setString(i++, correo);
+			pst.setString(i++, correo);
+			rs=pst.executeQuery();
+			if(rs.next()){
+				int j=1;
+				user=new Usuario();
+				user.setIdUsuario(rs.getLong(j++));
+				user.setPapel(rs.getString(j++));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+				cerrar(rs);
+				cerrar(pst);
+				cerrar(cn);
+		}
+		return user;
+		
+	}
+	
+
 }

@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.TabableView;
 
 import jxl.StringFormulaCell;
 import jxl.Workbook;
@@ -53,6 +54,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.PdfTable;
 
 
 public class DocumentosPDF {
@@ -957,7 +959,7 @@ public class DocumentosPDF {
 			c3.setColspan(3);
 			tablaMailPie.addCell(c3);
 			
-			tablaPagPie.writeSelectedRows(0, 5, ((rectangulo.getLeft()+rectangulo.getRight())/3)+10, 70 , writer.getDirectContent());
+			tablaPagPie.writeSelectedRows(0, 5, ((rectangulo.getLeft()+rectangulo.getRight())/3)+10, 70, writer.getDirectContent());
 			tablaMailPie.writeSelectedRows(0, 5, (rectangulo.getLeft()+rectangulo.getRight())/2.5f, 60 , writer.getDirectContent());
 		}
 	}
@@ -1295,119 +1297,7 @@ public void crearContrato1(Proyecto proyecto,String path){
 		}
 		System.out.println("-Documento Contrato creado->");		
 	}
-	
-	public HttpServletResponse cearCertificado1(CertificacionesOBJ certificado, String path,  HttpServletResponse resp){
-		System.out.println("Creando Certificado Pertenencia a Grupo/Semillero de Investigación");
-		String contenido=""; 
-		actaInicio=false;
-		pathArchivo=path;
-		numCertificado=certificado.getConsCert()+" de "+global.getAnoHoy();
-		nombrePersona=certificado.getNombre().toUpperCase();		
-		Phrase []textoDocumento=new Phrase [20];
-		Phrase clausulas=new Phrase();
-		Phrase clausulasinicio=new Phrase();		
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-		String formattedDate = sdf.format(date);		
-		clausulasinicio.add(new Phrase("\n\nNúmero de Verificación: "+certificado.getCod_verificacion()+"\n",texto10n));
-		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
-		clausulasinicio.add(new Phrase("El(La) investigador(a) ",texto10));
-		clausulasinicio.add(new Phrase(certificado.getNombre().toUpperCase()+",",texto10n));
-		clausulasinicio.add(new Phrase("identificado(a) con la cédula de ciudadanía N° "+certificado.getCedula()+" de "+ certificado.getNumCedDe()+" ",texto10));
-		clausulasinicio.add(new Phrase("es integrante del ",texto10));
-		clausulasinicio.add(new Phrase(certificado.getNombreGrupo(),texto10n));
-		clausulasinicio.add(new Phrase(", institucionalizado por el Centro de Investigaciones y Desarrollo Científico el ",texto10));
-		clausulasinicio.add(new Phrase(global.getDiaFecha(certificado.getFecha_cert(), 1) +" de "+global.getNombreMes(certificado.getFecha_cert(), 1) +" de "+ global.getAnoFecha(certificado.getFecha_cert())+", el cual se encuentra ",texto10));
-		String categoria ="";
-		if(certificado.getCategoriaGrupo().equals("1")||certificado.getCategoriaGrupo().equals("2")){
-			categoria=(certificado.getCategoriaGrupo().equals("1"))?" sin clasificación ":" institucionalizado ante la Universidad Distrital Francisco José de Caldas.";
-		}else{
-			categoria=" clasificado en categoria "+certificado.getCategoriaGrupo()+" por Colciencias en la convocatoria de grupos colombianos de investigación.";
-		}
-		clausulasinicio.add(new Phrase(categoria,texto10));
-		clausulasinicio.add(new Phrase(" Bajo la dirección de la(el) profesor(a) "+certificado.getNombreDirector().toUpperCase()+".\n\n",texto10));
-		clausulasinicio.add(new Phrase("Se expide la presente a solicitud del (de la) interesado(a) a los ",texto10));
-		clausulasinicio.add(new Phrase(" "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10));
-		contenido=clausulasinicio.toString()+" "+clausulas.toString();	
-		
-		textoDocumento[0]=clausulasinicio;
-		textoDocumento[1]=clausulas;
-		
-		PdfPTable tablaFirmas =new PdfPTable(2);
-		PdfPTable tablaEscudo =new PdfPTable(1);
-		//Rectangle rectangulo=this.writer.getPageSize();
-		PdfPCell c0 = null;
-        Image firmaD=null;
-		
-		
-		try {			
-			/*tablaEscudo.setWidths(new float[]{(rectangulo.getLeft()+rectangulo.getRight()-120)});
-			tablaEscudo.setTotalWidth((rectangulo.getLeft()+rectangulo.getRight()-120));*/
-			tablaEscudo.setWidths(new int[]{200});
-			tablaEscudo.setTotalWidth(450);
-			tablaEscudo.getDefaultCell().setFixedHeight(70);
-			
-			firmaD=Image.getInstance(pathArchivo.substring(0,pathArchivo.lastIndexOf("Documentos"))+sep+"comp"+sep+"img"+sep+"firma_Director.jpg");
-			firmaD.setBorder(0);
-			tablaEscudo.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-			tablaEscudo.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);			
-			
-			tablaFirmas.setWidths(new int[]{200,200});
-			tablaFirmas.setTotalWidth(450);
-			tablaFirmas.setLockedWidth(true);
-			tablaFirmas.getDefaultCell().setFixedHeight(10);
-			tablaFirmas.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-			tablaEscudo.writeSelectedRows(0, 5, 72, 780 , writer.getDirectContent());
-		} catch (DocumentException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-        PdfPTable tablaBlanca =new PdfPTable(1);
-        PdfPCell celdaVacia=new PdfPCell(new Phrase("\n....\n",texto15Blanca));
-        
-        celdaVacia.setBorder(Rectangle.NO_BORDER);
-        tablaBlanca.addCell(celdaVacia);
-        PdfPCell celdaGenerica=new PdfPCell();
-        PdfPCell celdaTablaVacia=new PdfPCell(tablaBlanca);
-        celdaTablaVacia.setBorder(Rectangle.NO_BORDER);
-        celdaGenerica.setBorder(Rectangle.NO_BORDER);
-		
-        PdfPCell ralla1=new PdfPCell(new Phrase("_________________________________ ",texto10n));
-		PdfPCell directorCIDC=new PdfPCell(new Phrase(rbDir.getString("directorCIDC").toUpperCase(),texto10n));
-		PdfPCell tituloCIDC=new PdfPCell(new Phrase("Director Centro de Investigaciones",texto10));
-		
-		ralla1.setHorizontalAlignment(Element.ALIGN_CENTER);
-		ralla1.setBorder(Rectangle.NO_BORDER);		
-		
-		directorCIDC.setHorizontalAlignment(Element.ALIGN_CENTER);
-		directorCIDC.setBorder(Rectangle.NO_BORDER);		
-		
-		tituloCIDC.setHorizontalAlignment(Element.ALIGN_CENTER);
-		tituloCIDC.setBorder(Rectangle.NO_BORDER);		
-		
-		tablaEscudo.addCell(firmaD);		
-		tablaEscudo.addCell(ralla1);		
-		tablaEscudo.addCell(directorCIDC);		
-		tablaEscudo.addCell(tituloCIDC);		
-		
-		//*********************************+
-		try {
-			certificado.setCuerpo_cer(contenido);
-			inicarDocumentoCertificado(resp);
-			agregarContenido(textoDocumento,tablaEscudo);
-		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("-Certificado Electrónico creado->");
-		return resp;
-		
-	}
-
-	// 
+	 
 	
 	private HttpServletResponse inicarDocumentoCertificado(HttpServletResponse resp) {
 		try {
@@ -1565,7 +1455,8 @@ public void crearContrato1(Proyecto proyecto,String path){
 		
 		private void agregarPieDePagina()	throws DocumentException {
 			
-			Rectangle rectangulo=this.writer.getPageSize();			
+			Rectangle rectangulo=this.writer.getPageSize();
+			System.out.println("ract"+rectangulo.getWidth());
 			
 			PdfPTable tablaPagPie =new PdfPTable(1);
 			PdfPTable tablaMailPie =new PdfPTable(1);
@@ -1603,8 +1494,11 @@ public void crearContrato1(Proyecto proyecto,String path){
 			c3.setColspan(3);
 			tablaMailPie.addCell(c3);
 			
+
+			
 			tablaPagPie.writeSelectedRows(0, 5, ((rectangulo.getLeft()+rectangulo.getRight())/3)+10, 70 , writer.getDirectContent());
 			tablaMailPie.writeSelectedRows(0, 5, (rectangulo.getLeft()+rectangulo.getRight())/2.5f, 60 , writer.getDirectContent());
+//			tablaverif.writeSelectedRows(0, 2,  0, 0, writer.getDirectContent());
 		}
 	}
 	

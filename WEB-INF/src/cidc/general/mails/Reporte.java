@@ -24,7 +24,7 @@ public class Reporte extends BaseDB{
 		ResultSet rs=null;
 		int i=1;
 		Globales global=new Globales();
-		String consecutivo="CIDC-SI "+idReporte+"-"+global.getAnoCortoHoy();
+		String consecutivo="SICIUD-"+idReporte+"-"+global.getAnoCortoHoy();
 	//	System.out.println("Consecutivo ->"+consecutivo);
 
 		try {

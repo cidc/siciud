@@ -26,11 +26,11 @@
 		if(id==15)
 			document.getElementById("carga").style.display='';
 		document.comandos.papel.value=document.nuevo.papel.value;
-		if(id==11 && document.nuevo.papel.selectedIndex==3){
+		if(id==11 && document.nuevo.papel.selectedIndex==1){
 			alert("No se puede Eliminar el Director del Grupo");
 		}else{
 			if(id==11){
-				if(confirm("Desea eliminar esta persona del Grupo?")){
+				if(confirm("Esta opción solo se debe utilizar para vinculaciones erróneas \n en cualquier otro caso utilizar el campo fecha de salida del grupo")){
 				document.comandos.submit();
 				}
 			}else{
@@ -86,6 +86,8 @@
 		}
 		if(document.nuevo.codareasnies.selectedIndex==0){
 			ms=ms+"\n-) Área Snies";
+		}if(document.nuevo.fechaVinculacion.value==""){
+			ms=ms+"\n-) Fecha de vinculación";
 		}
 
 		if(document.nuevo.cvlac.value!=""){
@@ -312,7 +314,7 @@
 							</select>
 						</td>
 						<td>
-							<input type='text' name='fechaVinculacion' class='caj' readonly='true' id='f_date_b' size='13' value='<c:out value="${sessionScope.integrante2.fechaVinculacion}" default="${hoy}"/>'>
+							<input type='text' name='fechaVinculacion' class='caj' readonly='true' id='f_date_b' size='13' value='<c:out value="${sessionScope.integrante2.fechaVinculacion}" />'>
 							<button type="button" id='f_trigger_b' >...</button>
 							<script type='text/javascript'>
 				    			Calendar.setup({

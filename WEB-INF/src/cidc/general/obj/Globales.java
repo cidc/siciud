@@ -10,6 +10,7 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.StringTokenizer;
@@ -354,5 +355,20 @@ public class Globales{
 	//	BigInteger cidc=BigInteger.valueOf(987987);
 	//	System.out.println(g.moneda("9879872345234"));
 
+	}
+	
+	/**
+	 * agrega a cualquier numero ceros a la izquierda hasta que quede de 4 digitos
+	 * @param cod es el numero en formato texto
+	 * @return
+	 */
+	public String codigo(String cod){
+		Calendar cal = Calendar.getInstance();
+		int year=cal.get(Calendar.YEAR);
+		Formatter fmt = new Formatter();
+		fmt.format("%04d",Integer.parseInt(cod));
+		cod="VIICEPS_"+fmt+"_"+year;
+		System.out.println("El numero formateado " + cod);
+		return cod;
 	}
 }

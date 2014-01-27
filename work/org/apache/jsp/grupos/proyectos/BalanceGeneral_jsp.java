@@ -66,9 +66,9 @@ public final class BalanceGeneral_jsp extends org.apache.jasper.runtime.HttpJspB
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -76,7 +76,7 @@ public final class BalanceGeneral_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\">\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction registros(id){\r\n");
       out.write("\t\tif('");
@@ -104,8 +104,8 @@ public final class BalanceGeneral_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\t    document.formTab.accion.value = num;\r\n");
       out.write("\t\tdocument.formTab.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;

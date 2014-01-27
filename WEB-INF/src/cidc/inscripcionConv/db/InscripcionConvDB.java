@@ -342,7 +342,7 @@ public class InscripcionConvDB extends BaseDB{
 		if(consMail!=null && consProp!=null){
 			EnvioMail2 envioMail=new EnvioMail2("siciud");
 			StringBuffer texto=new StringBuffer();
-			texto.append("CIDC-SI "+consMail+"-"+global.getAnoCortoHoy()+"<br><br>");
+			texto.append("SICIUD-"+consMail+"-"+global.getAnoCortoHoy()+"<br><br>");
 
 			texto.append(rb.getString("i1"));
 			texto.append(resumenInscOBJ.getInvestigador());
@@ -922,7 +922,7 @@ public class InscripcionConvDB extends BaseDB{
 		Globales gl=new Globales();
 		//System.out.println("bandera 3");
 		StringBuffer texto=new StringBuffer();
-		texto.append("<b>CONSECUTIVO CIDC "+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
+		texto.append("<b>SICIUD"+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
 		texto.append(rb1.getString("rp1")+"  <b>"+persona.getNombre()+"</b>");
 		texto.append(rb1.getString("rp2")+"");
 		texto.append(general.getConvocatoria()+"-2012.");

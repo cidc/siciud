@@ -7,7 +7,7 @@
 
 	<!-- Duración de la sesion-->
 	<session-config>
-		<session-timeout>35</session-timeout>
+		<session-timeout>120</session-timeout>
 	</session-config>
 	<!-- Duración de la sesion-->
 
@@ -422,7 +422,14 @@
 	  <servlet-name>AdminGeneralProyectos</servlet-name>
 	  <url-pattern>/GestionGeneralProyectos/AdminGeneralProyectos.x</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>
+	  <servlet-name>ProyectosAjax</servlet-name>
+	  <servlet-class>cidc.proyectos.servlet.Ajax</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ProyectosAjax</servlet-name>
+	  <url-pattern>/ProyectosAjax.x</url-pattern>
+	</servlet-mapping>
 	<servlet>
 	  <servlet-name>AdminProyectos</servlet-name>
 	  <servlet-class>cidc.proyectos.servlet.AdminProyectos</servlet-class>
@@ -942,5 +949,44 @@
 	  <url-pattern>/Informes/AjaxInformes.x</url-pattern>
 	</servlet-mapping> 
 	<!-- /Modulo de creación de informes -->	
-	
+	<servlet>
+	  <servlet-name>PQR</servlet-name>
+	  <servlet-class>cidc.pqr.servlet.PqrServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>PQR</servlet-name>
+	  <url-pattern>/pqr/servlet.x</url-pattern>
+	</servlet-mapping> 
+	<servlet>
+	  <servlet-name>ArchivoPqr</servlet-name>
+	  <servlet-class>cidc.pqr.servlet.ArchivoPqr</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ArchivoPqr</servlet-name>
+	  <url-pattern>/pqr/servletArchivo.x</url-pattern>
+	</servlet-mapping> 
+	<servlet>
+	  <servlet-name>CargarAdj</servlet-name>
+	  <servlet-class>cidc.proyectos.servlet.Cargar</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>CargarAdj</servlet-name>
+	  <url-pattern>/proyectos/cargarAdj.x</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	  <servlet-name>ArchivoActas</servlet-name>
+	  <servlet-class>cidc.adminGrupos.servlet.Archivos</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>ArchivoActas</servlet-name>
+	  <url-pattern>/adminGrupos/archivoActas.x</url-pattern>
+	</servlet-mapping> 
+	<servlet>
+	<servlet-name>correspondencia</servlet-name>
+	<servlet-class>cidc.consecutivo.servlet.Correspondencia</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>correspondencia</servlet-name>
+		<url-pattern>/Consecutivo/correspondencia.x</url-pattern>
+	</servlet-mapping>
 </web-app>

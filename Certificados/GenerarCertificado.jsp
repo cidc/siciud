@@ -31,7 +31,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body>Pertenencia Grupos
 <div align="center">
 <fieldset style="width:580px;">
 <form name="nuevo" method="post" action='<c:url value="/certificados/llenar.jsp"/>'>
@@ -94,16 +94,17 @@
 					</td>
 					<td colspan="1">					
 						<c:if test="${sessionScope.persona.papel==0}"><p class="lroja">No Registrado</p></c:if>
-						<c:if test="${sessionScope.persona.papel==3}">Estudiante</c:if>
-						<c:if test="${sessionScope.persona.papel==2}">Prof Planta</c:if>
-						<c:if test="${sessionScope.persona.papel==4}">Prof TCO</c:if>
-						<c:if test="${sessionScope.persona.papel==5}">Prof MTO</c:if>
-						<c:if test="${sessionScope.persona.papel==6}">Prof HC</c:if>
-						<c:if test="${sessionScope.persona.papel==7}">Prof Vin. Especial</c:if>
-						<c:if test="${sessionScope.persona.papel==8}">Lider Semillero</c:if>
 						<c:if test="${sessionScope.persona.papel==1}">Director</c:if>
-						<c:if test="${sessionScope.persona.papel==9}">Invitado</c:if>
-						<c:if test="${sessionScope.persona.papel==10}">Egresado</c:if>		
+						<c:if test="${sessionScope.persona.papel==2}">Profesor</c:if>
+						<c:if test="${sessionScope.persona.papel==3}">Estudiante</c:if>
+						<c:if test="${sessionScope.persona.papel==4}">Egresado</c:if>
+						<c:if test="${sessionScope.persona.papel==5}">Lider</c:if>
+						<c:if test="${sessionScope.persona.papel==6}">Invitado</c:if>
+						<c:if test="${sessionScope.persona.papel==7}">No Registrado</c:if>
+						<c:if test="${sessionScope.persona.papel==8}">No Registrado</c:if>
+						<c:if test="${sessionScope.persona.papel==1}">No Registrado</c:if>
+						<c:if test="${sessionScope.persona.papel==9}">No Registrado</c:if>
+						<c:if test="${sessionScope.persona.papel==10}">No Registrado</c:if>				
 					</td>
 				</tr>
 				<c:if test='${sessionScope.persona.estado}'>

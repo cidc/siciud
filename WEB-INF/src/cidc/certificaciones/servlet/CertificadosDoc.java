@@ -19,6 +19,8 @@ public class CertificadosDoc extends ServletGeneral {
 	public CursorDB cursor;
 	public static char sep=java.io.File.separatorChar;
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+		int perteneciaGrupo = 1;
+		int pazSalvo = 2;
 		cursor=new CursorDB();
 		String irA="";
 		HttpSession sesion=req.getSession();
@@ -48,13 +50,33 @@ public class CertificadosDoc extends ServletGeneral {
 		switch(caso){
 			case Parametros.CertPertenencia:			
 				System.out.println("Para generar el certificado de pertenencia");
-				sesion.setAttribute("certificado",certifidoDB.crearcertificado1(certificado, path, resp));
+				CertificacionesOBJ cert=certifidoDB.crearcertificado1(certificado, path, resp);
+				if(cert!=null){
+					sesion.setAttribute("certificado",cert);
+					mensaje="Documento creado exitosamente";
+					sesion.removeAttribute("listacertificados");
+					sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2,perteneciaGrupo));
+				}else
+					mensaje="No se ha podido crear el certificado";
+				sesion.removeAttribute("accion");
 				irA="/Certificados/GenerarCertificado.jsp";
+			break;
+			case Parametros.CertPazSalvo:
+				System.out.println("Para generar el certificado de paz y salvo");
+				sesion.setAttribute("certificado",certifidoDB.certificadoPazSalvo(certificado, path, resp));
+				irA="/Certificados/PazySalvo.jsp";
 				mensaje="Documento creado exitosamente";
 				sesion.removeAttribute("accion");
 				sesion.removeAttribute("listacertificados");
-				sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2));
-			break;		
+				sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2,pazSalvo));
+			break;
+			case Parametros.CREARCERTACTIVIDADES:
+				System.out.println("entra caso 9");
+				irA="/Certificados/Actividades.jsp";
+				mensaje="Documento creado exitosamente";
+				sesion.removeAttribute("accion");
+				sesion.removeAttribute("listacertificados");
+				sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2,pazSalvo));
 		}
 				
 		caso=0;

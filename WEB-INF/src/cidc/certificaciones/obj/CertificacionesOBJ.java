@@ -10,7 +10,7 @@ public class CertificacionesOBJ {
 	public String nombreGrupo;
 	public int facultad;
 	public long tipoDoc;
-	public int papel;	
+	public String papel;	
 	public String cuerpo_cer;
 	public String fecha_cert;
 	public String tipo;
@@ -23,6 +23,9 @@ public class CertificacionesOBJ {
 	public String url;
 	public String rol;
 	public String categoriaGrupo;
+	public String fechaIngreso;
+	public String tipoGrupo;
+	public String fechaSalida;
 	
 	public int getId_certificaciones() {
 		return id_certificaciones;
@@ -60,10 +63,10 @@ public class CertificacionesOBJ {
 	public void setTipoDoc(long tipoDoc) {
 		this.tipoDoc = tipoDoc;
 	}
-	public int getPapel() {
+	public String getPapel() {
 		return papel;
 	}
-	public void setPapel(int papel) {
+	public void setPapel(String papel) {
 		this.papel = papel;
 	}
 	public String getCuerpo_cer() {
@@ -144,4 +147,23 @@ public class CertificacionesOBJ {
 	public void setCategoriaGrupo(String categoriaGrupo) {
 		this.categoriaGrupo = categoriaGrupo;
 	}
+	public String getFechaIngreso() {
+		return fechaIngreso;
+	}
+	public void setFechaIngreso(String fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+	public String getTipoGrupo() {
+		return tipoGrupo;
+	}
+	public void setTipoGrupo(String tipoGrupo) {
+		this.tipoGrupo = tipoGrupo;
+	}
+	public String getFechaSalida() {
+		return fechaSalida;
+	}
+	public void setFechaSalida(String fechaSalida) {
+		this.fechaSalida = fechaSalida;
+	}
+	
 }

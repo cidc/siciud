@@ -70,17 +70,24 @@
 				</table>
 			</td>
 		</tr>
-		<tr>
-			<th><b>Facultad</b></th>
-			<th><b>Grupo/Semillero de Investigación</b></th>
-			<th><b>Proyecto Curricular</b></th>
-		</tr>
-		<tr>
-			<td><c:out value="${sessionScope.proyecto.facultad}"/></td>
-			<td><c:out value="${sessionScope.proyecto.grupoInvestigacion}"/></td>
-			<td><c:out value="${sessionScope.proyecto.proyCurricular}"/></td>
-		</tr>
-		<tr>
+				<td>
+					<table>
+
+						<tr>
+							<th><b>Documento de Identidad</b></th>
+							<th with="150px"><b>Facultad</b></th>
+							<th with="150px"><b>Grupo/Semillero de Investigación</b></th>
+							<th with="150px"><b>Proyecto Curricular</b></th>
+						</tr>
+						<tr>
+							<td><c:out value="${sessionScope.proyecto.documento}" /></td>
+							<td with="150px"><c:out value="${sessionScope.proyecto.facultad}" /></td>
+							<td with="150px"><c:out value="${sessionScope.proyecto.grupoInvestigacion}" /></td>
+							<td with="150px"><c:out value="${sessionScope.proyecto.proyCurricular}" /></td>
+						</tr>
+					</table>
+				</td>
+				<tr>
 			<td colspan="3">
 				<table width="100%">
 						<tr>
@@ -95,6 +102,7 @@
 							</c:if>
 							</td>
 							<td ><c:out value="${sessionScope.proyecto.numConvocatoria} - ${sessionScope.proyecto.convocatoria}"/></td>
+							<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
 							<td width="125px" align="center">
 								<select name="estado">
 									  <option value="0" <c:if test="${sessionScope.proyecto.estado==0}">selected</c:if>>------------</option>
@@ -107,6 +115,19 @@
 			                          <option value="7" <c:if test="${sessionScope.proyecto.estado==7}">selected</c:if>>Proc. Finalización</option>
 								</select>
 							</td>
+							</c:if>
+							<c:if test="${sessionScope.loginUsuario.idUsuario!=5452 and sessionScope.loginUsuario.idUsuario!=3944}">
+							<td width="125px" align="center">
+									  <c:if test="${sessionScope.proyecto.estado==0}">------------</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==1}">Aprobado</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==2}">Vigente</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==3}">Finalizado</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==4}">Cancelado </c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==5}">En Prueba</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==6}">Aplazado</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==7}">Proc. Finalización</c:if>
+							</td>
+							</c:if>
 						</tr>
 				</table>
 			</td>
@@ -149,7 +170,9 @@
      				<td>Necesita atención del Comité de investigaciones</td>
      			</tr>
      			<tr>
+     			<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
 	     			<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Guardar.gif"/>'></td>
+	     		</c:if>
      			</tr>
      		</table>
      	</form>

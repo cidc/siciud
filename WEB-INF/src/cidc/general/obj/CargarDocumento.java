@@ -25,7 +25,7 @@ public class CargarDocumento{
 		try {
 			String path=req.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
 			path=path+sep+"Documentos"+sep+carpeta+sep;
-	//		System.out.println(path);
+			System.out.println(path);
 			DiskFileUpload cargar = new DiskFileUpload();
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			factory.setSizeThreshold(10240*1024);
@@ -52,11 +52,11 @@ public class CargarDocumento{
 			            nombreArchivo = item.getName();
 			            File fichero = new File(path+nombreArchivo);
 			            nombreArchivo=nombre+nombreArchivo.substring(nombreArchivo.lastIndexOf("."),nombreArchivo.length());
-			  //          System.out.println(nombreArchivo.substring(nombreArchivo.lastIndexOf(".")));
+			            System.out.println(nombreArchivo.substring(nombreArchivo.lastIndexOf(".")));
 			            fichero = new  File(sitio +(sep+ nombreArchivo));
 			            // escribimos el fichero en el disco duro del servidor
 			            item.write(fichero);
-			 //           System.out.println("Carga completa del Archivo --------->"+nombreArchivo);
+			            System.out.println("Carga completa del Archivo --------->"+nombreArchivo);
 			            break;
 		        	}
 		        }

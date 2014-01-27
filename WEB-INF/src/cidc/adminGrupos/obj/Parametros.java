@@ -24,5 +24,6 @@ public class Parametros {
 	public static final int consultaPersonaOracle=20;
 	public static final int AjaxProy = 1;
 	public static final int formNuevoInteExt=21;
+	public static final	int consultarGrupos=22;
 
 }
