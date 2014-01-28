@@ -1,6 +1,8 @@
 package cidc.convenios.servlet;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,17 +21,29 @@ public class AdminConvenios extends ServletGeneral {
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		context=config.getServletContext();
 		cursor=new CursorDB();
+		System.out.println("entro server");
 		HttpSession sesion=req.getSession();
 		String irA="/adminConvenio/NuevoConvenio.jsp";
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		AdminConvenioDB adminConv= new AdminConvenioDB(cursor,usuario.getPerfil());
+		Convenio conv=null;
+		Calendar fecha = new GregorianCalendar();
 		mensaje="";
+		
 		int accion=0;
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
 		switch(accion){
 			case Parametros.cmdInsertaConvenio:
-				if(adminConv.nuevoConvenio((Convenio)sesion.getAttribute("nuevoConvenio")))
+				
+				int año = fecha.get(Calendar.YEAR);
+		        int mes = fecha.get(Calendar.MONTH);
+		        int dia = fecha.get(Calendar.DAY_OF_MONTH);
+				conv=(Convenio)sesion.getAttribute("nuevoConvenio");
+				conv.setN_UsuDigita(usuario.getNombre());
+				conv.setF_Digita(dia + "/" + (mes+1) + "/" + año+"");
+				if(adminConv.nuevoConvenio(conv))
+					
 					mensaje="Resgistro insertado correctamente";
 				else
 					mensaje="El resgistro no pudo ser insertado correctamente";
@@ -37,10 +51,12 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;
 			case Parametros.cmdListaConvenio:
+				System.out.println("entro a buscar convenios");
 				req.setAttribute("listaConvenios", adminConv.listaConvenio());
 				irA="/adminConvenio/ListaConvenios.jsp";
 			break;
 			case Parametros.cmdGetConvenio:
+//				System.out
 				req.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConv")));
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/NuevoConvenio.jsp";
@@ -56,7 +72,12 @@ public class AdminConvenios extends ServletGeneral {
 			break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
-			break;
+				 sesion.removeAttribute("nuevoConvenio");
+			     if(sesion.getAttribute("ajaxProyCur")==null)
+					  sesion.setAttribute("ajaxProyCur", adminConv.consultaProyectos());
+			     
+			     
+			     break;
 		}
 
 		accion=0;
