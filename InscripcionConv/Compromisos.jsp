@@ -98,7 +98,6 @@
 						</select>
 					</c:if>
 					<c:if test="${lista.obligatorio==2}">
-						2
 						<input type="hidden" name="cantComp" value="2">
 					</c:if>
 					</td>

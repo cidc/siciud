@@ -54,7 +54,7 @@
 </script>
 </head>
 <body>
-<br><br>CIDC
+<br><br>
 	<fieldset style="width:550px;">
     	<legend class="texto1"><b>Documento Propuesta Investigación</b></legend>
 			<table>

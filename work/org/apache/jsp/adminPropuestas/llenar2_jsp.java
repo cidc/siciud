@@ -1,10 +1,10 @@
-package org.apache.jsp.Convocatoria;
+package org.apache.jsp.adminPropuestas;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class llenar1_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class llenar2_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -56,17 +56,19 @@ public final class llenar1_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("\r\n");
       out.write("\r\n");
-      cidc.convocatorias.obj.InsercionGralOBJ general = null;
+      cidc.adminPropuestas.obj.PropuestaOBJ propuestaOBJ = null;
       synchronized (session) {
-        general = (cidc.convocatorias.obj.InsercionGralOBJ) _jspx_page_context.getAttribute("general", PageContext.SESSION_SCOPE);
-        if (general == null){
-          general = new cidc.convocatorias.obj.InsercionGralOBJ();
-          _jspx_page_context.setAttribute("general", general, PageContext.SESSION_SCOPE);
+        propuestaOBJ = (cidc.adminPropuestas.obj.PropuestaOBJ) _jspx_page_context.getAttribute("propuestaOBJ", PageContext.SESSION_SCOPE);
+        if (propuestaOBJ == null){
+          propuestaOBJ = new cidc.adminPropuestas.obj.PropuestaOBJ();
+          _jspx_page_context.setAttribute("propuestaOBJ", propuestaOBJ, PageContext.SESSION_SCOPE);
         }
       }
       out.write('\r');
       out.write('\n');
-      org.apache.jasper.runtime.JspRuntimeLibrary.introspect(_jspx_page_context.findAttribute("general"), request);
+      org.apache.jasper.runtime.JspRuntimeLibrary.introspect(_jspx_page_context.findAttribute("propuestaOBJ"), request);
+      out.write('\r');
+      out.write('\n');
       out.write('\r');
       out.write('\n');
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
@@ -93,8 +95,8 @@ public final class llenar1_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ImportTag _jspx_th_c_005fimport_005f0 = (org.apache.taglibs.standard.tag.rt.core.ImportTag) _005fjspx_005ftagPool_005fc_005fimport_0026_005furl_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.ImportTag.class);
     _jspx_th_c_005fimport_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fimport_005f0.setParent(null);
-    // /Convocatoria/llenar1.jsp(5,0) name = url type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fimport_005f0.setUrl("/convocatoria/Parametrizar.x");
+    // /adminPropuestas/llenar2.jsp(6,0) name = url type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fimport_005f0.setUrl("/AdminPropuestas/ComiteEvaluacion.x");
     int[] _jspx_push_body_count_c_005fimport_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_c_005fimport_005f0 = _jspx_th_c_005fimport_005f0.doStartTag();

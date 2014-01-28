@@ -66,10 +66,10 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -89,6 +89,7 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("'></script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
+      out.write('\r');
       out.write('\n');
       java.util.Date now = null;
       synchronized (_jspx_page_context) {
@@ -120,16 +121,16 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t}\r\n");
       out.write("\t}*/\r\n");
       out.write("\r\n");
-      out.write("\tfunction check(forma){\r\n");
+      out.write("/*\tfunction check(forma){\r\n");
       out.write("\t\tif(forma.convPublica_.checked==true){\r\n");
       out.write("           forma.convPublica.value=\"true\";\r\n");
       out.write("        }else{\r\n");
       out.write("\t       forma.convPublica.value=\"false\";\r\n");
       out.write("        }\r\n");
-      out.write("\t}\r\n");
+      out.write("\t}*/\r\n");
       out.write("\tfunction guardar(){\r\n");
       out.write("\t\tif(ValidarFormulario(document.nuevo)){\r\n");
-      out.write("\t\t\tcheck(document.nuevo);\r\n");
+      out.write("//\t\t\tcheck(document.nuevo);\r\n");
       out.write("\t\t\tdocument.nuevo.action='");
       if (_jspx_meth_c_005furl_005f4(_jspx_page_context))
         return;
@@ -145,9 +146,9 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t}\r\n");
       out.write("\t\treturn true;\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
-      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
+      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t<form name=\"nuevo\" method=\"post\">\r\n");
       out.write("\t<input type=\"hidden\" name=\"accion\" value=\"7\">\r\n");
       out.write("\r\n");
@@ -188,29 +189,18 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\r\n");
       out.write("\t\t\t\t\t\t\t</select>\r\n");
       out.write("\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t<td class=\"renglones\"><b>Publicar ahora</b></td>\r\n");
-      out.write("\t\t\t\t\t\t<td>\r\n");
-      out.write("\t\t\t\t\t\t\t<input type=\"checkbox\" name=\"convPublica_\">\r\n");
-      out.write("\t\t\t\t\t\t\t<input type=\"hidden\" name=\"convPublica\" value=\"\">\r\n");
-      out.write("\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t<th><b>Fecha Corte Actual</b></th>\r\n");
-      out.write("\t\t\t\t\t\t<td>\r\n");
-      out.write("\t\t\t\t\t\t\t<input type='text' name='corteActual' class='caj' readonly='true' id='f_date_a' size='13' value='");
-      if (_jspx_meth_c_005fout_005f6(_jspx_page_context))
-        return;
-      out.write("'>\r\n");
-      out.write("\t\t\t\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\r\n");
-      out.write("\t\t\t\t\t\t\t<script type='text/javascript'>\r\n");
-      out.write("\t\t\t\t    \t\t\tCalendar.setup({\r\n");
-      out.write("\t\t\t\t\t    \t\t\tinputField     :    'f_date_a',\r\n");
-      out.write("\t\t\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
-      out.write("\t\t\t\t\t    \t\t\tshowsTime      :    false,\r\n");
-      out.write("\t\t\t\t\t    \t\t\tbutton         :    'f_trigger_a',\r\n");
-      out.write("\t\t\t\t\t    \t\t\tsingleClick    :    false,\r\n");
-      out.write("\t\t\t\t\t    \t\t\tstep           :    1\r\n");
-      out.write("\t\t\t\t    \t\t\t})\r\n");
-      out.write("\t\t\t    \t\t\t</script>\r\n");
-      out.write("\t\t\t\t\t\t</td>\r\n");
+      out.write("                                                <td class=\"renglones\"><b>Tipo</b></td>\r\n");
+      out.write("                                                <td>\r\n");
+      out.write("                                                        <select name=\"convTipo\">\r\n");
+      out.write("                                                                <option value='2'/>Movilidad</option>\r\n");
+      out.write("                                                                <option value='1'/>Proyectos de Investigacion</option>\r\n");
+      out.write("                                                        </select>\r\n");
+      out.write("\r\n");
+      out.write("                                                </td>\r\n");
+      out.write("\t\t\t\t\t");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t");
+      out.write("\r\n");
       out.write("\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t</table>\r\n");
       out.write("\t\t\t</td>\r\n");
@@ -242,14 +232,14 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td class=\"renglones\"><b>Fecha de Inicio</b></td>\r\n");
       out.write("\t\t\t<td>\r\n");
-      out.write("\t\t\t\t<input type='text' name='convFecInicio' class='caj' readonly='true' id='f_date_b' size='13'>\r\n");
-      out.write("\t\t\t\t<button type='button' id='f_trigger_b'>...</button>\r\n");
+      out.write("\t\t\t\t<input type='text' name='convFecInicio' class='caj' readonly='true' id='f_date_a' size='13'>\r\n");
+      out.write("\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\r\n");
       out.write("\t\t\t\t<script type='text/javascript'>\r\n");
       out.write("\t    \t\t\tCalendar.setup({\r\n");
       out.write("\t\t    \t\t\tinputField     :    'f_date_a',\r\n");
       out.write("\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
       out.write("\t\t    \t\t\tshowsTime      :    false,\r\n");
-      out.write("\t\t    \t\t\tbutton         :    'f_trigger_b',\r\n");
+      out.write("\t\t    \t\t\tbutton         :    'f_trigger_a',\r\n");
       out.write("\t\t    \t\t\tsingleClick    :    false,\r\n");
       out.write("\t\t    \t\t\tstep           :    1\r\n");
       out.write("\t    \t\t\t})\r\n");
@@ -288,9 +278,9 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\" onclick=\"guardar()\"> </td>\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t</table>\r\n");
-      out.write("\t</form>\n");
-      out.write("</body>\n");
-      out.write("</html>");
+      out.write("\t</form>\r\n");
+      out.write("</body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -614,25 +604,6 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
     return false;
   }
 
-  private boolean _jspx_meth_c_005fout_005f6(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f6.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f6.setParent(null);
-    // /Convocatoria/Convocatoria.jsp(88,104) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.convocatoriaOBJ.corteActual}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f6 = _jspx_th_c_005fout_005f6.doStartTag();
-    if (_jspx_th_c_005fout_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
-    return false;
-  }
-
   private boolean _jspx_meth_c_005fforEach_005f1(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -641,11 +612,11 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fend_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f1.setParent(null);
-    // /Convocatoria/Convocatoria.jsp(115,5) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Convocatoria/Convocatoria.jsp(122,5) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setBegin(1);
-    // /Convocatoria/Convocatoria.jsp(115,5) name = end type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Convocatoria/Convocatoria.jsp(122,5) name = end type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setEnd(36);
-    // /Convocatoria/Convocatoria.jsp(115,5) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Convocatoria/Convocatoria.jsp(122,5) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVarStatus("st");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {
@@ -654,11 +625,11 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
         do {
           out.write("\r\n");
           out.write("\t\t\t\t\t\t<option value=\"");
-          if (_jspx_meth_c_005fout_005f7(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
+          if (_jspx_meth_c_005fout_005f6(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
           out.write('"');
           out.write('>');
-          if (_jspx_meth_c_005fout_005f8(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
+          if (_jspx_meth_c_005fout_005f7(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
           out.write("</option>\r\n");
           out.write("\t\t\t\t\t");
@@ -681,6 +652,25 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
     return false;
   }
 
+  private boolean _jspx_meth_c_005fout_005f6(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f6.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
+    // /Convocatoria/Convocatoria.jsp(123,21) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f6 = _jspx_th_c_005fout_005f6.doStartTag();
+    if (_jspx_th_c_005fout_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f6);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fout_005f7(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -689,7 +679,7 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /Convocatoria/Convocatoria.jsp(116,21) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Convocatoria/Convocatoria.jsp(123,51) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f7 = _jspx_th_c_005fout_005f7.doStartTag();
     if (_jspx_th_c_005fout_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -697,25 +687,6 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f7);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fout_005f8(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f1)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f8 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f8.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /Convocatoria/Convocatoria.jsp(116,51) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f8 = _jspx_th_c_005fout_005f8.doStartTag();
-    if (_jspx_th_c_005fout_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f8);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f8);
     return false;
   }
 
@@ -727,7 +698,7 @@ public final class Convocatoria_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f5 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f5.setParent(null);
-    // /Convocatoria/Convocatoria.jsp(171,17) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Convocatoria/Convocatoria.jsp(178,17) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f5.setValue("/comp/img/Guardar.gif");
     int _jspx_eval_c_005furl_005f5 = _jspx_th_c_005furl_005f5.doStartTag();
     if (_jspx_th_c_005furl_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

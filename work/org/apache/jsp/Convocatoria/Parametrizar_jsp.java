@@ -57,9 +57,9 @@ public final class Parametrizar_jsp extends org.apache.jasper.runtime.HttpJspBas
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       cidc.convocatorias.obj.ParametrosOBJ ParametrosOBJ = null;
       synchronized (_jspx_page_context) {
@@ -73,14 +73,14 @@ public final class Parametrizar_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write('\n');
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("</head>\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction enviar(sitio){\r\n");
       out.write("\t\tdocument.parametros.irA.value=sitio;\r\n");
       out.write("\t\tdocument.parametros.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
+      out.write("</script>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n");
       out.write("\t\t<tr><td width=\"100%\" valign='top'>\r\n");
@@ -183,20 +183,23 @@ public final class Parametrizar_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t\t\t</a>\r\n");
       out.write("\t\t\t</td>\r\n");
       out.write("\t\t\t<td>\r\n");
-      out.write("\t\t\t\t<a href='");
+      out.write("                                <a href='");
       if (_jspx_meth_c_005furl_005f16(_jspx_page_context))
         return;
       out.write("'>\r\n");
-      out.write("\t\t\t\t\t<img border=\"0\" src=\"");
+      out.write("                                        <img border=\"0\" src=\"");
       if (_jspx_meth_c_005furl_005f17(_jspx_page_context))
         return;
       out.write("\">\r\n");
-      out.write("\t\t\t\t</a>\r\n");
-      out.write("\t\t\t</td>\r\n");
+      out.write("                                </a>\r\n");
+      out.write("                        </td>\r\n");
+      out.write("\r\n");
+      out.write("\t\t");
+      out.write("\r\n");
       out.write("\t\t</tr>\r\n");
-      out.write("\t</table>\n");
-      out.write("</body>\n");
-      out.write("</html>");
+      out.write("\t</table>\r\n");
+      out.write("</body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -575,8 +578,8 @@ public final class Parametrizar_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f16 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f16.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f16.setParent(null);
-    // /Convocatoria/Parametrizar.jsp(66,13) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f16.setValue("/convocatoria/Parametrizar.x?irA=16&accion=6");
+    // /Convocatoria/Parametrizar.jsp(66,41) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f16.setValue("/convocatoria/Parametrizar.x?irA=35&accion=6");
     int _jspx_eval_c_005furl_005f16 = _jspx_th_c_005furl_005f16.doStartTag();
     if (_jspx_th_c_005furl_005f16.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f16);
@@ -594,8 +597,8 @@ public final class Parametrizar_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f17 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f17.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f17.setParent(null);
-    // /Convocatoria/Parametrizar.jsp(67,26) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f17.setValue("/comp/img/Rubros.gif");
+    // /Convocatoria/Parametrizar.jsp(67,61) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f17.setValue("/comp/img/Documentos.gif");
     int _jspx_eval_c_005furl_005f17 = _jspx_th_c_005furl_005f17.doStartTag();
     if (_jspx_th_c_005furl_005f17.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f17);

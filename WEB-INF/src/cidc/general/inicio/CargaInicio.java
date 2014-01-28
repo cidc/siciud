@@ -89,7 +89,7 @@ public class CargaInicio {
 			ps.setInt(2,Integer.parseInt(perfiles[1]));
 			ps.setInt(3,Integer.parseInt(perfiles[2]));
 			rs=ps.executeQuery();
-	//		System.out.println("**********************************************");
+//			System.out.println("**********************************************");
 			while(rs.next()){
 				i=1;
 				menu=new Menu();

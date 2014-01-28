@@ -56,8 +56,6 @@ public class InfoGeneral implements Serializable{
 	//formato productividad Cvlac
 	private String archivoProduccion; 
 
- 	//Id de convocatoria
-	private long propConvId;
 	
 	public int getGrupo() {
 		return grupo;
