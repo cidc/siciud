@@ -59,10 +59,7 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/xom-1.1.jar"/>
 	<classpathentry kind="src" path="WEB-INF/src"/>
 	<classpathentry kind="src" output="work" path="work"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/itextpdf-5.3.5.jar"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/itext-xtra-5.3.5.jar"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bcpkix-jdk15on-147.jar"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bcprov-jdk15on-147.jar"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/signer.jar"/>
+	<classpathentry kind="lib" path="C:/Tomcat/webapps/SiciudRepositorio/WEB-INF/lib/itext-xtra-5.3.5.jar"/>
+	<classpathentry kind="lib" path="C:/Tomcat/webapps/SiciudRepositorio/WEB-INF/lib/itextpdf-5.3.5.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

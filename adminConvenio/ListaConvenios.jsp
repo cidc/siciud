@@ -35,7 +35,7 @@
 	<c:forEach begin="0" items="${requestScope.listaConvenios}" var="lista" varStatus="st">
 	<tr>
 		<td class="renglones" width="10px"><b><c:out value="${st.count}" /></b></td>
-		<td><c:out value="${lista.numero}" /></td>
+		<td><c:out value="${lista.codigo}" /></td>
 		<td><c:out value="${lista.nombreConvenio}" /></td>
 		<td>
 			<c:if test="${lista.estado==0}">Vigente</c:if>
@@ -44,7 +44,7 @@
 			<c:if test="${lista.estado==3}">Terminado</c:if>
 			<c:if test="${lista.estado==4}">Cancelado</c:if>
 		</td>
-		<td><img src=<c:url value="/comp/img/Ver.gif" /> onclick='enviar(<c:out value="${lista.idConvenio}" />)'></td>
+		<td><img src=<c:url value="/comp/img/Ver.gif" /> onclick='enviar(<c:out value="${lista.idconvenio}" />)'></td>
 	</tr>
 	</c:forEach>
 </table>
