@@ -40,6 +40,7 @@ public class AdminConvenioDB extends BaseDB{
 		PreparedStatement ps=null;
 		int i=1;
 		try {
+			System.out.println("hola");
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("nuevoConvenio"));
 			ps.setInt(i++,convenio.getEstado());
