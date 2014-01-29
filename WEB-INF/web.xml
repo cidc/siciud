@@ -629,6 +629,24 @@
       <url-pattern>/adminConvenio/AdminConvenio.x</url-pattern>
     </servlet-mapping>
     <!--/  AdminConvenios -->
+    
+    
+	<!--  AdminEntidad-->
+	<servlet>
+	  <servlet-name>GestionEntidad</servlet-name>
+	  <servlet-class>cidc.adminEntidad.servlet.GestionEntidad</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>GestionEntidad</servlet-name>
+	  <url-pattern>/adminEntidad/GestEntidad.x</url-pattern>
+	</servlet-mapping> 
+
+
+
+    <!--/  AdminEntidad -->
+
+
+
 
     <!-- Proyectos Antiguos-->
 	<servlet>
