@@ -373,7 +373,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			cerrar(rs);
 			cerrar(ps);
 		}
-		System.out.println("Valor del proyecto de investigación"+g.moneda(cidc.toString()));
+		//System.out.println("Valor del proyecto de investigación"+g.moneda(cidc.toString()));
 		return g.moneda(cidc.toString());
 	}
 	
