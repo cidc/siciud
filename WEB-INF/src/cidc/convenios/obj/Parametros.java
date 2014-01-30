@@ -8,5 +8,6 @@ public class Parametros {
 	public static final int cmdUpdateConvenio=4;
 	public static final int AjaxGrupos = 1;
 	public static final int AjaxInvestigadores=2;
+	public static final int InsertaObservacionConvenio = 5;
 	
 }
