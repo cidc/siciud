@@ -232,7 +232,7 @@
      			</c:forEach>
      			<tr>
 	     			<td colspan="3">
-		     			<textarea name="obsProyecto" style="width:100%"></textarea>
+<!-- 		     			<textarea name="obsProyecto" style="width:100%"></textarea> -->
 	     			</td>
      			</tr>
      			<tr>

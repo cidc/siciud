@@ -71,7 +71,7 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;
 			case Parametros.InsertaObservacionConvenio:
-//				System.out
+//				
 				req.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConv")));
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/NuevoConvenio.jsp";

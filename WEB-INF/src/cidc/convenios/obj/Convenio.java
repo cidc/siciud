@@ -1,6 +1,9 @@
 package cidc.convenios.obj;
 
 import java.io.Serializable;
+import java.util.List;
+
+import cidc.proyectosGeneral.obj.ObservacionObj;
 
 public class Convenio implements Serializable{
 	
@@ -32,9 +35,12 @@ public class Convenio implements Serializable{
     private int grupo;
     private String objetivo = null;
     private String resumen = null;
+    
+    
     private String observacionesp= null;
     
-    public String getNombreproyecto() {
+   
+	public String getNombreproyecto() {
 		return nombreproyecto;
 	}
 	public void setNombreproyecto(String nombreproyecto) {
