@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ResourceBundle;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +22,7 @@ import cidc.adminInformes.obj.Parametros;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
+import cidc.general.mails.EnvioMail2;
 import cidc.general.obj.CargarDocumento;
 import cidc.general.obj.Globales;
 import cidc.general.servlet.ServletGeneral;
@@ -112,8 +116,34 @@ public class CargarInformes extends ServletGeneral{
 					mensaje="Documento Cargado Satisfactoriamente";
 				}else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
-				irA="/grupos/proyectos/VerProyecto.jsp";
-				break;		
+				ResourceBundle rb=ResourceBundle.getBundle("cidc.general.mails.NotificacionInforme");
+				EnvioMail2 envioMail=new EnvioMail2("siciud");
+				StringBuffer texto=new StringBuffer();
+				texto.append(rb.getString("t1")+"");
+				texto.append(rb.getString("t2")+"");
+				texto.append(rb.getString("t3")+"");
+				texto.append(rb.getString("t4")+usuario.getNombre());
+				texto.append(rb.getString("t10"));
+				texto.append(rb.getString("t5")+proyecto.getNombre());
+				texto.append(rb.getString("t10"));
+				texto.append(rb.getString("t6")+proyecto.getCodigo());
+				texto.append(rb.getString("t10"));
+				texto.append(rb.getString("t7"));
+				texto.append(rb.getString("t8"));
+				texto.append(rb.getString("t9"));
+				String[] destinaratio= new String[1];
+				destinaratio[0]=rb.getString("t11");;
+			try {
+				envioMail.enviar(destinaratio,"Carga de informe",""+texto);
+			} catch (AddressException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			irA="/grupos/proyectos/VerProyecto.jsp";
+				break;
 		}
 
 		retorno[0]="desviar";
