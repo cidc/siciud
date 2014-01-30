@@ -34,8 +34,34 @@ public class AdminConvenioDB extends BaseDB{
 		// TODO Auto-generated constructor stub
 		rb=ResourceBundle.getBundle("cidc.convenios.consultas");
 	}
+	
+	public boolean insertaObservacion(int idPro, String observacion,long usuario) {
+		Connection cn=null;
+		PreparedStatement ps=null;
+		boolean retorno = false;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("insertaObservacion"));
+			ps.setLong(i++,idPro);
+			ps.setString(i++,observacion);
+			ps.setLong(i++,usuario);
+			ps.executeUpdate();
+			retorno = true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
 
 	public boolean nuevoConvenio(Convenio convenio) {
+		
+		
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
