@@ -7,7 +7,7 @@
 
 	<!-- Duración de la sesion-->
 	<session-config>
-		<session-timeout>120</session-timeout>
+		<session-timeout>35</session-timeout>
 	</session-config>
 	<!-- Duración de la sesion-->
 
@@ -628,25 +628,19 @@
       <servlet-name>AdminConvenio</servlet-name>
       <url-pattern>/adminConvenio/AdminConvenio.x</url-pattern>
     </servlet-mapping>
-    <!--/  AdminConvenios -->
     
-    
-	<!--  AdminEntidad-->
-	<servlet>
-	  <servlet-name>GestionEntidad</servlet-name>
-	  <servlet-class>cidc.adminEntidad.servlet.GestionEntidad</servlet-class>
+    <servlet>
+	  <servlet-name>AdminConvenioAjax</servlet-name>
+	  <servlet-class>cidc.convenios.servlet.Ajax</servlet-class>
 	</servlet>
 	<servlet-mapping>
-	  <servlet-name>GestionEntidad</servlet-name>
-	  <url-pattern>/adminEntidad/GestEntidad.x</url-pattern>
-	</servlet-mapping> 
-
-
-
-    <!--/  AdminEntidad -->
-
-
-
+	  <servlet-name>AdminConvenioAjax</servlet-name>
+	  <url-pattern>/adminConvenio/Ajax.x</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<!--/  AdminConvenios -->
 
     <!-- Proyectos Antiguos-->
 	<servlet>
@@ -858,12 +852,4 @@
 	  <servlet-name>ArchivoActas</servlet-name>
 	  <url-pattern>/adminGrupos/archivoActas.x</url-pattern>
 	</servlet-mapping> 
-	<servlet>
-	<servlet-name>correspondencia</servlet-name>
-	<servlet-class>cidc.consecutivo.servlet.Correspondencia</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>correspondencia</servlet-name>
-		<url-pattern>/Consecutivo/correspondencia.x</url-pattern>
-	</servlet-mapping>
 </web-app>
