@@ -23,10 +23,13 @@ var nav4=window.Event ? true : false;
 		return(key<=8 ||key<=7 ||key<=13 || (key>=48 && key<=57));
 	}
 	function enviar(){
-		
-		document.frmConvenio.action='<c:url value="/adminConvenio/llenar.jsp"/>';
-		if(validarFormulario(document.frmConvenio))
+			
+		if(validarCombos()==true){
+			if(validarFormulario(document.frmConvenio)){
+			document.frmConvenio.action='<c:url value="/adminConvenio/llenar.jsp"/>';
 			document.frmConvenio.submit();
+			}
+		}
 	}
 	function ajaxFacultad(select)
 	{
@@ -45,29 +48,63 @@ var nav4=window.Event ? true : false;
 	}
 
 	function validarFormulario(forma){
+		if(forma.codigo.value==""){
+			alert("El Codigo del Convenio no puede estar vacio");
+			return false;
+		}
+		
 		if(forma.nombreConvenio.value==""){
 			alert("El nombre del convenio no puede estar vacio");
 			return false;
 		}
-		if(forma.codigo.value==""){
-			alert("El numero del convenio no puede estar vacio");
+		if(forma.fecha.value==""){
+			alert("La fecha de registro del convenio no puede estar vacio");
 			return false;
 		}
-		if(forma.numDisp.value==""){
-			alert("El numero de disponibilidad del convenio no puede estar vacio");
+		if(forma.fechaInicio.value==""){
+			alert("La fecha de Inicio del convenio no puede estar vacio");
 			return false;
 		}
-		
+		if(forma.fechaFinalizacion.value==""){
+			alert("La fecha de finalizacion del convenio no puede estar vacio");
+			return false;
+		}
+		if(forma.nombreproyecto.value==""){
+			alert("El nombre del proyecto no puede estar vacio");
+			return false;
+		}
+		if(forma.objetivo.value==""){
+			alert("El objetivo del proyecto no puede estar vacio");
+			return false;
+		}
 		return true;
 	}
+	
+	
+	   function validarCombos()
+	   {
+        if(document.frmConvenio.estado.selectedIndex==0)
+        {alert("Debe seleccionar el estado del convenio"); return false;}
+        else{if(document.frmConvenio.tipo.selectedIndex==0)
+              {alert("Debe selecionar el tipo del convenio"); return false;}
+        	else {if(document.frmConvenio.facultad.selectedIndex==0) 
+              		{alert("Debe seleccionar la facultad del proyecto"); return false;}
+        		else{if(document.frmConvenio.grupo.selectedIndex==0)
+                             {alert("Debe seleccionar el Semillero o Grupo de Investigación del proyecto"); return false;}
+        				else{ return true;}
+                    }                  
+             	}
+	   		}
+	  }
+	
+	
+	
 	function mostrar(combo)
 	{for(var i=1; i<=15; i++)
 	 {document.getElementById("tr_a"+i).style.display='none';
       document.getElementById("tr_a"+i).disabled=true;
       document.getElementById("tr_b"+i).style.display='none';
       document.getElementById("tr_b"+i).disabled=true;
-      //document.getElementById("txt_nom_coinv"+i).disabled=true;
-      //document.getElementById("txt_apell_coinv"+i).disabled=true;
       document.getElementById("txt_tipo_coinv"+i).disabled=true;
       
       
@@ -78,8 +115,6 @@ var nav4=window.Event ? true : false;
        document.getElementById("tr_a"+i).disabled=false;
        document.getElementById("tr_b"+i).style.display='';
        document.getElementById("tr_b"+i).disabled=false;
-       //document.getElementById("txt_nom_coinv"+i).disabled=false;
-       //document.getElementById("txt_apell_coinv"+i).disabled=false;
        document.getElementById("txt_tipo_coinv"+i).disabled=false;
       }
      }
@@ -111,14 +146,6 @@ var nav4=window.Event ? true : false;
 		<td class="renglones"><b>Número Convenio</b></td>
 		<td><input type="text" name="codigo" style="text-align: right;" onKeyPress='return soloNumeros(event)' value='<c:out value="${requestScope.datoConvenio.codigo}" />'></td>
 		
-		<%--<td class="renglones" ><b>Ano</b></td>
-		<td><select name="ano">
-			<option value="0">----</option>
-			<c:forEach begin="1985" end="2012" var="ano" >
-				<option value='<c:out value="${ano}" />' <c:if test="${requestScope.datoConvenio.ano==ano}">selected</c:if>><c:out value="${ano}" /></option>
-			</c:forEach>
-		</select></td>--%>
-		
 		<td class="renglones"><b>Número disponibilidad</b></td>
 		<td><input type="text" name="numDisp" style="text-align: right;" onKeyPress='return soloNumeros(event)' value='<c:out value="${requestScope.datoConvenio.numDisp}" />'></td>
 		
@@ -137,10 +164,11 @@ var nav4=window.Event ? true : false;
 		
 		<td class="renglones"><b>Tipo</b></td>
 		<td><select name="tipo">
-			<option value="1" <c:if test="${requestScope.datoConvenio.tipo==1}">selected</c:if>>Vigente</option>
-			<option value="2" <c:if test="${requestScope.datoConvenio.tipo==2}">selected</c:if>>Indefinido</option>
-			<option value="3" <c:if test="${requestScope.datoConvenio.tipo==3}">selected</c:if>>Terminado</option>
-			<option value="4" <c:if test="${requestScope.datoConvenio.tipo==4}">selected</c:if>>Cancelado</option>
+			<option value="0" <c:if test="${requestScope.datoConvenio.tipo==0}">selected</c:if>>------------</option>
+			<option value="1" <c:if test="${requestScope.datoConvenio.tipo==1}">selected</c:if>>Marco</option>
+			<option value="2" <c:if test="${requestScope.datoConvenio.tipo==2}">selected</c:if>>Especifico</option>
+			<option value="3" <c:if test="${requestScope.datoConvenio.tipo==3}">selected</c:if>>Acuerdo de cooperación</option>
+			<option value="4" <c:if test="${requestScope.datoConvenio.tipo==4}">selected</c:if>>Contrato</option>
 		</select></td>
 		
 		<td class="renglones"><b>Fecha de registro</b></td>
@@ -160,36 +188,12 @@ var nav4=window.Event ? true : false;
 		
 		</tr>
 		
-		
-		
-
 	<tr>
 		<td class="renglones" colspan="6"><b>Nombre convenio</b></td>
 	</tr>
 	<tr>
 		<td class="renglones" colspan="6"><input type="text" name="nombreConvenio" style="width:100%" value='<c:out value="${requestScope.datoConvenio.nombreConvenio}"/>'></td>
 	</tr>
-	
-	<tr>
-		<td class="renglones" colspan="6"><b>Suma valor efectivo $</b></td>
-	</tr>
-	<tr>
-		<td class="renglones" colspan="6"><input type="text" name="VEfectivo" style="width:100%"   value='<c:out value="${requestScope.datoConvenio.VEfectivo}" />'></td>
-	</tr>
-	
-	<tr>
-		<td class="renglones" colspan="6"><b>Suma valor especie $</b></td>
-	</tr>
-	<tr>
-		<td class="renglones" colspan="6"><input type="text" name="VEspecie" style="width:100%"   value='<c:out value="${requestScope.datoConvenio.VEspecie}" />'></td>
-	</tr>
-	
-	<%--<tr>
-		<td class="renglones" colspan="6"><b>Entidades que intervienen</b></td>
-	</tr>
-	<tr>
-		<td class="renglones" colspan="6"><input type="text" name="entidades" style="width:100%" value='<c:out value="${requestScope.datoConvenio.entidades}" />'></td>
-	</tr>--%>
 	<tr>
 		
 		
@@ -221,72 +225,9 @@ var nav4=window.Event ? true : false;
 					    			step           :    1
 				    			})
 			    </script></td>
-			    						
-				
-		
-			
-		
-		
-		
 	</tr>
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<%--<tr> <td colspan="6"> <table width="100%">
-               <tr> <td class="renglones"><b>Entidades vinculadas</b></td>
-                    <td class="renglones"><b>Seleccione Cantidad:</b> <select name="cant_coinv" style="width: 30%" onchange="mostrar(this)">
-                                                                      <option value="0">--</option>
-                                                                      <option value="1">1</option>
-                                                                      <option value="2">2</option>
-                                                                      <option value="3">3</option>
-                                                                      <option value="4">4</option>
-                                                                      <option value="5">5</option>
-                                                                      <option value="6">6</option>
-                                                                      <option value="7">7</option>
-                                                                      <option value="8">8</option>
-                                                                      <option value="9">9</option>
-                                                                      <option value="10">10</option>
-                                                                      <option value="11">11</option>
-                                                                      <option value="12">12</option>
-                                                                      <option value="13">13</option>
-                                                                      <option value="14">14</option>
-                                                                      <option value="15">15</option>
-                                                                      </select>
-                    </td>
-               </tr>
-     </table> </td> </tr>
-     --%>
-     
-     <%--<tr> <td colspan="6">
-              <table width="100%">
-              <c:forEach begin="1" end="15" varStatus="i">
-               <tr id='tr_a<c:out value="${i.count}" />'> 
-                  <%--<td class="renglones">
-                   <b>Nombres:</b></td>
-                   <td class="renglones"><b>Apellidos:</b></td>
-                   <td class="renglones"><b>Nombre</b></td>
-               </tr>
-               <tr id='tr_b<c:out value="${i.count}" />'> 
-                   <%--<td><input type="text"name="nomCoinvest" style="width: 90%" id='txt_nom_coinv<c:out value="${i.count}" />'></td>
-                   <td> <input type="text" name="apellCoinvest" style="width: 90%" id='txt_apell_coinv<c:out value="${i.count}" />'></td>
-                   <td> <select name="tipoInv" style="width: 100%" id='txt_tipo_coinv<c:out value="${i.count}" />'>
-          			    <option value="1">Coinvestigador</option>
-          		        <option value="2">Auxiliar</option>
-	          	        </select>
-                   </td>
-               </tr>
-              </c:forEach>
-              </table>
-     </td> </tr>
-     --%>
      <tr>
 		<td colspan="6" class="renglones"><b>Observaciones</b></td>
 	</tr>
@@ -308,6 +249,7 @@ var nav4=window.Event ? true : false;
 	<tr>
     <td class="renglones"><b>Estado Proyecto</b></td>
 		<td><select name="estadop">
+			<option value="0" <c:if test="${requestScope.datoConvenio.estadop==0}">selected</c:if>>------------</option>
 			<option value="1" <c:if test="${requestScope.datoConvenio.estadop==1}">selected</c:if>>Vigente</option>
 			<option value="2" <c:if test="${requestScope.datoConvenio.estadop==2}">selected</c:if>>Indefinido</option>
 			<option value="3" <c:if test="${requestScope.datoConvenio.estadop==3}">selected</c:if>>Terminado</option>
@@ -316,6 +258,7 @@ var nav4=window.Event ? true : false;
 		
 		<td class="renglones"><b>Tipo Proyecto</b></td>
 		<td><select name="tipop">
+			<option value="0" <c:if test="${requestScope.datoConvenio.tipop==0}">selected</c:if>>------------</option>
 			<option value="1" <c:if test="${requestScope.datoConvenio.tipop==1}">selected</c:if>>Vigente</option>
 			<option value="2" <c:if test="${requestScope.datoConvenio.tipop==2}">selected</c:if>>Indefinido</option>
 			<option value="3" <c:if test="${requestScope.datoConvenio.tipop==3}">selected</c:if>>Terminado</option>
@@ -347,16 +290,9 @@ var nav4=window.Event ? true : false;
           </td>
      </tr>
      
-     <%-- <tr> <td class="renglones" colspan="6"><b>Personas vinculadas:</b></td></tr>
-     <tr> <td colspan="6"> <select name="grupo" style="width: 100%" onchange="ajaxGrupo(this)">
-               <option value="0">-----------</option>
-               </select>
-          </td>
-     </tr>
-     --%>
-		
+  
 	<tr> <td class="renglones" colspan="6"><b>Objetivo General:</b></td></tr>
-    <tr> <td colspan="6"><textarea class="texto" name="objetivo" style="width: 99%">--<c:out value="${requestScope.datoConvenio.objetivo}"/></textarea></td></tr>
+    <tr> <td colspan="6"><textarea class="texto" name="objetivo" style="width: 99%"><c:out value="${requestScope.datoConvenio.objetivo}"/></textarea></td></tr>
     <tr> <td class="renglones" colspan="6"><b>Abstract/Resumen:</b></td></tr>
     <tr> <td colspan="6"><textarea class="texto" name="resumen" style="width: 99%">--<c:out value="${requestScope.datoConvenio.resumen}"/></textarea></td></tr>
     
@@ -374,6 +310,10 @@ var nav4=window.Event ? true : false;
 		<td colspan="6" align="center"><img src=<c:url value="/comp/img/Guardar.gif" /> onclick="enviar()"></td>
 	</tr>
 </table>
+
+		<input type="hidden" name="VEfectivo" style="width:100%"   value='0'> 
+		<input type="hidden" name="VEspecie" style="width:100%"   value='0'>
+
 </form>
 
 <table>
