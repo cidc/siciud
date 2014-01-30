@@ -230,23 +230,23 @@ public class AdminConvenioDB extends BaseDB{
          
           ps.setInt(1, cod);
           rs = ps.executeQuery();
-          System.out.println("ENTRO BASE DATOS");
+        
           while (rs.next())
           {
            datos = new DatosAjax();
            datos.setCodigo(rs.getInt(1));
            datos.setNombre(rs.getString(2)); //select cod,nombres||' '||apellidos
            listaGrupos.add(datos);
-           System.out.println("ENTRO2 BASE DATOS");
+          
           }
          }
       catch (SQLException e){
             lanzaExcepcion(e);
-            System.out.println("ERROR1 BASE DATOS");
+          
             }
       catch (Exception e){
     	     lanzaExcepcion(e);
-    	     System.out.println("ERROR2 BASE DATOS");
+    	     
             }
 
       finally {
