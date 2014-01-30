@@ -44,20 +44,19 @@ public class AdminConvenios extends ServletGeneral {
 				conv.setN_UsuDigita(usuario.getNombre());
 				conv.setF_Digita(dia + "/" + (mes+1) + "/" + año+"");
 				if(adminConv.nuevoConvenio(conv))
-					
-					mensaje="Resgistro insertado correctamente";
+										mensaje="Resgistro insertado correctamente";
 				else
 					mensaje="El resgistro no pudo ser insertado correctamente";
 				sesion.removeAttribute("nuevoConvenio");
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;
 			case Parametros.cmdListaConvenio:
-				System.out.println("entro a buscar convenios");
+				//Buscar Convenio
 				req.setAttribute("listaConvenios", adminConv.listaConvenio());
 				irA="/adminConvenio/ListaConvenios.jsp";
 			break;
 			case Parametros.cmdGetConvenio:
-//				System.out
+
 				req.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConv")));
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/NuevoConvenio.jsp";
