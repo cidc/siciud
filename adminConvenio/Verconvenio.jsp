@@ -22,13 +22,13 @@
 		document.getElementById("espere"+id).style.display='';
 		if(accion=="4")
 			document.comandos.action='<c:url value="/GestionProyectos/documentosServlet.x"/>';
-		document.comandos.accion.value=accion;
-		document.comandos.submit();
+			document.comandos.accion.value=accion;
+			document.comandos.submit();
 	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<c:if test="${sessionScope.proyecto!=null}">
+<c:if test="${sessionScope.datoConvenio!=null}">
 	<br>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
@@ -82,6 +82,7 @@
 				</table>
 			</td>
 		</tr>
+				
 				<td>
 					<table>
 
@@ -241,7 +242,7 @@
      		</table>
      	</form>
 </c:if>
-<c:if test="${sessionScope.proyecto==null}">
+<c:if test="${sessionScope.datoConvenio==null}">
 <br><br><br>
 <h4 align="center">No se logró encontrar la información del Proyecto de Investigación</h4>
 </c:if>

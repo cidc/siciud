@@ -59,7 +59,7 @@ public class AdminConvenios extends ServletGeneral {
 
 				req.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConv")));
 				req.setAttribute("accion","4");
-				irA="/adminConvenio/NuevoConvenio.jsp";
+				irA="/adminConvenio/Verconvenio.jsp";
 			break;
 			case Parametros.cmdUpdateConvenio:
 				if(adminConv.actualizaConvenio((Convenio)sesion.getAttribute("nuevoConvenio")))
