@@ -64,7 +64,11 @@ public class AdminConvenios extends ServletGeneral {
 			break;
 			case Parametros.cmdGetConvenio:
 
+<<<<<<< HEAD
 				req.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(req.getParameter("idConv"))));
+=======
+				sesion.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConv")));
+>>>>>>> 051277f8cb7db48ce4c5053ebaf10a9e621b7b20
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/Verconvenio.jsp";
 			break;
