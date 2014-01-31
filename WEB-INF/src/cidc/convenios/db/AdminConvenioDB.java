@@ -24,6 +24,7 @@ import cidc.adminArticulos.obj.DatEvaluador;
 import cidc.adminArticulos.obj.EstadoArticulo;
 import cidc.adminArticulos.obj.FiltroArticulo;
 import cidc.convenios.obj.Convenio;
+import cidc.convenios.obj.GetConvenioOBJ;
 
 
 
@@ -315,11 +316,11 @@ public class AdminConvenioDB extends BaseDB{
       return listaGrupos;
 	 }
 	 
-	public Convenio getConvenio(String id) {
+	public GetConvenioOBJ getConvenio(String id) {
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		Convenio convenio= null;
+		GetConvenioOBJ convenio= null;
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
@@ -329,30 +330,30 @@ public class AdminConvenioDB extends BaseDB{
 			while(rs.next()){
 				i=1;
 
-				convenio= new Convenio();
-				convenio.setIdconvenio(rs.getInt(i++));
-				convenio.setCodigo(rs.getInt(i++));
+				convenio= new GetConvenioOBJ();
+				convenio.setIdconvenio(rs.getString(i++));
+				convenio.setCodigo(rs.getString(i++));
 				convenio.setFecha(rs.getString(i++));
 				convenio.setNombreConvenio(rs.getString(i++));
 				convenio.setObservaciones(rs.getString(i++));
 				convenio.setEstado(rs.getString(i++));
-				convenio.setV_DuraAnos(rs.getInt(i++));
-				convenio.setV_Durameses(rs.getInt(i++));
-				convenio.setV_Duradias(rs.getInt(i++));
+				convenio.setV_DuraAnos(rs.getString(i++));
+				convenio.setV_Durameses(rs.getString(i++));
+				convenio.setV_Duradias(rs.getString(i++));
 				convenio.setFechaInicio(rs.getString(i++));
 				convenio.setTipo(rs.getString(i++));
-				convenio.setNumDisp(rs.getInt(i++));
+				convenio.setNumDisp(rs.getString(i++));
 				convenio.setFechaFinalizacion(rs.getString(i++));
-				convenio.setVEfectivo(rs.getFloat(i++));
-				convenio.setVEspecie(rs.getFloat(i++));
+				convenio.setVEfectivo(rs.getString(i++));
+				convenio.setVEspecie(rs.getString(i++));
 				convenio.setN_UsuDigita(rs.getString(i++));
 				convenio.setF_Digita(rs.getString(i++));
 				convenio.setNombreproyecto(rs.getString(i++));
-				convenio.setEstadop(rs.getInt(i++));
-				convenio.setTipop(rs.getInt(i++));
-				convenio.setFacultad(rs.getInt(i++));
-				convenio.setProycurri(rs.getInt(i++));
-				convenio.setGrupo(rs.getInt(i++));
+				convenio.setEstadop(rs.getString(i++));
+				convenio.setTipop(rs.getString(i++));
+				convenio.setFacultad(rs.getString(i++));
+				convenio.setProycurri(rs.getString(i++));
+				convenio.setGrupo(rs.getString(i++));
 				convenio.setObjetivo(rs.getString(i++));
 				convenio.setResumen(rs.getString(i++));
 				convenio.setObservacionesp(rs.getString(i++));

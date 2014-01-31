@@ -5,30 +5,10 @@
 <head>
 <link type="text/css" rel="stylesheet" href="<c:url value="/comp/css/formatos.css"/>">
 <c:import url="/general.jsp"/>
-<script>
 
-	function cont(id){
-		document.getElementById("");
-	}
-
-	function observacion(caja){
-		if(caja.value.length<5)
-			alert("Favor digitar la respectiva observación que desea ingresar");
-		else
-			document.observProyect.submit();
-	}
-	function ver(accion,id){
-		document.getElementById("a"+id).style.display='none';
-		document.getElementById("espere"+id).style.display='';
-		if(accion=="4")
-			document.comandos.action='<c:url value="/GestionProyectos/documentosServlet.x"/>';
-			document.comandos.accion.value=accion;
-			document.comandos.submit();
-	}
-</script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<c:if test="${sessionScope.datoConvenio!=null}">
+<c:if test="${requestScope.datoConvenio!=null}">
 	<br>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
@@ -94,9 +74,9 @@
 						</tr>
 						<tr>
 							
-							<td with="150px"><c:out value="${sessionScope.datoConvenio.facultad}" /></td>
-							<td with="150px"><c:out value="${sessionScope.proyecto.grupo}" /></td>
-							<td with="150px"><c:out value="${sessionScope.proyecto.proycurri}" /></td>
+							<td with="150px"><c:if test="${requestScope.datoConvenio.facultad=='1'}">hola</c:if></td>
+							<td with="150px"><c:out value="${requestScope.datoConvenio.grupo}" /></td>
+							<td with="150px"><c:out value="${requestScope.datoConvenio.proycurri}" /></td>
 						</tr>
 					</table>
 				</td>
@@ -242,7 +222,7 @@
      		</table>
      	</form>
 </c:if>
-<c:if test="${sessionScope.datoConvenio==null}">
+<c:if test="${requestScope.datoConvenio==null}">
 <br><br><br>
 <h4 align="center">No se logró encontrar la información del Proyecto de Investigación</h4>
 </c:if>
