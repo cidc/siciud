@@ -1347,7 +1347,7 @@ public final class Verconvenio_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005furl_005f12.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f12.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/Verconvenio.jsp(215,52) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f12.setValue("/GestionGeneralProyectos/AdminGeneralProyectos.x");
+    _jspx_th_c_005furl_005f12.setValue("/adminConvenio/AdminConvenio.x");
     int _jspx_eval_c_005furl_005f12 = _jspx_th_c_005furl_005f12.doStartTag();
     if (_jspx_th_c_005furl_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f12);
@@ -1368,7 +1368,7 @@ public final class Verconvenio_jsp extends org.apache.jasper.runtime.HttpJspBase
     // /adminConvenio/Verconvenio.jsp(224,8) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setBegin(0);
     // /adminConvenio/Verconvenio.jsp(224,8) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto.listaObservaciones}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.listaObservaciones}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     // /adminConvenio/Verconvenio.jsp(224,8) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("lista");
     // /adminConvenio/Verconvenio.jsp(224,8) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null

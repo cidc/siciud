@@ -63,10 +63,13 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/ListaConvenios.jsp";
 			break;
 			case Parametros.cmdGetConvenio:
+				
 
-
+				System.out.println("entro a buscar1");
+				System.out.println(req.getParameter("idConv"));
+				
 				sesion.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(req.getParameter("idConv"))));
-
+				System.out.println("entro a buscar");
 		
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/Verconvenio.jsp";
@@ -81,7 +84,8 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;
 			case Parametros.InsertaObservacionConvenio:
-//				
+				System.out.println("holaaaaa");
+				System.out.println(req.getParameter("idc"));
 				 if (adminConv.insertaObservacion(Integer.parseInt(req.getParameter("idc")), req.getParameter("obsconvenio"),usuario.getIdUsuario()))
 					 mensaje="Observación insertada correctamente";
                  else

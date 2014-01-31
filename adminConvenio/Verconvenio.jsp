@@ -212,7 +212,7 @@ function observacion(caja){
      	</form>
      	--%>
 
-     	<form name="observConv" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
+     	<form name="observConv" method="post" action="<c:url value='/adminConvenio/AdminConvenio.x' />">
      		<input type="hidden" name="accion" value="3">
      		<table width="95%" class="tablas" align="center">
      			<CAPTION>Observaciones</CAPTION>
@@ -221,7 +221,7 @@ function observacion(caja){
      				<th width="70px" ><b>Fecha</b></th>
      				<th ><b>Observación</b></th>
      			</tr>
-     			<c:forEach begin="0" items="${sessionScope.proyecto.listaObservaciones}" var="lista" varStatus="st">
+     			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaObservaciones}" var="lista" varStatus="st">
 				<tr <c:if test="${st.count mod 2 == 0}">class="trb"</c:if>>
 					<td width="120px"><b><c:out value="${lista.usuario}"/></b></td>
 					<td width="70px"><c:out value="${lista.fecha}"/></td>
