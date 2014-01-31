@@ -10,7 +10,7 @@ function observacion(caja){
 	if(caja.value.length<5)
 		alert("Favor digitar la respectiva observación que desea ingresar");
 	else
-		document.observProyect.submit();
+		document.observConv.submit();
 }
 
 </script>
@@ -234,7 +234,7 @@ function observacion(caja){
 	     			</td>
      			</tr>
      			<tr>
-     				<td colspan="3" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="observacion(document.observProyect.obsProyecto)"></td>
+     				<td colspan="3" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="observacion(document.observConv.obsconvenio)"></td>
      			</tr>
      		</table>
      	</form>

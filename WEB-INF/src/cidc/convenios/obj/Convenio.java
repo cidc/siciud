@@ -39,14 +39,9 @@ public class Convenio implements Serializable{
     
     private String observacionesp= null;
     
-    private List<ObservacionObj> listaObservaciones=null;
+   
     
-    public List<ObservacionObj> getListaObservaciones() {
-		return listaObservaciones;
-	}
-	public void setListaObservaciones(List<ObservacionObj> listaObservaciones) {
-		this.listaObservaciones = listaObservaciones;
-	}
+  
 	
     
    

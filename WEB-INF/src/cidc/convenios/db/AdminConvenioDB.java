@@ -18,13 +18,16 @@ import cidc.general.mails.EnvioMail2;
 import cidc.general.mails.Reporte;
 import cidc.general.obj.CrearClaves;
 import cidc.general.obj.Globales;
-import cidc.proyectosAntiguos.obj.DatosAjax;
+import cidc.convenios.obj.DatosAjax;
+
+
 import cidc.adminArticulos.obj.Articulo;
 import cidc.adminArticulos.obj.DatEvaluador;
 import cidc.adminArticulos.obj.EstadoArticulo;
 import cidc.adminArticulos.obj.FiltroArticulo;
 import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.GetConvenioOBJ;
+import cidc.convenios.obj.ObservacionesOBJ;
 
 
 
@@ -316,7 +319,18 @@ public class AdminConvenioDB extends BaseDB{
       return listaGrupos;
 	 }
 	 
-	public GetConvenioOBJ getConvenio(String id) {
+	 
+	 public GetConvenioOBJ buscarConvenio(int id){
+		 GetConvenioOBJ conv=null;
+			conv=getConvenio(id);
+			
+			if(conv!=null){
+				conv.setListaObservaciones(getListaObservaciones(id));
+			}
+			return conv;
+		}
+	 
+	public GetConvenioOBJ getConvenio(int id) {
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -325,7 +339,7 @@ public class AdminConvenioDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("getConvenio2"));
-			ps.setInt(i++,Integer.parseInt(id));
+			ps.setInt(i++,id);
 			rs=ps.executeQuery();
 			while(rs.next()){
 				i=1;
@@ -354,6 +368,64 @@ public class AdminConvenioDB extends BaseDB{
 				convenio.setFacultad(rs.getString(i++));
 				convenio.setProycurri(rs.getString(i++));
 				convenio.setGrupo(rs.getString(i++));
+				convenio.setObjetivo(rs.getString(i++));
+				convenio.setResumen(rs.getString(i++));
+				convenio.setObservacionesp(rs.getString(i++));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("se jodio por el ID");
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return convenio;
+	}
+	
+	public Convenio getConvenioo(int id) {
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		Convenio convenio= null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("getConvenio2"));
+			ps.setInt(i++,id);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				
+			    convenio= new Convenio();
+			    convenio.setIdconvenio(rs.getInt(i++));
+				convenio.setCodigo(rs.getInt(i++));
+				convenio.setFecha(rs.getString(i++));
+				convenio.setNombreConvenio(rs.getString(i++));
+				convenio.setObservaciones(rs.getString(i++));
+				convenio.setEstado(rs.getString(i++));
+				convenio.setV_DuraAnos(rs.getInt(i++));
+				convenio.setV_Durameses(rs.getInt(i++));
+				convenio.setV_Duradias(rs.getInt(i++));
+                convenio.setFechaInicio(rs.getString(i++));
+ 				convenio.setTipo(rs.getString(i++));
+                convenio.setNumDisp(rs.getInt(i++));
+				convenio.setFechaFinalizacion(rs.getString(i++));
+				convenio.setVEfectivo(rs.getFloat(i++));
+				convenio.setVEspecie(rs.getFloat(i++));
+
+				convenio.setN_UsuDigita(rs.getString(i++));
+				convenio.setF_Digita(rs.getString(i++));
+				convenio.setNombreproyecto(rs.getString(i++));
+				convenio.setEstadop(rs.getInt(i++));
+				convenio.setTipop(rs.getInt(i++));
+				convenio.setFacultad(rs.getInt(i++));
+				convenio.setProycurri(rs.getInt(i++));
+				convenio.setGrupo(rs.getInt(i++));
+
 				convenio.setObjetivo(rs.getString(i++));
 				convenio.setResumen(rs.getString(i++));
 				convenio.setObservacionesp(rs.getString(i++));
@@ -403,6 +475,41 @@ public class AdminConvenioDB extends BaseDB{
 			cerrar(cn);
 		}
 		return retorno;
+	}
+	
+	
+	public List getListaObservaciones(long idConv) {
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		Connection cn=null;
+		List  lista=new ArrayList ();
+		ObservacionesOBJ observ=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("getObservacionesConv"));
+			ps.setLong(1,idConv);
+			
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				observ= new ObservacionesOBJ();
+				observ.setIdObservacion(rs.getLong(i++));
+				observ.setFecha(rs.getString(i++));
+				observ.setObservacion(rs.getString(i++));
+				observ.setUsuario(rs.getString(i++));
+				lista.add(observ);
+			}
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return lista;
 	}
 }
 

@@ -37,6 +37,14 @@ public class GetConvenioOBJ implements Serializable{
     private String resumen;
     private String observacionesp;
     
+    public List<ObservacionObj> getListaObservaciones() {
+		return listaObservaciones;
+	}
+	public void setListaObservaciones(List<ObservacionObj> listaObservaciones) {
+		this.listaObservaciones = listaObservaciones;
+	}
+	private List<ObservacionObj> listaObservaciones=null;
+    
     
 	public String getIdconvenio() {
 		return idconvenio;
