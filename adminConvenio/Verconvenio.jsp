@@ -75,7 +75,14 @@
 						</tr>
 						<tr>
 							
-							<td with="150px"><c:if test="${requestScope.datoConvenio.facultad=='1'}">hola</c:if></td>
+							<td with="150px">
+							<c:if test="${requestScope.datoConvenio.facultad=='1'}">Facultad Tecnológica</c:if>
+							<c:if test="${requestScope.datoConvenio.facultad=='2'}">Facultad de Ingenieria</c:if>
+							<c:if test="${requestScope.datoConvenio.facultad=='3'}">Facultad de Medio Ambiente y recursos Naturales</c:if>
+							<c:if test="${requestScope.datoConvenio.facultad=='4'}">Facultad de Ciencias y Educación</c:if>
+							<c:if test="${requestScope.datoConvenio.facultad=='5'}">ASAB</c:if>
+							
+							</td>
 							<td with="150px"><c:out value="${requestScope.datoConvenio.grupo}" /></td>
 							<td with="150px"><c:out value="${requestScope.datoConvenio.proycurri}" /></td>
 						</tr>
