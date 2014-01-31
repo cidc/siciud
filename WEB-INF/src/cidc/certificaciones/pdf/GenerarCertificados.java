@@ -253,7 +253,7 @@ public class GenerarCertificados {
 			fecha.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(fecha);
 			PdfPCell frase1=new PdfPCell(new Phrase("Nota 2: El contenido y la validez de la firma digital utilizada pueden ser verificadas en el portal web de la " +
-					"vicerrectoría de Investigación, Innovación, Creación, Extensión y Proyección Social",texto10));
+					"Vicerrectoría de Investigación, Innovación, Creación, Extensión y Proyección Social",texto10));
 			frase1.setHorizontalAlignment(Element.ALIGN_LEFT);
 			frase1.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(frase1);
