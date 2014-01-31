@@ -131,6 +131,7 @@
 		</td>
 	</tr>
 	</table>
+	<c:if test="${sessionScope.proyectoInvestigador.estado!='Finalizado'}">
 	<table class="tablas" align="center" width="90%">
 		<table align="center" width="90%" class="tablas">
 		<caption>Cargar Documento</caption>
@@ -163,6 +164,7 @@
 			</tr>
 		</table>
 	</table>
+	</c:if>
 	<table class="tablas" align="center" width="90%">
 	<tr>
 		<td>

@@ -95,12 +95,14 @@ public class CargarInformes extends ServletGeneral{
         	accion=Integer.parseInt(req.getParameter("accion"));
         }
 		String carpeta="";
-		if(proyecto.getTipo()==1)
+		String asunto="";
+		if(proyecto.getTipo()==1){
 			carpeta="Proyectos/Informes";
+		}
 		else {
-			if (docNuevo.getTipo()!=2) {
+			if (docNuevo.getTipo()==3) {
 				carpeta = "ProyectosAntiguos/Informes";
-			}else
+			}if (docNuevo.getTipo()==2)
 				carpeta = "ProyectosAntiguos/InformesFinales";
 		}
 		switch(accion){
@@ -132,9 +134,13 @@ public class CargarInformes extends ServletGeneral{
 				texto.append(rb.getString("t8"));
 				texto.append(rb.getString("t9"));
 				String[] destinaratio= new String[1];
-				destinaratio[0]=rb.getString("t11");;
+				destinaratio[0]=rb.getString("t11");
+				if (docNuevo.getTipo()==2)
+					asunto="Informe Final";
+				if(docNuevo.getTipo()==3)
+					asunto="Informe Parcial";
 			try {
-				envioMail.enviar(destinaratio,"Carga de informe",""+texto);
+				envioMail.enviar(destinaratio,asunto,""+texto);
 			} catch (AddressException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
