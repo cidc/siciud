@@ -64,11 +64,10 @@ public class AdminConvenios extends ServletGeneral {
 			break;
 			case Parametros.cmdGetConvenio:
 
-<<<<<<< HEAD
-				req.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(req.getParameter("idConv"))));
-=======
-				sesion.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConv")));
->>>>>>> 051277f8cb7db48ce4c5053ebaf10a9e621b7b20
+
+				sesion.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(req.getParameter("idConv"))));
+
+		
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/Verconvenio.jsp";
 			break;
@@ -77,7 +76,7 @@ public class AdminConvenios extends ServletGeneral {
 					mensaje="Resgistro actualizado correctamente";
 				else
 					mensaje="El resgistro no pudo ser actualizado correctamente";
-				req.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConvenio")));
+			//	req.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConvenio")));
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;
