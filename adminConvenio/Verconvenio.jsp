@@ -5,6 +5,15 @@
 <head>
 <link type="text/css" rel="stylesheet" href="<c:url value="/comp/css/formatos.css"/>">
 <c:import url="/general.jsp"/>
+<script>
+function observacion(caja){
+	if(caja.value.length<5)
+		alert("Favor digitar la respectiva observación que desea ingresar");
+	else
+		document.observProyect.submit();
+}
+
+</script>
 
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -203,7 +212,7 @@
      	</form>
      	--%>
 
-     	<form name="observProyect" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
+     	<form name="observConv" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
      		<input type="hidden" name="accion" value="3">
      		<table width="95%" class="tablas" align="center">
      			<CAPTION>Observaciones</CAPTION>
@@ -221,7 +230,7 @@
      			</c:forEach>
      			<tr>
 	     			<td colspan="3">
-<!-- 		     			<textarea name="obsProyecto" style="width:100%"></textarea> -->
+		     			<textarea name="obsconvenio" style="width:100%"></textarea> 
 	     			</td>
      			</tr>
      			<tr>

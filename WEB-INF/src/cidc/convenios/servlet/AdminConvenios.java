@@ -79,7 +79,7 @@ public class AdminConvenios extends ServletGeneral {
 			break;
 			case Parametros.InsertaObservacionConvenio:
 //				
-				 if (adminConv.insertaObservacion(proyecto.getId(),proyecto.getClaseProyecto(), req.getParameter("obsProyecto"),usuario.getIdUsuario()))
+				 if (adminConv.insertaObservacion(Integer.parseInt(req.getParameter("idc")), req.getParameter("obsconvenio"),usuario.getIdUsuario()))
 					 mensaje="Observación insertada correctamente";
                  else
                 	mensaje="No se pudo insertar la observación";
