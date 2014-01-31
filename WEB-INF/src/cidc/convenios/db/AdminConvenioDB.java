@@ -147,6 +147,34 @@ public class AdminConvenioDB extends BaseDB{
 	 }
       return listaInvestigadores;
 	 }
+	 
+	 public int idconvenio(String nombre){
+		    Connection cn=null;
+			PreparedStatement ps=null;
+			ResultSet rs=null;
+			int id = 0;
+			Convenio convenio= null;
+		 try{
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("buscarconvenioID"));
+			ps.setString(1, nombre);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				id=rs.getInt("pk_codconvenionum");
+			}
+			 
+			 
+		 }catch(Exception e){
+			 lanzaExcepcion(e);
+			 
+		 }finally{
+				cerrar(ps);
+				cerrar(cn);
+			}
+		 
+		 return id;
+		 
+	 }
 
 	public List listaConvenio() {
 		Connection cn=null;
