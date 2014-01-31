@@ -50,9 +50,9 @@ public class AdminConvenios extends ServletGeneral {
 				else
 					mensaje="El resgistro no pudo ser insertado correctamente";
 					
-					//adminConv.idconvenio(req.getParameter("nombreConvenio"));
-					System.out.println(adminConv.idconvenio(req.getParameter("nombreConvenio")));
-				//	adminConv.insertaObservacion(adminConv.idconvenio(req.getParameter("nombreConvenio")), req.getParameter("observaciones"),usuario.getIdUsuario());
+					int idc=adminConv.idconvenio(req.getParameter("nombreConvenio"));
+				//	System.out.println("id del convenio:" + adminConv.idconvenio(req.getParameter("nombreConvenio")));
+					adminConv.insertaObservacion(idc, req.getParameter("observaciones"),usuario.getIdUsuario());
 				
 				sesion.removeAttribute("nuevoConvenio");
 				irA="/adminConvenio/NuevoConvenio.jsp";
@@ -79,9 +79,10 @@ public class AdminConvenios extends ServletGeneral {
 			break;
 			case Parametros.InsertaObservacionConvenio:
 //				
-				req.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConv")));
-				req.setAttribute("accion","4");
-				irA="/adminConvenio/NuevoConvenio.jsp";
+				 if (adminConv.insertaObservacion(proyecto.getId(),proyecto.getClaseProyecto(), req.getParameter("obsProyecto"),usuario.getIdUsuario()))
+					 mensaje="Observación insertada correctamente";
+                 else
+                	mensaje="No se pudo insertar la observación";
 			break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";

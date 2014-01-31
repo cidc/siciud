@@ -22,6 +22,7 @@
 <br>
 <form name="frmEstado" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
 	<input type="hidden" name="accion" value="4">
+	<input type="hidden" name="idc" value="${requestScope.datoConvenio.nombreConvenio}">
 	<table width="95%" class="tablas" align="center">
 	<CAPTION>Datos generales del Convenio</CAPTION>
 		<tr>
