@@ -17,6 +17,7 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import cidc.adminEntidad.obj.EntidadOBJ;
+import cidc.convenios.obj.Convenio;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.obj.Globales;
@@ -218,6 +219,44 @@ public class EntidadDB extends  BaseDB{
 			return retorno;
 		}
 		
-		
+		public List listaEntidad() {
+			Connection cn=null;
+			PreparedStatement ps=null;
+			ResultSet rs=null;
+			List lista=new ArrayList();
+			EntidadOBJ entidad= null;
+			int i=1;
+			try {
+				cn=cursor.getConnection(super.perfil);
+				ps=cn.prepareStatement(rb.getString("listaConvenio2"));
+				rs=ps.executeQuery();
+				while(rs.next()){
+					i=1;
+					entidad= new EntidadOBJ();
+					entidad.setId(rs.getInt(i++));
+					entidad.setNombre(rs.getString(i++));
+					entidad.setTipo(rs.getString(i++));
+					entidad.setNacionalidad(rs.getString(i++));
+					entidad.setCiudad(rs.getString(i++));
+					entidad.setDireccion(rs.getString(i++));
+					entidad.setObservaciones(rs.getString(i++));
+					entidad.setUsudigita(rs.getString(i++));
+					entidad.setAporte(rs.getInt(i++));
+					entidad.setFecha(rs.getString(i++));
+					lista.add(entidad);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("se dano esta joda");
+				lanzaExcepcion(e);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				lanzaExcepcion(e);
+			}finally{
+				cerrar(ps);
+				cerrar(cn);
+			}
+			return lista;
+		}
 		
 }

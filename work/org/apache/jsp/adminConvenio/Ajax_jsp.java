@@ -154,7 +154,7 @@ public final class Ajax_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t  \r\n");
         out.write("\t  \t\tborrar_combo(parent.document.frmConvenio.proycurri);\r\n");
         out.write("\t  \t\tborrar_combo(parent.document.frmConvenio.grupo);\r\n");
-        out.write("\t  \t//\tborrar_combo(parent.document.form1.investigador);\r\n");
+        out.write("\t  \t \tborrar_combo(parent.document.form1.investigador);\r\n");
         out.write("\r\n");
         out.write("\t\t\t");
         if (_jspx_meth_c_005fforEach_005f0(_jspx_th_c_005fwhen_005f0, _jspx_page_context))

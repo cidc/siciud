@@ -300,7 +300,6 @@ public class AdminConvenioDB extends BaseDB{
          }
       catch (SQLException e){
             lanzaExcepcion(e);
-          
             }
       catch (Exception e){
     	     lanzaExcepcion(e);
