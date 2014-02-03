@@ -17,6 +17,7 @@ import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.servlet.ServletGeneral;
 import cidc.proyectosAntiguos.db.ProyectosAntiguosDB;
+import cidc.proyectosGeneral.obj.ParametrosOBJ;
 import cidc.proyectosGeneral.obj.Proyecto;
 
 public class AdminConvenios extends ServletGeneral {
@@ -96,6 +97,20 @@ public class AdminConvenios extends ServletGeneral {
 				//sesion.setAttribute("datoConvenio",proyecto);
 				 irA="/adminConvenio/Verconvenio.jsp";
 			break;
+			
+			case Parametros.cambioEstado:
+				    objconv=(GetConvenioOBJ)sesion.getAttribute("datoConvenio");
+				 if (adminConv.cambiaEstado(Integer.parseInt(objconv.getIdconvenio()),req.getParameter("tipo"), req.getParameter("estado"))){
+					 mensaje="Estado de convenio actualizado correctamente";
+					 objconv.setEstado(req.getParameter("estado"));
+					 objconv.setEstado(req.getParameter("tipo"));
+			     }
+               else
+               	mensaje="el estado no se pudo ser actualizado";
+				 //sesion.setAttribute("proyecto",proyecto);
+				 irA="/adminConvenio/Verconvenio.jsp";
+			break;
+			
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
 				 sesion.removeAttribute("nuevoConvenio");

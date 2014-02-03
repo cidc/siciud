@@ -29,8 +29,8 @@ function observacion(caja){
 		</tr>
 	</table>
 <br>
-<form name="frmEstado" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
-	<input type="hidden" name="accion" value="4">
+<form name="frmEstado" method="post" action="<c:url value='/adminConvenio/AdminConvenio.x' />">
+	<input type="hidden" name="accion" value="6">
 
 
 	<table width="95%" class="tablas" align="center">
@@ -39,7 +39,7 @@ function observacion(caja){
 			<th colspan="3"><b>Nombre de Convenio</b></th>
 		</tr>
 		<tr>
-			<td colspan="3"><c:out value="${sessionScope.datoConvenio.idconvenio}"/></td>
+			<td colspan="3"><c:out value="${sessionScope.datoConvenio.nombreConvenio}"/></td>
 		</tr>
 		
 		<tr>
@@ -123,10 +123,11 @@ function observacion(caja){
 			                          <option value="7" <c:if test="${sessionScope.datoConvenio.estado==7}">selected</c:if>>Proc. Finalización</option>
 		              </select></td>
 							<td><select name="tipo">
-			                <option value="1" <c:if test="${sessionScope.datoConvenio.tipo==1}">selected</c:if>>Vigente</option>
-			                <option value="2" <c:if test="${sessionScope.datoConvenio.tipo==2}">selected</c:if>>Indefinido</option>
-			                <option value="3" <c:if test="${sessionScope.datoConvenio.tipo==3}">selected</c:if>>Terminado</option>
-			                <option value="4" <c:if test="${sessionScope.datoConvenio.tipo==4}">selected</c:if>>Cancelado</option>
+			     
+			<option value="1" <c:if test="${requestScope.datoConvenio.tipo==1}">selected</c:if>>Marco</option>
+			<option value="2" <c:if test="${requestScope.datoConvenio.tipo==2}">selected</c:if>>Especifico</option>
+			<option value="3" <c:if test="${requestScope.datoConvenio.tipo==3}">selected</c:if>>Acuerdo de cooperación</option>
+			<option value="4" <c:if test="${requestScope.datoConvenio.tipo==4}">selected</c:if>>Contrato</option>
 		             </select></td>
 							
 						</tr>

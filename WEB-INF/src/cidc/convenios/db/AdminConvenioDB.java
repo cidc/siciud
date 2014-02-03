@@ -63,6 +63,32 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return retorno;
 	}
+	
+	public boolean cambiaEstado(int idconv, String tipo, String estado ) {
+		Connection cn=null;
+		PreparedStatement ps=null;
+		boolean retorno = false;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("cambiaEstadoconvenio"));
+			ps.setString(i++,estado);
+			ps.setString(i++,tipo);
+			ps.setLong(i++,idconv);
+			ps.executeUpdate();
+			retorno = true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+	
 
 	public boolean nuevoConvenio(Convenio convenio) {
 		
