@@ -31,14 +31,15 @@ function observacion(caja){
 <br>
 <form name="frmEstado" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
 	<input type="hidden" name="accion" value="4">
-	<input type="hidden" name="idc" value="${sesionScope.datoConvenio.nombreConvenio}">
+
+
 	<table width="95%" class="tablas" align="center">
 	<CAPTION>Datos generales del Convenio</CAPTION>
 		<tr>
 			<th colspan="3"><b>Nombre de Convenio</b></th>
 		</tr>
 		<tr>
-			<td colspan="3"><c:out value="${sessionScope.datoConvenio.nombreConvenio}"/></td>
+			<td colspan="3"><c:out value="${sessionScope.datoConvenio.idconvenio}"/></td>
 		</tr>
 		
 		<tr>
@@ -213,7 +214,10 @@ function observacion(caja){
      	--%>
 
      	<form name="observConv" method="post" action="<c:url value='/adminConvenio/AdminConvenio.x' />">
-     		<input type="hidden" name="accion" value="3">
+     		<input type="hidden" name="accion" value="5">
+     		<input type="hidden" name="mierda" value="${sessionScope.datoConvenio.nombreproyecto}">
+     		<input type="hidden" name="aa" value="${sessionScope.datoConvenio.idconvenio}">
+     		
      		<table width="95%" class="tablas" align="center">
      			<CAPTION>Observaciones</CAPTION>
      			<tr>

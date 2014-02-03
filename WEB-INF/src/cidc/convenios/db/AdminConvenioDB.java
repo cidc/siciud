@@ -32,6 +32,7 @@ import cidc.convenios.obj.ObservacionesOBJ;
 
 
 public class AdminConvenioDB extends BaseDB{
+	GetConvenioOBJ conv=null;
 
 	public AdminConvenioDB(CursorDB c, int perfil) {
 		super(c, perfil);
@@ -321,13 +322,13 @@ public class AdminConvenioDB extends BaseDB{
 	 
 	 
 	 public GetConvenioOBJ buscarConvenio(int id){
-		 GetConvenioOBJ conv=null;
+		 
 			conv=getConvenio(id);
 			
 			if(conv!=null){
-				System.out.println("anteslista");
+				
 				conv.setListaObservaciones(getListaObservaciones(id));
-				System.out.println("despueslista");
+			
 			}
 			return conv;
 		}
@@ -481,7 +482,7 @@ public class AdminConvenioDB extends BaseDB{
 	
 	
 	public List getListaObservaciones(long idConv) {
-		System.out.println("id en getlista"+idConv);
+		
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		Connection cn=null;
@@ -495,7 +496,7 @@ public class AdminConvenioDB extends BaseDB{
 			
 			
 			rs=ps.executeQuery();
-			System.out.println("nunca erntra");
+		
 			while(rs.next()){
 				i=1;
 				observ= new ObservacionesOBJ();
@@ -506,7 +507,7 @@ public class AdminConvenioDB extends BaseDB{
 				lista.add(observ);
 			}
 		}catch (SQLException e) {
-			System.out.println("erro error error ");
+			
 			lanzaExcepcion(e);
 		}catch (Exception e) {
 			lanzaExcepcion(e);
