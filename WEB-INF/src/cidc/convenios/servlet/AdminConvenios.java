@@ -11,13 +11,17 @@ import javax.servlet.http.HttpSession;
 
 import cidc.convenios.db.AdminConvenioDB;
 import cidc.convenios.obj.Convenio;
+import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.Parametros;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.servlet.ServletGeneral;
 import cidc.proyectosAntiguos.db.ProyectosAntiguosDB;
+import cidc.proyectosGeneral.obj.Proyecto;
 
 public class AdminConvenios extends ServletGeneral {
+	
+	GetConvenioOBJ objconv=null; 
 
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		context=config.getServletContext();
@@ -28,6 +32,7 @@ public class AdminConvenios extends ServletGeneral {
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		AdminConvenioDB adminConv= new AdminConvenioDB(cursor,usuario.getPerfil());
 		Convenio conv=null;
+		
 		Calendar fecha = new GregorianCalendar();
 		mensaje="";
 		
@@ -63,14 +68,7 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/ListaConvenios.jsp";
 			break;
 			case Parametros.cmdGetConvenio:
-				
-
-				System.out.println("entro a buscar1");
-				System.out.println(req.getParameter("idConv"));
-				
 				sesion.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(req.getParameter("idConv"))));
-				System.out.println("entro a buscar");
-		
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/Verconvenio.jsp";
 			break;
@@ -84,12 +82,19 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;
 			case Parametros.InsertaObservacionConvenio:
-				System.out.println("holaaaaa");
-				System.out.println(req.getParameter("idc"));
-				 if (adminConv.insertaObservacion(Integer.parseInt(req.getParameter("idc")), req.getParameter("obsconvenio"),usuario.getIdUsuario()))
+				if (adminConv.insertaObservacion(Integer.parseInt(req.getParameter("aa")), req.getParameter("obsconvenio"),usuario.getIdUsuario()))
 					 mensaje="Observación insertada correctamente";
                  else
                 	mensaje="No se pudo insertar la observación";
+				
+				
+				objconv=(GetConvenioOBJ)sesion.getAttribute("datoConvenio");
+				//objconv= adminConv.buscarConvenio(Integer.parseInt(req.getParameter("aa")));
+				//objconv.setListaObservaciones(adminConv.getListaObservaciones(Integer.parseInt(req.getParameter("aa"))));
+				 objconv.getListaObservaciones().clear();
+				objconv.setListaObservaciones(adminConv.getListaObservaciones(Integer.parseInt(objconv.getIdconvenio())));
+				//sesion.setAttribute("datoConvenio",proyecto);
+				 irA="/adminConvenio/Verconvenio.jsp";
 			break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
