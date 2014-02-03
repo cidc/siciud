@@ -17,6 +17,7 @@ local.properties
 .loadpath
 *.jar
 conect.properties
+*.pdf
 
 # External tool builders
 .externalToolBuilders/
