@@ -35,7 +35,7 @@ public class GestionEntidad  extends ServletGeneral{
 
 	
 	   Usuario usuario = null;
-
+	  
 		public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 			HttpSession sesion = req.getSession();
 			System.out.println("Entro a entidad");
