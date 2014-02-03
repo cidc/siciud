@@ -370,6 +370,9 @@ public class GenerarCertificados {
 		
 	}
 	
+	/**
+	 * Genera una marca de agua en el documento con el logo de la dependencia 
+	 */
 	public String marcaAgua(String ruta, String path){
 		try {
 			String[] nombre= ruta.split("pdf");
@@ -398,6 +401,11 @@ public class GenerarCertificados {
 		return null;
 	}
 	
+	/**
+	 * Agrega un codigo de barra a partir del codigo del certificado
+	 * @param codigo
+	 * @return
+	 */
 	public PdfPCell codigoBarras(String codigo){
 		PdfContentByte cimg = writer.getDirectContent();
 	  Barcode128 code128 = new Barcode128();
@@ -413,6 +421,50 @@ public class GenerarCertificados {
 	  cell.setVerticalAlignment(Element.ALIGN_CENTER);
 	  cell.setBorder(Rectangle.NO_BORDER);
 	  return cell;
+	}
+	
+	/**
+	 * 
+	 * @param certificado
+	 * @param path
+	 * @param resp
+	 * @param ruta
+	 */
+	public void crearEspecial(CertificacionesOBJ certificado, String path, HttpServletResponse resp, String ruta){
+		System.out.println("Creando Certificado Especial");
+		String contenido=""; 
+//		numCertificado=certificado.getConsCert()+" de "+Calendar.getInstance().get(Calendar.YEAR);
+//		nombrePersona=certificado.getNombre().toUpperCase();		
+		Phrase []textoDocumento=new Phrase [2];
+		Phrase clausulas=new Phrase();
+		Phrase clausulasinicio=new Phrase();		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		String formattedDate = sdf.format(date);		
+//		clausulasinicio.add(new Phrase("\n\nNúmero de Verificación: "+certificado.getCod_verificacion()+"\n",texto10n));
+//		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
+		clausulasinicio.add(new Phrase("\n\n\n\n"+certificado.getCuerpo_cer()+".",texto10));
+		clausulasinicio.add(new Phrase("\n\nSe expide la presente a solicitud del (de la) interesado(a) a los ",texto10));
+		clausulasinicio.add(new Phrase(" "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10));
+		contenido=clausulasinicio.toString();
+		
+		textoDocumento[0]=clausulasinicio;
+		textoDocumento[1]=clausulas;
+
+		try {
+			certificado.setCuerpo_cer(contenido);
+			inicarDocumentoCertificado(resp,path,certificado.getCod_verificacion());
+			agregarContenido(textoDocumento);
+			agregarPieDePagina(ruta);
+			document.close();
+			
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("-Certificado Electronico creado->");
+
+		
 	}
 	
 }

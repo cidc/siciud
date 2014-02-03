@@ -70,13 +70,21 @@ public class CertificadosDoc extends ServletGeneral {
 				sesion.removeAttribute("listacertificados");
 				sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2,pazSalvo));
 			break;
-			case Parametros.CREARCERTACTIVIDADES:
-				System.out.println("entra caso 9");
-				irA="/Certificados/Actividades.jsp";
-				mensaje="Documento creado exitosamente";
-				sesion.removeAttribute("accion");
-				sesion.removeAttribute("listacertificados");
-				sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2,pazSalvo));
+//			case Parametros.CREARCERTACTIVIDADES:
+//				System.out.println("entra caso 9");
+//				irA="/Certificados/Actividades.jsp";
+//				mensaje="Documento creado exitosamente";
+//				sesion.removeAttribute("accion");
+//				sesion.removeAttribute("listacertificados");
+//				sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2,pazSalvo));
+			case Parametros.CREARCERTESPECIAL:
+//				certificado.setNombre("");
+//				certificado.setCedula("");
+				certifidoDB.certificadoEspecial(certificado, path, resp);
+				System.out.println("Para generar el certificado especial");
+				System.out.println(certificado.getCuerpo_cer());
+				irA="/Certificados/Especial.jsp";
+				break;
 		}
 				
 		caso=0;

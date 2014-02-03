@@ -122,6 +122,9 @@ public class AdminCertificados extends ServletGeneral{
 			mensaje="Hizo el mapeo del Certificado";	
 			System.out.println(irA);
 		break;
+		case Parametros.CREARCERTESPECIAL:
+			irA="/certificaciones/CertificadosDoc.x?accion=10&accion2=0";
+			break;
 		default:
 			irA="/Certificados/BuscarCertificados.jsp";
 			sesion.removeAttribute("listacertificados");

@@ -326,7 +326,9 @@ public class CertificadoDB extends BaseDB{
 			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+certificado.getCod_verificacion()+".pdf";
 			GenerarCertificados cert= new GenerarCertificados();
 			cert.crearPazySalvo(certificado, ruta, resp,path);
-			insertaCertificadoBD(certificado,ruta,dir);
+			if(!insertaCertificadoBD(certificado,cert.marcaAgua(ruta,path),dir)){
+				return null;
+			}
 		} catch (Exception e) {
 			lanzaExcepcion(e);
 		}finally{
@@ -417,4 +419,45 @@ public class CertificadoDB extends BaseDB{
 		}
 		return null;
 	}*/
+	
+	/**
+	 * Este metodo inserta en la base de datos el certificado especial y al tiempo crea el documento en pdf
+	 * @param certificado
+	 * @param path
+	 * @param resp
+	 * @return
+	 */
+	public CertificacionesOBJ certificadoEspecial(CertificacionesOBJ certificado, String path, HttpServletResponse resp){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		String consec=null;
+		int i=1;
+		int ano=Calendar.getInstance().get(Calendar.YEAR);
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("consecutivoCertificado"));
+			rs=ps.executeQuery();
+			while(rs.next()){
+				consec = rs.getString(i++);
+				certificado.setConsCert(consec);
+			}
+			certificado.setTipo("3");//se asigna el tipo 3 para el certificado de tipo especial
+			certificado.setCod_verificacion("VIICEPS_"+certificado.getTipo()+"_"+consec+"_"+ano);
+			String dir=path+sep+"FirmaCIDC.pfx";
+			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+certificado.getCod_verificacion()+".pdf";
+			GenerarCertificados cert= new GenerarCertificados();
+			cert.crearEspecial(certificado, ruta, resp,path);
+			if(!insertaCertificadoBD(certificado,cert.marcaAgua(ruta,path),dir)){
+				return null;
+			}
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return null;
+	}
 }
