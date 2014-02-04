@@ -17,11 +17,14 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import cidc.adminEntidad.obj.EntidadOBJ;
+import cidc.adminEntidad.obj.TelefonosOBJ;
 import cidc.convenios.obj.Convenio;
+import cidc.convenios.obj.DatosAjax;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.obj.Globales;
 import cidc.proyectosAntiguos.obj.ProyectoAntiguoOBJ;
+import cidc.proyectosGeneral.obj.CoInvest;
 
 
 
@@ -168,8 +171,9 @@ public class EntidadDB extends  BaseDB{
 		                objEntidad.setUsudigita(rs.getString(8));
 		                objEntidad.setAporte(rs.getInt(9));
 		                objEntidad.setFecha(rs.getString(10));
+		                objEntidad.setListatelefonos(getConsultarTelefonos(objEntidad.getId()));
 		              
-		            }
+		             }
 		             
 		        } catch (SQLException e) {lanzaExcepcion(e);}
 			       catch (Exception e) {lanzaExcepcion(e);}
@@ -184,6 +188,42 @@ public class EntidadDB extends  BaseDB{
 			return objEntidad;
 		}
 	
+		
+		
+		public List<TelefonosOBJ> getConsultarTelefonos(int id){
+			TelefonosOBJ tel=null;
+			Connection cn=null;
+			PreparedStatement ps=null;
+			ResultSet rs=null;
+			int i=1;
+			List<TelefonosOBJ> listatel=new ArrayList <TelefonosOBJ>();
+			
+			try {
+				 cn = cursor.getConnection(super.perfil);
+		          ps = cn.prepareStatement(rb.getString("consultaTelefonos"));
+		          ps.setInt(1, id);
+		          rs = ps.executeQuery();
+				
+				while(rs.next()){
+					tel=new TelefonosOBJ();
+					tel.setId(rs.getInt(1));
+					tel.setTelefono(rs.getString(2));
+					listatel.add(tel);
+				}
+			} catch (SQLException e) {
+				lanzaExcepcion(e);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return listatel;
+		}
+		
+		
+		
+		
+		
 	
 		public boolean actualizarEntidad(EntidadOBJ objEntidad) {
 			boolean retorno = false;
@@ -204,8 +244,6 @@ public class EntidadDB extends  BaseDB{
 				ps.setDouble(8,objEntidad.getAporte());
 				ps.setString(9,objEntidad.getFecha());
 				ps.setInt(10,objEntidad.getId());
-			
-				
 				ps.executeUpdate();
 				retorno = true;
 			}catch (SQLException e) {

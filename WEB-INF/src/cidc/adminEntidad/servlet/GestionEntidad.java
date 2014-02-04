@@ -38,7 +38,7 @@ public class GestionEntidad  extends ServletGeneral{
 	  
 		public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 			HttpSession sesion = req.getSession();
-			System.out.println("Entro a entidad");
+			
 			context=config.getServletContext();
 			cursor = new CursorDB();
 			EntidadOBJ objEntidad =null;
@@ -85,7 +85,7 @@ public class GestionEntidad  extends ServletGeneral{
                break;
 			 case ParametrosOBJ.ListaEntidad:
 					//Buscar Entidad
-				 System.out.println("Entro a lista entidad");
+				
 					req.setAttribute("listaEntidades", entidadDB.listaEntidad());
 					irA="/adminConvenio/Entidad/ListaEntidades.jsp";
 				break;

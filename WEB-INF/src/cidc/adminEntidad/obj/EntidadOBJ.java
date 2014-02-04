@@ -16,6 +16,7 @@ public class EntidadOBJ implements Serializable {
 	private float aporte;
 	private String fecha= null;
 	private String[] telefonos = null;
+	 private List listatelefonos;
 	
 	public int getId() {
 		return id;
@@ -82,6 +83,12 @@ public class EntidadOBJ implements Serializable {
 	}
 	public void setTelefonos(String[] telefonos) {
 		this.telefonos = telefonos;
+	}
+	public List getListatelefonos() {
+		return listatelefonos;
+	}
+	public void setListatelefonos(List listatelefonos) {
+		this.listatelefonos = listatelefonos;
 	}
 	
 	   

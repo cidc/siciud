@@ -116,17 +116,55 @@ return true;
 									</table>
 								</td>
 							</tr>
-							
-								
+			<tr>				
+					<td colspan="3">
+									<table width="100%">
+										<tr>
 										
-					 <tr> <td class="renglones"><b>Observaciones:</b></td></tr>
-               		<tr> <td><textarea class="texto" name="observaciones" style="width: 99%" maxlength="200" >${sessionScope.entidades.observaciones}</textarea></td></tr>
-						</table>
+										 <tr><td class="renglones"><b>Observaciones:</b></td></tr>
+               		<tr> <td><textarea class="texto" name="observaciones" style="width: 99%" maxlength="200" >${sessionScope.entidades.observaciones}</textarea></td>
+										
+										</tr>
+										
+									</table>				
+					
+               		
+               		</td>
+               		
+               		<td colspan="2">
+               			<table width="100%">
+						<caption>Lista de Telefonos</caption>
+						<tr>
+							<td class="renglones" width="10px" align="center" ><b>#</b></td>
+							<td class="renglones" width="30px" align="center"><b>Telefonos</b></td>
+							</tr>
+							
+						<c:forEach begin="0" items="${sessionScope.entidades.listatelefonos}" var="lista" varStatus="st">
+						<tr>
+						<c:if test="${lista.telefono!=null}"> 
+							<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> align="center">
+							<td class="renglones" width="10px" align="center"><b><c:out value="${st.count}" /></b></td>
+							<td class="listas" align="center"> <c:out value="${lista.telefono}" /></td>
+							</c:if>
+							<c:if test="${lista.telefono==null}">
+							<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> align="center">
+							<td class="renglones" width="10px" align="center"><b>1</b></td>
+							<td class="listas" align="center"> No existen Telefonos</td>
+							</c:if>
+							</tr>
+						</c:forEach>
+						
+						
+					</table>
+               		</td>
+               		</tr>   
+				 </table>
 					</td>
-				</tr>
-				<tr>
+		</tr>
+					<tr>
 					<td align="center"><img src="<c:url value="/comp/img/Modificar.gif"/>" onclick="guardar()"></td>
 				</tr>
+					
 			</table>
 			<input type="hidden" name="aporte" value=<c:out value="${sessionScope.entidades.aporte}"/>>
 			<input type="hidden" name="validar">
