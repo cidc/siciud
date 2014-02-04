@@ -18,6 +18,8 @@ import cidc.general.mails.EnvioMail2;
 import cidc.general.mails.Reporte;
 import cidc.general.obj.CrearClaves;
 import cidc.general.obj.Globales;
+import cidc.proyectosGeneral.obj.ExtraDocProyecto;
+import cidc.proyectosGeneral.obj.Proyecto;
 import cidc.convenios.obj.DatosAjax;
 
 
@@ -56,6 +58,88 @@ public class AdminConvenioDB extends BaseDB{
 		}catch (SQLException e) {
 			lanzaExcepcion(e);
 		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+	public boolean nuevaCargaDocConvenio(ExtraDocProyecto documento, Proyecto proyecto,long idUsuario) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		boolean noGenerico=true;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			cn.setAutoCommit(false);
+			if(proyecto.getClaseProyecto()==2){
+				switch (documento.getTipo()) {
+					case 1:
+					case 3:
+						noGenerico=true;//el case 1 y 3 no son tan necesarios pero los dejo por si acaso		
+					break;
+					case 2:
+						ps=cn.prepareStatement(rb.getString("cargaInformeFinalProyecto2"));
+						ps.setString(i++, documento.getNombreArchivo());
+						ps.setString(i++, documento.getFechaDoc());
+						ps.setString(i++, documento.getObservaciones());
+						ps.setInt(i++, proyecto.getId());
+						ps.executeUpdate();
+						retorno=true;
+						noGenerico=false;
+					break;
+					case 4://si es caso 3 o 4 es el mismo procedimiento
+					case 5:
+						ps=cn.prepareStatement(rb.getString("cargaActaCierre2"));
+						ps.setString(i++, documento.getNombreArchivo());
+						ps.setString(i++, documento.getFechaDoc());
+						ps.setString(i++, documento.getObservaciones());
+						ps.setInt(i++, proyecto.getId());
+						ps.executeUpdate();
+						retorno=true;
+						noGenerico=false;
+					break;
+				
+				}
+			}
+			i=1;
+			if(noGenerico){
+				if(documento.getTipo()==3)
+					documento.setNombreDocumento("Informe Parcial");
+				if(documento.getTipo()==2)
+					documento.setNombreDocumento("Informe Final");
+				
+				ps=cn.prepareStatement(rb.getString("nuevaCargaDocProyecto"+proyecto.getClaseProyecto()));
+				ps.setLong(i++, proyecto.getId());			
+				ps.setString(i++, documento.getNombreDocumento());
+				ps.setString(i++, documento.getFechaDoc());
+				ps.setString(i++, documento.getNombreArchivo());						
+				ps.setString(i++, documento.getObservaciones());
+				ps.setInt(i++, documento.getTipo());
+				ps.setInt(i++, documento.getEstado());
+				ps.setLong(i++, idUsuario);			
+				ps.executeUpdate();
+				retorno=true;
+			}
+			i=1;
+			
+			if(documento.getTipo()==4 || documento.getTipo()==5){
+				ps=cn.prepareStatement(rb.getString("cambiaEstadoProyecto"+proyecto.getClaseProyecto()));
+				if(documento.getTipo()==4) 	ps.setInt(i++, 3);
+				if(documento.getTipo()==5) 	ps.setInt(i++, 4);
+				ps.setInt(i++, proyecto.getId());			
+				ps.executeUpdate();
+			//	System.out.println(".--- sentenci de cambio--->"+ps);
+			}
+			cn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			lanzaExcepcion(e);
 		}finally{
 			cerrar(ps);

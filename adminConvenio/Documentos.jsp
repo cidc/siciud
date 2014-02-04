@@ -77,7 +77,7 @@
 </head>
 <c:import url="/general.jsp"/>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<c:if test="${sessionScope.proyecto!=null}">
+<c:if test="${sessionScope.datoConvenio!=null}">
 <br>
 <table cellpadding="0" cellspacing="0">
 	<tr>
@@ -92,24 +92,32 @@
 	<table width="95%" class="tablas" align="center">
 		<CAPTION>Datos generales del Convenio</CAPTION>
 		<tr>
-			<th colspan="5"><b>Nombre de Proyecto</b></th>
+			<th colspan="5"><b>Nombre del Convenio</b></th>
 		</tr>
 		<tr>
-			<td colspan="5"><c:out value="${sessionScope.proyecto.proyecto}"/></td>
+			<td colspan="5"><c:out value="${sessionScope.datoConvenio.nombreConvenio}"/></td>
+		</tr>
+		
+		<tr>
+			<th colspan="5"><b>Nombre del Proyecto</b></th>
 		</tr>
 		<tr>
-			<th width="20%"><b>Director del Proyecto</b></th>
-			<th width="20%"><b>Código</b></th>
-			<th width="20%"><b>Fecha Aprobación</b></th>
-			<th width="20%"><b>Estimado Fin</b></th>
-			<th width="20%"><b>Total Aprobado</b></th>
+			<td colspan="5"><c:out value="${sessionScope.datoConvenio.nombreproyecto}"/></td>
+		</tr>
+		
+		<tr>
+			<th width="20%"><b>Número Convenio</b></th>
+			<th width="20%"><b>Número disponibilidad</b></th>
+			<th width="20%"><b>Fecha de registro</b></th>
+			<th width="20%"><b>Fecha de Inicio</b></th>
+			<th width="20%"><b>Fecha de finalizacion</b></th>
 		</tr>
 		<tr>
-			<td width="20%" align="center"><c:out value="${sessionScope.proyecto.director}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.proyecto.codigo}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.proyecto.fecAprobacion}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.proyecto.fecEstimadoFin}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.balanceProyecto.totalAprobado}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.numDisp}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fecha}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
 		</tr>
 	</table>
 <br>
@@ -124,7 +132,7 @@
 		    <th width="75px">Opción</th>
 		  </tr>
 					
-		  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
+<%--		  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
 		  <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
 		  <td>
 		   		<c:if test='${lista.nombreArchivo=="" || lista.nombreArchivo==null}'>
@@ -155,6 +163,7 @@
 			  <td>&nbsp;</td>
 		  </tr>
 		  </c:forEach>
+		   --%>
 	</table>
 
 	<br>
@@ -223,9 +232,9 @@
 	</form>
 		
 </c:if>
-<c:if test="${sessionScope.proyecto==null}">
+<c:if test="${sessionScope.datoConvenio==null}">
 <br><br><br>
-<h4 align="center">No se logró encontrar la información del Proyecto de Investigación</h4>
+<h4 align="center">No se logró encontrar la información del Convenio</h4>
 </c:if>
 </body>
 </html>

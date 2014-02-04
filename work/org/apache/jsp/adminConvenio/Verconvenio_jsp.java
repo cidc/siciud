@@ -82,7 +82,7 @@ public final class Verconvenio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\tif(caja.value.length<5)\r\n");
       out.write("\t\talert(\"Favor digitar la respectiva observación que desea ingresar\");\r\n");
       out.write("\telse\r\n");
-      out.write("\t\tdocument.observConv.submit();\r\n");
+      out.write("\t\tdocument.observConv.submit(); \r\n");
       out.write("}\r\n");
       out.write("\r\n");
       out.write("</script>\r\n");
@@ -496,7 +496,7 @@ public final class Verconvenio_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/Verconvenio.jsp(25,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f2.setValue("/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=6");
+    _jspx_th_c_005furl_005f2.setValue("/adminConvenio/AdminConvenio.x?accion=7");
     int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
     if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
@@ -514,7 +514,7 @@ public final class Verconvenio_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f3 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/Verconvenio.jsp(25,113) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/Verconvenio.jsp(25,95) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f3.setValue("/comp/img/tabs/Documentos1.gif");
     int _jspx_eval_c_005furl_005f3 = _jspx_th_c_005furl_005f3.doStartTag();
     if (_jspx_th_c_005furl_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

@@ -10,7 +10,7 @@ function observacion(caja){
 	if(caja.value.length<5)
 		alert("Favor digitar la respectiva observación que desea ingresar");
 	else
-		document.observConv.submit();
+		document.observConv.submit(); 
 }
 
 </script>
@@ -22,7 +22,7 @@ function observacion(caja){
 	<table cellpadding="0" cellspacing="0">
 		<tr>
 			<td><img src='<c:url value="/comp/img/tabs/General2.gif"/>'></td>
-			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=6"/>'><img border="0" src='<c:url value="/comp/img/tabs/Documentos1.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/tabs/Documentos1.gif"/>'></a></td>
 			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminProyectos/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Tiempos1.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminProyectos/Coinvestigadores.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Investigadores1.gif"/>'></a></td>
