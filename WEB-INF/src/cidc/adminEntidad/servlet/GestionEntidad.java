@@ -89,7 +89,12 @@ public class GestionEntidad  extends ServletGeneral{
 					req.setAttribute("listaEntidades", entidadDB.listaEntidad());
 					irA="/adminConvenio/Entidad/ListaEntidades.jsp";
 				break;
-
+			 case ParametrosOBJ.VerEntidad:
+				 	sesion.removeAttribute("entidades");
+					sesion.setAttribute("entidades", entidadDB.consultarEntidad(Integer.parseInt(req.getParameter("idEnt"))));
+					req.setAttribute("accion","4");
+					irA="/adminConvenio/Entidad/Entidad.jsp";
+				break;
 	
     	             default:
     	            	 irA = "/adminConvenio/Entidad/NuevaEntidad.jsp";

@@ -66,9 +66,9 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -76,20 +76,20 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\">\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction ver(id,tipo){\r\n");
-      out.write("\t\tdocument.listado.id.value=id;\n");
+      out.write("\t\tdocument.listado.id.value=id;\r\n");
       out.write("\t\tdocument.listado.tipo.value=tipo;\r\n");
       out.write("\t\tdocument.listado.action='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("';\n");
+      out.write("';\r\n");
       out.write("\t\tdocument.listado.target=\"main\";\r\n");
       out.write("\t\tdocument.listado.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
@@ -99,7 +99,7 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write('	');
       if (_jspx_meth_c_005fif_005f2(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
@@ -108,6 +108,7 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -195,7 +196,7 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
         out.write("\r\n");
         out.write("\t<form name=\"listado\" method=\"post\">\r\n");
         out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"2\"/>\r\n");
-        out.write("\t\t<input type=\"hidden\" name=\"id\" value=\"0\">\n");
+        out.write("\t\t<input type=\"hidden\" name=\"id\" value=\"0\">\r\n");
         out.write("\t\t<input type=\"hidden\" name=\"tipo\" value=\"0\">\r\n");
         out.write("        <table class=\"tablas\" width=\"90%\" align=\"center\">\r\n");
         out.write("        <caption >Listado de Proyectos Vigentes</caption>\r\n");
@@ -264,7 +265,7 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
           if (_jspx_meth_c_005fout_005f1(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("</td>\r\n");
-          out.write("\t\t\t<td width=\"150px\" class=\"listas\">");
+          out.write("\t\t\t<td width=\"150px\" >");
           if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("</td>\r\n");
@@ -395,7 +396,7 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminProyectos/ListaProyectos.jsp(39,36) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/ListaProyectos.jsp(39,22) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.director}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

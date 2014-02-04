@@ -34,6 +34,7 @@
 	</tr>
 	<c:forEach begin="0" items="${requestScope.listaConvenios}" var="lista" varStatus="st">
 	<tr>
+		<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
 		<td class="renglones" width="10px"><b><c:out value="${st.count}" /></b></td>
 		<td><c:out value="${lista.codigo}" /></td>
 		<td><c:out value="${lista.nombreConvenio}" /></td>

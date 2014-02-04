@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <html>
 <head>
-<c:import url="/general.jsp" />
+<link type="text/css" rel="stylesheet" href="<c:url value="/comp/css/formatos.css"/>">
+<c:import url="/general.jsp"/>
 <script>
-
 	function enviar(cod){
-		document.frmConvenio.idConv.value=cod;
-		document.frmConvenio.action='<c:url value="/adminEntidad/GestEntidad.x"/>';
-		document.frmConvenio.submit();
+		document.formEntidad.idEnt.value=cod;
+		document.formEntidad.validar='<c:url value="/adminEntidad/GestEntidad.x"/>';
+		document.formEntidad.submit();
 	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 
 <c:if test="${!empty requestScope.listaEntidades}">
-<form name="frmConvenio">
-<input type="hidden" name="idConv" value="">
-<input type="hidden" name="accion"	value='3'>
+<form name="formEntidad">
+<input type="hidden" name="idEnt" value="">
+<input type="hidden" name="validar"	value='4'>
 <table class="tablas" align="center" width="90%">
 	<caption>Lista de entidades insertadas</caption>
 	<tr>
@@ -29,10 +29,11 @@
 	</tr>
 	<c:forEach begin="0" items="${requestScope.listaEntidades}" var="lista" varStatus="st">
 	<tr>
+		<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
 		<td class="renglones" width="10px"><b><c:out value="${st.count}" /></b></td>
-		<td><c:out value="${lista.nombre}" /></td>
-		<td><c:out value="${lista.tipo}" />		</td>
-		<td><img src=<c:url value="/comp/img/Ver.gif" /> onclick='enviar(<c:out value="${lista.id}" />)'></td>
+		<td class="listas"><c:out value="${lista.nombre}" /></td>
+		<td class="listas"><c:out value="${lista.tipo}" /></td>
+		<td class="estado" align="center"><img src=<c:url value="/comp/img/Ver.gif" /> onclick='enviar(<c:out value="${lista.id}" />)'></td>
 	</tr>
 	</c:forEach>
 </table>
