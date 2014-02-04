@@ -66,8 +66,8 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write('\n');
-      out.write('\n');
+      out.write("\r\n");
+      out.write("\r\n");
       cidc.general.login.Usuario loginUsuario = null;
       synchronized (session) {
         loginUsuario = (cidc.general.login.Usuario) _jspx_page_context.getAttribute("loginUsuario", PageContext.SESSION_SCOPE);
@@ -76,21 +76,21 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
           _jspx_page_context.setAttribute("loginUsuario", loginUsuario, PageContext.SESSION_SCOPE);
         }
       }
-      out.write("\n");
-      out.write("<html>\n");
-      out.write("<head>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
+      out.write("<head>\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("' title='win2k-cold-1' />\n");
+      out.write("' title='win2k-cold-1' />\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
@@ -101,70 +101,70 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\tdocument.frmStInforme.estado.value=st;\r\n");
       out.write("\t\tdocument.frmStInforme.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("\n");
-      out.write("\tfunction cambioTipo(combo){\n");
-      out.write("\t\tif(combo.value==1||combo.value==4||combo.value==5){\n");
-      out.write("\t\t\tdocument.getElementById(\"st11\").style.display=\"none\";\n");
-      out.write("\t\t\tdocument.getElementById(\"st12\").style.display=\"none\";\n");
-      out.write("\t\t\tdocument.getElementById(\"st21\").style.display=\"\";\n");
-      out.write("\t\t\tdocument.getElementById(\"st22\").style.display=\"\";\n");
-      out.write("\t\t\tdocument.frmCargaDoc.nombre.readonly=false;\n");
-      out.write("\t\t\tif(combo.value==4){\n");
-      out.write("\t\t\t\tdocument.frmCargaDoc.nombre.readonly=true;\n");
-      out.write("\t\t\t\tdocument.frmCargaDoc.nombre.value=\"Acta de Cierre/Cancelacion\";\n");
-      out.write("\t\t\t}\n");
-      out.write("\t\t\tif(combo.value==5){\n");
-      out.write("\t\t\t\tdocument.frmCargaDoc.nombre.readonly=true;\n");
-      out.write("\t\t\t\tdocument.frmCargaDoc.nombre.value=\"Acta de Finalizacion\";\n");
-      out.write("\t\t\t}\n");
-      out.write("\t\t}if(combo.value==2||combo.value==3){\n");
-      out.write("\t\t\tdocument.getElementById(\"st11\").style.display=\"\";\n");
-      out.write("\t\t\tdocument.getElementById(\"st12\").style.display=\"\";\n");
-      out.write("\t\t\tdocument.getElementById(\"st21\").style.display=\"none\";\n");
-      out.write("\t\t\tdocument.getElementById(\"st22\").style.display=\"none\";\n");
-      out.write("\t\t}\t\t\t\n");
+      out.write("\r\n");
+      out.write("\tfunction cambioTipo(combo){\r\n");
+      out.write("\t\tif(combo.value==1||combo.value==4||combo.value==5){\r\n");
+      out.write("\t\t\tdocument.getElementById(\"st11\").style.display=\"none\";\r\n");
+      out.write("\t\t\tdocument.getElementById(\"st12\").style.display=\"none\";\r\n");
+      out.write("\t\t\tdocument.getElementById(\"st21\").style.display=\"\";\r\n");
+      out.write("\t\t\tdocument.getElementById(\"st22\").style.display=\"\";\r\n");
+      out.write("\t\t\tdocument.frmCargaDoc.nombre.readonly=false;\r\n");
+      out.write("\t\t\tif(combo.value==4){\r\n");
+      out.write("\t\t\t\tdocument.frmCargaDoc.nombre.readonly=true;\r\n");
+      out.write("\t\t\t\tdocument.frmCargaDoc.nombre.value=\"Acta de Cierre/Cancelacion\";\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\t\tif(combo.value==5){\r\n");
+      out.write("\t\t\t\tdocument.frmCargaDoc.nombre.readonly=true;\r\n");
+      out.write("\t\t\t\tdocument.frmCargaDoc.nombre.value=\"Acta de Finalizacion\";\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\t}if(combo.value==2||combo.value==3){\r\n");
+      out.write("\t\t\tdocument.getElementById(\"st11\").style.display=\"\";\r\n");
+      out.write("\t\t\tdocument.getElementById(\"st12\").style.display=\"\";\r\n");
+      out.write("\t\t\tdocument.getElementById(\"st21\").style.display=\"none\";\r\n");
+      out.write("\t\t\tdocument.getElementById(\"st22\").style.display=\"none\";\r\n");
+      out.write("\t\t}\t\t\t\r\n");
       out.write("\t}\r\n");
-      out.write("\tfunction enviarDocumento(){\n");
+      out.write("\tfunction enviarDocumento(){\r\n");
       out.write("\t\tvar msg=\"\";\r\n");
-      out.write("\t\tif(document.frmCargaDoc.tipo.selectedIndex==0)\n");
-      out.write("\t\t\tmsg=msg+\"-) Tipo de documento\\n\";\n");
-      out.write("\t\tif(document.frmCargaDoc.tipo.value==\"1\"){\t\t\t\n");
-      out.write("\t\t\tif(document.frmCargaDoc.nombre.value==\"\")\n");
-      out.write("\t\t\t\tmsg=msg+\"-) Nombre del documento\\n\";\n");
-      out.write("\t\t\tdocument.frmCargaDoc.accion.value=\"3\";\n");
-      out.write("\t\t}\n");
-      out.write("\t\tif(document.frmCargaDoc.tipo.value==\"4\"){\n");
-      out.write("\t\t\tdocument.frmCargaDoc.accion.value=\"4\";\n");
-      out.write("\t\t}\n");
-      out.write("\t\tif(document.frmCargaDoc.tipo.value==\"5\"){\n");
-      out.write("\t\t\tdocument.frmCargaDoc.accion.value=\"5\";\n");
-      out.write("\t\t}\n");
-      out.write("\t\tif(document.frmCargaDoc.fechaDoc.value==\"\")\n");
-      out.write("\t\t\tmsg=msg+\"-) Fecha del Documento\\n\";\t\t\n");
-      out.write("\t\tif(document.frmCargaDoc.archivo.value==\"\")\n");
-      out.write("\t\t\tmsg=msg+\"-) Seleccionar un documento para cargar\\n\";\n");
-      out.write("\t\telse{\n");
-      out.write("\t\t\tarchi=document.frmCargaDoc.archivo.value;\n");
-      out.write("\t\t\tvar ext=archi.substr(archi.lastIndexOf('.'),archi.length);\n");
-      out.write("\t\t\tif(!(ext==\".pdf\"))\n");
-      out.write("\t\t\t\tmsg=msg+\"-) El archivo debe ser en formato PDF\\n\";\n");
-      out.write("\t\t}\n");
-      out.write("\t\tif(document.frmCargaDoc.observaciones.value==\"\")\n");
-      out.write("\t\t\tmsg=msg+\"-) Observaciones del documento\\n\";\n");
-      out.write("\t\tif(msg!=\"\"){\n");
-      out.write("\t\t\tmsg=\"Los siguientes campos son obligatorios\\n\"+msg;\t\n");
+      out.write("\t\tif(document.frmCargaDoc.tipo.selectedIndex==0)\r\n");
+      out.write("\t\t\tmsg=msg+\"-) Tipo de documento\\n\";\r\n");
+      out.write("\t\tif(document.frmCargaDoc.tipo.value==\"1\"){\t\t\t\r\n");
+      out.write("\t\t\tif(document.frmCargaDoc.nombre.value==\"\")\r\n");
+      out.write("\t\t\t\tmsg=msg+\"-) Nombre del documento\\n\";\r\n");
+      out.write("\t\t\tdocument.frmCargaDoc.accion.value=\"3\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\tif(document.frmCargaDoc.tipo.value==\"4\"){\r\n");
+      out.write("\t\t\tdocument.frmCargaDoc.accion.value=\"4\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\tif(document.frmCargaDoc.tipo.value==\"5\"){\r\n");
+      out.write("\t\t\tdocument.frmCargaDoc.accion.value=\"5\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\tif(document.frmCargaDoc.fechaDoc.value==\"\")\r\n");
+      out.write("\t\t\tmsg=msg+\"-) Fecha del Documento\\n\";\t\t\r\n");
+      out.write("\t\tif(document.frmCargaDoc.archivo.value==\"\")\r\n");
+      out.write("\t\t\tmsg=msg+\"-) Seleccionar un documento para cargar\\n\";\r\n");
+      out.write("\t\telse{\r\n");
+      out.write("\t\t\tarchi=document.frmCargaDoc.archivo.value;\r\n");
+      out.write("\t\t\tvar ext=archi.substr(archi.lastIndexOf('.'),archi.length);\r\n");
+      out.write("\t\t\tif(!(ext==\".pdf\"))\r\n");
+      out.write("\t\t\t\tmsg=msg+\"-) El archivo debe ser en formato PDF\\n\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\tif(document.frmCargaDoc.observaciones.value==\"\")\r\n");
+      out.write("\t\t\tmsg=msg+\"-) Observaciones del documento\\n\";\r\n");
+      out.write("\t\tif(msg!=\"\"){\r\n");
+      out.write("\t\t\tmsg=\"Los siguientes campos son obligatorios\\n\"+msg;\t\r\n");
       out.write("\t\t\talert(msg);\r\n");
       out.write("\t\t}else{\r\n");
-      out.write("\t\t\tdocument.frmCargaDoc.submit();\n");
+      out.write("\t\t\tdocument.frmCargaDoc.submit();\r\n");
       out.write("\t\t}\r\n");
       out.write("\t\t\r\n");
-      out.write("\t}\n");
+      out.write("\t}\r\n");
       out.write("\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
@@ -181,6 +181,7 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -324,14 +325,14 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f8(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f9(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f10(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f11(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
@@ -343,7 +344,7 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("</table>\r\n");
         out.write("<br>\r\n");
         out.write("\t<table width=\"95%\" class=\"tablas\" align=\"center\">\r\n");
-        out.write("\t\t<CAPTION>Datos generales del proyecto</CAPTION>\r\n");
+        out.write("\t\t<CAPTION>Datos generales del proyectoI</CAPTION>\r\n");
         out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<th colspan=\"5\"><b>Nombre de Proyecto</b></th>\r\n");
         out.write("\t\t</tr>\r\n");
@@ -353,48 +354,48 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
           return true;
         out.write("</td>\r\n");
         out.write("\t\t</tr>\r\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Director del Proyecto</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Código</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Fecha Aprobación</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Estimado Fin</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Total Aprobado</b></th>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Director del Proyecto</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Código</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Fecha Aprobación</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Estimado Fin</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Total Aprobado</b></th>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f4(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f5(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t</tr>\r\n");
         out.write("\t</table>\r\n");
         out.write("<br>\r\n");
         out.write("\t<table align=\"center\" width=\"95%\" class=\"tablas\">\r\n");
-        out.write("\t\t<CAPTION>Documentos</CAPTION>\n");
-        out.write("\t\t  <tr>\n");
-        out.write("\t\t    <th>&nbsp;</th>\n");
-        out.write("\t\t    <th width=\"75px\">Fecha Doc</th>\n");
-        out.write("\t\t    <th width=\"200px\">Nombre Documento</th>\n");
-        out.write("\t\t    <th>Observaciones</th>\n");
+        out.write("\t\t<CAPTION>Documentos</CAPTION>\r\n");
+        out.write("\t\t  <tr>\r\n");
+        out.write("\t\t    <th>&nbsp;</th>\r\n");
+        out.write("\t\t    <th width=\"75px\">Fecha Doc</th>\r\n");
+        out.write("\t\t    <th width=\"200px\">Nombre Documento</th>\r\n");
+        out.write("\t\t    <th>Observaciones</th>\r\n");
         out.write("\t\t    <th width=\"100px\">Cargado Por</th>\r\n");
-        out.write("\t\t    <th width=\"75px\">Opción</th>\n");
+        out.write("\t\t    <th width=\"75px\">Opción</th>\r\n");
         out.write("\t\t  </tr>\r\n");
-        out.write("\t\t\t\t\t\n");
+        out.write("\t\t\t\t\t\r\n");
         out.write("\t\t  ");
         if (_jspx_meth_c_005fforEach_005f0(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
@@ -409,55 +410,55 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"1\">\r\n");
         out.write("\t\t<table align=\"center\" width=\"95%\" class=\"tablas\">\r\n");
         out.write("\t\t<caption>Cargar Documento</caption>\r\n");
-        out.write("\t\t\t<tr>\n");
-        out.write("\t\t\t\t<td colspan=\"2\">\n");
-        out.write("\t\t\t\t\t<table width=\"100%\" border=\"1\">\n");
-        out.write("\t\t\t\t\t\t<tr>\n");
-        out.write("\t\t\t\t\t\t\t<th>Tipo</th>\n");
-        out.write("\t\t\t\t\t\t\t<td>\n");
-        out.write("\t\t\t\t\t\t\t\t<select name=\"tipo\" style=\"width:120px;\" onchange=\"cambioTipo(this)\" >\n");
-        out.write("\t\t\t\t\t\t\t\t\t<option value=\"0\">----------------</option>\n");
-        out.write("\t\t\t\t\t\t\t\t\t<option value=\"1\">Otro Documento</option>\n");
-        out.write("\t\t\t\t\t\t\t\t\t<option value=\"2\">Informe Final</option>\n");
-        out.write("\t\t\t\t\t\t\t\t\t<option value=\"3\">Informe Parcial</option>\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td colspan=\"2\">\r\n");
+        out.write("\t\t\t\t\t<table width=\"100%\" border=\"1\">\r\n");
+        out.write("\t\t\t\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t\t\t\t<th>Tipo</th>\r\n");
+        out.write("\t\t\t\t\t\t\t<td>\r\n");
+        out.write("\t\t\t\t\t\t\t\t<select name=\"tipo\" style=\"width:120px;\" onchange=\"cambioTipo(this)\" >\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<option value=\"0\">----------------</option>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<option value=\"1\">Otro Documento</option>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<option value=\"2\">Informe Final</option>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<option value=\"3\">Informe Parcial</option>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t<option value=\"4\" ");
         if (_jspx_meth_c_005fif_005f9(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write(">Acta Finalización</option>\n");
+        out.write(">Acta Finalización</option>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t<option value=\"5\" ");
         if (_jspx_meth_c_005fif_005f10(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write(">Acta Cierre/Cancelación</option>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n");
-        out.write("\t\t\t\t\t\t\t\t</select>\t\t\t\t\t\t\t\t\n");
-        out.write("\t\t\t\t\t\t\t</td>\n");
-        out.write("\t\t\t\t\t\t\t<th><b>Fecha de Entrega</b></th>\n");
-        out.write("\t\t\t\t\t\t\t<td width=\"150px\">\n");
-        out.write("\t\t\t\t\t\t\t\t<input type='text' name='fechaDoc' style='width: 70%'  readonly='true' id='f_date_a' size=\"12\" >\n");
-        out.write("\t\t\t\t\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\n");
-        out.write("\t\t\t\t\t\t\t\t<script type='text/javascript'>\n");
-        out.write("\t\t\t\t\t    \t\t\tCalendar.setup({\n");
-        out.write("\t\t\t\t\t\t    \t\t\tinputField     :    'f_date_a',\n");
-        out.write("\t\t\t\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\n");
-        out.write("\t\t\t\t\t\t    \t\t\tshowsTime      :    true,\n");
-        out.write("\t\t\t\t\t\t    \t\t\tbutton         :    'f_trigger_a',\n");
-        out.write("\t\t\t\t\t\t    \t\t\tsingleClick    :    false,\n");
-        out.write("\t\t\t\t\t\t    \t\t\tstep           :    1\n");
-        out.write("\t\t\t\t\t    \t\t\t})\n");
-        out.write("\t\t\t\t\t   \t\t\t</script>\n");
-        out.write("\t\t\t\t\t\t\t</td>\n");
-        out.write("\t\t\t\t\t\t\t<th id=\"st11\">Estado</th>\n");
-        out.write("\t\t\t\t\t\t\t<td id=\"st12\">\n");
-        out.write("\t\t\t\t\t\t\t\t<select name=\"estado\" style=\"width: 100px;\">\n");
-        out.write("\t\t\t\t\t\t\t\t\t<option value=\"1\">Revisado</option>\n");
-        out.write("\t\t\t\t\t\t\t\t\t<option value=\"2\">Evaluado</option>\n");
-        out.write("\t\t\t\t\t\t\t\t\t<option value=\"3\">Devuelto</option>\n");
-        out.write("\t\t\t\t\t\t\t\t</select>\n");
-        out.write("\t\t\t\t\t\t\t</td>\n");
-        out.write("\t\t\t\t\t\t\t<th id=\"st21\" style=\"display: none\">Nombre Doc</th>\n");
-        out.write("\t\t\t\t\t\t\t<td id=\"st22\" style=\"display: none\"><input name=\"nombre\" style=\"width: 100%;\"></td>\n");
-        out.write("\t\t\t\t\t\t</tr>\t\t\t\t\t\n");
-        out.write("\t\t\t\t\t</table>\n");
-        out.write("\t\t\t\t</td>\n");
+        out.write(">Acta Cierre/Cancelación</option>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t\t\t\t</select>\t\t\t\t\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t\t\t\t<th><b>Fecha de Entrega</b></th>\r\n");
+        out.write("\t\t\t\t\t\t\t<td width=\"150px\">\r\n");
+        out.write("\t\t\t\t\t\t\t\t<input type='text' name='fechaDoc' style='width: 70%'  readonly='true' id='f_date_a' size=\"12\" >\r\n");
+        out.write("\t\t\t\t\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\r\n");
+        out.write("\t\t\t\t\t\t\t\t<script type='text/javascript'>\r\n");
+        out.write("\t\t\t\t\t    \t\t\tCalendar.setup({\r\n");
+        out.write("\t\t\t\t\t\t    \t\t\tinputField     :    'f_date_a',\r\n");
+        out.write("\t\t\t\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
+        out.write("\t\t\t\t\t\t    \t\t\tshowsTime      :    true,\r\n");
+        out.write("\t\t\t\t\t\t    \t\t\tbutton         :    'f_trigger_a',\r\n");
+        out.write("\t\t\t\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+        out.write("\t\t\t\t\t\t    \t\t\tstep           :    1\r\n");
+        out.write("\t\t\t\t\t    \t\t\t})\r\n");
+        out.write("\t\t\t\t\t   \t\t\t</script>\r\n");
+        out.write("\t\t\t\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t\t\t\t<th id=\"st11\">Estado</th>\r\n");
+        out.write("\t\t\t\t\t\t\t<td id=\"st12\">\r\n");
+        out.write("\t\t\t\t\t\t\t\t<select name=\"estado\" style=\"width: 100px;\">\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<option value=\"1\">Revisado</option>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<option value=\"2\">Evaluado</option>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<option value=\"3\">Devuelto</option>\r\n");
+        out.write("\t\t\t\t\t\t\t\t</select>\r\n");
+        out.write("\t\t\t\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t\t\t\t<th id=\"st21\" style=\"display: none\">Nombre Doc</th>\r\n");
+        out.write("\t\t\t\t\t\t\t<td id=\"st22\" style=\"display: none\"><input name=\"nombre\" style=\"width: 100%;\"></td>\r\n");
+        out.write("\t\t\t\t\t\t</tr>\t\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t</table>\r\n");
+        out.write("\t\t\t\t</td>\r\n");
         out.write("\t\t\t</tr>\t\t\t\r\n");
         out.write("\t\t\t<tr>\r\n");
         out.write("\t\t\t\t<th ><b>Documento</b></th>\r\n");
@@ -475,8 +476,8 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
           return true;
         out.write("\" onclick=\"enviarDocumento()\"> </td>\r\n");
         out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t</table>\n");
-        out.write("\t</form>\n");
+        out.write("\t\t</table>\r\n");
+        out.write("\t</form>\r\n");
         out.write("\t\t\r\n");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -797,39 +798,39 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t  <tr ");
           if (_jspx_meth_c_005fif_005f1(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(">\n");
-          out.write("\t\t  <td>\n");
+          out.write(">\r\n");
+          out.write("\t\t  <td>\r\n");
           out.write("\t\t   \t\t");
           if (_jspx_meth_c_005fif_005f2(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t  \t\t");
           if (_jspx_meth_c_005fif_005f3(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
-          out.write("\t\t\t</td>\n");
+          out.write("\r\n");
+          out.write("\t\t\t</td>\r\n");
           out.write("\t\t\t  <td align=\"center\">");
           if (_jspx_meth_c_005fout_005f6(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t  <td>");
           if (_jspx_meth_c_005fout_005f7(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t  <td>");
           if (_jspx_meth_c_005fout_005f8(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t  <td>");
           if (_jspx_meth_c_005fout_005f9(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
-          out.write("\t\t\t  <td>&nbsp;</td>\n");
-          out.write("\t\t  </tr>\n");
+          out.write("</td>\r\n");
+          out.write("\t\t\t  <td>&nbsp;</td>\r\n");
+          out.write("\t\t  </tr>\r\n");
           out.write("\t\t  ");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -890,11 +891,11 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
     if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t  \t\t\t<img border=0 src='");
         if (_jspx_meth_c_005furl_005f13(_jspx_th_c_005fif_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("'>\n");
+        out.write("'>\r\n");
         out.write("\t\t  \t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -941,27 +942,27 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
     if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t  \t\t\t");
         if (_jspx_meth_c_005fif_005f4(_jspx_th_c_005fif_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t  \t");
         if (_jspx_meth_c_005fif_005f5(_jspx_th_c_005fif_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t ");
         if (_jspx_meth_c_005fif_005f6(_jspx_th_c_005fif_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t ");
         if (_jspx_meth_c_005fif_005f7(_jspx_th_c_005fif_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t  ");
         if (_jspx_meth_c_005fif_005f8(_jspx_th_c_005fif_005f3, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t  \t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f3.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -989,14 +990,14 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
     if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\t\n");
+        out.write("\t\r\n");
         out.write("\t\t  \t\t\t<a href='");
         if (_jspx_meth_c_005furl_005f14(_jspx_th_c_005fif_005f4, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
         out.write("'><img border=0 src='");
         if (_jspx_meth_c_005furl_005f15(_jspx_th_c_005fif_005f4, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("'></a>\n");
+        out.write("'></a>\r\n");
         out.write("\t\t\t\t\t ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f4.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1062,14 +1063,14 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
     if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t  <a href='");
         if (_jspx_meth_c_005furl_005f16(_jspx_th_c_005fif_005f5, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
         out.write("'><img border=0 src='");
         if (_jspx_meth_c_005furl_005f17(_jspx_th_c_005fif_005f5, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("'></a>\n");
+        out.write("'></a>\r\n");
         out.write("\t\t\t\t\t ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f5.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1135,14 +1136,14 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
     if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t  <a href='");
         if (_jspx_meth_c_005furl_005f18(_jspx_th_c_005fif_005f6, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
         out.write("'><img border=0 src='");
         if (_jspx_meth_c_005furl_005f19(_jspx_th_c_005fif_005f6, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("'></a>\n");
+        out.write("'></a>\r\n");
         out.write("\t\t\t\t\t ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f6.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1208,14 +1209,14 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
     if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t  <a href='");
         if (_jspx_meth_c_005furl_005f20(_jspx_th_c_005fif_005f7, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
         out.write("'><img border=0 src='");
         if (_jspx_meth_c_005furl_005f21(_jspx_th_c_005fif_005f7, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("'></a>\n");
+        out.write("'></a>\r\n");
         out.write("\t\t\t\t\t ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f7.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1281,14 +1282,14 @@ public final class Documentos2_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f8 = _jspx_th_c_005fif_005f8.doStartTag();
     if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t \t<a href='");
         if (_jspx_meth_c_005furl_005f22(_jspx_th_c_005fif_005f8, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
         out.write("'><img border=0 src='");
         if (_jspx_meth_c_005furl_005f23(_jspx_th_c_005fif_005f8, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write("'></a>\n");
+        out.write("'></a>\r\n");
         out.write("\t\t\t\t\t ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f8.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
