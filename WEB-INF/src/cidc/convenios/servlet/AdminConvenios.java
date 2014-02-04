@@ -111,6 +111,12 @@ public class AdminConvenios extends ServletGeneral {
 				 irA="/adminConvenio/Verconvenio.jsp";
 			break;
 			
+			case Parametros.consultaDocumentos:
+				System.out.println("case consultadocumentos");
+				irA="/adminConvenio/Documentos.jsp";
+				
+			break;
+			
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
 				 sesion.removeAttribute("nuevoConvenio");
