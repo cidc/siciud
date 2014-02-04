@@ -55,7 +55,9 @@ public class GestionEntidad  extends ServletGeneral{
 			int val = 0;
 			
 			if (req.getParameter("validar")!= null){
-				val = Integer.parseInt(req.getParameter("validar"));}
+				val = Integer.parseInt(req.getParameter("validar"));
+				}else{val =3;}
+		
 
 		   switch (val)
 			{

@@ -228,7 +228,7 @@ public class EntidadDB extends  BaseDB{
 			int i=1;
 			try {
 				cn=cursor.getConnection(super.perfil);
-				ps=cn.prepareStatement(rb.getString("listaConvenio2"));
+				ps=cn.prepareStatement(rb.getString("listaEntidad"));
 				rs=ps.executeQuery();
 				while(rs.next()){
 					i=1;
