@@ -443,7 +443,7 @@ public class GenerarCertificados {
 		String formattedDate = sdf.format(date);		
 //		clausulasinicio.add(new Phrase("\n\nNúmero de Verificación: "+certificado.getCod_verificacion()+"\n",texto10n));
 //		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
-		clausulasinicio.add(new Phrase("\n\n\n\n"+certificado.getCuerpo_cer()+".",texto10));
+		clausulasinicio.add(new Phrase("\n\n\n\n"+certificado.getCuerpo_cer(),texto10));
 		clausulasinicio.add(new Phrase("\n\nSe expide la presente a solicitud del (de la) interesado(a) a los ",texto10));
 		clausulasinicio.add(new Phrase(" "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10));
 		contenido=clausulasinicio.toString();

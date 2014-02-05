@@ -79,10 +79,10 @@ public class CertificadosDoc extends ServletGeneral {
 //				sesion.removeAttribute("listacertificados");
 //				sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2,pazSalvo));
 			case Parametros.CREARCERTESPECIAL:
-//				certificado.setNombre("");
 				certificado.setIdPersona((int)usuario.getIdUsuario());
 				certifidoDB.certificadoEspecial(certificado, path, resp);
 				sesion.setAttribute("listaEspeciales", certifidoDB.buscarCertificadosEspeciales(CERTIFICADOESPECIAL));
+				mensaje="Certificado creado exitosamente";
 				irA="/Certificados/Especial.jsp";
 				break;
 		}

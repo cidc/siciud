@@ -74,7 +74,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("\tfunction guardar(){\r\n");
+      out.write("\tfunction guarda(){\r\n");
       out.write("\t\t\tif(validar()){ \r\n");
       out.write("\t\t\t\tdocument.CertEsp.accion.value=10;\r\n");
       out.write("\t\t\t\tdocument.CertEsp.action='");
@@ -87,28 +87,32 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\r\n");
       out.write("\tfunction validar(){\r\n");
       out.write("\t\tmensaje=null;\r\n");
+      out.write("\t\tdiferencia=document.CertEsp.cuerpo_cer.value.length-830\r\n");
       out.write("\t\tif(document.CertEsp.cedula.value==\"\")\r\n");
       out.write("\t\t\tmensaje+=\"\\nNúmero de Cédula\";\r\n");
       out.write("\t\tif(document.CertEsp.cuerpo_cer.value==\"\")\r\n");
-      out.write("\t\t\tmensaje+=\"\\nCuerpo del Mensaje\";\r\n");
+      out.write("\t\t\tmensaje+=\"\\nContenido del certificado\";\r\n");
+      out.write("\t\tif(document.CertEsp.cuerpo_cer.value.length>830){\r\n");
+      out.write("\t\t\tmensaje+=\"\\nEl cuerpo del certificado no puede exceder los 830 caracteres. El mensaje contiene \"+diferencia+\" de más\";\r\n");
+      out.write("\t\t}\r\n");
       out.write("\t\tif(mensaje!=null){\r\n");
       out.write("\t\t\tmensaje=\"Por favor diligencie los siguientes campos:\"+mensaje;\r\n");
       out.write("\t\t\talert(mensaje);\r\n");
-      out.write("\t\t\tif(document.CertEsp.cuerpo_cer.value.length > 850)\r\n");
-      out.write("\t\t\t\tmesaje+=\"\\nEl cuerpo del certificado no puede exceder los 850 caracteres\";\r\n");
       out.write("\t\t\treturn false;\r\n");
       out.write("\t\t}else\r\n");
       out.write("\t\t\treturn true;\r\n");
       out.write("\t}\r\n");
       out.write("\t\r\n");
-      out.write("\tfunction ValidaSoloNumeros() {\r\n");
-      out.write("\t\t if ((event.keyCode < 48) || (event.keyCode > 57)) \r\n");
-      out.write("\t\t  event.returnValue = false;\r\n");
-      out.write("\t\t}\r\n");
-      out.write("\t\r\n");
+      out.write("\tfunction isNumberKey(evt){\r\n");
+      out.write("       var charCode = (evt.which) ? evt.which : event.keyCode\r\n");
+      out.write("       if (charCode > 31 && (charCode < 48 || charCode > 57))\r\n");
+      out.write("          return false;\r\n");
+      out.write("\r\n");
+      out.write("       return true;\r\n");
+      out.write("    }\r\n");
       out.write("\tfunction textCounter(field, maxlimit) {\r\n");
-      out.write("\t\tif (field.value.length > maxlimit){ \r\n");
-      out.write("\t\t\talert(\"El cuerpo del certificado no puede exceder los 750 caracteres\")\r\n");
+      out.write("\t\tif (field.value.length<maxlimit){ \r\n");
+      out.write("\t\t\talert(\"El cuerpo del certificado no puede exceder los 850 caracteres\")\r\n");
       out.write("\t\t\treturn true;\r\n");
       out.write("\t\t}else\r\n");
       out.write("\t\t \treturn false;\r\n");
@@ -122,7 +126,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n");
       out.write("<title>Certificado Especial</title>\r\n");
       out.write("</head>\r\n");
-      out.write("<body>Generación de Certificados Especiales\r\n");
+      out.write("<body onload=\"mensajeAlert(document.getElementById('msg'));\">Generación de Certificados Especiales\r\n");
       out.write("<div align=\"center\">\r\n");
       out.write("<fieldset style=\"width:580px;\">\r\n");
       out.write("<form name=\"CertEsp\" method=\"post\" >\r\n");
@@ -130,11 +134,12 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<table width=\"100%\" align=\"center\">\r\n");
       out.write("\t\t\t\t<th colspan=\"4\">Generar Certificado</th>\r\n");
       out.write("\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t<td>El siguiente formulario permite la generacion de </td>\r\n");
+      out.write("\t\t\t\t\t<td colspan=\"4\" align=\"justify\">El siguiente formulario permite la generación de Certificados Especiales, para ello por favor digite el número de cédula de la persona a quien se le hará el certificado y el contenido que tendrá el mismo; \r\n");
+      out.write("\t\t\t\t\trecuerde que no podrá exceder los 850 caracteres. Al terminar presione el botón \"Generar Certificado\" para crear al archivo.</td>\r\n");
       out.write("\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t<th>Número de Cedula</th>\r\n");
-      out.write("\t\t\t\t\t<td><input type=\"text\" name=\"cedula\"  onkeypress=\"ValidaSoloNumeros()\"></td>\r\n");
+      out.write("\t\t\t\t\t<th >Número de Cedula</th>\r\n");
+      out.write("\t\t\t\t\t<td ><input type=\"text\" name=\"cedula\"  onkeypress=\"return isNumberKey(event)\"></td>\r\n");
       out.write("\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t<th colspan=\"4\">Cuerpo del Certificado</th>\r\n");
@@ -146,7 +151,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t<td  colspan=\"4\" align=\"center\"><img src='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("' onclick=\"guardar()\" width=\"60\" height=\"40\">\r\n");
+      out.write("' onclick=\"guarda()\" width=\"60\" height=\"40\">\r\n");
       out.write("\t\t\t\t\t<p>Generar Certificado</p></td>\t\t\t\t\t\r\n");
       out.write("\t\t\t\t</tr>\r\n");
       out.write("\t\t</table>\r\n");
@@ -294,7 +299,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f1.setParent(null);
-    // /Certificados/Especial.jsp(74,47) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(79,47) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f1.setValue("/comp/img/nuevocertificado.jpg");
     int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
     if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -313,13 +318,13 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /Certificados/Especial.jsp(147,2) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(152,2) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.listaEspeciales}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /Certificados/Especial.jsp(147,2) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(152,2) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setBegin(0);
-    // /Certificados/Especial.jsp(147,2) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(152,2) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("lista");
-    // /Certificados/Especial.jsp(147,2) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(152,2) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVarStatus("st");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -381,7 +386,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /Certificados/Especial.jsp(148,7) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(153,7) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count mod 2==0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -408,7 +413,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /Certificados/Especial.jsp(149,8) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(154,8) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -427,7 +432,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /Certificados/Especial.jsp(150,8) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(155,8) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.tipo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -446,7 +451,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /Certificados/Especial.jsp(151,8) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(156,8) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.fecha_cert}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -465,7 +470,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /Certificados/Especial.jsp(153,13) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(158,13) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f2.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("/Documentos/Certificados/${lista.url}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
     if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -484,7 +489,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f3 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /Certificados/Especial.jsp(153,106) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /Certificados/Especial.jsp(158,106) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f3.setValue("/comp/img/pdf.png");
     int _jspx_eval_c_005furl_005f3 = _jspx_th_c_005furl_005f3.doStartTag();
     if (_jspx_th_c_005furl_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

@@ -5,7 +5,7 @@
 <c:import url="/general.jsp" />
 
 <script>
-	function guardar(){
+	function guarda(){
 			if(validar()){ 
 				document.CertEsp.accion.value=10;
 				document.CertEsp.action='<c:url value="/Certificados/llenar.jsp"/>';
@@ -15,28 +15,32 @@
 	
 	function validar(){
 		mensaje=null;
+		diferencia=document.CertEsp.cuerpo_cer.value.length-830
 		if(document.CertEsp.cedula.value=="")
 			mensaje+="\nNúmero de Cédula";
 		if(document.CertEsp.cuerpo_cer.value=="")
-			mensaje+="\nCuerpo del Mensaje";
+			mensaje+="\nContenido del certificado";
+		if(document.CertEsp.cuerpo_cer.value.length>830){
+			mensaje+="\nEl cuerpo del certificado no puede exceder los 830 caracteres. El mensaje contiene "+diferencia+" de más";
+		}
 		if(mensaje!=null){
 			mensaje="Por favor diligencie los siguientes campos:"+mensaje;
 			alert(mensaje);
-			if(document.CertEsp.cuerpo_cer.value.length > 850)
-				mesaje+="\nEl cuerpo del certificado no puede exceder los 850 caracteres";
 			return false;
 		}else
 			return true;
 	}
 	
-	function ValidaSoloNumeros() {
-		 if ((event.keyCode < 48) || (event.keyCode > 57)) 
-		  event.returnValue = false;
-		}
-	
+	function isNumberKey(evt){
+       var charCode = (evt.which) ? evt.which : event.keyCode
+       if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+
+       return true;
+    }
 	function textCounter(field, maxlimit) {
-		if (field.value.length > maxlimit){ 
-			alert("El cuerpo del certificado no puede exceder los 750 caracteres")
+		if (field.value.length<maxlimit){ 
+			alert("El cuerpo del certificado no puede exceder los 850 caracteres")
 			return true;
 		}else
 		 	return false;
@@ -50,7 +54,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Certificado Especial</title>
 </head>
-<body>Generación de Certificados Especiales
+<body onload="mensajeAlert(document.getElementById('msg'));">Generación de Certificados Especiales
 <div align="center">
 <fieldset style="width:580px;">
 <form name="CertEsp" method="post" >
@@ -58,11 +62,12 @@
 		<table width="100%" align="center">
 				<th colspan="4">Generar Certificado</th>
 				<tr>
-					<td>El siguiente formulario permite la generacion de </td>
+					<td colspan="4" align="justify">El siguiente formulario permite la generación de Certificados Especiales, para ello por favor digite el número de cédula de la persona a quien se le hará el certificado y el contenido que tendrá el mismo; 
+					recuerde que no podrá exceder los 850 caracteres. Al terminar presione el botón "Generar Certificado" para crear al archivo.</td>
 				</tr>
 				<tr>
-					<th>Número de Cedula</th>
-					<td><input type="text" name="cedula"  onkeypress="ValidaSoloNumeros()"></td>
+					<th >Número de Cedula</th>
+					<td ><input type="text" name="cedula"  onkeypress="return isNumberKey(event)"></td>
 				</tr>
 				<tr>
 					<th colspan="4">Cuerpo del Certificado</th>
@@ -71,7 +76,7 @@
 					<td colspan="4"><textarea rows="10" cols="20" id="cuerpo_cer" name="cuerpo_cer" ></textarea></td>
 				</tr>
 				<tr>
-					<td  colspan="4" align="center"><img src='<c:url value="/comp/img/nuevocertificado.jpg"/>' onclick="guardar()" width="60" height="40">
+					<td  colspan="4" align="center"><img src='<c:url value="/comp/img/nuevocertificado.jpg"/>' onclick="guarda()" width="60" height="40">
 					<p>Generar Certificado</p></td>					
 				</tr>
 		</table>
