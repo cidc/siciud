@@ -66,6 +66,32 @@ public class AdminConvenioDB extends BaseDB{
 		return retorno;
 	}
 	
+	public int getIdNuevoDoc(int tipoId, int tipoProyecto){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int id=0;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("getIdDocumento"+tipoId+tipoProyecto));
+			rs=ps.executeQuery();
+			while(rs.next()){
+				id=rs.getInt(1)+1;
+			}
+			id=id-1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return id;
+	}
+	
 	public boolean nuevaCargaDocConvenio(ExtraDocProyecto documento, Proyecto proyecto,long idUsuario) {
 		boolean retorno=false;
 		Connection cn=null;

@@ -215,7 +215,7 @@ public final class Documentos1_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("</table>\r\n");
           out.write("<br>\r\n");
           out.write("\t<table width=\"95%\" class=\"tablas\" align=\"center\">\r\n");
-          out.write("\t\t<CAPTION>Datos generales del proyecto</CAPTION>\r\n");
+          out.write("\t\t<CAPTION>Datos generales del proyectoU</CAPTION>\r\n");
           out.write("\t\t<tr>\r\n");
           out.write("\t\t\t<th colspan=\"5\"><b>Nombre de Proyecto</b></th>\r\n");
           out.write("\t\t</tr>\r\n");
@@ -469,6 +469,7 @@ if(loginUsuario.isPerfil("7")|| loginUsuario.isPerfil("6")||loginUsuario.isPerfi
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);

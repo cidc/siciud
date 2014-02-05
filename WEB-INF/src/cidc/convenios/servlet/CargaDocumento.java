@@ -158,11 +158,11 @@ public class CargaDocumento extends ServletGeneral  {
 		return retorno;
 		}
 	
-	public ExtraDocProyecto cargaDocumento(String path, String nombre,String carpeta,FileItem archivoAdj, ExtraDocProyecto documento, int tipo, Proyecto proyecto){ 
+	public ExtraDocConvenio cargaDocumento(String path, String nombre,String carpeta,FileItem archivoAdj,  ExtraDocConvenio documento, int tipo, GetConvenioOBJ getconvenioobj){ 
 		cursor=new CursorDB();
 		if(documento!=null){			
 			 try {
-				 documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,proyectoGeneralDB.getIdNuevoDoc(tipo,proyecto.getClaseProyecto())));
+				 documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo,proyecto.getClaseProyecto())));
 				  mensaje="Documento Cargado Satisfactoriamente";
 		     } catch (Exception e) {
 				// TODO Auto-generated catch block
