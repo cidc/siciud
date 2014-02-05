@@ -14,17 +14,17 @@
 	}
 	
 	function validar(){
-		mensaje=null;
+		mensaje="";
 		diferencia=document.CertEsp.cuerpo_cer.value.length-830
 		if(document.CertEsp.cedula.value=="")
 			mensaje+="\nNúmero de Cédula";
 		if(document.CertEsp.cuerpo_cer.value=="")
 			mensaje+="\nContenido del certificado";
 		if(document.CertEsp.cuerpo_cer.value.length>830){
-			mensaje+="\nEl cuerpo del certificado no puede exceder los 830 caracteres. El mensaje contiene "+diferencia+" de más";
+			mensaje+="\n\nEl contenido no puede exceder  830 caracteres. El mensaje contiene "+diferencia+" de más";
 		}
-		if(mensaje!=null){
-			mensaje="Por favor diligencie los siguientes campos:"+mensaje;
+		if(mensaje!=""){
+			mensaje="Los siguientes campos son obligatorios:"+mensaje;
 			alert(mensaje);
 			return false;
 		}else
