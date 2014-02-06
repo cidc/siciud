@@ -22,6 +22,7 @@ public class Convenio implements Serializable{
 	private int V_DuraAnos;
 	private int V_Duradias;
 	private int V_Durameses;
+	private int duracion;
 	private float VEfectivo;
 	private float VEspecie;
 	private String N_UsuDigita;
@@ -231,6 +232,12 @@ public class Convenio implements Serializable{
 	}
 	public void setEntidades(String entidades) {
 		this.entidades = entidades;
+	}
+	public int getDuracion() {
+		return duracion;
+	}
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
 	}
 	
 

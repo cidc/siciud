@@ -138,7 +138,7 @@ return true;
 							<td class="renglones" width="10px" align="center" ><b>#</b></td>
 							<td class="renglones" width="30px" align="center"><b>Telefonos</b></td>
 							</tr>
-						<c:if test="${sessionScope.entidades.listatelefonos!=null}"> 
+						<c:if test="${!empty sessionScope.entidades.listatelefonos}"> 
 						<c:forEach begin="0" items="${sessionScope.entidades.listatelefonos}" var="lista" varStatus="st">
 						<tr>
 						
@@ -150,7 +150,10 @@ return true;
 							</tr>
 						</c:forEach>
 							</c:if>
-						
+						<c:if test="${empty sessionScope.entidades.listatelefonos}">
+						<td class="renglones" width="10px" align="center"><b>1</b></td>
+						<td class="listas" align="center">No hay Numeros Telefonicos Registrados</td>
+						</c:if>
 					</table>
                		</td>
                		</tr>   

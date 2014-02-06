@@ -77,7 +77,7 @@
 </head>
 <c:import url="/general.jsp"/>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<c:if test="${sessionScope.datoConvenio!=null}">
+<c:if test="${sessionScope.proyecto!=null}">
 <br>
 <table cellpadding="0" cellspacing="0">
 	<tr>
@@ -232,9 +232,9 @@
 	</form>
 		
 </c:if>
-<c:if test="${sessionScope.datoConvenio==null}">
+<c:if test="${sessionScope.proyecto==null}">
 <br><br><br>
-<h4 align="center">No se logró encontrar la información del Convenio</h4>
+<h4 align="center">No se logró encontrar la información del Proyecto de Investigación</h4>
 </c:if>
 </body>
 </html>

@@ -1097,6 +1097,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		 Globales global=new Globales();
 		 int i=1;
 		 if(proyecto.getClaseProyecto()==1){
+			 System.out.println(proyecto.getFecActaInicio());
 			 if(proyecto.getFecActaInicio()!=null && proyecto.getDuracion()!=null)
 					proyecto.setFecEstimadoFin(global.sumarMesesFecha(proyecto.getFecActaInicio(),Integer.parseInt(proyecto.getDuracion())));
 		 }else{

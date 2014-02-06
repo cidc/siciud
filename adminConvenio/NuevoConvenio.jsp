@@ -65,10 +65,10 @@ var nav4=window.Event ? true : false;
 			alert("La fecha de Inicio del convenio no puede estar vacio");
 			return false;
 		}
-		if(forma.fechaFinalizacion.value==""){
-			alert("La fecha de finalizacion del convenio no puede estar vacio");
+		if(formulario.duracion.value<=1)
+		   {  alert("La duración del proyecto no puede ser menor a 6 meses");
 			return false;
-		}
+		   }
 		if(forma.nombreproyecto.value==""){
 			alert("El nombre del proyecto no puede estar vacio");
 			return false;
@@ -177,7 +177,7 @@ var nav4=window.Event ? true : false;
 				<script type='text/javascript'>
 				    			Calendar.setup({
 					    			inputField     :    'f_date_a',
-					    			ifFormat       :    '%d/%m/%Y',
+					    			ifFormat       :    '%Y-%m-%d',
 					    			showsTime      :    false,
 					    			button         :    'f_trigger_a',
 					    			singleClick    :    false,
@@ -204,37 +204,20 @@ var nav4=window.Event ? true : false;
 				<script type='text/javascript'>
 				    			Calendar.setup({
 					    			inputField     :    'f_date_i',
-					    			ifFormat       :    '%d/%m/%Y',
+					    			ifFormat       :    '%Y-%m-%d',
 					    			showsTime      :    false,
 					    			button         :    'f_trigger_i',
 					    			singleClick    :    false,
 					    			step           :    1
 				    			})
 			    </script></td>
-			    			
-			    <td class="renglones" style="width: 179px; "><b>Fecha de finalizacion</b></td>
-				<td style="width: 189px; "><input type='text' name='fechaFinalizacion' class='caj' readonly='true' id='f_date_f' size='13' value='<c:out value="${requestScope.datoConvenio.fechaFinalizacion}" />'>
-				<button type='button' id='f_trigger_f'>...</button>
-				<script type='text/javascript'>
-				    			Calendar.setup({
-					    			inputField     :    'f_date_f',
-					    			ifFormat       :    '%d/%m/%Y',
-					    			showsTime      :    false,
-					    			button         :    'f_trigger_f',
-					    			singleClick    :    false,
-					    			step           :    1
-				    			})
-			    </script></td>
+			    <td class="renglones" style="width: 179px; "><b>Duracion Meses</b></td>
+				<td style="width: 100px; "><input type="text" maxlength="3" name="duracion" style="text-align:right; width:80%" value="0" onkeypress="return numeros(event)" size="2">
+				</td>
 	</tr>
 	
 	
-     <tr>
-		<td colspan="6" class="renglones"><b>Observaciones</b></td>
-	</tr>
-	<tr>
-		<td colspan="6"><textarea name="observaciones" style="width: 100%">--<c:out value="${requestScope.datoConvenio.observaciones}"/></textarea></td>
-	</tr>
-	
+
 	
 	
 	<tr>
@@ -296,14 +279,12 @@ var nav4=window.Event ? true : false;
     <tr> <td class="renglones" colspan="6"><b>Abstract/Resumen:</b></td></tr>
     <tr> <td colspan="6"><textarea class="texto" name="resumen" style="width: 99%">--<c:out value="${requestScope.datoConvenio.resumen}"/></textarea></td></tr>
     
-    <tr>
+     <tr>
 		<td colspan="6" class="renglones"><b>Observaciones</b></td>
 	</tr>
 	<tr>
-		<td colspan="6"><textarea name="observacionesp" style="width: 100%">--<c:out value="${requestScope.datoConvenio.observacionesp}"/></textarea></td>
+		<td colspan="6"><textarea name="observaciones" style="width: 100%">--<c:out value="${requestScope.datoConvenio.observaciones}"/></textarea></td>
 	</tr>
-     
-	
 	
 	
 	<tr>

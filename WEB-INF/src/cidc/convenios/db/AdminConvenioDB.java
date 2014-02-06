@@ -217,12 +217,12 @@ public class AdminConvenioDB extends BaseDB{
 			ps.setString(i++,convenio.getObservaciones());
 			ps.setString(i++, convenio.getEstado());
 			ps.setInt(i++,convenio.getV_DuraAnos());
-			ps.setInt(i++,convenio.getV_Durameses());
+			ps.setInt(i++,convenio.getDuracion());
 			ps.setInt(i++,convenio.getV_Duradias());
 			ps.setString(i++, convenio.getFechaInicio());
 			ps.setString(i++, convenio.getTipo());
 			ps.setInt(i++,convenio.getNumDisp());
-		    ps.setString(i++, convenio.getFechaFinalizacion());
+			ps.setString(i++, global.sumarMesesFecha(convenio.getFechaInicio(),(convenio.getDuracion())));
 			ps.setFloat(i++, convenio.getVEfectivo());
 			ps.setFloat(i++, convenio.getVEspecie());
 			ps.setString(i++, convenio.getN_UsuDigita());
@@ -236,6 +236,7 @@ public class AdminConvenioDB extends BaseDB{
 			ps.setString(i++, convenio.getObjetivo());
 			ps.setString(i++, convenio.getResumen());
 			ps.setString(i++, convenio.getObservacionesp());
+			
 			ps.executeUpdate();
 			retorno=true;
 		} catch (SQLException e) {

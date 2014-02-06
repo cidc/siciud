@@ -48,7 +48,7 @@ public class AdminConvenios extends ServletGeneral {
 		        int dia = fecha.get(Calendar.DAY_OF_MONTH);
 				conv=(Convenio)sesion.getAttribute("nuevoConvenio");
 				conv.setN_UsuDigita(usuario.getNombre());
-				conv.setF_Digita(dia + "/" + (mes+1) + "/" + año+"");
+				conv.setF_Digita(año + "-" + (mes+1) + "-" +dia+"");
 				
 				
 				if(adminConv.nuevoConvenio(conv))

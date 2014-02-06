@@ -24,7 +24,7 @@ function observacion(caja){
 			<td><img src='<c:url value="/comp/img/tabs/General2.gif"/>'></td>
 			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/tabs/Documentos1.gif"/>'></a></td>
 			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
-			<td><a href='<c:url value="/adminProyectos/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Tiempos1.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Tiempos1.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminProyectos/Coinvestigadores.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Investigadores1.gif"/>'></a></td>
 		</tr>
 	</table>
@@ -67,7 +67,7 @@ function observacion(caja){
 						<td align="center"><c:out value="${sessionScope.datoConvenio.VEfectivo}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.VEspecie}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.fecha}"/></td>
-						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/> Meses</td>
+						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
 					</tr>
 				</table>
