@@ -73,6 +73,29 @@
 		<input type="hidden" name="accion" value='3'>
 		<input type="hidden" name="propConvId" value="${sessionScope.datosConv.convId}">
 		<table width="90%" class="tablas" align="center" cellpadding="3" cellspacing="0">
+		<caption>Compromisos Obligatorios del Investigador Principal</caption>
+            <tr>
+          		<td width="5px" class="renglones">&nbsp;</td>
+          		<td width="5px" class="renglones">&nbsp;</td>
+          		<td class="renglones"><b>Nombre del Compromiso</b></td>
+          		<td width="270px" class="renglones"><b>Indicador</b></td>
+          		<td class="renglones"><b>Cant</b></td>
+            </tr>
+			<c:forEach begin="0" items="${requestScope.listaComp}" var="lista" varStatus="st">
+				<tr <c:if test="${st.count mod 2==0}">class="trb"</c:if>>
+					<td width="5px"><c:if test="${lista.obligatorio==1}"><c:out value="${st.count}"/></c:if></td>
+					<td><c:if test="${lista.obligatorio==1}"><c:out value="${lista.nombre}"/></c:if></td>
+					<td width="270px"><c:if test="${lista.obligatorio==1}"><c:out value="${lista.indicador}"/></c:if></td>
+					<td align="center">
+					<c:if test="${lista.obligatorio==1}">
+						<input type="hidden" name="cantComp" value='<c:out value="${lista.valor}"></c:out>>
+					</c:if>
+					</td>
+				</tr>
+			</c:forEach>
+
+		</table>
+		<table width="90%" class="tablas" align="center" cellpadding="3" cellspacing="0">
 		<caption>Compromisos del Investigador Principal</caption>
             <tr>
           		<td width="5px" class="renglones">&nbsp;</td>

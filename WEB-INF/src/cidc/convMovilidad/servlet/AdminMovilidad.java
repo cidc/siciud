@@ -1,16 +1,19 @@
 package cidc.convMovilidad.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cidc.adminPropuestas.obj.PropuestaOBJ;
 import cidc.convMovilidad.db.MovilidadDB;
 import cidc.convMovilidad.obj.InfoGeneral;
 import cidc.convMovilidad.obj.Parametros;
 import cidc.convMovilidad.obj.Requisitos;
+import cidc.convocatorias.obj.ConvocatoriaOBJ;
 import cidc.general.db.CursorDB;
 import cidc.general.db.UsuarioDB;
 import cidc.general.login.Usuario;
@@ -26,7 +29,7 @@ public class AdminMovilidad extends ServletGeneral {
 		String irA="/convMovilidad/Insercion.jsp";
 		Persona persona=(Persona)sesion.getAttribute("persona");
 	//	UsuarioDB usuarioDB=new UsuarioDB(cursor,2);
-
+		ConvocatoriaOBJ convocatoria =(ConvocatoriaOBJ) sesion.getAttribute("datosConv");
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		MovilidadDB movilidadDB=new MovilidadDB(cursor,2);
 		InfoGeneral info=null;
@@ -53,7 +56,7 @@ public class AdminMovilidad extends ServletGeneral {
 					}
 					else{
 						mensaje="No pudo ser registrada la propuesta\nFavor volver a intentar";
-						req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona()));
+						//req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona()));
 						irA="/convMovilidad/listaPropuestas.jsp";
 					}					
 				}else{
@@ -83,7 +86,7 @@ public class AdminMovilidad extends ServletGeneral {
 				}
 				else{
 					mensaje="No pudo ser registrada la propuesta\nFavor volver a intentar";
-					req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona()));
+					//req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona()));
 					irA="/convMovilidad/listaPropuestas.jsp";
 				}
 				persona.setEstado(true);
@@ -93,7 +96,7 @@ public class AdminMovilidad extends ServletGeneral {
 				System.out.println("Consulta las propuestas incritas hasta el momento------>");
 				if(persona!=null){
 					System.out.println("Dentro del if para concultarLista------>");
-					req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona()));
+					req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona(),convocatoria.getConvId()));
 					irA="/convMovilidad/listaPropuestas.jsp";
 					sesion.setAttribute("persona",persona);
 				}
@@ -126,7 +129,7 @@ public class AdminMovilidad extends ServletGeneral {
 				else
 					mensaje="El mensaje no pudo ser enviado";
 				////System.out.println("Termina proceso de envio de mail movilidad");
-				req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona()));
+				//req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona()));
 				////System.out.println("Termina consulta de propuestas por persona");
 				//req.setAttribute("habilitado", movilidadDB.grupoHabilitado(persona));
 				req.setAttribute("habilitadoMsm", movilidadDB.getMensaje());
@@ -156,7 +159,10 @@ public class AdminMovilidad extends ServletGeneral {
 				int conv=0;
 				if(req.getParameter("propConvId")!=null)
 				conv=Integer.parseInt(req.getParameter("propConvId"));
-				sesion.setAttribute("listaDocOBJ",movilidadDB.getDocumentos(conv));
+				List<PropuestaOBJ> documentos=movilidadDB.getDocumentos(conv);
+				info =(InfoGeneral)sesion.getAttribute("movilidad");
+//				sesion.setAttribute("listaDocOBJ",movilidadDB.buscarDocumentosInscritos(documentos,(int)info.getIdPropuesta()));//revisar esta linea y este metodo con mas cuidado despues
+				sesion.setAttribute("listaDocOBJ", documentos);
 				irA="/convMovilidad/Cargar.jsp";
 				System.out.println("Paso 03");
 			break;

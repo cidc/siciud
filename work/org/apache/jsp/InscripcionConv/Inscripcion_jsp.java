@@ -640,7 +640,7 @@ public final class Inscripcion_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\tsumar(3);\r\n");
       out.write("//\tcoInvest(document.nuevo.cantidad);\r\n");
       out.write("</script>\r\n");
-      out.write("</html>");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -2348,10 +2348,10 @@ public final class Inscripcion_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\r\n");
         out.write("\t\t\t\t\t</table>\r\n");
         out.write("\r\n");
-        out.write("\t\t\t\t\t");
+        out.write("\t\t\t\t\t<!--");
         if (_jspx_meth_c_005fif_005f23(_jspx_th_c_005fif_005f19, _jspx_page_context))
           return true;
-        out.write("\r\n");
+        out.write("-->\r\n");
         out.write("\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f19.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -2610,7 +2610,7 @@ public final class Inscripcion_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f23 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f23.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f23.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f19);
-    // /InscripcionConv/Inscripcion.jsp(733,5) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Inscripcion.jsp(733,9) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f23.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6 and sessionScope.datosConv.convNumero!=9 and sessionScope.datosConv.convNumero!=10 and sessionScope.datosConv.convNumero!=11 and sessionScope.datosConv.convNumero!=12 and sessionScope.datosConv.convNumero!=13}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f23 = _jspx_th_c_005fif_005f23.doStartTag();
     if (_jspx_eval_c_005fif_005f23 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {

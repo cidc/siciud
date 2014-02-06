@@ -730,7 +730,7 @@
 						</c:if>
 					</table>
 
-					<c:if test="${sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6 and sessionScope.datosConv.convNumero!=9 and sessionScope.datosConv.convNumero!=10 and sessionScope.datosConv.convNumero!=11 and sessionScope.datosConv.convNumero!=12 and sessionScope.datosConv.convNumero!=13}">
+					<!--<c:if test="${sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6 and sessionScope.datosConv.convNumero!=9 and sessionScope.datosConv.convNumero!=10 and sessionScope.datosConv.convNumero!=11 and sessionScope.datosConv.convNumero!=12 and sessionScope.datosConv.convNumero!=13}">
 					<table class="tablas" border="0" width="100%">
 					<caption >Rubros financiables por UD y Contrapartida</caption>
 						<tr>
@@ -796,7 +796,7 @@
 							<td align="right"><span id="totalCONTRA">&nbsp;</span></td>
 						</tr>
 					</table>
-					</c:if>
+					</c:if>-->
 			</c:if>
 		</fieldset>
          <img src="<c:url value="/comp/img/Siguiente.gif"/>" onclick="guardar()">

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -331,7 +332,7 @@ public class MovilidadDB extends BaseDB{
 		return retorno;
 	}
 	//Lista las propuestas que ha realizado el investigador
-	public List consultaLista(long idPersona){
+	public List consultaLista(long idPersona,long idconv){
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -342,7 +343,7 @@ public class MovilidadDB extends BaseDB{
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("consultaLista"));
 			ps.setLong(1,idPersona);
-			ps.setString(2,"%"+2013+"%");
+			ps.setLong(2,idconv);
 			rs=ps.executeQuery();
 		//	//System.out.println("idPersona="+idPersona);
 			while(rs.next()){
@@ -711,7 +712,9 @@ public class MovilidadDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("ajaxProyectos"));
+			Calendar c= Calendar.getInstance();
 			ps.setLong(1,idGrupo);
+			ps.setString(2, String.valueOf(c.get(Calendar.YEAR)));
 			rs=ps.executeQuery();
 			while(rs.next()){
 				i=1;
@@ -780,4 +783,49 @@ public class MovilidadDB extends BaseDB{
 		}
 		return req;
 	}
+	
+	public List<PropuestaOBJ> buscarDocumentosInscritos(List<PropuestaOBJ> propObj, int conv){
+        List<PropuestaOBJ> l=new ArrayList<PropuestaOBJ>();
+        Connection cn=null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int i=1;
+        List<PropuestaOBJ> propFinal =new ArrayList<PropuestaOBJ>();
+        try {
+                cn=cursor.getConnection(super.perfil);
+                ps=cn.prepareStatement(rb.getString("DocumentosInscritos"));
+                ps.setInt(1,conv);
+                rs=ps.executeQuery();
+                System.out.println("consulta2:"+ps);
+                while(rs.next()){
+                        i=1;
+                        PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                        propuestaOBJ.setIdDocumentoRequisito(rs.getInt(i++));
+                        propuestaOBJ.setNombreDocumentoRequisito(rs.getString(i++));
+                        l.add(propuestaOBJ);
+                }
+                for (PropuestaOBJ propuestaOBJ : propObj) {
+					for (PropuestaOBJ propuestaOBJ2 : l) {
+						if(propuestaOBJ.getCodigo()==propuestaOBJ2.getIdDocumentoRequisito()){
+							propuestaOBJ.setNombreDocumentoRequisito(propuestaOBJ2.getNombreDocumentoRequisito());
+							propFinal.add(propuestaOBJ);
+						}
+					}
+				}
+        } catch (Exception e) {
+                lanzaExcepcion(e);
+        }finally{
+                try{
+                        cerrar(rs);
+                        cerrar(ps);
+                        cerrar(cn);
+                }catch (Exception e) {
+                        lanzaExcepcion(e);
+                }
+        }
+        if (propFinal.size()==0)
+        	return null;
+        else
+        	return propFinal;
+}
 }

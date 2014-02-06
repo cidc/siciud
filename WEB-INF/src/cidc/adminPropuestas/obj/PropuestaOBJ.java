@@ -54,6 +54,8 @@ public class PropuestaOBJ {
 	private int[] codAsp2;
 	private int[] convId2;
 	private int[] codProp2;
+	private int idDocumentoRequesito;
+	private String nombreDocumentoRequisito;
 
 	public long getCodPropuesta() {
 		return codPropuesta;
@@ -361,4 +363,17 @@ public class PropuestaOBJ {
         public void setConv(int conv) {
                 this.conv = conv;
         }
+		public int getIdDocumentoRequisito() {
+			return idDocumentoRequesito;
+		}
+		public void setIdDocumentoRequisito(int idDocumentoRequesito) {
+			this.idDocumentoRequesito = idDocumentoRequesito;
+		}
+		public String getNombreDocumentoRequisito() {
+			return nombreDocumentoRequisito;
+		}
+		public void setNombreDocumentoRequisito(String nombreDocumentoRequesito) {
+			this.nombreDocumentoRequisito = nombreDocumentoRequesito;
+		}
+        
 }
