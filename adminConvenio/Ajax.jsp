@@ -18,7 +18,7 @@
 	  
 	  		borrar_combo(parent.document.frmConvenio.proycurri);
 	  		borrar_combo(parent.document.frmConvenio.grupo);
-	  	 	borrar_combo(parent.document.form1.investigador);
+	  	//	borrar_combo(parent.document.form1.investigador);
 
 			<c:forEach begin="0" items="${sessionScope.ajaxProyCur}" var="pro" varStatus="st2">
 			    <c:if test="${sessionScope.Convenio.proycurri==pro.codigo}">

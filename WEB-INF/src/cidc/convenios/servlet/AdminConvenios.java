@@ -22,7 +22,7 @@ import cidc.proyectosGeneral.obj.Proyecto;
 
 public class AdminConvenios extends ServletGeneral {
 	
-	GetConvenioOBJ objconv=null; 
+	
 
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		context=config.getServletContext();
@@ -33,7 +33,7 @@ public class AdminConvenios extends ServletGeneral {
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		AdminConvenioDB adminConv= new AdminConvenioDB(cursor,usuario.getPerfil());
 		Convenio conv=null;
-		
+		GetConvenioOBJ objconv=null; 
 		Calendar fecha = new GregorianCalendar();
 		mensaje="";
 		

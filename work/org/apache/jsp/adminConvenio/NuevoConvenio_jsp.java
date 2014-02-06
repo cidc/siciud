@@ -552,7 +552,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("  ajaxFacultad(document.frmConvenio.facultad);\r\n");
       out.write("</script>\r\n");
       out.write("</body>\r\n");
-      out.write("</html>\r\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
