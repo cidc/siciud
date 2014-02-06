@@ -299,7 +299,11 @@ public final class Documentos_jsp extends org.apache.jasper.runtime.HttpJspBase
     // /adminConvenio/Documentos.jsp(80,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+=======
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+>>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
 =======
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
 >>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
@@ -820,7 +824,11 @@ public final class Documentos_jsp extends org.apache.jasper.runtime.HttpJspBase
     // /adminConvenio/Documentos.jsp(170,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_th_c_005furl_005f13.setValue("/GestionGeneralProyectos/CargarDocumento.x");
+=======
+    _jspx_th_c_005furl_005f13.setValue("/adminConvenio/CargarDocumento.x");
+>>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
 =======
     _jspx_th_c_005furl_005f13.setValue("/adminConvenio/CargarDocumento.x");
 >>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
@@ -920,7 +928,11 @@ public final class Documentos_jsp extends org.apache.jasper.runtime.HttpJspBase
     // /adminConvenio/Documentos.jsp(235,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+=======
+    _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+>>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
 =======
     _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
 >>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
@@ -934,7 +946,11 @@ public final class Documentos_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("<br><br><br>\r\n");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         out.write("<h4 align=\"center\">No se logró encontrar la información del Proyecto de Investigación</h4>\r\n");
+=======
+        out.write("<h4 align=\"center\">No se logró encontrar la información del Convenio</h4>\r\n");
+>>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
 =======
         out.write("<h4 align=\"center\">No se logró encontrar la información del Convenio</h4>\r\n");
 >>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
