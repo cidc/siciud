@@ -109,19 +109,20 @@ public class CargaDocumento extends ServletGeneral  {
 		String path=super.context.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
 		//System.out.println("--ruta completa es:--->"+path);
 		String carpeta="";
-		carpeta="Proyectos";
+		carpeta="Convenios";
 	
 			
 	
 	//	System.out.println("---caso-->"+accion);
 		switch(accion){
-			case Parametros.insertaInformeConvenio:
+	/*		case Parametros.insertaInformeConvenio:
 				nombre="Informe_"+objconv.getIdconvenio()+"_"; 
-				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/Informes",archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacion,proyecto),proyecto,usuario.getIdUsuario()))
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Informes",archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacionConvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 			break;
+	
 			case Parametros.actualizaEstadoInforme:
 				proyectoGeneralDB.actualizaEstadoInforme(req.getParameter("idInforme"),req.getParameter("estado"),proyecto);
 			break;
@@ -142,10 +143,11 @@ public class CargaDocumento extends ServletGeneral  {
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 				sesion.setAttribute("proyecto",proyectoGeneralDB.buscarProyecto(""+proyecto.getId(),""+proyecto.getClaseProyecto()));
 			break;
+			*/
 			case Parametros.insertarDocumentoExterno:				
-				nombre="DocAnexo__"+proyecto.getId()+"_";
+				nombre="DocAnexo__"+objconv.getIdconvenio()+"_";
 		//		System.out.println("---entra a externo-->"+nombre);
-				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertarDocumentoExterno,proyecto),proyecto,usuario.getIdUsuario()))
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
