@@ -637,6 +637,15 @@
 	  <servlet-name>AdminConvenioAjax</servlet-name>
 	  <url-pattern>/adminConvenio/Ajax.x</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+	  <servlet-name>CargaDocConvenio</servlet-name>
+	  <servlet-class>cidc.convenios.servlet.CargaDocumento</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>CargaDocConvenio</servlet-name>
+	  <url-pattern>/adminConvenio/CargarDocumento.x</url-pattern>
+	</servlet-mapping>
     <!--/  AdminConvenios -->
     
     

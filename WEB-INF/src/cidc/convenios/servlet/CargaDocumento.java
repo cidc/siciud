@@ -115,35 +115,38 @@ public class CargaDocumento extends ServletGeneral  {
 	
 	//	System.out.println("---caso-->"+accion);
 		switch(accion){
-	/*		case Parametros.insertaInformeConvenio:
+			case Parametros.insertaInformeConvenio:
 				nombre="Informe_"+objconv.getIdconvenio()+"_"; 
-				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Informes",archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacionConvenio,objconv),objconv,usuario.getIdUsuario()))
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Informes",archivoAdj,docNuevo,Parametros.insertaInformeConvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 			break;
-	
-			case Parametros.actualizaEstadoInforme:
-				proyectoGeneralDB.actualizaEstadoInforme(req.getParameter("idInforme"),req.getParameter("estado"),proyecto);
+			
+			/*	case Parametros.actualizaEstadoInformeconvenio:
+				adminconv.actualizaEstadoInforme(req.getParameter("idInforme"),req.getParameter("estado"),proyecto);
 			break;
+			*/
 			case Parametros.insertarDocumentoActaFinalizacion:
-				nombre="ActaFin_"+proyecto.getId()+"_";				
-				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/Actas",archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacion,proyecto),proyecto,usuario.getIdUsuario()))
+				nombre="ActaFin_"+objconv.getIdconvenio()+"_";				
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre,carpeta+"/Actas",archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacionConvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 				
-				sesion.setAttribute("proyecto",proyectoGeneralDB.buscarProyecto(""+proyecto.getId(),""+proyecto.getClaseProyecto()));
+				
+				sesion.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
 			break;
+			
 			case Parametros.insertarDocumentoActaCancelacion:
-				nombre="ActaCancel_"+proyecto.getId()+"_";
-				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/Actas",archivoAdj,docNuevo,Parametros.insertarDocumentoActaCancelacion,proyecto),proyecto,usuario.getIdUsuario()))
+				nombre="ActaCancel_"+objconv.getIdconvenio()+"_";
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Actas",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
-				sesion.setAttribute("proyecto",proyectoGeneralDB.buscarProyecto(""+proyecto.getId(),""+proyecto.getClaseProyecto()));
+				    sesion.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
 			break;
-			*/
+			
 			case Parametros.insertarDocumentoExterno:				
 				nombre="DocAnexo__"+objconv.getIdconvenio()+"_";
 		//		System.out.println("---entra a externo-->"+nombre);
@@ -164,7 +167,7 @@ public class CargaDocumento extends ServletGeneral  {
 		cursor=new CursorDB();
 		if(documento!=null){			
 			 try {
-				 documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo,proyecto.getClaseProyecto())));
+				 documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo)));
 				  mensaje="Documento Cargado Satisfactoriamente";
 		     } catch (Exception e) {
 				// TODO Auto-generated catch block

@@ -167,7 +167,7 @@
 	</table>
 
 	<br>
-	<form action='<c:url value="/GestionGeneralProyectos/CargarDocumento.x"/>' name="frmCargaDoc" method="post" enctype="multipart/form-data" accept="utf-8" accept-charset="utf-8">
+	<form action='<c:url value="/adminConvenio/CargarDocumento.x"/>' name="frmCargaDoc" method="post" enctype="multipart/form-data" accept="utf-8" accept-charset="utf-8">
 		<input type="hidden" name="accion" value="1">
 		<table align="center" width="95%" class="tablas">
 		<caption>Cargar Documento</caption>

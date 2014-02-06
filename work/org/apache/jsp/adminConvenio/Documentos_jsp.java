@@ -297,7 +297,11 @@ public final class Documentos_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
     // /adminConvenio/Documentos.jsp(80,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+<<<<<<< HEAD
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+=======
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+>>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -810,7 +814,11 @@ public final class Documentos_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005furl_005f13.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f13.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/Documentos.jsp(170,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+<<<<<<< HEAD
     _jspx_th_c_005furl_005f13.setValue("/GestionGeneralProyectos/CargarDocumento.x");
+=======
+    _jspx_th_c_005furl_005f13.setValue("/adminConvenio/CargarDocumento.x");
+>>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
     int _jspx_eval_c_005furl_005f13 = _jspx_th_c_005furl_005f13.doStartTag();
     if (_jspx_th_c_005furl_005f13.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f13);
@@ -902,13 +910,21 @@ public final class Documentos_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fif_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f3.setParent(null);
     // /adminConvenio/Documentos.jsp(235,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+<<<<<<< HEAD
     _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+=======
+    _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+>>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
     int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
     if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write("<br><br><br>\r\n");
+<<<<<<< HEAD
         out.write("<h4 align=\"center\">No se logró encontrar la información del Proyecto de Investigación</h4>\r\n");
+=======
+        out.write("<h4 align=\"center\">No se logró encontrar la información del Convenio</h4>\r\n");
+>>>>>>> 8066ea0bbe8b949b02dee2a89091b13a723898fe
         int evalDoAfterBody = _jspx_th_c_005fif_005f3.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
