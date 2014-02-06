@@ -28,6 +28,7 @@ import cidc.adminArticulos.obj.DatEvaluador;
 import cidc.adminArticulos.obj.EstadoArticulo;
 import cidc.adminArticulos.obj.FiltroArticulo;
 import cidc.convenios.obj.Convenio;
+import cidc.convenios.obj.ExtraDocConvenio;
 import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.ObservacionesOBJ;
 
@@ -92,7 +93,7 @@ public class AdminConvenioDB extends BaseDB{
 		return id;
 	}
 	
-	public boolean nuevaCargaDocConvenio(ExtraDocProyecto documento, Proyecto proyecto,long idUsuario) {
+	public boolean nuevaCargaDocConvenio(ExtraDocConvenio documento, GetConvenioOBJ getconvenioobj,long idUsuario) {
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
