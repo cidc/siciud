@@ -117,10 +117,12 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/Documentos.jsp";
 				
 			break;
-			case Parametros.AdicionarTiempo:
+case Parametros.AdicionarTiempo:
+				
 				if(adminConv.insertarTiempo((TiemposOBJ)sesion.getAttribute("tiempoConv"), objconv,usuario)){
 					mensaje="El tiempo adicional fue registrado satisfactoriamente";
-					objconv.setListaTiempos(adminConv.getListaTiempos(Integer.parseInt(objconv.getIdconvenio())));
+					 objconv.getListaTiempos().clear();
+					objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 					sesion.setAttribute("datoConvenio", objconv);
 				}else
 					mensaje="El tiempo adicional no pudo ser registrado";
@@ -130,12 +132,12 @@ public class AdminConvenios extends ServletGeneral {
 			case Parametros.EliminarTiempo:
 				if(adminConv.eliminarTiempo(req.getParameter("idTiempo"))){
 					mensaje="El tiempo adicional fue eliminado satisfactoriamente";
-					objconv.setListaTiempos(adminConv.getListaTiempos(Integer.parseInt(objconv.getIdconvenio())));
+					objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 					sesion.setAttribute("datoConvenio", objconv);
 				}else
 					mensaje="El tiempo adicional no pudo ser eliminado";
-				sesion.removeAttribute("tiempo");				
-				irA="/adminProyectos/VerTiempos.jsp";
+				sesion.removeAttribute("tiempoConv");				
+				irA="/adminConvenio/VerTiempos.jsp";
 			break;
 			
 			
