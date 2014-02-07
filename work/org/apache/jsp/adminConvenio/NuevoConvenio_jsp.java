@@ -165,7 +165,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\t\t\talert(\"La fecha de Inicio del convenio no puede estar vacio\");\r\n");
       out.write("\t\t\treturn false;\r\n");
       out.write("\t\t}\r\n");
-      out.write("\t\tif(formulario.duracion.value<=1)\r\n");
+      out.write("\t\tif(forma.duracion.value<=1)\r\n");
       out.write("\t\t   {  alert(\"La duración del proyecto no puede ser menor a 6 meses\");\r\n");
       out.write("\t\t\treturn false;\r\n");
       out.write("\t\t   }\r\n");

@@ -65,7 +65,7 @@ var nav4=window.Event ? true : false;
 			alert("La fecha de Inicio del convenio no puede estar vacio");
 			return false;
 		}
-		if(formulario.duracion.value<=1)
+		if(forma.duracion.value<=1)
 		   {  alert("La duración del proyecto no puede ser menor a 6 meses");
 			return false;
 		   }

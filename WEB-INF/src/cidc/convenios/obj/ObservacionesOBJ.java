@@ -8,6 +8,10 @@ import cidc.proyectosGeneral.obj.ObservacionObj;
 public class ObservacionesOBJ  implements Serializable{
 	
 	private long idObservacion;
+	private String observacion;
+	private String usuario;
+	private String fecha;	
+	
 	public long getIdObservacion() {
 		return idObservacion;
 	}
@@ -32,9 +36,6 @@ public class ObservacionesOBJ  implements Serializable{
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	private String observacion;
-	private String usuario;
-	private String fecha;	
 	
 
 }

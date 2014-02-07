@@ -13,12 +13,12 @@ import cidc.convenios.db.AdminConvenioDB;
 import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.Parametros;
+import cidc.convenios.obj.TiemposOBJ;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.servlet.ServletGeneral;
-import cidc.proyectosAntiguos.db.ProyectosAntiguosDB;
-import cidc.proyectosGeneral.obj.ParametrosOBJ;
-import cidc.proyectosGeneral.obj.Proyecto;
+
+
 
 public class AdminConvenios extends ServletGeneral {
 	
@@ -33,7 +33,7 @@ public class AdminConvenios extends ServletGeneral {
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		AdminConvenioDB adminConv= new AdminConvenioDB(cursor,usuario.getPerfil());
 		Convenio conv=null;
-		GetConvenioOBJ objconv=null; 
+		GetConvenioOBJ objconv=(GetConvenioOBJ)sesion.getAttribute("datoConvenio"); 
 		Calendar fecha = new GregorianCalendar();
 		mensaje="";
 		
@@ -69,17 +69,18 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/ListaConvenios.jsp";
 			break;
 			case Parametros.cmdGetConvenio:
+				sesion.removeAttribute("datoConvenio");
 				sesion.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(req.getParameter("idConv"))));
 				req.setAttribute("accion","4");
 				irA="/adminConvenio/Verconvenio.jsp";
 			break;
 			case Parametros.cmdUpdateConvenio:
-				if(adminConv.actualizaConvenio((Convenio)sesion.getAttribute("nuevoConvenio")))
+				/*if(adminConv.actualizaConvenio((Convenio)sesion.getAttribute("nuevoConvenio")))
 					mensaje="Resgistro actualizado correctamente";
 				else
 					mensaje="El resgistro no pudo ser actualizado correctamente";
 			//	req.setAttribute("datoConvenio", adminConv.getConvenio(req.getParameter("idConvenio")));
-				req.setAttribute("accion","4");
+				req.setAttribute("accion","4");*/
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;
 			case Parametros.InsertaObservacionConvenio:
@@ -89,7 +90,7 @@ public class AdminConvenios extends ServletGeneral {
                 	mensaje="No se pudo insertar la observación";
 				
 				
-				objconv=(GetConvenioOBJ)sesion.getAttribute("datoConvenio");
+				
 				//objconv= adminConv.buscarConvenio(Integer.parseInt(req.getParameter("aa")));
 				//objconv.setListaObservaciones(adminConv.getListaObservaciones(Integer.parseInt(req.getParameter("aa"))));
 				 objconv.getListaObservaciones().clear();
@@ -99,7 +100,7 @@ public class AdminConvenios extends ServletGeneral {
 			break;
 			
 			case Parametros.cambioEstado:
-				    objconv=(GetConvenioOBJ)sesion.getAttribute("datoConvenio");
+				    
 				 if (adminConv.cambiaEstado(Integer.parseInt(objconv.getIdconvenio()),req.getParameter("tipo"), req.getParameter("estado"))){
 					 mensaje="Estado de convenio actualizado correctamente";
 					 objconv.setEstado(req.getParameter("estado"));
@@ -116,6 +117,27 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/Documentos.jsp";
 				
 			break;
+			case Parametros.AdicionarTiempo:
+				if(adminConv.insertarTiempo((TiemposOBJ)sesion.getAttribute("tiempoConv"), objconv,usuario)){
+					mensaje="El tiempo adicional fue registrado satisfactoriamente";
+					objconv.setListaTiempos(adminConv.getListaTiempos(Integer.parseInt(objconv.getIdconvenio())));
+					sesion.setAttribute("datoConvenio", objconv);
+				}else
+					mensaje="El tiempo adicional no pudo ser registrado";
+				sesion.removeAttribute("tiempoConv");				
+				irA="/adminConvenio/VerTiempos.jsp";
+			break;
+			case Parametros.EliminarTiempo:
+				if(adminConv.eliminarTiempo(req.getParameter("idTiempo"))){
+					mensaje="El tiempo adicional fue eliminado satisfactoriamente";
+					objconv.setListaTiempos(adminConv.getListaTiempos(Integer.parseInt(objconv.getIdconvenio())));
+					sesion.setAttribute("datoConvenio", objconv);
+				}else
+					mensaje="El tiempo adicional no pudo ser eliminado";
+				sesion.removeAttribute("tiempo");				
+				irA="/adminProyectos/VerTiempos.jsp";
+			break;
+			
 			
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";

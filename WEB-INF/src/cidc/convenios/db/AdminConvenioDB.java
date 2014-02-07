@@ -14,12 +14,12 @@ import javax.mail.internet.AddressException;
 
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
+import cidc.general.login.Usuario;
 import cidc.general.mails.EnvioMail2;
 import cidc.general.mails.Reporte;
 import cidc.general.obj.CrearClaves;
 import cidc.general.obj.Globales;
 import cidc.proyectosGeneral.obj.ExtraDocProyecto;
-import cidc.proyectosGeneral.obj.Proyecto;
 import cidc.convenios.obj.DatosAjax;
 
 
@@ -31,6 +31,7 @@ import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.ExtraDocConvenio;
 import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.ObservacionesOBJ;
+import cidc.convenios.obj.TiemposOBJ;
 
 
 
@@ -232,8 +233,9 @@ public class AdminConvenioDB extends BaseDB{
 			ps.setString(i++, convenio.getObjetivo());
 			ps.setString(i++, convenio.getResumen());
 			ps.setString(i++, convenio.getObservacionesp());
-			
+			System.out.println("Entro sentencia");
 			ps.executeUpdate();
+			System.out.println("ejecuto sentencia");
 			retorno=true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -461,6 +463,7 @@ public class AdminConvenioDB extends BaseDB{
 			if(conv!=null){
 				
 				conv.setListaObservaciones(getListaObservaciones(id));
+				conv.setListaTiempos(getListaTiempos(id));	
 			
 			}
 			return conv;
@@ -521,7 +524,7 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return convenio;
 	}
-	
+/*	
 	public Convenio getConvenioo(int id) {
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -612,7 +615,7 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return retorno;
 	}
-	
+	*/
 	
 	public List getListaObservaciones(long idConv) {
 		
@@ -650,6 +653,96 @@ public class AdminConvenioDB extends BaseDB{
 			cerrar(cn);
 		}
 		return lista;
+	}
+	
+	public List<TiemposOBJ> getListaTiempos(long idConv){
+		 List<TiemposOBJ> listaTiempos = new ArrayList<TiemposOBJ>();
+		 Connection cn = null;
+		 PreparedStatement ps = null;
+		 ResultSet rs = null;
+		 TiemposOBJ tiempo =null;
+		 Globales global=new Globales();
+				
+      try {
+			  cn = cursor.getConnection(super.perfil);
+			  ps = cn.prepareStatement(rb.getString("getTiemposAdicionales"));
+			  ps.setLong(1, idConv);
+			  rs=ps.executeQuery();
+			  while(rs.next())
+			  {
+				 
+				  tiempo = new TiemposOBJ();
+				  tiempo.setIdTiempo(rs.getInt(1));
+				  tiempo.setTipoTiempo(rs.getInt(2));
+				  tiempo.setValorTiempo(rs.getInt(3));
+				  tiempo.setDescripcion(rs.getString(4));
+				  tiempo.setRegitradoPor(rs.getString(5));
+				  tiempo.setFechaTiempo(rs.getString(6));
+				  conv.setFechaFinalizacion(global.sumarMesesFecha(conv.getFechaFinalizacion(), tiempo.getValorTiempo()));
+				  listaTiempos.add(tiempo);
+			  }
+		     } catch (SQLException e) {lanzaExcepcion(e);}
+		       catch (Exception e) {lanzaExcepcion(e);}
+		 finally
+		 {
+			 try{
+				 rs.close();
+				 ps.close();
+				 cn.close();
+			 }catch(Exception e){}
+		 }
+		return listaTiempos;
+	}
+	
+	public boolean insertarTiempo(TiemposOBJ tiempo,GetConvenioOBJ getconvenio,Usuario user) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("insertarTiempo"));
+			ps.setInt(i++,Integer.parseInt(getconvenio.getIdconvenio()));
+			ps.setInt(i++,tiempo.getTipoTiempo());
+			ps.setString(i++,tiempo.getFechaTiempo());
+			ps.setInt(i++,tiempo.getValorTiempo());
+			ps.setString(i++,tiempo.getDescripcion());
+			ps.setLong(i++,user.getIdUsuario());
+			ps.executeUpdate();
+		
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+	public boolean eliminarTiempo(String idTiempo) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("eliminarTiempo"));
+			ps.setInt(1,Integer.parseInt(idTiempo));
+			ps.executeUpdate();
+		//	System.out.println("----->"+ps);
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
 	}
 }
 

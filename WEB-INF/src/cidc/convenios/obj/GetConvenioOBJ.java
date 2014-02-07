@@ -3,8 +3,7 @@ package cidc.convenios.obj;
 import java.io.Serializable;
 import java.util.List;
 
-import cidc.proyectosGeneral.obj.ObservacionObj;
-import cidc.proyectosGeneral.obj.Tiempos;
+
 
 public class GetConvenioOBJ implements Serializable{
 	
@@ -39,20 +38,20 @@ public class GetConvenioOBJ implements Serializable{
     private String observacionesp;
     
     
-    private List<ObservacionObj> listaObservaciones=null;
-    private List<Tiempos> listaTiempos=null;
+    private List<ObservacionesOBJ> listaObservaciones=null;
+    private List<TiemposOBJ> listaTiempos=null;
     
-    public List<ObservacionObj> getListaObservaciones() {
+    public List<ObservacionesOBJ> getListaObservaciones() {
 		return listaObservaciones;
 	}
-	public void setListaObservaciones(List<ObservacionObj> listaObservaciones) {
+	public void setListaObservaciones(List<ObservacionesOBJ> listaObservaciones) {
 		this.listaObservaciones = listaObservaciones;
 	}
 	
-	public List<Tiempos> getListaTiempos() {
+	public List<TiemposOBJ> getListaTiempos() {
 		return listaTiempos;
 	}
-	public void setListaTiempos(List<Tiempos> listaTiempos) {
+	public void setListaTiempos(List<TiemposOBJ> listaTiempos) {
 		this.listaTiempos = listaTiempos;
 	}
     
