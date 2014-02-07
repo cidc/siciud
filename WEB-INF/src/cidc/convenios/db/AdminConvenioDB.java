@@ -69,6 +69,7 @@ public class AdminConvenioDB extends BaseDB{
 	}
 	
 	public int getIdNuevoDoc(int tipoId){
+		System.out.println("entro a getidnuevodoc");
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -120,6 +121,7 @@ public class AdminConvenioDB extends BaseDB{
 	}
 	
 	public boolean nuevaCargaDocConvenio(ExtraDocConvenio documento, GetConvenioOBJ getconvenioobj,long idUsuario) {
+		System.out.println("esta en nueva cargadocconvenio");
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;

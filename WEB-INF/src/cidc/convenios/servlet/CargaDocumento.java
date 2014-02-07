@@ -30,7 +30,7 @@ public class CargaDocumento extends ServletGeneral  {
 	
 	Usuario usuario = null;
 	CargarDocumento cargarDocumento=new CargarDocumento();
-	AdminConvenioDB adminconv = null;
+	AdminConvenioDB adminconv = null ;
 
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		String irA="/adminConvenio/AdminConvenio.x?accion=7";
@@ -50,7 +50,7 @@ public class CargaDocumento extends ServletGeneral  {
         cursor=new CursorDB();
         
         
-        AdminConvenioDB adminConv= new AdminConvenioDB(cursor,usuario.getPerfil());
+        adminconv= new AdminConvenioDB(cursor,usuario.getPerfil());
         
         mensaje="";        	
 
@@ -135,7 +135,7 @@ public class CargaDocumento extends ServletGeneral  {
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 				
 				
-				sesion.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
+				sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
 			break;
 			
 			case Parametros.insertarDocumentoActaCancelacion:
@@ -144,12 +144,12 @@ public class CargaDocumento extends ServletGeneral  {
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
-				    sesion.setAttribute("datoConvenio", adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
+				    sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
 			break;
 			
 			case Parametros.insertarDocumentoExterno:				
 				nombre="DocAnexo__"+objconv.getIdconvenio()+"_";
-		//		System.out.println("---entra a externo-->"+nombre);
+			System.out.println("---entra a externo-->"+nombre);
 				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
@@ -167,10 +167,21 @@ public class CargaDocumento extends ServletGeneral  {
 		cursor=new CursorDB();
 		if(documento!=null){			
 			 try {
-				 documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo)));
-				  mensaje="Documento Cargado Satisfactoriamente";
+				 System.out.println("entra al try");
+				 System.out.println("tipo"+tipo);
+				 System.out.println("path"+path);
+				 System.out.println("archivoAdj"+archivoAdj);
+				 System.out.println("carpeta"+carpeta);
+				 System.out.println("nombre"+nombre);
+				 System.out.println("admingetidnuevodoc"+adminconv.getIdNuevoDoc(tipo));
+				 cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo));
+		
+				 
+				 //documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo)));
+				 mensaje="Documento Cargado Satisfactoriamente";
 		     } catch (Exception e) {
 				// TODO Auto-generated catch block
+		    	 System.out.println("se exploto");
 				baseDB=new BaseDB(cursor,1);
 				baseDB.lanzaExcepcion(e);
 				mensaje="No se pudo completar la carga del documento\nFavor volver a intentar";
