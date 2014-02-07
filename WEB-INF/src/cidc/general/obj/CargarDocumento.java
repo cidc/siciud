@@ -84,6 +84,7 @@ public class CargarDocumento{
 	}
 
 	public String cargarGenerico(String path, FileItem archivo, String carpeta,String prefijo,long idArchivo) throws Exception{
+		System.out.println("entra a cargargenerico");
 		File sitio=new File(path);
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(10240*1024);

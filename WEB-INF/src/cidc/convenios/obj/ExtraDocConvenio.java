@@ -63,6 +63,7 @@ public class ExtraDocConvenio implements Serializable{
 		return nombreArchivo;
 	}
 	public void setNombreArchivo(String nombreArchivo) {
+		System.out.println("entra al setnombre");
 		this.nombreArchivo = nombreArchivo;
 	}
 	public String getNombreDocumento() {
@@ -72,6 +73,7 @@ public class ExtraDocConvenio implements Serializable{
 		this.nombreDocumento = nombreDocumento;
 	}
 	public String getNombreObservaciones() {
+		System.out.println("entra al set nombre");
 		return nombreObservaciones;
 	}
 	public void setNombreObservaciones(String nombreObservaciones) {
