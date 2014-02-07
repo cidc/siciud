@@ -3,6 +3,7 @@ package cidc.inscripcionConv.servlet;
 import java.io.IOException;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import cidc.convocatorias.db.ConvocatoriasDB;
+import cidc.convocatorias.obj.CompromisosOBJ;
 import cidc.convocatorias.obj.ConvocatoriaOBJ;
 import cidc.general.db.CursorDB;
 import cidc.general.db.UsuarioDB;
@@ -120,7 +122,7 @@ public class Inscribir extends ServletGeneral {
 
 	        		req.setAttribute("resumen",inscripcionConvDB.getResumen(""+id,inscripcionConvOBJ));
 	        		//******************consultar el listado de rubros almacenados en la convocatoria a la cual se vinculan.
-	        		req.setAttribute("listaComp",convocatoriasDB.consultaCompromisos(ParametrosOBJ.ListaCompromiso,convocatoriaOBJ.getConvId()));
+	        		sesion.setAttribute("listaComp",convocatoriasDB.consultaCompromisos(ParametrosOBJ.ListaCompromiso,convocatoriaOBJ.getConvId()));
 	        		irA="/InscripcionConv/Compromisos.jsp";
 	        	}else{
 	        		mensaje="La Inscripción no pudo ser almacenada...\n Por favor vuelva a intentarlo";
@@ -137,7 +139,7 @@ public class Inscribir extends ServletGeneral {
                         sesion.setAttribute("listaDocOBJ",movilidadDB.getDocumentos(conv));
 				System.out.println("Ingreso al paso 02	");
 				inscripcionConvOBJ=(InscripcionConvOBJ)sesion.getAttribute("inscripcionConvOBJ");
-				if(inscripcionConvDB.insertaCompromisos(inscripcionConvOBJ)){
+				if(inscripcionConvDB.insertaCompromisos(inscripcionConvOBJ, (List<CompromisosOBJ>) sesion.getAttribute("listaComp"))){
 					mensaje="Compromisos insertados correctamente";
 					irA="/InscripcionConv/Cargar.jsp";
 				}

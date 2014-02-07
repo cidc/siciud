@@ -10,8 +10,6 @@
 	function guardar1(){
 		//alert(cantComp);
 		 var cantComp=sumaCombos();
-		alert(cantComp);
-		alert(<c:out value="${sessionScope.datosConv.cantProduct}"/>);
 		if(cantComp>=<c:out value="${sessionScope.datosConv.cantProduct}"/>){
 			document.nuevo.action='<c:url value="/InscripcionConv/llenar.jsp"/>';
 			document.nuevo.submit();
@@ -22,8 +20,6 @@
 
 	function sumaCombos(){
 		cantComp=0;
-		//alert("Cantida de productos="+document.nuevo.cantComp.length);
-		alert("cantidad checkbox "+document.nuevo.compromiso_.length);
 		formulario = document.nuevo;
 		for(var i=0; i<formulario.elements.length; i++) {
 		  var elemento = formulario.elements[i];
@@ -33,7 +29,6 @@
 		    }
 		  }
 		}
-		alert("checkeados "+cantComp);
 		return cantComp;
 	}
 
@@ -61,7 +56,7 @@
           		<td width="270px" class="renglones"><b>Indicador</b></td>
           		<td class="renglones"><b>Cant</b></td>
             </tr>
-			<c:forEach begin="0" items="${requestScope.listaComp}" var="lista" varStatus="vst">
+			<c:forEach begin="0" items="${sessionScope.listaComp}" var="lista" varStatus="vst">
 				<tr>
 					<td><c:if test="${lista.obligatorio==1}"><c:out value="${lista.nombre}"/></c:if></td>
 					<td width="270px"><c:if test="${lista.obligatorio==1}"><c:out value="${lista.indicador}"/></c:if></td>
@@ -80,13 +75,14 @@
           		<td width="270px" class="renglones"><b>Indicador</b></td>
           		<td class="renglones"><b>Cant</b></td>
             </tr>
-			<c:forEach begin="0" items="${requestScope.listaComp}" var="lista" varStatus="st">
+			<c:forEach begin="0" items="${sessionScope.listaComp}" var="lista" varStatus="st">
 			<c:if test="${lista.obligatorio!=1}">
 				<tr <c:if test="${st.count mod 2==0}">class="trb"</c:if>>
 					<td width="5px"><c:out value="${st.count}"/></td>
 				 	<td width="5px">
-				 		<input type="checkbox" name="compromiso_" id="comp<c:out value="${st.count}"/>" >
-				 		<input type="hidden" name="idCompromisos" value='<c:out value="${lista.codigo}"/>'  id='<c:out value="${st.count}"/>'>
+				 		<input type="checkbox" name="compromiso_" <c:if test="${lista.obligatorio==1}">checked="checked" disabled="disabled"</c:if> onclick='desCheck(this,<c:out value="${st.count}"/>,<c:out value="${lista.codigo}"/>)' >
+				 		<input type="hidden" name="idCompromisos" value='<c:out value="${lista.codigo}"/>'>
+				 		
 				 	</td>
 					<td><c:out value="${lista.nombre}"/></td>
 					<td width="270px"><c:out value="${lista.indicador}"/></td>
@@ -191,9 +187,6 @@
 		</c:forEach>
 	</table>
 	</c:if>
-
-
-
 </body>
 
 </html>

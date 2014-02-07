@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Vector;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -735,20 +736,31 @@ public class InscripcionConvDB extends BaseDB{
 		return clave;
 	}
 
-	public boolean insertaCompromisos(InscripcionConvOBJ inscripcionConvOBJ){
+	public boolean insertaCompromisos(InscripcionConvOBJ inscripcionConvOBJ, List<cidc.convocatorias.obj.CompromisosOBJ> compOBJ){
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
-		int i=1;
+		Vector<Integer> idComp=new Vector<Integer>();
+		Vector<Integer> cantComp=new Vector<Integer>();
+		for (cidc.convocatorias.obj.CompromisosOBJ compromisosOBJ : compOBJ) {
+			if (compromisosOBJ.getObligatorio()==1) {
+				idComp.add(compromisosOBJ.getCodigo());//condicion
+				cantComp.add(compromisosOBJ.getValor());
+			}
+		}
+		for (int i = 0; i < inscripcionConvOBJ.getIdCompromisos().length; i++) {
+			idComp.add(inscripcionConvOBJ.getIdCompromisos()[i]);
+			cantComp.add(inscripcionConvOBJ.getCantComp()[i]);
+		}
 		if(inscripcionConvOBJ.getIdCompromisos()!=null){
 			try {
 				cn=cursor.getConnection(super.perfil);
 				ps=cn.prepareStatement(rb.getString("inserta_Compromisos"));
 				cn.setAutoCommit(false);
-				for(int j=0;j<inscripcionConvOBJ.getIdCompromisos().length;j++){
+				for(int j=0;j<idComp.size();j++){
 					ps.setLong(1,inscripcionConvOBJ.getPropId());
-					ps.setInt(2,inscripcionConvOBJ.getIdCompromisos()[j]);
-					ps.setInt(3,inscripcionConvOBJ.getCantComp()[j]);
+					ps.setInt(2,idComp.get(j));
+					ps.setInt(3,cantComp.get(j));
 					ps.addBatch();
 				}
 				ps.executeBatch();
