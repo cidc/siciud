@@ -17,7 +17,7 @@
 		return(key<=13 || (key>=48 && key<=57));
 	}
 	function eliminar(id){
-		document.frmTiempos.accion.value=18;
+		document.frmTiempos.accion.value=9;
 		document.frmTiempos.idTiempo.value=id;
 		document.frmTiempos.submit();
 	}
@@ -98,8 +98,8 @@
 	<h3 align="center">No hay tiempos adicionales aprobados para este proyecto</h3>
 	</c:if>
 	
-	<form method="post" action='<c:url value="/adminProyectos/llenarTiempo.jsp"/>'>
-	<input type="hidden" name="accion" value="17"> 
+	<form method="post" action='<c:url value="/adminConvenio/llenarTiempo.jsp"/>'>
+	<input type="hidden" name="accion" value="8"> 
 		<table align="center" width="90%" class="tablas">
 		<caption>Registro de nuevo tiempo adicional</caption>
 			<tr>

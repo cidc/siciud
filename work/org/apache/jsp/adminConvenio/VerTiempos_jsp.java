@@ -104,7 +104,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\treturn(key<=13 || (key>=48 && key<=57));\r\n");
       out.write("\t}\r\n");
       out.write("\tfunction eliminar(id){\r\n");
-      out.write("\t\tdocument.frmTiempos.accion.value=18;\r\n");
+      out.write("\t\tdocument.frmTiempos.accion.value=9;\r\n");
       out.write("\t\tdocument.frmTiempos.idTiempo.value=id;\r\n");
       out.write("\t\tdocument.frmTiempos.submit();\r\n");
       out.write("\t}\r\n");
@@ -379,7 +379,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (_jspx_meth_c_005furl_005f17(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'>\r\n");
-        out.write("\t<input type=\"hidden\" name=\"accion\" value=\"17\"> \r\n");
+        out.write("\t<input type=\"hidden\" name=\"accion\" value=\"8\"> \r\n");
         out.write("\t\t<table align=\"center\" width=\"90%\" class=\"tablas\">\r\n");
         out.write("\t\t<caption>Registro de nuevo tiempo adicional</caption>\r\n");
         out.write("\t\t\t<tr>\r\n");
@@ -711,7 +711,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/VerTiempos.jsp(63,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!empty sessionScope.proyecto.listaTiempos}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!empty sessionScope.datoConvenio.listaTiempos}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -762,7 +762,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005furl_005f15.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f15.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f1);
     // /adminConvenio/VerTiempos.jsp(64,33) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f15.setValue("/GestionGeneralProyectos/AdminGeneralProyectos.x");
+    _jspx_th_c_005furl_005f15.setValue("/adminConvenio/AdminConvenio.x");
     int _jspx_eval_c_005furl_005f15 = _jspx_th_c_005furl_005f15.doStartTag();
     if (_jspx_th_c_005furl_005f15.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f15);
@@ -783,7 +783,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
     // /adminConvenio/VerTiempos.jsp(78,3) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setBegin(0);
     // /adminConvenio/VerTiempos.jsp(78,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto.listaTiempos}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.listaTiempos}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     // /adminConvenio/VerTiempos.jsp(78,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("lista");
     // /adminConvenio/VerTiempos.jsp(78,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
@@ -1141,7 +1141,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fif_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/VerTiempos.jsp(97,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${empty sessionScope.proyecto.listaTiempos}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${empty sessionScope.datoConvenio.listaTiempos}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
     if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1170,7 +1170,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005furl_005f17.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f17.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/VerTiempos.jsp(101,29) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f17.setValue("/adminProyectos/llenarTiempo.jsp");
+    _jspx_th_c_005furl_005f17.setValue("/adminConvenio/llenarTiempo.jsp");
     int _jspx_eval_c_005furl_005f17 = _jspx_th_c_005furl_005f17.doStartTag();
     if (_jspx_th_c_005furl_005f17.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f17);
