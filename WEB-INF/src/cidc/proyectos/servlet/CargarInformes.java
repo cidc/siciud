@@ -34,7 +34,7 @@ import cidc.proyectosGeneral.obj.ExtraDocProyecto;
 import cidc.proyectosGeneral.obj.Proyecto;
 
 public class CargarInformes extends ServletGeneral{
-	public static final Locale supportedLocales = new Locale("es", "ES");
+	public static final Locale supportedLocales = new Locale("en", "US");
 	/**
 	 * 
 	 */
