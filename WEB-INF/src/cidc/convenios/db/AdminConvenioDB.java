@@ -68,6 +68,47 @@ public class AdminConvenioDB extends BaseDB{
 		return retorno;
 	}
 	
+	
+	public List<ExtraDocProyecto> getListaDocAnexos(long idconv) {
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<ExtraDocProyecto> lista=new ArrayList<ExtraDocProyecto>();
+		ExtraDocProyecto documento= null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("listaDocsConvenios"));
+			ps.setLong(i++, idconv);
+		
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				documento=new ExtraDocProyecto();			
+				documento.setNombreDocumento(rs.getString(i++));
+				documento.setFechaDoc(rs.getString(i++));
+				documento.setNombreArchivo(rs.getString(i++));
+				documento.setObservaciones(rs.getString(i++));	
+				documento.setTipo(rs.getInt(i++));
+				documento.setEstado(rs.getInt(i++));
+				documento.setFechaCarga(rs.getString(i++));
+				documento.setUsuario(rs.getString(i++));
+				
+				lista.add(documento);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return lista;
+	}
+	
 	public int getIdNuevoDoc(int tipoId){
 		System.out.println("entro a getidnuevodoc");
 		Connection cn=null;
@@ -162,6 +203,7 @@ public class AdminConvenioDB extends BaseDB{
 			*/
 			cn.commit();
 		} catch (SQLException e) {
+			System.out.println("error en nuevacargadocconvenio");
 			// TODO Auto-generated catch block
 			lanzaExcepcion(e);
 		} catch (Exception e) {
@@ -171,6 +213,7 @@ public class AdminConvenioDB extends BaseDB{
 			cerrar(ps);
 			cerrar(cn);
 		}
+		System.out.println("retorno"+retorno);
 		return retorno;
 	}
 	

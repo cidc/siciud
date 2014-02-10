@@ -174,10 +174,10 @@ public class CargaDocumento extends ServletGeneral  {
 				 System.out.println("carpeta"+carpeta);
 				 System.out.println("nombre"+nombre);
 				 System.out.println("admingetidnuevodoc"+adminconv.getIdNuevoDoc(tipo));
-				 cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo));
+				 //cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo));
 		
 				 
-				 //documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo)));
+				 documento.setNombreArchivo(cargarDocumento.cargarGenerico(path,archivoAdj,carpeta,nombre,adminconv.getIdNuevoDoc(tipo)));
 				 mensaje="Documento Cargado Satisfactoriamente";
 		     } catch (Exception e) {
 				// TODO Auto-generated catch block
