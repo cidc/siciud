@@ -132,7 +132,7 @@
 		    <th width="75px">Opción</th>
 		  </tr>
 					
-<%--		  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
+	<%-- 	  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
 		  <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
 		  <td>
 		   		<c:if test='${lista.nombreArchivo=="" || lista.nombreArchivo==null}'>
@@ -140,10 +140,10 @@
 		  		</c:if>
 		  		<c:if test='${lista.nombreArchivo!="" && lista.nombreArchivo!=null}'>
 		  			<c:if test='${lista.tipo==2||lista.tipo==3}'>	
-		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+		  			<a href='<c:url value="/Documentos/Convenios/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
 				  	<c:if test='${lista.tipo==1}'>
-					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					  <a href='<c:url value="/Documentos/Convenios/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
 					 <c:if test='${lista.tipo==21}'>
 					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Propuestas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
