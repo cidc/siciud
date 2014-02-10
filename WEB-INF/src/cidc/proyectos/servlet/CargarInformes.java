@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.mail.MessagingException;
@@ -33,7 +34,7 @@ import cidc.proyectosGeneral.obj.ExtraDocProyecto;
 import cidc.proyectosGeneral.obj.Proyecto;
 
 public class CargarInformes extends ServletGeneral{
-
+	public static final Locale supportedLocales = new Locale("es", "ES");
 	/**
 	 * 
 	 */
@@ -118,7 +119,7 @@ public class CargarInformes extends ServletGeneral{
 					mensaje="Documento Cargado Satisfactoriamente";
 				}else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
-				ResourceBundle rb=ResourceBundle.getBundle("cidc.general.mails.NotificacionInforme");
+				ResourceBundle rb=ResourceBundle.getBundle("cidc.general.mails.NotificacionInforme",supportedLocales);
 				EnvioMail2 envioMail=new EnvioMail2("siciud");
 				StringBuffer texto=new StringBuffer();
 				texto.append(rb.getString("t1")+"");
