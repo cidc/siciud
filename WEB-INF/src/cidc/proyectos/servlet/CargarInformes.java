@@ -34,7 +34,6 @@ import cidc.proyectosGeneral.obj.ExtraDocProyecto;
 import cidc.proyectosGeneral.obj.Proyecto;
 
 public class CargarInformes extends ServletGeneral{
-	public static final Locale supportedLocales = new Locale("en", "US");
 	/**
 	 * 
 	 */
@@ -119,7 +118,7 @@ public class CargarInformes extends ServletGeneral{
 					mensaje="Documento Cargado Satisfactoriamente";
 				}else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
-				ResourceBundle rb=ResourceBundle.getBundle("cidc.general.mails.NotificacionInforme",supportedLocales);
+				ResourceBundle rb=ResourceBundle.getBundle("cidc.general.mails.NotificacionInforme");
 				EnvioMail2 envioMail=new EnvioMail2("siciud");
 				StringBuffer texto=new StringBuffer();
 				texto.append(rb.getString("t1")+"");

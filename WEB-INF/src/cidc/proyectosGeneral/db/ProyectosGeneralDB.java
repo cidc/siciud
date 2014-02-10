@@ -559,7 +559,6 @@ public class ProyectosGeneralDB extends BaseDB {
 				ps=cn.prepareStatement(rb.getString("nuevaCargaDocProyecto"+proyecto.getClaseProyecto()));
 				ps.setLong(i++, proyecto.getId());			
 				ps.setString(i++, documento.getNombreDocumento());
-				ps.setString(i++, documento.getFechaDoc());
 				ps.setString(i++, documento.getNombreArchivo());						
 				ps.setString(i++, documento.getObservaciones());
 				ps.setInt(i++, documento.getTipo());
