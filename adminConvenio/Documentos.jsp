@@ -77,7 +77,7 @@
 </head>
 <c:import url="/general.jsp"/>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-<c:if test="${sessionScope.proyecto!=null}">
+<c:if test="${sessionScope.datoConvenio!=null}">
 <br>
 <table cellpadding="0" cellspacing="0">
 	<tr>
@@ -132,7 +132,7 @@
 		    <th width="75px">Opción</th>
 		  </tr>
 					
-	<%-- 	  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
+		  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
 		  <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
 		  <td>
 		   		<c:if test='${lista.nombreArchivo=="" || lista.nombreArchivo==null}'>
@@ -163,7 +163,7 @@
 			  <td>&nbsp;</td>
 		  </tr>
 		  </c:forEach>
-		   --%>
+		   
 	</table>
 
 	<br>
@@ -232,7 +232,7 @@
 	</form>
 		
 </c:if>
-<c:if test="${sessionScope.proyecto==null}">
+<c:if test="${sessionScope.datoConvenio==null}">
 <br><br><br>
 <h4 align="center">No se logró encontrar la información del Proyecto de Investigación</h4>
 </c:if>

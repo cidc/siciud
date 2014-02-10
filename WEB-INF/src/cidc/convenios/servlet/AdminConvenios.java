@@ -114,7 +114,7 @@ public class AdminConvenios extends ServletGeneral {
 			
 			case Parametros.consultaDocumentos:
 				
-				//sesion.setAttribute("listaDocs",adminConv.getListaDocAnexos(Integer.parseInt(objconv.getIdconvenio())));
+				sesion.setAttribute("listaDocs",adminConv.getListaDocAnexos(Integer.parseInt(objconv.getIdconvenio())));
 				System.out.println("case consultadocumentos");
 				irA="/adminConvenio/Documentos.jsp";
 				
