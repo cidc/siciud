@@ -564,7 +564,6 @@ public class ProyectosGeneralDB extends BaseDB {
 				ps.setInt(i++, documento.getTipo());
 				ps.setInt(i++, documento.getEstado());
 				ps.setLong(i++, idUsuario);
-				System.out.println("consulta: "+ps.toString());
 				ps.executeUpdate();
 				retorno=true;
 			}

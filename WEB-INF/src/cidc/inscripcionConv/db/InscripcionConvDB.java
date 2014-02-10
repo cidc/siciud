@@ -899,7 +899,6 @@ public class InscripcionConvDB extends BaseDB{
 		boolean retorno=false;
 		System.out.println("Ingreso al envio del mail=------>");
 		String []destino={persona.getMail()};
-		//destino [1]="cidc@udistrital.edu.co";
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;

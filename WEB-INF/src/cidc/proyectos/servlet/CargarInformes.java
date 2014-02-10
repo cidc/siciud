@@ -133,8 +133,9 @@ public class CargarInformes extends ServletGeneral{
 				texto.append(rb.getString("t7"));
 				texto.append(rb.getString("t8"));
 				texto.append(rb.getString("t9"));
-				String[] destinaratio= new String[1];
+				String[] destinaratio= new String[2];
 				destinaratio[0]=rb.getString("t11");
+				destinaratio[1]=usuario.getMail();
 				if (docNuevo.getTipo()==2)
 					asunto="Informe Final";
 				if(docNuevo.getTipo()==3)
