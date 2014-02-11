@@ -66,6 +66,9 @@ public class CargaDocumento extends ServletGeneral {
         cursor=new CursorDB();
         proyectoGeneralDB=new ProyectosGeneralDB(cursor,usuario.getPerfil());
         
+        
+       
+        
         mensaje="";        	
 
 		if (ServletFileUpload.isMultipartContent(req)){

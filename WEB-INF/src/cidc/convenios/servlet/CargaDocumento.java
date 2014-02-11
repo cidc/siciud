@@ -52,7 +52,8 @@ public class CargaDocumento extends ServletGeneral  {
         
         adminconv= new AdminConvenioDB(cursor,usuario.getPerfil());
         
-        mensaje="";        	
+        mensaje=""; 
+      	
 
 		if (ServletFileUpload.isMultipartContent(req)){
 			List items=new ArrayList();
@@ -111,10 +112,16 @@ public class CargaDocumento extends ServletGeneral  {
 		String carpeta="";
 		carpeta="Convenios";
 	
-			
+		System.out.println("accion formulario"+req.getParameter("accion"));	
+		System.out.println("accion"+accion);
+		System.out.println("accion"+req.getParameter("nombre"));
+		
 	
-	//	System.out.println("---caso-->"+accion);
+		System.out.println("---caso-->"+accion);
 		switch(accion){
+		
+		
+		
 			case Parametros.insertaInformeConvenio:
 				nombre="Informe_"+objconv.getIdconvenio()+"_"; 
 				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Informes",archivoAdj,docNuevo,Parametros.insertaInformeConvenio,objconv),objconv,usuario.getIdUsuario()))
@@ -147,7 +154,10 @@ public class CargaDocumento extends ServletGeneral  {
 				    sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
 			break;
 			
-			case Parametros.insertarDocumentoExterno:				
+			case Parametros.insertarDocumentoExterno:
+				
+				
+				
 				nombre="DocAnexo__"+objconv.getIdconvenio()+"_";
 			System.out.println("---entra a externo-->"+nombre);
 				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
