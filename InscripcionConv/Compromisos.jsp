@@ -8,8 +8,8 @@
 
 <script type="text/javascript">
 	function guardar1(){
-		//alert(cantComp);
 		 var cantComp=sumaCombos();
+		//alert(cantComp+" "+<c:out value="${sessionScope.datosConv.cantProduct}"/>);
 		if(cantComp>=<c:out value="${sessionScope.datosConv.cantProduct}"/>){
 			document.nuevo.action='<c:url value="/InscripcionConv/llenar.jsp"/>';
 			document.nuevo.submit();
@@ -80,7 +80,7 @@
 				<tr <c:if test="${st.count mod 2==0}">class="trb"</c:if>>
 					<td width="5px"><c:out value="${st.count}"/></td>
 				 	<td width="5px">
-				 		<input type="checkbox" name="compromiso_" <c:if test="${lista.obligatorio==1}">checked="checked" disabled="disabled"</c:if> onclick='desCheck(this,<c:out value="${st.count}"/>,<c:out value="${lista.codigo}"/>)' >
+				 		<input type="checkbox" name="compromiso_" <c:if test="${lista.obligatorio==1}">checked="checked"</c:if> value="${lista.codigo}" >
 				 		<input type="hidden" name="idCompromisos" value='<c:out value="${lista.codigo}"/>'>
 				 		
 				 	</td>

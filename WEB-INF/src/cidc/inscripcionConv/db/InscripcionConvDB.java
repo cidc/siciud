@@ -742,15 +742,21 @@ public class InscripcionConvDB extends BaseDB{
 		PreparedStatement ps=null;
 		Vector<Integer> idComp=new Vector<Integer>();
 		Vector<Integer> cantComp=new Vector<Integer>();
+		//este ciclo es el encargado de agregar los compromisos obligatorios
 		for (cidc.convocatorias.obj.CompromisosOBJ compromisosOBJ : compOBJ) {
 			if (compromisosOBJ.getObligatorio()==1) {
 				idComp.add(compromisosOBJ.getCodigo());//condicion
 				cantComp.add(compromisosOBJ.getValor());
 			}
 		}
+		//este ciclo agrega los compromisos elegidos por el investigador
 		for (int i = 0; i < inscripcionConvOBJ.getIdCompromisos().length; i++) {
-			idComp.add(inscripcionConvOBJ.getIdCompromisos()[i]);
-			cantComp.add(inscripcionConvOBJ.getCantComp()[i]);
+			for (int j = 0; j < inscripcionConvOBJ.getCompromiso_().length; j++) {
+				if(inscripcionConvOBJ.getIdCompromisos()[i]==Integer.parseInt(inscripcionConvOBJ.getCompromiso_()[j])){
+					idComp.add(inscripcionConvOBJ.getIdCompromisos()[i]);
+					cantComp.add(inscripcionConvOBJ.getCantComp()[i]);
+				}
+			}
 		}
 		if(inscripcionConvOBJ.getIdCompromisos()!=null){
 			try {

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -804,14 +805,24 @@ public class MovilidadDB extends BaseDB{
                         propuestaOBJ.setNombreDocumentoRequisito(rs.getString(i++));
                         l.add(propuestaOBJ);
                 }
-                for (PropuestaOBJ propuestaOBJ : propObj) {
-					for (PropuestaOBJ propuestaOBJ2 : l) {
-						if(propuestaOBJ.getCodigo()==propuestaOBJ2.getIdDocumentoRequisito()){
-							propuestaOBJ.setNombreDocumentoRequisito(propuestaOBJ2.getNombreDocumentoRequisito());
-							propFinal.add(propuestaOBJ);
-						}
-					}
-				}
+                for(int j=0;j<propObj.size();j++){
+                	PropuestaOBJ propuestaOBJ=propObj.get(j);
+                	for (PropuestaOBJ propuestaOBJ2 : l){
+                		if(propuestaOBJ.getCodigo()==propuestaOBJ2.getIdDocumentoRequisito()){
+                			propuestaOBJ.setNombreDocumentoRequisito(propuestaOBJ2.getNombreDocumentoRequisito());
+                			propObj.remove(j);
+                			propObj.add(propuestaOBJ);
+                		}
+                	}
+                }
+//                for (PropuestaOBJ propuestaOBJ : propObj) {
+//					for (PropuestaOBJ propuestaOBJ2 : l) {
+//						if(propuestaOBJ.getCodigo()==propuestaOBJ2.getIdDocumentoRequisito()){
+//							propuestaOBJ.setNombreDocumentoRequisito(propuestaOBJ2.getNombreDocumentoRequisito());
+//							propFinal.add(propuestaOBJ);
+//						}
+//					}
+//				}
         } catch (Exception e) {
                 lanzaExcepcion(e);
         }finally{
@@ -823,9 +834,7 @@ public class MovilidadDB extends BaseDB{
                         lanzaExcepcion(e);
                 }
         }
-        if (propFinal.size()==0)
-        	return null;
-        else
-        	return propFinal;
+       
+        	return propObj;
 }
 }

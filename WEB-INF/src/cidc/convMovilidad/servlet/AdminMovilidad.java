@@ -161,8 +161,8 @@ public class AdminMovilidad extends ServletGeneral {
 				conv=Integer.parseInt(req.getParameter("propConvId"));
 				List<PropuestaOBJ> documentos=movilidadDB.getDocumentos(conv);
 				info =(InfoGeneral)sesion.getAttribute("movilidad");
-//				sesion.setAttribute("listaDocOBJ",movilidadDB.buscarDocumentosInscritos(documentos,(int)info.getIdPropuesta()));//revisar esta linea y este metodo con mas cuidado despues
-				sesion.setAttribute("listaDocOBJ", documentos);
+ 				sesion.setAttribute("listaDocOBJ",movilidadDB.buscarDocumentosInscritos(documentos,(int)info.getIdPropuesta()));//revisar esta linea y este metodo con mas cuidado despues
+//				sesion.setAttribute("listaDocOBJ", documentos);
 				irA="/convMovilidad/Cargar.jsp";
 				System.out.println("Paso 03");
 			break;
