@@ -13,10 +13,12 @@ import cidc.convenios.db.AdminConvenioDB;
 import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.Parametros;
+import cidc.convenios.obj.PersonaOBJ;
 import cidc.convenios.obj.TiemposOBJ;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.servlet.ServletGeneral;
+
 
 
 
@@ -36,16 +38,16 @@ public class AdminConvenios extends ServletGeneral {
 		GetConvenioOBJ objconv=(GetConvenioOBJ)sesion.getAttribute("datoConvenio"); 
 		Calendar fecha = new GregorianCalendar();
 		mensaje="";
-		
+		int año = fecha.get(Calendar.YEAR);
+        int mes = fecha.get(Calendar.MONTH);
+        int dia = fecha.get(Calendar.DAY_OF_MONTH);
 		int accion=0;
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
 		switch(accion){
 			case Parametros.cmdInsertaConvenio:
 				
-				int año = fecha.get(Calendar.YEAR);
-		        int mes = fecha.get(Calendar.MONTH);
-		        int dia = fecha.get(Calendar.DAY_OF_MONTH);
+				
 				conv=(Convenio)sesion.getAttribute("nuevoConvenio");
 				conv.setN_UsuDigita(usuario.getNombre());
 				conv.setF_Digita(año + "-" + (mes+1) + "-" +dia+"");
@@ -141,7 +143,49 @@ case Parametros.AdicionarTiempo:
 				sesion.removeAttribute("tiempoConv");				
 				irA="/adminConvenio/VerTiempos.jsp";
 			break;
-			
+			case Parametros.AdicionarPersona:
+				System.out.println("Entro adicionar");
+				PersonaOBJ objpersona=(PersonaOBJ)sesion.getAttribute("personaCon");
+				objpersona.setRegitradoPor(""+usuario.getIdUsuario());
+				objpersona.setFechaReg(año + "-" + (mes+1) + "-" +dia+"");
+					if(adminConv.registrarPersonaConvenio(objconv,objpersona)){
+						mensaje="La persona fue registrada satisfactoriamente";
+						sesion.removeAttribute("datoConvenio");
+						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+						sesion.setAttribute("datoConvenio", objconv);
+						
+					}else
+						mensaje="La persona no pudo ser registrada";
+					sesion.removeAttribute("personaCon");		
+					irA="/adminConvenio/Personas.jsp";				
+				
+
+			break;
+			case Parametros.EliminarPersona:
+				
+				if(adminConv.eliminarPersonaConvenio(req.getParameter("idPersona"))){
+					mensaje="La persona fue eliminada satisfactoriamente";
+					sesion.removeAttribute("datoConvenio");
+					objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+					sesion.setAttribute("datoConvenio", objconv);
+				}else
+					mensaje="La persona NO pudo ser eliminada";
+				sesion.removeAttribute("personaCon");
+				
+					irA="/adminConvenio/Personas.jsp";
+			break;
+			case Parametros.ActualizarPersona:
+				if(adminConv.actualizarPersonaConvenio((PersonaOBJ)sesion.getAttribute("personaCon"))){
+					mensaje="La persona fue actualizada satisfactoriamente";
+					sesion.removeAttribute("personaCon");
+					sesion.removeAttribute("datoConvenio");
+					objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+					sesion.setAttribute("datoConvenio", objconv);;
+				}else
+					mensaje="La persona no pudo ser actualizada";
+				sesion.removeAttribute("personaCon");		
+				irA="/adminConvenio/Personas.jsp";
+			break;
 			
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";

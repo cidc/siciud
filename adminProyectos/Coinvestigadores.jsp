@@ -117,6 +117,7 @@
 				<td width="100px" align="center"><c:out value="${lista.papel}"/></td>
 				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.id}"/>,20,<c:out value="${st.count}"/>)'></td>
 				<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.id}"/>,21,<c:out value="${st.count}"/>)'></td>
+					
 			</tr>
 			</c:forEach>
 		</table>

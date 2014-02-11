@@ -19,7 +19,9 @@ import cidc.general.mails.EnvioMail2;
 import cidc.general.mails.Reporte;
 import cidc.general.obj.CrearClaves;
 import cidc.general.obj.Globales;
+import cidc.proyectosGeneral.obj.CoInvest;
 import cidc.proyectosGeneral.obj.ExtraDocProyecto;
+import cidc.proyectosGeneral.obj.Proyecto;
 import cidc.convenios.obj.DatosAjax;
 
 
@@ -31,6 +33,7 @@ import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.ExtraDocConvenio;
 import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.ObservacionesOBJ;
+import cidc.convenios.obj.PersonaOBJ;
 import cidc.convenios.obj.TiemposOBJ;
 
 
@@ -506,13 +509,54 @@ public class AdminConvenioDB extends BaseDB{
 			conv=getConvenio(id);
 			
 			if(conv!=null){
-				
+				conv.setListaPersonas(getListaPersonas(Integer.parseInt(conv.getIdconvenio())));
 				conv.setListaObservaciones(getListaObservaciones(id));
 				conv.setListaTiempos(getListaTiempos(id));	
 			
 			}
 			return conv;
 		}
+	 
+	 
+		public List<PersonaOBJ> getListaPersonas(int id){
+			PersonaOBJ personas=null;
+			Connection cn=null;
+			PreparedStatement ps=null;
+			ResultSet rs=null;
+			int i=1;
+			List<PersonaOBJ> listapersonas=new ArrayList <PersonaOBJ>();
+			
+			try {
+				cn=cursor.getConnection(super.perfil);
+				ps=cn.prepareStatement(rb.getString("getPersonas"));
+				ps.setInt(1, id);
+				rs=ps.executeQuery();
+				//System.out.println("-->"+ps);
+				while(rs.next()){
+					i=1;
+					personas=new PersonaOBJ();
+					personas.setIdPersona(rs.getInt(i++));
+					personas.setDocumento(rs.getString(i++));
+					personas.setNombre(rs.getString(i++));
+					personas.setObservacion(rs.getString(i++));
+					personas.setFechaInicio(rs.getString(i++));
+					personas.setFechaFin(rs.getString(i++));
+					personas.setRol(rs.getString(i++));
+					personas.setRegitradoPor(rs.getString(i++));
+					personas.setFechaReg(rs.getString(i++));
+					listapersonas.add(personas);
+				}
+			} catch (SQLException e) {
+				lanzaExcepcion(e);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return listapersonas;
+		}
+	 
+	 
 	 
 	public GetConvenioOBJ getConvenio(int id) {
 		Connection cn=null;
@@ -789,6 +833,91 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return retorno;
 	}
+	
+	public boolean registrarPersonaConvenio(GetConvenioOBJ convenio, PersonaOBJ persona) {
+		
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("registrarPersonaConvenio"));
+			System.out.println("Entro db");
+			ps.setString(i++, persona.getDocumento());
+			ps.setString(i++, persona.getNombre());
+			ps.setString(i++, persona.getApellido());
+			ps.setString(i++, persona.getObservacion());
+			ps.setString(i++, persona.getFechaInicio());
+			ps.setString(i++, persona.getFechaFin());
+			ps.setString(i++, persona.getRol());
+			ps.setInt(i++, Integer.parseInt(persona.getRegitradoPor()));
+			ps.setString(i++, persona.getFechaReg());
+			ps.setInt(i++,Integer.parseInt(convenio.getIdconvenio()));
+			ps.executeUpdate();
+		//	System.out.println("----->"+ps);
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+
+	public boolean eliminarPersonaConvenio(String idConv) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("eliminaPersonaConvenio"));
+			ps.setInt(i++,Integer.parseInt(idConv));
+			ps.executeUpdate();
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+	public boolean actualizarPersonaConvenio(PersonaOBJ persona) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("actualizaPersonaConvenio"));
+			ps.setString(i++,persona.getObservacion());
+			ps.setString(i++,persona.getFechaInicio());
+			ps.setString(i++,persona.getFechaFin());
+			ps.setInt(i++,persona.getIdPersona());
+		//	System.out.println("---actualiza-->"+ps);
+			ps.executeUpdate();
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+	
 }
 
 

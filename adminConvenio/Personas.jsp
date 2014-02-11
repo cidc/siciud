@@ -16,12 +16,13 @@
 		var key=nav4?eve.which :eve.keyCode;
 		return(key<=13 || (key>=48 && key<=57));
 	}
-	function enviar(id,accion,cont){
-		document.frmCoinvest.accion.value=accion;
-		document.frmCoinvest.fechaInicio.value=document.getElementById("f_date_a"+cont).value;
-		document.frmCoinvest.fechaFin.value=document.getElementById("f_date_b"+cont).value;
-		document.frmCoinvest.id.value=id;
-		document.frmCoinvest.submit();
+	function enviar(idPersona,accion,cont){
+		document.frmPersona.accion.value=accion;
+		document.frmPersona.observacion.value=document.getElementById("observaciones"+cont).value;
+		document.frmPersona.fechaInicio.value=document.getElementById("f_date_a"+cont).value;
+		document.frmPersona.fechaFin.value=document.getElementById("f_date_b"+cont).value;
+		document.frmPersona.idPersona.value=idPersona;
+		document.frmPersona.submit();
 	}
 </script>
 </head>
@@ -33,8 +34,8 @@
 			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=3&idConv=${sessionScope.datoConvenio.idconvenio}"/>'><img border="0" src='<c:url value="/comp/img/tabs/General1.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/tabs/Documentos1.gif"/>'></a></td>
 			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
-			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Investigadores1.gif"/>'></a></td>
-		<td><img border="0" src='<c:url value="/comp/img/tabs/Investigadores2.gif"/>'></td>
+			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Tiempos1.gif"/>'></a></td>
+		    <td><img border="0" src='<c:url value="/comp/img/tabs/Investigadores2.gif"/>'></td>
 		</tr>
 	</table>
 <br>
@@ -45,43 +46,45 @@
 			<th colspan="5"><b>Nombre de Proyecto</b></th>
 		</tr>
 		<tr>
-			<td colspan="5"><c:out value="${sessionScope.proyecto.proyecto}"/></td>
+			<td colspan="5"><c:out value="${sessionScope.datoConvenio.nombreproyecto}"/></td>
 		</tr>
 		<tr>
-			<th width="20%"><b>Director del Proyecto</b></th>
-			<th width="20%"><b>Código</b></th>
-			<th width="20%"><b>Fecha Aprobación</b></th>
+			
+			<th width="20%"><b>Número Convenio</b></th>
+			<th width="20%"><b>Fecha Inicio</b></th>
 			<th width="20%"><b>Estimado Fin</b></th>
 			<th width="20%"><b>Total Aprobado</b></th>
 		</tr>
 		<tr>
-			<td width="20%" align="center"><c:out value="${sessionScope.proyecto.director}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.proyecto.codigo}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.proyecto.fecAprobacion}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.proyecto.fecEstimadoFin}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.balanceProyecto.totalAprobado}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.balanceProyecto.totalAprobado}"/>REVISAR COD</td>
 		</tr>
 	</table>
 	
-	<c:if test="${!empty sessionScope.datoConvenio.listaCoInvestigadores}">
-	<form name="frmCoinvest" action='<c:url value="/adminProyectos/llenarInvestigador.jsp"/>' method="post">
+	<c:if test="${!empty sessionScope.datoConvenio.listaPersonas}">
+	<form name="frmPersona" action='<c:url value="/adminConvenio/llenarPersonas.jsp"/>' method="post">
 		<input type="hidden" name="accion" value="0">
-		<input type="hidden" name="id" value="0">
+		<input type="hidden" name="idPersona" value="0">
 		<input type="hidden" name="fechaInicio" value="">
 		<input type="hidden" name="fechaFin" value="">
+		<input type="hidden" name="observacion" value="">
 		<table width="95%" align="center" class="tablas">
-			<caption>Lista de Investigadores asociados al proyecto</caption>
+			<caption>Lista de Personas asociadas al proyecto</caption>
 			<tr>
 				<th width="5px">&nbsp;</th>
 				<th width="75px"><b>Fecha Ingreso</b></th>
 				<th width="75px"><b>Fecha Salida</b></th>				
 				<th width="100px"><b>Documento</b></th>
 				<th><b>Nombre</b></th>
-				<th width="100px"><b>Papel</b></th>
+				<th width="100px"><b>Rol</b></th>
 				<th width="5px">&nbsp;</th>
 				<th width="5px">&nbsp;</th>
 			</tr>
-			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaCoInvestigadores}" var="lista" varStatus="st">
+			
+			
+			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaPersonas}" var="lista" varStatus="st">
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td width="5px"><c:out value="${st.count}"/></td>
 				<td  width="175px" align="center">
@@ -114,31 +117,37 @@
 				</td>
 				<td width="100px" align="center"><c:out value="${lista.documento}"/></td>
 				<td align="center"><c:out value="${lista.nombre}"/></td>
-				<td width="100px" align="center"><c:out value="${lista.papel}"/></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.id}"/>,20,<c:out value="${st.count}"/>)'></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.id}"/>,21,<c:out value="${st.count}"/>)'></td>
+				<td width="100px" align="center"><c:out value="${lista.rol}"/></td>
+				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,11,<c:out value="${st.count}"/>)'></td>
+				<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>
 			</tr>
+			<tr>
+			<th colspan="6"><b>Observaciones</b></th>
+		</tr>
+		<tr>
+			<td colspan="6"><textarea name="observaciones" style="width:100%" id='observaciones<c:out value="${st.count}"/>' ><c:out value="${lista.observacion}"/></textarea> </td>
+		</tr>
 			</c:forEach>
 		</table>
 	</form>
 	</c:if>
-	<c:if test="${empty sessionScope.datoConvenio.listaCoInvestigadores}">
+	<c:if test="${empty sessionScope.datoConvenio.listaPersonas}">
 	<h3 align="center">No hay más personas registradas en este Convenio</h3>
 	</c:if>
 	
-	<form method="post" action='<c:url value="/adminProyectos/llenarInvestigador.jsp"/>'>
-		<input type="hidden" name="accion" value="19">
-		<input type="hidden" name="id" value="">
+	<form method="post" action='<c:url value="/adminConvenio/llenarPersonas.jsp"/>'>
+		<input type="hidden" name="accion" value="10">
+		<input type="hidden" name="idPersona" value="">
 		
 		<table align="center" width="95%" class="tablas">
-		<caption>Registro de nuevo investigador asociado</caption>
+		<caption>Registro de nueva persona asociada</caption>
 			<tr>
 				<th width="100px">Fecha Ingreso</th>
 				<th width="100px">Fecha Salida</th>
 				<th width="100px">Documento</th>
 				<th>Nombres</th>
-				<th>Apellidos</th>
-				<th>Papel</th>
+		 		<th>Apellidos</th>
+				<th>Rol</th>
 			</tr>
 			<tr>
 				<td  width="150px">
@@ -172,8 +181,14 @@
 				<td width="100px"><input type="text" onkeypress="return numeros(event)" name="documento" ></td>
 				<td><input type="text" name="nombre" ></td>
 				<td><input type="text" name="apellido" ></td>
-				<td><input type="text" name="papel" ></td>
+				<td><input type="text" name="rol" ></td>
 			</tr>
+			<tr>
+			<th colspan="6"><b>Observaciones</b></th>
+		</tr>
+		<tr>
+			<td colspan="6"><textarea name="observacion" style="width:100%"></textarea> </td>
+		</tr>
 			<tr>
 				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>'></td>
 			</tr>

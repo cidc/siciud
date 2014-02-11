@@ -13,5 +13,8 @@ public class Parametros {
 	public static final int consultaDocumentos=7;
 	public static final int AdicionarTiempo=8;
 	public static final int EliminarTiempo=9;
+	public static final int AdicionarPersona=10;
+	public static final int EliminarPersona=11;
+	public static final int ActualizarPersona=12;
 	
 }

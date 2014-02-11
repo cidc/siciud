@@ -16,7 +16,7 @@
 	}
 
 	function cambioTipo(combo){
-		if(combo.value==1||combo.value==4||combo.value==5){
+		if(combo.value==1||combo.value==4||combo.value==5||combo.value==6){
 			document.getElementById("st11").style.display="none";
 			document.getElementById("st12").style.display="none";
 			document.getElementById("st21").style.display="";
@@ -29,6 +29,10 @@
 			if(combo.value==5){
 				document.frmCargaDoc.nombre.readonly=true;
 				document.frmCargaDoc.nombre.value="Acta de Finalizacion";
+			}
+			if(combo.value==6){
+				document.frmCargaDoc.nombre.readonly=true;
+				document.frmCargaDoc.nombre.value="Acta de Inicio";
 			}
 		}if(combo.value==2||combo.value==3){
 			document.getElementById("st11").style.display="";
@@ -49,7 +53,16 @@
 		if(document.frmCargaDoc.tipo.value=="4"){
 			document.frmCargaDoc.accion.value="4";
 		}
+		if(document.frmCargaDoc.tipo.value=="2"){
+			document.frmCargaDoc.accion.value="9";
+		}
+		if(document.frmCargaDoc.tipo.value=="3"){
+			document.frmCargaDoc.accion.value="9";
+		}
 		if(document.frmCargaDoc.tipo.value=="5"){
+			document.frmCargaDoc.accion.value="5";
+		}
+		if(document.frmCargaDoc.tipo.value=="6"){//aquy se debe colocar
 			document.frmCargaDoc.accion.value="5";
 		}
 		if(document.frmCargaDoc.fechaDoc.value=="")
@@ -151,8 +164,8 @@
 					 <c:if test='${lista.tipo==22}'>
 					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Contratos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
-					  <c:if test='${lista.tipo==23 or lista.tipo==4 or lista.tipo==5}'>
-					 	<a href='<c:url value="/Documentos/ProyectosAntiguos/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					  <c:if test='${lista.tipo==23 or lista.tipo==4 or lista.tipo==5 or lista.tipo==6}'>
+					 	<a href='<c:url value="/Documentos/Convenios/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
 		  		</c:if>
 			</td>
@@ -183,7 +196,8 @@
 									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>
 									<option value="4" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Finalización</option>
-									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>																		
+									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>
+									<option value="6">Acta de Inicio</option>																		
 								</select>								
 							</td>
 							<th><b>Fecha de Entrega</b></th>
