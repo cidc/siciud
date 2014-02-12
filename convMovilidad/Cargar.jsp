@@ -13,8 +13,8 @@
 		document.nuevo.action='<c:url value="/movilidad/adminMovilidad.x"/>';
 		document.nuevo.submit();
 	}
-	function guardar(caja,formulario,iddoc){
-		alert(caja.value);
+	function guardar1(caja,formulario,iddoc){
+		//alert(caja.value);
                 if(ValidarFormularioDoc(caja)){
 			formulario.DocId.value=iddoc;
                         formulario.submit();
@@ -22,9 +22,15 @@
         }
         
         function ValidarFormularioDoc(caja){
+        	var archi=caja.value;
                 if(caja.value==""){
                         alert("Debe seleccionar un Archivo para cargar");
                         return false;
+                }
+                var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
+                if(!(ext==".pdf")){
+                	alert("El archivo debe estar en formato PDF");
+                    return false;
                 }
                 return true;
         }
@@ -110,14 +116,14 @@
                                         <table width="100%">
 					 <th colspan="2" align="center">Documentos Requeridos</th>
                                                 <tr>
-                                                        <td colspan="2" class="renglones"><b><c:out value="${lista2.docNombre}"/>-<c:out value="${sessionScope.datosConv.convId}"/>-<c:out value="${lista2.codigo}"/></b></td>
+                                                        <td colspan="2" class="renglones"><b><c:out value="${lista2.docNombre}"/></b></td>
                                                 </tr>
                                                 <tr>
                                                         <td colspan="2"><p class="texto1j">Formato PDF</p></td>
                                                 </tr>
                                                 <tr>
                                                         <td><input size="60%" type="file" name="archivo"></td>
-                                                        <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar(document.${lista2.docNombre}.archivo,document.${lista2.docNombre},<c:out value="${lista2.codigo}" />)"></td>
+                                                        <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar1(document.${lista2.docNombre}.archivo,document.${lista2.docNombre},<c:out value="${lista2.codigo}" />)"></td>
                                                         <c:if test="${lista2.nombreDocumentoRequisito!=null}">
 														<tr>
 															<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Movilidad/${lista2.nombreDocumentoRequisito}" />'>Ver Documento</a></td>

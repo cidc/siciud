@@ -1,33 +1,29 @@
 package cidc.convMovilidad.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cidc.adminPropuestas.obj.PropuestaOBJ;
-//import cidc.convocatorias.db.ConvocatoriasDB;
-//import cidc.convocatorias.obj.ConvocatoriaOBJ;
-import cidc.convMovilidad.db.MovilidadDB;
-import cidc.convMovilidad.obj.InfoGeneral;
-import cidc.general.db.CursorDB;
-import cidc.general.login.Usuario;
-import cidc.general.obj.CargarDocumento;
-import cidc.general.servlet.ServletGeneral;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import cidc.general.db.BaseDB;
-
 import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import cidc.adminPropuestas.obj.PropuestaOBJ;
+import cidc.convMovilidad.db.MovilidadDB;
 import cidc.convMovilidad.obj.InfoGeneral;
+import cidc.general.db.BaseDB;
+import cidc.general.db.CursorDB;
+import cidc.general.login.Usuario;
+import cidc.general.obj.CargarDocumento;
+import cidc.general.servlet.ServletGeneral;
 
 public class CargaRequisitos extends ServletGeneral {
 

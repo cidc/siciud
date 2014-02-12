@@ -15,6 +15,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_0026_005ftest;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -28,6 +29,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -37,6 +39,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.release();
     _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.release();
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.release();
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -107,12 +110,9 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t}\r\n");
       out.write("\r\n");
       out.write("\tfunction temina(){\r\n");
-      out.write("\t\talert(\"At least\");\r\n");
-      out.write("\t\tif((document.frm11.fichero!=null || document.frm11.fichero!=\"\") && (document.frm3.fichero!=null || document.frm3.fichero!=\"\") && (document.frm4.fichero!=null || document.frm4.fichero!=\"\") && (document.frm5.fichero!=null || document.frm5.fichero!=\"\"))\r\n");
-      out.write("\t\t\tdocument.finaliza.submit();\r\n");
-      out.write("\t\telse\r\n");
-      out.write("\t\t\talert(\"Para terminar debe cargar los documentos faltantes\");\r\n");
+      out.write("\t\tdocument.finaliza.submit();\r\n");
       out.write("\t}\r\n");
+      out.write("\t\r\n");
       out.write("\tfunction guardareq(caja,formulario,iddoc){\r\n");
       out.write("                if(ValidarFormularioDoc(caja)){\r\n");
       out.write("                        formulario.DocId.value=iddoc;\r\n");
@@ -129,64 +129,50 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</script>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
-      out.write("<br><br>\r\n");
-      out.write("\t<fieldset style=\"width:550px;\">\r\n");
-      out.write("    \t<legend class=\"texto1\"><b>Documento Propuesta Investigación</b></legend>\r\n");
-      out.write("\t\t\t<table>\r\n");
-      out.write("\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t<td colspan=\"2\" align=\"justify\">\t\t\t\t\t\t\r\n");
-      out.write("\t\t\t\t\t\tLa carga de estos documentos la puede hacer en cualquier momento, pero debe ser antes de la fecha de corte de la convocatoria, de lo contrario su propuesta no será tenida en cuenta en el proceso de evaluación.\r\n");
-      out.write("\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t</tr>\r\n");
-      out.write("\t");
-      out.write("\r\n");
-      out.write("\t\t\t");
-      out.write("\r\n");
-      out.write("\t\t");
-      out.write("\t\r\n");
-      out.write("\t\t\t\t");
-      out.write("\t\t\t\r\n");
-      out.write("\t\t\t");
-      out.write("\t\t\t\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("                <tr>\r\n");
-      out.write("                        <td>\r\n");
-      out.write("                        ");
+      out.write("\t<br>\r\n");
+      out.write("\t<br>\r\n");
+      out.write("\t<fieldset style=\"width: 550px;\">\r\n");
+      out.write("\t\t<legend class=\"texto1\">\r\n");
+      out.write("\t\t\t<b>Documento Propuesta Investigación</b>\r\n");
+      out.write("\t\t</legend>\r\n");
+      out.write("\t\t<table>\r\n");
+      out.write("\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t<td colspan=\"2\" align=\"justify\">La carga de estos documentos la\r\n");
+      out.write("\t\t\t\t\tpuede hacer en cualquier momento, pero debe ser antes de la fecha\r\n");
+      out.write("\t\t\t\t\tde corte de la convocatoria, de lo contrario su propuesta no será\r\n");
+      out.write("\t\t\t\t\ttenida en cuenta en el proceso de evaluación.</td>\r\n");
+      out.write("\t\t\t</tr>\r\n");
+      out.write("\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t<td>");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("                        </td>\r\n");
-      out.write("                </tr>\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t<td align=\"center\">\r\n");
+      out.write("</td>\r\n");
+      out.write("\t\t\t</tr>\r\n");
+      out.write("\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t<td align=\"center\">\r\n");
       out.write("\t\t\t\t\t<form action='");
-      if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
-        return;
-      out.write("' method=\"post\" name=\"finaliza\">\r\n");
-      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"accion\" value=\"1\">\r\n");
-      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"terminar\" value=\"si\">\r\n");
-      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"idProp\" value='");
-      if (_jspx_meth_c_005fout_005f4(_jspx_page_context))
-        return;
-      out.write("'>\t\t\t\t\r\n");
-      out.write("\t\t\t\t\t\t<img src='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
-      out.write("' onclick='temina()'/>\t\t\t\t\t\r\n");
+      out.write("'\r\n");
+      out.write("\t\t\t\t\t\tmethod=\"post\" name=\"finaliza\">\r\n");
+      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"accion\" value=\"1\"> <input\r\n");
+      out.write("\t\t\t\t\t\t\ttype=\"hidden\" name=\"terminar\" value=\"si\"> <input\r\n");
+      out.write("\t\t\t\t\t\t\ttype=\"hidden\" name=\"idProp\"\r\n");
+      out.write("\t\t\t\t\t\t\tvalue='");
+      if (_jspx_meth_c_005fout_005f4(_jspx_page_context))
+        return;
+      out.write("'>\r\n");
+      out.write("\t\t\t\t\t\t<img src='");
+      if (_jspx_meth_c_005furl_005f4(_jspx_page_context))
+        return;
+      out.write("'\r\n");
+      out.write("\t\t\t\t\t\t\tonclick='temina()' />\r\n");
       out.write("\t\t\t\t\t</form>\r\n");
-      out.write("\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t</td>\r\n");
+      out.write("\t\t\t</tr>\r\n");
       out.write("\r\n");
-      out.write("\t\t\t</table>\r\n");
-      out.write("\t\t\t<br>\r\n");
+      out.write("\t\t</table>\r\n");
+      out.write("\t\t<br>\r\n");
       out.write("\t</fieldset>\r\n");
       out.write("\t<br>\r\n");
       out.write("</body>\r\n");
@@ -211,7 +197,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ImportTag _jspx_th_c_005fimport_005f0 = (org.apache.taglibs.standard.tag.rt.core.ImportTag) _005fjspx_005ftagPool_005fc_005fimport_0026_005furl_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.ImportTag.class);
     _jspx_th_c_005fimport_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fimport_005f0.setParent(null);
-    // /InscripcionConv/Cargar.jsp(7,0) name = url type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(8,0) name = url type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fimport_005f0.setUrl("/general.jsp");
     int[] _jspx_push_body_count_c_005fimport_005f0 = new int[] { 0 };
     try {
@@ -238,13 +224,13 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /InscripcionConv/Cargar.jsp(212,24) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(69,8) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setBegin(0);
-    // /InscripcionConv/Cargar.jsp(212,24) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(69,8) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.listaDocOBJ}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /InscripcionConv/Cargar.jsp(212,24) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(69,8) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("lista2");
-    // /InscripcionConv/Cargar.jsp(212,24) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(69,8) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVarStatus("st");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -253,29 +239,33 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
         do {
           out.write("\r\n");
           out.write("\r\n");
-          out.write("                                <form action='");
+          out.write("\t\t\t\t\t\t<form action='");
           if (_jspx_meth_c_005furl_005f0(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("' name=\"");
+          out.write("'\r\n");
+          out.write("\t\t\t\t\t\t\tname=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\" method=\"post\" enctype=\"multipart/form-data\">\r\n");
-          out.write("                                <input type=\"hidden\" name=\"id\" value=\"");
+          out.write("\" method=\"post\"\r\n");
+          out.write("\t\t\t\t\t\t\tenctype=\"multipart/form-data\">\r\n");
+          out.write("\t\t\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.codigo}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("\">\r\n");
-          out.write("                                <input type=\"hidden\" name=\"propConvId\" value=\"");
+          out.write("\t\t\t\t\t\t\t<input type=\"hidden\" name=\"propConvId\"\r\n");
+          out.write("\t\t\t\t\t\t\t\tvalue=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datosConv.convId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\">\r\n");
-          out.write("                                <input type=\"hidden\" name=\"DocId\" value=\"");
+          out.write("\"> <input\r\n");
+          out.write("\t\t\t\t\t\t\t\ttype=\"hidden\" name=\"DocId\" value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.codigo}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("\">\r\n");
-          out.write("\t\t\t\t<input type=\"hidden\" name=\"idPropuesta\" value=\"");
+          out.write("\"> <input\r\n");
+          out.write("\t\t\t\t\t\t\t\ttype=\"hidden\" name=\"idPropuesta\"\r\n");
+          out.write("\t\t\t\t\t\t\t\tvalue=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.inscripcionConvOBJ.propId}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("\">\r\n");
           out.write("\r\n");
-          out.write("                                        <table width=\"100%\">\r\n");
-          out.write("                                         <th colspan=\"2\" align=\"center\">Documentos Requeridos</th>\r\n");
-          out.write("                                               <tr>\r\n");
-          out.write("                                                        <td colspan=\"2\" class=\"renglones\"><b>");
+          out.write("\t\t\t\t\t\t\t<table width=\"100%\">\r\n");
+          out.write("\t\t\t\t\t\t\t\t<th colspan=\"2\" align=\"center\">Documentos Requeridos</th>\r\n");
+          out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>");
           if (_jspx_meth_c_005fout_005f0(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write('-');
@@ -285,28 +275,34 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
           if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("</b></td>\r\n");
-          out.write("                                                </tr>\r\n");
-          out.write("                                                <tr>\r\n");
-          out.write("                                                        <td colspan=\"2\"><p class=\"texto1j\">Formato PDF</p></td>\r\n");
-          out.write("                                                </tr>\r\n");
-          out.write("                                                <tr>\r\n");
-          out.write("                                                        <td><input size=\"60%\" type=\"file\" name=\"archivo\"></td>\r\n");
-          out.write("                                                        <td width=\"75px\"><img src='");
-          if (_jspx_meth_c_005furl_005f1(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
+          out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+          out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Formato PDF</p></td>\r\n");
+          out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+          out.write("\t\t\t\t\t\t\t\t");
+          if (_jspx_meth_c_005fif_005f0(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("' onclick=\"guardareq(document.");
+          out.write("\r\n");
+          out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t<td><input size=\"60%\" type=\"file\" name=\"archivo\"></td>\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t<td width=\"75px\"><img\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t\tsrc='");
+          if (_jspx_meth_c_005furl_005f2(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
+            return true;
+          out.write("'\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t\tonclick=\"guardareq(document.");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write(".archivo,document.");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write(',');
           if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(")\"></td>\r\n");
-          out.write("                                        </tr>\r\n");
-          out.write("                                                </tr>\r\n");
-          out.write("                                        </table>\r\n");
-          out.write("                                </form>\r\n");
-          out.write("                                ");
+          out.write(")\">\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t</td>\r\n");
+          out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+          out.write("\t\t\t\t\t\t\t</table>\r\n");
+          out.write("\t\t\t\t\t\t</form>\r\n");
+          out.write("\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -334,7 +330,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f0 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /InscripcionConv/Cargar.jsp(214,46) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(72,20) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f0.setValue("/RequisitosArchivoProy.x");
     int _jspx_eval_c_005furl_005f0 = _jspx_th_c_005furl_005f0.doStartTag();
     if (_jspx_th_c_005furl_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -353,7 +349,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /InscripcionConv/Cargar.jsp(223,93) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(85,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -372,7 +368,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /InscripcionConv/Cargar.jsp(223,130) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(86,43) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datosConv.convId}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -391,7 +387,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /InscripcionConv/Cargar.jsp(223,180) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(87,56) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -402,22 +398,77 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_c_005furl_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f0)
+  private boolean _jspx_meth_c_005fif_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
+    // /InscripcionConv/Cargar.jsp(93,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.nombreDocumentoRequisito!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
+    if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"rengVerde\" align=\"right\" colspan=\"2\"><a\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\tclass=\"lblanca\"\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t\t\thref='");
+        if (_jspx_meth_c_005furl_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
+          return true;
+        out.write("'>Ver Documento</a></td>\r\n");
+        out.write("\t\t\t\t\t\t\t\t\t</tr>\r\n");
+        out.write("\t\t\t\t\t\t\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005furl_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:url
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /InscripcionConv/Cargar.jsp(230,83) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f1.setValue("/comp/img/Guardar.gif");
+    _jspx_th_c_005furl_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
+    // /InscripcionConv/Cargar.jsp(97,17) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f1.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("/Documentos/Propuestas/${lista2.nombreDocumentoRequisito}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
     if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f1);
       return true;
     }
     _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005furl_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
+    // /InscripcionConv/Cargar.jsp(103,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f2.setValue("/comp/img/Guardar.gif");
+    int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
+    if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
     return false;
   }
 
@@ -429,7 +480,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /InscripcionConv/Cargar.jsp(230,208) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(104,95) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -437,44 +488,6 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f3);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005furl_005f2(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:url
-    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
-    _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f2.setParent(null);
-    // /InscripcionConv/Cargar.jsp(245,19) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f2.setValue("/inscripcionConv/Inscripcion.x");
-    int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
-    if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fout_005f4(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f4.setParent(null);
-    // /InscripcionConv/Cargar.jsp(248,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.archivos.idPropuesta}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
-    if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f4);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f4);
     return false;
   }
 
@@ -486,14 +499,52 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f3 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f3.setParent(null);
-    // /InscripcionConv/Cargar.jsp(249,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f3.setValue("/comp/img/Terminar.gif");
+    // /InscripcionConv/Cargar.jsp(113,19) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f3.setValue("/inscripcionConv/Inscripcion.x");
     int _jspx_eval_c_005furl_005f3 = _jspx_th_c_005furl_005f3.doStartTag();
     if (_jspx_th_c_005furl_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f3);
       return true;
     }
     _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f3);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f4(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f4.setParent(null);
+    // /InscripcionConv/Cargar.jsp(118,14) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.archivos.idPropuesta}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
+    if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f4);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f4);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005furl_005f4(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f4 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f4.setParent(null);
+    // /InscripcionConv/Cargar.jsp(119,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f4.setValue("/comp/img/Terminar.gif");
+    int _jspx_eval_c_005furl_005f4 = _jspx_th_c_005furl_005f4.doStartTag();
+    if (_jspx_th_c_005furl_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f4);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f4);
     return false;
   }
 }

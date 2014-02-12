@@ -1100,6 +1100,7 @@ public class InscripcionConvDB extends BaseDB{
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("consultaIndividual"));
 			ps.setLong(1,Long.parseLong(idPropuesta));
+			System.out.println(ps.toString());
 			rs=ps.executeQuery();
 			while(rs.next()){
 				i=1;

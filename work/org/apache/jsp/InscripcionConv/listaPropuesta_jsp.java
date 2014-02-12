@@ -102,7 +102,7 @@ session.removeAttribute("requisitos");
         return;
       out.write("\r\n");
       out.write("</body>\r\n");
-      out.write("</html>");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

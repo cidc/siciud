@@ -20,145 +20,154 @@ import cidc.general.servlet.ServletGeneral;
 import cidc.inscripcionConv.db.InscripcionConvDB;
 import cidc.inscripcionConv.obj.InscripcionConvOBJ;
 import cidc.inscripcionConv.obj.ParametrosOBJ;
+import cidc.inscripcionConv.obj.ResumenInscOBJ;
 import cidc.inscripSistema.obj.Persona;
 
 import cidc.convMovilidad.db.MovilidadDB;
 
 public class Inscribir extends ServletGeneral {
 
-	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		context=config.getServletContext();
-		cursor=new CursorDB();
-		String irA="/InscripcionConv/Inscripcion.jsp";
-		String mensaje="";
-		String terminar="no";
-		int accion=0;
-		if(req.getParameter("accion")!=null)
-			accion=Integer.parseInt(req.getParameter("accion"));
+	@SuppressWarnings("unchecked")
+	public String[] operaciones(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		context = config.getServletContext();
+		cursor = new CursorDB();
+		String irA = "/InscripcionConv/Inscripcion.jsp";
+		String mensaje = "";
+		String terminar = "no";
+		int accion = 0;
+		if (req.getParameter("accion") != null)
+			accion = Integer.parseInt(req.getParameter("accion"));
 
-		System.out.println(".............");						
-		System.out.println("accion------>"+accion);						
-		HttpSession sesion=req.getSession();
-		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
-		UsuarioDB usuarioDB=new UsuarioDB(cursor,usuario.getPerfil());
-		Persona persona=(Persona)sesion.getAttribute("persona");
-		if(usuario.getPerfil()!=13)
-			persona=usuarioDB.getPersona(usuario.getIdUsuario());
-		ConvocatoriaOBJ convocatoriaOBJ=(ConvocatoriaOBJ)sesion.getAttribute("datosConv");
-		InscripcionConvDB inscripcionConvDB=new InscripcionConvDB(cursor,usuario.getPerfil());
-		InscripcionConvOBJ inscripcionConvOBJ=null;
-		retorno[0]="unir";
-		switch(accion){
-			case ParametrosOBJ.cmdIngresar:
-				if(usuario.getPerfil()==13){
-					req.setAttribute("listaPropuestas", inscripcionConvDB.getListaPropuestas(usuario.getIdUsuario(),usuario.getPerfil(),convocatoriaOBJ.getConvId()));
-					irA="/InscripcionConv/listaPropuesta.jsp";						
-				}else{
-					if(convocatoriaOBJ!=null){
-						System.out.println("------>"+convocatoriaOBJ.getConvAno()+"  -- "+convocatoriaOBJ.getConvNumero());						
-						   //if(convocatoriaOBJ.getConvAno()==2012 && (convocatoriaOBJ.getConvNumero()==7 || convocatoriaOBJ.getConvNumero()==2 || convocatoriaOBJ.getConvNumero()==3 || convocatoriaOBJ.getConvNumero()==4)){
-						   if(convocatoriaOBJ.getConvTipo()==2){
-							System.out.println("Ingreso a la convocatorias de este año------>");
-							irA="/movilidad/adminMovilidad.x?accion=2&convano="+convocatoriaOBJ.getConvAno()+"&convnumero="+convocatoriaOBJ.getConvNumero();
-							System.out.println("irA:"+irA);
-							sesion.setAttribute("persona",persona);
-						}else{
-							if(convocatoriaOBJ.getConvAno()==2012 && convocatoriaOBJ.getConvNumero()==14){
-								System.out.println("Ingreso a la convocatoria 14 de Apoyo a Artículos------>");
-								irA="/articulos_Conv/ArticuloConv.x?accion=2";
-								sesion.setAttribute("persona",persona);
-							}
-							else{
-								req.setAttribute("listaPropuestas", inscripcionConvDB.getListaPropuestas(usuario.getIdUsuario(),usuario.getPerfil(),convocatoriaOBJ.getConvId()));
-								terminar=req.getParameter("terminar");
-								System.out.println("Terminar =------>" +terminar);
-								irA="/InscripcionConv/listaPropuesta.jsp";
-								if(terminar!=null){
-									System.out.println("Terminar =------>" +terminar);
-									if(terminar.equals("si")){
-										String idProp=req.getParameter("idProp");
-										System.out.println("IdPropuesta =------>" +idProp);
-										if(inscripcionConvDB.enviarMail(idProp,persona));
-										mensaje="El registro ha terminado correctamente, por favor verifique en su correo electrónico los datos de inscripción";
-										req.setAttribute("terminar",terminar);
-										
-									//req.setAttribute("listaPropuestas", inscripcionConvDB.finalizarInscripcion(usuario.getIdUsuario(),usuario.getPerfil(),convocatoriaOBJ.getConvId(), convocatoriaOBJ.getConvId()));
-									
-									}							
-								}								
-							}
+		System.out.println(".............");
+		System.out.println("accion------>" + accion);
+		HttpSession sesion = req.getSession();
+		Usuario usuario = (Usuario) sesion.getAttribute("loginUsuario");
+		UsuarioDB usuarioDB = new UsuarioDB(cursor, usuario.getPerfil());
+		Persona persona = (Persona) sesion.getAttribute("persona");
+		if (usuario.getPerfil() != 13)
+			persona = usuarioDB.getPersona(usuario.getIdUsuario());
+		ConvocatoriaOBJ convocatoriaOBJ = (ConvocatoriaOBJ) sesion
+				.getAttribute("datosConv");
+		InscripcionConvDB inscripcionConvDB = new InscripcionConvDB(cursor,
+				usuario.getPerfil());
+		MovilidadDB movilidadDB = new MovilidadDB(cursor, usuario.getPerfil());
+		InscripcionConvOBJ inscripcionConvOBJ = null;
+		retorno[0] = "unir";
+		switch (accion) {
+		case ParametrosOBJ.cmdIngresar:
+			if (convocatoriaOBJ != null) {
+				System.out.println("------>" + convocatoriaOBJ.getConvAno()+ "  -- " + convocatoriaOBJ.getConvNumero());
+				if (convocatoriaOBJ.getConvTipo() == 2) {
+					irA = "/movilidad/adminMovilidad.x?accion=2&convano="
+							+ convocatoriaOBJ.getConvAno() + "&convnumero="
+							+ convocatoriaOBJ.getConvNumero();
+					System.out.println("irA:" + irA);
+					sesion.setAttribute("persona", persona);
+				} if (convocatoriaOBJ.getConvTipo() == 1) {
+					req.setAttribute("listaPropuestas", inscripcionConvDB.getListaPropuestas(usuario.getIdUsuario(),
+							usuario.getPerfil(),convocatoriaOBJ.getConvId()));
+					terminar = req.getParameter("terminar");
+					irA = "/InscripcionConv/listaPropuesta.jsp";
+					if (terminar != null) {
+						if (terminar.equals("si")) {
+							//String idProp = req.getParameter("idProp");
+							inscripcionConvOBJ = (InscripcionConvOBJ) sesion.getAttribute("inscripcionConvOBJ");
+							if (inscripcionConvDB.enviarMail(String.valueOf(inscripcionConvOBJ.getPropId()), persona))
+							mensaje = "El registro ha terminado correctamente, por favor verifique en su correo electrónico los datos de inscripción";
+							req.setAttribute("terminar", terminar);
 						}
 					}
 				}
+			}
 			break;
-			case ParametrosOBJ.cmdPaso0:
-			System.out.println("entroooo");						
-				sesion.setAttribute("persona",persona);
-				sesion.setAttribute("ajaxProyCur",inscripcionConvDB.AjaxProyectoCur());
-				sesion.setAttribute("listaTotalGrupos",inscripcionConvDB.totalGruposInvestigacion());				
-				if(sesion.getAttribute("ajaxGrupo")==null)
-					sesion.setAttribute("ajaxGrupo",inscripcionConvDB.AjaxGruposInvestigacion(1,1));
-				req.setAttribute("listaRubrosOBJ",inscripcionConvDB.getRubros(convocatoriaOBJ.getConvId(),1));
-				req.setAttribute("listaRubrosOBJ1",inscripcionConvDB.getRubros(convocatoriaOBJ.getConvId(),0));
-				if(usuario.getPerfil()==13)
-					irA="/InscripcionConv/Inscripcion2.jsp";
-				else
-					irA="/InscripcionConv/Inscripcion.jsp";
+		case ParametrosOBJ.cmdPaso0:
+			System.out.println("entroooo");
+			sesion.setAttribute("persona", persona);
+			sesion.setAttribute("ajaxProyCur",
+					inscripcionConvDB.AjaxProyectoCur());
+			sesion.setAttribute("listaTotalGrupos",
+					inscripcionConvDB.totalGruposInvestigacion());
+			if (sesion.getAttribute("ajaxGrupo") == null)
+				sesion.setAttribute("ajaxGrupo",
+						inscripcionConvDB.AjaxGruposInvestigacion(1, 1));
+			req.setAttribute("listaRubrosOBJ",
+					inscripcionConvDB.getRubros(convocatoriaOBJ.getConvId(), 1));
+			req.setAttribute("listaRubrosOBJ1",
+					inscripcionConvDB.getRubros(convocatoriaOBJ.getConvId(), 0));
+			irA = "/InscripcionConv/Inscripcion.jsp";
 			break;
 
-			case ParametrosOBJ.cmdPaso1:
-				ConvocatoriasDB convocatoriasDB=new ConvocatoriasDB(cursor,usuario.getPerfil());
-	        	long id=0;
-				try{
-					id = inscripcionConvDB.getMaxId(null)+1;
-				}
-				catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				inscripcionConvOBJ=(InscripcionConvOBJ)sesion.getAttribute("inscripcionConvOBJ");
-				if(inscripcionConvDB.insertaInscripcion(inscripcionConvOBJ)){
-					//******************conseguir el resumen de lo ya inscrito pero falta hacer la cuenta de los rubros
+		case ParametrosOBJ.cmdPaso1:
+			ConvocatoriasDB convocatoriasDB = new ConvocatoriasDB(cursor,
+					usuario.getPerfil());
+			long id = 0;
+			try {
+				id = inscripcionConvDB.getMaxId(null) + 1;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			inscripcionConvOBJ = (InscripcionConvOBJ) sesion
+					.getAttribute("inscripcionConvOBJ");
+			if (inscripcionConvDB.insertaInscripcion(inscripcionConvOBJ)) {
+				// ******************conseguir el resumen de lo ya inscrito pero
+				// falta hacer la cuenta de los rubros
 
-	        		req.setAttribute("resumen",inscripcionConvDB.getResumen(""+id,inscripcionConvOBJ));
-	        		//******************consultar el listado de rubros almacenados en la convocatoria a la cual se vinculan.
-	        		sesion.setAttribute("listaComp",convocatoriasDB.consultaCompromisos(ParametrosOBJ.ListaCompromiso,convocatoriaOBJ.getConvId()));
-	        		irA="/InscripcionConv/Compromisos.jsp";
-	        	}else{
-	        		mensaje="La Inscripción no pudo ser almacenada...\n Por favor vuelva a intentarlo";
-	        		irA="/InscripcionConv/Error.jsp";
-	        	}
-				retorno[0]="desviar";
+				req.setAttribute("resumen", inscripcionConvDB.getResumen(""
+						+ id, inscripcionConvOBJ));
+				// ******************consultar el listado de rubros almacenados
+				// en la convocatoria a la cual se vinculan.
+				sesion.setAttribute("listaComp", convocatoriasDB
+						.consultaCompromisos(ParametrosOBJ.ListaCompromiso,
+								convocatoriaOBJ.getConvId()));
+				irA = "/InscripcionConv/Compromisos.jsp";
+			} else {
+				mensaje = "La Inscripción no pudo ser almacenada...\n Por favor vuelva a intentarlo";
+				irA = "/InscripcionConv/Error.jsp";
+			}
+			retorno[0] = "desviar";
 			break;
-			case ParametrosOBJ.cmdPaso2:
-			MovilidadDB movilidadDB=new MovilidadDB(cursor,2);
-          	        int conv=0;
-            	        if(req.getParameter("propConvId")!=null)
-                        conv=Integer.parseInt(req.getParameter("propConvId"));
-			System.out.println("entro"+conv);						
-                        sesion.setAttribute("listaDocOBJ",movilidadDB.getDocumentos(conv));
-				System.out.println("Ingreso al paso 02	");
-				inscripcionConvOBJ=(InscripcionConvOBJ)sesion.getAttribute("inscripcionConvOBJ");
-				if(inscripcionConvDB.insertaCompromisos(inscripcionConvOBJ, (List<CompromisosOBJ>) sesion.getAttribute("listaComp"))){
-					mensaje="Compromisos insertados correctamente";
-					irA="/InscripcionConv/Cargar.jsp";
-				}
-				else{
-					mensaje="El registro de los compromisos no pudo ser insertado correctamente \n"+inscripcionConvDB.getMensaje();
-					irA="/InscripcionConv/Error.jsp";
-				}
-				accion=0;
-				retorno[0]="desviar";
+		case ParametrosOBJ.cmdPaso2:
+			int conv = 0;
+			if (req.getParameter("propConvId") != null)
+				conv = Integer.parseInt(req.getParameter("propConvId"));
+			System.out.println("entro" + conv);
+			sesion.setAttribute("listaDocOBJ", movilidadDB.getDocumentos(conv));
+			System.out.println("Ingreso al paso 02	");
+			inscripcionConvOBJ = (InscripcionConvOBJ) sesion
+					.getAttribute("inscripcionConvOBJ");
+			if (inscripcionConvDB.insertaCompromisos(inscripcionConvOBJ,
+					(List<CompromisosOBJ>) sesion.getAttribute("listaComp"))) {
+				mensaje = "Compromisos insertados correctamente";
+				irA = "/InscripcionConv/Cargar.jsp";
+			} else {
+				mensaje = "El registro de los compromisos no pudo ser insertado correctamente \n"
+						+ inscripcionConvDB.getMensaje();
+				irA = "/InscripcionConv/Error.jsp";
+			}
+			accion = 0;
+			retorno[0] = "desviar";
 			break;
-			case ParametrosOBJ.cmdPaso3:
+		case ParametrosOBJ.cmdPaso3:
 
-				String idProp=req.getParameter("idProp");
-				req.setAttribute("archivos",inscripcionConvDB.getInfoArchivos(idProp));
-				irA="/InscripcionConv/Cargar.jsp";
+			int idProp = Integer.parseInt(req.getParameter("idProp"));
+			ConvocatoriaOBJ convSeleccionada = (ConvocatoriaOBJ) sesion
+					.getAttribute("datosConv");
+			sesion.removeAttribute("listaDocOBJ");
+			sesion.removeAttribute("inscripcionConvOBJ");
+			InscripcionConvOBJ inscConvOBJ = new InscripcionConvOBJ();
+			inscConvOBJ.setPropId(idProp);
+			sesion.setAttribute("inscripcionConvOBJ", inscConvOBJ);
+			sesion.setAttribute("listaDocOBJ", movilidadDB
+					.buscarDocumentosInscritos(movilidadDB
+							.getDocumentos((int) convSeleccionada.getConvId()),
+							idProp));
+			irA = "/InscripcionConv/Cargar.jsp";
 			break;
 		}
-		retorno[1]=irA;
-		retorno[2]=mensaje;
+		retorno[1] = irA;
+		retorno[2] = mensaje;
 		return retorno;
 	}
 }
