@@ -130,6 +130,7 @@
 			</c:forEach>
 		</table>
 	</form>
+	
 	</c:if>
 	<c:if test="${empty sessionScope.datoConvenio.listaPersonas}">
 	<h3 align="center">No hay más personas registradas en este Convenio</h3>
@@ -196,6 +197,7 @@
 	</form>
 	
 </c:if>
+
 <c:if test="${sessionScope.datoConvenio==null}">
 <br><br><br>
 <h4 align="center">No se logró encontrar la información del Convenio</h4>
