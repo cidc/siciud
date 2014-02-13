@@ -187,6 +187,28 @@ case Parametros.AdicionarTiempo:
 				irA="/adminConvenio/Personas.jsp";
 			break;
 			
+			case Parametros.AdicionarGrupo:
+				System.out.println("grupos"+req.getParameter("grupo"));
+				
+			/*	System.out.println("Entro adicionar");
+				PersonaOBJ objpersona=(PersonaOBJ)sesion.getAttribute("personaCon");
+				objpersona.setRegitradoPor(""+usuario.getIdUsuario());
+				objpersona.setFechaReg(año + "-" + (mes+1) + "-" +dia+"");
+					if(adminConv.registrarPersonaConvenio(objconv,objpersona)){
+						mensaje="La persona fue registrada satisfactoriamente";
+						sesion.removeAttribute("datoConvenio");
+						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+						sesion.setAttribute("datoConvenio", objconv);
+						
+					}else
+						mensaje="La persona no pudo ser registrada";
+					sesion.removeAttribute("personaCon");
+					
+					irA="/adminConvenio/Grupos.jsp";				
+				
+*/
+			break;
+			
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
 				 sesion.removeAttribute("nuevoConvenio");

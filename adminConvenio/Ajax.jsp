@@ -16,7 +16,7 @@
 	<c:choose>
 	  <c:when test="${requestScope.para==1}">
 	  
-	  		borrar_combo(parent.document.frmConvenio.proycurri);
+	  		//borrar_combo(parent.document.frmConvenio.proycurri);
 	  		borrar_combo(parent.document.frmConvenio.grupo);
 	  	//	borrar_combo(parent.document.form1.investigador);
 

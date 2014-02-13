@@ -16,5 +16,6 @@ public class Parametros {
 	public static final int AdicionarPersona=10;
 	public static final int EliminarPersona=11;
 	public static final int ActualizarPersona=12;
+	public static final int AdicionarGrupo=13;
 	
 }
