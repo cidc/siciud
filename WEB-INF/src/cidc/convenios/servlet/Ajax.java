@@ -19,6 +19,7 @@ public class Ajax extends ServletGeneral {
 	public String[] operaciones(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		String irA="";
 		String mensaje="";
+		System.out.println("ajaxc.java");
 		
 		try{
 			irA="/adminConvenio/Ajax.jsp";
@@ -31,6 +32,7 @@ public class Ajax extends ServletGeneral {
 			if(request.getParameter("para")!=null)
 				para=Integer.parseInt(request.getParameter("para"));
 			String []datos=null;
+			System.out.println("para"+para);
 			switch(para){
 				case Parametros.AjaxGrupos:
 					 datos=request.getParameterValues("dato");
