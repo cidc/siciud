@@ -13,13 +13,10 @@ public class ResumenInscOBJ implements Serializable{
 	private String propuesta;
 	private String propAbstract;
 	private String palClaves;
-	private String docCompleto;
 	private String docAnexo;
-	//Nuevos documentos
-	private String docAvalGrupo;
-	private String docAvalDir;
-	private String docCerCurr;
-	private String fechaInscripcion;	
+	private String nombreDoc;
+	private String fechaInscripcion;
+	private int numConv;
 
 	private List coInvestigadores;
 	private List rubros;
@@ -94,33 +91,8 @@ public class ResumenInscOBJ implements Serializable{
 	public String getDocAnexo() {
 		return docAnexo;
 	}
-	public String getDocCompleto() {
-		return docCompleto;
-	}
 	public void setDocAnexo(String docAnexo) {
 		this.docAnexo = docAnexo;
-	}
-	public void setDocCompleto(String docCompleto) {
-		this.docCompleto = docCompleto;
-	}
-
-	public String getDocAvalGrupo() {
-		return docAvalGrupo;
-	}
-	public void setDocAvalGrupo(String docAvalGrupo) {
-		this.docAvalGrupo = docAvalGrupo;
-	}
-	public String getDocAvalDir() {
-		return docAvalDir;
-	}
-	public void setDocAvalDir(String docAvalDir) {
-		this.docAvalDir = docAvalDir;
-	}
-	public String getDocCerCurr() {
-		return docCerCurr;
-	}
-	public void setDocCerCurr(String docCerCurr) {
-		this.docCerCurr = docCerCurr;
 	}
 	public String getFechaInscripcion() {
 		return fechaInscripcion;
@@ -128,4 +100,17 @@ public class ResumenInscOBJ implements Serializable{
 	public void setFechaInscripcion(String fechaInscripcion) {
 		this.fechaInscripcion = fechaInscripcion;
 	}
+	public int getNumConv() {
+		return numConv;
+	}
+	public void setNumConv(int numConv) {
+		this.numConv = numConv;
+	}
+	public String getNombreDoc() {
+		return nombreDoc;
+	}
+	public void setNombreDoc(String nombreDoc) {
+		this.nombreDoc = nombreDoc;
+	}
+	
 }

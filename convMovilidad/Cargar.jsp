@@ -16,8 +16,8 @@
 	function guardar1(caja,formulario,iddoc){
 		//alert(caja.value);
                 if(ValidarFormularioDoc(caja)){
-			formulario.DocId.value=iddoc;
-                        formulario.submit();
+					formulario.DocId.value=iddoc;
+                    formulario.submit();
                 }
         }
         
@@ -112,6 +112,7 @@
                                 <input type="hidden" name="propConvId" value="${sessionScope.datosConv.convId}">
                                 <input type="hidden" name="DocId" value="${lista2.codigo}">
                                 <input type="hidden" name="idPropuesta" value="<c:out value="${movilidad.idPropuesta}"/>">
+                                 
 
                                         <table width="100%">
 					 <th colspan="2" align="center">Documentos Requeridos</th>
@@ -141,6 +142,7 @@
 	<br>
 		<form name="nuevo1" method="post" action='<c:url value="/movilidad/adminMovilidad.x"/>'>
 			<input type="hidden" name="accion" value="2">
+			<input type="hidden" name="terminar" value="si">
 			<table align="center">
 				<tr>
 					<td>

@@ -22,6 +22,7 @@ import cidc.inscripSistema.obj.Persona;
 
 public class AdminMovilidad extends ServletGeneral {
 
+	@SuppressWarnings("null")
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		context=config.getServletContext();
 		cursor=new CursorDB();
@@ -37,7 +38,7 @@ public class AdminMovilidad extends ServletGeneral {
 		int accion=0;
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
-
+		
 		System.out.println("Valor de accion en el servlet AdminMovilidad------>"+ accion);
 		retorno[0]="unir";
 		
@@ -99,6 +100,15 @@ public class AdminMovilidad extends ServletGeneral {
 					req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona(),convocatoria.getConvId()));
 					irA="/convMovilidad/listaPropuestas.jsp";
 					sesion.setAttribute("persona",persona);
+					try {
+						String terminar=(String) req.getAttribute("terminar");
+						if(terminar.equals("si")){
+							movilidadDB.enviarMail(String.valueOf(info.getIdPropuesta()), persona);
+							mensaje="POr favor Verifique su email";
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 				else{
 					mensaje="Usuario no valido";

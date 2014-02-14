@@ -822,37 +822,37 @@ public class InscripcionConvDB extends BaseDB{
 		}
 		return l;
 	}
-	public ResumenInscOBJ getInfoArchivos(String idProp) {
-		// TODO Auto-generated method stub
-		Connection cn=null;
-		PreparedStatement ps=null;
-		ResultSet rs=null;
-		int i=1;
-		ResumenInscOBJ resumenInscOBJ=new ResumenInscOBJ();
-		try {
-			resumenInscOBJ.setIdPropuesta(Long.parseLong(idProp));
-			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("getArchivos"));
-			ps.setLong(1,Long.parseLong(idProp));
-			rs=ps.executeQuery();
-			while(rs.next()){
-				resumenInscOBJ.setDocCompleto(rs.getString(i++));
-				resumenInscOBJ.setDocAnexo(rs.getString(i++));
-				resumenInscOBJ.setDocAvalGrupo(rs.getString(i++));
-				resumenInscOBJ.setDocAvalDir(rs.getString(i++));
-				resumenInscOBJ.setDocCerCurr(rs.getString(i++));
-			}
-		}catch (SQLException e) {
-			lanzaExcepcion(e);
-		}catch (Exception e) {
-			lanzaExcepcion(e);
-		}finally{
-			cerrar(rs);
-			cerrar(ps);
-			cerrar(cn);
-		}
-		return resumenInscOBJ;
-	}
+//	public ResumenInscOBJ getInfoArchivos(String idProp) {
+//		// TODO Auto-generated method stub
+//		Connection cn=null;
+//		PreparedStatement ps=null;
+//		ResultSet rs=null;
+//		int i=1;
+//		ResumenInscOBJ resumenInscOBJ=new ResumenInscOBJ();
+//		try {
+//			resumenInscOBJ.setIdPropuesta(Long.parseLong(idProp));
+//			cn=cursor.getConnection(super.perfil);
+//			ps=cn.prepareStatement(rb.getString("getArchivos"));
+//			ps.setLong(1,Long.parseLong(idProp));
+//			rs=ps.executeQuery();
+//			while(rs.next()){
+//				resumenInscOBJ.setDocCompleto(rs.getString(i++));
+//				resumenInscOBJ.setDocAnexo(rs.getString(i++));
+//				resumenInscOBJ.setDocAvalGrupo(rs.getString(i++));
+//				resumenInscOBJ.setDocAvalDir(rs.getString(i++));
+//				resumenInscOBJ.setDocCerCurr(rs.getString(i++));
+//			}
+//		}catch (SQLException e) {
+//			lanzaExcepcion(e);
+//		}catch (Exception e) {
+//			lanzaExcepcion(e);
+//		}finally{
+//			cerrar(rs);
+//			cerrar(ps);
+//			cerrar(cn);
+//		}
+//		return resumenInscOBJ;
+//	}
 	
 	public boolean actArchivo(int caso, long id, String nombre) {
 		boolean retorno=false;
@@ -915,13 +915,10 @@ public class InscripcionConvDB extends BaseDB{
 		boolean retorno=false;
 		System.out.println("Ingreso al envio del mail=------>");
 		String []destino={persona.getMail()};
-		//destino [1]="cidc@udistrital.edu.co";
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		String consMail=null;
-		boolean x=false;
-		//System.out.println("bandera 1");
 		try {
 			cn = cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("getConsecutivo"));
@@ -942,34 +939,53 @@ public class InscripcionConvDB extends BaseDB{
 		StringBuffer texto=new StringBuffer();
 		texto.append("<b>SICIUD"+consMail+"-"+gl.getAnoCortoHoy()+"</b><br><br>");
 		texto.append(rb1.getString("rp1")+"  <b>"+persona.getNombre()+"</b>");
-		texto.append(rb1.getString("rp2")+"");
-		texto.append(general.getConvocatoria()+"-2012.");
-		texto.append(rb1.getString("e1"));
-		texto.append(persona.getNombre());
-/*		texto.append(rb1.getString("e2"));
-		texto.append(persona.getGrupo());
-*/		texto.append(rb1.getString("e3"));
-		texto.append(general.getPropuesta());
-		texto.append(rb1.getString("e4"));
-		texto.append(general.getIdPropuesta()+"-2012-CIDC <br>");
-		//texto.append(general.getIdPropuesta()+" - "+general.getConvocatoria());
-		texto.append(rb1.getString("e5"));
-		//texto.append(rb1.getString("Documentos1"+ " "));
-		texto.append(general.getDocCompleto());
-		texto.append(rb1.getString("e7"));
-		//texto.append(rb1.getString("Documentos2"));
-		texto.append(general.getDocAvalGrupo());
-		texto.append(rb1.getString("e7"));
-		//texto.append(rb1.getString("Documentos3"));
-		texto.append(general.getDocAvalDir());
-		texto.append(rb1.getString("e8"));
-		//texto.append(rb1.getString("Documentos4"));
-		texto.append(general.getDocCerCurr());
-		texto.append(rb1.getString("fechain"));		
-		texto.append(general.getFechaInscripcion());
-		texto.append(rb1.getString("fechafin"));
-		texto.append(gl.getFechaSimpleHoy() + " Hora:  ");
-		texto.append(gl.getHoraSistema());		
+		texto.append(rb1.getString("br")+rb1.getString("br"));
+		texto.append(rb1.getString("mensj")+general.getNumConv()+"-"+gl.getAnoHoy());
+		texto.append(rb1.getString("br")+rb1.getString("br"));
+		texto.append(rb1.getString("fieldsetAbre")+rb1.getString("legendAbre")+rb1.getString("mensj2"));
+		texto.append(rb1.getString("legendCierra"));
+		texto.append(rb1.getString("tablaEspAbre"));
+		texto.append(rb1.getString("trAbre"));
+		texto.append(rb1.getString("td4")+rb1.getString("nombre")+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("trCierra"));
+		texto.append(rb1.getString("trAbre"));
+		texto.append(rb1.getString("tdAbre")+persona.getNombre()+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("trCierra"));
+		texto.append(rb1.getString("trAbre")+rb1.getString("td2"));
+		texto.append(rb1.getString("trAbre")+rb1.getString("td1")+rb1.getString("nombreProp")+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("tdAbre")+general.getPropuesta()+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("td1")+rb1.getString("numeroInsc")+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("tdAbre")+general.getIdPropuesta()+"-"+gl.getAnoCortoHoy()+"-VIICEPS <br>"+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("trCierra"));
+		texto.append(rb1.getString("trCierra"));
+		Vector<ResumenInscOBJ> vector=documentosInsertados(Integer.parseInt(general.getConvocatoria()),(int)general.getIdPropuesta());
+		for (ResumenInscOBJ resumenInscOBJ : vector) {
+			texto.append(rb1.getString("trAbre"));
+			texto.append(rb1.getString("td4")+rb1.getString("docNombre")+resumenInscOBJ.getDocAnexo()+rb1.getString("tdCierra"));
+			texto.append(rb1.getString("trCierra"));
+			texto.append(rb1.getString("trAbre"));
+			texto.append(rb1.getString("tdAbre")+resumenInscOBJ.getNombreDoc()+rb1.getString("tdCierra"));
+			texto.append(rb1.getString("trCierra"));
+		}
+		
+		texto.append(rb1.getString("trAbre"));
+		texto.append(rb1.getString("td4")+rb1.getString("fechaInicio")+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("trCierra"));
+		texto.append(rb1.getString("trAbre"));
+		texto.append(rb1.getString("tdAbre")+general.getFechaInscripcion()+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("trCierra"));	
+		texto.append(rb1.getString("trAbre"));
+		texto.append(rb1.getString("td4")+rb1.getString("fechaFinal")+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("trCierra"));
+		texto.append(rb1.getString("trAbre"));
+		texto.append(rb1.getString("tdAbre")+gl.getFechaSimpleHoy() + " Hora:  "+gl.getHoraSistema()+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("trCierra"));
+		texto.append(rb1.getString("tablaCierra"));
+		texto.append(rb1.getString("fieldsetCierra"));
+		texto.append(rb1.getString("mensj3"));
+		
+		
+			
 		//texto.append(req.getCompromisos3()+"<br>"+req.getCompromisos4());
 		//texto.append(req.getCompromisos3()+"<br>");
 		/*texto.append(rb1.getString("e18"));
@@ -986,7 +1002,6 @@ public class InscripcionConvDB extends BaseDB{
 		texto.append(req.getInteresInsti3());
 		texto.append(rb1.getString("e121"));
 		texto.append(req.getInteresInsti4());*/
-		texto.append(rb1.getString("e21"));
 		//System.out.println("bandera 4");
 	/*	if(req.getPartiEvent()!=null)
 			if(req.getPartiEvent().length>0){
@@ -1002,22 +1017,12 @@ public class InscripcionConvDB extends BaseDB{
 		else{
 			texto.append(rb1.getString("e211"));
 		}*/
-		//System.out.println("bandera 5");
-		if(!x)
-			texto.append(rb1.getString("e221"));
-		else
-			texto.append(rb1.getString("e222"));
-		texto.append(rb1.getString("e23"));
 		EnvioMail2 mail=new EnvioMail2("siciud");
-		////System.out.println("bandera 6");
 		try {
-			//destino= nombre correo electronico, asunto, cuerpo del mensaje
-			mail.enviar(destino,"Inscripción Convocatoria CIDC",""+texto);
-			////System.out.println("bandera 7");
+			mail.enviar(destino,"Inscripción Convocatoria VIICEPS",""+texto);
 			Reporte reporteMail=new Reporte(cursor,super.perfil);
-			reporteMail.reportar(persona.getNombre(),"Inscripción Convocatoria 2012",destino[0],consMail);
+			reporteMail.reportar(persona.getNombre(),"Inscripción Convocatoria"+gl.getAnoHoy(),destino[0],consMail);
 			retorno=true;
-			//System.out.println("bandera 8");
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block
 			lanzaExcepcion(e);
@@ -1106,14 +1111,10 @@ public class InscripcionConvDB extends BaseDB{
 				i=1;
 				info=new ResumenInscOBJ();
 				info.setIdPropuesta(Long.parseLong(idPropuesta));
-				info.setIdPropuesta(rs.getLong(i++));
 				info.setConvocatoria(rs.getString(i++));
 				info.setPropuesta(rs.getString(i++));
-				info.setDocCompleto(rs.getString(i++));
 				info.setFechaInscripcion(rs.getString(i++));
-				info.setDocAvalGrupo(rs.getString(i++));
-				info.setDocAvalDir(rs.getString(i++));				
-				info.setDocCerCurr(rs.getString(i++));				
+				info.setNumConv(rs.getInt(i++));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -1124,6 +1125,44 @@ public class InscripcionConvDB extends BaseDB{
 			cerrar(cn);
 		}
 		return info;
+	}
+	
+	/**
+	 * Este metodo busca los documentos asociados a una incripcion
+	 * @param idPropuesta 
+	 * @param idconv
+	 * @return
+	 */
+	public Vector<ResumenInscOBJ> documentosInsertados(int idPropuesta, int idconv ){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		ResumenInscOBJ info=null;
+		Vector<ResumenInscOBJ> docs=new Vector<ResumenInscOBJ>();
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("docInsertados"));
+			ps.setLong(1,idPropuesta);
+			ps.setInt(2, idconv);
+			System.out.println(ps.toString());
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				info=new ResumenInscOBJ();
+				info.setDocAnexo(rs.getString(i++));
+				info.setNombreDoc(rs.getString(i++));
+				docs.add(info); 
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return docs;
 	}
 
 }

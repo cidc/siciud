@@ -112,10 +112,9 @@
 				<td align="center">
 					<form action='<c:url value="/inscripcionConv/Inscripcion.x" />'
 						method="post" name="finaliza">
-						<input type="hidden" name="accion" value="1"> <input
-							type="hidden" name="terminar" value="si"> <input
-							type="hidden" name="idProp"
-							value='<c:out value="${requestScope.archivos.idPropuesta}"/>'>
+						<input type="hidden" name="accion" value="1"> 
+						<input type="hidden" name="terminar" value="si"> 
+						<input type="hidden" name="idProp" value='<c:out value="${requestScope.archivos.idPropuesta}"/>'>
 						<img src='<c:url value="/comp/img/Terminar.gif" />'
 							onclick='temina()' />
 					</form>
