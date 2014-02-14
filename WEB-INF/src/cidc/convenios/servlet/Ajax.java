@@ -33,6 +33,9 @@ public class Ajax extends ServletGeneral {
 				para=Integer.parseInt(request.getParameter("para"));
 			String []datos=null;
 			System.out.println("para"+para);
+			System.out.println("dato de mierda:"+request.getParameter("dato"));
+			//System.out.println("para"+datos.toString());
+			
 			switch(para){
 				case Parametros.AjaxGrupos:
 					 datos=request.getParameterValues("dato");

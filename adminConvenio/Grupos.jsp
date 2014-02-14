@@ -16,10 +16,10 @@
 		var key=nav4?eve.which :eve.keyCode;
 		return(key<=13 || (key>=48 && key<=57));
 	}
-	function enviar(accion,grup){
-		document.frmConvenio.accion.value=accion;
-		document.frmConvenio.grupo.value=grup;
-		document.frmPersona.submit();
+	function enviar(){
+		//document.frmConvenio.accion.value=accion;
+		document.frmConvenio.idgrupo.value=document.frmAjax.dato.value;
+		document.frmConvenio.submit();
 	}
 	
 	function ajaxGrupo(select)
@@ -154,6 +154,7 @@
 	<form name="frmConvenio" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 		<input type="hidden" name="accion" value="13">
 		<input type="hidden" name="idPersona" value="">
+		<input type="hidden" name="idgrupo" value="">
 		
 		<table align="center" width="95%" class="tablas">
 		<caption>Registro de un Grupo asociado </caption>
@@ -185,8 +186,9 @@
 		
 		
 			<tr>
-				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>' onclick="enviar(accion,grupo)"></td>
+				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>' onclick="enviar()"></td>
 			</tr>
+			
 		</table>
 	</form>
 	

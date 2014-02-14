@@ -103,10 +103,10 @@ public final class Grupos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\tvar key=nav4?eve.which :eve.keyCode;\r\n");
       out.write("\t\treturn(key<=13 || (key>=48 && key<=57));\r\n");
       out.write("\t}\r\n");
-      out.write("\tfunction enviar(accion,grup){\r\n");
-      out.write("\t\tdocument.frmConvenio.accion.value=accion;\r\n");
-      out.write("\t\tdocument.frmConvenio.grupo.value=grup;\r\n");
-      out.write("\t\tdocument.frmPersona.submit();\r\n");
+      out.write("\tfunction enviar(){\r\n");
+      out.write("\t\t//document.frmConvenio.accion.value=accion;\r\n");
+      out.write("\t\tdocument.frmConvenio.idgrupo.value=document.frmAjax.dato.value;\r\n");
+      out.write("\t\tdocument.frmConvenio.submit();\r\n");
       out.write("\t}\r\n");
       out.write("\t\r\n");
       out.write("\tfunction ajaxGrupo(select)\r\n");
@@ -415,6 +415,7 @@ public final class Grupos_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("'>\r\n");
         out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"13\">\r\n");
         out.write("\t\t<input type=\"hidden\" name=\"idPersona\" value=\"\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"idgrupo\" value=\"\">\r\n");
         out.write("\t\t\r\n");
         out.write("\t\t<table align=\"center\" width=\"95%\" class=\"tablas\">\r\n");
         out.write("\t\t<caption>Registro de un Grupo asociado </caption>\r\n");
@@ -449,8 +450,9 @@ public final class Grupos_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t\t<td colspan=\"6\" align=\"center\"><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f19(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' onclick=\"enviar(accion,grupo)\"></td>\r\n");
+        out.write("' onclick=\"enviar()\"></td>\r\n");
         out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t\r\n");
         out.write("\t\t</table>\r\n");
         out.write("\t</form>\r\n");
         out.write("\t\r\n");
@@ -1466,7 +1468,7 @@ public final class Grupos_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f19 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f19.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f19.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/Grupos.jsp(188,60) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/Grupos.jsp(189,60) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f19.setValue("/comp/img/Enviar.gif");
     int _jspx_eval_c_005furl_005f19 = _jspx_th_c_005furl_005f19.doStartTag();
     if (_jspx_th_c_005furl_005f19.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1485,7 +1487,7 @@ public final class Grupos_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f20 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f20.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f20.setParent(null);
-    // /adminConvenio/Grupos.jsp(199,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/Grupos.jsp(201,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f20.setValue("/adminConvenio/Ajax.x");
     int _jspx_eval_c_005furl_005f20 = _jspx_th_c_005furl_005f20.doStartTag();
     if (_jspx_th_c_005furl_005f20.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1504,7 +1506,7 @@ public final class Grupos_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f4 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f4.setParent(null);
-    // /adminConvenio/Grupos.jsp(204,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/Grupos.jsp(206,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
     if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {

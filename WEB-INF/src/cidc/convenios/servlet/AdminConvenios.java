@@ -132,6 +132,7 @@ case Parametros.AdicionarTiempo:
 					mensaje="El tiempo adicional no pudo ser registrado";
 				sesion.removeAttribute("tiempoConv");				
 				irA="/adminConvenio/VerTiempos.jsp";
+				
 			break;
 			case Parametros.EliminarTiempo:
 				if(adminConv.eliminarTiempo(req.getParameter("idTiempo"))){
@@ -188,7 +189,9 @@ case Parametros.AdicionarTiempo:
 			break;
 			
 			case Parametros.AdicionarGrupo:
-				System.out.println("grupos"+req.getParameter("grupo"));
+				System.out.println("grupos ooooo");
+				System.out.println("idgrupo"+req.getParameter("idgrupo"));
+				
 				
 			/*	System.out.println("Entro adicionar");
 				PersonaOBJ objpersona=(PersonaOBJ)sesion.getAttribute("personaCon");
