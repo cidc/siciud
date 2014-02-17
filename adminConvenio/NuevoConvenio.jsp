@@ -25,9 +25,10 @@ var nav4=window.Event ? true : false;
 	function enviar(){
 			
 		if(validarCombos()==true){
-			document.frmConvenio.idgrupo.value=document.frmAjax.dato.value;
+			
 			if(validarFormulario(document.frmConvenio)){
 			document.frmConvenio.action='<c:url value="/adminConvenio/llenar.jsp"/>';
+			document.frmConvenio.idgrupo.value=document.frmAjax.dato.value;
 			document.frmConvenio.submit();
 			}
 		}
