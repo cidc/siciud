@@ -53,8 +53,8 @@ public class AdminConvenios extends ServletGeneral {
 				conv.setF_Digita(año + "-" + (mes+1) + "-" +dia+"");
 				
 				String idgru=req.getParameter("idgrupo");
+			
 				
-				adminConv.registrarGrupoConvenio(objconv,idgru);
 				
 				if(adminConv.nuevoConvenio(conv))
 				    mensaje="Resgistro insertado correctamente";
@@ -62,9 +62,14 @@ public class AdminConvenios extends ServletGeneral {
 					mensaje="El resgistro no pudo ser insertado correctamente";
 					
 					int idc=adminConv.idconvenio(req.getParameter("nombreConvenio"));
+					System.out.println("iddelconvenio"+idc);
+					objconv=new GetConvenioOBJ();
+					objconv.setIdconvenio(idc+"");
+					adminConv.registrarGrupoConvenio(objconv,idgru);
+					
 				//	System.out.println("id del convenio:" + adminConv.idconvenio(req.getParameter("nombreConvenio")));
 					adminConv.insertaObservacion(idc, req.getParameter("observaciones"),usuario.getIdUsuario());
-				
+					objconv=null;
 				sesion.removeAttribute("nuevoConvenio");
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;
