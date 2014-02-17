@@ -35,7 +35,11 @@ public class Ajax extends ServletGeneral {
 			System.out.println("para"+para);
 			System.out.println("dato de mierda:"+request.getParameter("dato"));
 			//System.out.println("para"+datos.toString());
-			
+			if(Integer.parseInt(request.getParameter("remove"))==1){
+			sesion.removeAttribute("ajaxGrupos");
+			sesion.removeAttribute("ajaxFacultad");
+			sesion.removeAttribute("ajaxInvest");
+			sesion.removeAttribute("ajaxProyCur");}
 			switch(para){
 				case Parametros.AjaxGrupos:
 					 datos=request.getParameterValues("dato");

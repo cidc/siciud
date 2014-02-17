@@ -37,6 +37,7 @@ var nav4=window.Event ? true : false;
 	{
      document.frmAjax.dato.value = select.value;
      document.frmAjax.para.value = 1;
+     document.frmAjax.remove.value = 0;
      document.frmAjax.target="frameOculto";
      document.frmAjax.submit();
     
@@ -45,6 +46,7 @@ var nav4=window.Event ? true : false;
 	{
      document.frmAjax.dato.value = select.value;
      document.frmAjax.para.value = 2;
+     document.frmAjax.remove.value = 0;
      document.frmAjax.target="frameOculto";
      document.frmAjax.submit();
 	}
@@ -308,6 +310,7 @@ var nav4=window.Event ? true : false;
 	<form method="post" name="frmAjax" action="<c:url value="/adminConvenio/Ajax.x"/>">
 		<input type="hidden" name="dato" value=''>
 		<input type="hidden" name="para" value=''>
+		<input type="hidden" name="remove" value=''>
 	</form>
 	
 	
