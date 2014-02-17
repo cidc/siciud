@@ -41,6 +41,15 @@ public class GetConvenioOBJ implements Serializable{
     private List<ObservacionesOBJ> listaObservaciones=null;
     private List<TiemposOBJ> listaTiempos=null;   
     private List<PersonaOBJ> listaPersonas=null;
+    private List<PersonaOBJ> listagrupos=null;
+    
+    public List<PersonaOBJ> getListagrupos() {
+		return listagrupos;
+	}
+	public void setListagrupos(List<PersonaOBJ> listagrupos) {
+		this.listagrupos = listagrupos;
+	}
+	
     
     public List<ObservacionesOBJ> getListaObservaciones() {
 		return listaObservaciones;

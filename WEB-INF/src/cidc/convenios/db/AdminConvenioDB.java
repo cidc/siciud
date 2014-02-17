@@ -32,6 +32,7 @@ import cidc.adminArticulos.obj.FiltroArticulo;
 import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.ExtraDocConvenio;
 import cidc.convenios.obj.GetConvenioOBJ;
+import cidc.convenios.obj.GruposOBJ;
 import cidc.convenios.obj.ObservacionesOBJ;
 import cidc.convenios.obj.PersonaOBJ;
 import cidc.convenios.obj.TiemposOBJ;
@@ -512,6 +513,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setListaPersonas(getListaPersonas(Integer.parseInt(conv.getIdconvenio())));
 				conv.setListaObservaciones(getListaObservaciones(id));
 				conv.setListaTiempos(getListaTiempos(id));	
+				conv.setListagrupos(getListaGrupos(id));	
 			
 			}
 			return conv;
@@ -744,6 +746,43 @@ public class AdminConvenioDB extends BaseDB{
 		return lista;
 	}
 	
+	public List getListaGrupos(long idConv){
+		 List listaGrupos = new ArrayList();
+		 Connection cn = null;
+		 PreparedStatement ps = null;
+		 ResultSet rs = null;
+		 TiemposOBJ tiempo=null; 
+		 GruposOBJ grupo=null;
+	
+				
+     try {
+			  cn = cursor.getConnection(super.perfil);
+			  ps = cn.prepareStatement(rb.getString("getConveniogrupos"));
+			  ps.setLong(1, idConv);
+			  rs=ps.executeQuery();
+			  while(rs.next())
+			  {
+				 
+				  grupo = new GruposOBJ();
+				  grupo.setIdConvGru(rs.getInt(1));
+				  grupo.setIdConvenio(rs.getInt(2));
+				  grupo.setIdGrupo(rs.getInt(3));
+				  grupo.setNombre(rs.getString(4));
+				  listaGrupos.add(grupo);
+			  }
+		     } catch (SQLException e) {lanzaExcepcion(e);}
+		       catch (Exception e) {lanzaExcepcion(e);}
+		 finally
+		 {
+			 try{
+				 rs.close();
+				 ps.close();
+				 cn.close();
+			 }catch(Exception e){}
+		 }
+		return listaGrupos;
+	}
+	
 	public List<TiemposOBJ> getListaTiempos(long idConv){
 		 List<TiemposOBJ> listaTiempos = new ArrayList<TiemposOBJ>();
 		 Connection cn = null;
@@ -879,6 +918,33 @@ public class AdminConvenioDB extends BaseDB{
 			ps=cn.prepareStatement(rb.getString("eliminaPersonaConvenio"));
 			ps.setInt(i++,Integer.parseInt(idConv));
 			ps.executeUpdate();
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+public boolean registrarGrupoConvenio(GetConvenioOBJ convenio, String idGrupo) {
+		
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("registrarGrupoConvenio"));
+			System.out.println("Entro a agregar grupo");
+			ps.setInt(i++,Integer.parseInt(convenio.getIdconvenio()));
+			ps.setInt(i++,Integer.parseInt(idGrupo));
+			
+			ps.executeUpdate();
+		//	System.out.println("----->"+ps);
 			retorno=true;
 		}catch (SQLException e) {
 			lanzaExcepcion(e);

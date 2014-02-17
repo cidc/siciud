@@ -89,9 +89,7 @@
 			<caption>Lista de Personas asociadas al proyecto</caption>
 			<tr>
 				<th width="5px">&nbsp;</th>
-				<th width="75px"><b>Fecha Ingreso</b></th>
-				<th width="75px"><b>Fecha Salida</b></th>				
-				<th width="100px"><b>Documento</b></th>
+			    <th width="100px"><b>Documento</b></th>
 				<th><b>Nombre</b></th>
 				<th width="100px"><b>Rol</b></th>
 				<th width="5px">&nbsp;</th>
@@ -99,50 +97,15 @@
 			</tr>
 			
 			
-			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaPersonas}" var="lista" varStatus="st">
+			<c:forEach begin="0" items="${sessionScope.datoConvenio.listagrupos}" var="lista" varStatus="st">
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td width="5px"><c:out value="${st.count}"/></td>
-				<td  width="175px" align="center">
-					<input type='text' name='fechaEntrada' style="width: 75%" readonly='true' id='f_date_a<c:out value="${st.count}"/>' size='12' value='<c:out value="${lista.fechaInicio}"/>'>
-					<button type='button' id='f_trigger_a<c:out value="${st.count}"/>'>...</button>
-					<script type='text/javascript'>
-		    			Calendar.setup({
-			    			inputField     :    'f_date_a<c:out value="${st.count}"/>',
-			    			ifFormat       :    '%Y-%m-%d',
-			    			showsTime      :    false,
-			    			button         :    'f_trigger_a<c:out value="${st.count}"/>',
-			    			singleClick    :    false,
-			    			step           :    1
-		    			})
-	    			</script>				
-				</td>
-				<td  width="175px" align="center">
-					<input type='text' name='fechaSalida' style="width: 75%" readonly='true' id='f_date_b<c:out value="${st.count}"/>' size='12' value='<c:out value="${lista.fechaFin}"/>'>
-					<button type='button' id='f_trigger_b<c:out value="${st.count}"/>'>...</button>
-					<script type='text/javascript'>
-		    			Calendar.setup({
-			    			inputField     :    'f_date_b<c:out value="${st.count}"/>',
-			    			ifFormat       :    '%Y-%m-%d',
-			    			showsTime      :    false,
-			    			button         :    'f_trigger_b<c:out value="${st.count}"/>',
-			    			singleClick    :    false,
-			    			step           :    1
-		    			})
-	    			</script>				
-				</td>
-				<td width="100px" align="center"><c:out value="${lista.documento}"/></td>
+				<td width="100px" align="center"><c:out value="${lista.nombre}"/></td>
 				<td align="center"><c:out value="${lista.nombre}"/></td>
-				<td width="100px" align="center"><c:out value="${lista.rol}"/></td>
 				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,11,<c:out value="${st.count}"/>)'></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>
+<%-- 			<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>--%>
 			</tr>
-			<tr>
-			<th colspan="6"><b>Observaciones</b></th>
-		</tr>
-		<tr>
-			<td colspan="6"><textarea name="observaciones" style="width:100%" id='observaciones<c:out value="${st.count}"/>' ><c:out value="${lista.observacion}"/></textarea> </td>
-		</tr>
-			</c:forEach>
+		    </c:forEach>
 		</table>
 	</form>
 	
