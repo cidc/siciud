@@ -52,6 +52,9 @@ public class AdminConvenios extends ServletGeneral {
 				conv.setN_UsuDigita(usuario.getNombre());
 				conv.setF_Digita(año + "-" + (mes+1) + "-" +dia+"");
 				
+				String idgru=req.getParameter("idgrupo");
+				
+				adminConv.registrarGrupoConvenio(objconv,idgru);
 				
 				if(adminConv.nuevoConvenio(conv))
 				    mensaje="Resgistro insertado correctamente";

@@ -78,22 +78,19 @@
 		</tr>
 	</table>
 	
-	<c:if test="${!empty sessionScope.datoConvenio.listaPersonas}">
-	<form name="frmPersona" action='<c:url value="/adminConvenio/llenarPersonas.jsp"/>' method="post">
+	<c:if test="${!empty sessionScope.datoConvenio.listagrupos}">
+	<form name="frmPersona"  method="post">
 		<input type="hidden" name="accion" value="0">
 		<input type="hidden" name="idPersona" value="0">
 		<input type="hidden" name="fechaInicio" value="">
 		<input type="hidden" name="fechaFin" value="">
 		<input type="hidden" name="observacion" value="">
 		<table width="95%" align="center" class="tablas">
-			<caption>Lista de Personas asociadas al proyecto</caption>
+			<caption>Lista de grupos asociados al proyecto</caption>
 			<tr>
 				<th width="5px">&nbsp;</th>
-			    <th width="100px"><b>Documento</b></th>
-				<th><b>Nombre</b></th>
-				<th width="100px"><b>Rol</b></th>
-				<th width="5px">&nbsp;</th>
-				<th width="5px">&nbsp;</th>
+			    <th><b>Nombre</b></th>
+				
 			</tr>
 			
 			
@@ -101,8 +98,7 @@
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td width="5px"><c:out value="${st.count}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.nombre}"/></td>
-				<td align="center"><c:out value="${lista.nombre}"/></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,11,<c:out value="${st.count}"/>)'></td>
+<%--				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idConvGru}"/>,11,<c:out value="${st.count}"/>)'></td>--%>
 <%-- 			<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>--%>
 			</tr>
 		    </c:forEach>
@@ -110,7 +106,7 @@
 	</form>
 	
 	</c:if>
-	<c:if test="${empty sessionScope.datoConvenio.listaPersonas}">
+	<c:if test="${empty sessionScope.datoConvenio.listagrupos}">
 	<h3 align="center">No hay más grupos en este Convenio</h3>
 	</c:if>
 	

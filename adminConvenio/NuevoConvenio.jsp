@@ -25,6 +25,7 @@ var nav4=window.Event ? true : false;
 	function enviar(){
 			
 		if(validarCombos()==true){
+			document.frmConvenio.idgrupo.value=document.frmAjax.dato.value;
 			if(validarFormulario(document.frmConvenio)){
 			document.frmConvenio.action='<c:url value="/adminConvenio/llenar.jsp"/>';
 			document.frmConvenio.submit();
@@ -140,6 +141,7 @@ var nav4=window.Event ? true : false;
 <form name="frmConvenio">
 <input type="hidden" name="accion"	value='<c:out value="${requestScope.accion}" default="1"/>'>
 <input type="hidden" name="idConvenio" value='<c:out value="${requestScope.datoConvenio.idconvenio}"/>'>
+<input type="hidden" name="idgrupo" value="">
 <table class="tablas" align="center">
 	<caption>Registro datos generales de convenio</caption>
 	<tr>
