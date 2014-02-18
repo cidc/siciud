@@ -98,27 +98,21 @@ public class AdminConvenios extends ServletGeneral {
 					 mensaje="Observación insertada correctamente";
                  else
                 	mensaje="No se pudo insertar la observación";
-				
-				
-				
-				//objconv= adminConv.buscarConvenio(Integer.parseInt(req.getParameter("aa")));
-				//objconv.setListaObservaciones(adminConv.getListaObservaciones(Integer.parseInt(req.getParameter("aa"))));
-				 objconv.getListaObservaciones().clear();
+					 objconv.getListaObservaciones().clear();
 				objconv.setListaObservaciones(adminConv.getListaObservaciones(Integer.parseInt(objconv.getIdconvenio())));
-				//sesion.setAttribute("datoConvenio",proyecto);
+				
 				 irA="/adminConvenio/Verconvenio.jsp";
 			break;
 			
 			case Parametros.cambioEstado:
-				    
-				 if (adminConv.cambiaEstado(Integer.parseInt(objconv.getIdconvenio()),req.getParameter("tipo"), req.getParameter("estado"))){
+				  if (adminConv.cambiaEstado(Integer.parseInt(objconv.getIdconvenio()),req.getParameter("tipo"), req.getParameter("estado"))){
 					 mensaje="Estado de convenio actualizado correctamente";
-					 objconv.setEstado(req.getParameter("estado"));
-					 objconv.setEstado(req.getParameter("tipo"));
-			     }
+				}
                else
                	mensaje="el estado no se pudo ser actualizado";
-				 //sesion.setAttribute("proyecto",proyecto);
+				
+				 objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+				 sesion.setAttribute("datoConvenio", objconv);
 				 irA="/adminConvenio/Verconvenio.jsp";
 			break;
 			

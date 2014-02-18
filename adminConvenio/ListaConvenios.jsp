@@ -51,7 +51,8 @@
 </table>
 </form>
 </c:if>
-<c:if test="${!empty requestScope.listaConvenios}">
+<c:if test="${empty requestScope.listaConvenios}">
+<h4 align="center">No se lograron encontrar Registros de Convenios</h4>
 </c:if>
 </body>
 </html>

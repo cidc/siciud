@@ -39,7 +39,8 @@
 </table>
 </form>
 </c:if>
-<c:if test="${!empty requestScope.listaEntidades}">
+<c:if test="${empty requestScope.listaEntidades}">
+<h4 align="center">No se lograron encontrar Registros de Entidades</h4>
 </c:if>
 </body>
 </html>
