@@ -101,10 +101,10 @@ public class AdminMovilidad extends ServletGeneral {
 					irA="/convMovilidad/listaPropuestas.jsp";
 					sesion.setAttribute("persona",persona);
 					try {
-						String terminar=(String) req.getAttribute("terminar");
+						String terminar=(String) req.getParameter("terminar");
 						if(terminar.equals("si")){
 							movilidadDB.enviarMail(String.valueOf(info.getIdPropuesta()), persona);
-							mensaje="POr favor Verifique su email";
+							mensaje="Por favor Verifique su email";
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
