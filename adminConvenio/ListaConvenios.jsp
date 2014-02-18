@@ -47,7 +47,8 @@
 			<c:if test="${lista.estado==4}">Cancelado</c:if>
 			<c:if test="${lista.estado==5}">En Prueba</c:if>
 			<c:if test="${lista.estado==6}">Aplazado</c:if>
-			<c:if test="${lista.estado==7">Proc. Finalización</c:if>
+			<c:if test="${lista.estado==6}">Proc. Finalización</c:if>
+			
 		</td>
 		<td><img src=<c:url value="/comp/img/Ver.gif" /> onclick='enviar(<c:out value="${lista.idconvenio}" />)'></td>
 	</tr>
