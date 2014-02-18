@@ -30,6 +30,7 @@ public class AdminCertificados extends ServletGeneral{
 		int accion=0;
 		int perteneciaGrupo = 1;
 		int pazSalvo = 2;
+		final int CERTIFICADOESPECIAL=3;
 		mensaje="";
 		System.out.println(mensaje);
 		cursor=new CursorDB();
@@ -124,6 +125,10 @@ public class AdminCertificados extends ServletGeneral{
 		break;
 		case Parametros.CREARCERTESPECIAL:
 			irA="/certificaciones/CertificadosDoc.x?accion=10&accion2=0";
+			break;
+		case Parametros.CONSULTAESPECIALES: 
+			sesion.setAttribute("listaEspeciales", certificadodb.buscarCertificadosEspeciales(CERTIFICADOESPECIAL));
+			irA="/Certificados/Especial.jsp";
 			break;
 		default:
 			irA="/Certificados/BuscarCertificados.jsp";

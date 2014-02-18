@@ -19,6 +19,7 @@ public class CertificadosDoc extends ServletGeneral {
 	public CursorDB cursor;
 	public static char sep=java.io.File.separatorChar;
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+		final int CERTIFICADOESPECIAL=3;
 		int perteneciaGrupo = 1;
 		int pazSalvo = 2;
 		cursor=new CursorDB();
@@ -78,11 +79,10 @@ public class CertificadosDoc extends ServletGeneral {
 //				sesion.removeAttribute("listacertificados");
 //				sesion.setAttribute("listacertificados",certifidoDB.buscarCertificadosPersona(caso2,pazSalvo));
 			case Parametros.CREARCERTESPECIAL:
-//				certificado.setNombre("");
-//				certificado.setCedula("");
+				certificado.setIdPersona((int)usuario.getIdUsuario());
 				certifidoDB.certificadoEspecial(certificado, path, resp);
-				System.out.println("Para generar el certificado especial");
-				System.out.println(certificado.getCuerpo_cer());
+				sesion.setAttribute("listaEspeciales", certifidoDB.buscarCertificadosEspeciales(CERTIFICADOESPECIAL));
+				mensaje="Certificado creado exitosamente";
 				irA="/Certificados/Especial.jsp";
 				break;
 		}

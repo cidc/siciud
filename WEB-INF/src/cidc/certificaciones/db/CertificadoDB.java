@@ -130,7 +130,6 @@ public class CertificadoDB extends BaseDB{
 			ps.setLong(4, certificado.getIdPersona());
 			ps.setString(5, certificado.getCedula());
 			ps.setString(6, url);
-//			ps.setString(6, dir);
 			ps.setInt(7, certificado.getIdGrupo());
 			ps.setInt(8, certificado.getId_certificaciones());
 			ps.execute();
@@ -223,6 +222,12 @@ public class CertificadoDB extends BaseDB{
 		return listacertificados;
 	}
 	
+	/**
+	 * busca todos los certificados que pertenecen a una persona y de un tipo en espacifico
+	 * @param id_persona
+	 * @param tipo 1 para pertenecia a grupos, 2 para paz y salvo, 3 para especial y 4 para proyectos de investigacion
+	 * @return
+	 */
 	public List buscarCertificadosPersona(long id_persona,int tipo){
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -441,6 +446,7 @@ public class CertificadoDB extends BaseDB{
 			while(rs.next()){
 				consec = rs.getString(i++);
 				certificado.setConsCert(consec);
+				certificado.setId_certificaciones(Integer.parseInt(consec));
 			}
 			certificado.setTipo("3");//se asigna el tipo 3 para el certificado de tipo especial
 			certificado.setCod_verificacion("VIICEPS_"+certificado.getTipo()+"_"+consec+"_"+ano);
@@ -459,5 +465,45 @@ public class CertificadoDB extends BaseDB{
 			cerrar(cn);
 		}
 		return null;
+	}
+	
+	/**
+	 * busca todos los certificados de tipo espcial que se hayan generado
+	 * @param tipo
+	 * @return
+	 */
+	public List<CertificacionesOBJ> buscarCertificadosEspeciales(int tipo){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		CertificacionesOBJ certificado=null;
+		List <CertificacionesOBJ>listacertificados=new ArrayList<CertificacionesOBJ>();		
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("BuscarCertificadoEspecial"));
+			ps.setLong(1,tipo);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				certificado=new CertificacionesOBJ();
+				certificado.setId_certificaciones(rs.getInt(i++));
+				certificado.setTipo(rs.getString(i++));
+				certificado.setFecha_cert(rs.getString(i++));
+				certificado.setCod_verificacion(rs.getString(i++));
+				certificado.setAutomatico(rs.getBoolean(i++));
+				certificado.setNombre(rs.getString(i++));
+				certificado.setUrl(rs.getString(i++));				
+				listacertificados.add(certificado);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return listacertificados;
 	}
 }
