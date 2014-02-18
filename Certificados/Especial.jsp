@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <c:import url="/general.jsp" />
 
-<script>
+<script> 
 	function guarda(){
 			if(validar()){ 
 				document.CertEsp.accion.value=10;

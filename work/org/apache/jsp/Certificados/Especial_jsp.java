@@ -73,7 +73,7 @@ public final class Especial_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<script>\r\n");
+      out.write("<script> \r\n");
       out.write("\tfunction guarda(){\r\n");
       out.write("\t\t\tif(validar()){ \r\n");
       out.write("\t\t\t\tdocument.CertEsp.accion.value=10;\r\n");
