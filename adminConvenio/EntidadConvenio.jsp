@@ -30,11 +30,12 @@
 <br>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
-			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=2&id=${sessionScope.proyecto.id}&tipo=${sessionScope.proyecto.claseProyecto}"/>'><img border="0" src='<c:url value="/comp/img/tabs/General1.gif"/>'></a></td>
-			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=6"/>'><img border="0" src='<c:url value="/comp/img/tabs/Documentos1.gif"/>'></a></td>
-			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
-			<td><a href='<c:url value="/adminProyectos/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Tiempos1.gif"/>'></a></td>
-						<td><img border="0" src='<c:url value="/comp/img/tabs/Investigadores2.gif"/>'></td>
+			 <td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=3&idConv=${sessionScope.datoConvenio.idconvenio}"/>'><img border="0" src='<c:url value="/comp/img/convenio/Proyectos.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/convenio/Documentos.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Tiempos.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
+			<td><img border="0" src='<c:url value="/comp/img/convenio/EntidadesClick.gif"/>'></a></td>
 		</tr>
 	</table>
 <br>
@@ -82,14 +83,14 @@
 			
 	</table>
 	
-	<c:if test="${!empty sessionScope.proyecto.listaCoInvestigadores}">
+	<c:if test="${!empty sessionScope.datoConvenio.listaCoInvestigadores}">
 	<form name="formEntidad" action='<c:url value="/adminProyectos/llenarInvestigador.jsp"/>' method="post">
 		<input type="hidden" name="accion" value="0">
 		<input type="hidden" name="id" value="0">
 		<input type="hidden" name="fechaInicio" value="">
 		<input type="hidden" name="fechaFin" value="">
 		<table width="95%" align="center" class="tablas">
-			<caption>Lista de Investigadores asociados al proyecto</caption>
+			<caption>Lista Entidades Vinculadas</caption>
 			<tr>
 				<th width="5px">&nbsp;</th>
 				<th width="75px"><b>Fecha Ingreso</b></th>
@@ -100,7 +101,7 @@
 				<th width="5px">&nbsp;</th>
 				<th width="5px">&nbsp;</th>
 			</tr>
-			<c:forEach begin="0" items="${sessionScope.proyecto.listaCoInvestigadores}" var="lista" varStatus="st">
+			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaCoInvestigadores}" var="lista" varStatus="st">
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td width="5px"><c:out value="${st.count}"/></td>
 				<td  width="175px" align="center">
@@ -141,8 +142,8 @@
 		</table>
 	</form>
 	</c:if>
-	<c:if test="${empty sessionScope.proyecto.listaCoInvestigadores}">
-	<h3 align="center">No hay más personas registradas en este proyecto</h3>
+	<c:if test="${empty sessionScope.datoConvenio.listaCoInvestigadores}">
+	<h3 align="center">No hay Entidades relacionadas con este convenio</h3>
 	</c:if>
 	
 	<form method="post" action='<c:url value="/adminProyectos/llenarInvestigador.jsp"/>'>
@@ -200,7 +201,7 @@
 	</form>
 	
 </c:if>
-<c:if test="${sessionScope.proyecto==null}">
+<c:if test="${sessionScope.datoConvenio==null}">
 <br><br><br>
 <h4 align="center">No se logró encontrar la información del Proyecto de Investigación</h4>
 </c:if>
