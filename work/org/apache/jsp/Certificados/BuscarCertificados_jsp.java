@@ -127,7 +127,7 @@ public final class BuscarCertificados_jsp extends org.apache.jasper.runtime.Http
       out.write("\t\t\t\t\t<td class=\"renglones\" width=\"200px\" colspan=\"4\">\r\n");
       out.write("\t\t\t\t\t\t<select name=\"tipos\">\r\n");
       out.write("\t\t\t\t\t\t\t<option value='1'>Pertenencia a Grupo/Semillero</option>\r\n");
-      out.write("\t\t\t\t\t\t\t<!--<option value='3'>Actividades de Investigación</option> -->\r\n");
+      out.write("\t\t\t\t\t\t\t<option value='3'>Certificado Especial</option>\r\n");
       out.write("\t\t\t\t\t\t\t<option value='2'>Paz y Salvo</option> \r\n");
       out.write("\t\t\t\t\t\t</select>\r\n");
       out.write("\t\t\t\t\t</td>\r\n");

@@ -49,7 +49,7 @@
 					<td class="renglones" width="200px" colspan="4">
 						<select name="tipos">
 							<option value='1'>Pertenencia a Grupo/Semillero</option>
-							<option value='4'>Certificado Especial</option>
+							<option value='3'>Certificado Especial</option>
 							<option value='2'>Paz y Salvo</option> 
 						</select>
 					</td>
