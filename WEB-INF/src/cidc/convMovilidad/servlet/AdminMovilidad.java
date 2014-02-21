@@ -103,6 +103,7 @@ public class AdminMovilidad extends ServletGeneral {
 					try {
 						String terminar=(String) req.getParameter("terminar");
 						if(terminar.equals("si")){
+							info=(InfoGeneral) sesion.getAttribute("movilidad");
 							movilidadDB.enviarMail(String.valueOf(info.getIdPropuesta()), persona);
 							mensaje="Por favor Verifique su email";
 						}

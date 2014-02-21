@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Vector;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -35,7 +36,9 @@ import cidc.general.mails.EnvioMail2;
 import cidc.general.mails.Reporte;
 import cidc.general.obj.Globales;
 import cidc.inscripSistema.obj.Persona;
+import cidc.inscripcionConv.db.InscripcionConvDB;
 import cidc.inscripcionConv.obj.GruposOBJ;
+import cidc.inscripcionConv.obj.ResumenInscOBJ;
 import cidc.planAccion.obj.Actividades;
 
 public class MovilidadDB extends BaseDB{
@@ -460,6 +463,7 @@ public class MovilidadDB extends BaseDB{
 				info.setProyectoinv(rs.getString(i++));
 			//	info.setArchivoProduccion(rs.getString(i++));
 				info.setEstado(estadoPropuesta(cn, info.getIdPropuesta()));
+				info.setPropConvId(rs.getInt(i++));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -623,6 +627,23 @@ public class MovilidadDB extends BaseDB{
 		texto.append(rb1.getString("e121"));
 		texto.append(req.getInteresInsti4());*/
 		texto.append(rb1.getString("e21"));
+		texto.append(rb1.getString("br"));
+		texto.append(rb1.getString("tablaEspAbre"));
+		texto.append(rb1.getString("fieldsetAbre"));
+		texto.append(rb1.getString("legendAbre")+"<b>"+rb1.getString("msn1")+"</b>");
+		InscripcionConvDB insc= new InscripcionConvDB(cursor, perfil);
+		Vector<ResumenInscOBJ> vector=insc.documentosInsertados((int)general.getPropConvId(),Integer.parseInt(idPropuesta));
+		for (ResumenInscOBJ resumenInscOBJ : vector) {
+			texto.append(rb1.getString("trAbre"));
+			texto.append(rb1.getString("td4")+"<b>"+rb1.getString("docNombre")+"</b>"+resumenInscOBJ.getDocAnexo()+rb1.getString("tdCierra"));
+			texto.append(rb1.getString("trCierra"));
+			texto.append(rb1.getString("trAbre"));
+			texto.append(rb1.getString("tdAbre")+resumenInscOBJ.getNombreDoc()+rb1.getString("tdCierra"));
+			texto.append(rb1.getString("trCierra"));
+		}
+		texto.append(rb1.getString("legendCierra"));
+		texto.append(rb1.getString("fieldsetCierra"));
+		texto.append(rb1.getString("tablaCierra"));
 		//System.out.println("bandera 4");
 		if(req.getPartiEvent()!=null)
 			if(req.getPartiEvent().length>0){
@@ -651,7 +672,7 @@ public class MovilidadDB extends BaseDB{
 			mail.enviar(destino,"Inscripcion Convocatoria Movilidad",""+texto);
 			////System.out.println("bandera 7");
 			Reporte reporteMail=new Reporte(cursor,super.perfil);
-			reporteMail.reportar(persona.getNombre(),"Inscripcion Convocatoria 2012",destino[0],consMail);
+			reporteMail.reportar(persona.getNombre(),"Inscripcion Convocatoria "+gl.getAnoHoy(),destino[0],consMail);
 			retorno=true;
 			//System.out.println("bandera 8");
 		} catch (AddressException e) {
