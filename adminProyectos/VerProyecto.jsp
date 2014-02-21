@@ -43,7 +43,7 @@
 <form name="frmEstado" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
 	<input type="hidden" name="accion" value="4">
 	<table width="95%" class="tablas" align="center">
-	<CAPTION>Datos generales del proyecto</CAPTION>
+	<CAPTION>Datos generales del proyecta</CAPTION>
 		<tr>
 			<th colspan="3"><b>Nombre de Proyecto</b></th>
 		</tr>
