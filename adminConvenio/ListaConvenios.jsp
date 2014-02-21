@@ -29,7 +29,7 @@
 		<td class="renglones" width="10px"><b>#</b></td>
 		<td class="renglones" width="30px"><b>Número</b></td>
 		<td class="renglones"><b>Nombre Convenio</b></td>
-		<td class="renglones" width="30px"><b>Estado</b></td>
+		<td class="renglones" width="100px"><b>Estado</b></td>
 		<td class="renglones" width="30px"><b>Ver</b></td>
 	</tr>
 	<c:forEach begin="0" items="${requestScope.listaConvenios}" var="lista" varStatus="st">
@@ -38,7 +38,7 @@
 		<td class="renglones" width="10px"><b><c:out value="${st.count}" /></b></td>
 		<td><c:out value="${lista.codigo}" /></td>
 		<td><c:out value="${lista.nombreConvenio}" /></td>
-		<td>
+		<td >
 		
 			<c:if test="${lista.estado==0}">--------</c:if>
 			<c:if test="${lista.estado==1}">Aprobado</c:if>
@@ -47,7 +47,7 @@
 			<c:if test="${lista.estado==4}">Cancelado</c:if>
 			<c:if test="${lista.estado==5}">En Prueba</c:if>
 			<c:if test="${lista.estado==6}">Aplazado</c:if>
-			<c:if test="${lista.estado==6}">Proc. Finalización</c:if>
+			<c:if test="${lista.estado==7}">Proc. Finalización</c:if>
 			
 		</td>
 		<td><img src=<c:url value="/comp/img/Ver.gif" /> onclick='enviar(<c:out value="${lista.idconvenio}" />)'></td>

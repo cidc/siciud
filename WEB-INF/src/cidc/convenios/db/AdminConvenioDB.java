@@ -282,10 +282,10 @@ public class AdminConvenioDB extends BaseDB{
 			ps.setString(i++, convenio.getObjetivo());
 			ps.setString(i++, convenio.getResumen());
 			ps.setString(i++, convenio.getObservacionesp());
-			System.out.println("Entro sentencia");
 			ps.executeUpdate();
-			System.out.println("ejecuto sentencia");
+		
 			retorno=true;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			lanzaExcepcion(e);
@@ -298,6 +298,62 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return retorno;
 	}
+	
+	
+	public boolean insertarFinanza(Convenio convenio){
+		
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("nuevoConvenio2"));
+			ps.setLong(i++,convenio.getCodigo());
+			ps.setString(i++, convenio.getFecha());
+			ps.setString(i++,convenio.getNombreConvenio());
+			ps.setString(i++,convenio.getObservaciones());
+			ps.setString(i++, convenio.getEstado());
+			ps.setInt(i++,convenio.getV_DuraAnos());
+			ps.setInt(i++,convenio.getDuracion());
+			ps.setInt(i++,convenio.getV_Duradias());
+			ps.setString(i++, convenio.getFechaInicio());
+			ps.setString(i++, convenio.getTipo());
+			ps.setInt(i++,convenio.getNumDisp());
+			ps.setString(i++, global.sumarMesesFecha(convenio.getFechaInicio(),(convenio.getDuracion())));
+			ps.setFloat(i++, convenio.getVEfectivo());
+			ps.setFloat(i++, convenio.getVEspecie());
+			ps.setString(i++, convenio.getN_UsuDigita());
+			ps.setString(i++, convenio.getF_Digita());
+			ps.setString(i++, convenio.getNombreproyecto());
+			ps.setInt(i++,convenio.getEstadop());
+			ps.setInt(i++,convenio.getTipop());
+			ps.setInt(i++, convenio.getFacultad());
+			ps.setInt(i++, convenio.getProycurri());
+			ps.setInt(i++, convenio.getGrupo());
+			ps.setString(i++, convenio.getObjetivo());
+			ps.setString(i++, convenio.getResumen());
+			ps.setString(i++, convenio.getObservacionesp());
+			ps.executeUpdate();
+		
+			retorno=true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+	
+	
 	
 	 public List consultarInvestigadores (int cod)
 	 {

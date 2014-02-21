@@ -226,7 +226,7 @@ public final class ListaConvenios_jsp extends org.apache.jasper.runtime.HttpJspB
         out.write("\t\t<td class=\"renglones\" width=\"10px\"><b>#</b></td>\r\n");
         out.write("\t\t<td class=\"renglones\" width=\"30px\"><b>Número</b></td>\r\n");
         out.write("\t\t<td class=\"renglones\"><b>Nombre Convenio</b></td>\r\n");
-        out.write("\t\t<td class=\"renglones\" width=\"30px\"><b>Estado</b></td>\r\n");
+        out.write("\t\t<td class=\"renglones\" width=\"100px\"><b>Estado</b></td>\r\n");
         out.write("\t\t<td class=\"renglones\" width=\"30px\"><b>Ver</b></td>\r\n");
         out.write("\t</tr>\r\n");
         out.write("\t");
@@ -287,7 +287,7 @@ public final class ListaConvenios_jsp extends org.apache.jasper.runtime.HttpJspB
           if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("</td>\r\n");
-          out.write("\t\t<td>\r\n");
+          out.write("\t\t<td >\r\n");
           out.write("\t\t\r\n");
           out.write("\t\t\t");
           if (_jspx_meth_c_005fif_005f2(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
@@ -633,7 +633,7 @@ public final class ListaConvenios_jsp extends org.apache.jasper.runtime.HttpJspB
     _jspx_th_c_005fif_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
     // /adminConvenio/ListaConvenios.jsp(50,3) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.estado==6}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.estado==7}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f9 = _jspx_th_c_005fif_005f9.doStartTag();
     if (_jspx_eval_c_005fif_005f9 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
