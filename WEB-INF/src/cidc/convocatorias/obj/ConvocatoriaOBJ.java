@@ -41,6 +41,7 @@ public class ConvocatoriaOBJ {
 	public boolean aspEstado;
 	public int aspId;
 	public boolean convEvalua;
+	public int rol;
 
 	private List listaCortes=new ArrayList();
 
@@ -274,5 +275,11 @@ public class ConvocatoriaOBJ {
         public void setAspId(int aspId) {
                 this.aspId = aspId;
         }
+		public int getRol() {
+			return rol;
+		}
+		public void setRol(int rol) {
+			this.rol = rol;
+		}
 
 }

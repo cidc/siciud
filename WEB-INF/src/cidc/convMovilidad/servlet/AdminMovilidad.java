@@ -100,6 +100,10 @@ public class AdminMovilidad extends ServletGeneral {
 					req.setAttribute("listaMovilidad", movilidadDB.consultaLista(persona.getIdPersona(),convocatoria.getConvId()));
 					irA="/convMovilidad/listaPropuestas.jsp";
 					sesion.setAttribute("persona",persona);
+					if(persona.getPapel()==3||persona.getPapel()==5)
+						req.setAttribute("rol", 1);
+					if(persona.getPapel()==1||persona.getPapel()==2)
+						req.setAttribute("rol", 2);
 					try {
 						String terminar=(String) req.getParameter("terminar");
 						if(terminar.equals("si")){

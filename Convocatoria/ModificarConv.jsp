@@ -126,9 +126,6 @@
 			<table class="tablas" align="center">
 			<caption>Datos Generales de Convocatoria</caption>
 				<tr>
-					<td colspan="4">
-						<table>
-							<tr>
 								<td class="renglones"><b>Año <c:out value="${sessionScope.convocatoriaOBJ.convAno}"/></b></td>
 								<td>
 									<select class="combo" name="convAno">
@@ -140,7 +137,7 @@
 									</select>
 
 								</td>
-								<td class="renglones"><b>#</b></td>
+								<td class="renglones"><b>Número</b></td>
 								<td>
 									<select class="combo" name="convNumero">
 										<c:forEach begin="1" end="30" varStatus="st">
@@ -148,30 +145,23 @@
 										</c:forEach>
 									</select>
 								</td>
-						<%--		<td class="renglones"><b>Publicar ahora</b></td>
-								<td>
-									<input type="checkbox" name="convPublica_" <c:if test="${sessionScope.convocatoriaOBJ.convPublica==true}">checked</c:if>>
-									<input type="hidden" name="convPublica" value="<c:out value="${sessionScope.convocatoriaOBJ.convPublica}"/>">
-								</td>--%>
-							<%--	<th><b>Fecha Corte Actual</b></th>
-								<td>
-									<input type='text' name='corteActual' class='caj' readonly='true' id='f_date_a' size='13' value='<c:out value="${sessionScope.convocatoriaOBJ.corteActual}"/>'>
-									<button type='button' id='f_trigger_a'>...</button>
-									<script type='text/javascript'>
-						    			Calendar.setup({
-							    			inputField     :    'f_date_a',
-							    			ifFormat       :    '%Y-%m-%d',
-							    			showsTime      :    false,
-							    			button         :    'f_trigger_a',
-							    			singleClick    :    false,
-							    			step           :    1
-						    			})
-					    			</script>
-								</td>--%>
-							</tr>
-						</table>
-					</td>
 				</tr>
+				<tr>
+       	<td class="renglones"><b>Tipo</b></td>
+         <td>
+			<select name="convTipo">
+			<option value='2' <c:if test="${sessionScope.convocatoriaOBJ.convTipo==2}">selected</c:if>>Movilidad</option>
+			<option value='1' <c:if test="${sessionScope.convocatoriaOBJ.convTipo==1}">selected</c:if>>Proyectos de Investigacion</option>
+			</select>
+		</td>
+		<td class="renglones"><b>Rol</b></td>
+				<td><select name="rol">
+					<option value='2' <c:if test="${sessionScope.convocatoriaOBJ.rol==2}">selected</c:if>>Docentes</option>
+					<option value='1' <c:if test="${sessionScope.convocatoriaOBJ.rol==1}">selected</c:if>>Estudiantes</option>
+					<option value='3' <c:if test="${sessionScope.convocatoriaOBJ.rol==3}">selected</c:if>>Ambos</option>
+					</select>
+			</td>
+		</tr>
 				<tr>
 					<td class="renglones" colspan="4"><b>Nombre de Convocatoria</b></td>
 				</tr>

@@ -17,24 +17,28 @@ session.removeAttribute("requisitos");%>
 	}
 	
 
-</script>
+</script> 
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br>
-<c:if test="${!empty requestScope.listaPropuestas}">
 <div align="center">
 	<fieldset style="width:90%;"><legend>Información General</legend>
-	<p align="center" class="texto1">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2012 </p>
-	<p align="center" class="lroja3">Por favor tenga en cuenta su rol dentro del sistema antes de aplicar a la convocatoria <c:out value="${sessionScope.datosConv.convAno} ${sessionScope.datosConv.convNumero}"/>.
-		
-
+	<p align="center" class="texto1">Bienvenido al sistema de inscripción para la solicitud de apoyo económico para la apropiación social del conocimiento a partir de presentación de ponencias en modalidad oral en eventos Nacionales y/o Internacionales.</p>
+	<!-- el numero 3 de la condicion hace referencia a que tanto docentes como estudiantes se pueden inscribir a la convocatoria -->
+	<c:if test="${(sessionScope.datosConv.rol!=3) and (sessionScope.datosConv.rol!=requestScope.rol) }">
+	<p align="center" class="lroja3">Usted no puede inscribirse en esta convocatoria debido a que su papel en el grupo/semillero  <b>NO</b> corresponde al de la convocatoria. Si usted  cree que es un error, favor modificar el campo "papel" en sus datos personales en el menú "Mis Grupos"</p>
+	</c:if>
+	<c:if test="${(sessionScope.datosConv.rol==requestScope.rol) or (sessionScope.datosConv.rol==3) }">
+	<p align="center" class="texto1"><br>A continuación usted encontrará el listado de propuestas que ha registrado hasta el momento en el sistema de información.</p>
+	<p align="center" class="texto1">Nota: al finalizar su inscripción se le notificará vía correo electrónico, en el cual encontrará un código único de inscripción, tenga en cuenta este código para preguntas, quejas o reclamos.</p>
 		<div align="center">
 			<a href='<c:url value="/inscripcionConv/Inscripcion.x?accion=5"/>'><img border="0" src='<c:url value="/comp/img/AgregarPropuesta.gif"/>'></a>
 		</div>
+	</c:if>
 	</fieldset>
 </div>
 	<br>
-
 	<form name="lista">
+	<c:if test="${(sessionScope.datosConv.rol==requestScope.rol) or (sessionScope.datosConv.rol==3) }">
 	<input type="hidden" name="accion" value="0">
 	<input type="hidden" name="idProp">
 	<table align="center" class="tablas" width="90%">
@@ -55,21 +59,7 @@ session.removeAttribute("requisitos");%>
 			</tr>
 		</c:forEach>
 	</table>
+	</c:if>
 	</form>
-</c:if>
-<c:if test="${empty requestScope.listaPropuestas}">
-<br><br><br>
-<div align="center">
-	<fieldset style="width: 90%"><legend>Información General</legend>
-		<p align="center" class="texto1">Bienvenido al sistema de inscripción de propuestas de investigación, Convocatorias CIDC 2012 </p>
-		<p align="center" class="texto1">En estos momentos usted no tiene ninguna propuesta inscrita para la convocatoria <c:out value="${sessionScope.datosConv.convAno} ${sessionScope.datosConv.convNumero}"/>, Favor dar clik en el botón "Agregar Propuesta" para insertar una nueva propuesta</p>
-		<p align="center" class="lroja3">Por favor tenga en cuenta su rol dentro del sistema antes de aplicar a la convocatoria <c:out value="${sessionScope.datosConv.convAno} ${sessionScope.datosConv.convNumero}"/>. 
-	</fieldset>
-</div>
-<br>	
-	<div align="center">
-				<a href='<c:url value="/inscripcionConv/Inscripcion.x?accion=5"/>'><img border="0" src='<c:url value="/comp/img/AgregarPropuesta.gif"/>'></a>
-	</div>	
-</c:if>
 </body>
 </html>

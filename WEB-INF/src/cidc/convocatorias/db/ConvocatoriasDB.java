@@ -788,6 +788,7 @@ public class ConvocatoriasDB extends BaseDB{
 			ps.setString(i++,convocatoriaOBJ.getConvDirigido());
 		//	ps.setBoolean(i++,convocatoriaOBJ.isConvPublica());
 			ps.setString(i++,convocatoriaOBJ.getCorteActual());
+			ps.setInt(i++, convocatoriaOBJ.getRol());
 			ps.execute();
 			retorno=true;
 		} catch (SQLException e) {
@@ -821,6 +822,9 @@ public class ConvocatoriasDB extends BaseDB{
 			ps.setString(i++,convocatoriaOBJ.getConvDirigido());
 			ps.setBoolean(i++,convocatoriaOBJ.isConvPublica());
 			ps.setString(i++,convocatoriaOBJ.getCorteActual());
+			ps.setInt(i++, convocatoriaOBJ.getConvTipo());
+			ps.setInt(i++, convocatoriaOBJ.getRol());
+			
 	//		System.out.println("publica ="+convocatoriaOBJ.isConvPublica());
 
 			ps.setLong(i++,convocatoriaOBJ.getConvId());
@@ -1102,6 +1106,8 @@ public class ConvocatoriasDB extends BaseDB{
 				convocatoriaOBJ.setCorteActual(rs.getString(i++));
 				convocatoriaOBJ.setConvTipo(rs.getInt(i++));
 				convocatoriaOBJ.setConvEvalua(rs.getBoolean(i++));
+				convocatoriaOBJ.setConvTipo(rs.getInt(i++));
+				convocatoriaOBJ.setRol(rs.getInt(i++));
 			}
 			if(convocatoriaOBJ!=null){
 				ps=cn.prepareStatement(rb.getString("getCortesConvocatoria"));

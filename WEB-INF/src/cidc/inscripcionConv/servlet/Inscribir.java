@@ -69,6 +69,10 @@ public class Inscribir extends ServletGeneral {
 							usuario.getPerfil(),convocatoriaOBJ.getConvId()));
 					terminar = req.getParameter("terminar");
 					irA = "/InscripcionConv/listaPropuesta.jsp";
+					if(persona.getPapel()==3||persona.getPapel()==5)
+						req.setAttribute("rol", 1);
+					if(persona.getPapel()==1||persona.getPapel()==2)
+						req.setAttribute("rol", 2);
 					if (terminar != null) {
 						if (terminar.equals("si")) {
 							//String idProp = req.getParameter("idProp");

@@ -59,9 +59,6 @@
 	<table class="tablas" align="center">
 	<caption>Datos de Convocatoria</caption>
 		<tr>
-			<td colspan="4">
-				<table>
-					<tr>
 						<td class="renglones"><b>Año</b></td>
 						<td>
 							<select name="convAno">
@@ -70,7 +67,7 @@
 							</select>
 
 						</td>
-						<td class="renglones"><b>#</b></td>
+						<td class="renglones"><b>Número</b></td>
 						<td>
 							<select name="convNumero">
 								<c:forEach begin="1" end="30" varStatus="st">
@@ -78,35 +75,21 @@
 								</c:forEach>
 							</select>
 						</td>
-                                                <td class="renglones"><b>Tipo</b></td>
-                                                <td>
-                                                        <select name="convTipo">
-                                                                <option value='2'/>Movilidad</option>
-                                                                <option value='1'/>Proyectos de Investigacion</option>
-                                                        </select>
-
-                                                </td>
-					<%--	<td class="renglones"><b>Publicar ahora</b></td>
-						<td>
-							<input type="checkbox" name="convPublica_">
-							<input type="hidden" name="convPublica" value="">
-						</td>--%>
-					<%--	<td>
-							<input type='text' name='corteActual' class='caj' readonly='true' id='f_date_a' size='13' value='<c:out value="${sessionScope.convocatoriaOBJ.corteActual}"/>'>
-							<button type='button' id='f_trigger_a'>...</button>
-							<script type='text/javascript'>
-				    			Calendar.setup({
-					    			inputField     :    'f_date_a',
-					    			ifFormat       :    '%Y-%m-%d',
-					    			showsTime      :    false,
-					    			button         :    'f_trigger_a',
-					    			singleClick    :    false,
-					    			step           :    1
-				    			})
-			    			</script>
-						</td>--%>
-					</tr>
-				</table>
+       </tr>
+       <tr>
+       	<td class="renglones"><b>Tipo</b></td>
+         <td>
+			<select name="convTipo">
+			<option value='2'/>Movilidad</option>
+			<option value='1'/>Proyectos de Investigacion</option>
+			</select>
+		</td>
+		<td class="renglones"><b>Rol</b></td>
+				<td><select name="rol">
+					<option value='2' />Docentes</option>
+					<option value='1' />Estudiantes</option>
+					<option value='3' />Ambos</option>
+					</select>
 			</td>
 		</tr>
 		<tr>
