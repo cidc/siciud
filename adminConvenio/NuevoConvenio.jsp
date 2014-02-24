@@ -155,6 +155,19 @@ var nav4=window.Event ? true : false;
 		<td><input type="text" name="numDisp" style="text-align: right;" onKeyPress='return soloNumeros(event)' value='<c:out value="${requestScope.datoConvenio.numDisp}" />'></td>
 		
 		<tr>
+		
+		<td class="renglones"><b>Tipo</b></td>
+		<td><select name="tipo">
+			<option value="0" <c:if test="${requestScope.datoConvenio.tipo==0}">selected</c:if>>------------</option>
+			<option value="1" <c:if test="${requestScope.datoConvenio.tipo==1}">selected</c:if>>Marco</option>
+			<option value="2" <c:if test="${requestScope.datoConvenio.tipo==2}">selected</c:if>>Especifico</option>
+			<option value="3" <c:if test="${requestScope.datoConvenio.tipo==3}">selected</c:if>>Acuerdo de cooperación</option>
+			<option value="4" <c:if test="${requestScope.datoConvenio.tipo==4}">selected</c:if>>Contrato</option>
+		</select></td>
+		
+		
+		
+		
 		<td class="renglones"><b>Estado</b></td>
 	    <td><select name="estado">
 									  <option value="0" <c:if test="${requestScope.datoConvenio.estado==0}">selected</c:if>>------------</option>
@@ -167,14 +180,7 @@ var nav4=window.Event ? true : false;
 			                          <option value="7" <c:if test="${requestScope.datoConvenio.estado==7}">selected</c:if>>Proc. Finalización</option>
 		</select></td>
 		
-		<td class="renglones"><b>Tipo</b></td>
-		<td><select name="tipo">
-			<option value="0" <c:if test="${requestScope.datoConvenio.tipo==0}">selected</c:if>>------------</option>
-			<option value="1" <c:if test="${requestScope.datoConvenio.tipo==1}">selected</c:if>>Marco</option>
-			<option value="2" <c:if test="${requestScope.datoConvenio.tipo==2}">selected</c:if>>Especifico</option>
-			<option value="3" <c:if test="${requestScope.datoConvenio.tipo==3}">selected</c:if>>Acuerdo de cooperación</option>
-			<option value="4" <c:if test="${requestScope.datoConvenio.tipo==4}">selected</c:if>>Contrato</option>
-		</select></td>
+		
 		
 		<td class="renglones"><b>Fecha de registro</b></td>
 				<td><input type='text' name='fecha' class='caj' readonly='true' id='f_date_a' size='13' value='<c:out value="${requestScope.datoConvenio.fecha}" />'>

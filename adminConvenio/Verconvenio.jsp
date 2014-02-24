@@ -27,7 +27,7 @@ function observacion(caja){
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/EntidadConvenio.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Entidades.gif"/>'></a></td>
-			<td><a href='<c:url value="/adminConvenio/Balance.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=1"/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
 		</tr>
 	</table>
 <br>

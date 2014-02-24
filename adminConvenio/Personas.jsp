@@ -89,17 +89,7 @@
 				<td width="5px"><c:out value="${st.count}"/></td>
 				<td  width="175px" align="center">
 					<input type='text' name='fechaEntrada' style="width: 75%" readonly='true' id='f_date_a<c:out value="${st.count}"/>' size='12' value='<c:out value="${lista.fechaInicio}"/>'>
-					<button type='button' id='f_trigger_a<c:out value="${st.count}"/>'>...</button>
-					<script type='text/javascript'>
-		    			Calendar.setup({
-			    			inputField     :    'f_date_a<c:out value="${st.count}"/>',
-			    			ifFormat       :    '%Y-%m-%d',
-			    			showsTime      :    false,
-			    			button         :    'f_trigger_a<c:out value="${st.count}"/>',
-			    			singleClick    :    false,
-			    			step           :    1
-		    			})
-	    			</script>				
+								
 				</td>
 				<td  width="175px" align="center">
 					<input type='text' name='fechaSalida' style="width: 75%" readonly='true' id='f_date_b<c:out value="${st.count}"/>' size='12' value='<c:out value="${lista.fechaFin}"/>'>

@@ -87,7 +87,12 @@ public class GestionEntidad  extends ServletGeneral{
 					//Buscar Entidad
 				
 					req.setAttribute("listaEntidades", entidadDB.listaEntidad());
-					irA="/adminConvenio/Entidad/ListaEntidades.jsp";
+					if(req.getParameter("por")==""+1){
+						irA="/adminConvenio/Entidad/ListaEntidades.jsp";
+						System.out.println("entro para 1");
+				}else{
+					irA="/adminConvenio/EntidadConvenio.jsp";}
+					System.out.println("entro para 2");
 				break;
 			 case ParametrosOBJ.VerEntidad:
 				 	sesion.removeAttribute("entidades");

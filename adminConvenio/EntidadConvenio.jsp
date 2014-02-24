@@ -21,25 +21,7 @@
 		document.frmConvenio.idgrupo.value=document.frmAjax.dato.value;
 		document.frmConvenio.submit();
 	}
-	
-	function ajaxGrupo(select)
-	{
-     document.frmAjax.dato.value = select.value;
-     document.frmAjax.para.value = 2;
-     document.frmAjax.target="frameOculto";
-     document.frmAjax.submit();
-	}
-	
-	function ajaxFacultad(select)
-	{
-     document.frmAjax.dato.value = select.value;
-     document.frmAjax.para.value = 1;
-     document.frmAjax.remove.value =1;
-     document.frmAjax.target="frameOculto";
-     document.frmAjax.submit();
-     
-    
-	}
+
 
 </script>
 </head>
@@ -110,7 +92,7 @@
 	
 	</c:if>
 	<c:if test="${empty sessionScope.datoConvenio.listagrupos}">
-	<h3 align="center">No hay más grupos en este Convenio</h3>
+	<h3 align="center">No hay entidades vinculadas al convenio</h3>
 	</c:if>
 	
 	<form name="frmConvenio" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
@@ -119,9 +101,10 @@
 		<input type="hidden" name="idgrupo" value="">
 		
 		<table align="center" width="95%" class="tablas">
-		<caption>Registro de un Grupo asociado </caption>
-		<tr> <td class="renglones" colspan="6"><b>Facultad:</b></td></tr>
-     <tr> <td colspan="6"> <select name="facultad" style="width: 100%" onchange="ajaxFacultad(this)">
+		<caption>Registro de una Entidad asociada </caption>
+		<tr>
+		 <td class="renglones"><b>Entidad</b></td>
+     <td colspan="6"> <select name="facultad" style="width: 100%" ">
                <option value="0">-----------------------------------------------</option>
                <option value="1">Facultad Tecnológica</option>
                <option value="2">Facultad de Ingenieria</option>
@@ -130,17 +113,17 @@
                <option value="5">ASAB</option>
                </select>
           </td>
+          
      </tr>
+     <tr>
      
-		<tr> 
-		<td class="renglones" colspan="6"><b>Grupo/Semillero:</b></td>
-		</tr>
-        <tr> 
-        <td colspan="6"> <select name="grupo" style="width: 100%" onchange="ajaxGrupo(this)" >
-        <option value="0">-----------</option>
-        </select>
-        </td>
-        </tr>
+     <td class="renglones"><b>Valor Especie:</b></td>
+          <td><input type="text" maxlength="9" name="presupuesto" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
+     <td class="renglones"><b>Valor Efectivo:</b></td>
+          <td><input type="text" maxlength="9" name="presupuesto" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
+     
+     </tr>
+		
 				
 				
 				
@@ -170,9 +153,6 @@
 <br><br><br>
 <h4 align="center">No se logró encontrar la información del Convenio</h4>
 </c:if>
-<script>
- 
-  ajaxFacultad(document.frmConvenio.facultad);
-</script>
+
 </body>
 </html>
