@@ -162,7 +162,7 @@
 <table cellspacing="0" cellpadding="0">
 <tr>   <td><img src='<c:url value="/comp/img/DatosGenerales.gif"/>' onclick="tabs(6)"></td>
        <td><img src='<c:url value="/comp/img/Docsproyectoant.gif"/>' onclick="tabs(7)"></td>
-       <td><img src='<c:url value="/comp/img/Presupuesto.gif"/>' onclick="tabs(8)"></td>
+       <td><img src='<c:url value="/comp/img/Presupuesto.gif"/>' onclick="f(8)"></td>
        <td><img src='<c:url value="/comp/img/Investigadores.gif"/>' onclick="tabs(10)"></td>
        <td><img src='<c:url value="/comp/img/Inventario.gif"/>' onclick="tabs(15)"></td>
        <td><img src='<c:url value="/comp/img/Cambios.gif"/>' onclick="tabs(19)"></td>

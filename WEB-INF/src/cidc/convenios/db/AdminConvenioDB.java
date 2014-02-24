@@ -72,6 +72,36 @@ public class AdminConvenioDB extends BaseDB{
 		return retorno;
 	}
 	
+	public List consultarRubros() {
+		List listaRubros = new ArrayList();
+		 Connection cn = null;
+		 PreparedStatement ps = null;
+		 ResultSet rs = null;
+        try {
+			  cn = cursor.getConnection(super.perfil);
+			  ps = cn.prepareStatement(rb.getString("consultaRubros"));
+			  rs=ps.executeQuery();
+			  while(rs.next())
+			  {
+				  DatosAjax datos = new DatosAjax();
+				  datos.setCodigo(rs.getInt(1));
+				  datos.setNombre(rs.getString(2));
+				  listaRubros.add(datos);
+			  }
+		     } catch (SQLException e) {lanzaExcepcion(e);}
+		       catch (Exception e) {lanzaExcepcion(e);}
+		 finally
+		 {
+			 try{
+				 rs.close();
+				 ps.close();
+				 cn.close();
+			 }catch(Exception e){}
+		 }
+		return listaRubros;
+	}
+
+	
 	
 	public List<ExtraDocProyecto> getListaDocAnexos(long idconv) {
 		Connection cn=null;

@@ -79,6 +79,8 @@
   <tr>
   <td colspan="6"><textarea name="observaciones" style="width: 100%">--<c:out value="${requestScope.datoConvenio.observaciones}"/></textarea></td>
   </tr>
+  
+  <tr>
    <td class="renglones" ><b>Codigo: </b></td>
        <td class="renglones" ><b>Fecha:</b></td>
        <td class="renglones" ><b>Medio de pago:</b></td>
