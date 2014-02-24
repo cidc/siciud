@@ -191,8 +191,7 @@ case Parametros.AdicionarTiempo:
 			
 			case Parametros.AdicionarGrupo:
 			
-				System.out.println("idgrupo"+req.getParameter("idgrupo"));
-				System.out.println("idconvenio"+objconv.getIdconvenio());
+				
 				String idgrupo=req.getParameter("idgrupo");
 				
 				
@@ -208,6 +207,39 @@ case Parametros.AdicionarTiempo:
 					
 					irA="/adminConvenio/Grupos.jsp";				
 				
+
+			break;
+			
+				case Parametros.RegistroEntidad:
+			
+					
+					
+				System.out.println("Entro Entidad");
+				
+					if(adminConv.registrarGrupoConvenio(objconv,idgrupo)){
+						mensaje="el grupo fue registrado satisfactoriamente";
+						sesion.removeAttribute("datoConvenio");
+						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+						sesion.setAttribute("datoConvenio", objconv);
+						
+					}else
+						mensaje="el grupo no pudo ser registrada";
+					
+					
+					
+				/*
+					if(adminConv.registrarGrupoConvenio(objconv,idgrupo)){
+						mensaje="el grupo fue registrado satisfactoriamente";
+						sesion.removeAttribute("datoConvenio");
+						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+						sesion.setAttribute("datoConvenio", objconv);
+						
+					}else
+						mensaje="el grupo no pudo ser registrada";
+					
+					
+					irA="/adminConvenio/Grupos.jsp";				
+				*/
 
 			break;
 			

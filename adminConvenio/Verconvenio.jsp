@@ -26,8 +26,8 @@ function observacion(caja){
 			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Tiempos.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
-			<td><a href='<c:url value="/adminConvenio/EntidadConvenio.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Entidades.gif"/>'></a></td>
-			<td><a href='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=1"/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>'><img border="0" src='<c:url value="/comp/img/convenio/Entidades.gif"/>'></a></td>
+			<td><a href='<c:url value=""/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
 		</tr>
 	</table>
 <br>
@@ -43,7 +43,6 @@ function observacion(caja){
 		<tr>
 			<td colspan="3"><c:out value="${sessionScope.datoConvenio.nombreConvenio}"/></td>
 		</tr>
-		
 		<tr>
 			<th colspan="3"><b>Nombre del Proyecto</b></th>
 		</tr>
