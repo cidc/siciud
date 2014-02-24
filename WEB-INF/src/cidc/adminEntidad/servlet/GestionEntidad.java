@@ -56,7 +56,7 @@ public class GestionEntidad  extends ServletGeneral{
 			
 			if (req.getParameter("validar")!= null){
 				val = Integer.parseInt(req.getParameter("validar"));
-				}else{val =3;}
+				}
 		
 
 		   switch (val)
@@ -86,13 +86,20 @@ public class GestionEntidad  extends ServletGeneral{
 			 case ParametrosOBJ.ListaEntidad:
 					//Buscar Entidad
 				
-					req.setAttribute("listaEntidades", entidadDB.listaEntidad());
-					if(req.getParameter("por")==""+1){
+				 int por=0;
+				 if (req.getParameter("por")!= null){
+						 por = Integer.parseInt(req.getParameter("por"));
+						}
+				 req.setAttribute("listaEntidades", entidadDB.listaEntidad());
+					if(por==1){
 						irA="/adminConvenio/Entidad/ListaEntidades.jsp";
-						System.out.println("entro para 1");
-				}else{
-					irA="/adminConvenio/EntidadConvenio.jsp";}
-					System.out.println("entro para 2");
+						
+				}else{if(por==2){
+					irA="/adminConvenio/EntidadConvenio.jsp";
+					
+								}
+					}
+					
 				break;
 			 case ParametrosOBJ.VerEntidad:
 				 	sesion.removeAttribute("entidades");

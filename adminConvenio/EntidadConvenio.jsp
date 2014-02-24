@@ -17,9 +17,8 @@
 		return(key<=13 || (key>=48 && key<=57));
 	}
 	function enviar(){
-		//document.frmConvenio.accion.value=accion;
-		document.frmConvenio.idgrupo.value=document.frmAjax.dato.value;
-		document.frmConvenio.submit();
+		document.frmEntidad.accion.value=accion;
+		document.frmEntidad.submit();
 	}
 
 
@@ -35,7 +34,7 @@
 			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Tiempos.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
-			<td><img border="0" src='<c:url value="/comp/img/convenio/Entidades.gif"/>'></a></td>
+			<td><img border="0" src='<c:url value="/comp/img/convenio/EntidadesClick.gif"/>'></td>
 		</tr>
 	</table>
 <br>
@@ -95,22 +94,20 @@
 	<h3 align="center">No hay entidades vinculadas al convenio</h3>
 	</c:if>
 	
-	<form name="frmConvenio" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
-		<input type="hidden" name="accion" value="13">
-		<input type="hidden" name="idPersona" value="">
-		<input type="hidden" name="idgrupo" value="">
+	<form  method="post" action='<c:url value="/adminConvenio/llenarEntidadConv.jsp"/>'>
+		<input type="hidden" name="accion" value="14">
 		
 		<table align="center" width="95%" class="tablas">
 		<caption>Registro de una Entidad asociada </caption>
 		<tr>
 		 <td class="renglones"><b>Entidad</b></td>
-     <td colspan="6"> <select name="facultad" style="width: 100%" ">
-               <option value="0">-----------------------------------------------</option>
-               <option value="1">Facultad Tecnológica</option>
-               <option value="2">Facultad de Ingenieria</option>
-               <option value="3">Facultad de Medio Ambiente y recursos Naturales</option>
-               <option value="4">Facultad de Ciencias y Educación</option>
-               <option value="5">ASAB</option>
+    	 <td colspan="6"> <select name="Entidades" style="width: 100%" ">
+     		  <c:if test="${!empty requestScope.listaEntidades}">
+				<c:forEach begin="0" items="${requestScope.listaEntidades}" var="lista" varStatus="st">
+		            <option value="${lista.id}"> <c:out value="${lista.nombre}" /> </option>
+			 </c:forEach>
+		
+		</c:if>   
                </select>
           </td>
           
@@ -118,20 +115,13 @@
      <tr>
      
      <td class="renglones"><b>Valor Especie:</b></td>
-          <td><input type="text" maxlength="9" name="presupuesto" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
+          <td><input type="text" maxlength="9" name="VEspecie" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
      <td class="renglones"><b>Valor Efectivo:</b></td>
-          <td><input type="text" maxlength="9" name="presupuesto" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
+          <td><input type="text" maxlength="9" name="VEfectivo" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
      
-     </tr>
-		
-				
-				
-				
-			
-		
-		
+     </tr>		
 			<tr>
-				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>' onclick="enviar()"></td>
+				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>' ></td>
 			</tr>
 			
 		</table>
