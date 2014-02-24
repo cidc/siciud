@@ -216,7 +216,7 @@ case Parametros.AdicionarTiempo:
 					
 				System.out.println("Entro Entidad");
 				
-					if(adminConv.registrarGrupoConvenio(objconv,idgrupo)){
+				/*	if(adminConv.registrarGrupoConvenio(objconv,idgrupo)){
 						mensaje="el grupo fue registrado satisfactoriamente";
 						sesion.removeAttribute("datoConvenio");
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
@@ -242,6 +242,13 @@ case Parametros.AdicionarTiempo:
 				*/
 
 			break;
+				case Parametros.cmdListaRubrosAprobados:
+					System.out.println("caso de listaRubros");
+					 req.setAttribute("listaRubros", adminConv.consultarRubros());
+					// req.setAttribute("listaRubrosAprobados", proyAntiguosDB.consultarRubrosAprobados(objProyecto.getId()));
+					 irA="/adminConvenio/RubrosAprobados.jsp";
+				
+				break;
 			
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
