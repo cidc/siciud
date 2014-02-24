@@ -42,6 +42,7 @@ public class GetConvenioOBJ implements Serializable{
     private List<TiemposOBJ> listaTiempos=null;   
     private List<PersonaOBJ> listaPersonas=null;
     private List<PersonaOBJ> listagrupos=null;
+    private List<EntidadAsociadaOBJ> listaentidadesConv=null;
     
     public List<PersonaOBJ> getListagrupos() {
 		return listagrupos;
@@ -236,6 +237,13 @@ public class GetConvenioOBJ implements Serializable{
 	public void setObservacionesp(String observacionesp) {
 		this.observacionesp = observacionesp;
 	}
+	public List<EntidadAsociadaOBJ> getListaentidadesConv() {
+		return listaentidadesConv;
+	}
+	public void setListaentidadesConv(List<EntidadAsociadaOBJ> listaentidadesConv) {
+		this.listaentidadesConv = listaentidadesConv;
+	}
+	
 	
 
 }

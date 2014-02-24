@@ -101,10 +101,10 @@
 		<caption>Registro de una Entidad asociada </caption>
 		<tr>
 		 <td class="renglones"><b>Entidad</b></td>
-    	 <td colspan="6"> <select name="Entidades" style="width: 100%" ">
+    	 <td colspan="6"> <select name="entidadid" style="width: 100%" >
      		  <c:if test="${!empty requestScope.listaEntidades}">
 				<c:forEach begin="0" items="${requestScope.listaEntidades}" var="lista" varStatus="st">
-		            <option value="${lista.id}"> <c:out value="${lista.nombre}" /> </option>
+		           <option value="${lista.id}"> <c:out value="${lista.nombre}" /> </option>
 			 </c:forEach>
 		
 		</c:if>   
@@ -115,9 +115,9 @@
      <tr>
      
      <td class="renglones"><b>Valor Especie:</b></td>
-          <td><input type="text" maxlength="9" name="VEspecie" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
+          <td><input type="text" maxlength="9" name="VEspecieConv" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
      <td class="renglones"><b>Valor Efectivo:</b></td>
-          <td><input type="text" maxlength="9" name="VEfectivo" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
+          <td><input type="text" maxlength="9" name="VEfectivoConv" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
      
      </tr>		
 			<tr>

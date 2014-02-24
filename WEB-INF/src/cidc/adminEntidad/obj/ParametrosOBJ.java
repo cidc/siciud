@@ -8,5 +8,6 @@ public class ParametrosOBJ {
 	
 	public static final int ListaEntidadPara=1;
 	public static final int ListaEntidadConvenio=2;
+	public static final int ListaEntidadConvenioInsertar=3;
 	
 	}

@@ -15,7 +15,6 @@ import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.servlet.ServletGeneral;
 import cidc.adminEntidad.obj.ParametrosOBJ;
-import cidc.convenios.obj.Parametros;
 
 
 /**
@@ -87,19 +86,29 @@ public class GestionEntidad  extends ServletGeneral{
 					//Buscar Entidad
 				
 				 int por=0;
+				 
+				 
 				 if (req.getParameter("por")!= null){
 						 por = Integer.parseInt(req.getParameter("por"));
 						}
 				 req.setAttribute("listaEntidades", entidadDB.listaEntidad());
-					if(por==1){
-						irA="/adminConvenio/Entidad/ListaEntidades.jsp";
-						
-				}else{if(por==2){
+				 switch (por) {
+				case ParametrosOBJ.ListaEntidadPara:
+					irA="/adminConvenio/Entidad/ListaEntidades.jsp";
+					break;
+				case 	ParametrosOBJ.ListaEntidadConvenio:
 					irA="/adminConvenio/EntidadConvenio.jsp";
-					
-								}
-					}
-					
+					break;
+				case ParametrosOBJ.ListaEntidadConvenioInsertar:
+					irA="/adminConvenio/EntidadConvenio.jsp";
+					mensaje=(String)req.getAttribute("mens");
+					req.removeAttribute("mens");
+					break;
+				default:
+					irA="/adminConvenio/Entidad/ListaEntidades.jsp";
+					break;
+				}
+				
 				break;
 			 case ParametrosOBJ.VerEntidad:
 				 	sesion.removeAttribute("entidades");

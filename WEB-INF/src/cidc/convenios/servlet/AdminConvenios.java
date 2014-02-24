@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import cidc.convenios.db.AdminConvenioDB;
 import cidc.convenios.obj.Convenio;
+import cidc.convenios.obj.EntidadAsociadaOBJ;
 import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.Parametros;
 import cidc.convenios.obj.PersonaOBJ;
@@ -210,36 +211,24 @@ case Parametros.AdicionarTiempo:
 
 			break;
 			
-				case Parametros.RegistroEntidad:
-			
-					
-					
-				System.out.println("Entro Entidad");
+			case Parametros.RegistroEntidad:
 				
-				/*	if(adminConv.registrarGrupoConvenio(objconv,idgrupo)){
-						mensaje="el grupo fue registrado satisfactoriamente";
-						sesion.removeAttribute("datoConvenio");
+				EntidadAsociadaOBJ ent=(EntidadAsociadaOBJ)sesion.getAttribute("convEntidad");
+					
+				
+					if(adminConv.registrarEntidadConvenio(objconv,(EntidadAsociadaOBJ)sesion.getAttribute("convEntidad"))){
+						mensaje="El convenio fue vinculado Correctamente";
+						sesion.removeAttribute("convEntidad");
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 						sesion.setAttribute("datoConvenio", objconv);
 						
 					}else
-						mensaje="el grupo no pudo ser registrada";
+						mensaje="No se puedo vincular el convenio";
 					
-					
-					
-				/*
-					if(adminConv.registrarGrupoConvenio(objconv,idgrupo)){
-						mensaje="el grupo fue registrado satisfactoriamente";
-						sesion.removeAttribute("datoConvenio");
-						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
-						sesion.setAttribute("datoConvenio", objconv);
-						
-					}else
-						mensaje="el grupo no pudo ser registrada";
-					
-					
-					irA="/adminConvenio/Grupos.jsp";				
-				*/
+						req.setAttribute("mens",mensaje );
+						irA="/adminEntidad/GestEntidad.x?validar=3&por=3";	
+						sesion.removeAttribute("convEntidad");
+				
 
 			break;
 				case Parametros.cmdListaRubrosAprobados:

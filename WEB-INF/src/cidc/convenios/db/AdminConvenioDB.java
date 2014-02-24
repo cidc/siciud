@@ -30,6 +30,7 @@ import cidc.adminArticulos.obj.DatEvaluador;
 import cidc.adminArticulos.obj.EstadoArticulo;
 import cidc.adminArticulos.obj.FiltroArticulo;
 import cidc.convenios.obj.Convenio;
+import cidc.convenios.obj.EntidadAsociadaOBJ;
 import cidc.convenios.obj.ExtraDocConvenio;
 import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.GruposOBJ;
@@ -600,7 +601,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setListaObservaciones(getListaObservaciones(id));
 				conv.setListaTiempos(getListaTiempos(id));	
 				conv.setListagrupos(getListaGrupos(id));	
-			
+				conv.setListaentidadesConv(getListaEntidadesConv(id));	
 			}
 			return conv;
 		}
@@ -1068,7 +1069,39 @@ public boolean registrarGrupoConvenio(GetConvenioOBJ convenio, String idGrupo) {
 		}
 		return retorno;
 	}
-	
+public boolean registrarEntidadConvenio(GetConvenioOBJ convenio, EntidadAsociadaOBJ entidad){
+		
+		
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("registrarConvenioEntidad"));
+			System.out.println("Entro db");
+			ps.setInt(i++, Integer.parseInt(entidad.getEntidadid()));
+			ps.setInt(i++, Integer.parseInt(convenio.getIdconvenio()));
+			ps.setInt(i++, Integer.parseInt(entidad.getVEspecieConv()));
+			ps.setInt(i++, Integer.parseInt(entidad.getVEfectivoConv()));
+			ps.setInt(i++,(Integer.parseInt(entidad.getVEfectivoConv()))+Integer.parseInt(entidad.getVEspecieConv()));
+			
+			
+			ps.executeUpdate();
+		//	System.out.println("----->"+ps);
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+		
+		
+	}
 	
 }
 

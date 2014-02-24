@@ -407,7 +407,7 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
         out.write("\t\t<caption>Registro de una Entidad asociada </caption>\r\n");
         out.write("\t\t<tr>\r\n");
         out.write("\t\t <td class=\"renglones\"><b>Entidad</b></td>\r\n");
-        out.write("    \t <td colspan=\"6\"> <select name=\"Entidades\" style=\"width: 100%\" \">\r\n");
+        out.write("    \t <td colspan=\"6\"> <select name=\"entidadid\" style=\"width: 100%\" >\r\n");
         out.write("     \t\t  ");
         if (_jspx_meth_c_005fif_005f4(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
@@ -419,9 +419,9 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
         out.write("     <tr>\r\n");
         out.write("     \r\n");
         out.write("     <td class=\"renglones\"><b>Valor Especie:</b></td>\r\n");
-        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEspecie\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEspecieConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
         out.write("     <td class=\"renglones\"><b>Valor Efectivo:</b></td>\r\n");
-        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEfectivo\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEfectivoConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
         out.write("     \r\n");
         out.write("     </tr>\t\t\r\n");
         out.write("\t\t\t<tr>\r\n");
@@ -1027,7 +1027,7 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t            <option value=\"");
+          out.write("\t\t           <option value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.id}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write('"');
           out.write('>');
@@ -1063,7 +1063,7 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /adminConvenio/EntidadConvenio.jsp(107,43) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/EntidadConvenio.jsp(107,42) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.nombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f7 = _jspx_th_c_005fout_005f7.doStartTag();
     if (_jspx_th_c_005fout_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
