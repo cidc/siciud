@@ -1,10 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link type='text/css' rel='stylesheet' media='all' href='<c:url value="/comp/js/Calendario/calendar-blue2.css"/>' title='win2k-cold-1' />
+<script type='text/javascript' src='<c:url value="/comp/js/Calendario/calendar.js"/>'></script>
+<script type='text/javascript' src='<c:url value="/comp/js/Calendario/lang/calendar-es.js"/>'></script>
+<script type='text/javascript' src='<c:url value="/comp/js/Calendario/calendar-setup.js"/>'></script>
+<script>
+var nav4=window.Event ? true : false;
+function soloNumeros(eve){
+	var key=nav4?eve.which :eve.keyCode;
+	return(key<=13 || (key>=48 && key<=57));
+}
+function guardar(){
+	 for(var i=0;i<document.listadoRubros.valorRubro.length;i++){
+		document.listadoRubros.valorRubro[i].value=eliminaFormatoMoneda(document.listadoRubros.valorRubro[i].value);
+	 }
+	 document.listadoRubros.submit();
+}
+function check(caja,id){
+	if(caja.checked)
+		document.getElementById("rubro"+id).disabled=false;
+	else
+		document.getElementById("rubro"+id).disabled=true;
+}
+
+
+</script>
+<c:import url="/general.jsp"/>
+
 </head>
 <body>
 
@@ -51,4 +80,7 @@
 </form>
 
 </body>
+<script>
+	chequear(document.listadoRubros,document.frmInsc);
+</script>
 </html>
