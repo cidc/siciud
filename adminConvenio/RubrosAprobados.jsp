@@ -58,7 +58,12 @@ function check(caja,id){
 			<tr>
 				<th>&nbsp;</th>
 				<th><b>Rubro</b></th>
+				<th><b>Codigo</b></th>
+				<c:forEach begin="0" items="${requestScope.listaRubros}" var="lista" varStatus="st">
+				<th><b><c:out value="${lista.nombre}"/></b></th>
+				</c:forEach>
 				<th style="width:50px;" align="center"><b>Valor</b></th>
+				
 			</tr>
 			<c:forEach begin="0" items="${requestScope.listaRubros}" var="lista" varStatus="st">
 			<tr>
@@ -69,9 +74,16 @@ function check(caja,id){
 					<c:out value="${lista.nombre}"/>
 				</td>
 				<td style="width:50px;" align="right">
-					<input id='rubro<c:out value="${st.count}" />' disabled style="text-align:right" maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorRubro" value="0"></td>
-			</tr>
+					<b><input  maxlength="10"  type="text"  name="codigo"></b>
+				</td>
+				<td style="width:50px;" align="right">
+					<input id='rubro<c:out value="${st.count}" />' disabled style="text-align:right" maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorRubro" value="0">
+				</td>
+				
+				</tr>
 			</c:forEach>
+			
+			
 		</c:if>
 			<tr>
 				<td colspan="3" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar()"></td>
