@@ -18,17 +18,12 @@ function soloNumeros(eve){
 	return(key<=13 || (key>=48 && key<=57));
 }
 function guardar(){
-	 for(var i=0;i<document.listadoRubros.valorRubro.length;i++){
-		document.listadoRubros.valorRubro[i].value=eliminaFormatoMoneda(document.listadoRubros.valorRubro[i].value);
+	 for(var i=0;i<document.listadoRubros.valorEntidad.length;i++){
+		document.listadoRubros.valorEntidad[i].value=eliminaFormatoMoneda(document.listadoRubros.valorEntidad[i].value);
 	 }
 	 document.listadoRubros.submit();
 }
-function check(caja,id){
-	if(caja.checked)
-		document.getElementById("rubro"+id).disabled=false;
-	else
-		document.getElementById("rubro"+id).disabled=true;
-}
+
 
 
 </script>
@@ -59,8 +54,8 @@ function check(caja,id){
 				<th>&nbsp;</th>
 				<th><b>Rubro</b></th>
 				<th><b>Codigo</b></th>
-				<c:forEach begin="0" items="${requestScope.listaRubros}" var="lista" varStatus="st">
-				<th><b><c:out value="${lista.nombre}"/></b></th>
+				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+				<th><b><c:out value="${lista.entidadid}"/></b></th>
 				</c:forEach>
 				<th style="width:50px;" align="center"><b>Valor</b></th>
 				
@@ -68,7 +63,7 @@ function check(caja,id){
 			<c:forEach begin="0" items="${requestScope.listaRubros}" var="lista" varStatus="st">
 			<tr>
 				<td>
-					<input type="checkbox" name="idRubro" onchange="check(this,<c:out value="${st.count}" />)" value='<c:out value="${lista.codigo}" />'>
+					<input type="checkbox" name="idRubro" value='<c:out value="${lista.codigo}" />'>
 				</td>
 				<td>
 					<c:out value="${lista.nombre}"/>
@@ -77,8 +72,14 @@ function check(caja,id){
 					<b><input  maxlength="10"  type="text"  name="codigo"></b>
 				</td>
 				<td style="width:50px;" align="right">
-					<input id='rubro<c:out value="${st.count}" />' disabled style="text-align:right" maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorRubro" value="0">
+					<input id='rubro<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorRubro" value="0">
 				</td>
+				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+				<td style="width:50px;" align="right">
+				    <input type="hidden" name="conventd" value='<c:out value="${sessionScope.datoConvenio.identidadconvenio}"/>'>  
+					<input id='ventidad<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorEntidad" value="0">
+				</td>
+				</c:forEach>
 				
 				</tr>
 			</c:forEach>
