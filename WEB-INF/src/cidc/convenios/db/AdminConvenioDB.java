@@ -1099,9 +1099,47 @@ public boolean registrarEntidadConvenio(GetConvenioOBJ convenio, EntidadAsociada
 			cerrar(cn);
 		}
 		return retorno;
-		
-		
 	}
+
+
+public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
+	EntidadAsociadaOBJ entid=null;
+	Connection cn=null;
+	PreparedStatement ps=null;
+	ResultSet rs=null;
+	int i=1;
+	List<EntidadAsociadaOBJ> ListaEntidadesConv=new ArrayList <EntidadAsociadaOBJ>();
+	
+	try {
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("getEntidadesConv"));
+		ps.setInt(1, id);
+		rs=ps.executeQuery();
+		//System.out.println("-->"+ps);
+		while(rs.next()){
+			i=1;
+			entid=new EntidadAsociadaOBJ();
+			entid.setIdentidadconvenio(rs.getString(i++));
+			entid.setEntidadid(rs.getString(i++));
+			entid.setConvenioid(rs.getString(i++));
+			entid.setVEspecieConv(rs.getString(i++));
+			entid.setVEfectivoConv(rs.getString(i++));
+			entid.setVTotal(rs.getString(i++));
+			ListaEntidadesConv.add(entid);
+		}
+	} catch (SQLException e) {
+		lanzaExcepcion(e);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return ListaEntidadesConv;
+}
+
+
+
+
 	
 }
 

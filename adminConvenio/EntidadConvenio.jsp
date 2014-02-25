@@ -62,7 +62,7 @@
 		</tr>
 	</table>
 	
-	<c:if test="${!empty sessionScope.datoConvenio.listagrupos}">
+	<c:if test="${!empty sessionScope.datoConvenio.listaentidadesConv}">
 	<form name="frmPersona"  method="post">
 		<input type="hidden" name="accion" value="0">
 		<input type="hidden" name="idPersona" value="0">
@@ -70,19 +70,23 @@
 		<input type="hidden" name="fechaFin" value="">
 		<input type="hidden" name="observacion" value="">
 		<table width="95%" align="center" class="tablas">
-			<caption>Lista de grupos asociados al proyecto</caption>
+			<caption>Lista de entidades Asociadas al convenio</caption>
 			<tr>
 				<th width="5px">&nbsp;</th>
 			    <th><b>Nombre</b></th>
-				
-			</tr>
+			    <th><b>Valor Especie</b></th>
+			    <th><b>Valor Efectivo</b></th>
+			    <th><b>Valor Total</b></th>
+			</tr>			
 			
-			
-			<c:forEach begin="0" items="${sessionScope.datoConvenio.listagrupos}" var="lista" varStatus="st">
+			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td width="5px"><c:out value="${st.count}"/></td>
-				<td width="100px" align="center"><c:out value="${lista.nombre}"/></td>
-<%--				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idConvGru}"/>,11,<c:out value="${st.count}"/>)'></td>--%>
+				<td width="100px" align="center"><c:out value="${lista.entidadid}"/></td>
+				<td width="100px" align="center"><c:out value="${lista.VEspecieConv}"/></td>
+				<td width="100px" align="center"><c:out value="${lista.VEfectivoConv}"/></td>
+				<td width="100px" align="center"><c:out value="${lista.VTotal}"/></td>
+				<%--			<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idConvGru}"/>,11,<c:out value="${st.count}"/>)'></td>--%>
 <%-- 			<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>--%>
 			</tr>
 		    </c:forEach>
