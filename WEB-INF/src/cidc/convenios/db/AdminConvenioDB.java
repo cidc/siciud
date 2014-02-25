@@ -29,9 +29,11 @@ import cidc.adminArticulos.obj.Articulo;
 import cidc.adminArticulos.obj.DatEvaluador;
 import cidc.adminArticulos.obj.EstadoArticulo;
 import cidc.adminArticulos.obj.FiltroArticulo;
+import cidc.adminEntidad.obj.EntidadOBJ;
 import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.EntidadAsociadaOBJ;
 import cidc.convenios.obj.ExtraDocConvenio;
+import cidc.convenios.obj.FinanzaOBJ;
 import cidc.convenios.obj.GetConvenioOBJ;
 import cidc.convenios.obj.GruposOBJ;
 import cidc.convenios.obj.ObservacionesOBJ;
@@ -331,7 +333,7 @@ public class AdminConvenioDB extends BaseDB{
 	}
 	
 	
-	public boolean insertarFinanza(Convenio convenio){
+	public boolean insertarFinanza(GetConvenioOBJ convenio){
 		
 		boolean retorno=false;
 		Connection cn=null;
@@ -340,32 +342,9 @@ public class AdminConvenioDB extends BaseDB{
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("nuevoConvenio2"));
-			ps.setLong(i++,convenio.getCodigo());
-			ps.setString(i++, convenio.getFecha());
-			ps.setString(i++,convenio.getNombreConvenio());
-			ps.setString(i++,convenio.getObservaciones());
-			ps.setString(i++, convenio.getEstado());
-			ps.setInt(i++,convenio.getV_DuraAnos());
-			ps.setInt(i++,convenio.getDuracion());
-			ps.setInt(i++,convenio.getV_Duradias());
-			ps.setString(i++, convenio.getFechaInicio());
-			ps.setString(i++, convenio.getTipo());
-			ps.setInt(i++,convenio.getNumDisp());
-			ps.setString(i++, global.sumarMesesFecha(convenio.getFechaInicio(),(convenio.getDuracion())));
-			ps.setFloat(i++, convenio.getVEfectivo());
-			ps.setFloat(i++, convenio.getVEspecie());
-			ps.setString(i++, convenio.getN_UsuDigita());
-			ps.setString(i++, convenio.getF_Digita());
-			ps.setString(i++, convenio.getNombreproyecto());
-			ps.setInt(i++,convenio.getEstadop());
-			ps.setInt(i++,convenio.getTipop());
-			ps.setInt(i++, convenio.getFacultad());
-			ps.setInt(i++, convenio.getProycurri());
-			ps.setInt(i++, convenio.getGrupo());
-			ps.setString(i++, convenio.getObjetivo());
-			ps.setString(i++, convenio.getResumen());
-			ps.setString(i++, convenio.getObservacionesp());
+			ps=cn.prepareStatement(rb.getString("registrarFinanzas"));
+			ps.setInt(i++,Integer.parseInt(convenio.getVAprobado()));
+			ps.setInt(i++,Integer.parseInt(convenio.getIdconvenio()));
 			ps.executeUpdate();
 		
 			retorno=true;
@@ -602,6 +581,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setListaTiempos(getListaTiempos(id));	
 				conv.setListagrupos(getListaGrupos(id));	
 				conv.setListaentidadesConv(getListaEntidadesConv(id));	
+				conv.setFinanza(getfinanzas(id));
 			}
 			return conv;
 		}
@@ -675,8 +655,6 @@ public class AdminConvenioDB extends BaseDB{
 				convenio.setTipo(rs.getString(i++));
 				convenio.setNumDisp(rs.getString(i++));
 				convenio.setFechaFinalizacion(rs.getString(i++));
-				convenio.setVEfectivo(rs.getString(i++));
-				convenio.setVEspecie(rs.getString(i++));
 				convenio.setN_UsuDigita(rs.getString(i++));
 				convenio.setF_Digita(rs.getString(i++));
 				convenio.setNombreproyecto(rs.getString(i++));
@@ -1138,6 +1116,39 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 }
 
 
+public FinanzaOBJ getfinanzas(int id) {
+	FinanzaOBJ finanza=null;
+	Connection cn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+        try {
+             cn = cursor.getConnection(super.perfil);
+             ps = cn.prepareStatement(rb.getString("consultarFinanzaConvenio"));
+             ps.setInt(1, id);
+             rs = ps.executeQuery();
+             while (rs.next()){
+                finanza=new FinanzaOBJ();
+                finanza.setIdfinanza(rs.getInt(1));
+                finanza.setVAprobado(rs.getInt(2));
+                finanza.setVComprometer(rs.getInt(3));
+                finanza.setVEjecutar(rs.getInt(4));
+                finanza.setVEspecie(rs.getInt(5));
+                finanza.setVEfectivo(rs.getInt(6));
+                finanza.setIdConvenioFinanza(rs.getInt(7));
+             }
+             
+        } catch (SQLException e) {lanzaExcepcion(e);}
+	       catch (Exception e) {lanzaExcepcion(e);}
+        finally {
+            try {
+             rs.close();
+             ps.close();
+             cn.close();
+            }
+            catch (SQLException e){}
+            }
+	return finanza;
+}
 
 
 	

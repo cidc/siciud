@@ -56,7 +56,7 @@
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.balanceProyecto.totalAprobado}"/>REVISAR COD</td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.finanza.VAprobado}"/></td>
 		</tr>
 	</table>
 	

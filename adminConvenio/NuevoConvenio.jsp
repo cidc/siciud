@@ -73,6 +73,10 @@ var nav4=window.Event ? true : false;
 		   {  alert("La duración del proyecto no puede ser menor a 6 meses");
 			return false;
 		   }
+		if(forma.VAprobado.value<=1)
+		   {  alert("La duración del proyecto no puede ser menor a 6 meses");
+			return false;
+		   }
 		if(forma.nombreproyecto.value==""){
 			alert("El nombre del proyecto no puede estar vacio");
 			return false;
@@ -225,6 +229,11 @@ var nav4=window.Event ? true : false;
 			    <td class="renglones" style="width: 179px; "><b>Duracion Meses</b></td>
 				<td style="width: 100px; "><input type="text" maxlength="3" name="duracion" style="text-align:right; width:80%" value="0" onkeypress="return numeros(event)" size="2">
 				</td>
+				 <td class="renglones" style="width: 179px; "><b>Valor Aprobado:</b></td>
+				<td><input type="text" maxlength="9" name="VAprobado" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
+				</td>
+				
+				
 	</tr>
 	
 	

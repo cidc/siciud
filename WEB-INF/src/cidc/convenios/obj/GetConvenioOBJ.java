@@ -22,8 +22,7 @@ public class GetConvenioOBJ implements Serializable{
 	private String V_DuraAnos;
 	private String V_Duradias;
 	private String V_Durameses;
-	private String VEfectivo;
-	private String VEspecie;
+	private String VAprobado;
 	private String N_UsuDigita;
     private String estado;
     
@@ -37,7 +36,7 @@ public class GetConvenioOBJ implements Serializable{
     private String resumen;
     private String observacionesp;
     
-    
+    private FinanzaOBJ finanza=null;
     private List<ObservacionesOBJ> listaObservaciones=null;
     private List<TiemposOBJ> listaTiempos=null;   
     private List<PersonaOBJ> listaPersonas=null;
@@ -159,18 +158,8 @@ public class GetConvenioOBJ implements Serializable{
 	public void setV_Durameses(String v_Durameses) {
 		V_Durameses = v_Durameses;
 	}
-	public String getVEfectivo() {
-		return VEfectivo;
-	}
-	public void setVEfectivo(String vEfectivo) {
-		VEfectivo = vEfectivo;
-	}
-	public String getVEspecie() {
-		return VEspecie;
-	}
-	public void setVEspecie(String vEspecie) {
-		VEspecie = vEspecie;
-	}
+	
+	
 	public String getN_UsuDigita() {
 		return N_UsuDigita;
 	}
@@ -242,6 +231,19 @@ public class GetConvenioOBJ implements Serializable{
 	}
 	public void setListaentidadesConv(List<EntidadAsociadaOBJ> listaentidadesConv) {
 		this.listaentidadesConv = listaentidadesConv;
+	}
+	public String getVAprobado() {
+		return VAprobado;
+	}
+	public void setVAprobado(String vAprobado) {
+		VAprobado = vAprobado;
+	}
+	
+	public FinanzaOBJ getFinanza() {
+		return finanza;
+	}
+	public void setFinanza(FinanzaOBJ finanza) {
+		this.finanza = finanza;
 	}
 	
 	

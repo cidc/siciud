@@ -58,18 +58,20 @@ public class AdminConvenios extends ServletGeneral {
 				
 				
 				if(adminConv.nuevoConvenio(conv)){
+					int idc=adminConv.idconvenio(req.getParameter("nombreConvenio"));
+					objconv=new GetConvenioOBJ();
+					objconv.setIdconvenio(idc+"");
+					adminConv.registrarGrupoConvenio(objconv,idgru);
+					adminConv.insertaObservacion(idc, req.getParameter("observaciones"),usuario.getIdUsuario());
+					objconv.setVAprobado(""+conv.getVAprobado());
+					adminConv.insertarFinanza(objconv);
+					objconv=null;
 				    mensaje="Resgistro insertado correctamente";
 				}
 				else
 					mensaje="El resgistro no pudo ser insertado correctamente";
 					
-					int idc=adminConv.idconvenio(req.getParameter("nombreConvenio"));
-					System.out.println("iddelconvenio"+idc);
-					objconv=new GetConvenioOBJ();
-					objconv.setIdconvenio(idc+"");
-					adminConv.registrarGrupoConvenio(objconv,idgru);
-					adminConv.insertaObservacion(idc, req.getParameter("observaciones"),usuario.getIdUsuario());
-					objconv=null;
+					
 				sesion.removeAttribute("nuevoConvenio");
 				irA="/adminConvenio/NuevoConvenio.jsp";
 			break;

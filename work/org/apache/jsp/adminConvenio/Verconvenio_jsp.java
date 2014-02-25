@@ -262,9 +262,9 @@ public final class Verconvenio_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t<td colspan=\"3\">\r\n");
         out.write("\t\t\t\t<table width=\"100%\">\r\n");
         out.write("\t\t\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t\t\t<th><b>Número Convenio</b></th>\r\n");
-        out.write("\t\t\t\t\t\t<th><b>Número disponibilidad</b></th>\r\n");
-        out.write("\t\t\t\t\t\t<th><b>Suma valor efectivo $</b></th>\r\n");
+        out.write("\t\t\t\t\t\t<th width=\"120px\"><b>Número Convenio</b></th>\r\n");
+        out.write("\t\t\t\t\t\t<th width=\"120px\"><b>Número disponibilidad</b></th>\r\n");
+        out.write("\t\t\t\t\t\t<th width=\"120px\"><b>Suma valor efectivo $</b></th>\r\n");
         out.write("\t\t\t\t\t\t<th width=\"120px\"><b>Suma valor especie $</b></th>\r\n");
         out.write("\t\t\t\t\t\t<th width=\"120px\"><b>Fecha de registro</b></th>\r\n");
         out.write("\t\t\t\t\t\t<th width=\"120px\"><b>Fecha de Inicio</b></th>\r\n");
@@ -877,7 +877,7 @@ public final class Verconvenio_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/Verconvenio.jsp(69,25) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.VEfectivo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.finanza.VEfectivo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f4);
@@ -896,7 +896,7 @@ public final class Verconvenio_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fout_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/Verconvenio.jsp(70,39) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.VEspecie}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    _jspx_th_c_005fout_005f5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.finanza.VEspecie}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f5 = _jspx_th_c_005fout_005f5.doStartTag();
     if (_jspx_th_c_005fout_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f5);
