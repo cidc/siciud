@@ -315,13 +315,14 @@ public class AdminPropuestaDB extends BaseDB{
                                 l.add(propuestaOBJ);
                         }
                         }
-                        else 
+                        else{ 
                         ps=cn.prepareStatement(rb.getString("getPropuestasMovilidad"));
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
                    //     ps.setBoolean(i++,Boolean.parseBoolean(estado));
                         rs=ps.executeQuery();
                 //      System.out.println("");
+                        }
                         while(rs.next()){
                                 i=1;
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();

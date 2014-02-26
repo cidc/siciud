@@ -187,12 +187,14 @@ public class MovilidadDB extends BaseDB{
                 System.out.println("nombre:"+nombre);
                 try {
                         cn=cursor.getConnection(super.perfil);
+                        if(buscarDocumento(doc,prop)){                       
                         ps=cn.prepareStatement(rb.getString("archivo_requisitos"));
                         ps.setLong(i++,conv);
                         ps.setLong(i++,doc);
                         ps.setString(i++,nombre);
                         ps.setLong(i++,prop);
                         ps.execute();
+                        }
                         retorno=true;
                 }catch (SQLException e) {
                         lanzaExcepcion(e);
@@ -806,6 +808,12 @@ public class MovilidadDB extends BaseDB{
 		return req;
 	}
 	
+	/**
+	 * busca los documentos inscritos a una propuesta junto con el nombre del documento
+	 * @param propObj
+	 * @param conv
+	 * @return una lista de los documentos de la propuesta con su respectivo nombre
+	 */
 	public List<PropuestaOBJ> buscarDocumentosInscritos(List<PropuestaOBJ> propObj, int conv){
         List<PropuestaOBJ> l=new ArrayList<PropuestaOBJ>();
         Connection cn=null;
@@ -818,7 +826,6 @@ public class MovilidadDB extends BaseDB{
                 ps=cn.prepareStatement(rb.getString("DocumentosInscritos"));
                 ps.setInt(1,conv);
                 rs=ps.executeQuery();
-                System.out.println("consulta2:"+ps);
                 while(rs.next()){
                         i=1;
                         PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
@@ -836,14 +843,6 @@ public class MovilidadDB extends BaseDB{
                 		}
                 	}
                 }
-//                for (PropuestaOBJ propuestaOBJ : propObj) {
-//					for (PropuestaOBJ propuestaOBJ2 : l) {
-//						if(propuestaOBJ.getCodigo()==propuestaOBJ2.getIdDocumentoRequisito()){
-//							propuestaOBJ.setNombreDocumentoRequisito(propuestaOBJ2.getNombreDocumentoRequisito());
-//							propFinal.add(propuestaOBJ);
-//						}
-//					}
-//				}
         } catch (Exception e) {
                 lanzaExcepcion(e);
         }finally{
@@ -857,5 +856,27 @@ public class MovilidadDB extends BaseDB{
         }
        
         	return propObj;
-}
+	}
+	
+	public boolean buscarDocumento(int idDoc, long idProp){
+		Connection cn=null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int i=1;
+        try{
+        	cn=cursor.getConnection(super.perfil);
+            ps=cn.prepareStatement(rb.getString("buscaDocumento"));
+            ps.setInt(i++,idDoc);
+            ps.setLong(i++, idProp);
+            rs=ps.executeQuery();
+            if(!rs.next()){
+            	return true;
+            }        	
+        }catch(SQLException e){
+        	lanzaExcepcion(e);
+        }catch (Exception e) {
+            lanzaExcepcion(e);
+        }
+        return false;
+	}
 }
