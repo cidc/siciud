@@ -19,4 +19,5 @@ public class Parametros {
 	public static final int AdicionarGrupo=13;
 	public static final int RegistroEntidad=14;
 	public static final int cmdListaRubrosAprobados=15;
+	public static final int cmdInsertaRubrosAprobados=16;
 }

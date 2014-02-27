@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -23,7 +24,12 @@ function guardar(){
 	 }
 	 document.listadoRubros.submit();
 }
-
+function suma(formulario1){
+	 for(var i=0;i<formulario1.idRubro.length;i++){
+		document.listadoRubros.valorEntidad[i].value=eliminaFormatoMoneda(document.listadoRubros.valorEntidad[i].value);
+	 }
+	 document.listadoRubros.submit();
+}
 
 
 </script>
@@ -45,8 +51,11 @@ function guardar(){
 	</table>
 <br>
 
-<form action='<c:url value="/proyectosAntiguos/Llenar6.jsp"/>' name="listadoRubros">
-	<input type="hidden" name="validar" value="28">
+<form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadoRubros">
+	<input type="hidden" name="accion" value="16">
+	
+	
+	<c:set var="var2" value="${0}"></c:set>
 	<table align="center" class="tablas">
 	<caption>Lista de rubros aprobados</caption>
 		<c:if test="${!empty requestScope.listaRubros}">
@@ -54,10 +63,18 @@ function guardar(){
 				<th>&nbsp;</th>
 				<th><b>Rubro</b></th>
 				<th><b>Codigo</b></th>
+				
 				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 				<th><b><c:out value="${lista.entidadid}"/></b></th>
+				
+				
+				  <c:out value="${st.count}"/>
+				<c:set var="var2" value="${var2+1}"></c:set>
 				</c:forEach>
-				<th style="width:50px;" align="center"><b>Valor</b></th>
+				<input type="hidden" name="numeroentidad" value="${var2}">
+				<c:out value="${var2}" />
+				
+				<th style="width:400px;" align="center"><b>observacion</b></th>
 				
 			</tr>
 			<c:forEach begin="0" items="${requestScope.listaRubros}" var="lista" varStatus="st">
@@ -68,18 +85,20 @@ function guardar(){
 				<td>
 					<c:out value="${lista.nombre}"/>
 				</td>
-				<td style="width:50px;" align="right">
+				<td style="width:80px;" align="right">
 					<b><input  maxlength="10"  type="text"  name="codigo"></b>
 				</td>
-				<td style="width:50px;" align="right">
-					<input id='rubro<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorRubro" value="0">
-				</td>
+				
 				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 				<td style="width:50px;" align="right">
-				    <input type="hidden" name="conventd" value='<c:out value="${sessionScope.datoConvenio.identidadconvenio}"/>'>  
+				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
 					<input id='ventidad<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorEntidad" value="0">
 				</td>
 				</c:forEach>
+				
+				<td style="width:400px;" align="right">
+					<b><textarea class="texto" name="resumen" style="width: 99%"></textarea></b>
+				</td>
 				
 				</tr>
 			</c:forEach>
