@@ -19,23 +19,21 @@
 	
 	function pregunta(){
 		
-		/*var sumatoria=parseInt(document.formularioEnviar.sumatoria.value);
-		if(sumatoria=="NaN"")
-			sumatoria=0;
+		var sumatoria=parseInt(document.formularioEnviar.sumatoria.value);
 		var efectivo=parseInt(document.formularioEnviar.VEfectivoConv.value);
 		var tol=parseInt(document.formularioEnviar.total.value);
 		alert("sumatoria="+sumatoria+"    efectivo="+efectivo+"    total="+tol);
-		if((efectivo+sumatoria)<tol){*/
-			
+		if((efectivo+sumatoria)<=tol){
+						
 			document.formularioEnviar.action='<c:url value="/adminConvenio/llenarEntidadConv.jsp"/>'
 			document.formularioEnviar.submit();
-		/*}else{
-			alert("El total Efectivo no debe ser mayor al Total Aprobado");
-			
-		}*/
+		}else{
+			alert("El total Efectivo no debe ser mayor al Total Aprobado");		
+			document.formularioEnviar.action='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>';
+		}
 	}
 	function enviar(){
-		document.frmEntidad.accion.value=accion;
+		document.fraporte.accion.value=accion;
 		document.frmEntidad.submit();
 	}
 
@@ -47,7 +45,7 @@
 <br>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
-					    <td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=3&idConv=${sessionScope.datoConvenio.idconvenio}"/>'><img border="0" src='<c:url value="/comp/img/convenio/Proyectos.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=3&idConv=${sessionScope.datoConvenio.idconvenio}"/>'><img border="0" src='<c:url value="/comp/img/convenio/Proyectos.gif"/>'></a></td>
 		    <td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/convenio/Documentos.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Tiempos.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
@@ -81,13 +79,9 @@
 	</table>
 	
 	<c:if test="${!empty sessionScope.datoConvenio.listaentidadesConv}">
-	<form name="frmPersona"  method="post">
+	<form name="frmAporte"  method="post">
 		<input type="hidden" name="accion" value="0">
-		<input type="hidden" name="idPersona" value="0">
-		<input type="hidden" name="fechaInicio" value="">
-		<input type="hidden" name="fechaFin" value="">
-		<input type="hidden" name="observacion" value="">
-		<table width="95%" align="center" class="tablas">
+			<table width="95%" align="center" class="tablas">
 			<caption>Lista de entidades Asociadas al convenio</caption>
 			<tr>
 				<th width="5px">&nbsp;</th>
@@ -95,6 +89,7 @@
 			    <th><b>Valor Especie</b></th>
 			    <th><b>Valor Efectivo</b></th>
 			    <th><b>Valor Total</b></th>
+			    <th><b>Aportes</b></th>
 			</tr>			
 			<c:set var="numero"  value="0" />
 			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
@@ -104,17 +99,17 @@
 				<td width="100px" align="center"><c:out value="${lista.VEspecieConv}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.VEfectivoConv}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.VTotal}"/></td>
+				<td class="estado" align="center"><img src=<c:url value="/comp/img/Ver.gif" /> onclick='enviar(<c:out value="${lista.entidadid}" />)'></td>
 				<c:set var="numero"  value="${numero+lista.VEfectivoConv}"/>
-				<%--			<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idConvGru}"/>,11,<c:out value="${st.count}"/>)'></td>--%>
-<%-- 			<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>--%>
-			</tr>
+					</tr>
 		    </c:forEach>
 		    
 		</table>
 	</form>
 	
 	</c:if>
-	<c:if test="${empty sessionScope.datoConvenio.listagrupos}">
+	<c:if test="${empty sessionScope.datoConvenio.listaentidadesConv}">
+	<c:set var="numero"  value="0" />
 	<h3 align="center">No hay entidades vinculadas al convenio</h3>
 	</c:if>
 	
