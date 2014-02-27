@@ -1147,7 +1147,7 @@ public FinanzaOBJ getfinanzas(int id) {
 	return finanza;
 }
 
-public boolean insertaRubrosAprobrados(long idProyecto,String [] idRubros,String []valores){
+public boolean insertaRubrosAprobrados(long idProyecto,String [] idRubros,String [] codigos,String [] valores,String []observaciones,String fecha,long usuario){
 	Connection cn=null;
 	PreparedStatement ps=null;
 	boolean retorno = false;
