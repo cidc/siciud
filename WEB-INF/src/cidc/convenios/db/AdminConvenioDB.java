@@ -1147,7 +1147,38 @@ public FinanzaOBJ getfinanzas(int id) {
 	return finanza;
 }
 
-
+public boolean insertaRubrosAprobrados(long idProyecto,String [] idRubros,String []valores){
+	Connection cn=null;
+	PreparedStatement ps=null;
+	boolean retorno = false;
+	int i=1;
+	try {
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("eliminaRubrosAprobados"));
+		ps.setLong(1, idProyecto);
+		ps.executeUpdate();
+		if(idRubros!=null){
+			ps=cn.prepareStatement(rb.getString("insertaRubrosAprobados"));
+			for(int j=0;j<idRubros.length;j++){
+				i=1;
+				ps.setLong(i++, idProyecto);
+				ps.setInt(i++, Integer.parseInt(idRubros[j]));
+				ps.setDouble(i++, Double.parseDouble(valores[j]));
+				ps.addBatch();
+			}
+			ps.executeBatch();
+		}
+		retorno = true;
+	}catch (SQLException e) {
+		lanzaExcepcion(e);
+	}catch (Exception e) {
+		lanzaExcepcion(e);
+	}finally{
+		cerrar(ps);
+		cerrar(cn);
+	}
+	return retorno;
+}
 	
 }
 
