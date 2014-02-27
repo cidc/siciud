@@ -88,7 +88,7 @@ public class CargaRequisitos extends ServletGeneral {
 					if (movilidadDB.setRequisitos(Prop, arch, Doc, Conv)) {
 						mensaje = "Documento almacenado correctamente";
 						InfoGeneral info =(InfoGeneral)sesion.getAttribute("movilidad");
-						req.setAttribute("rutaDoc", movilidadDB.buscarDocumentosInscritos((List<PropuestaOBJ>)sesion.getAttribute("listaDocOBJ"),(int)info.getIdPropuesta()));
+						req.setAttribute("rutaDoc", movilidadDB.buscarDocumentosInscritos((int)info.getIdPropuesta()));
 					} else
 						mensaje = "El documento no pudo ser almacenado";
 				}

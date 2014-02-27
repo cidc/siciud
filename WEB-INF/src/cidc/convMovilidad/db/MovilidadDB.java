@@ -814,8 +814,7 @@ public class MovilidadDB extends BaseDB{
 	 * @param conv
 	 * @return una lista de los documentos de la propuesta con su respectivo nombre
 	 */
-	public List<PropuestaOBJ> buscarDocumentosInscritos(List<PropuestaOBJ> propObj, int conv){
-        List<PropuestaOBJ> l=new ArrayList<PropuestaOBJ>();
+	public List<PropuestaOBJ> buscarDocumentosInscritos( int idProp){
         Connection cn=null;
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -824,25 +823,17 @@ public class MovilidadDB extends BaseDB{
         try {
                 cn=cursor.getConnection(super.perfil);
                 ps=cn.prepareStatement(rb.getString("DocumentosInscritos"));
-                ps.setInt(1,conv);
+                ps.setInt(1,idProp);
                 rs=ps.executeQuery();
                 while(rs.next()){
                         i=1;
                         PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
                         propuestaOBJ.setIdDocumentoRequisito(rs.getInt(i++));
                         propuestaOBJ.setNombreDocumentoRequisito(rs.getString(i++));
-                        l.add(propuestaOBJ);
+                        propuestaOBJ.setDocNombre(rs.getString(i++));
+                        propFinal.add(propuestaOBJ);
                 }
-                for(int j=0;j<propObj.size();j++){
-                	PropuestaOBJ propuestaOBJ=propObj.get(j);
-                	for (PropuestaOBJ propuestaOBJ2 : l){
-                		if(propuestaOBJ.getCodigo()==propuestaOBJ2.getIdDocumentoRequisito()){
-                			propuestaOBJ.setNombreDocumentoRequisito(propuestaOBJ2.getNombreDocumentoRequisito());
-                			propObj.remove(j);
-                			propObj.add(propuestaOBJ);
-                		}
-                	}
-                }
+                
         } catch (Exception e) {
                 lanzaExcepcion(e);
         }finally{
@@ -855,7 +846,7 @@ public class MovilidadDB extends BaseDB{
                 }
         }
        
-        	return propObj;
+        	return propFinal;
 	}
 	
 	public boolean buscarDocumento(int idDoc, long idProp){

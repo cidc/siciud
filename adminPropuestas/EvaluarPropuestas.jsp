@@ -51,23 +51,23 @@
 	}
         function enviar(buscar){
                 	document.listado.codProp.value=buscar;
-                	document.listado.accion.value='2';
+                	document.listado.accion.value='17';
                 	document.listado.action='<c:url value="/adminPropuestas/llenar1.jsp"/>';
                 	document.listado.submit();
         }
 	function nuevo(buscar){
                 document.listado.codProp.value=buscar;
-                document.listado.accion.value='3';
+                document.listado.accion.value='18';
                 document.listado.action='<c:url value="/AdminPropuestas/ComiteEvaluacion.x"/>';
                 document.listado.submit();
         }
 	        function guardar(){
-                document.listado.accion.value='2';
+                document.listado.accion.value='17';
                 document.listado.action='<c:url value="/adminPropuestas/llenar2.jsp"/>';
                 document.listado.submit();
         }
 	        function actualizar(){
-                document.listado.accion.value='3';
+                document.listado.accion.value='18';
                 document.listado.action='<c:url value="/adminPropuestas/llenar2.jsp"/>';
                 document.listado.submit();
         }
@@ -147,24 +147,20 @@
 	%>
 	<c:forEach begin="0" items="${sessionScope.listaCritOBJ}" var="lista3" varStatus="st">
 		<tr>
-			<th><b>Criterio:</b><c:out value="${lista3.codigo}"/></th>
-			<th align="center" width="50px"><b><c:out value="${lista3.nombre}"/></b>	 </th>
-			<th align="center" width="50px"><b><c:out value="${lista3.valor}"/></b>	 </th>
+			<th colspan="1"><b>Criterio:</b><c:out value="${lista3.codigo}"/></th>
+			<th align="center" colspan="5"><b><c:out value="${lista3.nombre}"/></b>	 </th>
+			<th align="center" colspan="5"><b>Puntaje Total: <c:out value="${lista3.valor}"/></b>	 </th>
 		</tr>
 
 		<c:forEach begin="0" items="${sessionScope.listaAspOBJ}" var="lista4" varStatus="st">
 			<c:if test="${lista3.codigo==lista4.criterio}">
                 	<tr>
-				<td align="center" width="25px"><b>
-
- </b></td>
+				<td align="center" width="25px"><b></b></td>
 				<th align="center" width="25px"><b>Aspecto: </b><c:out value="${lista4.codigo}"/></th>
-				<th align="center" width="50px"><b><c:out value="${lista4.nombre}"/></th>
-				<th align="center" width="50px"><b><c:out value="${lista4.valor}"/></th>
+				<th align="center" colspan="4"><b><c:out value="${lista4.nombre}"/></b></th>
+				<th align="center" colspan="5"><b>Puntaje: <c:out value="${lista4.valor}"/></b></th>
 			</tr>
         <tr>
-                	<th align="center"><b>Num</b></th>
-                	<th align="center"><b>Convocatoria</b></th>
                 	<th align="center"><b># Propuesta</b></th>
                 	<th align="center"><b>Documentos</b></th>
 			<c:if test="${tipo==1}">
@@ -175,21 +171,18 @@
 			</c:if>
 			<c:if test="${tipo==2}">
 			<c:forEach begin="0" items="${sessionScope.listaEvalOBJ}" var="lista5" varStatus="st">	
-			<th align="center"><b><c:out value="${lista5.nombre}"/><c:out value="${lista5.apellido}"/></th>
+			<th align="center" colspan="1"><b><c:out value="${lista5.nombre}"/> <c:out value="${lista5.apellido}"/></th>
 			</c:forEach>
-                	<th align="center"><b>Punt. todos evaluadores</b></th>
 			</c:if>
         </tr>
 			</c:if>
         <c:forEach begin="0" items="${sessionScope.listaPropOBJ}" var="lista" varStatus="st">
 	<c:if test="${lista3.codigo==lista4.criterio}">
 	<tr>
-                        <th align="center" width="25px"><b><c:out value="${st.count}"/></b></th>
 <input type="hidden" name="codProp2" value="<c:out value="${lista.codPropuesta}"/>">
 <input type="hidden" name="codAsp2" value="<c:out value="${lista4.codigo}"/>">
 <input type="hidden" name="codCrit2" value="<c:out value="${lista4.criterio}"/>">
 <input type="hidden" name="convId2" value="<c:out value="${lista.conv}"/>">
-                        <td class="listas" width="25px"><c:out value="${num}"/>-<c:out value="${ano}"/></td>
                         <td class="listas" width="25px"><c:out value="${lista.codPropuesta}"/></td>
 		<td>
 		<c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
@@ -214,9 +207,6 @@
 		<td class="estado" align="center">
 			<input type="text" name="observaciones2" id="observaciones2<%=i%>" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta and lista4.codigo==lista6.codAspecto and lista3.codigo==lista6.criterio}">' value="${lista6.total2}" '</c:if>' '</c:forEach>' onClick="this.form.observaciones2<%=i%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
 		</td>
-	<%--	<td class="estado" align="center">
-			<input type="text" name="observaciones3" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta}">' value="${lista6.total3}" '</c:if>' '</c:forEach>' value="0">
-		</td>--%>
 		<td class="estado" align="center">
 			<input type="text" name="observaciones3" id="observaciones3<%=i%>" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista6.codPropuesta==lista.codPropuesta and lista4.codigo==lista6.codAspecto and lista3.codigo==lista6.criterio}">' value="${lista6.total3}" '</c:if>' '</c:forEach>' onClick="this.form.observaciones3<%=i%>.value=document.getElementById('txtCal<%=i%>').value" value="0">
 		</td>
@@ -237,7 +227,6 @@
 <input type="hidden" name="codEvaluador" value="<c:out value="${lista5.codigo}"/>">
 <input type="hidden" name="codAsp" value="<c:out value="${lista4.codigo}"/>">
 			</c:forEach>
-			<td><input type="text" class="txtboxetc" size="4" id="txtCal<%=i%>" name="txtCal<%=i%>" value="0"></td>
 		</c:if>
 	</tr>
 			</c:if>
@@ -245,35 +234,26 @@
 
         </c:forEach>
 	</c:forEach>
-<%--<tr><td>
-<input type="text" class="txtboxetc" size="4" id="txtMonto" name="txtMonto" value="AAAAAA">
-<input type="text" class="txtboxetc" size="4" readonly id="txtPrecioEquipo" name="txtPrecioEquipo" onClick="this.form.txtPrecioEquipo.value=document.getElementById('txtMonto').value" > 
-</td></tr>--%>	
-<tr><td>
-	<table>
-	<tr><th colspan="2">Observaciones de Propuestas</th></tr>
-	<tr><th>Propuesta</th><th>Observaciones</th></tr>
+	<tr>
+	<th colspan="10">Observaciones de Propuestas</th></tr>
+	<tr><th >Propuesta</th><th colspan="9">Observaciones</th></tr>
 	<c:forEach begin="0" items="${sessionScope.listaPropOBJ}" var="lista" varStatus="st">
 	<tr><td><c:out value="${lista.codPropuesta}"/></td>
-		<input type="hidden" name="codPropu" value="${lista.codPropuesta}">
-	
-		<td class="estado" align="center">
+		<td class="estado" align="center" colspan="9"><input type="hidden" name="codPropu" value="${lista.codPropuesta}">
 			<input type="text" name="observaciones" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalObs}" var="lista7" varStatus="st">' '<c:if test="${lista7.codPropuesta==lista.codPropuesta}">' value="${lista7.observa}" '</c:if>' '</c:forEach>' value="0">
 		</td>
 	</tr>
 	</c:forEach>
-	</table>
-		<c:if test="${sessionScope.listaCalObs=='[]' and sessionScope.listaCalOBJ=='[]'}">
+	<tr>
+	<td>
 		<img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()">
-		</c:if>
-		<%if(loginUsuario.isPerfil("1")){ %>
-		<img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="actualizar()">
-		<%}%>
-</td></tr>
+		</td>
+	<td><%if(loginUsuario.isPerfil("1")){ %>
+		<img src="<c:url value="/comp/img/Actualizar.gif"/>" onclick="actualizar()">
+		<%}%></td>
+	</tr>
 	</table>
-
 	</form>
-	
 	</c:if>
 
 

@@ -17,4 +17,6 @@ public class Parametros {
 	public final static int cmdIngresaResParcial=14;
 	public final static int cmdModifResParcial=15;
 	public final static int cmdactivacion=16;
+	public final static int EVALGUARDAR=17;
+	public final static int EVALACTUALIZAR=18;
 }

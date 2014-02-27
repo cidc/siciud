@@ -375,5 +375,6 @@ public class PropuestaOBJ {
 		public void setNombreDocumentoRequisito(String nombreDocumentoRequesito) {
 			this.nombreDocumentoRequisito = nombreDocumentoRequesito;
 		}
+		
         
 }

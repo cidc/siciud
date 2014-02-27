@@ -163,10 +163,7 @@ public class Inscribir extends ServletGeneral {
 			InscripcionConvOBJ inscConvOBJ = new InscripcionConvOBJ();
 			inscConvOBJ.setPropId(idProp);
 			sesion.setAttribute("inscripcionConvOBJ", inscConvOBJ);
-			sesion.setAttribute("listaDocOBJ", movilidadDB
-					.buscarDocumentosInscritos(movilidadDB
-							.getDocumentos((int) convSeleccionada.getConvId()),
-							idProp));
+			sesion.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos(idProp));
 			irA = "/InscripcionConv/Cargar.jsp";
 			break;
 		}

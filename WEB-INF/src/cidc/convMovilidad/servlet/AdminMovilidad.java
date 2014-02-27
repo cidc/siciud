@@ -109,10 +109,10 @@ public class AdminMovilidad extends ServletGeneral {
 						if(terminar.equals("si")){
 							info=(InfoGeneral) sesion.getAttribute("movilidad");
 							movilidadDB.enviarMail(String.valueOf(info.getIdPropuesta()), persona);
-							mensaje="Por favor Verifique su email";
+							mensaje="La inscripcion fue finalizada con exito, por favor verifique su correo electronico, en el cual encontrar el resumen de la propuesta inscrita";
 						}
 					} catch (Exception e) {
-						e.printStackTrace();
+						System.out.println("excepcion controlada");;
 					}
 				}
 				else{
@@ -169,15 +169,9 @@ public class AdminMovilidad extends ServletGeneral {
 				
 			break;
 			case Parametros.ActializarPaso3:
-		//		int conv = Integer.parseInt(req.getParameter("conv"));
-			//	System.out.println("Conv:"+conv);
-				int conv=0;
 				if(req.getParameter("propConvId")!=null)
-				conv=Integer.parseInt(req.getParameter("propConvId"));
-				List<PropuestaOBJ> documentos=movilidadDB.getDocumentos(conv);
 				info =(InfoGeneral)sesion.getAttribute("movilidad");
- 				sesion.setAttribute("listaDocOBJ",movilidadDB.buscarDocumentosInscritos(documentos,(int)info.getIdPropuesta()));
-//				sesion.setAttribute("listaDocOBJ", documentos);
+ 				sesion.setAttribute("listaDocOBJ",movilidadDB.buscarDocumentosInscritos((int)info.getIdPropuesta()));
 				irA="/convMovilidad/Cargar.jsp";
 				System.out.println("Paso 03");
 			break;
