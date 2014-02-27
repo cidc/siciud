@@ -19,18 +19,20 @@
 	
 	function pregunta(){
 		
-		var sumatoria=parseInt(document.formularioEnviar.sumatoria.value);
+		/*var sumatoria=parseInt(document.formularioEnviar.sumatoria.value);
+		if(sumatoria=="NaN"")
+			sumatoria=0;
 		var efectivo=parseInt(document.formularioEnviar.VEfectivoConv.value);
 		var tol=parseInt(document.formularioEnviar.total.value);
 		alert("sumatoria="+sumatoria+"    efectivo="+efectivo+"    total="+tol);
-		if((efectivo+sumatoria)<tol){
-			alert("entroo");
+		if((efectivo+sumatoria)<tol){*/
+			
 			document.formularioEnviar.action='<c:url value="/adminConvenio/llenarEntidadConv.jsp"/>'
 			document.formularioEnviar.submit();
-		}else{
+		/*}else{
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");
 			
-		}
+		}*/
 	}
 	function enviar(){
 		document.frmEntidad.accion.value=accion;
