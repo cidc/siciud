@@ -97,7 +97,7 @@ function suma(formulario1){
 				</c:forEach>
 				
 				<td style="width:400px;" align="right">
-					<b><textarea class="texto" name="resumen" style="width: 99%"></textarea></b>
+					<b><textarea class="texto" name="observacion" style="width: 99%"></textarea></b>
 				</td>
 				
 				</tr>

@@ -239,6 +239,19 @@ case Parametros.AdicionarTiempo:
 					 irA="/adminConvenio/RubrosAprobados.jsp";
 				
 				break;
+				case Parametros.cmdInsertaRubrosAprobados:
+					
+					if(adminConv.insertaRubrosAprobrados(Long.parseLong(objconv.getIdconvenio()), req.getParameterValues("idRubro"), req.getParameterValues("codigo"),req.getParameterValues("valorEntidad"), req.getParameterValues("observacion"),año + "-" + (mes+1) + "-" +dia+"",usuario.getIdUsuario()))
+						 mensaje="Rubros almacenados satisfactoriamente";
+					 else
+						 mensaje="Los rubros no pudieron ser almacenados";
+					 req.setAttribute("listaRubros", proyAntiguosDB.consultarRubros());
+					 req.setAttribute("listaRubrosAprobados", proyAntiguosDB.consultarRubrosAprobados(objProyecto.getId()));
+					 irA="/proyectosAntiguos/RubrosAprobados.jsp";
+				
+				break;
+				
+				
 			
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
