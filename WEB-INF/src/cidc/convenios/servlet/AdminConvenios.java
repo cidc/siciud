@@ -241,17 +241,22 @@ case Parametros.AdicionarTiempo:
 				break;
 				case Parametros.cmdInsertaRubrosAprobados:
 					
-					if(adminConv.insertaRubrosAprobrados(Long.parseLong(objconv.getIdconvenio()), req.getParameterValues("idRubro"), req.getParameterValues("codigo"),req.getParameterValues("valorEntidad"), req.getParameterValues("observacion"),año + "-" + (mes+1) + "-" +dia+"",usuario.getIdUsuario()))
+					/*if(adminConv.insertaRubrosAprobrados(Long.parseLong(objconv.getIdconvenio()), req.getParameterValues("idRubro"), req.getParameterValues("codigo"),req.getParameterValues("valorEntidad"), req.getParameterValues("observacion"),año + "-" + (mes+1) + "-" +dia+"",usuario.getIdUsuario()))
 						 mensaje="Rubros almacenados satisfactoriamente";
 					 else
 						 mensaje="Los rubros no pudieron ser almacenados";
 					 req.setAttribute("listaRubros", proyAntiguosDB.consultarRubros());
 					 req.setAttribute("listaRubrosAprobados", proyAntiguosDB.consultarRubrosAprobados(objProyecto.getId()));
 					 irA="/proyectosAntiguos/RubrosAprobados.jsp";
-				
+				*/
 				break;
 				
-				
+				case Parametros.CargarAportes:
+					
+					
+					 req.setAttribute("listaAportesEntidad", adminConv.buscarAportesEntidad(Integer.parseInt(req.getParameter("idCon"))));
+					 irA="/adminConvenio/Personas.jsp";
+				break;
 			
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";

@@ -32,9 +32,12 @@
 			document.formularioEnviar.action='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>';
 		}
 	}
-	function enviar(){
-		document.fraporte.accion.value=accion;
-		document.frmEntidad.submit();
+	function enviar(id){
+		
+			document.frmAporte.accion.value=17;
+			document.frmAporte.idCon.value=id;
+			document.frmAporte.submit();
+		
 	}
 
 
@@ -79,8 +82,10 @@
 	</table>
 	
 	<c:if test="${!empty sessionScope.datoConvenio.listaentidadesConv}">
-	<form name="frmAporte"  method="post">
+	<form name="frmAporte"  method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 		<input type="hidden" name="accion" value="0">
+		<input type="hidden" name="idCon" value="0">
+		
 			<table width="95%" align="center" class="tablas">
 			<caption>Lista de entidades Asociadas al convenio</caption>
 			<tr>

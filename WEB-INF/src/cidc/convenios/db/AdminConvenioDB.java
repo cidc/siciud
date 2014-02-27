@@ -30,6 +30,7 @@ import cidc.adminArticulos.obj.DatEvaluador;
 import cidc.adminArticulos.obj.EstadoArticulo;
 import cidc.adminArticulos.obj.FiltroArticulo;
 import cidc.adminEntidad.obj.EntidadOBJ;
+import cidc.convenios.obj.AportesOBJ;
 import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.EntidadAsociadaOBJ;
 import cidc.convenios.obj.ExtraDocConvenio;
@@ -1179,6 +1180,44 @@ public boolean insertaRubrosAprobrados(long idProyecto,String [] idRubros,String
 	}
 	return retorno;
 }
+
+public List<AportesOBJ> buscarAportesEntidad(int id){
+	AportesOBJ aporte=null;
+	Connection cn=null;
+	PreparedStatement ps=null;
+	ResultSet rs=null;
+	int i=1;
+	List<AportesOBJ> ListaAporteEnti=new ArrayList <AportesOBJ>();
+	
+	try {
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("getEntidadesConv"));
+		ps.setInt(1, id);
+		rs=ps.executeQuery();
+		//System.out.println("-->"+ps);
+		while(rs.next()){
+			i=1;
+		/*	entid=new EntidadAsociadaOBJ();
+			entid.setIdentidadconvenio(rs.getString(i++));
+			entid.setEntidadid(rs.getString(i++));
+			entid.setConvenioid(rs.getString(i++));
+			entid.setVEspecieConv(rs.getString(i++));
+			entid.setVEfectivoConv(rs.getString(i++));
+			entid.setVTotal(rs.getString(i++));*/
+			ListaAporteEnti.add(aporte);
+		}
+	} catch (SQLException e) {
+		lanzaExcepcion(e);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return ListaAporteEnti;
+}
+
+
+
 	
 }
 
