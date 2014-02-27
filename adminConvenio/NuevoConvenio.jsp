@@ -99,7 +99,10 @@ var nav4=window.Event ? true : false;
               		{alert("Debe seleccionar la facultad del proyecto"); return false;}
         		else{if(document.frmConvenio.grupo.selectedIndex==0)
                              {alert("Debe seleccionar el Semillero o Grupo de Investigación del proyecto"); return false;}
-        				else{ return true;}
+        				else{if(document.frmConvenio.investigador.selectedIndex==0)
+                             {alert("Debe seleccionar el Director"); return false;}
+        						else{ return true;}
+        				}
                     }                  
              	}
 	   		}
@@ -289,6 +292,13 @@ var nav4=window.Event ? true : false;
      <tr> <td class="renglones" colspan="6"><b>Grupo/Semillero:</b></td></tr>
      <tr> <td colspan="6"> <select name="grupo" style="width: 100%" onchange="ajaxGrupo(this)" >
                <option value="0">-----------</option>
+               </select>
+          </td>
+     </tr>
+     
+     <tr> <td class="renglones" colspan="6"><b>Investigador Principal:</b></td></tr>
+     <tr> <td colspan="6"> <select name="investigador" style="width: 100%">
+               <option value="0">------------------------</option>
                </select>
           </td>
      </tr>

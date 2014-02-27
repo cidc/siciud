@@ -32,9 +32,10 @@ public class GetConvenioOBJ implements Serializable{
     private String facultad;
     private String proycurri;
     private String grupo;
+    private String investigador;
     private String objetivo;
     private String resumen;
-    private String observacionesp;
+   
     
     private FinanzaOBJ finanza=null;
     private List<ObservacionesOBJ> listaObservaciones=null;
@@ -220,12 +221,7 @@ public class GetConvenioOBJ implements Serializable{
 	public void setResumen(String resumen) {
 		this.resumen = resumen;
 	}
-	public String getObservacionesp() {
-		return observacionesp;
-	}
-	public void setObservacionesp(String observacionesp) {
-		this.observacionesp = observacionesp;
-	}
+	
 	public List<EntidadAsociadaOBJ> getListaentidadesConv() {
 		return listaentidadesConv;
 	}
@@ -244,6 +240,12 @@ public class GetConvenioOBJ implements Serializable{
 	}
 	public void setFinanza(FinanzaOBJ finanza) {
 		this.finanza = finanza;
+	}
+	public String getInvestigador() {
+		return investigador;
+	}
+	public void setInvestigador(String investigador) {
+		this.investigador = investigador;
 	}
 	
 	

@@ -16,6 +16,22 @@
 		var key=nav4?eve.which :eve.keyCode;
 		return(key<=13 || (key>=48 && key<=57));
 	}
+	
+	function pregunta(){
+		
+		var sumatoria=parseInt(document.formularioEnviar.sumatoria.value);
+		var efectivo=parseInt(document.formularioEnviar.VEfectivoConv.value);
+		var tol=parseInt(document.formularioEnviar.total.value);
+		alert("sumatoria="+sumatoria+"    efectivo="+efectivo+"    total="+tol);
+		if((efectivo+sumatoria)<tol){
+			alert("entroo");
+			document.formularioEnviar.action='<c:url value="/adminConvenio/llenarEntidadConv.jsp"/>'
+			document.formularioEnviar.submit();
+		}else{
+			alert("El total Efectivo no debe ser mayor al Total Aprobado");
+			
+		}
+	}
 	function enviar(){
 		document.frmEntidad.accion.value=accion;
 		document.frmEntidad.submit();
@@ -78,7 +94,7 @@
 			    <th><b>Valor Efectivo</b></th>
 			    <th><b>Valor Total</b></th>
 			</tr>			
-			
+			<c:set var="numero"  value="0" />
 			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td width="5px"><c:out value="${st.count}"/></td>
@@ -86,10 +102,12 @@
 				<td width="100px" align="center"><c:out value="${lista.VEspecieConv}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.VEfectivoConv}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.VTotal}"/></td>
+				<c:set var="numero"  value="${numero+lista.VEfectivoConv}"/>
 				<%--			<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idConvGru}"/>,11,<c:out value="${st.count}"/>)'></td>--%>
 <%-- 			<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>--%>
 			</tr>
 		    </c:forEach>
+		    
 		</table>
 	</form>
 	
@@ -98,9 +116,10 @@
 	<h3 align="center">No hay entidades vinculadas al convenio</h3>
 	</c:if>
 	
-	<form  method="post" action='<c:url value="/adminConvenio/llenarEntidadConv.jsp"/>'>
+	<form  method="post" name="formularioEnviar">
 		<input type="hidden" name="accion" value="14">
-		
+		<input type="hidden" name="total" value="${sessionScope.datoConvenio.finanza.VAprobado}">
+		<input type="hidden" name="sumatoria" value="${numero}">
 		<table align="center" width="95%" class="tablas">
 		<caption>Registro de una Entidad asociada </caption>
 		<tr>
@@ -125,7 +144,7 @@
      
      </tr>		
 			<tr>
-				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>' ></td>
+				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>' onclick='pregunta()'></td>
 			</tr>
 			
 		</table>

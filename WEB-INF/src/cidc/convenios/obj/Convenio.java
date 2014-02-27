@@ -23,8 +23,6 @@ public class Convenio implements Serializable{
 	private int V_Duradias;
 	private int V_Durameses;
 	private int duracion;
-	private float VEfectivo;
-	private float VEspecie;
 	private int VAprobado;
 	private float VAportado;
 	private String N_UsuDigita;
@@ -36,11 +34,12 @@ public class Convenio implements Serializable{
     private int facultad;
     private int proycurri;
     private int grupo;
+    private int investigador;
     private String objetivo = null;
     private String resumen = null;
     
     
-    private String observacionesp= null;
+   
     
    
     
@@ -96,36 +95,8 @@ public class Convenio implements Serializable{
 	public void setResumen(String resumen) {
 		this.resumen = resumen;
 	}
-	public String getObservacionesp() {
-		return observacionesp;
-	}
-	public void setObservacionesp(String observacionesp) {
-		this.observacionesp = observacionesp;
-	}
 	
-    
-    
-    
-    
-    
-    
-	public float getVEfectivo() {
-		return VEfectivo;
-	}
-	public void setVEfectivo(float vEfectivo) {
-		VEfectivo = vEfectivo;
-	}
-	public float getVEspecie() {
-		return VEspecie;
-	}
-	public void setVEspecie(float vEspecie) {
-		VEspecie = vEspecie;
-	}
-	
-	
-
-	
-    
+	 
     public int getIdconvenio() {
 		return idconvenio;
 	}
@@ -252,6 +223,12 @@ public class Convenio implements Serializable{
 	}
 	public void setVAportado(float vAportado) {
 		VAportado = vAportado;
+	}
+	public int getInvestigador() {
+		return investigador;
+	}
+	public void setInvestigador(int investigador) {
+		this.investigador = investigador;
 	}
 	
 
