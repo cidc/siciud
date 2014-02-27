@@ -48,7 +48,6 @@ public class AdminConvenios extends ServletGeneral {
 		switch(accion){
 			case Parametros.cmdInsertaConvenio:
 				
-				
 				conv=(Convenio)sesion.getAttribute("nuevoConvenio");
 				conv.setN_UsuDigita(usuario.getNombre());
 				conv.setF_Digita(año + "-" + (mes+1) + "-" +dia+"");

@@ -16,6 +16,13 @@
 		var key=nav4?eve.which :eve.keyCode;
 		return(key<=13 || (key>=48 && key<=57));
 	}
+	function pregunta(id)
+	{confirmar=confirm("¿Desea Realmente Eliminar el Registro?");  
+	if (confirmar)
+		eliminar(id)
+	
+	
+	}
 	function eliminar(id){
 		document.frmTiempos.accion.value=9;
 		document.frmTiempos.idTiempo.value=id;
@@ -88,7 +95,7 @@
 				</td>
 				<td width="150px" align="center"><c:out value="${lista.regitradoPor}"/></td>
 				<td width="150px" align="center"><c:out value="${lista.descripcion}"/></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='eliminar(<c:out value="${lista.idTiempo}"/>)'></td>
+				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='pregunta(<c:out value="${lista.idTiempo}"/>)'></td>
 			</tr>
 			</c:forEach>
 		</table>

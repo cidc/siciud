@@ -302,8 +302,6 @@ public class AdminConvenioDB extends BaseDB{
 			ps.setString(i++, convenio.getTipo());
 			ps.setInt(i++,convenio.getNumDisp());
 			ps.setString(i++, global.sumarMesesFecha(convenio.getFechaInicio(),(convenio.getDuracion())));
-			ps.setFloat(i++, convenio.getVEfectivo());
-			ps.setFloat(i++, convenio.getVEspecie());
 			ps.setString(i++, convenio.getN_UsuDigita());
 			ps.setString(i++, convenio.getF_Digita());
 			ps.setString(i++, convenio.getNombreproyecto());
@@ -314,7 +312,8 @@ public class AdminConvenioDB extends BaseDB{
 			ps.setInt(i++, convenio.getGrupo());
 			ps.setString(i++, convenio.getObjetivo());
 			ps.setString(i++, convenio.getResumen());
-			ps.setString(i++, convenio.getObservacionesp());
+			ps.setInt(i++, convenio.getInvestigador());
+			
 			ps.executeUpdate();
 		
 			retorno=true;
@@ -459,8 +458,6 @@ public class AdminConvenioDB extends BaseDB{
 				convenio.setTipo(rs.getString(i++));
 				convenio.setNumDisp(rs.getInt(i++));
 				convenio.setFechaFinalizacion(rs.getString(i++));
-				convenio.setVEfectivo(rs.getFloat(i++));
-				convenio.setVEspecie(rs.getFloat(i++));
 				convenio.setN_UsuDigita(rs.getString(i++));
 				convenio.setF_Digita(rs.getString(i++));
 				convenio.setNombreproyecto(rs.getString(i++));
@@ -471,7 +468,7 @@ public class AdminConvenioDB extends BaseDB{
 				convenio.setGrupo(rs.getInt(i++));
 				convenio.setObjetivo(rs.getString(i++));
 				convenio.setResumen(rs.getString(i++));
-				convenio.setObservacionesp(rs.getString(i++));
+				convenio.setInvestigador(rs.getInt(i++));
 				lista.add(convenio);
 			}
 		} catch (SQLException e) {
@@ -665,7 +662,7 @@ public class AdminConvenioDB extends BaseDB{
 				convenio.setGrupo(rs.getString(i++));
 				convenio.setObjetivo(rs.getString(i++));
 				convenio.setResumen(rs.getString(i++));
-				convenio.setObservacionesp(rs.getString(i++));
+				convenio.setInvestigador(rs.getString(i++));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

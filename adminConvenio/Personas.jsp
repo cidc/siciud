@@ -24,6 +24,21 @@
 		document.frmPersona.idPersona.value=idPersona;
 		document.frmPersona.submit();
 	}
+	
+	function pregunta(idPersona,accion,cont)
+	{
+		
+		confirmar=confirm("¿Desea Realmente Eliminar el Registro?");
+	if (confirmar)
+		enviar(idPersona,accion,cont)
+		}
+	function pregunta2(idPersona,accion,cont)
+	{
+		confirmar=confirm("¿Desea actualizar la persona?");
+	
+	if (confirmar)
+		enviar(idPersona,accion,cont)
+		}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -108,8 +123,8 @@
 				<td width="100px" align="center"><c:out value="${lista.documento}"/></td>
 				<td align="center"><c:out value="${lista.nombre}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.rol}"/></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,11,<c:out value="${st.count}"/>)'></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='enviar(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>
+				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis2.png"/>' onclick='pregunta(<c:out value="${lista.idPersona}"/>,11,<c:out value="${st.count}"/>)'></td>
+				<td width="5px" align="center"><img src='<c:url value="/comp/img/ok.png"/>' onclick='pregunta2(<c:out value="${lista.idPersona}"/>,12,<c:out value="${st.count}"/>)'></td>
 			</tr>
 			<tr>
 			<th colspan="6"><b>Observaciones</b></th>

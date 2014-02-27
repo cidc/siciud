@@ -18,7 +18,7 @@
 	  
 	  		//borrar_combo(parent.document.frmConvenio.proycurri);
 	  		borrar_combo(parent.document.frmConvenio.grupo);
-	  	//	borrar_combo(parent.document.form1.investigador);
+	  	//	borrar_combo(parent.document.frmConvenio.investigador);
 
 			<c:forEach begin="0" items="${sessionScope.ajaxProyCur}" var="pro" varStatus="st2">
 			    <c:if test="${sessionScope.Convenio.proycurri==pro.codigo}">
@@ -43,14 +43,14 @@
 
 
 		<c:when test="${requestScope.para==2}">
-	  	borrar_combo(parent.document.form1.investigador);
+	  	borrar_combo(parent.document.frmConvenio.investigador);
 
 		<c:forEach begin="0" items="${sessionScope.ajaxInvest}" var="inv" varStatus="st2">
-		    <c:if test="${sessionScope.proyectos.investigador==inv.codigo}">
-			parent.document.form1.investigador.options[<c:out value="${st2.count}"/>] = new Option('<c:out value="${inv.nombre}"/>','<c:out value="${inv.codigo}"/>','selected');
+		    <c:if test="${sessionScope.Convenio.investigador==inv.codigo}">
+			parent.document.frmConvenio.investigador.options[<c:out value="${st2.count}"/>] = new Option('<c:out value="${inv.nombre}"/>','<c:out value="${inv.codigo}"/>','selected');
 			</c:if>
-			<c:if test="${sessionScope.proyectos.investigador!=inv.codigo}">
-			parent.document.form1.investigador.options[<c:out value="${st2.count}"/>] = new Option('<c:out value="${inv.nombre}"/>','<c:out value="${inv.codigo}"/>');
+			<c:if test="${sessionScope.Convenio.investigador!=inv.codigo}">
+			parent.document.frmConvenio.investigador.options[<c:out value="${st2.count}"/>] = new Option('<c:out value="${inv.nombre}"/>','<c:out value="${inv.codigo}"/>');
 			</c:if>
 		</c:forEach>
 	</c:when>
