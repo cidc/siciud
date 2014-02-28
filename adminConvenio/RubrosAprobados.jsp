@@ -53,6 +53,8 @@ function suma(formulario1){
 
 <form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadoRubros">
 	<input type="hidden" name="accion" value="16">
+
+	<input type="hidden" name="idfinanza" value='<c:out value="${sessionScope.datoConvenio.finanza.idfinanza}"/>'>
 	
 	
 	<c:set var="var2" value="${0}"></c:set>
