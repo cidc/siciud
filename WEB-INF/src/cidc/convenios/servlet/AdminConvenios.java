@@ -241,14 +241,22 @@ case Parametros.AdicionarTiempo:
 				break;
 				case Parametros.cmdInsertaRubrosAprobados:
 					
-					/*if(adminConv.insertaRubrosAprobrados(Long.parseLong(objconv.getIdconvenio()), req.getParameterValues("idRubro"), req.getParameterValues("codigo"),req.getParameterValues("valorEntidad"), req.getParameterValues("observacion"),año + "-" + (mes+1) + "-" +dia+"",usuario.getIdUsuario()))
+					 System.out.println("entro a insertar rubros");
+					 System.out.println("numero de entidades"+req.getParameter("numeroentidad"));
+					 System.out.println("dfinanza"+req.getParameter("idfinanza"));
+					 System.out.println("idrubro"+req.getParameter("idRubro"));
+					
+					 
+					// adminConv.insertaRubrosAprobrados(Integer.parseInt(req.getParameter("idfinanza")), req.getParameter("idRubro"), req.getParameter("codigo"),req.getParameterValues("valorEntidad"), req.getParameter("observacion"),año + "-" + (mes+1) + "-" +dia+"",usuario.getIdUsuario(),Integer.parseInt(req.getParameter("numeroentidad")),req.getParameterValues("idconvent"));
+					 
+					if(adminConv.insertaRubrosAprobrados(Integer.parseInt(req.getParameter("idfinanza")), req.getParameter("idRubro"), req.getParameter("codigo"),req.getParameterValues("valorEntidad"), req.getParameter("observacion"),año + "-" + (mes+1) + "-" +dia+"",usuario.getIdUsuario(),Integer.parseInt(req.getParameter("numeroentidad")),req.getParameterValues("idconvent")))
 						 mensaje="Rubros almacenados satisfactoriamente";
 					 else
 						 mensaje="Los rubros no pudieron ser almacenados";
-					 req.setAttribute("listaRubros", proyAntiguosDB.consultarRubros());
-					 req.setAttribute("listaRubrosAprobados", proyAntiguosDB.consultarRubrosAprobados(objProyecto.getId()));
-					 irA="/proyectosAntiguos/RubrosAprobados.jsp";
-				*/
+					// req.setAttribute("listaRubros", proyAntiguosDB.consultarRubros());
+					// req.setAttribute("listaRubrosAprobados", proyAntiguosDB.consultarRubrosAprobados(objProyecto.getId()));
+					// irA="/proyectosAntiguos/RubrosAprobados.jsp";
+				
 				break;
 				
 				case Parametros.CargarAportes:

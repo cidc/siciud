@@ -1148,15 +1148,49 @@ public FinanzaOBJ getfinanzas(int id) {
 	return finanza;
 }
 
-public boolean insertaRubrosAprobrados(long idProyecto,String [] idRubros,String [] codigos,String [] valores,String []observaciones,String fecha,long usuario){
+public boolean insertaRubrosAprobrados(int idfinanza,String idRubro,String codigo,String [] valores,String observacion,String fecha,long usuario,int nentidades,String []idconventd){
 	Connection cn=null;
 	PreparedStatement ps=null;
 	boolean retorno = false;
 	int i=1;
 	try {
 		cn=cursor.getConnection(super.perfil);
-		ps=cn.prepareStatement(rb.getString("eliminaRubrosAprobados"));
-		ps.setLong(1, idProyecto);
+		ps=cn.prepareStatement(rb.getString("insertaCDP"));
+		ps.setInt(i++, idfinanza);
+		ps.setString(i++, fecha);
+		int suma=0;
+		for(int u=0;u<nentidades;u++){
+			suma=suma+Integer.parseInt(valores[u]);
+		}
+		System.out.println("suma de valores"+suma);
+		ps.setInt(i++, suma);
+		ps.setString(i++,observacion);
+		ps.setLong(i++, usuario);
+		ps.executeUpdate();
+	
+		
+		ps=cn.prepareStatement(rb.getString("insertaRubrosAprobados"));
+		for(int u=0;u<nentidades;u++){
+			i=1;
+			ps.setInt(i++, Integer.parseInt(idconventd[u]));
+			//ps.setInt(i++, Integer.parseInt(idconventd[u]));id del cdp.
+			ps.setInt(i++, Integer.parseInt(idRubro));
+			ps.setInt(i++,  Integer.parseInt(valores[u]));
+			ps.addBatch();
+		}
+		ps.executeBatch();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*	ps=cn.prepareStatement(rb.getString("eliminaRubrosAprobados"));
+		ps.setLong(1, idconvenioentidad);
 		ps.executeUpdate();
 		if(idRubros!=null){
 			ps=cn.prepareStatement(rb.getString("insertaRubrosAprobados"));
@@ -1170,10 +1204,16 @@ public boolean insertaRubrosAprobrados(long idProyecto,String [] idRubros,String
 			ps.executeBatch();
 		}
 		retorno = true;
-	}catch (SQLException e) {
-		lanzaExcepcion(e);
+		for(int u=0;u<nentidades;u++){
+			i=1;
+			
+			
+		}*/
+		
 	}catch (Exception e) {
+		System.out.println("se explota en insertar cdp");
 		lanzaExcepcion(e);
+	
 	}finally{
 		cerrar(ps);
 		cerrar(cn);
