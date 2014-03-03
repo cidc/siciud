@@ -1302,6 +1302,42 @@ public boolean registrarAporte(GetConvenioOBJ convenio, AportesOBJ aporte){
 	}
 	return retorno;
 }
+
+public EntidadAsociadaOBJ entidadaporte(int id){
+	EntidadAsociadaOBJ entidad=null;
+	Connection cn=null;
+	PreparedStatement ps=null;
+	ResultSet rs=null;
+	int i=1;
+	
+	
+	try {
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("consultarEntidadConvenio"));
+		ps.setInt(1, id);
+		rs=ps.executeQuery();
+		
+		while(rs.next()){
+			i=1;
+			entidad=new EntidadAsociadaOBJ();
+
+			entidad.setIdentidadconvenio(rs.getString(i++));
+			entidad.setEntidadid(rs.getString(i++));
+			entidad.setConvenioid(rs.getString(i++));
+			entidad.setVEspecieConv(rs.getString(i++));
+			entidad.setVEfectivoConv(rs.getString(i++));
+			entidad.setVTotal(rs.getString(i++));
+			
+		}
+	} catch (SQLException e) {
+		lanzaExcepcion(e);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return entidad;
+}
 	
 }
 

@@ -81,7 +81,7 @@
 			
 			<th colspan="5"><b>Entidad</b></th>	</tr>
 			<tr>
-			<td width="100%" align="center"><c:out value="${requestScope.nombreEntidad}"/></td>
+			<td width="100%" align="center"><c:out value="${requestScope.entidadaporte.identidadconvenio}"/></td>
 			
 		</tr>
 		</table>

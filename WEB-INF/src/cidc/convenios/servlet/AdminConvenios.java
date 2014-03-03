@@ -264,6 +264,7 @@ case Parametros.AdicionarTiempo:
 					 req.setAttribute("nombreEntidad",req.getParameter("nombreEntidad"));
 					 req.removeAttribute("listaAportesEntidad");
 					 req.setAttribute("listaAportesEntidad", adminConv.buscarAportesEntidad(Integer.parseInt(req.getParameter("idCon"))));
+					 req.setAttribute("entidadaporte", adminConv.entidadaporte(Integer.parseInt(req.getParameter("idCon"))));
 					 req.setAttribute("idCon",req.getParameter("idCon"));
 					 irA="/adminConvenio/Aportes.jsp";
 				break;
