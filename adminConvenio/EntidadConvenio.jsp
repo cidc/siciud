@@ -22,7 +22,6 @@
 		var sumatoria=parseInt(document.formularioEnviar.sumatoria.value);
 		var efectivo=parseInt(document.formularioEnviar.VEfectivoConv.value);
 		var tol=parseInt(document.formularioEnviar.total.value);
-		alert("sumatoria="+sumatoria+"    efectivo="+efectivo+"    total="+tol);
 		if((efectivo+sumatoria)<=tol){
 						
 			document.formularioEnviar.action='<c:url value="/adminConvenio/llenarEntidadConv.jsp"/>'
@@ -32,10 +31,11 @@
 			document.formularioEnviar.action='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>';
 		}
 	}
-	function enviar(id){
+	function enviar(id,action,entidad){
 		
-			document.frmAporte.accion.value=17;
+			document.frmAporte.accion.value=action;
 			document.frmAporte.idCon.value=id;
+			document.frmAporte.nombreEntidad.value=entidad;
 			document.frmAporte.submit();
 		
 	}
@@ -53,7 +53,10 @@
 			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Tiempos.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
-			<td><img border="0" src='<c:url value="/comp/img/convenio/EntidadesClick.gif"/>'></td>
+			<td><img border="0" src='<c:url value="/comp/img/convenio/EntidadesClick.gif"/>'></a></td>
+			<td><a href='<c:url value=""/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=15"/>'><img src='<c:url value="/comp/img/prAprobado.gif"/>'></a></td>
+	
 		</tr>
 	</table>
 <br>
@@ -85,7 +88,7 @@
 	<form name="frmAporte"  method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 		<input type="hidden" name="accion" value="0">
 		<input type="hidden" name="idCon" value="0">
-		
+		<input type="hidden" name="nombreEntidad" value="">
 			<table width="95%" align="center" class="tablas">
 			<caption>Lista de entidades Asociadas al convenio</caption>
 			<tr>
@@ -104,7 +107,8 @@
 				<td width="100px" align="center"><c:out value="${lista.VEspecieConv}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.VEfectivoConv}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.VTotal}"/></td>
-				<td class="estado" align="center"><img src=<c:url value="/comp/img/Ver.gif" /> onclick='enviar(<c:out value="${lista.entidadid}" />)'></td>
+				<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>' onclick='enviar(<c:out value="${lista.identidadconvenio}"/>,17,"${lista.entidadid}")'></td>
+				
 				<c:set var="numero"  value="${numero+lista.VEfectivoConv}"/>
 					</tr>
 		    </c:forEach>

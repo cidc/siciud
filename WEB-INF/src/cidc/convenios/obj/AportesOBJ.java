@@ -6,26 +6,25 @@ public class AportesOBJ  implements Serializable{
 
 	
 	private String idAporte;
-	private String nconvenioEntidad;	
 	private String codAporte;
 	private String tipoAporte;
-	private String fechaAporte;
-	private String usudigita;
+	private String Aobservacion;	
 	private String personaOpcional;	
 	private String valorAporte;
-	private String aporteFinanza;
+	private String fechaAporte;
+	private String usudigita;
 	private String fechaDigita;
+	private String aporteFinanza;
+	private String nconvenioEntidad;	
+	
+	
+	
+	
 	public String getIdAporte() {
 		return idAporte;
 	}
 	public void setIdAporte(String idAporte) {
 		this.idAporte = idAporte;
-	}
-	public String getNconvenioEntidad() {
-		return nconvenioEntidad;
-	}
-	public void setNconvenioEntidad(String nconvenioEntidad) {
-		this.nconvenioEntidad = nconvenioEntidad;
 	}
 	public String getCodAporte() {
 		return codAporte;
@@ -39,17 +38,11 @@ public class AportesOBJ  implements Serializable{
 	public void setTipoAporte(String tipoAporte) {
 		this.tipoAporte = tipoAporte;
 	}
-	public String getFechaAporte() {
-		return fechaAporte;
+	public String getAobservacion() {
+		return Aobservacion;
 	}
-	public void setFechaAporte(String fechaAporte) {
-		this.fechaAporte = fechaAporte;
-	}
-	public String getUsudigita() {
-		return usudigita;
-	}
-	public void setUsudigita(String usudigita) {
-		this.usudigita = usudigita;
+	public void setAobservacion(String aobservacion) {
+		Aobservacion = aobservacion;
 	}
 	public String getPersonaOpcional() {
 		return personaOpcional;
@@ -63,11 +56,17 @@ public class AportesOBJ  implements Serializable{
 	public void setValorAporte(String valorAporte) {
 		this.valorAporte = valorAporte;
 	}
-	public String getAporteFinanza() {
-		return aporteFinanza;
+	public String getFechaAporte() {
+		return fechaAporte;
 	}
-	public void setAporteFinanza(String aporteFinanza) {
-		this.aporteFinanza = aporteFinanza;
+	public void setFechaAporte(String fechaAporte) {
+		this.fechaAporte = fechaAporte;
+	}
+	public String getUsudigita() {
+		return usudigita;
+	}
+	public void setUsudigita(String usudigita) {
+		this.usudigita = usudigita;
 	}
 	public String getFechaDigita() {
 		return fechaDigita;
@@ -75,9 +74,19 @@ public class AportesOBJ  implements Serializable{
 	public void setFechaDigita(String fechaDigita) {
 		this.fechaDigita = fechaDigita;
 	}
-	
-	
-	
+	public String getAporteFinanza() {
+		return aporteFinanza;
+	}
+	public void setAporteFinanza(String aporteFinanza) {
+		this.aporteFinanza = aporteFinanza;
+	}
+	public String getNconvenioEntidad() {
+		return nconvenioEntidad;
+	}
+	public void setNconvenioEntidad(String nconvenioEntidad) {
+		this.nconvenioEntidad = nconvenioEntidad;
+	}
+
 	
 	
 	

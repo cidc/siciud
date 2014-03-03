@@ -36,10 +36,13 @@
 	<table cellpadding="0" cellspacing="0">
 		<tr>
 			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=3&idConv=${sessionScope.datoConvenio.idconvenio}"/>'><img border="0" src='<c:url value="/comp/img/convenio/Proyectos.gif"/>'></a></td>
-			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/convenio/Documentos.gif"/>'></a></td>
-			<td><img border="0" src='<c:url value="/comp/img/convenio/TiemposClick.gif"/>'></td>
+		    <td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/convenio/Documentos.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Tiempos.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
+			<td><img border="0" src='<c:url value="/comp/img/convenio/EntidadesClick.gif"/>'></a></td>
+			<td><a href='<c:url value=""/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=15"/>'><img src='<c:url value="/comp/img/prAprobado.gif"/>'></a></td>
 		</tr>
 	</table>
 <br>
@@ -67,57 +70,73 @@
 		</tr>
 	</table>
 	
-	<c:if test="${!empty sessionScope.datoConvenio.listaTiempos}">
-	<form name="frmTiempos" action='<c:url value="/adminConvenio/AdminConvenio.x"/>' method="post">
+	<c:if test="${!empty requestScope.listaAportesEntidad}">
+	<form name="frmListAportes" action='<c:url value="/adminConvenio/AdminConvenio.x"/>' method="post">
 		<input type="hidden" name="accion" value="0">
-		<input type="hidden" name="idTiempo" value="0">
+		
+		
+	
 		<table width="95%" align="center" class="tablas">
-			<caption>Lista de Tiempos aprobados</caption>
+			<caption>Lista de Aportes Realizados</caption>
+			<tr>
+			
+			<th colspan="5"><b>Entidad</b></th>	</tr>
+			<tr>
+			<td width="100%" align="center"><c:out value="${requestScope.nombreEntidad}"/></td>
+			
+		</tr>
+		</table>
+		<br>
+			<table width="95%" align="center" class="tablas">
 			<tr>
 				<th width="5px">&nbsp;</th>
-				<th width="75px"><b>Fecha Asignación</b></th>
-				<th width="75px"><b>Aprobado</b></th>				
-				<th width="75px"><b>Tipo</b></th>
-				<th width="150px"><b>Registrado por</b></th>
-				<th ><b>Observación</b></th>
+				<th width="75px"><b>Cod Aporte</b></th>
+				<th width="75px"><b>Tipo Aporte</b></th>				
+				<th width="75px"><b>Valor Aporte</b></th>
+				<th width="75px"><b>Fecha Aporte</b></th>
+				<th width="75px"><b>Cliente</b></th>
+				
 				<th width="10px">&nbsp;</th>
 			</tr>
-			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaTiempos}" var="lista" varStatus="st">
+			<c:forEach begin="0" items="${requestScope.listaAportesEntidad}" var="lista" varStatus="st">
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td width="5px"><c:out value="${st.count}"/></td>
-				<td width="75px" align="center"><c:out value="${lista.fechaTiempo}"/></td>
-				<td width="75px" align="center"><c:out value="${lista.valorTiempo}"/>  (meses)</td>
-				<td width="75px" align="center">
-				<c:if test="${lista.tipoTiempo==1}">Prórroga</c:if>
-				<c:if test="${lista.tipoTiempo==2}">Aplazamiento</c:if>
-				<c:if test="${lista.tipoTiempo==3}">Suspensión</c:if>
-				<c:if test="${lista.tipoTiempo==4}">Extensión</c:if>
-				</td>
-				<td width="150px" align="center"><c:out value="${lista.regitradoPor}"/></td>
-				<td width="150px" align="center"><c:out value="${lista.descripcion}"/></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='pregunta(<c:out value="${lista.idTiempo}"/>)'></td>
+				<td width="75px" align="center"><c:out value="${lista.codAporte}"/></td>
+				<td width="75px" align="center"><c:out value="${lista.tipoAporte}"/></td>
+				<td width="75px" align="center"><c:out value="${lista.valorAporte}"/></td>
+				<td width="75px" align="center"><c:out value="${lista.fechaAporte}"/></td>
+				<td width="75px" align="center"><c:out value="${lista.personaOpcional}"/></td>
+				<%--<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='enviar(<c:out value="${lista.idAporte}"/>)'></td>--%>
 			</tr>
 			</c:forEach>
 		</table>
 	</form>
 	</c:if>
-	<c:if test="${empty sessionScope.datoConvenio.listaTiempos}">
-	<h3 align="center">No hay tiempos adicionales aprobados para este proyecto</h3>
+	<c:if test="${empty requestScope.listaAportesEntidad}">
+	<h3 align="center">No hay aporte adicionales para este proyecto</h3>
 	</c:if>
 	
-	<form method="post" action='<c:url value="/adminConvenio/llenarTiempo.jsp"/>'>
-	<input type="hidden" name="accion" value="8"> 
+	<form method="post" action='<c:url value="/adminConvenio/llenarAporte.jsp"/>'>
+	<input type="hidden" name="accion" value="18"> 
+	<input type="hidden" name="idCon" value="<c:out value="${requestScope.idCon}"/>"> 
+	<input type="hidden" name="nombreEntidad" value="<c:out value="${requestScope.nombreEntidad}"/>"> 
 		<table align="center" width="90%" class="tablas">
-		<caption>Registro de nuevo tiempo adicional</caption>
+		<caption>Registro de un Nuevo Aporte</caption>
 			<tr>
-				<th width="175px">Fecha Asignación</th>
-				<th width="100px">Tiempo Aprobado</th>
-				<th width="100px">Tipo</th>
-				<th>Observaciones</th>
+				<th width="175px">Codigo Aporte</th>
+				<th width="75px">Fecha Aporte</th>
+				<th width="100px">Valor Aporte</th>
+				<th width="300px">Cliente</th>
+				
 			</tr>
 			<tr>
+			<td> 
+				<input type="text"  name="codAporte" style="width: 100%; text-align: right;"> 
+				
+				</td>
+				
 				<td  width="175px">
-					<input type='text' name='fechaTiempo' style="width: 75%" readonly='true' id='f_date_a' size='12'>
+					<input type='text' name='fechaAporte' style="width: 75%" readonly='true' id='f_date_a' size='12'>
 					<button type='button' id='f_trigger_a'>...</button>
 					<script type='text/javascript'>
 		    			Calendar.setup({
@@ -130,22 +149,26 @@
 		    			})
 	    			</script>
 				</td>
-				<td width="100px"><input type="text" maxlength="3" onkeypress="return numeros(event)" name="valorTiempo" style="width: 50%;text-align: right;"> Meses</td>
 				<td width="100px">
-					<select name="tipoTiempo">
-						<option value="1">Prórroga</option>
-						<option value="2">Aplazamiento</option>
-						<option value="3">Suspensión</option>
-						<option value="4">Extensión</option>
-					</select>
+				<input type="text" maxlength="9" name="valorAporte" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)">
 				</td>
-				<td><input type="text" name="descripcion"></td>
-			</tr>
+				<td width="100px">
+					<input type="text" name="personaOpcional" style="width: 100%;text-align: right;">
+				</td>
+				</tr>
+				
+				<tr>
+				<tr>
+						<td colspan="6" class="renglones"><b>Observación</b></td>
+							</tr>
+							<tr>
+								<td colspan="6"><input type="text" name="Aobservacion" size="70" maxlength="70"></td>
+							</tr>
 			<tr>
 				<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>'></td>
 			</tr>
 		</table>
-	</form>
+	</form> 
 	
 </c:if>
 <c:if test="${sessionScope.datoConvenio==null}">

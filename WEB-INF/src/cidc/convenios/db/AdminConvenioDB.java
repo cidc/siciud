@@ -1232,19 +1232,27 @@ public List<AportesOBJ> buscarAportesEntidad(int id){
 	
 	try {
 		cn=cursor.getConnection(super.perfil);
-		ps=cn.prepareStatement(rb.getString("getEntidadesConv"));
+		ps=cn.prepareStatement(rb.getString("consultarAportes"));
 		ps.setInt(1, id);
 		rs=ps.executeQuery();
-		//System.out.println("-->"+ps);
+		
 		while(rs.next()){
 			i=1;
-		/*	entid=new EntidadAsociadaOBJ();
-			entid.setIdentidadconvenio(rs.getString(i++));
-			entid.setEntidadid(rs.getString(i++));
-			entid.setConvenioid(rs.getString(i++));
-			entid.setVEspecieConv(rs.getString(i++));
-			entid.setVEfectivoConv(rs.getString(i++));
-			entid.setVTotal(rs.getString(i++));*/
+			aporte=new AportesOBJ();
+
+			aporte.setIdAporte(rs.getString(i++));
+			aporte.setCodAporte(rs.getString(i++));
+			aporte.setTipoAporte(rs.getString(i++));
+			aporte.setAobservacion(rs.getString(i++));
+			aporte.setPersonaOpcional(rs.getString(i++));
+			aporte.setValorAporte(rs.getString(i++));
+			aporte.setFechaAporte(rs.getString(i++));
+			aporte.setUsudigita(rs.getString(i++));
+			aporte.setFechaDigita(rs.getString(i++));
+			aporte.setNconvenioEntidad(rs.getString(i++));
+			aporte.setAporteFinanza(rs.getString(i++));
+			
+		
 			ListaAporteEnti.add(aporte);
 		}
 	} catch (SQLException e) {
@@ -1258,7 +1266,41 @@ public List<AportesOBJ> buscarAportesEntidad(int id){
 }
 
 
-
+public boolean registrarAporte(GetConvenioOBJ convenio, AportesOBJ aporte){
+	
+	
+	boolean retorno=false;
+	Connection cn=null;
+	PreparedStatement ps=null;
+	int i=1;
+	try {
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("registrarAporte"));
+		System.out.println("Entro db");
+		ps.setString(i++, aporte.getCodAporte());
+		ps.setString(i++, aporte.getTipoAporte());
+		ps.setString(i++, aporte.getAobservacion());
+		ps.setString(i++, aporte.getPersonaOpcional());
+		ps.setInt(i++, Integer.parseInt(aporte.getValorAporte()));
+		ps.setString(i++, aporte.getFechaAporte());
+		ps.setString(i++, aporte.getUsudigita());
+		ps.setString(i++, aporte.getFechaDigita());
+		ps.setInt(i++, Integer.parseInt(aporte.getNconvenioEntidad()));
+		ps.setInt(i++, (convenio.getFinanza().getIdfinanza()));
+		
+		ps.executeUpdate();
+	//	System.out.println("----->"+ps);
+		retorno=true;
+	}catch (SQLException e) {
+		lanzaExcepcion(e);
+	}catch (Exception e) {
+		lanzaExcepcion(e);
+	}finally{
+		cerrar(ps);
+		cerrar(cn);
+	}
+	return retorno;
+}
 	
 }
 

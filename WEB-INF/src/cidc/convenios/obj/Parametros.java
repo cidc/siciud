@@ -23,4 +23,5 @@ public class Parametros {
 	public static final int cmdListaRubrosAprobados=15;
 	public static final int cmdInsertaRubrosAprobados=16;
 	public static final int CargarAportes=17;
+	public static final int NuevoAporte=18;
 }
