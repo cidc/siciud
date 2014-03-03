@@ -51,6 +51,10 @@ function suma(formulario1){
 	</table>
 <br>
 
+<c:if test="${empty sessionScope.datoConvenio.listaTiempos}">
+	<h3 align="center">No hay tiempos adicionales aprobados para este proyecto</h3>
+	</c:if>
+
 <form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadoRubros">
 	<input type="hidden" name="accion" value="16">
 

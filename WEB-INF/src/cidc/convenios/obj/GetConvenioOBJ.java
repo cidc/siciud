@@ -43,6 +43,7 @@ public class GetConvenioOBJ implements Serializable{
     private List<PersonaOBJ> listaPersonas=null;
     private List<PersonaOBJ> listagrupos=null;
     private List<EntidadAsociadaOBJ> listaentidadesConv=null;
+    private List<CdpOBJ> listacdpsConv=null;
     
     public List<PersonaOBJ> getListagrupos() {
 		return listagrupos;

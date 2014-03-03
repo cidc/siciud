@@ -580,6 +580,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setListagrupos(getListaGrupos(id));	
 				conv.setListaentidadesConv(getListaEntidadesConv(id));	
 				conv.setFinanza(getfinanzas(id));
+				
 			}
 			return conv;
 		}
