@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import cidc.convenios.db.AdminConvenioDB;
+import cidc.convenios.obj.AportesOBJ;
 import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.EntidadAsociadaOBJ;
 import cidc.convenios.obj.GetConvenioOBJ;
@@ -260,12 +261,39 @@ case Parametros.AdicionarTiempo:
 				break;
 				
 				case Parametros.CargarAportes:
-					
-					
+					 req.setAttribute("nombreEntidad",req.getParameter("nombreEntidad"));
+					 req.removeAttribute("listaAportesEntidad");
 					 req.setAttribute("listaAportesEntidad", adminConv.buscarAportesEntidad(Integer.parseInt(req.getParameter("idCon"))));
-					 irA="/adminConvenio/Personas.jsp";
+					 req.setAttribute("idCon",req.getParameter("idCon"));
+					 irA="/adminConvenio/Aportes.jsp";
 				break;
-			
+				
+				case Parametros.NuevoAporte:
+					AportesOBJ aporte=null;
+					aporte=(AportesOBJ)sesion.getAttribute("aporte");
+					aporte.setUsudigita(usuario.getIdUsuario()+"");
+					aporte.setFechaDigita(año + "-" + (mes+1) + "-" +dia+"");
+					aporte.setTipoAporte("Efectivo");
+					aporte.setNconvenioEntidad(req.getParameter("idCon"));
+					req.setAttribute("nombreEntidad",req.getParameter("nombreEntidad"));
+					req.setAttribute("idCon",req.getParameter("idCon"));
+
+				if(adminConv.registrarAporte(objconv,aporte)){
+						mensaje="El aporte fue registrado";
+						sesion.removeAttribute("convEntidad");
+						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+						sesion.setAttribute("datoConvenio", objconv);
+						
+						
+					}else
+						mensaje="No se puedo vincular el convenio";
+					
+				req.removeAttribute("listaAportesEntidad");
+				req.setAttribute("listaAportesEntidad", adminConv.buscarAportesEntidad(Integer.parseInt(req.getParameter("idCon"))));
+				
+					
+					irA="/adminConvenio/Aportes.jsp";
+				break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
 				 sesion.removeAttribute("nuevoConvenio");
