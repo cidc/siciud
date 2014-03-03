@@ -75,12 +75,14 @@
 			<th width="20%"><b>Fecha Inicio</b></th>
 			<th width="20%"><b>Estimado Fin</b></th>
 			<th width="20%"><b>Total Aprobado</b></th>
+			<th width="20%"><b>Total Aportado</b></th>
 		</tr>
 		<tr>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.finanza.VAprobado}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.finanza.VAportado}"/></td>
 		</tr>
 	</table>
 	
@@ -129,6 +131,7 @@
 		<table align="center" width="95%" class="tablas">
 		<caption>Registro de una Entidad asociada </caption>
 		<tr>
+		
 		 <td class="renglones"><b>Entidad</b></td>
     	 <td colspan="6"> <select name="entidadid" style="width: 100%" >
      		  <c:if test="${!empty requestScope.listaEntidades}">

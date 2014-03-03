@@ -56,7 +56,7 @@ public class GestionEntidad  extends ServletGeneral{
 			if (req.getParameter("validar")!= null){
 				val = Integer.parseInt(req.getParameter("validar"));
 				}
-		
+			
 
 		   switch (val)
 			{
@@ -91,6 +91,8 @@ public class GestionEntidad  extends ServletGeneral{
 				 if (req.getParameter("por")!= null){
 						 por = Integer.parseInt(req.getParameter("por"));
 						}
+				 
+				 req.removeAttribute("listaEntidades");
 				 req.setAttribute("listaEntidades", entidadDB.listaEntidad());
 				 switch (por) {
 				case ParametrosOBJ.ListaEntidadPara:
@@ -98,6 +100,7 @@ public class GestionEntidad  extends ServletGeneral{
 					break;
 				case 	ParametrosOBJ.ListaEntidadConvenio:
 					irA="/adminConvenio/EntidadConvenio.jsp";
+					
 					break;
 				case ParametrosOBJ.ListaEntidadConvenioInsertar:
 					irA="/adminConvenio/EntidadConvenio.jsp";
@@ -119,10 +122,10 @@ public class GestionEntidad  extends ServletGeneral{
 	
     	             default:
     	            	 irA = "/adminConvenio/Entidad/NuevaEntidad.jsp";
-    	            	 mensaje="eRROR";
+    	            	 mensaje="ERROR";
     	            	 break;
     	     }			
-			
+		   
 			val=0;
 			retorno[0]="desviar";
 			retorno[1]=irA;

@@ -40,13 +40,15 @@
 			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Tiempos.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
-			<td><img border="0" src='<c:url value="/comp/img/convenio/EntidadesClick.gif"/>'></a></td>
+			<td><a href='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>'><img border="0" src='<c:url value="/comp/img/convenio/EntidadesClick.gif"/>'></a></td>
 			<td><a href='<c:url value=""/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=15"/>'><img src='<c:url value="/comp/img/prAprobado.gif"/>'></a></td>
 		</tr>
 	</table>
 <br>
-	
+<table>
+<tr><td><a href='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>'><img border="0" src='<c:url value="/comp/img/Atras.gif"/>'></a></td></tr>
+	</table>
 	<table width="95%" class="tablas" align="center">
 		<CAPTION>Datos generales del proyecto</CAPTION>
 		<tr>
@@ -61,22 +63,19 @@
 			<th width="20%"><b>Fecha Inicio</b></th>
 			<th width="20%"><b>Estimado Fin</b></th>
 			<th width="20%"><b>Total Aprobado</b></th>
+			<th width="20%"><b>Total Aportado</b></th>
 		</tr>
 		<tr>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.finanza.VAprobado}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.finanza.VAportado}"/></td>
 		</tr>
 	</table>
 	
-	<c:if test="${!empty requestScope.listaAportesEntidad}">
-	<form name="frmListAportes" action='<c:url value="/adminConvenio/AdminConvenio.x"/>' method="post">
-		<input type="hidden" name="accion" value="0">
-		
-		
 	
-		<table width="95%" align="center" class="tablas">
+	<table width="95%" align="center" class="tablas">
 			<caption>Lista de Aportes Realizados</caption>
 			<tr>
 			
@@ -86,6 +85,10 @@
 			
 		</tr>
 		</table>
+	<c:if test="${!empty requestScope.listaAportesEntidad}">
+	<form name="frmListAportes" action='<c:url value="/adminConvenio/AdminConvenio.x"/>' method="post">
+		<input type="hidden" name="accion" value="0">
+		
 		<br>
 			<table width="95%" align="center" class="tablas">
 			<tr>
@@ -113,7 +116,7 @@
 	</form>
 	</c:if>
 	<c:if test="${empty requestScope.listaAportesEntidad}">
-	<h3 align="center">No hay aporte adicionales para este proyecto</h3>
+	<h3 align="center">No hay aporte registrados a esta entidad.</h3>
 	</c:if>
 	
 	<form method="post" action='<c:url value="/adminConvenio/llenarAporte.jsp"/>'>
