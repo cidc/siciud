@@ -1167,6 +1167,7 @@ public boolean insertaRubrosAprobrados(int idfinanza,String idRubro,String codig
 		ps.setInt(i++, suma);
 		ps.setString(i++,observacion);
 		ps.setLong(i++, usuario);
+		ps.setString(i++,codigo);
 		ps.executeUpdate();
 	
 		
@@ -1210,7 +1211,7 @@ public boolean insertaRubrosAprobrados(int idfinanza,String idRubro,String codig
 			
 			
 		}*/
-		
+		retorno = true;
 	}catch (Exception e) {
 		System.out.println("se explota en insertar cdp");
 		lanzaExcepcion(e);

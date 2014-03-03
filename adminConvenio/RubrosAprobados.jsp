@@ -50,9 +50,60 @@ function suma(formulario1){
 		</tr>
 	</table>
 <br>
+<c:if test="${!empty sessionScope.datoConvenio.listaTiempos}">
+
+<table align="center" class="tablas">
+	<caption>Insertar CDP</caption>
+		
+		
+			<tr>
+				<th style="width:150px;"><b>Rubro</b></th>
+				<th><b>Codigo</b></th>
+				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+				<th style="width:100px;"><b><c:out value="${lista.entidadid}"/></b></th>
+				<c:set var="var2" value="${var2+1}"></c:set>
+				</c:forEach>
+				<input type="hidden" name="numeroentidad" value="${var2}">
+				<th style="width:400px;" align="center"><b>observacion</b></th>
+			</tr>
+			<tr>
+			   <td> <select name="idRubro" style="width:150px" >
+     		   <c:if test="${!empty requestScope.listaRubros}">
+			   <c:forEach begin="0" items="${requestScope.listaRubros}" var="lista" varStatus="st">
+		       <option value="${lista.codigo}"> <c:out value="${lista.nombre}" /> </option>
+			   </c:forEach>
+		       </c:if>   
+               </select>
+               </td>
+			   <td style="width:80px;" align="right">
+					<b><input  maxlength="10"  type="text"  name="codigo"></b>
+			   </td>
+			   <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+				<td style="width:100px;" align="right">
+				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
+					<input id='ventidad<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorEntidad" value="0">
+				</td>
+				</c:forEach>
+				
+				<td style="width:400px;" align="right">
+					<b><textarea class="texto" name="observacion" style="width: 99%"></textarea></b>
+				</td>
+				
+				</tr>
+			
+			
+			
+		
+			<tr>
+				<td colspan="3" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar()"></td>
+			</tr>
+	</table>
+
+
+</c:if>
 
 <c:if test="${empty sessionScope.datoConvenio.listaTiempos}">
-	<h3 align="center">No hay tiempos adicionales aprobados para este proyecto</h3>
+	<h3 align="center">No hay CDPS aprobados para este proyecto</h3>
 	</c:if>
 
 <form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadoRubros">
