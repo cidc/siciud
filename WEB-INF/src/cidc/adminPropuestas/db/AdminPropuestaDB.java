@@ -77,10 +77,10 @@ public class AdminPropuestaDB extends BaseDB{
 			}
 			}
 			else */
-			if (tipo==1){
+			/*if (tipo==1){
                         ps=cn.prepareStatement(rb.getString("getPropuestasMovProy1"));
 			}
-			else 
+			else */
 			ps=cn.prepareStatement(rb.getString("getPropuestasMovProy2"));
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
@@ -645,7 +645,6 @@ public class AdminPropuestaDB extends BaseDB{
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		DatoConvocatoriaOBJ convocatoriaOBJ=null;
-		int i=0;
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("estado_Conv"));
@@ -653,10 +652,12 @@ public class AdminPropuestaDB extends BaseDB{
 			ps.setLong(2,num);
 			rs=ps.executeQuery();
 			while(rs.next()){
+				int i=1;
 				convocatoriaOBJ=new DatoConvocatoriaOBJ();
-				convocatoriaOBJ.setCodConvocatoria(rs.getString(1));
-				convocatoriaOBJ.setEstado(rs.getString(2));
-				numeros.add(convocatoriaOBJ);
+				convocatoriaOBJ.setCodConvocatoria(rs.getString(i++));
+				convocatoriaOBJ.setEstado(rs.getString(i++));
+				convocatoriaOBJ.setTipo(rs.getString(i++));
+				convocatoriaOBJ.setEvalua(rs.getBoolean(i++));
 			}
 		} catch (SQLException e) {
 			lanzaExcepcion(e);

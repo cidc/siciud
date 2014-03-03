@@ -140,6 +140,7 @@
 		<input type="hidden" name="codPropuesta" value="0">
 		<input type="hidden" name="tipo" value="${tipo}">
         <table class="tablas" width="98%" >
+        <c:if test="${requestScope.convEstado.tipo=='movilidad' or(requestScope.convEstado.tipo=='proyectos' and !requestScope.convEstado.evalua)}">
         <caption >Listado de Propuestas Inscritas y Aprobadas</caption>
 	<%
 	int i=0;
@@ -234,6 +235,7 @@
 
         </c:forEach>
 	</c:forEach>
+	</c:if>
 	<tr>
 	<th colspan="10">Observaciones de Propuestas</th></tr>
 	<tr><th >Propuesta</th><th colspan="9">Observaciones</th></tr>
