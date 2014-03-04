@@ -16,17 +16,34 @@
 		var key=nav4?eve.which :eve.keyCode;
 		return(key<=13 || (key>=48 && key<=57));
 	}
-	function pregunta(id)
-	{confirmar=confirm("¿Desea Realmente Eliminar el Registro?");  
-	if (confirmar)
-		eliminar(id)
 	
-	
-	}
 	function eliminar(id){
 		document.frmTiempos.accion.value=9;
 		document.frmTiempos.idTiempo.value=id;
 		document.frmTiempos.submit();
+	}
+	
+	function pregunta(){
+		
+		var sumatoria=parseInt(document.frmAporte.sumatoria.value);
+		var efectivo=parseInt(document.frmAporte.valorAporte.value);
+		var tol=parseInt(document.frmAporte.total.value);
+		
+		if((efectivo+sumatoria)<=tol){
+			alert("Exito");		
+			enviar();
+		}else{
+			alert("El total Efectivo no debe ser mayor al Total Aprobado");	
+			alert("El valor del aporte debe ser menor: "+(tol-sumatoria));
+			document.frmAporte.action='<c:url value="/adminConvenio/AdminConvenio.x"/>'
+				document.frmAporte.accion.value=17;
+			}
+	}
+	function enviar(){
+			document.frmAporte.action='<c:url value="/adminConvenio/llenarAporte.jsp"/>'
+			document.frmAporte.accion.value=18;
+			document.frmAporte.submit();
+		
 	}
 </script>
 </head>
@@ -81,11 +98,13 @@
 			
 			<th colspan="5"><b>Entidad</b></th>	</tr>
 			<tr>
-			<td width="100%" align="center"><c:out value="${requestScope.entidadaporte.identidadconvenio}"/></td>
+			<td width="100%" align="center"><c:out value="${requestScope.nombreEntidad}"/></td>
 			
 		</tr>
 		</table>
+		<c:set var="numero"  value="0" />
 	<c:if test="${!empty requestScope.listaAportesEntidad}">
+	
 	<form name="frmListAportes" action='<c:url value="/adminConvenio/AdminConvenio.x"/>' method="post">
 		<input type="hidden" name="accion" value="0">
 		
@@ -110,19 +129,24 @@
 				<td width="75px" align="center"><c:out value="${lista.fechaAporte}"/></td>
 				<td width="75px" align="center"><c:out value="${lista.personaOpcional}"/></td>
 				<%--<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='enviar(<c:out value="${lista.idAporte}"/>)'></td>--%>
+				
 			</tr>
+			<c:set var="numero"  value="${numero+lista.valorAporte}"/>
 			</c:forEach>
 		</table>
 	</form>
 	</c:if>
 	<c:if test="${empty requestScope.listaAportesEntidad}">
 	<h3 align="center">No hay aporte registrados a esta entidad.</h3>
+		<c:set var="numero"  value="0" />
 	</c:if>
 	
-	<form method="post" action='<c:url value="/adminConvenio/llenarAporte.jsp"/>'>
-	<input type="hidden" name="accion" value="18"> 
+	<form name="frmAporte" >
+	<input type="hidden" name="accion" > 
 	<input type="hidden" name="idCon" value="<c:out value="${requestScope.idCon}"/>"> 
 	<input type="hidden" name="nombreEntidad" value="<c:out value="${requestScope.nombreEntidad}"/>"> 
+	<input type="hidden" name="total" value="${requestScope.entidadaporte.VEfectivoConv}">
+	<input type="hidden" name="sumatoria" value="${numero}">
 		<table align="center" width="90%" class="tablas">
 		<caption>Registro de un Nuevo Aporte</caption>
 			<tr>
@@ -156,7 +180,7 @@
 				<input type="text" maxlength="9" name="valorAporte" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)">
 				</td>
 				<td width="100px">
-					<input type="text" name="personaOpcional" style="width: 100%;text-align: right;">
+					<input type="text" name="personaOpcional" style="width: 100%;">
 				</td>
 				</tr>
 				
@@ -168,9 +192,9 @@
 								<td colspan="6"><input type="text" name="Aobservacion" size="70" maxlength="70"></td>
 							</tr>
 			<tr>
-				<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>'></td>
+				<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>'  onclick="pregunta()"></td>
 			</tr>
-		</table>
+		</table> 
 	</form> 
 	
 </c:if>

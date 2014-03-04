@@ -28,6 +28,7 @@
 			document.formularioEnviar.submit();
 		}else{
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");		
+			alert("El valor del Efectivo debe ser menor: "+(tol-sumatoria));
 			document.formularioEnviar.action='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>';
 		}
 	}
@@ -37,7 +38,7 @@
 			document.frmAporte.idCon.value=id;
 			document.frmAporte.nombreEntidad.value=entidad;
 			document.frmAporte.submit();
-		
+	
 	}
 
 
@@ -124,7 +125,9 @@
 	<h3 align="center">No hay entidades vinculadas al convenio</h3>
 	</c:if>
 	
-	<form  method="post" name="formularioEnviar">
+	
+	
+	<form  name="formularioEnviar">
 		<input type="hidden" name="accion" value="14">
 		<input type="hidden" name="total" value="${sessionScope.datoConvenio.finanza.VAprobado}">
 		<input type="hidden" name="sumatoria" value="${numero}">
