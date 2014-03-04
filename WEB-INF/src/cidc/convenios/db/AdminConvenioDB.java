@@ -31,6 +31,7 @@ import cidc.adminArticulos.obj.EstadoArticulo;
 import cidc.adminArticulos.obj.FiltroArticulo;
 import cidc.adminEntidad.obj.EntidadOBJ;
 import cidc.convenios.obj.AportesOBJ;
+import cidc.convenios.obj.CdpOBJ;
 import cidc.convenios.obj.Convenio;
 import cidc.convenios.obj.EntidadAsociadaOBJ;
 import cidc.convenios.obj.ExtraDocConvenio;
@@ -580,6 +581,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setListagrupos(getListaGrupos(id));	
 				conv.setListaentidadesConv(getListaEntidadesConv(id));	
 				conv.setFinanza(getfinanzas(id));
+				conv.setListacdpsConv(getcdp(id));
 				
 			}
 			return conv;
@@ -1113,7 +1115,47 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 	
 	return ListaEntidadesConv;
 }
-
+public List <CdpOBJ> getcdp(int id) {
+	CdpOBJ cdp=null;
+	Connection cn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    int i=1;
+    List<CdpOBJ> Listacdp=new ArrayList <CdpOBJ>();
+        try {
+             cn = cursor.getConnection(super.perfil);
+             ps = cn.prepareStatement(rb.getString("consultarcdp"));
+             ps.setInt(1, id);
+             rs = ps.executeQuery();
+             while (rs.next()){
+            	 i=1;
+            	CdpOBJ cdpOBJ=new CdpOBJ(); 
+            	
+            	cdpOBJ.setIdcdp(rs.getInt(i++));
+            	cdpOBJ.setNombre(rs.getString(i++));
+            	cdpOBJ.setCodigo(rs.getString(i++));
+            	cdpOBJ.setObservacion(rs.getString(i++));
+            	cdpOBJ.setFechaRegistro(rs.getString(i++));
+            	cdpOBJ.setValortotal(rs.getInt(i++));
+            	
+            	Listacdp.add(cdpOBJ);
+            	
+            	
+            
+             }
+             
+        } catch (SQLException e) {lanzaExcepcion(e);}
+	       catch (Exception e) {lanzaExcepcion(e);}
+        finally {
+            try {
+             rs.close();
+             ps.close();
+             cn.close();
+            }
+            catch (SQLException e){}
+            }
+	return Listacdp;
+}
 
 public FinanzaOBJ getfinanzas(int id) {
 	FinanzaOBJ finanza=null;
