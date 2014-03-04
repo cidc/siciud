@@ -19,8 +19,7 @@ public class Ajax extends ServletGeneral {
 	public String[] operaciones(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		String irA="";
 		String mensaje="";
-		System.out.println("ajaxc.java");
-		
+				
 		try{
 			irA="/adminConvenio/Ajax.jsp";
 			HttpSession sesion = request.getSession();
@@ -32,8 +31,6 @@ public class Ajax extends ServletGeneral {
 			if(request.getParameter("para")!=null)
 				para=Integer.parseInt(request.getParameter("para"));
 			String []datos=null;
-			System.out.println("para"+para);
-			System.out.println("dato de mierda:"+request.getParameter("dato"));
 			//System.out.println("para"+datos.toString());
 			if(Integer.parseInt(request.getParameter("remove"))==1){
 			sesion.removeAttribute("ajaxGrupos");
