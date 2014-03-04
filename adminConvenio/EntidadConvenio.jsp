@@ -24,12 +24,13 @@
 		var tol=parseInt(document.formularioEnviar.total.value);
 		if((efectivo+sumatoria)<=tol){
 						
-			document.formularioEnviar.action='<c:url value="/adminConvenio/llenarEntidadConv.jsp"/>'
+			document.formularioEnviar.action='<c:url value="/adminConvenio/llenarEntidadConv.jsp"/>';
 			document.formularioEnviar.submit();
 		}else{
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");		
 			alert("El valor del Efectivo debe ser menor: "+(tol-sumatoria));
-			document.formularioEnviar.action='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>';
+			
+			document.formularioEnviar.action='<c:url value="/adminEntidad/GestEntidad.x"/>';
 		}
 	}
 	function enviar(id,action,entidad){
@@ -129,6 +130,8 @@
 	
 	<form  name="formularioEnviar">
 		<input type="hidden" name="accion" value="14">
+		<input type="hidden" name="validar" value="3">
+		<input type="hidden" name="por" value="2">
 		<input type="hidden" name="total" value="${sessionScope.datoConvenio.finanza.VAprobado}">
 		<input type="hidden" name="sumatoria" value="${numero}">
 		<table align="center" width="95%" class="tablas">

@@ -1171,11 +1171,12 @@ public FinanzaOBJ getfinanzas(int id) {
                 finanza=new FinanzaOBJ();
                 finanza.setIdfinanza(rs.getInt(1));
                 finanza.setVAprobado(rs.getInt(2));
-                finanza.setVComprometer(rs.getInt(3));
-                finanza.setVEjecutar(rs.getInt(4));
-                finanza.setVEspecie(rs.getInt(5));
-                finanza.setVEfectivo(rs.getInt(6));
-                finanza.setIdConvenioFinanza(rs.getInt(7));
+                finanza.setVAportado(rs.getInt(3));
+                finanza.setVComprometer(rs.getInt(4));
+                finanza.setVEjecutar(rs.getInt(5));
+                finanza.setVEspecie(rs.getInt(6));
+                finanza.setVEfectivo(rs.getInt(7));
+                finanza.setIdConvenioFinanza(rs.getInt(8));
              }
              
         } catch (SQLException e) {lanzaExcepcion(e);}
@@ -1330,8 +1331,23 @@ public boolean registrarAporte(GetConvenioOBJ convenio, AportesOBJ aporte){
 		ps.setString(i++, aporte.getFechaDigita());
 		ps.setInt(i++, Integer.parseInt(aporte.getNconvenioEntidad()));
 		ps.setInt(i++, (convenio.getFinanza().getIdfinanza()));
+		ps.executeUpdate();
+		
+		ps=null;
+		cn=null;
+		
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("actualizarFinazaAporte"));
+	
+		
+		
+		int valor=(convenio.getFinanza().getVAportado())+Integer.parseInt(aporte.getValorAporte());
+		
+		ps.setInt(1,valor);
+		ps.setInt(2, convenio.getFinanza().getIdfinanza());
 		
 		ps.executeUpdate();
+		
 	//	System.out.println("----->"+ps);
 		retorno=true;
 	}catch (SQLException e) {

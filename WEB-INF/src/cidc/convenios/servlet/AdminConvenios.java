@@ -286,7 +286,7 @@ case Parametros.AdicionarTiempo:
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 						sesion.setAttribute("datoConvenio", objconv);
 					}else{
-						mensaje="No se puedo vincular el convenio";
+						mensaje="No se puede registrar el aporte";
 					}
 				req.removeAttribute("listaAportesEntidad");
 				req.setAttribute("listaAportesEntidad", adminConv.buscarAportesEntidad(Integer.parseInt(req.getParameter("idCon"))));
