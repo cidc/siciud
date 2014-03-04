@@ -45,7 +45,13 @@ public class GetConvenioOBJ implements Serializable{
     private List<EntidadAsociadaOBJ> listaentidadesConv=null;
     private List<CdpOBJ> listacdpsConv=null;
     
-    public List<PersonaOBJ> getListagrupos() {
+    public List<CdpOBJ> getListacdpsConv() {
+		return listacdpsConv;
+	}
+	public void setListacdpsConv(List<CdpOBJ> listacdpsConv) {
+		this.listacdpsConv = listacdpsConv;
+	}
+	public List<PersonaOBJ> getListagrupos() {
 		return listagrupos;
 	}
 	public void setListagrupos(List<PersonaOBJ> listagrupos) {
