@@ -161,7 +161,7 @@
 	</div>	
 		<table class="tablas" width="95%">
 		<CAPTION>Agenda de cooperación</CAPTION>
-			<tr>
+			<%-- <tr>
 				<td colspan="3" class="renglones"><b>Participación en eventos financiados por del CIDC</b></td>
 			</tr>
 			<tr>
@@ -242,7 +242,7 @@
 							</c:if>
 						</table>
 					</td>
-				</tr>
+				</tr> --%>
 			<tr>
 				<td colspan="3" class="renglones"><b>Justificación de la participación en el evento(Máximo 250 palabras cada campo)</b></td>
 			</tr>

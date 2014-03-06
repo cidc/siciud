@@ -56,6 +56,8 @@ public class PropuestaOBJ {
 	private int[] codProp2;
 	private int idDocumentoRequesito;
 	private String nombreDocumentoRequisito;
+	private int[] aprobacion;
+	private boolean aprobacion2;
 
 	public long getCodPropuesta() {
 		return codPropuesta;
@@ -375,6 +377,17 @@ public class PropuestaOBJ {
 		public void setNombreDocumentoRequisito(String nombreDocumentoRequesito) {
 			this.nombreDocumentoRequisito = nombreDocumentoRequesito;
 		}
-		
-        
+		public int[] isAprobacion() {
+			return aprobacion;
+		}
+		public void setAprobacion(int[] aprobacion) {
+			this.aprobacion = aprobacion;
+		}
+		public boolean isAprobacion2() {
+			return aprobacion2;
+		}
+		public void setAprobacion2(boolean aprobacion2) {
+			this.aprobacion2 = aprobacion2;
+		}
+		 
 }

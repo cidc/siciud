@@ -24,7 +24,7 @@ public class CargaAdendo extends ServletGeneral {
         HttpSession sesion=req.getSession();
         Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		ConvocatoriaOBJ convocatoriaOBJ=(ConvocatoriaOBJ)sesion.getAttribute("convocatoriaOBJ");
-        String nombre="Adendo";
+        String nombre="Adenda";
         cursor=new CursorDB();
 	int num=0;
 	ConvocatoriasDB convocatoriaDB=new ConvocatoriasDB(cursor,usuario.getPerfil());

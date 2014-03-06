@@ -197,7 +197,7 @@
 		<div style="display:none;">	
 		<%=i =i+1%>
 		</div>
-		<c:if test="${tipo==1}">
+		<c:if test="${tipo=='movilidad'}">
 		<input type="hidden" name="codProp" value="<c:out value="${lista.codPropuesta}"/>">
 		<input type="hidden" name="convId" value="<c:out value="${lista.conv}"/>">
 		<input type="hidden" name="codCrit" value="<c:out value="${lista3.codigo}"/>">
@@ -238,9 +238,17 @@
 	</c:if>
 	<tr>
 	<th colspan="10">Observaciones de Propuestas</th></tr>
-	<tr><th >Propuesta</th><th colspan="9">Observaciones</th></tr>
+	<tr><th >Propuesta</th>
+	<c:if test="${requestScope.convEstado.tipo=='movilidad'}">
+	<th colspan="1">Aprobo</th>
+	</c:if>
+	<th colspan="9">Observaciones</th></tr>
 	<c:forEach begin="0" items="${sessionScope.listaPropOBJ}" var="lista" varStatus="st">
+	<input type="hidden" name="convId" value="<c:out value="${lista.conv}"/>">
 	<tr><td><c:out value="${lista.codPropuesta}"/></td>
+		<c:if test="${requestScope.convEstado.tipo=='movilidad'}">
+		<td><input type="checkbox" name="aprobacion" value="${lista.codPropuesta}" "<c:if test="${lista.aprobacion2}">" checked="yes" "</c:if>>
+		</td></c:if>	
 		<td class="estado" align="center" colspan="9"><input type="hidden" name="codPropu" value="${lista.codPropuesta}">
 			<input type="text" name="observaciones" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalObs}" var="lista7" varStatus="st">' '<c:if test="${lista7.codPropuesta==lista.codPropuesta}">' value="${lista7.observa}" '</c:if>' '</c:forEach>' value="0">
 		</td>

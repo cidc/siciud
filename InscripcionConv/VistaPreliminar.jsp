@@ -107,7 +107,7 @@
                                                 <c:forEach begin="0" items="${sessionScope.datosConvDoc}" var="lista2" varStatus="st"> 
                                                         <td>
 							<a class="menu" href='<c:url value="/Documentos/Convocatorias/${lista2.convAd}"/>'>
-                                                                <img border="0" src='<c:url value="/comp/img/pdf.png"/>'> Adendo
+                                                                <img border="0" src='<c:url value="/comp/img/pdf.png"/>'> Adenda
                                                         </a>
 							</td>
                                                 </c:forEach>
