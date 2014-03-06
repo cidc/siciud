@@ -234,8 +234,14 @@ case Parametros.AdicionarTiempo:
 
 			break;
 				case Parametros.cmdListaRubrosAprobados:
+					req.removeAttribute("listaRubros");
 					System.out.println("caso de listaRubros");
 					 req.setAttribute("listaRubros", adminConv.consultarRubros());
+					 
+					 objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+					sesion.setAttribute("datoConvenio", objconv);
+				
+					 
 					// req.setAttribute("listaRubrosAprobados", proyAntiguosDB.consultarRubrosAprobados(objProyecto.getId()));
 					 irA="/adminConvenio/RubrosAprobados.jsp";
 				
@@ -246,7 +252,8 @@ case Parametros.AdicionarTiempo:
 					 System.out.println("numero de entidades"+req.getParameter("numeroentidad"));
 					 System.out.println("dfinanza"+req.getParameter("idfinanza"));
 					 System.out.println("idrubro"+req.getParameter("idRubro"));
-					
+					 req.setAttribute("listaRubros", adminConv.consultarRubros());
+					 
 					 
 					// adminConv.insertaRubrosAprobrados(Integer.parseInt(req.getParameter("idfinanza")), req.getParameter("idRubro"), req.getParameter("codigo"),req.getParameterValues("valorEntidad"), req.getParameter("observacion"),año + "-" + (mes+1) + "-" +dia+"",usuario.getIdUsuario(),Integer.parseInt(req.getParameter("numeroentidad")),req.getParameterValues("idconvent"));
 					 
@@ -256,7 +263,7 @@ case Parametros.AdicionarTiempo:
 						 mensaje="Los rubros no pudieron ser almacenados";
 					// req.setAttribute("listaRubros", proyAntiguosDB.consultarRubros());
 					// req.setAttribute("listaRubrosAprobados", proyAntiguosDB.consultarRubrosAprobados(objProyecto.getId()));
-					// irA="/proyectosAntiguos/RubrosAprobados.jsp";
+					   irA="/adminConvenio/AdminConvenio.x?accion=15";
 				
 				break;
 				

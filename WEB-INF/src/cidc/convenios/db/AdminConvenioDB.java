@@ -1115,6 +1115,8 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 	
 	return ListaEntidadesConv;
 }
+
+
 public List <CdpOBJ> getcdp(int id) {
 	CdpOBJ cdp=null;
 	Connection cn = null;

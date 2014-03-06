@@ -62,7 +62,7 @@ function suma(formulario1){
 				<th style="width:80px;" align="center"><b>valortotal</b></th>
 				<th style="width:80px;" align="center"><b>fechaRegistro</b></th>
 				
-<th style="width:80px;" align="center"><b>observacion</b></th>
+<th style="width:500px;" align="center"><b>observacion</b></th>
 			</tr>
 			
 			
@@ -97,7 +97,7 @@ function suma(formulario1){
 			<td style="width:80px;" align="right">
 			  <b><input type="text"  name="fechaRegistro"  readonly="readonly" value='<c:out value="${lista.fechaRegistro}"/>'></b>
 			</td>
-			<td style="width:80px;" align="right">
+			<td style="width:500px;" align="right">
 			  <b><input type="text"  name="observacion"  readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
 			</td>
 			
@@ -110,14 +110,11 @@ function suma(formulario1){
 
 <c:if test="${empty sessionScope.datoConvenio.listacdpsConv}">
 	<h3 align="center">No hay CDPS aprobados para este proyecto</h3>
-	</c:if>
+</c:if>
 
 <form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadoRubros">
 	<input type="hidden" name="accion" value="16">
-
-	<input type="hidden" name="idfinanza" value='<c:out value="${sessionScope.datoConvenio.finanza.idfinanza}"/>'>
-	
-	
+    <input type="hidden" name="idfinanza" value='<c:out value="${sessionScope.datoConvenio.finanza.idfinanza}"/>'>
 	<c:set var="var2" value="${0}"></c:set>
 	<table align="center" class="tablas">
 	<caption>Insertar CDP</caption>
