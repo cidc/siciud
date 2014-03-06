@@ -45,7 +45,9 @@ public class GetConvenioOBJ implements Serializable{
     private List<EntidadAsociadaOBJ> listaentidadesConv=null;
     private List<CdpOBJ> listacdpsConv=null;
     
-    public List<CdpOBJ> getListacdpsConv() {
+    
+ 
+	public List<CdpOBJ> getListacdpsConv() {
 		return listacdpsConv;
 	}
 	public void setListacdpsConv(List<CdpOBJ> listacdpsConv) {

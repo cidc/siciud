@@ -1122,8 +1122,31 @@ public List <CdpOBJ> getcdp(int id) {
     ResultSet rs = null;
     int i=1;
     List<CdpOBJ> Listacdp=new ArrayList <CdpOBJ>();
+    ArrayList valorunitario=new ArrayList();
+    int [] v = null;
+    int contador=0;
+    int n=0;
         try {
              cn = cursor.getConnection(super.perfil);
+             ps = cn.prepareStatement(rb.getString("consultanentidades"));
+             ps.setInt(1, id);
+             rs = ps.executeQuery();
+             
+             while (rs.next()){
+            	  n=rs.getInt(1);
+           }
+             
+             ps = cn.prepareStatement(rb.getString("consultavalores"));
+             ps.setInt(1, id);
+             rs = ps.executeQuery();
+             int j=0;
+             while (rs.next()){
+            	
+            	 valorunitario.add(j,rs.getInt(2));
+            	// v[j]=rs.getInt(2);
+            	j++;
+            }
+             
              ps = cn.prepareStatement(rb.getString("consultarcdp"));
              ps.setInt(1, id);
              rs = ps.executeQuery();
@@ -1137,7 +1160,16 @@ public List <CdpOBJ> getcdp(int id) {
             	cdpOBJ.setObservacion(rs.getString(i++));
             	cdpOBJ.setFechaRegistro(rs.getString(i++));
             	cdpOBJ.setValortotal(rs.getInt(i++));
-            	
+            	int [] l = new int[n];
+            	for(int k=0;k<n;k++){
+            		System.out.println("valor q jode:"+Integer.parseInt(String.valueOf(valorunitario.get(contador))));
+            		
+            		l[k]= Integer.parseInt(String.valueOf(valorunitario.get(contador)));
+            		System.out.println("valorl:"+l[k]);
+            		//l[k]=v[contador];
+            		contador++;
+            	}
+            	cdpOBJ.setValores(l);
             	Listacdp.add(cdpOBJ);
             	
             	

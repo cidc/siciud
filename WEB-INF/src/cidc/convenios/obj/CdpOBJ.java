@@ -12,7 +12,14 @@ public class CdpOBJ implements Serializable{
 	private int usudigita;
 	private int valortotal;
 	private int financiero;
+	private int [] valores;
 	
+	public int[] getValores() {
+		return valores;
+	}
+	public void setValores(int[] valores) {
+		this.valores = valores;
+	}
 	public String getNombre() {
 		return nombre;
 	}

@@ -19,9 +19,7 @@ function soloNumeros(eve){
 	return(key<=13 || (key>=48 && key<=57));
 }
 function guardar(){
-	 for(var i=0;i<document.listadoRubros.valorEntidad.length;i++){
-		document.listadoRubros.valorEntidad[i].value=eliminaFormatoMoneda(document.listadoRubros.valorEntidad[i].value);
-	 }
+
 	 document.listadoRubros.submit();
 }
 function suma(formulario1){
@@ -53,47 +51,61 @@ function suma(formulario1){
 <c:if test="${!empty sessionScope.datoConvenio.listacdpsConv}">
 <table align="center" class="tablas">
 <caption>Lista de CDPs</caption>
+<c:set var="cantidade" value="${0}"></c:set>
 	        <tr>
-				<th style="width:150px;"><b>Rubro</b></th>
+				<th style="width:400px;"><b>Rubro</b></th>
 				<th><b>Codigo</b></th>
 				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 				<th style="width:100px;"><b><c:out value="${lista.entidadid}"/></b></th>
+				<c:set var="cantidade" value="${cantidade+1}"></c:set>
 				</c:forEach>
-				<th style="width:400px;" align="center"><b>observacion</b></th>
+				<th style="width:80px;" align="center"><b>valortotal</b></th>
+				<th style="width:80px;" align="center"><b>fechaRegistro</b></th>
+				
+<th style="width:80px;" align="center"><b>observacion</b></th>
 			</tr>
 			
 			
 			<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="lista" varStatus="st">
 			<tr>
-			<td style="width:80px;" align="right">
-			  <b><input type="text"  name="nombre" value='<c:out value="${lista.nombre}"/>'> </b>
+			<td style="width:400px;" align="right">
+			  <b><input type="text"  name="nombre" readonly="readonly"   value='<c:out value="${lista.nombre}"/>'> </b>
 		    </td>
 		    <td style="width:80px;" align="right">
-			  <b><input type="text"  name="codigo" value='<c:out value="${lista.codigo}"/>'></b>
+			  <b><input type="text"  name="codigo" readonly="readonly"  value='<c:out value="${lista.codigo}"/>'></b>
 			</td>
 			
-			 <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+			<%--  <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 				<td style="width:100px;" align="right">
 				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
 					<input id='ventidad<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorEntidad" value='<c:out value="${sessionScope.datoConvenio.finanza.idfinanza}"/>'>
 				</td>
 			</c:forEach>
+			--%>
+			
+			
+			<c:forEach var="i" items="${lista.valores}" begin="0">
+			 <td style="width:100px;" align="right">
+		     <input type="text" name="valorEntidad"   readonly="readonly" value='<c:out value="${i}"/>'>
+			</td>
+			</c:forEach>
 			
 			
 			<td style="width:80px;" align="right">
-			  <b><input type="text"  name="valortotal" value='<c:out value="${lista.valortotal}"/>'></b>
+			  <b><input type="text"  name="valortotal"   readonly="readonly" value='<c:out value="${lista.valortotal}"/>'></b>
 			</td>
 			<td style="width:80px;" align="right">
-			  <b><input type="text"  name="fechaRegistro" value='<c:out value="${lista.fechaRegistro}"/>'></b>
+			  <b><input type="text"  name="fechaRegistro"  readonly="readonly" value='<c:out value="${lista.fechaRegistro}"/>'></b>
 			</td>
 			<td style="width:80px;" align="right">
-			  <b><input type="text"  name="observacion" value='<c:out value="${lista.observacion}"/>'></b>
+			  <b><input type="text"  name="observacion"  readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
 			</td>
 			
 			</tr>
 			</c:forEach>
 			   
 </table>
+<br/>
 </c:if>
 
 <c:if test="${empty sessionScope.datoConvenio.listacdpsConv}">
@@ -149,13 +161,13 @@ function suma(formulario1){
 			
 		</c:if>
 			<tr>
-				<td colspan="3" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar()"></td>
+				<td colspan="3" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>'  onclick="guardar()"></td>
 			</tr>
 	</table>
 </form>
 
 </body>
 <script>
-	chequear(document.listadoRubros,document.frmInsc);
+
 </script>
 </html>
