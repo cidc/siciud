@@ -304,7 +304,7 @@ case Parametros.AdicionarTiempo:
 				
 				case Parametros.NuevoCRP:
 					
-					irA="/adminConvenio/RubrosAprobados.jsp";
+					irA="/adminConvenio/AdicionarCRP.jsp";
 				break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";

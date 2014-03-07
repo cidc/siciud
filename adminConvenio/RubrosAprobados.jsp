@@ -12,6 +12,7 @@
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/calendar.js"/>'></script>
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/lang/calendar-es.js"/>'></script>
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/calendar-setup.js"/>'></script>
+
 <script>
 var nav4=window.Event ? true : false;
 function soloNumeros(eve){
