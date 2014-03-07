@@ -1155,8 +1155,9 @@ public List <CdpOBJ> getcdp(int id) {
              while (rs.next()){
             	 i=1;
             	CdpOBJ cdpOBJ=new CdpOBJ(); 
-            	
             	cdpOBJ.setIdcdp(rs.getInt(i++));
+            	System.out.println("id del cdp"+cdpOBJ.getIdcdp());
+            	cdpOBJ.setFinanciero(rs.getInt(i++));
             	cdpOBJ.setNombre(rs.getString(i++));
             	cdpOBJ.setCodigo(rs.getString(i++));
             	cdpOBJ.setObservacion(rs.getString(i++));

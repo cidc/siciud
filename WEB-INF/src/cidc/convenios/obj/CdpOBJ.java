@@ -4,7 +4,13 @@ import java.io.Serializable;
 
 public class CdpOBJ implements Serializable{
 	
-	private int Idcdp;
+	public int getIdcdp() {
+		return idcdp;
+	}
+	public void setIdcdp(int idcdp) {
+		this.idcdp = idcdp;
+	}
+	private int idcdp;
 	private String codigo;
 	private String nombre;
 	private String fechaRegistro;
@@ -27,13 +33,6 @@ public class CdpOBJ implements Serializable{
 		this.nombre = nombre;
 	}
 	
-	
-	public int getIdcdp() {
-		return Idcdp;
-	}
-	public void setIdcdp(int idcdp) {
-		Idcdp = idcdp;
-	}
 	public String getCodigo() {
 		return codigo;
 	}

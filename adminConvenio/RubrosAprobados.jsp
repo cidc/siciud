@@ -28,6 +28,14 @@ function suma(formulario1){
 	 }
 	 document.listadoRubros.submit();
 }
+function enviar(id,action,idfinanciero){
+	
+	document.listadocdp.accion.value=action;
+    document.listadocdp.idcdp.value=id;
+	document.listadocdp.idcdpfinanciero.value=idfinanciero;
+	document.listadocdp.submit();
+
+}
 
 
 </script>
@@ -49,14 +57,19 @@ function suma(formulario1){
 	</table>
 <br>
 <c:if test="${!empty sessionScope.datoConvenio.listacdpsConv}">
+<form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadocdp">
+<input type="hidden" name="accion" value="19">
+<input type="hidden" name="idcdp" value="">
+<input type="hidden" name="idcdpfinanciero" value="">
+
 <table align="center" class="tablas">
 <caption>Lista de CDPs</caption>
 <c:set var="cantidade" value="${0}"></c:set>
 	        <tr>
 				<th style="width:400px;"><b>Rubro</b></th>
 				<th><b>Codigo</b></th>
-				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
-				<th style="width:100px;"><b><c:out value="${lista.entidadid}"/></b></th>
+				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lis" varStatus="st">
+				<th style="width:100px;"><b><c:out value="${lis.entidadid}"/></b></th>
 				<c:set var="cantidade" value="${cantidade+1}"></c:set>
 				</c:forEach>
 				<th style="width:80px;" align="center"><b>valortotal</b></th>
@@ -100,11 +113,13 @@ function suma(formulario1){
 			<td style="width:500px;" align="right">
 			  <b><input type="text"  name="observacion"  readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
 			</td>
+			<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>'  onclick='enviar("${lista.idcdp}",19,"${lista.financiero}")'></td>
 			
 			</tr>
 			</c:forEach>
 			   
 </table>
+</form>
 <br/>
 </c:if>
 

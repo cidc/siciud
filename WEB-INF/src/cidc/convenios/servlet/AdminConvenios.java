@@ -301,6 +301,11 @@ case Parametros.AdicionarTiempo:
 					
 					irA="/adminConvenio/Aportes.jsp";
 				break;
+				
+				case Parametros.NuevoCRP:
+					
+					irA="/adminConvenio/RubrosAprobados.jsp";
+				break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
 				 sesion.removeAttribute("nuevoConvenio");
