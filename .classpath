@@ -61,7 +61,5 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/xom-1.1.jar"/>
 	<classpathentry kind="src" path="WEB-INF/src"/>
 	<classpathentry kind="src" output="work" path="work"/>
-	<classpathentry kind="lib" path="C:/Tomcat/webapps/siciud/WEB-INF/lib/itextpdf-5.3.5.jar"/>
-	<classpathentry kind="lib" path="C:/Tomcat/webapps/siciud/WEB-INF/lib/itext-xtra-5.3.5.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

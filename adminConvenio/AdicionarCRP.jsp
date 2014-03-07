@@ -25,6 +25,48 @@
 		</tr>
 	</table>
 <br>
+<form name="form1">
+<table class="tablas" align = "center" width="80%">
+<CAPTION>Presupuesto Convenio</CAPTION>
+<tr>  <td class="renglones" width="120px"><b>Convenio:</b></td>
+      <td width="100px"><c:out value = "${sessionScope.datoConvenio.nombreConvenio}"/></td>
+      <td class="renglones" width="100px"><b>Proyecto:</b></td>
+      <td><c:out value = "${sessionScope.datoConvenio.nombreproyecto}"/></td>
+</tr>
 
+<tr>  <td class="renglones" colspan="5"><b>Numero de Convenio:</b></td> </tr>
+<tr>  <td colspan="5"><c:out value = "${sessionScope.datoConvenio.codigo}"/></td></tr>
+<tr>  <td class="renglones" colspan="5"><b>Numero de Disponibilidad:</b></td> </tr>
+<tr>  <td colspan="5"><c:out value = "${sessionScope.datoConvenio.numDisp}"/></td></tr>
+
+<tr> <td colspan="4"> <table class="tablas" width="100%">
+          <tr>  <td class="renglones" width="115px"><b>Total Aprobado: </b></td>
+                <td class="renglones" width="130px"><b>Por Comprometer: </b></td>
+                <td class="renglones" width="100px"><b>Comprometido: </b></td>
+         </tr>
+         <tr> <td align="right"><c:out value = "${proyectos.presupuesto}"/></td>
+              <td align="right" width="130px"><c:out value = "${proyectos.ejecutado}"/></td>
+              <td align="right"><c:out value = "${proyectos.saldo}"/></td>
+         </tr>
+          </table>
+     </td>
+</tr>
+</table>
+</form>
+<br/>
+        <table width="95%" align="center" class="tablas">
+			<caption>CDP asociado</caption>
+			<tr><td class="renglones" width="115px"><b>CDP: </b></td> 
+			    <td class="renglones" width="115px"><b>Valor: </b></td>
+			<tr/> 
+			<tr>
+			<td width="115px"><c:out value="${requestScope.nombrecdp}"/></td>
+			<td width="115px"><c:out value="${requestScope.valortotal}"/></td>
+		
+			
+			</tr>
+		</table>
+		<table width="80%" align="center"> <tr><td align="center" colspan="3"><img src='<c:url value="/comp/img/Nuevogasto.gif"/>' onclick='nuevo()'> </td></tr>
+</table>
 </body>
 </html>

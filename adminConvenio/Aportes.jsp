@@ -25,6 +25,8 @@
 	
 	function pregunta(){
 		
+		
+		if(validar(document.frmAporte)==true){
 		var sumatoria=parseInt(document.frmAporte.sumatoria.value);
 		var efectivo=parseInt(document.frmAporte.valorAporte.value);
 		var tol=parseInt(document.frmAporte.total.value);
@@ -34,16 +36,41 @@
 			enviar();
 		}else{
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");	
-			alert("El valor del aporte debe ser menor: "+(tol-sumatoria));
+			alert("El valor del aporte debe ser menor: $"+(tol-sumatoria));
 			document.frmAporte.action='<c:url value="/adminConvenio/AdminConvenio.x"/>'
 				document.frmAporte.accion.value=17;
 			}
+		}else{
+			document.frmAporte.action='<c:url value="/adminConvenio/AdminConvenio.x"/>'
+			document.frmAporte.accion.value=17;
+		}
 	}
 	function enviar(){
 			document.frmAporte.action='<c:url value="/adminConvenio/llenarAporte.jsp"/>'
 			document.frmAporte.accion.value=18;
 			document.frmAporte.submit();
 		
+	}
+	
+	function validar(formulario){
+		if(formulario.codAporte.value==""){
+			alert("El Codigo del Aporte no puede estar vacio");
+			return false;
+		}
+		
+		if(formulario.fechaAporte.value==""){
+			alert("La fecha del aporte no puede estar vacia");
+			return false;
+		}
+		if(formulario.valorAporte.value=="0"){
+			alert("El valor del aporte no puede ser cero");
+			return false;
+		}
+		if(formulario.valorAporte.value==""){
+			alert("El valor del aporte no puede estar vacio");
+			return false;
+		}
+		return true;
 	}
 </script>
 </head>
@@ -58,7 +85,6 @@
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>'><img border="0" src='<c:url value="/comp/img/convenio/EntidadesClick.gif"/>'></a></td>
-			<td><a href='<c:url value=""/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=15"/>'><img src='<c:url value="/comp/img/prAprobado.gif"/>'></a></td>
 		</tr>
 	</table>
@@ -80,7 +106,7 @@
 			<th width="20%"><b>Fecha Inicio</b></th>
 			<th width="20%"><b>Estimado Fin</b></th>
 			<th width="20%"><b>Total Aprobado</b></th>
-			<th width="20%"><b>Total Aportado</b></th>
+			<th width="20%"><b>Total Aportado Total</b></th>
 		</tr>
 		<tr>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
@@ -96,9 +122,17 @@
 			<caption>Lista de Aportes Realizados</caption>
 			<tr>
 			
-			<th colspan="5"><b>Entidad</b></th>	</tr>
+			<th width="300px"><b>Entidad</b></th>	
+			
+			<th><b>Valor Aprobado</b></th>	
+		
+				
+			
+			</tr>
 			<tr>
 			<td width="100%" align="center"><c:out value="${requestScope.nombreEntidad}"/></td>
+			<td width="100%" align="center">$<c:out value="${requestScope.entidadaporte.VEfectivoConv}"/></td>
+		
 			
 		</tr>
 		</table>
@@ -125,14 +159,20 @@
 				<td width="5px"><c:out value="${st.count}"/></td>
 				<td width="75px" align="center"><c:out value="${lista.codAporte}"/></td>
 				<td width="75px" align="center"><c:out value="${lista.tipoAporte}"/></td>
-				<td width="75px" align="center"><c:out value="${lista.valorAporte}"/></td>
+				<td width="75px" align="center">$<c:out value="${lista.valorAporte}"/></td>
 				<td width="75px" align="center"><c:out value="${lista.fechaAporte}"/></td>
 				<td width="75px" align="center"><c:out value="${lista.personaOpcional}"/></td>
 				<%--<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='enviar(<c:out value="${lista.idAporte}"/>)'></td>--%>
-				
-			</tr>
+							</tr>
 			<c:set var="numero"  value="${numero+lista.valorAporte}"/>
 			</c:forEach>
+			</table>
+			<table width="50%" align="center" class="tablas">
+			<tr>
+			<th width="200px"><b>Valor Total Aportado</b></th><td><td width="100px" align="center">$<c:out value="${numero}"/></td></td>
+			<th width="200px"><b>Falta Por Aportar</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.entidadaporte.VEfectivoConv-numero}"/></td></td>
+			
+			</tr>
 		</table>
 	</form>
 	</c:if>
