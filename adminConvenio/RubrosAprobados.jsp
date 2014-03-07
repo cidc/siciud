@@ -29,12 +29,13 @@ function suma(formulario1){
 	 }
 	 document.listadoRubros.submit();
 }
-function enviar(id,action,idfinanciero){
+function enviar(id,action,nombre,valortotal){
 	
 	document.listadocdp.accion.value=action;
     document.listadocdp.idcdp.value=id;
-	document.listadocdp.idcdpfinanciero.value=idfinanciero;
-	document.listadocdp.submit();
+    document.listadocdp.nn.value=nombre;
+    document.listadocdp.valor.value=valortotal;
+    document.listadocdp.submit();
 
 }
 
@@ -61,7 +62,9 @@ function enviar(id,action,idfinanciero){
 <form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadocdp">
 <input type="hidden" name="accion" value="19">
 <input type="hidden" name="idcdp" value="">
-<input type="hidden" name="idcdpfinanciero" value="">
+<input type="hidden" name="nn" value="">
+<input type="hidden" name="valor" value="">
+
 
 <table align="center" class="tablas">
 <caption>Lista de CDPs</caption>
@@ -114,7 +117,7 @@ function enviar(id,action,idfinanciero){
 			<td style="width:500px;" align="right">
 			  <b><input type="text"  name="observacion"  readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
 			</td>
-			<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>'  onclick='enviar("${lista.idcdp}",19,"${lista.financiero}")'></td>
+			<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>'  onclick='enviar("${lista.idcdp}",19,"<c:out value="${lista.nombre}"/>","${lista.valortotal}")'></td>
 			
 			</tr>
 			</c:forEach>

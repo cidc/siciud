@@ -1192,6 +1192,41 @@ public List <CdpOBJ> getcdp(int id) {
 	return Listacdp;
 }
 
+public FinanzaOBJ getunicocdp(int id) {
+	CdpOBJ cdp= null;
+	Connection cn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+        try {
+             cn = cursor.getConnection(super.perfil);
+             ps = cn.prepareStatement(rb.getString("consultarFinanzaConvenio"));
+             ps.setInt(1, id);
+             rs = ps.executeQuery();
+             while (rs.next()){
+                finanza=new FinanzaOBJ();
+                finanza.setIdfinanza(rs.getInt(1));
+                finanza.setVAprobado(rs.getInt(2));
+                finanza.setVAportado(rs.getInt(3));
+                finanza.setVComprometer(rs.getInt(4));
+                finanza.setVEjecutar(rs.getInt(5));
+                finanza.setVEspecie(rs.getInt(6));
+                finanza.setVEfectivo(rs.getInt(7));
+                finanza.setIdConvenioFinanza(rs.getInt(8));
+             }
+             
+        } catch (SQLException e) {lanzaExcepcion(e);}
+	       catch (Exception e) {lanzaExcepcion(e);}
+        finally {
+            try {
+             rs.close();
+             ps.close();
+             cn.close();
+            }
+            catch (SQLException e){}
+            }
+	return finanza;
+}
+
 public FinanzaOBJ getfinanzas(int id) {
 	FinanzaOBJ finanza=null;
 	Connection cn = null;

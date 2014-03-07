@@ -250,7 +250,6 @@ case Parametros.AdicionarTiempo:
 					
 					 System.out.println("entro a insertar rubros");
 					 System.out.println("numero de entidades"+req.getParameter("numeroentidad"));
-					 System.out.println("dfinanza"+req.getParameter("idfinanza"));
 					 System.out.println("idrubro"+req.getParameter("idRubro"));
 					 req.setAttribute("listaRubros", adminConv.consultarRubros());
 					 
@@ -303,6 +302,15 @@ case Parametros.AdicionarTiempo:
 				break;
 				
 				case Parametros.NuevoCRP:
+					System.out.println("idcdp"+req.getParameter("idcdp"));
+					System.out.println("nn"+req.getParameter("nn"));
+					System.out.println("valortotal"+req.getParameter("valor"));
+					
+					req.getParameter("idcdp");
+					req.setAttribute("nombrecdp",req.getParameter("nn"));
+					req.setAttribute("valortotal",req.getParameter("valor"));
+					
+					
 					
 					irA="/adminConvenio/AdicionarCRP.jsp";
 				break;
