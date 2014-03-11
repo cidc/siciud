@@ -234,8 +234,8 @@ case Parametros.AdicionarTiempo:
 
 			break;
 				case Parametros.cmdListaRubrosAprobados:
-					req.removeAttribute("listaRubros");
-					System.out.println("caso de listaRubros");
+					 req.removeAttribute("listaRubros");
+					 System.out.println("caso de listaRubros");
 					 req.setAttribute("listaRubros", adminConv.consultarRubros());
 					 
 					 objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
@@ -306,13 +306,33 @@ case Parametros.AdicionarTiempo:
 					System.out.println("nn"+req.getParameter("nn"));
 					System.out.println("valortotal"+req.getParameter("valor"));
 					
-					req.getParameter("idcdp");
+					req.setAttribute("idcdp",req.getParameter("idcdp"));
 					req.setAttribute("nombrecdp",req.getParameter("nn"));
 					req.setAttribute("valortotal",req.getParameter("valor"));
-					
-					
-					
 					irA="/adminConvenio/AdicionarCRP.jsp";
+				break;
+				
+				case Parametros.AdicionarCRP:
+					System.out.println(".....................................................");
+					System.out.println("idcdp"+req.getParameter("idcdp"));
+					System.out.println("nn"+req.getParameter("nombrecdp"));
+					System.out.println("valortotal"+req.getParameter("valortotal"));
+					
+					req.setAttribute("idcdp",req.getParameter("idcdp"));
+					req.setAttribute("nombrecdp",req.getParameter("nombrecdp"));
+					req.setAttribute("valortotal",req.getParameter("valortotal"));
+					
+					System.out.println("idcdp al adicionar crp"+req.getParameter("idcdp"));
+				      if(adminConv.insertaCRP(Integer.parseInt(req.getParameter("idcdp")),Integer.parseInt(req.getParameter("valorcrp")) , req.getParameter("crp"),req.getParameter("codigocrp"), req.getParameter("clientecrp"), req.getParameter("observcrp"), año + "-" + (mes+1) + "-" +dia+"", usuario.getIdUsuario())){
+				    	  mensaje="CRP almacenados satisfactoriamente";  
+				      }else{
+				    	  mensaje="El CRP NO  pudo ser almacenado";
+				      }
+						 
+					 
+						 
+					
+		          irA="/adminConvenio/AdicionarCRP.jsp";
 				break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
