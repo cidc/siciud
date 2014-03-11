@@ -306,6 +306,9 @@ case Parametros.AdicionarTiempo:
 					System.out.println("nn"+req.getParameter("nn"));
 					System.out.println("valortotal"+req.getParameter("valor"));
 					
+					 objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+					sesion.setAttribute("datoConvenio", objconv);
+					
 					req.setAttribute("idcdp",req.getParameter("idcdp"));
 					req.setAttribute("nombrecdp",req.getParameter("nn"));
 					req.setAttribute("valortotal",req.getParameter("valor"));

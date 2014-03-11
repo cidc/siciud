@@ -46,8 +46,14 @@ public class GetConvenioOBJ implements Serializable{
     private List<CdpOBJ> listacdpsConv=null;
     private List<CrpOBJ> listacrpsConv=null;
     
-    
+     
  
+	public List<CrpOBJ> getListacrpsConv() {
+		return listacrpsConv;
+	}
+	public void setListacrpsConv(List<CrpOBJ> listacrpsConv) {
+		this.listacrpsConv = listacrpsConv;
+	}
 	public List<CdpOBJ> getListacdpsConv() {
 		return listacdpsConv;
 	}
