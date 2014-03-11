@@ -63,7 +63,7 @@ function crear(){
 </table>
 </form>
 <br/>
-        <table width="95%" align="center" class="tablas">
+        <table width="80%" align="center" class="tablas">
 			<caption>CDP asociado</caption>
 			<tr><td class="renglones" width="115px"><b>CDP: </b></td> 
 			    <td class="renglones" width="115px"><b>Valor: </b></td>
@@ -76,7 +76,52 @@ function crear(){
 			</tr>
 		</table>
 		<table width="80%" align="center"> <tr><td align="center" colspan="3"><img src='<c:url value="/comp/img/Nuevogasto.gif"/>' onclick='nuevo()'> </td></tr>
+        </table>
+<c:if test="${!empty sessionScope.datoConvenio.listacrpsConv}">
+<form name="formcargacrp" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
+<input type="hidden" name="accion" value="20">
+
+
+<table  class="tablas" align = "center" width="80%">
+<CAPTION>Lista de CRP</CAPTION>
+
+  <tr> <td class="renglones" width="115px"><b>CRP: </b></td>
+       <td class="renglones"><b>Codigo: </b></td>
+       <td class="renglones"><b>Cliente:</b></td>
+       <td class="renglones"><b>Valor $:</b></td>
+       <td class="renglones"><b>Fecha de registro:</b></td>
+       <td class="renglones"><b>Observacion:</b></td>
+ </tr>
+ <c:forEach begin="0" items="${sessionScope.datoConvenio.listacrpsConv}" var="lista" varStatus="st">
+ <tr>
+  <td style="width:115px;">
+			  <b><input type="text"  name="crp" readonly="readonly" value='<c:out value="${lista.nombre}"/>' ></b>
+  </td>
+  <td style="width:115px;">
+			  <b><input type="text"  name="codigocrp" readonly="readonly" value='<c:out value="${lista.codigo}"/>'></b>
+  </td>
+  <td style="width:115px;">
+			  <b><input type="text"  name="clientecrp" readonly="readonly" value='<c:out value="${lista.cliente}"/>'></b>
+  </td>
+   <td style="width:115px;">
+			  <b><input type="text"  name="valorcrp" readonly="readonly" value='<c:out value="${lista.valor}"/>'></b>
+  </td>
+   <td style="width:115px;">
+			  <b><input type="text"  name="fechacrp" readonly="readonly" value='<c:out value="${lista.fecha}"/>'></b>
+  </td>
+   <td style="width:400px;">
+			   <b><input type="text"  name="observacioncrp" readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
+  </td>
+ <tr/>
+
+</c:forEach>
 </table>
+</form>
+</c:if>
+<c:if test="${empty sessionScope.datoConvenio.listacrpsConv}">
+	<h3 align="center">No hay CRP  para este CDP</h3>
+</c:if>
+
 <br>
 <form name="formcrpnuevo" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 <input type="hidden" name="accion" value="20">
