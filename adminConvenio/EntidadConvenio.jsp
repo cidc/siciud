@@ -32,28 +32,30 @@
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");		
 			alert("El valor del Efectivo debe ser menor: $"+(tol-sumatoria));
 		}
-	}
-	}
+		
+		}
+	}	
+	
 	function validar(){
 		if(document.formularioEnviar.VEfectivoConv.value==""){
-			
 			alert("El Valor Efectivo no puede estar vacio");	
 			return false;
-			
-		}else{if(document.formularioEnviar.VEfectivoConv.value=="0")
+			}
+			if(document.formularioEnviar.VEfectivoConv.value=="0"){
 			alert("El Valor Efectivo no puede ser 0");
 			return false;
-		}else{if(document.formularioEnviar.VEspecieConv.value=="")
+			}			
+			if(document.formularioEnviar.VEspecieConv.value==""){
 			alert("El Valor Efectivo no puede ser 0");
 			return false;
-		}
+			}
 			return true;
 	}
 		
 		
-	}
+	
 	function enviar(id,action,entidad){
-		
+			
 			document.frmAporte.accion.value=action;
 			document.frmAporte.idCon.value=id;
 			document.frmAporte.nombreEntidad.value=entidad;
@@ -116,7 +118,7 @@
 			<tr>
 				<th width="5px">&nbsp;</th>
 			    <th><b>Nombre</b></th>
-			    <th><b>Valor Especie</b></th>
+			    <th><b>Valor Especie (Informativo)</b></th>
 			    <th><b>Valor Efectivo</b></th>
 			    <th><b>Valor Total</b></th>
 			    <th><b>Aportes</b></th>
@@ -177,7 +179,8 @@
      
      </tr>		
 			<tr>
-				<td colspan="6" align="center"><img src=<c:url value="/comp/img/Enviar.gif" /> onclick="pregunta()"></td>
+				<td colspan="6" align="center">
+				<img src=<c:url value="/comp/img/Enviar.gif" /> onclick="pregunta()"></td>
 			</tr>
 			
 		</table>

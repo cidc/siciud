@@ -12,8 +12,8 @@
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/calendar.js"/>'></script>
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/lang/calendar-es.js"/>'></script>
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/calendar-setup.js"/>'></script>
-
 <script>
+
 var nav4=window.Event ? true : false;
 function soloNumeros(eve){
 	var key=nav4?eve.which :eve.keyCode;
@@ -36,16 +36,11 @@ function enviar(id,action,nombre,valortotal){
     document.listadocdp.nn.value=nombre;
     document.listadocdp.valor.value=valortotal;
     document.listadocdp.submit();
-
 }
-
-
 </script>
 <c:import url="/general.jsp"/>
-
 </head>
 <body>
-
 <br>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
@@ -54,7 +49,6 @@ function enviar(id,action,nombre,valortotal){
 			<td><a href='<c:url value="/adminConvenio/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Tiempos.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/Personas.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/Participantes.gif"/>'></a></td>
 			<td><img border="0" src='<c:url value="/comp/img/convenio/GruposInvClick.gif"/>'></a></td>
-
 		</tr>
 	</table>
 <br>
@@ -64,7 +58,6 @@ function enviar(id,action,nombre,valortotal){
 <input type="hidden" name="idcdp" value="">
 <input type="hidden" name="nn" value="">
 <input type="hidden" name="valor" value="">
-
 
 <table align="center" class="tablas">
 <caption>Lista de CDPs</caption>
