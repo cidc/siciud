@@ -33,6 +33,7 @@ import cidc.adminEntidad.obj.EntidadOBJ;
 import cidc.convenios.obj.AportesOBJ;
 import cidc.convenios.obj.CdpOBJ;
 import cidc.convenios.obj.Convenio;
+import cidc.convenios.obj.CrpOBJ;
 import cidc.convenios.obj.EntidadAsociadaOBJ;
 import cidc.convenios.obj.ExtraDocConvenio;
 import cidc.convenios.obj.FinanzaOBJ;
@@ -582,7 +583,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setListaentidadesConv(getListaEntidadesConv(id));	
 				conv.setFinanza(getfinanzas(id));
 				conv.setListacdpsConv(getcdp(id));
-				
+				conv.setListacdpsConv(getcrp(id));
 			}
 			return conv;
 		}
@@ -1192,29 +1193,32 @@ public List <CdpOBJ> getcdp(int id) {
 	return Listacdp;
 }
 
-public FinanzaOBJ getunicocdp(int id) {
-	CdpOBJ cdp= null;
+public List <CrpOBJ> getcrp(int id) {
 	Connection cn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    int i=1;
+    List<CrpOBJ> Listacrp=new ArrayList <CrpOBJ>();
         try {
              cn = cursor.getConnection(super.perfil);
-             ps = cn.prepareStatement(rb.getString("consultarFinanzaConvenio"));
+             ps = cn.prepareStatement(rb.getString("consultarCRP"));
              ps.setInt(1, id);
              rs = ps.executeQuery();
              while (rs.next()){
-                finanza=new FinanzaOBJ();
-                finanza.setIdfinanza(rs.getInt(1));
-                finanza.setVAprobado(rs.getInt(2));
-                finanza.setVAportado(rs.getInt(3));
-                finanza.setVComprometer(rs.getInt(4));
-                finanza.setVEjecutar(rs.getInt(5));
-                finanza.setVEspecie(rs.getInt(6));
-                finanza.setVEfectivo(rs.getInt(7));
-                finanza.setIdConvenioFinanza(rs.getInt(8));
-             }
-             
-        } catch (SQLException e) {lanzaExcepcion(e);}
+            	 i=1;
+            	 CrpOBJ crp=new CrpOBJ();
+            	 crp.setIdcrp(rs.getInt(i++));
+            	 crp.setIdcdp(rs.getInt(i++));
+            	 crp.setValor(rs.getInt(i++));
+            	 crp.setNombre(rs.getString(i++));
+            	 crp.setCodigo(rs.getString(i++));
+            	 crp.setCliente(rs.getString(i++));
+            	 crp.setObservacion(rs.getString(i++));
+            	 crp.setFecha(rs.getString(i++));
+            	 crp.setUsudigita(rs.getInt(i++));
+            	 Listacrp.add(crp);
+            	 }
+             } catch (SQLException e) {lanzaExcepcion(e);}
 	       catch (Exception e) {lanzaExcepcion(e);}
         finally {
             try {
@@ -1224,7 +1228,7 @@ public FinanzaOBJ getunicocdp(int id) {
             }
             catch (SQLException e){}
             }
-	return finanza;
+	return Listacrp;
 }
 
 public FinanzaOBJ getfinanzas(int id) {
@@ -1327,6 +1331,37 @@ public boolean insertaRubrosAprobrados(int idfinanza,String idRubro,String codig
 		retorno = true;
 	}catch (Exception e) {
 		System.out.println("se explota en insertar cdp");
+		lanzaExcepcion(e);
+	
+	}finally{
+		cerrar(ps);
+		cerrar(cn);
+	}
+	return retorno;
+}
+
+public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String cliente,String observacion,String fecha ,long usuario){
+	Connection cn=null;
+	PreparedStatement ps=null;
+	boolean retorno = false;
+	int i=1;
+	
+	try {
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("insertaCRP"));
+		ps.setInt(i++, idcdp);
+		ps.setInt(i++, valor);
+		ps.setString(i++, nombre);
+		ps.setString(i++, codigo);
+		ps.setString(i++, cliente);
+		ps.setString(i++, observacion);
+		ps.setString(i++, fecha);
+		ps.setLong(i++, usuario);
+		ps.executeUpdate();
+	    retorno = true;
+	    System.out.println(idcdp);
+	}catch (Exception e) {
+		System.out.println("se explota en insertar crp");
 		lanzaExcepcion(e);
 	
 	}finally{
