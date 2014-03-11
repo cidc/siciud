@@ -19,6 +19,8 @@
 	
 	function pregunta(){
 		
+		
+		if(validar()==true){
 		var sumatoria=parseInt(document.formularioEnviar.sumatoria.value);
 		var efectivo=parseInt(document.formularioEnviar.VEfectivoConv.value);
 		var tol=parseInt(document.formularioEnviar.total.value);
@@ -29,10 +31,26 @@
 		}else{
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");		
 			alert("El valor del Efectivo debe ser menor: $"+(tol-sumatoria));
-
-			
-			document.formularioEnviar.action='<c:url value="/adminEntidad/GestEntidad.x"/>';
 		}
+	}
+	}
+	function validar(){
+		if(document.formularioEnviar.VEfectivoConv.value==""){
+			
+			alert("El Valor Efectivo no puede estar vacio");	
+			return false;
+			
+		}else{if(document.formularioEnviar.VEfectivoConv.value=="0")
+			alert("El Valor Efectivo no puede ser 0");
+			return false;
+		}else{if(document.formularioEnviar.VEspecieConv.value=="")
+			alert("El Valor Efectivo no puede ser 0");
+			return false;
+		}
+			return true;
+	}
+		
+		
 	}
 	function enviar(id,action,entidad){
 		
@@ -41,7 +59,7 @@
 			document.frmAporte.nombreEntidad.value=entidad;
 			document.frmAporte.submit();
 	
-	}
+	}                                              
 
 
 </script>
@@ -159,7 +177,7 @@
      
      </tr>		
 			<tr>
-				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>' onclick='pregunta()'></td>
+				<td colspan="6" align="center"><img src=<c:url value="/comp/img/Enviar.gif" /> onclick="pregunta()"></td>
 			</tr>
 			
 		</table>

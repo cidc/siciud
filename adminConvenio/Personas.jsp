@@ -17,13 +17,51 @@
 		return(key<=13 || (key>=48 && key<=57));
 	}
 	function enviar(idPersona,accion,cont){
+		
 		document.frmPersona.accion.value=accion;
 		document.frmPersona.observacion.value=document.getElementById("observaciones"+cont).value;
 		document.frmPersona.fechaInicio.value=document.getElementById("f_date_a"+cont).value;
 		document.frmPersona.fechaFin.value=document.getElementById("f_date_b"+cont).value;
 		document.frmPersona.idPersona.value=idPersona;
 		document.frmPersona.submit();
+		
 	}
+	
+	function nuevo(){
+		
+		if(validar()==true){
+			document.formNuevo.submit();
+		}
+	}
+	
+	
+	function validar(){
+		
+		if(document.formNuevo.fechaInicio.value==""){
+				 alert("La fecha de inicio no puede estar vacia");
+				 return false;
+			}
+			if(document.formNuevo.documento.value==""){
+				alert("El Documento del participante no puede estar vacio ");	
+				 return false;
+			}
+			if(document.formNuevo.nombre.value==""){
+				alert("El Nombre del participante no puede estar vacio ");		
+				 return false;
+			}
+			if(document.formNuevo.apellido.value==""){
+				alert("El Apellido del participante no puede estar vacio ");	
+				 return false;
+			}
+			if(document.formNuevo.rol.value==""){
+				alert("El Rol del participante no puede estar vacio ");		
+				 return false;
+							}		
+			return true;
+		}	
+		
+	
+	
 	
 	function pregunta(idPersona,accion,cont)
 	{
@@ -76,7 +114,7 @@
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.balanceProyecto.totalAprobado}"/>REVISAR COD</td>
+			<td width="20%" align="center">$<c:out value="${sessionScope.datoConvenio.finanza.VAprobado}"/></td>
 		</tr>
 	</table>
 	
@@ -143,7 +181,7 @@
 	<h3 align="center">No hay más personas registradas en este Convenio</h3>
 	</c:if>
 	
-	<form method="post" action='<c:url value="/adminConvenio/llenarPersonas.jsp"/>'>
+	<form name="formNuevo" method="post" action='<c:url value="/adminConvenio/llenarPersonas.jsp"/>'>
 		<input type="hidden" name="accion" value="10">
 		<input type="hidden" name="idPersona" value="">
 		
@@ -198,7 +236,7 @@
 			<td colspan="6"><textarea name="observacion" style="width:100%"></textarea> </td>
 		</tr>
 			<tr>
-				<td colspan="6" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>'></td>
+				<td colspan="6" align="center"><img src=<c:url value="/comp/img/Guardar.gif" /> onclick="nuevo()"></td>
 			</tr>
 		</table>
 	</form>

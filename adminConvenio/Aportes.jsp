@@ -37,12 +37,7 @@
 		}else{
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");	
 			alert("El valor del aporte debe ser menor: $"+(tol-sumatoria));
-			document.frmAporte.action='<c:url value="/adminConvenio/AdminConvenio.x"/>'
-				document.frmAporte.accion.value=17;
 			}
-		}else{
-			document.frmAporte.action='<c:url value="/adminConvenio/AdminConvenio.x"/>'
-			document.frmAporte.accion.value=17;
 		}
 	}
 	function enviar(){
@@ -232,7 +227,7 @@
 								<td colspan="6"><input type="text" name="Aobservacion" size="70" maxlength="70"></td>
 							</tr>
 			<tr>
-				<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>'  onclick="pregunta()"></td>
+				<td colspan="4" align="center"><img src=<c:url value="/comp/img/Enviar.gif" /> onclick="pregunta()"></td>
 			</tr>
 		</table> 
 	</form> 

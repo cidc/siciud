@@ -28,6 +28,35 @@
 		document.frmTiempos.idTiempo.value=id;
 		document.frmTiempos.submit();
 	}
+	
+	function enviar(){
+		
+		if(validar()==true){
+			document.formTiemp.submit();
+		}
+			
+	}
+	
+	function validar(){
+		
+		if(document.formTiemp.fechaTiempo.value==""){
+			alert("La fecha no puede ir vacia");
+			return false;
+		}
+		if(document.formTiemp.valorTiempo.value==""){
+			alert("Debe ingresar un tiempo Aprobado");
+			return false;
+		}
+		if(document.formTiemp.valorTiempo.value=="0"){
+			alert("El tiempo Aprobado no puede ser 0");
+			return false;
+		}
+		
+		
+		return true;
+		
+		
+	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -67,7 +96,7 @@
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
 			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
-			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.finanza.VAprobado}"/></td>
+			<td width="20%" align="center">$<c:out value="${sessionScope.datoConvenio.finanza.VAprobado}"/></td>
 		</tr>
 	</table>
 	
@@ -109,7 +138,7 @@
 	<h3 align="center">No hay tiempos adicionales aprobados para este proyecto</h3>
 	</c:if>
 	
-	<form method="post" action='<c:url value="/adminConvenio/llenarTiempo.jsp"/>'>
+	<form method="post" name="formTiemp" action='<c:url value="/adminConvenio/llenarTiempo.jsp"/>'>
 	<input type="hidden" name="accion" value="8"> 
 		<table align="center" width="90%" class="tablas">
 		<caption>Registro de nuevo tiempo adicional</caption>
@@ -146,7 +175,7 @@
 				<td><input type="text" name="descripcion"></td>
 			</tr>
 			<tr>
-				<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Enviar.gif"/>'></td>
+				<td colspan="4" align="center"><img src=<c:url value="/comp/img/Guardar.gif" /> onclick="enviar()"></td>
 			</tr>
 		</table>
 	</form>
