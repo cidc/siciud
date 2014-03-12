@@ -17,8 +17,49 @@ function nuevo(){
     document.getElementById("nuevo").style.display='';
  }
 function crear(){
+	if(document.formcrpnuevo.crp.value==""){
+		alert("Ingrese nombre CRP");
+		return false;
+	}else if(document.formcrpnuevo.codigocrp.value==""){
+		alert("Ingrese codigo CRP");
+		return false;
+	}else if(document.formcrpnuevo.clientecrp.value==""){
+		alert("Ingrese cliente CRP");
+		return false;
+	}else if(document.formcrpnuevo.valorcrp.value==""){
+		alert("Ingrese valor CRP");
+		return false;
+	}else{
+		return true;
+		 
+		
+	}
 
-	 document.formcrpnuevo.submit();
+	
+}
+function pregunta(){
+
+	if(crear()==true){
+		alert("entro");
+		
+		
+		var sumatoria=parseInt(document.formcrpnuevo.sumatoria.value);
+		var efectivo=parseInt(document.formcrpnuevo.valorcrp.value);
+		var tol=parseInt(document.formcrpnuevo.valortotal.value);
+		
+		alert("sumatoria"+sumatoria);
+		if((efectivo+sumatoria)<=tol){
+			alert("Exito");	
+			document.formcrpnuevo.submit();
+		}else{
+			alert("El total Efectivo no debe ser mayor al Total Aprobado");	
+			alert("El valor del aporte debe ser menor: $"+(tol-sumatoria));
+			}
+		
+		
+	}
+	
+	
 }
 </script>
 <body>
@@ -66,17 +107,20 @@ function crear(){
         <table width="80%" align="center" class="tablas">
 			<caption>CDP asociado</caption>
 			<tr><td class="renglones" width="115px"><b>CDP: </b></td> 
-			    <td class="renglones" width="115px"><b>Valor: </b></td>
+			    <td class="renglones" width="115px"><b>Valor Asignado: </b></td>
+			    
 			<tr/> 
 			<tr>
 			<td width="115px"><c:out value="${requestScope.nombrecdp}"/></td>
 			<td width="115px"><c:out value="${requestScope.valortotal}"/></td>
+			
 		
 			
 			</tr>
 		</table>
 		<table width="80%" align="center"> <tr><td align="center" colspan="3"><img src='<c:url value="/comp/img/Nuevogasto.gif"/>' onclick='nuevo()'> </td></tr>
         </table>
+        <c:set var="numero"  value="0" />
 <c:if test="${!empty sessionScope.datoConvenio.listacrpsConv}">
 <form name="formcargacrp" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 <input type="hidden" name="accion" value="20">
@@ -113,10 +157,18 @@ function crear(){
 			   <b><input type="text"  name="observacioncrp" readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
   </td>
  <tr/>
+ <c:set var="numero"  value="${numero+lista.valor}"/>
 
 </c:forEach>
 </table>
 </form>
+           <table width="50%" align="center" class="tablas">
+			<tr>
+			<th width="200px"><b>Valor Asignado:</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.valortotal}"/></td></td>
+			<th width="200px"><b>Valor Disponible:</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.valortotal-numero}"/></td></td>
+			
+			</tr>
+		   </table>
 </c:if>
 <c:if test="${empty sessionScope.datoConvenio.listacrpsConv}">
 	<h3 align="center">No hay CRP  para este CDP</h3>
@@ -129,6 +181,7 @@ function crear(){
 
 <input type="hidden" name="nombrecdp" value="<c:out value="${requestScope.nombrecdp}"/>">
 <input type="hidden" name="valortotal" value="<c:out value="${requestScope.valortotal}"/>">
+<input type="hidden" name="sumatoria" value="${numero}">
 
 <table id="nuevo" class="tablas" align = "center" width="80%" style="display: none">
 <CAPTION>Nuevo CRP</CAPTION>
@@ -158,7 +211,7 @@ function crear(){
 
   
   <tr>  <td align="center" colspan="4">
-                  <img src='<c:url value="/comp/img/Registrar.gif"/>' onclick='crear()'>
+                  <img src='<c:url value="/comp/img/Registrar.gif"/>' onclick='pregunta()'>
                   <img src='<c:url value="/comp/img/Cancelar.gif"/>' onclick='cancelar()'>
         </td>
   </tr>

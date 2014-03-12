@@ -168,7 +168,7 @@
 			<th width="200px"><b>Falta Por Aportar</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.entidadaporte.VEfectivoConv-numero}"/></td></td>
 			
 			</tr>
-		</table>
+		   </table>
 	</form>
 	</c:if>
 	<c:if test="${empty requestScope.listaAportesEntidad}">
