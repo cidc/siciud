@@ -9,6 +9,8 @@ public class EntidadAsociadaOBJ implements Serializable {
 	private String VEspecieConv;
 	private String VEfectivoConv;
 	private String VTotal;
+	private String VAportado;
+	private String VCdps;
 	public String getIdentidadconvenio() {
 		return identidadconvenio;
 	}
@@ -45,5 +47,19 @@ public class EntidadAsociadaOBJ implements Serializable {
 	public void setVTotal(String vTotal) {
 		VTotal = vTotal;
 	}
+	public String getVAportado() {
+		return VAportado;
+	}
+	public void setVAportado(String vAportado) {
+		VAportado = vAportado;
+	}
+	public String getVCdps() {
+		return VCdps;
+	}
+	public void setVCdps(String vCdps) {
+		VCdps = vCdps;
+	}
+	
+	
 
 }

@@ -239,7 +239,7 @@ case Parametros.AdicionarTiempo:
 					 req.setAttribute("listaRubros", adminConv.consultarRubros());
 					 
 					 objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
-					sesion.setAttribute("datoConvenio", objconv);
+					 sesion.setAttribute("datoConvenio", objconv);
 				
 					 
 					// req.setAttribute("listaRubrosAprobados", proyAntiguosDB.consultarRubrosAprobados(objProyecto.getId()));
@@ -267,7 +267,7 @@ case Parametros.AdicionarTiempo:
 				break;
 				
 				case Parametros.CargarAportes:
-					 req.setAttribute("nombrº5dad",req.getParameter("nombreEntidad"));
+					 req.setAttribute("nombreEntidad",req.getParameter("nombreEntidad"));
 					 req.removeAttribute("listaAportesEntidad");
 					 req.setAttribute("listaAportesEntidad", adminConv.buscarAportesEntidad(Integer.parseInt(req.getParameter("idCon"))));
 					 req.setAttribute("entidadaporte", adminConv.entidadaporte(Integer.parseInt(req.getParameter("idCon"))));
