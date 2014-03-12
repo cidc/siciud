@@ -1428,25 +1428,15 @@ public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String
 		
 		cn=cursor.getConnection(super.perfil);
 		ps=cn.prepareStatement(rb.getString("actualizarEjecutadoCdp"));
-			
-		
 		
 		ps.setInt(1,valor);
-		ps.setInt(2, convenio().getIdfinanza());
+		ps.setInt(2, idcdp);
 		
 		ps.executeUpdate();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				
 	    retorno = true;
-	    System.out.println(idcdp);
+	 
+	    
 	}catch (Exception e) {
 		System.out.println("se explota en insertar crp");
 		lanzaExcepcion(e);

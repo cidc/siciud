@@ -78,7 +78,7 @@ function suma(formulario1){
 		document.listadoRubros.valorEntidad[i].value=eliminaFormatoMoneda(document.listadoRubros.valorEntidad[i].value);
 	 }
 	 document.listadoRubros.submit();
-
+}
 	 function enviar(id,action,nombre,valor){
 	 	
 	 	document.listadocdp.accion.value=action;
