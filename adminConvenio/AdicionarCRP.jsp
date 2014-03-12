@@ -45,7 +45,7 @@ function pregunta(){
 		
 		var sumatoria=parseInt(document.formcrpnuevo.sumatoria.value);
 		var efectivo=parseInt(document.formcrpnuevo.valorcrp.value);
-		var tol=parseInt(document.formcrpnuevo.valortotal.value);
+		var tol=parseInt(document.formcrpnuevo.valor.value);
 		
 		alert("sumatoria"+sumatoria);
 		if((efectivo+sumatoria)<=tol){
@@ -180,7 +180,7 @@ function pregunta(){
 <input type="hidden" name="idcdp" value="<c:out value="${requestScope.idcdp}"/>">
 
 <input type="hidden" name="nombrecdp" value="<c:out value="${requestScope.nombrecdp}"/>">
-<input type="hidden" name="valortotal" value="<c:out value="${requestScope.valortotal}"/>">
+<input type="hidden" name="valor" value="<c:out value="${requestScope.valortotal}"/>">
 <input type="hidden" name="sumatoria" value="${numero}">
 
 <table id="nuevo" class="tablas" align = "center" width="80%" style="display: none">
