@@ -26,73 +26,49 @@ public class EvaluacionPropuestas extends ServletGeneral {
 		AdminPropuestaDB adminPropuestaDB = new AdminPropuestaDB(cursor,
 				usuario.getPerfil());
 		int accion = 0;
+		int ano=0;
+		int tipo=0;
 		if (req.getParameter("accion") != null)
 			accion = Integer.parseInt(req.getParameter("accion"));
-		if (req.getParameter("ano") != null
-				&& !req.getParameter("ano").equals(""))
-			req.setAttribute("listaNum", adminPropuestaDB
-					.ajaxNumConvocat(Integer.parseInt(req.getParameter("ano"))));
-
+		if (req.getParameter("ano") != null && !req.getParameter("ano").equals("")){
+			req.setAttribute("listaNum", adminPropuestaDB.ajaxNumConvocat(Integer.parseInt(req.getParameter("ano"))));
+			 ano=Integer.parseInt(req.getParameter("ano"));
+		}
 		req.setAttribute("listaConv", adminPropuestaDB.ajaxConv());
 		switch (accion) {
 		case 1:
+			int num=Integer.parseInt(req.getParameter("num"));
+			tipo=Integer.parseInt(req.getParameter("tipo"));
 			System.out.println("entra a consultas...");
-			sesion.setAttribute(
-					"listaPropOBJ",
-					adminPropuestaDB.getPropuestas(
-							Integer.parseInt(req.getParameter("ano")),
-							Integer.parseInt(req.getParameter("num")),
-							req.getParameter("activa"),
-							Integer.parseInt(req.getParameter("tipo"))));
+			sesion.setAttribute("listaPropOBJ",
+					adminPropuestaDB.getPropuestas(ano,num,req.getParameter("activa"),tipo));
 			System.out.println("entra a consultas1...");
-			sesion.setAttribute(
-					"listaDocOBJ",
-					adminPropuestaDB.getDocumentos(
-							Integer.parseInt(req.getParameter("ano")),
-							Integer.parseInt(req.getParameter("num"))));
+			sesion.setAttribute("listaDocOBJ",
+					adminPropuestaDB.getDocumentos(ano,num));
 			System.out.println("entra a consultas2...");
-			sesion.setAttribute(
-					"listaCritOBJ",
-					adminPropuestaDB.ListaCriterios(
-							Integer.parseInt(req.getParameter("ano")),
-							Integer.parseInt(req.getParameter("num"))));
+			sesion.setAttribute("listaCritOBJ",
+					adminPropuestaDB.ListaCriterios(ano,num));
 			System.out.println("entra a consultas3...");
-			sesion.setAttribute(
-					"listaAspOBJ",
-					adminPropuestaDB.ListaAspectos(
-							Integer.parseInt(req.getParameter("ano")),
-							Integer.parseInt(req.getParameter("num"))));
+			sesion.setAttribute("listaAspOBJ",
+					adminPropuestaDB.ListaAspectos(ano,num));
 			System.out.println("entra a consultas4...");
 			sesion.setAttribute("listaEvalOBJ",
 					adminPropuestaDB.ListaEvaluadores());
 			System.out.println("entra a consultas5...");
-			sesion.setAttribute(
-					"listaCalOBJ",
-					adminPropuestaDB.getCalificacionGeneral(
-							Integer.parseInt(req.getParameter("ano")),
-							Integer.parseInt(req.getParameter("num")),
-							req.getParameter("activa"),
-							Integer.parseInt(req.getParameter("tipo"))));
+			sesion.setAttribute("listaCalOBJ",
+					adminPropuestaDB.getCalificacionGeneral(ano,num,req.getParameter("activa"),tipo));
 			System.out.println("entra a consultas6...");
-			sesion.setAttribute(
-					"listaCalObs",
-					adminPropuestaDB.getCalificacionObservaciones(
-							Integer.parseInt(req.getParameter("ano")),
-							Integer.parseInt(req.getParameter("num")),
-							req.getParameter("activa"),
-							Integer.parseInt(req.getParameter("tipo"))));
+			sesion.setAttribute("listaCalObs",
+					adminPropuestaDB.getCalificacionObservaciones(ano,num,req.getParameter("activa"),tipo));
 			System.out.println("entra a consultas7...");
-			req.setAttribute(
-					"convEstado",
-					adminPropuestaDB.estadoConvocat(
-							Integer.parseInt(req.getParameter("ano")),
-							Integer.parseInt(req.getParameter("num"))));
+			req.setAttribute("convEstado",
+					adminPropuestaDB.estadoConvocat(ano,num));
 			System.out.println("entra a consultas8...");
 			break;
 
 		case Parametros.EVALGUARDAR:
 			System.out.println("entra a Servlet");
-			int tipo = Integer.parseInt(req.getParameter("tipo"));
+			tipo=Integer.parseInt(req.getParameter("tipo"));
 			if (sesion.getAttribute("propuestaOBJ") != null) {
 				if (adminPropuestaDB.EvaluacionPropuestas(
 						(PropuestaOBJ) sesion.getAttribute("propuestaOBJ"),
@@ -121,7 +97,7 @@ public class EvaluacionPropuestas extends ServletGeneral {
 		retorno[0] = "unir";
 		retorno[1] = irA;
 		// retorno[2]=mensaje;
-		return retorno;
+		return retorno; 
 	}
 	/*
 	 * void buscar(HttpServletRequest req, HttpServletResponse resp, HttpSession

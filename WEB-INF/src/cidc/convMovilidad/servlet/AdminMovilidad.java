@@ -122,21 +122,6 @@ public class AdminMovilidad extends ServletGeneral {
 				System.out.println("papel "+persona.getPapel());
 				sesion.removeAttribute("movilidad");
 			break;
-		/*	case Parametros.consultaIndividual:
-				sesion.removeAttribute("movilidad");
-				sesion.removeAttribute("requisitos");
-				sesion.setAttribute("movilidad", movilidadDB.consultaIndividual(req.getParameter("id")));
-				if(req.getParameter("estado").equals("1")){
-					irA="/convMovilidad/agenda.jsp";
-					sesion.setAttribute("idPropuesta", movilidadDB.consultaIndividual(req.getParameter("id")));
-					sesion.setAttribute("estado", req.getParameter("estado"));
-				}
-				else{
-					irA="/convMovilidad/Cargar.jsp";
-					sesion.setAttribute("idPropuesta", movilidadDB.consultaIndividual(req.getParameter("id")));
-					sesion.setAttribute("estado", req.getParameter("estado"));
-				}
-			break;*/
 			case Parametros.enviaMail:
 				//System.out.println("Inicia envio de mail soporte movilidad para ="+req.getParameter("id"));
 				if(movilidadDB.enviarMail(req.getParameter("id"),persona))
@@ -171,7 +156,7 @@ public class AdminMovilidad extends ServletGeneral {
 			case Parametros.ActializarPaso3:
 				if(req.getParameter("propConvId")!=null)
 				info =(InfoGeneral)sesion.getAttribute("movilidad");
- 				sesion.setAttribute("listaDocOBJ",movilidadDB.buscarDocumentosInscritos((int)info.getIdPropuesta()));
+ 				sesion.setAttribute("listaDocOBJ",movilidadDB.buscarDocumentosInscritos((int)info.getIdPropuesta(),info.getIdConv()));
 				irA="/convMovilidad/Cargar.jsp";
 				System.out.println("Paso 03");
 			break;

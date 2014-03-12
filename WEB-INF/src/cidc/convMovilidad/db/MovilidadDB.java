@@ -814,7 +814,7 @@ public class MovilidadDB extends BaseDB{
 	 * @param conv
 	 * @return una lista de los documentos de la propuesta con su respectivo nombre
 	 */
-	public List<PropuestaOBJ> buscarDocumentosInscritos( int idProp){
+	public List<PropuestaOBJ> buscarDocumentosInscritos( int idProp,long idConv){
         Connection cn=null;
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -824,6 +824,7 @@ public class MovilidadDB extends BaseDB{
                 cn=cursor.getConnection(super.perfil);
                 ps=cn.prepareStatement(rb.getString("DocumentosInscritos"));
                 ps.setInt(1,idProp);
+                ps.setLong(2, idConv);
                 rs=ps.executeQuery();
                 while(rs.next()){
                         i=1;
@@ -833,7 +834,18 @@ public class MovilidadDB extends BaseDB{
                         propuestaOBJ.setDocNombre(rs.getString(i++));
                         propFinal.add(propuestaOBJ);
                 }
-                
+                if(propFinal.size()==0){
+                	ps=cn.prepareStatement(rb.getString("DocumentosInscritos2"));
+                    ps.setLong(1,idConv);
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                    	i=1;
+                    	PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                        propuestaOBJ.setIdDocumentoRequisito(rs.getInt(i++));
+                        propuestaOBJ.setNombreDocumentoRequisito(rs.getString(i++));
+                        propFinal.add(propuestaOBJ);
+                    }
+                }
         } catch (Exception e) {
                 lanzaExcepcion(e);
         }finally{

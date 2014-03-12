@@ -697,7 +697,7 @@ public class AdminPropuestaDB extends BaseDB{
 			if(propuestaOBJ.getCodProp()!=null){
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("AprobarPropuesta"));
-			System.out.println("Entro a consulta DB"+propuestaOBJ.getPropAprobada().length);
+			//System.out.println("Entro a consulta DB"+propuestaOBJ.getPropAprobada().length);
 			for(int i=0;i<propuestaOBJ.getCodProp().length;i++){
 			c=1;		
 			ps.setInt(c++,propuestaOBJ.getConvId()[i]);

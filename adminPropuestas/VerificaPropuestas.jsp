@@ -162,9 +162,10 @@
 		<br>
 		<form name="listado" method="post"
 			action='<c:url value="/AdminPropuestas/VerificaRequisitos.x"/>'>
-			<input type="hidden" name="accion" value="0" /> <input type="hidden"
-				name="prop" value="0"> <input type="hidden" name="activa"
-				value="0"> <input type="hidden" name="tipEval" value="0">
+			<input type="hidden" name="accion" value="0" /> 
+			<input type="hidden" name="prop" value="0"> 
+			<input type="hidden" name="activa" value="0"> 
+			<input type="hidden" name="tipEval" value="0">
 			<input type="hidden" name="codPropuesta" value="0">
 			<table class="tablas" width="98%">
 				<caption>Listado de Propuestas Inscritas</caption>
@@ -173,7 +174,7 @@
 					<th align="center"><b>Convocatoria</b></th>
 					<th align="center"><b>Propuesta</b></th>
 					<th align="center"><b>Documentos</b></th>
-					<th align="center"><b>Aprobo</b></th>
+					<th align="center"><b>Pre-Aprobo</b></th>
 					<th align="center"><b>Observaciones</b></th>
 				</tr>
 				<c:forEach begin="0" items="${sessionScope.listaPropOBJ}"
@@ -181,16 +182,11 @@
 					<tr <c:if test="${st.count mod 2==0}">class="trb"</c:if>>
 						<th align="center" width="25px"><b><c:out
 									value="${st.count}" /></b></th>
-						<input type="hidden" name="codProp"
-							value="<c:out value="${lista.codPropuesta}"/>">
-						<input type="hidden" name="convId"
-							value="<c:out value="${lista.conv}"/>">
-						<td class="listas" width="25px"><c:out value="${num}" />-<c:out
-								value="${ano}" /></td>
-						<td class="listas" width="25px"><c:out
-								value="${lista.codPropuesta}" /></td>
-						<td class="listas" width="25px"><c:forEach begin="0"
-								items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
+						<input type="hidden" name="codProp" value="<c:out value="${lista.codPropuesta}"/>">
+						<input type="hidden" name="convId" 	value="<c:out value="${lista.conv}"/>">
+						<td class="listas" width="25px"><c:out value="${num}" />-<c:out value="${ano}" /></td>
+						<td class="listas" width="25px"><c:out value="${lista.codPropuesta}" /></td>
+						<td class="listas" width="25px"><c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
 								<c:if test="${lista.codPropuesta==lista2.codPropuesta}">
 									<a
 										href="/siciud/Documentos/Movilidad/<c:out value="${lista2.docNombre}"/>"><img
@@ -199,10 +195,10 @@
 								</c:if>
 							</c:forEach></td>
 						</td>
-						<td class="estado" align="center"><input type="checkbox"	
-							name="propAprobada_"'<c:forEach begin="0" items="${sessionScope.listaPropApOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista.codPropuesta==lista6.codPropuesta && lista6.propuestaAp==1}">' checked '</c:if>' '</c:forEach>'>
-			</td>
-						<input type="hidden" name="propAprobada">
+						<td class="estado" align="center">
+						<input type="checkbox" name="propAprobada_" '<c:forEach begin="0" items="${sessionScope.listaPropApOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista.codPropuesta==lista6.codPropuesta && lista6.propuestaAp==1}">' checked '</c:if>' '</c:forEach>'>
+						</td>
+ 						<input type="hidden" name="propAprobada"> 
 						<td class="estado" align="center"><input type="text"
 							name="observaciones" size="30"'<c:forEach begin="0" items="${sessionScope.listaPropApOBJ}" var="lista7" varStatus="st">' '<c:if test="${lista.codPropuesta==lista7.codPropuesta}">' value="<c:out value="${lista7.observa}"/>" '</c:if>' '</c:forEach>'>
 						</td>
