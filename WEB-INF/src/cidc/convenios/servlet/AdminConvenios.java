@@ -301,16 +301,14 @@ case Parametros.AdicionarTiempo:
 					irA="/adminConvenio/Aportes.jsp";
 				break;
 				
-				case Parametros.NuevoCRP:
-					System.out.println("idcdp"+req.getParameter("idcdp"));
-					System.out.println("nn"+req.getParameter("nn"));
-					System.out.println("valortotal"+req.getParameter("valor"));
+				case Parametros.VerCrp:
 					
-					 objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+					
+					objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 					sesion.setAttribute("datoConvenio", objconv);
 					
 					req.setAttribute("idcdp",req.getParameter("idcdp"));
-					req.setAttribute("nombrecdp",req.getParameter("nn"));
+					req.setAttribute("nombrecdp",req.getParameter("nombrecdp"));
 					req.setAttribute("valortotal",req.getParameter("valor"));
 					irA="/adminConvenio/AdicionarCRP.jsp";
 				break;

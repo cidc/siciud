@@ -24,6 +24,6 @@ public class Parametros {
 	public static final int cmdInsertaRubrosAprobados=16;
 	public static final int CargarAportes=17;
 	public static final int NuevoAporte=18;
-	public static final int NuevoCRP=19;
+	public static final int VerCrp=19;
 	public static final int AdicionarCRP=20;
 }
