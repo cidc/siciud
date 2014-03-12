@@ -584,6 +584,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setFinanza(getfinanzas(id));
 				conv.setListacdpsConv(getcdp(id));
 				conv.setListacrpsConv(getcrp(id));
+				
 			}
 			return conv;
 		}
@@ -1105,7 +1106,12 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 			entid.setVEspecieConv(rs.getString(i++));
 			entid.setVEfectivoConv(rs.getString(i++));
 			entid.setVTotal(rs.getString(i++));
+			entid.setVAportado(valorAporte(Integer.parseInt(entid.getIdentidadconvenio())));
+			entid.setVCdps(valorCdp(Integer.parseInt(entid.getIdentidadconvenio())));
+			System.out.println("valor aporte="+entid.getVAportado());
+			System.out.println("valor cdp="+entid.getVCdps());
 			ListaEntidadesConv.add(entid);
+			
 		}
 	} catch (SQLException e) {
 		lanzaExcepcion(e);
@@ -1115,6 +1121,64 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 	}
 	
 	return ListaEntidadesConv;
+}
+
+
+ public String valorAporte(int identidad){
+
+	 	Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		String valorAporte="0";
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("consultarTotalAporteEntidad"));
+			ps.setInt(1, identidad);
+			rs=ps.executeQuery();
+			//System.out.println("-->"+ps);
+			while(rs.next()){
+				valorAporte=rs.getString(1);
+			}
+			if(valorAporte==null){
+				valorAporte="0";
+			}
+			
+		} catch (SQLException e) {
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return valorAporte;
+ }
+ 
+ public String valorCdp(int identidad){
+
+	 	Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		String valorTotalCdp="0";
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("consultarEntidadCdp"));
+			ps.setInt(1, identidad);
+			rs=ps.executeQuery();
+			//System.out.println("-->"+ps);
+			while(rs.next()){
+				valorTotalCdp=rs.getString(1);
+			}
+			if(valorTotalCdp==null){
+				valorTotalCdp="0";
+			}
+			
+		} catch (SQLException e) {
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return valorTotalCdp;
 }
 
 
@@ -1153,6 +1217,7 @@ public List <CdpOBJ> getcdp(int id) {
              ps = cn.prepareStatement(rb.getString("consultarcdp"));
              ps.setInt(1, id);
              rs = ps.executeQuery();
+             
              while (rs.next()){
             	 i=1;
             	CdpOBJ cdpOBJ=new CdpOBJ(); 
@@ -1166,7 +1231,7 @@ public List <CdpOBJ> getcdp(int id) {
             	cdpOBJ.setValortotal(rs.getInt(i++));
             	int [] l = new int[n];
             	for(int k=0;k<n;k++){
-            		System.out.println("valor q jode:"+Integer.parseInt(String.valueOf(valorunitario.get(contador))));
+
             		
             		l[k]= Integer.parseInt(String.valueOf(valorunitario.get(contador)));
             		System.out.println("valorl:"+l[k]);
@@ -1501,6 +1566,12 @@ public EntidadAsociadaOBJ entidadaporte(int id){
 	
 	return entidad;
 }
+
+
+
+
+
+
 	
 }
 

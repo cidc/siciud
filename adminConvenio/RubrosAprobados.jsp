@@ -20,8 +20,59 @@ function soloNumeros(eve){
 	return(key<=13 || (key>=48 && key<=57));
 }
 function guardar(){
+	
+		if(validarcampos()==true){
+			if(validarcdp()==true){
+				document.formCDP.submit();
+				}
+		}
+	
+}
 
-	 document.listadoRubros.submit();
+function validarcampos(){
+	
+	
+	var total=0;
+	var n=parseInt(document.formCDP.numeroentidad.value);
+	for(var i=1;i<=n;i++){
+		
+		var cdp=parseInt(document.getElementById("ventidad"+i).value);
+		total=total+cdp;
+	}
+
+
+	if(total=="0"){
+		 alert("Los valor total de cdp no puede ser 0");
+		 return false;
+	}
+	if(document.formCDP.codigo.value==""){
+		alert("El Codigo del CDP no puede estar vacio ");	
+		 return false;
+	}
+	
+		
+	return true;
+		
+}
+
+function validarcdp(){
+
+	var n=parseInt(document.formCDP.numeroentidad.value);
+	for(var i=1;i<=n;i++){
+		
+		var cdp=parseInt(document.getElementById("ventidad"+i).value);
+		var sumacdp=parseInt(document.getElementById("sumaCDP"+i).value);
+		var sumaaporte=parseInt(document.getElementById("sumaAporte"+i).value);
+		
+		
+		if(cdp>(sumaaporte-sumacdp)){
+		var entidad=document.getElementById("Entidad"+i).value
+		alert("El valor del cdp asignado a la entidad "+entidad+" no puede ser mayor a "+(sumaaporte-sumacdp));
+		return false;
+		}
+	}
+	return true;
+	
 }
 function suma(formulario1){
 	 for(var i=0;i<formulario1.idRubro.length;i++){
@@ -36,6 +87,7 @@ function enviar(id,action,nombre,valortotal){
     document.listadocdp.nn.value=nombre;
     document.listadocdp.valor.value=valortotal;
     document.listadocdp.submit();
+    
 }
 </script>
 <c:import url="/general.jsp"/>
@@ -55,7 +107,7 @@ function enviar(id,action,nombre,valortotal){
 	</table>
 <br>
 <c:if test="${!empty sessionScope.datoConvenio.listacdpsConv}">
-<form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadocdp">
+<form  action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadocdp">
 <input type="hidden" name="accion" value="19">
 <input type="hidden" name="idcdp" value="">
 <input type="hidden" name="nn" value="">
@@ -70,11 +122,11 @@ function enviar(id,action,nombre,valortotal){
 				<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lis" varStatus="st">
 				<th style="width:100px;"><b><c:out value="${lis.entidadid}"/></b></th>
 				<c:set var="cantidade" value="${cantidade+1}"></c:set>
+				
 				</c:forEach>
 				<th style="width:80px;" align="center"><b>valortotal</b></th>
 				<th style="width:80px;" align="center"><b>fechaRegistro</b></th>
-				
-<th style="width:500px;" align="center"><b>observacion</b></th>
+				<th style="width:500px;" align="center"><b>observacion</b></th>
 			</tr>
 			
 			
@@ -86,15 +138,6 @@ function enviar(id,action,nombre,valortotal){
 		    <td style="width:80px;" align="right">
 			  <b><input type="text"  name="codigo" readonly="readonly"  value='<c:out value="${lista.codigo}"/>'></b>
 			</td>
-			
-			<%--  <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
-				<td style="width:100px;" align="right">
-				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
-					<input id='ventidad<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorEntidad" value='<c:out value="${sessionScope.datoConvenio.finanza.idfinanza}"/>'>
-				</td>
-			</c:forEach>
-			--%>
-			
 			
 			<c:forEach var="i" items="${lista.valores}" begin="0">
 			 <td style="width:100px;" align="right">
@@ -126,7 +169,7 @@ function enviar(id,action,nombre,valortotal){
 	<h3 align="center">No hay CDPS aprobados para este proyecto</h3>
 </c:if>
 
-<form action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadoRubros">
+<form name="formCDP" action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadoRubros">
 	<input type="hidden" name="accion" value="16">
     <input type="hidden" name="idfinanza" value='<c:out value="${sessionScope.datoConvenio.finanza.idfinanza}"/>'>
 	<c:set var="var2" value="${0}"></c:set>
@@ -156,6 +199,9 @@ function enviar(id,action,nombre,valortotal){
 					<b><input  maxlength="10"  type="text"  name="codigo"></b>
 			   </td>
 			   <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+			   <input type="hidden" name="entidad" id='Entidad<c:out value="${st.count}"/>' value="<c:out value="${lista.entidadid}"/>">
+				<input type="hidden" name="sumaCDP" id='sumaCDP<c:out value="${st.count}"/>' value="<c:out value="${lista.VCdps}"/>">
+				<input type="hidden" name="sumaAporte" id='sumaAporte<c:out value="${st.count}"/>' value="<c:out value="${lista.VAportado}"/>">
 				<td style="width:100px;" align="right">
 				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
 					<input id='ventidad<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorEntidad" value="0">
