@@ -162,22 +162,9 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("<table>\r\n");
-      out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<td style=\"display:none\"><iframe name=\"frameOculto\" id=\"frameOculto\"></iframe></td>\r\n");
-      out.write("\t\t</tr>\r\n");
-      out.write("\t</table>\r\n");
-      out.write("\t<form method=\"post\" name=\"frmAjax\" action=\"");
-      if (_jspx_meth_c_005furl_005f23(_jspx_page_context))
-        return;
-      out.write("\">\r\n");
-      out.write("\t\t<input type=\"hidden\" name=\"dato\" value=''>\r\n");
-      out.write("\t\t<input type=\"hidden\" name=\"para\" value=''>\r\n");
-      out.write("\t\t<input type=\"hidden\" name=\"remove\" value=''>\r\n");
-      out.write("\t</form>\r\n");
-      out.write("\r\n");
-      if (_jspx_meth_c_005fif_005f5(_jspx_page_context))
+      out.write('\r');
+      out.write('\n');
+      if (_jspx_meth_c_005fif_005f6(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("\r\n");
@@ -477,51 +464,24 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
           return true;
         out.write("\r\n");
         out.write("\t\r\n");
-        out.write("\t\r\n");
-        out.write("\t\r\n");
-        out.write("\t<form  name=\"formularioEnviar\">\r\n");
-        out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"14\">\r\n");
-        out.write("\t\t<input type=\"hidden\" name=\"validar\" value=\"3\">\r\n");
-        out.write("\t\t<input type=\"hidden\" name=\"por\" value=\"2\">\r\n");
-        out.write("\t\t<input type=\"hidden\" name=\"total\" value=\"");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.finanza.VAprobado}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">\r\n");
-        out.write("\t\t<input type=\"hidden\" name=\"sumatoria\" value=\"");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${numero}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("\">\r\n");
-        out.write("\t\t<table align=\"center\" width=\"95%\" class=\"tablas\">\r\n");
-        out.write("\t\t<caption>Registro de una Entidad asociada </caption>\r\n");
-        out.write("\t\t<tr>\r\n");
-        out.write("\t\t\r\n");
-        out.write("\t\t <td class=\"renglones\"><b>Entidad</b></td>\r\n");
-        out.write("    \t <td colspan=\"6\"> <select name=\"entidadid\" style=\"width: 100%\" >\r\n");
-        out.write("     \t\t  ");
+        out.write("\t");
         if (_jspx_meth_c_005fif_005f4(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("   \r\n");
-        out.write("               </select>\r\n");
-        out.write("          </td>\r\n");
-        out.write("          \r\n");
-        out.write("     </tr>\r\n");
-        out.write("     <tr>\r\n");
-        out.write("     \r\n");
-        out.write("     <td class=\"renglones\"><b>Valor Especie:</b></td>\r\n");
-        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEspecieConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
-        out.write("     <td class=\"renglones\"><b>Valor Efectivo:</b></td>\r\n");
-        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEfectivoConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
-        out.write("     \r\n");
-        out.write("     </tr>\t\t\r\n");
-        out.write("\t\t\t<tr>\r\n");
-        out.write("\t\t\t\t<td colspan=\"6\" align=\"center\">\r\n");
-        out.write("\t\t\t\t<img src=");
-        if (_jspx_meth_c_005furl_005f22(_jspx_th_c_005fif_005f0, _jspx_page_context))
+        out.write("\r\n");
+        out.write("<table>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td style=\"display:none\"><iframe name=\"frameOculto\" id=\"frameOculto\"></iframe></td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t</table>\r\n");
+        out.write("\t<form method=\"post\" name=\"frmAjax\" action=\"");
+        if (_jspx_meth_c_005furl_005f23(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write(" onclick=\"pregunta()\"></td>\r\n");
-        out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t\t\r\n");
-        out.write("\t\t</table>\r\n");
+        out.write("\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"dato\" value=''>\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"para\" value=''>\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"remove\" value=''>\r\n");
         out.write("\t</form>\r\n");
-        out.write("\t\r\n");
+        out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1318,18 +1278,56 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f4 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/EntidadConvenio.jsp(163,9) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!empty requestScope.listaEntidades}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminConvenio/EntidadConvenio.jsp(149,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${empty sessionScope.datoConvenio.listacdpsConv}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
     if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t\t");
-        if (_jspx_meth_c_005fforEach_005f1(_jspx_th_c_005fif_005f4, _jspx_page_context))
-          return true;
-        out.write("\r\n");
+        out.write("\t\r\n");
+        out.write("\t<form  name=\"formularioEnviar\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"14\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"validar\" value=\"3\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"por\" value=\"2\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"total\" value=\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.finanza.VAprobado}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"sumatoria\" value=\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${numero}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("\">\r\n");
+        out.write("\t\t<table align=\"center\" width=\"95%\" class=\"tablas\">\r\n");
+        out.write("\t\t<caption>Registro de una Entidad asociada </caption>\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\r\n");
-        out.write("\t\t");
+        out.write("\t\t <td class=\"renglones\"><b>Entidad</b></td>\r\n");
+        out.write("    \t <td colspan=\"6\"> <select name=\"entidadid\" style=\"width: 100%\" >\r\n");
+        out.write("     \t\t  ");
+        if (_jspx_meth_c_005fif_005f5(_jspx_th_c_005fif_005f4, _jspx_page_context))
+          return true;
+        out.write("   \r\n");
+        out.write("               </select>\r\n");
+        out.write("          </td>\r\n");
+        out.write("          \r\n");
+        out.write("     </tr>\r\n");
+        out.write("     <tr>\r\n");
+        out.write("     \r\n");
+        out.write("     <td class=\"renglones\"><b>Valor Especie:</b></td>\r\n");
+        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEspecieConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("     <td class=\"renglones\"><b>Valor Efectivo:</b></td>\r\n");
+        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEfectivoConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("     \r\n");
+        out.write("     </tr>\t\t\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td colspan=\"6\" align=\"center\">\r\n");
+        out.write("\t\t\t\t<img src=");
+        if (_jspx_meth_c_005furl_005f22(_jspx_th_c_005fif_005f4, _jspx_page_context))
+          return true;
+        out.write(" onclick=\"pregunta()\"></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t\r\n");
+        out.write("\t\t</table>\r\n");
+        out.write("\t</form>\r\n");
+        out.write("\t\r\n");
         int evalDoAfterBody = _jspx_th_c_005fif_005f4.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1343,14 +1341,47 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
     return false;
   }
 
-  private boolean _jspx_meth_c_005fforEach_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f4, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005fif_005f5(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f4, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f5 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f5.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f4);
+    // /adminConvenio/EntidadConvenio.jsp(163,9) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!empty requestScope.listaEntidades}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
+    if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t\t\t");
+        if (_jspx_meth_c_005fforEach_005f1(_jspx_th_c_005fif_005f5, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("\t\t\r\n");
+        out.write("\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f5.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f5);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f5);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f5, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:forEach
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f4);
+    _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f5);
     // /adminConvenio/EntidadConvenio.jsp(164,4) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setBegin(0);
     // /adminConvenio/EntidadConvenio.jsp(164,4) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
@@ -1412,14 +1443,14 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
     return false;
   }
 
-  private boolean _jspx_meth_c_005furl_005f22(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f0, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005furl_005f22(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f4, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:url
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f22 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f22.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f22.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
+    _jspx_th_c_005furl_005f22.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f4);
     // /adminConvenio/EntidadConvenio.jsp(183,13) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f22.setValue("/comp/img/Enviar.gif");
     int _jspx_eval_c_005furl_005f22 = _jspx_th_c_005furl_005f22.doStartTag();
@@ -1431,14 +1462,14 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
     return false;
   }
 
-  private boolean _jspx_meth_c_005furl_005f23(PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005furl_005f23(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f0, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:url
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f23 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f23.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f23.setParent(null);
+    _jspx_th_c_005furl_005f23.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /adminConvenio/EntidadConvenio.jsp(195,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f23.setValue("/adminConvenio/Ajax.x");
     int _jspx_eval_c_005furl_005f23 = _jspx_th_c_005furl_005f23.doStartTag();
@@ -1450,32 +1481,32 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
     return false;
   }
 
-  private boolean _jspx_meth_c_005fif_005f5(PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005fif_005f6(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f5 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_005fif_005f5.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fif_005f5.setParent(null);
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f6 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f6.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f6.setParent(null);
     // /adminConvenio/EntidadConvenio.jsp(201,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
-    if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+    _jspx_th_c_005fif_005f6.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
+    if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
         out.write("<br><br><br>\r\n");
         out.write("<h4 align=\"center\">No se logró encontrar la información del Convenio</h4>\r\n");
-        int evalDoAfterBody = _jspx_th_c_005fif_005f5.doAfterBody();
+        int evalDoAfterBody = _jspx_th_c_005fif_005f6.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
       } while (true);
     }
-    if (_jspx_th_c_005fif_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f5);
+    if (_jspx_th_c_005fif_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f6);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f5);
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f6);
     return false;
   }
 }

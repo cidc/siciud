@@ -17,6 +17,7 @@ public class CdpOBJ implements Serializable{
 	private String observacion;
 	private int usudigita;
 	private int valortotal;
+	private int valorejecutado;
 	private int financiero;
 	private int [] valores;
 	
@@ -68,6 +69,12 @@ public class CdpOBJ implements Serializable{
 	}
 	public void setFinanciero(int financiero) {
 		this.financiero = financiero;
+	}
+	public int getValorejecutado() {
+		return valorejecutado;
+	}
+	public void setValorejecutado(int valorejecutado) {
+		this.valorejecutado = valorejecutado;
 	}
 	
 	

@@ -50,7 +50,6 @@ function validarcampos(){
 		 return false;
 	}
 	
-		
 	return true;
 		
 }
@@ -87,8 +86,8 @@ function enviar(id,action,nombre,valortotal){
     document.listadocdp.nn.value=nombre;
     document.listadocdp.valor.value=valortotal;
     document.listadocdp.submit();
+    }
     
-}
 </script>
 <c:import url="/general.jsp"/>
 </head>
@@ -124,8 +123,9 @@ function enviar(id,action,nombre,valortotal){
 				<c:set var="cantidade" value="${cantidade+1}"></c:set>
 				
 				</c:forEach>
-				<th style="width:80px;" align="center"><b>valortotal</b></th>
-				<th style="width:80px;" align="center"><b>fechaRegistro</b></th>
+				<th style="width:80px;" align="center"><b>Valor total</b></th>
+				<th style="width:80px;" align="center"><b>Valor Ejecutado</b></th>
+				<th style="width:80px;" align="center"><b>fecha Registro</b></th>
 				<th style="width:500px;" align="center"><b>observacion</b></th>
 			</tr>
 			
@@ -148,6 +148,9 @@ function enviar(id,action,nombre,valortotal){
 			
 			<td style="width:80px;" align="right">
 			  <b><input type="text"  name="valortotal"   readonly="readonly" value='<c:out value="${lista.valortotal}"/>'></b>
+			</td>
+			<td style="width:80px;" align="right">
+			  <b><input type="text"  name="valorejecutado"   readonly="readonly" value='<c:out value="${lista.valorejecutado}"/>'></b>
 			</td>
 			<td style="width:80px;" align="right">
 			  <b><input type="text"  name="fechaRegistro"  readonly="readonly" value='<c:out value="${lista.fechaRegistro}"/>'></b>

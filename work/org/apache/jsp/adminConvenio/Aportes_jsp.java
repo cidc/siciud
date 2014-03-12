@@ -1115,7 +1115,7 @@ public final class Aportes_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("</td></td>\r\n");
         out.write("\t\t\t\r\n");
         out.write("\t\t\t</tr>\r\n");
-        out.write("\t\t</table>\r\n");
+        out.write("\t\t   </table>\r\n");
         out.write("\t</form>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();

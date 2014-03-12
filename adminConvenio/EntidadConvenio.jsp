@@ -146,7 +146,7 @@
 	<h3 align="center">No hay entidades vinculadas al convenio</h3>
 	</c:if>
 	
-	
+	<c:if test="${empty sessionScope.datoConvenio.listacdpsConv}">
 	
 	<form  name="formularioEnviar">
 		<input type="hidden" name="accion" value="14">
@@ -197,7 +197,7 @@
 		<input type="hidden" name="para" value=''>
 		<input type="hidden" name="remove" value=''>
 	</form>
-
+	</c:if>
 <c:if test="${sessionScope.datoConvenio==null}">
 <br><br><br>
 <h4 align="center">No se logró encontrar la información del Convenio</h4>
