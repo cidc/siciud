@@ -37,6 +37,19 @@ function crear(){
 
 	
 }
+function borrar(id,valorcrp)
+{confirmar=confirm("¿Desea Realmente Eliminar el Registro?");  
+if (confirmar)
+	eliminar(id,valorcrp)
+
+
+}
+function eliminar(id,valorcrp){
+	
+	document.formcargacrp.accion.value=21;
+	document.formcargacrp.crp.value=id;
+	document.formcargacrp.submit();
+}
 function pregunta(){
 
 	if(crear()==true){
@@ -126,6 +139,7 @@ function pregunta(){
 <c:if test="${!empty sessionScope.datoConvenio.listacrpsConv}">
 <form name="formcargacrp" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 <input type="hidden" name="accion" value="20">
+<input type="hidden" name="crp" value="">
 
 
 <table  class="tablas" align = "center" width="80%">
@@ -158,6 +172,7 @@ function pregunta(){
    <td style="width:400px;">
 			   <b><input type="text"  name="observacioncrp" readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
   </td>
+  <td width="30px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='borrar(<c:out value="${lista.idcrp}"/>,"${lista.valor}")'></td>
  <tr/>
  <c:set var="numero"  value="${numero+lista.valor}"/>
 
