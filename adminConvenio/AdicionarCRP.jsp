@@ -45,9 +45,10 @@ if (confirmar)
 
 }
 function eliminar(id,valorcrp){
-	
+	alert(id);
+	alert(valorcrp);
 	document.formcargacrp.accion.value=21;
-	document.formcargacrp.crp.value=id;
+	document.formcargacrp.crpd.value=id;
 	document.formcargacrp.submit();
 }
 function pregunta(){
@@ -138,8 +139,11 @@ function pregunta(){
         <c:set var="numero"  value="0" />
 <c:if test="${!empty sessionScope.datoConvenio.listacrpsConv}">
 <form name="formcargacrp" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
-<input type="hidden" name="accion" value="20">
-<input type="hidden" name="crp" value="">
+<input type="hidden" name="accion" value="">
+<input type="hidden" name="crpd" value="">
+<input type="hidden" name="nombrecdp" value="<c:out value="${requestScope.nombrecdp}"/>">
+<input type="hidden" name="idcdp" value="<c:out value="${requestScope.idcdp}"/>">
+<input type="hidden" name="valor" value="<c:out value="${requestScope.valortotal}"/>">
 
 
 <table  class="tablas" align = "center" width="80%">
@@ -198,6 +202,7 @@ function pregunta(){
 
 <input type="hidden" name="nombrecdp" value="<c:out value="${requestScope.nombrecdp}"/>">
 <input type="hidden" name="valor" value="<c:out value="${requestScope.valortotal}"/>">
+<input type="hidden" name="valortotal" value="<c:out value="${requestScope.valortotal}"/>">
 <input type="hidden" name="sumatoria" value="${numero}">
 
 <table id="nuevo" class="tablas" align = "center" width="80%" style="display: none">
