@@ -164,7 +164,7 @@
 			</table>
 			<table width="50%" align="center" class="tablas">
 			<tr>
-			<th width="200px"><b>Valor Total Aportado</b></th><td><td width="100px" align="center">$<c:out value="${numero}"/></td></td>
+			<th width="200px"><b>Valor Total Aportado</b></th><td><td width="100px" align="center">$<c:out value="${numero}"/></td>
 			<th width="200px"><b>Falta Por Aportar</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.entidadaporte.VEfectivoConv-numero}"/></td></td>
 			
 			</tr>
