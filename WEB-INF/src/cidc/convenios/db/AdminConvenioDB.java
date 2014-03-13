@@ -962,6 +962,28 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return retorno;
 	}
+	public boolean eliminarCDP(String idcrp) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("eliminarCDP"));
+			ps.setInt(1,Integer.parseInt(idcrp));
+			ps.executeUpdate();
+		//	System.out.println("----->"+ps);
+			retorno=true;
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
 	
 	public boolean registrarPersonaConvenio(GetConvenioOBJ convenio, PersonaOBJ persona) {
 		

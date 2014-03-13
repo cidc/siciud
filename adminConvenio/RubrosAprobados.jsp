@@ -53,6 +53,20 @@ function validarcampos(){
 	return true;
 		
 }
+function borrar(id,valorcdp)
+{confirmar=confirm("¿Desea Realmente Eliminar el Registro?");  
+if (confirmar)
+	eliminar(id,valorcdp)
+
+
+}
+function eliminar(id,valorcdp){
+	alert(id);
+	alert(valorcdp);
+	document.listadocdp.accion.value=22;
+	document.listadocdp.idcdp.value=id;
+	document.listadocdp.submit();
+}
 
 function validarcdp(){
 
@@ -160,7 +174,7 @@ function suma(formulario1){
 			  <b><input type="text"  name="observacion"  readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
 			</td>
 			<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>'  onclick='enviar("${lista.idcdp}",19,"<c:out value="${lista.nombre}"/>","${lista.valortotal}")'></td>
-			<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>'></td>
+			<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>'  onclick='borrar(<c:out value="${lista.idcdp}"/>,"${lista.valortotal}")'></td>
 			</tr>
 			</c:forEach>
 			   

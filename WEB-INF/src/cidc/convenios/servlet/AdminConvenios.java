@@ -343,6 +343,17 @@ case Parametros.AdicionarTiempo:
 								
 					irA="/adminConvenio/AdminConvenio.x?accion=19";
 				break;
+				case Parametros.EliminarCDP:
+					System.out.println("entro a eliminar cdp"+req.getParameter("idcdp"));
+					if(adminConv.eliminarCDP(req.getParameter("idcdp"))){
+						mensaje="El crp fue eliminado satisfactoriamente";
+						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+						sesion.setAttribute("datoConvenio", objconv);
+					}else
+						mensaje="El CDP no pudo ser eliminado,tiene CRP asignados";
+								
+					irA="/adminConvenio/AdminConvenio.x?accion=15";
+				break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
 				 sesion.removeAttribute("nuevoConvenio");
