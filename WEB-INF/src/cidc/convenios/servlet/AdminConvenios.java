@@ -329,11 +329,17 @@ case Parametros.AdicionarTiempo:
 				      }else{
 				    	  mensaje="El CRP NO  pudo ser almacenado";
 				      }
-						 
-					 
-						 
-					
-		          irA="/adminConvenio/AdicionarCRP.jsp";
+						 irA="/adminConvenio/AdicionarCRP.jsp";
+				break;
+				case Parametros.EliminarCRP:
+					if(adminConv.eliminarCRP(req.getParameter("crp"))){
+						mensaje="El crp fue eliminado satisfactoriamente";
+						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+						sesion.setAttribute("datoConvenio", objconv);
+					}else
+						mensaje="El crp no pudo ser eliminado";
+					sesion.removeAttribute("tiempoConv");				
+					irA="/adminConvenio/AdicionarCRP.jsp";
 				break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";
