@@ -1082,16 +1082,26 @@ public boolean registrarEntidadConvenio(GetConvenioOBJ convenio, EntidadAsociada
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("registrarConvenioEntidad"));
-			System.out.println("Entro db");
 			ps.setInt(i++, Integer.parseInt(entidad.getEntidadid()));
 			ps.setInt(i++, Integer.parseInt(convenio.getIdconvenio()));
 			ps.setInt(i++, Integer.parseInt(entidad.getVEspecieConv()));
 			ps.setInt(i++, Integer.parseInt(entidad.getVEfectivoConv()));
 			ps.setInt(i++,(Integer.parseInt(entidad.getVEfectivoConv()))+Integer.parseInt(entidad.getVEspecieConv()));
+			ps.executeUpdate();
 			
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("actualizarEspecieEfectivo"));
+			int valorespecie=(convenio.getFinanza().getVEspecie())+Integer.parseInt(entidad.getVEspecieConv());
+			int valorefectivo=(convenio.getFinanza().getVEfectivo())+Integer.parseInt(entidad.getVEfectivoConv());
+			ps.setInt(1,valorespecie);
+			ps.setInt(2,valorefectivo);
+			ps.setInt(3,convenio.getFinanza().getIdfinanza());
 			
 			ps.executeUpdate();
-		//	System.out.println("----->"+ps);
+			
+			
+			
+		
 			retorno=true;
 		}catch (SQLException e) {
 			lanzaExcepcion(e);

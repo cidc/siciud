@@ -16,6 +16,10 @@
 function nuevo(){
     document.getElementById("nuevo").style.display='';
  }
+ 
+function reembolso(){
+    document.getElementById("reembolso").style.display='';
+ }
 function crear(){
 	if(document.formcrpnuevo.crp.value==""){
 		alert("Ingrese nombre CRP");
@@ -134,7 +138,11 @@ function pregunta(){
 			
 			</tr>
 		</table>
-		<table width="80%" align="center"> <tr><td align="center" colspan="3"><img src='<c:url value="/comp/img/Nuevogasto.gif"/>' onclick='nuevo()'> </td></tr>
+		<table width="80%" align="center"> 
+		<tr>
+		<td align="center" colspan="3"><img src='<c:url value="/comp/img/Nuevogasto.gif"/>' onclick='nuevo()'> </td>
+		<td align="center" colspan="3"><img src='<c:url value="/comp/img/Rechazar.gif"/>' onclick='reembolso()'> </td>
+		</tr>
         </table>
         <c:set var="numero"  value="0" />
 <c:if test="${!empty sessionScope.datoConvenio.listacrpsConv}">
@@ -207,6 +215,50 @@ function pregunta(){
 
 <table id="nuevo" class="tablas" align = "center" width="80%" style="display: none">
 <CAPTION>Nuevo CRP</CAPTION>
+
+  <tr> <td class="renglones" width="115px"><b>CRP: </b></td>
+       <td class="renglones"><b>Codigo: </b></td>
+       <td class="renglones"><b>Cliente:</b></td>
+       <td class="renglones"><b>Valor $:</b></td>
+ </tr>
+ <tr>
+  <td style="width:115px;">
+			  <b><input type="text"  name="crp" ></b>
+  </td>
+  <td style="width:115px;">
+			  <b><input type="text"  name="codigocrp" ></b>
+  </td>
+  <td style="width:115px;">
+			  <b><input type="text"  name="clientecrp" ></b>
+  </td>
+   <td style="width:115px;">
+			  <b><input type="text"  name="valorcrp" ></b>
+  </td>
+ <tr/>
+
+<tr> <td class="renglones" colspan="4"><b>Observacion: </b></td> </tr>
+  <tr> <td colspan="4"><textarea name="observcrp" style="width: 99%" class="texto"></textarea></td></tr>
+
+  
+  <tr>  <td align="center" colspan="4">
+                  <img src='<c:url value="/comp/img/Registrar.gif"/>' onclick='pregunta()'>
+                  <img src='<c:url value="/comp/img/Cancelar.gif"/>' onclick='cancelar()'>
+        </td>
+  </tr>
+</table>
+</form>
+
+<form name="formReembolso" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
+<input type="hidden" name="accion" value="ALERTAAA!!!!">
+<input type="hidden" name="idcdp" value="<c:out value="${requestScope.idcdp}"/>">
+
+<input type="hidden" name="nombrecdp" value="<c:out value="${requestScope.nombrecdp}"/>">
+<input type="hidden" name="valor" value="<c:out value="${requestScope.valortotal}"/>">
+<input type="hidden" name="sumatoria" value="${numero}">
+<br>
+<br>
+<table id="reembolso" class="tablas" align = "center" width="80%" style="display: none">
+<CAPTION>Reembolso</CAPTION>
 
   <tr> <td class="renglones" width="115px"><b>CRP: </b></td>
        <td class="renglones"><b>Codigo: </b></td>

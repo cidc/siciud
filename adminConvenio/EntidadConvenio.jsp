@@ -96,7 +96,7 @@
 			<th width="20%"><b>Número Convenio</b></th>
 			<th width="20%"><b>Fecha Inicio</b></th>
 			<th width="20%"><b>Estimado Fin</b></th>
-			<th width="20%"><b>Total Aprobado</b></th>
+			<th width="20%"><b>Total Aprobado Efectivo</b></th>
 			<th width="20%"><b>Total Aportado</b></th>
 		</tr>
 		<tr>
@@ -120,34 +120,32 @@
 			    <th><b>Nombre</b></th>
 			    <th><b>Valor Especie (Informativo)</b></th>
 			    <th><b>Valor Efectivo</b></th>
-			    <th><b>Valor Total</b></th>
 			    <th><b>Valor Aportado</b></th>
 			    <th><b>Valor Comprometido</b></th>
 			    <th><b>Aportes</b></th>
 			</tr>			
 			<c:set var="numero"  value="0" />
+			<c:set var="totalcdp"  value="0" />
 			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td width="5px"><c:out value="${st.count}"/></td>
 				<td width="100px" align="center"><c:out value="${lista.entidadid}"/></td>
 				<td width="100px" align="center">$<c:out value="${lista.VEspecieConv}"/></td>
 				<td width="100px" align="center">$<c:out value="${lista.VEfectivoConv}"/></td>
-				<td width="100px" align="center">$<c:out value="${lista.VTotal}"/></td>
 				<td width="100px" align="center">$<c:out value="${lista.VAportado}"/></td>
 				<td width="100px" align="center">$<c:out value="${lista.VCdps}"/></td>
 				<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>' onclick='enviar(<c:out value="${lista.identidadconvenio}"/>,17,"${lista.entidadid}")'></td>
-				
+				<c:set var="totalcdp"  value="${totalcdp+lista.VCdps}"/>
 				<c:set var="numero"  value="${numero+lista.VEfectivoConv}"/>
 					</tr>
 		    </c:forEach>
 		    <tr>
 		    <td width="5px"></td>
 		    <th><b>Total</b></th>
-		    <td width="100px" align="center">$<c:out value="${lista.VEspecieConv}"/></td>
-			<td width="100px" align="center">$<c:out value="${lista.VEfectivoConv}"/></td>
-			<td width="100px" align="center">$<c:out value="${lista.VTotal}"/></td>
+		    <td width="100px" align="center">$<c:out value="${sessionScope.datoConvenio.finanza.VEspecie}"/></td>
+			<td width="100px" align="center">$<c:out value="${sessionScope.datoConvenio.finanza.VEfectivo}"/></td>
 			<td width="100px" align="center">$<c:out value="${sessionScope.datoConvenio.finanza.VAportado}"/></td>
-			<td width="100px" align="center">$<c:out value="${lista.VCdps}"/></td>
+			<td width="100px" align="center">$<c:out value="${totalcdp}"/></td>
 		    </tr>
 		</table>
 	</form>
