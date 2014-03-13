@@ -98,6 +98,11 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\r\n");
       out.write("</head>\r\n");
       out.write("<script>\r\n");
+      out.write("var nav4=window.Event ? true : false;\r\n");
+      out.write("function numeros(eve){\r\n");
+      out.write("\tvar key=nav4?eve.which :eve.keyCode;\r\n");
+      out.write("\treturn(key<=13 || (key>=48 && key<=57));\r\n");
+      out.write("}\r\n");
       out.write("function nuevo(){\r\n");
       out.write("    document.getElementById(\"nuevo\").style.display='';\r\n");
       out.write(" }\r\n");
@@ -363,7 +368,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t\t  <b><input type=\"text\"  name=\"clientecrp\" ></b>\r\n");
       out.write("  </td>\r\n");
       out.write("   <td style=\"width:115px;\">\r\n");
-      out.write("\t\t\t  <b><input type=\"text\"  name=\"valorcrp\" ></b>\r\n");
+      out.write("\t\t\t  <b><input type=\"text\"  name=\"valorcrp\"  maxlength=\"9\" onkeypress=\"return numeros(event)\"></b>\r\n");
       out.write("  </td>\r\n");
       out.write(" <tr/>\r\n");
       out.write("\r\n");
@@ -384,6 +389,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("  </tr>\r\n");
       out.write("</table>\r\n");
       out.write("</form>\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("<form name=\"formReembolso\" method=\"post\" action='");
       if (_jspx_meth_c_005furl_005f25(_jspx_page_context))
@@ -411,30 +417,20 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("<table id=\"reembolso\" class=\"tablas\" align = \"center\" width=\"80%\" style=\"display: none\">\r\n");
       out.write("<CAPTION>Reembolso</CAPTION>\r\n");
       out.write("\r\n");
-      out.write("  <tr> <td class=\"renglones\" width=\"115px\"><b>CRP: </b></td>\r\n");
-      out.write("       <td class=\"renglones\"><b>Codigo: </b></td>\r\n");
-      out.write("       <td class=\"renglones\"><b>Cliente:</b></td>\r\n");
-      out.write("       <td class=\"renglones\"><b>Valor $:</b></td>\r\n");
+      out.write("  <tr>\r\n");
+      out.write("       ");
+      if (_jspx_meth_c_005fforEach_005f1(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write(" </tr>\r\n");
       out.write(" <tr>\r\n");
-      out.write("  <td style=\"width:115px;\">\r\n");
-      out.write("\t\t\t  <b><input type=\"text\"  name=\"crp\" ></b>\r\n");
-      out.write("  </td>\r\n");
-      out.write("  <td style=\"width:115px;\">\r\n");
-      out.write("\t\t\t  <b><input type=\"text\"  name=\"codigocrp\" ></b>\r\n");
-      out.write("  </td>\r\n");
-      out.write("  <td style=\"width:115px;\">\r\n");
-      out.write("\t\t\t  <b><input type=\"text\"  name=\"clientecrp\" ></b>\r\n");
-      out.write("  </td>\r\n");
-      out.write("   <td style=\"width:115px;\">\r\n");
-      out.write("\t\t\t  <b><input type=\"text\"  name=\"valorcrp\" ></b>\r\n");
-      out.write("  </td>\r\n");
-      out.write(" <tr/>\r\n");
+      out.write(" \r\n");
       out.write("\r\n");
-      out.write("<tr> <td class=\"renglones\" colspan=\"4\"><b>Observacion: </b></td> </tr>\r\n");
-      out.write("  <tr> <td colspan=\"4\"><textarea name=\"observcrp\" style=\"width: 99%\" class=\"texto\"></textarea></td></tr>\r\n");
+      out.write("\t\t\t");
+      if (_jspx_meth_c_005fforEach_005f2(_jspx_page_context))
+        return;
       out.write("\r\n");
-      out.write("  \r\n");
+      out.write("  <tr/>\r\n");
       out.write("  <tr>  <td align=\"center\" colspan=\"4\">\r\n");
       out.write("                  <img src='");
       if (_jspx_meth_c_005furl_005f26(_jspx_page_context))
@@ -448,6 +444,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("  </tr>\r\n");
       out.write("</table>\r\n");
       out.write("</form>\r\n");
+      out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
@@ -574,7 +571,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f4 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f4.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(87,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(92,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f4.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("/adminConvenio/AdminConvenio.x?accion=3&idConv=${sessionScope.datoConvenio.idconvenio}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005furl_005f4 = _jspx_th_c_005furl_005f4.doStartTag();
     if (_jspx_th_c_005furl_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -593,7 +590,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f5 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f5.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(87,141) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(92,141) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f5.setValue("/comp/img/convenio/Proyectos.gif");
     int _jspx_eval_c_005furl_005f5 = _jspx_th_c_005furl_005f5.doStartTag();
     if (_jspx_th_c_005furl_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -612,7 +609,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f6 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f6.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f6.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(88,19) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(93,19) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f6.setValue("/adminConvenio/AdminConvenio.x?accion=7");
     int _jspx_eval_c_005furl_005f6 = _jspx_th_c_005furl_005f6.doStartTag();
     if (_jspx_th_c_005furl_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -631,7 +628,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f7 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f7.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(88,98) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(93,98) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f7.setValue("/comp/img/convenio/Documentos.gif");
     int _jspx_eval_c_005furl_005f7 = _jspx_th_c_005furl_005f7.doStartTag();
     if (_jspx_th_c_005furl_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -650,7 +647,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f8 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f8.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(89,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(94,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f8.setValue("/adminConvenio/VerTiempos.jsp");
     int _jspx_eval_c_005furl_005f8 = _jspx_th_c_005furl_005f8.doStartTag();
     if (_jspx_th_c_005furl_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -669,7 +666,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f9 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f9.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(89,85) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(94,85) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f9.setValue("/comp/img/convenio/Tiempos.gif");
     int _jspx_eval_c_005furl_005f9 = _jspx_th_c_005furl_005f9.doStartTag();
     if (_jspx_th_c_005furl_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -688,7 +685,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f10 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f10.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(90,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(95,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f10.setValue("/adminConvenio/Personas.jsp");
     int _jspx_eval_c_005furl_005f10 = _jspx_th_c_005furl_005f10.doStartTag();
     if (_jspx_th_c_005furl_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -707,7 +704,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f11 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f11.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(90,83) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(95,83) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f11.setValue("/comp/img/convenio/Participantes.gif");
     int _jspx_eval_c_005furl_005f11 = _jspx_th_c_005furl_005f11.doStartTag();
     if (_jspx_th_c_005furl_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -726,7 +723,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f12 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f12.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f12.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(91,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(96,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f12.setValue("/adminConvenio/Grupos.jsp");
     int _jspx_eval_c_005furl_005f12 = _jspx_th_c_005furl_005f12.doStartTag();
     if (_jspx_th_c_005furl_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -745,7 +742,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f13 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f13.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f13.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(91,81) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(96,81) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f13.setValue("/comp/img/convenio/GruposInv.gif");
     int _jspx_eval_c_005furl_005f13 = _jspx_th_c_005furl_005f13.doStartTag();
     if (_jspx_th_c_005furl_005f13.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -764,7 +761,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f14 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f14.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f14.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(92,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(97,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f14.setValue("/adminEntidad/GestEntidad.x?validar=3&por=2");
     int _jspx_eval_c_005furl_005f14 = _jspx_th_c_005furl_005f14.doStartTag();
     if (_jspx_th_c_005furl_005f14.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -783,7 +780,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f15 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f15.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f15.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(92,99) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(97,99) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f15.setValue("/comp/img/convenio/Entidades.gif");
     int _jspx_eval_c_005furl_005f15 = _jspx_th_c_005furl_005f15.doStartTag();
     if (_jspx_th_c_005furl_005f15.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -802,7 +799,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f16 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f16.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f16.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(93,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(98,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f16.setValue("/adminConvenio/AdminConvenio.x?accion=15");
     int _jspx_eval_c_005furl_005f16 = _jspx_th_c_005furl_005f16.doStartTag();
     if (_jspx_th_c_005furl_005f16.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -821,7 +818,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f17 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f17.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f17.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(93,85) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(98,85) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f17.setValue("/comp/img/prAprobado.gif");
     int _jspx_eval_c_005furl_005f17 = _jspx_th_c_005furl_005f17.doStartTag();
     if (_jspx_th_c_005furl_005f17.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -840,7 +837,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(102,24) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(107,24) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.nombreConvenio}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -859,7 +856,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(104,10) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(109,10) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.nombreproyecto}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -878,7 +875,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(108,22) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(113,22) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -897,7 +894,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(110,22) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(115,22) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.numDisp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -916,7 +913,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(117,32) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(122,32) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${proyectos.presupuesto}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -935,7 +932,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f5.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(118,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(123,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${proyectos.ejecutado}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f5 = _jspx_th_c_005fout_005f5.doStartTag();
     if (_jspx_th_c_005fout_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -954,7 +951,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f6.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f6.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(119,32) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(124,32) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${proyectos.saldo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f6 = _jspx_th_c_005fout_005f6.doStartTag();
     if (_jspx_th_c_005fout_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -973,7 +970,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f7.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(134,21) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(139,21) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.nombrecdp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f7 = _jspx_th_c_005fout_005f7.doStartTag();
     if (_jspx_th_c_005fout_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -992,7 +989,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f8 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f8.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(135,21) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(140,21) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.valortotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f8 = _jspx_th_c_005fout_005f8.doStartTag();
     if (_jspx_th_c_005fout_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1011,7 +1008,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f18 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f18.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f18.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(143,43) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(148,43) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f18.setValue("/comp/img/Nuevogasto.gif");
     int _jspx_eval_c_005furl_005f18 = _jspx_th_c_005furl_005f18.doStartTag();
     if (_jspx_th_c_005furl_005f18.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1030,7 +1027,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f19 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f19.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f19.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(144,43) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(149,43) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f19.setValue("/comp/img/Rechazar.gif");
     int _jspx_eval_c_005furl_005f19 = _jspx_th_c_005furl_005f19.doStartTag();
     if (_jspx_th_c_005furl_005f19.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1049,9 +1046,9 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_005fset_005f0 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_005fset_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fset_005f0.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(147,8) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(152,8) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fset_005f0.setVar("numero");
-    // /adminConvenio/AdicionarCRP.jsp(147,8) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(152,8) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fset_005f0.setValue(new String("0"));
     int _jspx_eval_c_005fset_005f0 = _jspx_th_c_005fset_005f0.doStartTag();
     if (_jspx_th_c_005fset_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1070,7 +1067,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(148,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(153,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!empty sessionScope.datoConvenio.listacrpsConv}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1146,7 +1143,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f20 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f20.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f20.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(149,48) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(154,48) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f20.setValue("/adminConvenio/AdminConvenio.x");
     int _jspx_eval_c_005furl_005f20 = _jspx_th_c_005furl_005f20.doStartTag();
     if (_jspx_th_c_005furl_005f20.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1165,7 +1162,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f9 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(152,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(157,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.nombrecdp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f9 = _jspx_th_c_005fout_005f9.doStartTag();
     if (_jspx_th_c_005fout_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1184,7 +1181,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f10 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(153,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(158,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.idcdp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f10 = _jspx_th_c_005fout_005f10.doStartTag();
     if (_jspx_th_c_005fout_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1203,7 +1200,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f11 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f11.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(154,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(159,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f11.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.valortotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f11 = _jspx_th_c_005fout_005f11.doStartTag();
     if (_jspx_th_c_005fout_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1222,13 +1219,13 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(167,1) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(172,1) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setBegin(0);
-    // /adminConvenio/AdicionarCRP.jsp(167,1) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(172,1) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.listacrpsConv}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /adminConvenio/AdicionarCRP.jsp(167,1) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(172,1) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("lista");
-    // /adminConvenio/AdicionarCRP.jsp(167,1) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(172,1) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVarStatus("st");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
@@ -1316,7 +1313,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f12 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f12.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f12.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(170,66) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(175,66) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f12.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.nombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f12 = _jspx_th_c_005fout_005f12.doStartTag();
     if (_jspx_th_c_005fout_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1335,7 +1332,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f13 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f13.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f13.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(173,72) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(178,72) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f13.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f13 = _jspx_th_c_005fout_005f13.doStartTag();
     if (_jspx_th_c_005fout_005f13.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1354,7 +1351,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f14 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f14.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f14.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(176,73) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(181,73) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f14.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.cliente}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f14 = _jspx_th_c_005fout_005f14.doStartTag();
     if (_jspx_th_c_005fout_005f14.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1373,7 +1370,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f15 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f15.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f15.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(179,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(184,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f15.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.valor}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f15 = _jspx_th_c_005fout_005f15.doStartTag();
     if (_jspx_th_c_005fout_005f15.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1392,7 +1389,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f16 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f16.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f16.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(182,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(187,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f16.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.fecha}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f16 = _jspx_th_c_005fout_005f16.doStartTag();
     if (_jspx_th_c_005fout_005f16.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1411,7 +1408,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f17 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f17.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f17.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(185,78) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(190,78) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f17.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.observacion}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f17 = _jspx_th_c_005fout_005f17.doStartTag();
     if (_jspx_th_c_005fout_005f17.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1430,7 +1427,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f21 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f21.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f21.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(187,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(192,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f21.setValue("/comp/img/equis1.png");
     int _jspx_eval_c_005furl_005f21 = _jspx_th_c_005furl_005f21.doStartTag();
     if (_jspx_th_c_005furl_005f21.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1449,7 +1446,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f18 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f18.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f18.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(187,99) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(192,99) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f18.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.idcrp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f18 = _jspx_th_c_005fout_005f18.doStartTag();
     if (_jspx_th_c_005fout_005f18.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1468,9 +1465,9 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_005fset_005f1 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_005fset_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fset_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(189,1) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(194,1) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fset_005f1.setVar("numero");
-    // /adminConvenio/AdicionarCRP.jsp(189,1) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(194,1) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fset_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${numero+lista.valor}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fset_005f1 = _jspx_th_c_005fset_005f1.doStartTag();
     if (_jspx_th_c_005fset_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1489,7 +1486,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f19 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f19.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f19.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(196,86) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(201,86) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f19.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.valortotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f19 = _jspx_th_c_005fout_005f19.doStartTag();
     if (_jspx_th_c_005fout_005f19.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1508,7 +1505,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f20 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f20.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f20.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminConvenio/AdicionarCRP.jsp(197,88) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(202,88) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f20.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.valortotal-numero}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f20 = _jspx_th_c_005fout_005f20.doStartTag();
     if (_jspx_th_c_005fout_005f20.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1527,7 +1524,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(202,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(207,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${empty sessionScope.datoConvenio.listacrpsConv}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1555,7 +1552,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f22 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f22.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f22.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(207,48) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(212,48) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f22.setValue("/adminConvenio/AdminConvenio.x");
     int _jspx_eval_c_005furl_005f22 = _jspx_th_c_005furl_005f22.doStartTag();
     if (_jspx_th_c_005furl_005f22.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1574,7 +1571,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f21 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f21.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f21.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(209,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(214,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f21.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.idcdp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f21 = _jspx_th_c_005fout_005f21.doStartTag();
     if (_jspx_th_c_005fout_005f21.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1593,7 +1590,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f22 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f22.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f22.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(211,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(216,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f22.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.nombrecdp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f22 = _jspx_th_c_005fout_005f22.doStartTag();
     if (_jspx_th_c_005fout_005f22.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1612,7 +1609,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f23 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f23.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f23.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(212,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(217,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f23.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.valortotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f23 = _jspx_th_c_005fout_005f23.doStartTag();
     if (_jspx_th_c_005fout_005f23.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1631,7 +1628,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f24 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f24.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f24.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(213,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(218,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f24.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.valortotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f24 = _jspx_th_c_005fout_005f24.doStartTag();
     if (_jspx_th_c_005fout_005f24.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1650,7 +1647,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f23 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f23.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f23.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(244,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(249,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f23.setValue("/comp/img/Registrar.gif");
     int _jspx_eval_c_005furl_005f23 = _jspx_th_c_005furl_005f23.doStartTag();
     if (_jspx_th_c_005furl_005f23.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1669,7 +1666,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f24 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f24.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f24.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(245,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(250,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f24.setValue("/comp/img/Cancelar.gif");
     int _jspx_eval_c_005furl_005f24 = _jspx_th_c_005furl_005f24.doStartTag();
     if (_jspx_th_c_005furl_005f24.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1688,7 +1685,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f25 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f25.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f25.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(251,49) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(257,49) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f25.setValue("/adminConvenio/AdminConvenio.x");
     int _jspx_eval_c_005furl_005f25 = _jspx_th_c_005furl_005f25.doStartTag();
     if (_jspx_th_c_005furl_005f25.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1707,7 +1704,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f25 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f25.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f25.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(253,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(259,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f25.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.idcdp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f25 = _jspx_th_c_005fout_005f25.doStartTag();
     if (_jspx_th_c_005fout_005f25.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1726,7 +1723,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f26 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f26.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f26.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(255,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(261,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f26.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.nombrecdp}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f26 = _jspx_th_c_005fout_005f26.doStartTag();
     if (_jspx_th_c_005fout_005f26.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1745,7 +1742,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f27 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f27.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f27.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(256,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(262,41) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f27.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.valortotal}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f27 = _jspx_th_c_005fout_005f27.doStartTag();
     if (_jspx_th_c_005fout_005f27.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1753,6 +1750,321 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f27);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f1.setParent(null);
+    // /adminConvenio/AdicionarCRP.jsp(270,7) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setBegin(0);
+    // /adminConvenio/AdicionarCRP.jsp(270,7) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.listaentidadesConv}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    // /adminConvenio/AdicionarCRP.jsp(270,7) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setVar("lista");
+    // /adminConvenio/AdicionarCRP.jsp(270,7) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setVarStatus("st");
+    int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f1 = _jspx_th_c_005fforEach_005f1.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("\t\t<th style=\"width:100px;\"><b>");
+          if (_jspx_meth_c_005fout_005f28(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
+            return true;
+          out.write("</b></th>\r\n");
+          out.write("\t\t");
+          if (_jspx_meth_c_005fset_005f2(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
+            return true;
+          out.write("\r\n");
+          out.write("\t\t");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f1.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.reuse(_jspx_th_c_005fforEach_005f1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f28(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f28 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f28.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f28.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
+    // /adminConvenio/AdicionarCRP.jsp(271,30) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f28.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.entidadid}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f28 = _jspx_th_c_005fout_005f28.doStartTag();
+    if (_jspx_th_c_005fout_005f28.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f28);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f28);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fset_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:set
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_005fset_005f2 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_005fset_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fset_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
+    // /adminConvenio/AdicionarCRP.jsp(272,2) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f2.setVar("var2");
+    // /adminConvenio/AdicionarCRP.jsp(272,2) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fset_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${var2+1}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fset_005f2 = _jspx_th_c_005fset_005f2.doStartTag();
+    if (_jspx_th_c_005fset_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.reuse(_jspx_th_c_005fset_005f2);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fset_0026_005fvar_005fvalue_005fnobody.reuse(_jspx_th_c_005fset_005f2);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f2.setParent(null);
+    // /adminConvenio/AdicionarCRP.jsp(278,3) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setBegin(0);
+    // /adminConvenio/AdicionarCRP.jsp(278,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datoConvenio.listaentidadesConv}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    // /adminConvenio/AdicionarCRP.jsp(278,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setVar("lista");
+    // /adminConvenio/AdicionarCRP.jsp(278,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setVarStatus("st");
+    int[] _jspx_push_body_count_c_005fforEach_005f2 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f2 = _jspx_th_c_005fforEach_005f2.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("\t\t\t   <input type=\"hidden\" name=\"entidad\" id='Entidad");
+          if (_jspx_meth_c_005fout_005f29(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("' value=\"");
+          if (_jspx_meth_c_005fout_005f30(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("\">\r\n");
+          out.write("\t\t\t\t<input type=\"hidden\" name=\"sumaCDP\" id='sumaCDP");
+          if (_jspx_meth_c_005fout_005f31(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("' value=\"");
+          if (_jspx_meth_c_005fout_005f32(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("\">\r\n");
+          out.write("\t\t\t\t<input type=\"hidden\" name=\"sumaAporte\" id='sumaAporte");
+          if (_jspx_meth_c_005fout_005f33(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("' value=\"");
+          if (_jspx_meth_c_005fout_005f34(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("\">\r\n");
+          out.write("\t\t\t\t<td>\r\n");
+          out.write("\t\t\t\t    <input type=\"hidden\" name=\"idconvent\" value='");
+          if (_jspx_meth_c_005fout_005f35(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("'>  \r\n");
+          out.write("\t\t\t\t   <input type=\"text\" id='ventidad");
+          if (_jspx_meth_c_005fout_005f36(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("' maxlength=\"9\" name=\"VEspecieConv\" style=\"text-align:right; width: 98%\" value=\"0\" onkeypress=\"return numeros(event)\">\r\n");
+          out.write("\t\t\t\t\t</td>\r\n");
+          out.write("\t\t\t\t");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f2.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f2.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.reuse(_jspx_th_c_005fforEach_005f2);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f29(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f29 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f29.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f29.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminConvenio/AdicionarCRP.jsp(279,53) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f29.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f29 = _jspx_th_c_005fout_005f29.doStartTag();
+    if (_jspx_th_c_005fout_005f29.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f29);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f29);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f30(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f30 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f30.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f30.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminConvenio/AdicionarCRP.jsp(279,90) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f30.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.entidadid}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f30 = _jspx_th_c_005fout_005f30.doStartTag();
+    if (_jspx_th_c_005fout_005f30.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f30);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f30);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f31(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f31 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f31.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f31.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminConvenio/AdicionarCRP.jsp(280,51) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f31.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f31 = _jspx_th_c_005fout_005f31.doStartTag();
+    if (_jspx_th_c_005fout_005f31.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f31);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f31);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f32(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f32 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f32.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f32.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminConvenio/AdicionarCRP.jsp(280,88) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f32.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.VCdps}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f32 = _jspx_th_c_005fout_005f32.doStartTag();
+    if (_jspx_th_c_005fout_005f32.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f32);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f32);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f33(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f33 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f33.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f33.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminConvenio/AdicionarCRP.jsp(281,57) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f33.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f33 = _jspx_th_c_005fout_005f33.doStartTag();
+    if (_jspx_th_c_005fout_005f33.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f33);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f33);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f34(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f34 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f34.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f34.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminConvenio/AdicionarCRP.jsp(281,94) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f34.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.VAportado}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f34 = _jspx_th_c_005fout_005f34.doStartTag();
+    if (_jspx_th_c_005fout_005f34.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f34);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f34);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f35(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f35 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f35.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f35.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminConvenio/AdicionarCRP.jsp(283,53) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f35.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.identidadconvenio}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f35 = _jspx_th_c_005fout_005f35.doStartTag();
+    if (_jspx_th_c_005fout_005f35.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f35);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f35);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f36(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f36 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f36.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f36.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminConvenio/AdicionarCRP.jsp(284,38) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f36.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${st.count}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f36 = _jspx_th_c_005fout_005f36.doStartTag();
+    if (_jspx_th_c_005fout_005f36.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f36);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f36);
     return false;
   }
 
@@ -1764,7 +2076,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f26 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f26.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f26.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(288,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(289,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f26.setValue("/comp/img/Registrar.gif");
     int _jspx_eval_c_005furl_005f26 = _jspx_th_c_005furl_005f26.doStartTag();
     if (_jspx_th_c_005furl_005f26.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1783,7 +2095,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f27 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f27.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f27.setParent(null);
-    // /adminConvenio/AdicionarCRP.jsp(289,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/AdicionarCRP.jsp(290,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f27.setValue("/comp/img/Cancelar.gif");
     int _jspx_eval_c_005furl_005f27 = _jspx_th_c_005furl_005f27.doStartTag();
     if (_jspx_th_c_005furl_005f27.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

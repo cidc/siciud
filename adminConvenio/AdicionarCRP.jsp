@@ -13,6 +13,11 @@
 <c:import url="/general.jsp"/>
 </head>
 <script>
+var nav4=window.Event ? true : false;
+function numeros(eve){
+	var key=nav4?eve.which :eve.keyCode;
+	return(key<=13 || (key>=48 && key<=57));
+}
 function nuevo(){
     document.getElementById("nuevo").style.display='';
  }
@@ -232,7 +237,7 @@ function pregunta(){
 			  <b><input type="text"  name="clientecrp" ></b>
   </td>
    <td style="width:115px;">
-			  <b><input type="text"  name="valorcrp" ></b>
+			  <b><input type="text"  name="valorcrp"  maxlength="9" onkeypress="return numeros(event)"></b>
   </td>
  <tr/>
 
@@ -247,6 +252,7 @@ function pregunta(){
   </tr>
 </table>
 </form>
+
 
 <form name="formReembolso" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 <input type="hidden" name="accion" value="ALERTAAA!!!!">
@@ -260,30 +266,25 @@ function pregunta(){
 <table id="reembolso" class="tablas" align = "center" width="80%" style="display: none">
 <CAPTION>Reembolso</CAPTION>
 
-  <tr> <td class="renglones" width="115px"><b>CRP: </b></td>
-       <td class="renglones"><b>Codigo: </b></td>
-       <td class="renglones"><b>Cliente:</b></td>
-       <td class="renglones"><b>Valor $:</b></td>
+  <tr>
+       <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+		<th style="width:100px;"><b><c:out value="${lista.entidadid}"/></b></th>
+		<c:set var="var2" value="${var2+1}"></c:set>
+		</c:forEach>
  </tr>
  <tr>
-  <td style="width:115px;">
-			  <b><input type="text"  name="crp" ></b>
-  </td>
-  <td style="width:115px;">
-			  <b><input type="text"  name="codigocrp" ></b>
-  </td>
-  <td style="width:115px;">
-			  <b><input type="text"  name="clientecrp" ></b>
-  </td>
-   <td style="width:115px;">
-			  <b><input type="text"  name="valorcrp" ></b>
-  </td>
- <tr/>
+ 
 
-<tr> <td class="renglones" colspan="4"><b>Observacion: </b></td> </tr>
-  <tr> <td colspan="4"><textarea name="observcrp" style="width: 99%" class="texto"></textarea></td></tr>
-
-  
+			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+			   <input type="hidden" name="entidad" id='Entidad<c:out value="${st.count}"/>' value="<c:out value="${lista.entidadid}"/>">
+				<input type="hidden" name="sumaCDP" id='sumaCDP<c:out value="${st.count}"/>' value="<c:out value="${lista.VCdps}"/>">
+				<input type="hidden" name="sumaAporte" id='sumaAporte<c:out value="${st.count}"/>' value="<c:out value="${lista.VAportado}"/>">
+				<td>
+				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
+				   <input type="text" id='ventidad<c:out value="${st.count}" />' maxlength="9" name="VEspecieConv" style="text-align:right; width: 98%" value="0" onkeypress="return numeros(event)">
+					</td>
+				</c:forEach>
+  <tr/>
   <tr>  <td align="center" colspan="4">
                   <img src='<c:url value="/comp/img/Registrar.gif"/>' onclick='pregunta()'>
                   <img src='<c:url value="/comp/img/Cancelar.gif"/>' onclick='cancelar()'>
@@ -291,5 +292,6 @@ function pregunta(){
   </tr>
 </table>
 </form>
+
 </body>
 </html>
