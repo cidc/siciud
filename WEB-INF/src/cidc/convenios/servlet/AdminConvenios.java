@@ -314,10 +314,11 @@ case Parametros.AdicionarTiempo:
 					
 					objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 					sesion.setAttribute("datoConvenio", objconv);
-					
+					objconv.setListacrpsConv(null);
 					req.setAttribute("idcdp",req.getParameter("idcdp"));
 					req.setAttribute("nombrecdp",req.getParameter("nombrecdp"));
 					req.setAttribute("valortotal",req.getParameter("valor"));
+					objconv.setListacrpsConv(adminConv.getcrp(Integer.parseInt(req.getParameter("idcdp")),(Integer.parseInt(objconv.getIdconvenio()))));
 					irA="/adminConvenio/AdicionarCRP.jsp";
 				break;
 				

@@ -583,7 +583,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setListaentidadesConv(getListaEntidadesConv(id));	
 				conv.setFinanza(getfinanzas(id));
 				conv.setListacdpsConv(getcdp(id));
-				conv.setListacrpsConv(getcrp(id));
+				
 				
 			}
 			return conv;
@@ -1313,7 +1313,7 @@ public List <CdpOBJ> getcdp(int id) {
 	return Listacdp;
 }
 
-public List <CrpOBJ> getcrp(int id) {
+public List <CrpOBJ> getcrp(int cdp,int id) {
 	Connection cn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -1323,6 +1323,7 @@ public List <CrpOBJ> getcrp(int id) {
              cn = cursor.getConnection(super.perfil);
              ps = cn.prepareStatement(rb.getString("consultarCRP"));
              ps.setInt(1, id);
+             ps.setInt(2, cdp);
              rs = ps.executeQuery();
              while (rs.next()){
             	 i=1;
