@@ -61,8 +61,7 @@ if (confirmar)
 
 }
 function eliminar(id,valorcdp){
-	alert(id);
-	alert(valorcdp);
+
 	document.listadocdp.accion.value=22;
 	document.listadocdp.idcdp.value=id;
 	document.listadocdp.submit();
@@ -106,7 +105,7 @@ function suma(formulario1){
 </script>
 <c:import url="/general.jsp"/>
 </head>
-<body>
+<body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br>
 	<table cellpadding="0" cellspacing="0">
 		<tr>

@@ -962,7 +962,9 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return retorno;
 	}
-	public boolean eliminarCDP(String idcrp) {
+	public boolean eliminarCDP(String idcdp) {
+		eliminarrubroaprobado(idcdp);
+		
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -970,6 +972,29 @@ public class AdminConvenioDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("eliminarCDP"));
+			ps.setInt(1,Integer.parseInt(idcdp));
+			ps.executeUpdate();
+		//	System.out.println("----->"+ps);
+			retorno=true;
+		}catch (SQLException e) {
+			System.out.println("se jodio al eliminar");
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	public boolean eliminarrubroaprobado(String idcrp) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("eliminarrubroaprobado"));
 			ps.setInt(1,Integer.parseInt(idcrp));
 			ps.executeUpdate();
 		//	System.out.println("----->"+ps);
