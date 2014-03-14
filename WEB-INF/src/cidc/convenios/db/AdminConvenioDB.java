@@ -975,6 +975,7 @@ public class AdminConvenioDB extends BaseDB{
 		//	System.out.println("----->"+ps);
 			retorno=true;
 		}catch (SQLException e) {
+			System.out.println("se jodio al eliminar");
 			lanzaExcepcion(e);
 		}catch (Exception e) {
 			lanzaExcepcion(e);
