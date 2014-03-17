@@ -1509,8 +1509,8 @@ public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String
 		
 		cn=cursor.getConnection(super.perfil);
 		ps=cn.prepareStatement(rb.getString("actualizarEjecutadoCdp"));
-		
-		ps.setInt(1,valor);
+		System.out.println("VALOR!!!=="+valorEjecutadoCdp(idcdp));
+		ps.setInt(1,valor+valorEjecutadoCdp(idcdp));
 		ps.setInt(2, idcdp);
 		
 		ps.executeUpdate();
@@ -1528,6 +1528,45 @@ public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String
 	}
 	return retorno;
 }
+
+public int valorEjecutadoCdp(int id){
+	
+	Connection cn=null;
+	PreparedStatement ps=null;
+	ResultSet rs=null;
+	int retorno =0;
+
+	
+	try {
+		
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("consultarValorEjecutadoCdp"));
+		ps.setInt(1, id);
+		rs=ps.executeQuery();
+		 int resultado=0;
+		while(rs.next()){
+			resultado=Integer.parseInt(rs.getString(1));
+			
+		}
+				
+	    retorno = resultado;
+	 
+	    
+	}catch (Exception e) {
+		System.out.println("se explota en insertar crp");
+		lanzaExcepcion(e);
+	
+	}finally{
+		cerrar(ps);
+		cerrar(cn);
+	}
+	return retorno;
+	
+	
+}
+
+
+
 
 public List<AportesOBJ> buscarAportesEntidad(int id){
 	AportesOBJ aporte=null;

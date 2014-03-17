@@ -40,11 +40,7 @@ function crear(){
 		return false;
 	}else{
 		return true;
-		 
-		
-	}
-
-	
+		}
 }
 function borrar(id,valorcrp)
 {confirmar=confirm("¿Desea Realmente Eliminar el Registro?");  
@@ -63,7 +59,7 @@ function eliminar(id,valorcrp){
 function pregunta(){
 
 	if(crear()==true){
-		alert("entro");
+		
 		
 		
 		var sumatoria=parseInt(document.formcrpnuevo.sumatoria.value);
@@ -72,18 +68,56 @@ function pregunta(){
 		
 		alert("sumatoria"+sumatoria);
 		if((efectivo+sumatoria)<=tol){
-			alert("Exito");	
 			document.formcrpnuevo.submit();
 		}else{
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");	
 			alert("El valor del aporte debe ser menor: $"+(tol-sumatoria));
 			}
-		
+		}
+	}
+
+function preguntaReembolso(){
+	if(validarReembolso()==true){
+		alert("Todo bien");
+	}else{
+		alert("mal");
 		
 	}
+}
+
+function validarReembolso(){
+
+	var n=parseInt(document.formReembolso.numeroentidad.value);
+	var sumacrp=parseInt(document.formReembolso.ValorSumatoriaCrp.value);
 	
+	var sumaReembolso=0;
+	for(var i=1;i<=n;i++){
+				
+		var Vreembolso=document.getElementById("vreembolso"+i).value;
+		var Vaportado=parseInt(document.getElementById("ValorAportadoEntidad"+i).value);
+		var entidad=document.getElementById("Entidad"+i).value;
+		alert("entidad="+entidad+"   valor reembolso="+Vreembolso+"   > Valor aportado="+Vaportado);
+		if(Vreembolso=="" ){
+			alert("El valor del reembolso de "+entidad+" no puede estar vacio");
+			return false;
+		}else{
+			Vreembolso=parseInt(Vreembolso);
+		}
+		if(Vreembolso>Vaportado){
+			alert("El valor del reembolso no puede ser mayor al aportado por esta entidad");
+			return false;
+		}
+		
+		sumaReembolso=Vreembolso+sumaReembolso;
+	}
+	if(sumaReembolso>sumacrp){
+		alert("El valor del reembolso no puede ser mayor al total disponible");
+		return false;
+	}
 	
 }
+
+
 </script>
 <body>
 <br>
@@ -96,7 +130,6 @@ function pregunta(){
 			<td><a href='<c:url value="/adminConvenio/Grupos.jsp"/>'><img border="0" src='<c:url value="/comp/img/convenio/GruposInv.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminEntidad/GestEntidad.x?validar=3&por=2"/>'><img border="0" src='<c:url value="/comp/img/convenio/Entidades.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminConvenio/AdminConvenio.x?accion=15"/>'><img src='<c:url value="/comp/img/prAprobado.gif"/>'></a></td>
-	
 		</tr>
 	</table>
 <br>
@@ -256,42 +289,61 @@ function pregunta(){
 
 <form name="formReembolso" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 <input type="hidden" name="accion" value="ALERTAAA!!!!">
-<input type="hidden" name="idcdp" value="<c:out value="${requestScope.idcdp}"/>">
 
+<input type="hidden" name="idcdp" value="<c:out value="${requestScope.idcdp}"/>">
 <input type="hidden" name="nombrecdp" value="<c:out value="${requestScope.nombrecdp}"/>">
 <input type="hidden" name="valor" value="<c:out value="${requestScope.valortotal}"/>">
-<input type="hidden" name="sumatoria" value="${numero}">
+<input type="hidden" name="ValorSumatoriaCrp" value="${requestScope.valortotal-numero}">
 <br>
 <br>
 <table id="reembolso" class="tablas" align = "center" width="80%" style="display: none">
 <CAPTION>Reembolso</CAPTION>
 
   <tr>
+  <c:set var="var2" value="${0}"></c:set>
        <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 		<th style="width:100px;"><b><c:out value="${lista.entidadid}"/></b></th>
 		<c:set var="var2" value="${var2+1}"></c:set>
 		</c:forEach>
+		<input type="hidden" name="numeroentidad" value="${var2}">
  </tr>
  <tr>
- 
-
+			
 			<c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 			   <input type="hidden" name="entidad" id='Entidad<c:out value="${st.count}"/>' value="<c:out value="${lista.entidadid}"/>">
-				<input type="hidden" name="sumaCDP" id='sumaCDP<c:out value="${st.count}"/>' value="<c:out value="${lista.VCdps}"/>">
-				<input type="hidden" name="sumaAporte" id='sumaAporte<c:out value="${st.count}"/>' value="<c:out value="${lista.VAportado}"/>">
 				<td>
+				
 				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
-				   <input type="text" id='ventidad<c:out value="${st.count}" />' maxlength="9" name="VEspecieConv" style="text-align:right; width: 98%" value="0" onkeypress="return numeros(event)">
+				   <input type="text" id='vreembolso<c:out value="${st.count}" />' maxlength="9" name="vreembolso" style="text-align:right; width: 98%" value="0" onkeypress="return numeros(event)">
 					</td>
 				</c:forEach>
-  <tr/>
+  </tr>
   <tr>  <td align="center" colspan="4">
-                  <img src='<c:url value="/comp/img/Registrar.gif"/>' onclick='pregunta()'>
+                  <img src='<c:url value="/comp/img/Registrar.gif"/>' onclick='preguntaReembolso()'>
                   <img src='<c:url value="/comp/img/Cancelar.gif"/>' onclick='cancelar()'>
         </td>
   </tr>
 </table>
 </form>
+
+
+			<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="lista" varStatus="st">
+			
+					<c:if test="${lista.idcdp==requestScope.idcdp}">
+					
+							<c:forEach var="i" items="${lista.valores}" begin="0"  varStatus="st"> 
+						
+								  <input type="hidden" name="ValorAportadoEntidad"  id='ValorAportadoEntidad<c:out value="${st.count}" />' readonly="readonly" value='<c:out value="${i}"/>'>
+							</c:forEach>
+					
+							
+					</c:if>
+			
+			
+			
+			</c:forEach>
+
+
 
 </body>
 </html>
