@@ -245,7 +245,7 @@ case Parametros.AdicionarTiempo:
 					 if(req.getAttribute("m")==null){
 						 
 					}else{
-						mensaje="El CDP no pudo ser eliminado,tiene CRP asignados";
+						mensaje=(String)req.getAttribute("m");
 					 }
 				
 						
@@ -354,13 +354,15 @@ case Parametros.AdicionarTiempo:
 				break;
 				case Parametros.EliminarCDP:
 					System.out.println("entro a eliminar cdp"+req.getParameter("idcdp"));
-					System.out.println(adminConv.eliminarCDP(req.getParameter("idcdp")));
+					//System.out.println(adminConv.eliminarCDP(req.getParameter("idcdp")));
 					if(adminConv.eliminarCDP(req.getParameter("idcdp"))){
 						mensaje="El crp fue eliminado satisfactoriamente";
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 						sesion.setAttribute("datoConvenio", objconv);
-					}else
+					}else{
 						mensaje="El CDP no pudo ser eliminado,tiene CRP asignados";
+					}
+						
 					
 					
 					req.setAttribute("m",mensaje);
