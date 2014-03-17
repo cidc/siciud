@@ -131,8 +131,11 @@
 		  			<img border=0 src='<c:url value="/comp/img/equis1.png"/>'>
 		  		</c:if>
 		  		<c:if test='${lista.nombreArchivo!="" && lista.nombreArchivo!=null}'>
-		  			<c:if test='${lista.tipo==2||lista.tipo==3}'>	
+		  			<c:if test='${lista.tipo==3}'>	
 		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+					 <c:if test='${lista.tipo==2}'>	
+		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/InformesFinales/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
 				  	<c:if test='${lista.tipo==1}'>
 					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
