@@ -963,13 +963,35 @@ public class AdminConvenioDB extends BaseDB{
 		return retorno;
 	}
 	public boolean eliminarCDP(String idcdp) {
-		eliminarrubroaprobado(idcdp);
+		
+		
 		
 		boolean retorno=false;
 		Connection cn=null;
+		ResultSet rs=null;
 		PreparedStatement ps=null;
+		int n=0;
 		
 		try {
+			 cn = cursor.getConnection(super.perfil);
+             ps = cn.prepareStatement(rb.getString("consultancrp"));
+             ps.setInt(1, Integer.parseInt(idcdp));
+             rs = ps.executeQuery();
+             
+             while (rs.next()){
+            	  n=rs.getInt(1);
+           }
+			System.out.println("numero de crp"+n);
+			if(n>0){
+				
+			}else{
+				eliminarrubroaprobado(idcdp);
+			}
+				
+		
+			
+			
+			
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("eliminarCDP"));
 			ps.setInt(1,Integer.parseInt(idcdp));
@@ -987,6 +1009,7 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return retorno;
 	}
+
 	public boolean eliminarrubroaprobado(String idcrp) {
 		boolean retorno=false;
 		Connection cn=null;
