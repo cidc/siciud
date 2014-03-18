@@ -24,10 +24,11 @@
 		<input type="hidden" name="accion" value="1"/>
 	<br>
 	<table class="tablas" align="center" width="80%">
-	<CAPTION>Filtro de consulta</CAPTION>
+	<CAPTION>Filtro de consultaAAA</CAPTION>
 		<tr>
-			<th><b>Facultad:</b></th>
-			<th colspan="3"><b>Proyecto Curricular:</b></th>
+			<th width="30%"><b>Facultad:</b></th>
+			<th width="30%"><b>Proyecto Curricular:</b></th>
+			<th width="30%"><b>Año:</b></th>
 		</tr>
 		<tr>
 			<td>
@@ -40,7 +41,7 @@
 					<option value="5">Asab</option>
 				</select>
 			</td>
-			<td colspan="3">
+			<td>
 				<select name="proyCur" style="width:100%">
 					<option value=''>----------------------------------------</option>
 				<c:if test="${!empty sessionScope.ajaxProyCur}">
@@ -50,6 +51,13 @@
 				</c:if>
 				</select>
 			</td>
+			<td> <select name="ano">
+               <option value="0">----</option>
+     	       <c:forEach begin = "1985" end="2020" var="an">
+	     	       <option value='<c:out value="${an}"/>'><c:out value="${an}"/></option>
+     	       </c:forEach>
+               </select>
+          </td>
 		</tr>
 		<tr>
 			<th><b>Codigo:</b></th>
