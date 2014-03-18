@@ -21,6 +21,10 @@ function numeros(eve){
 function nuevo(){
     document.getElementById("nuevo").style.display='';
  }
+function cancelar(){
+    document.getElementById("reembolso").style.display='none';
+ }
+
  
 function reembolso(){
     document.getElementById("reembolso").style.display='';
@@ -46,9 +50,8 @@ function borrar(id,valorcrp)
 {confirmar=confirm("¿Desea Realmente Eliminar el Registro?");  
 if (confirmar)
 	eliminar(id,valorcrp)
-
-
 }
+
 function eliminar(id,valorcrp){
 	alert(id);
 	alert(valorcrp);
@@ -115,6 +118,7 @@ function validarReembolso(){
 		return false;
 	}
 	
+	return true;
 }
 
 
@@ -316,32 +320,41 @@ function validarReembolso(){
 				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
 				   <input type="text" id='vreembolso<c:out value="${st.count}" />' maxlength="9" name="vreembolso" style="text-align:right; width: 98%" value="0" onkeypress="return numeros(event)">
 					</td>
+						
 				</c:forEach>
   </tr>
+  
+  <tr>
+ 		<th style="width:100px;"><b>Total Aportado por entidad</b></th>
+  </tr>
+  <tr>
+  
+  	<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="lista" varStatus="st">
+			
+					<c:if test="${lista.idcdp==requestScope.idcdp}">
+					
+							<c:forEach var="i" items="${lista.valores}" begin="0"  varStatus="st"> 
+								<td>
+								  <input type="text" name="ValorAportadoEntidad"  id='ValorAportadoEntidad<c:out value="${st.count}" />' readonly="readonly" style="text-align:right; width: 98%" value='<c:out value="${i}"/>'>
+								</td>
+							</c:forEach>
+								
+					</c:if>
+			</c:forEach>
+  
+  </tr>
+  
   <tr>  <td align="center" colspan="4">
                   <img src='<c:url value="/comp/img/Registrar.gif"/>' onclick='preguntaReembolso()'>
                   <img src='<c:url value="/comp/img/Cancelar.gif"/>' onclick='cancelar()'>
         </td>
   </tr>
+  
 </table>
 </form>
 
 
-			<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="lista" varStatus="st">
-			
-					<c:if test="${lista.idcdp==requestScope.idcdp}">
-					
-							<c:forEach var="i" items="${lista.valores}" begin="0"  varStatus="st"> 
-						
-								  <input type="hidden" name="ValorAportadoEntidad"  id='ValorAportadoEntidad<c:out value="${st.count}" />' readonly="readonly" value='<c:out value="${i}"/>'>
-							</c:forEach>
-					
-							
-					</c:if>
-			
-			
-			
-			</c:forEach>
+		
 
 
 

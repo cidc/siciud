@@ -19,6 +19,7 @@ public class CdpOBJ implements Serializable{
 	private int valortotal;
 	private int valorejecutado;
 	private int financiero;
+	private int [] idcrpValores;
 	private int [] valores;
 	
 	public int[] getValores() {
@@ -75,6 +76,12 @@ public class CdpOBJ implements Serializable{
 	}
 	public void setValorejecutado(int valorejecutado) {
 		this.valorejecutado = valorejecutado;
+	}
+	public int[] getIdcrpValores() {
+		return idcrpValores;
+	}
+	public void setIdcrpValores(int[] idcrpValores) {
+		this.idcrpValores = idcrpValores;
 	}
 	
 	
