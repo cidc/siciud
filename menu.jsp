@@ -10,6 +10,7 @@
 <c:import url="/general.jsp"/>
 <jsp:useBean id="crypto" scope="page" class="cidc.general.obj.EncriptarURL"/>
 <body>
+<h6>version 1.0</h6>
 <c:if test="${sessionScope.loginUsuario.nombre!=null}">
 
 <table background='<c:url value="/comp/img/FondoUsuario.png" />' width="150px">
@@ -26,7 +27,6 @@
 <c:if test="${sessionScope.loginUsuario.idUsuario!=0}">
 </c:if>
 </table>
-<br>
 </c:if>
 <c:set value="${sessionScope.loginUsuario}" var="usuario" scope="page"/>
 <c:set value="" var="categoria" scope="page"/>
