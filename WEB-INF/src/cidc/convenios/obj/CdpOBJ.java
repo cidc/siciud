@@ -19,8 +19,10 @@ public class CdpOBJ implements Serializable{
 	private int valortotal;
 	private int valorejecutado;
 	private int financiero;
-	private int [] idcrpValores;
+	private int [] idcdpValores;
 	private int [] valores;
+	private int [] reembolsoEntidad;
+	private int reembolsototal;
 	
 	public int[] getValores() {
 		return valores;
@@ -77,11 +79,23 @@ public class CdpOBJ implements Serializable{
 	public void setValorejecutado(int valorejecutado) {
 		this.valorejecutado = valorejecutado;
 	}
-	public int[] getIdcrpValores() {
-		return idcrpValores;
+	public int[] getIdcdpValores() {
+		return idcdpValores;
 	}
-	public void setIdcrpValores(int[] idcrpValores) {
-		this.idcrpValores = idcrpValores;
+	public void setIdcdpValores(int[] idcdpValores) {
+		this.idcdpValores = idcdpValores;
+	}
+	public int getReembolsototal() {
+		return reembolsototal;
+	}
+	public void setReembolsototal(int reembolsototal) {
+		this.reembolsototal = reembolsototal;
+	}
+	public int[] getReembolsoEntidad() {
+		return reembolsoEntidad;
+	}
+	public void setReembolsoEntidad(int[] reembolsoEntidad) {
+		this.reembolsoEntidad = reembolsoEntidad;
 	}
 	
 	

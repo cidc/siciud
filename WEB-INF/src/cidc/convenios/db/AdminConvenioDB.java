@@ -1211,8 +1211,7 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 			entid.setVTotal(rs.getString(i++));
 			entid.setVAportado(valorAporte(Integer.parseInt(entid.getIdentidadconvenio())));
 			entid.setVCdps(valorCdp(Integer.parseInt(entid.getIdentidadconvenio())));
-			System.out.println("valor aporte="+entid.getVAportado());
-			System.out.println("valor cdp="+entid.getVCdps());
+			//entid.setVReembolsado(valorReembolsoCDP(Integer.parseInt(entid.getIdentidadconvenio())));
 			ListaEntidadesConv.add(entid);
 			
 		}
@@ -1225,6 +1224,7 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 	
 	return ListaEntidadesConv;
 }
+
 
 
  public String valorAporte(int identidad){
@@ -1293,6 +1293,8 @@ public List <CdpOBJ> getcdp(int id) {
     int i=1;
     List<CdpOBJ> Listacdp=new ArrayList <CdpOBJ>();
     ArrayList valorunitario=new ArrayList();
+    ArrayList pkvalor=new ArrayList();
+    ArrayList reembolsoentidad=new ArrayList();
     int [] v = null;
     int contador=0;
     int n=0;
@@ -1311,8 +1313,9 @@ public List <CdpOBJ> getcdp(int id) {
              rs = ps.executeQuery();
              int j=0;
              while (rs.next()){
-            	
+            	 pkvalor.add(j,rs.getInt(1));
             	 valorunitario.add(j,rs.getInt(2));
+            	 reembolsoentidad.add(j,rs.getInt(3));
             	// v[j]=rs.getInt(2);
             	j++;
             }
@@ -1332,15 +1335,20 @@ public List <CdpOBJ> getcdp(int id) {
             	cdpOBJ.setFechaRegistro(rs.getString(i++));
             	cdpOBJ.setValortotal(rs.getInt(i++));
             	cdpOBJ.setValorejecutado(rs.getInt(i++));
+            	cdpOBJ.setReembolsototal(rs.getInt(i++));
             	int [] l = new int[n];
+            	int [] PK = new int[n];
+            	int [] reembolsoEnt = new int[n];
             	for(int k=0;k<n;k++){
 
-            		
+            		PK[k]=Integer.parseInt(String.valueOf(pkvalor.get(contador)));
             		l[k]= Integer.parseInt(String.valueOf(valorunitario.get(contador)));
-            		System.out.println("valorl:"+l[k]);
-            		//l[k]=v[contador];
+            		reembolsoEnt[k]= Integer.parseInt(String.valueOf(reembolsoentidad.get(contador)));
+               		//l[k]=v[contador];
             		contador++;
             	}
+            	cdpOBJ.setIdcdpValores(PK);		
+            	cdpOBJ.setReembolsoEntidad(reembolsoEnt);		
             	cdpOBJ.setValores(l);
             	Listacdp.add(cdpOBJ);
             	
@@ -1468,35 +1476,7 @@ public boolean insertaRubrosAprobrados(int idfinanza,String idRubro,String codig
 		}
 		ps.executeBatch();
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	/*	ps=cn.prepareStatement(rb.getString("eliminaRubrosAprobados"));
-		ps.setLong(1, idconvenioentidad);
-		ps.executeUpdate();
-		if(idRubros!=null){
-			ps=cn.prepareStatement(rb.getString("insertaRubrosAprobados"));
-			for(int j=0;j<idRubros.length;j++){
-				i=1;
-				ps.setLong(i++, idProyecto);
-				ps.setInt(i++, Integer.parseInt(idRubros[j]));
-				ps.setDouble(i++, Double.parseDouble(valores[j]));
-				ps.addBatch();
-			}
-			ps.executeBatch();
-		}
-		retorno = true;
-		for(int u=0;u<nentidades;u++){
-			i=1;
-			
-			
-		}*/
+	
 		retorno = true;
 	}catch (Exception e) {
 		System.out.println("se explota en insertar cdp");
@@ -1722,12 +1702,48 @@ public EntidadAsociadaOBJ entidadaporte(int id){
 	return entidad;
 }
 
-
-
-
-
-
+public boolean insertarReembolso(String []idconventd,String [] valores, int nentidades,int idcdp){
+	Connection cn=null;
+	PreparedStatement ps=null;
+	boolean retorno = false;
 	
+	try {
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("actualizarReembolsoCDP"));
+		
+		int suma=0;
+		for(int u=0;u<nentidades;u++){
+			suma=suma+Integer.parseInt(valores[u]);
+		}
+		
+		ps.setInt(1, suma);
+		ps.setInt(2, idcdp);
+		ps.executeUpdate();
+	
+		
+		ps=cn.prepareStatement(rb.getString("actualizarReembolsoEntidad"));
+		for(int u=0;u<nentidades;u++){
+			ps.setInt(1,  Integer.parseInt(valores[u]));
+			ps.setInt(2, Integer.parseInt(idconventd[u]));
+		
+			ps.addBatch();
+		}
+		ps.executeBatch();
+		
+	
+		retorno = true;
+	}catch (Exception e) {
+		System.out.println("se explota en insertar reembolso");
+		lanzaExcepcion(e);
+	
+	}finally{
+		cerrar(ps);
+		cerrar(cn);
+	}
+	return retorno;
+}
+
+
 }
 
 

@@ -362,12 +362,22 @@ case Parametros.AdicionarTiempo:
 					}else{
 						mensaje="El CDP no pudo ser eliminado,tiene CRP asignados";
 					}
-						
-					
-					
 					req.setAttribute("m",mensaje);
 								
 					irA="/adminConvenio/AdminConvenio.x?accion=15";
+				break;
+				
+				case Parametros.InsertarReembolso:
+					System.out.println("Reembolso-----");
+					if(adminConv.insertarReembolso(req.getParameterValues("idEntidadcdp"),req.getParameterValues("vreembolso"),Integer.parseInt(req.getParameter("numeroentidad")),Integer.parseInt(req.getParameter("idcdp")))){
+						mensaje="El reembolso fue registrado satisfactoriamente";
+						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
+						sesion.setAttribute("datoConvenio", objconv);
+					}else{
+						mensaje="El reembolso no pudo ser registrado";
+					}
+						
+					irA="/adminConvenio/RubrosAprobados.jsp";
 				break;
 			default:
 				irA="/adminConvenio/NuevoConvenio.jsp";

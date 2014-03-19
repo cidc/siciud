@@ -11,6 +11,7 @@ public class EntidadAsociadaOBJ implements Serializable {
 	private String VTotal;
 	private String VAportado;
 	private String VCdps;
+	private String VReembolsado;
 	public String getIdentidadconvenio() {
 		return identidadconvenio;
 	}
@@ -58,6 +59,12 @@ public class EntidadAsociadaOBJ implements Serializable {
 	}
 	public void setVCdps(String vCdps) {
 		VCdps = vCdps;
+	}
+	public String getVReembolsado() {
+		return VReembolsado;
+	}
+	public void setVReembolsado(String vReembolsado) {
+		VReembolsado = vReembolsado;
 	}
 	
 	

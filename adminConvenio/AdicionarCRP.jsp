@@ -53,8 +53,7 @@ if (confirmar)
 }
 
 function eliminar(id,valorcrp){
-	alert(id);
-	alert(valorcrp);
+
 	document.formcargacrp.accion.value=21;
 	document.formcargacrp.crpd.value=id;
 	document.formcargacrp.submit();
@@ -69,7 +68,6 @@ function pregunta(){
 		var efectivo=parseInt(document.formcrpnuevo.valorcrp.value);
 		var tol=parseInt(document.formcrpnuevo.valor.value);
 		
-		alert("sumatoria"+sumatoria);
 		if((efectivo+sumatoria)<=tol){
 			document.formcrpnuevo.submit();
 		}else{
@@ -81,7 +79,8 @@ function pregunta(){
 
 function preguntaReembolso(){
 	if(validarReembolso()==true){
-		alert("Todo bien");
+		alert("Entro");
+		document.formReembolso.submit();
 	}else{
 		alert("mal");
 		
@@ -99,7 +98,6 @@ function validarReembolso(){
 		var Vreembolso=document.getElementById("vreembolso"+i).value;
 		var Vaportado=parseInt(document.getElementById("ValorAportadoEntidad"+i).value);
 		var entidad=document.getElementById("Entidad"+i).value;
-		alert("entidad="+entidad+"   valor reembolso="+Vreembolso+"   > Valor aportado="+Vaportado);
 		if(Vreembolso=="" ){
 			alert("El valor del reembolso de "+entidad+" no puede estar vacio");
 			return false;
@@ -150,19 +148,6 @@ function validarReembolso(){
 <tr>  <td colspan="5"><c:out value = "${sessionScope.datoConvenio.codigo}"/></td></tr>
 <tr>  <td class="renglones" colspan="5"><b>Numero de Disponibilidad:</b></td> </tr>
 <tr>  <td colspan="5"><c:out value = "${sessionScope.datoConvenio.numDisp}"/></td></tr>
-
-<tr> <td colspan="4"> <table class="tablas" width="100%">
-          <tr>  <td class="renglones" width="115px"><b>Total Aprobado: </b></td>
-                <td class="renglones" width="130px"><b>Por Comprometer: </b></td>
-                <td class="renglones" width="100px"><b>Comprometido: </b></td>
-         </tr>
-         <tr> <td align="right"><c:out value = "${proyectos.presupuesto}"/></td>
-              <td align="right" width="130px"><c:out value = "${proyectos.ejecutado}"/></td>
-              <td align="right"><c:out value = "${proyectos.saldo}"/></td>
-         </tr>
-          </table>
-     </td>
-</tr>
 </table>
 </form>
 <br/>
@@ -246,6 +231,37 @@ function validarReembolso(){
 </c:if>
 
 <br>
+<c:if test="${!empty sessionScope.datoConvenio.listaentidadesConv}">
+<table class="tablas" align = "center" width="80%">
+	
+	<caption>Reembolsado Entidades</caption>
+	<tr>
+ 
+       <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+		<th style="width:100px;"><b><c:out value="${lista.entidadid}"/></b></th>
+		</c:forEach>
+		<th style="width:100px;"><b>Total Reembolsado</b></th>
+ </tr>
+	<tr>
+	
+	<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="lista" varStatus="st">
+					<c:if test="${lista.idcdp==requestScope.idcdp}">
+							<c:forEach var="i" items="${lista.reembolsoEntidad}" begin="0"  varStatus="st"> 
+								<td>
+								  <input type="text" name="reembolsado"  id='reembolsado<c:out value="${st.count}" />' readonly="readonly" style="text-align:center; width: 98%" value='<c:out value="${i}"/>'>
+								</td>
+							</c:forEach>
+							<td>
+						<b><input type="text"  name="reembolsototal"   readonly="readonly" value='<c:out value="${lista.reembolsototal}"/>' style="text-align:center; width: 98%"></b>	
+							</td>
+					</c:if>
+			</c:forEach>
+	</tr>
+</table>	
+</c:if>		
+	<br>
+
+
 <form name="formcrpnuevo" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
 <input type="hidden" name="accion" value="20">
 <input type="hidden" name="idcdp" value="<c:out value="${requestScope.idcdp}"/>">
@@ -292,7 +308,7 @@ function validarReembolso(){
 
 
 <form name="formReembolso" method="post" action='<c:url value="/adminConvenio/AdminConvenio.x"/>'>
-<input type="hidden" name="accion" value="ALERTAAA!!!!">
+<input type="hidden" name="accion" value="23">
 
 <input type="hidden" name="idcdp" value="<c:out value="${requestScope.idcdp}"/>">
 <input type="hidden" name="nombrecdp" value="<c:out value="${requestScope.nombrecdp}"/>">
@@ -338,7 +354,11 @@ function validarReembolso(){
 								  <input type="text" name="ValorAportadoEntidad"  id='ValorAportadoEntidad<c:out value="${st.count}" />' readonly="readonly" style="text-align:right; width: 98%" value='<c:out value="${i}"/>'>
 								</td>
 							</c:forEach>
+							<c:forEach var="i" items="${lista.idcdpValores}" begin="0"  varStatus="st"> 
 								
+								  <input type="hidden" name="idEntidadcdp"  id='idEntidadcdp<c:out value="${st.count}" />'  value='<c:out value="${i}"/>'>
+								
+							</c:forEach>	
 					</c:if>
 			</c:forEach>
   

@@ -28,4 +28,5 @@ public class Parametros {
 	public static final int AdicionarCRP=20;
 	public static final int EliminarCRP=21;
 	public static final int EliminarCDP=22;
+	public static final int InsertarReembolso=23;
 }

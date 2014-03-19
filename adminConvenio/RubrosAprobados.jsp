@@ -119,6 +119,31 @@ function suma(formulario1){
 	</tr>
 	</table>
 <br>
+<table width="95%" class="tablas" align="center">
+		<CAPTION>Datos generales del proyecto</CAPTION>
+		<tr>
+			<th colspan="5"><b>Nombre de Proyecto</b></th>
+		</tr>
+		<tr>
+			<td colspan="5"><c:out value="${sessionScope.datoConvenio.nombreproyecto}"/></td>
+		</tr>
+		<tr>
+			
+			<th width="20%"><b>Número Convenio</b></th>
+			<th width="20%"><b>Fecha Inicio</b></th>
+			<th width="20%"><b>Estimado Fin</b></th>
+			<th width="20%"><b>Total Aprobado Efectivo</b></th>
+			<th width="20%"><b>Total Aportado</b></th>
+		</tr>
+		<tr>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.codigo}"/></td>
+			<td width="20%" align="center"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
+			<td width="20%" align="center">$<c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
+			<td width="20%" align="center">$<c:out value="${sessionScope.datoConvenio.finanza.VAprobado}"/></td>
+			<td width="20%" align="center">$<c:out value="${sessionScope.datoConvenio.finanza.VAportado}"/></td>
+		</tr>
+	</table>
+	<br>
 <c:if test="${!empty sessionScope.datoConvenio.listacdpsConv}">
 <form  action='<c:url value="/adminConvenio/AdminConvenio.x"/>' name="listadocdp">
 <input type="hidden" name="accion" value="19">
@@ -139,6 +164,7 @@ function suma(formulario1){
 				</c:forEach>
 				<th style="width:80px;" align="center"><b>Valor total</b></th>
 				<th style="width:80px;" align="center"><b>Valor Ejecutado</b></th>
+				<th style="width:80px;" align="center"><b>Valor Reembolsado</b></th>
 				<th style="width:80px;" align="center"><b>fecha Registro</b></th>
 				<th style="width:500px;" align="center"><b>observacion</b></th>
 			</tr>
@@ -165,6 +191,9 @@ function suma(formulario1){
 			</td>
 			<td style="width:80px;" align="right">
 			  <b><input type="text"  name="valorejecutado"   readonly="readonly" value='<c:out value="${lista.valorejecutado}"/>'></b>
+			</td>
+			<td style="width:80px;" align="right">
+			  <b><input type="text"  name="reembolsototal"   readonly="readonly" value='<c:out value="${lista.reembolsototal}"/>'></b>
 			</td>
 			<td style="width:80px;" align="right">
 			  <b><input type="text"  name="fechaRegistro"  readonly="readonly" value='<c:out value="${lista.fechaRegistro}"/>'></b>
