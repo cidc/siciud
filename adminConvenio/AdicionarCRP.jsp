@@ -61,9 +61,7 @@ function eliminar(id,valorcrp){
 function pregunta(){
 
 	if(crear()==true){
-		
-		
-		
+
 		var sumatoria=parseInt(document.formcrpnuevo.sumatoria.value);
 		var efectivo=parseInt(document.formcrpnuevo.valorcrp.value);
 		var tol=parseInt(document.formcrpnuevo.valor.value);
@@ -79,11 +77,9 @@ function pregunta(){
 
 function preguntaReembolso(){
 	if(validarReembolso()==true){
-		alert("Entro");
 		document.formReembolso.submit();
 	}else{
-		alert("mal");
-		
+				
 	}
 }
 
@@ -167,7 +163,13 @@ function validarReembolso(){
 		</table>
 		<table width="80%" align="center"> 
 		<tr>
+		<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="li" varStatus="st">
+			<c:if test="${li.idcdp==requestScope.idcdp}">
+				<c:if test="${ li.reembolsototal=='0'}">
 		<td align="center" colspan="3"><img src='<c:url value="/comp/img/Nuevogasto.gif"/>' onclick='nuevo()'> </td>
+		</c:if>
+		</c:if>
+		</c:forEach>
 		<td align="center" colspan="3"><img src='<c:url value="/comp/img/Rechazar.gif"/>' onclick='reembolso()'> </td>
 		</tr>
         </table>
@@ -192,46 +194,44 @@ function validarReembolso(){
        <td class="renglones"><b>Observacion:</b></td>
  </tr>
  <c:forEach begin="0" items="${sessionScope.datoConvenio.listacrpsConv}" var="lista" varStatus="st">
- <tr>
-  <td style="width:115px;">
-			  <b><input type="text"  name="crp" readonly="readonly" value='<c:out value="${lista.nombre}"/>' ></b>
+ <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
+  <td style="width:115px;" align="center">
+			 <c:out value="${lista.nombre}"/>
   </td>
-  <td style="width:115px;">
-			  <b><input type="text"  name="codigocrp" readonly="readonly" value='<c:out value="${lista.codigo}"/>'></b>
+  <td style="width:115px;" align="center">
+			 <c:out value="${lista.codigo}"/>
   </td>
-  <td style="width:115px;">
-			  <b><input type="text"  name="clientecrp" readonly="readonly" value='<c:out value="${lista.cliente}"/>'></b>
+  <td style="width:115px;" align="center">
+			  <c:out value="${lista.cliente}"/>
   </td>
-   <td style="width:115px;">
-			  <b><input type="text"  name="valorcrp" readonly="readonly" value='<c:out value="${lista.valor}"/>'></b>
+   <td style="width:115px;" align="center">
+			$<c:out value="${lista.valor}"/>
   </td>
-   <td style="width:115px;">
-			  <b><input type="text"  name="fechacrp" readonly="readonly" value='<c:out value="${lista.fecha}"/>'></b>
+   <td style="width:115px;" align="center">
+			<c:out value="${lista.fecha}"/>
   </td>
-   <td style="width:400px;">
-			   <b><input type="text"  name="observacioncrp" readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
+   <td style="width:400px;" align="center">
+			 <c:out value="${lista.observacion}"/>
   </td>
+ <c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="li" varStatus="st">
+			<c:if test="${li.idcdp==requestScope.idcdp}">
+				<c:if test="${ li.reembolsototal=='0'}">
   <td width="30px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='borrar(<c:out value="${lista.idcrp}"/>,"${lista.valor}")'></td>
+</c:if>
+</c:if>
+</c:forEach>
  <tr/>
  <c:set var="numero"  value="${numero+lista.valor}"/>
 
 </c:forEach>
 </table>
 </form>
-           <table width="50%" align="center" class="tablas">
-			<tr>
-			<th width="200px"><b>Valor Asignado:</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.valortotal}"/></td></td>
-			<th width="200px"><b>Valor Disponible:</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.valortotal-numero}"/></td></td>
-			
-			</tr>
-		   </table>
-</c:if>
-<c:if test="${empty sessionScope.datoConvenio.listacrpsConv}">
-	<h3 align="center">No hay CRP  para este CDP</h3>
-</c:if>
+<c:set var="reem" value="${0}"></c:set>
+<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="li" varStatus="st">
+			<c:if test="${li.idcdp==requestScope.idcdp}">
+				<c:if test="${ li.reembolsototal!='0'}">
 
-<br>
-<c:if test="${!empty sessionScope.datoConvenio.listaentidadesConv}">
+
 <table class="tablas" align = "center" width="80%">
 	
 	<caption>Reembolsado Entidades</caption>
@@ -246,6 +246,7 @@ function validarReembolso(){
 	
 	<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="lista" varStatus="st">
 					<c:if test="${lista.idcdp==requestScope.idcdp}">
+						<c:set var="reem" value="${reem+lista.reembolsototal}"></c:set>
 							<c:forEach var="i" items="${lista.reembolsoEntidad}" begin="0"  varStatus="st"> 
 								<td>
 								  <input type="text" name="reembolsado"  id='reembolsado<c:out value="${st.count}" />' readonly="readonly" style="text-align:center; width: 98%" value='<c:out value="${i}"/>'>
@@ -259,6 +260,24 @@ function validarReembolso(){
 	</tr>
 </table>	
 </c:if>		
+</c:if>	
+</c:forEach>
+
+           <table width="50%" align="center" class="tablas">
+			<tr>
+			<th width="200px"><b>Valor Asignado:</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.valortotal}"/></td>
+			<th width="200px"><b>Valor Disponible:</b></th><td><td width="100px" align="center">$<c:out value="${requestScope.valortotal-(numero+reem)}"/></td>
+			
+			</tr>
+		   </table>
+</c:if>
+<c:if test="${empty sessionScope.datoConvenio.listacrpsConv}">
+	<h3 align="center">No hay CRP  para este CDP</h3>
+</c:if>
+
+<br>
+
+
 	<br>
 
 
@@ -275,7 +294,7 @@ function validarReembolso(){
 <CAPTION>Nuevo CRP</CAPTION>
 
   <tr> <td class="renglones" width="115px"><b>CRP: </b></td>
-       <td class="renglones"><b>Codigo: </b></td>
+       <td class="renglones"><b>Codigo:</b></td>
        <td class="renglones"><b>Cliente:</b></td>
        <td class="renglones"><b>Valor $:</b></td>
  </tr>

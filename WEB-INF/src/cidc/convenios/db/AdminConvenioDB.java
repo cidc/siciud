@@ -1211,7 +1211,7 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 			entid.setVTotal(rs.getString(i++));
 			entid.setVAportado(valorAporte(Integer.parseInt(entid.getIdentidadconvenio())));
 			entid.setVCdps(valorCdp(Integer.parseInt(entid.getIdentidadconvenio())));
-			//entid.setVReembolsado(valorReembolsoCDP(Integer.parseInt(entid.getIdentidadconvenio())));
+			entid.setVReembolsado(valorReembolsado(Integer.parseInt(entid.getIdentidadconvenio())));
 			ListaEntidadesConv.add(entid);
 			
 		}
@@ -1223,6 +1223,33 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 	}
 	
 	return ListaEntidadesConv;
+}
+public String valorReembolsado(int identidad){
+
+ 	Connection cn=null;
+	PreparedStatement ps=null;
+	ResultSet rs=null;
+	String valorReembolso="0";
+	try {
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("consultarReembolsosEntidad"));
+		ps.setInt(1, identidad);
+		rs=ps.executeQuery();
+		//System.out.println("-->"+ps);
+		while(rs.next()){
+			valorReembolso=rs.getString(1);
+		}
+		if(valorReembolso==null){
+			valorReembolso="0";
+		}
+		
+	} catch (SQLException e) {
+		lanzaExcepcion(e);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return valorReembolso;
 }
 
 
@@ -1512,7 +1539,6 @@ public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String
 		
 		cn=cursor.getConnection(super.perfil);
 		ps=cn.prepareStatement(rb.getString("actualizarEjecutadoCdp"));
-		System.out.println("VALOR!!!=="+valorEjecutadoCdp(idcdp));
 		ps.setInt(1,valor+valorEjecutadoCdp(idcdp));
 		ps.setInt(2, idcdp);
 		

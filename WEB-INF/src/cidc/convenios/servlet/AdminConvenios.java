@@ -311,7 +311,7 @@ case Parametros.AdicionarTiempo:
 				
 				case Parametros.VerCrp:
 					
-					System.out.println("idcdp al verlo"+req.getParameter("idcdp"));
+					
 					objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 					sesion.setAttribute("datoConvenio", objconv);
 					objconv.setListacrpsConv(null);
@@ -323,16 +323,13 @@ case Parametros.AdicionarTiempo:
 				break;
 				
 				case Parametros.AdicionarCRP:
-					System.out.println(".....................................................");
-					System.out.println("idcdp"+req.getParameter("idcdp"));
-					System.out.println("nn"+req.getParameter("nombrecdp"));
-					System.out.println("valortotal"+req.getParameter("valortotal"));
+					
 					
 					req.setAttribute("idcdp",req.getParameter("idcdp"));
 					req.setAttribute("nombrecdp",req.getParameter("nombrecdp"));
 					req.setAttribute("valortotal",req.getParameter("valortotal"));
 					
-					System.out.println("idcdp al adicionar crp"+req.getParameter("idcdp"));
+					
 				      if(adminConv.insertaCRP(Integer.parseInt(req.getParameter("idcdp")),Integer.parseInt(req.getParameter("valorcrp")) , req.getParameter("crp"),req.getParameter("codigocrp"), req.getParameter("clientecrp"), req.getParameter("observcrp"), año + "-" + (mes+1) + "-" +dia+"", usuario.getIdUsuario())){
 				    	  mensaje="CRP almacenados satisfactoriamente";  
 				      }else{
@@ -341,8 +338,7 @@ case Parametros.AdicionarTiempo:
 						 irA="/adminConvenio/AdminConvenio.x?accion=19";
 				break;
 				case Parametros.EliminarCRP:
-					System.out.println("crp"+req.getParameter("crpd"));
-					System.out.println("nombrecdpeneliminar"+req.getParameter("idcdp"));
+					
 					if(adminConv.eliminarCRP(req.getParameter("crpd"))){
 						mensaje="El crp fue eliminado satisfactoriamente";
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
@@ -353,8 +349,7 @@ case Parametros.AdicionarTiempo:
 					irA="/adminConvenio/AdminConvenio.x?accion=19";
 				break;
 				case Parametros.EliminarCDP:
-					System.out.println("entro a eliminar cdp"+req.getParameter("idcdp"));
-					//System.out.println(adminConv.eliminarCDP(req.getParameter("idcdp")));
+					
 					if(adminConv.eliminarCDP(req.getParameter("idcdp"))){
 						mensaje="El crp fue eliminado satisfactoriamente";
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
@@ -366,7 +361,6 @@ case Parametros.AdicionarTiempo:
 								
 					irA="/adminConvenio/AdminConvenio.x?accion=15";
 				break;
-				
 				case Parametros.InsertarReembolso:
 					System.out.println("Reembolso-----");
 					if(adminConv.insertarReembolso(req.getParameterValues("idEntidadcdp"),req.getParameterValues("vreembolso"),Integer.parseInt(req.getParameter("numeroentidad")),Integer.parseInt(req.getParameter("idcdp")))){
