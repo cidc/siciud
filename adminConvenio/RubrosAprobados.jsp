@@ -75,9 +75,9 @@ function validarcdp(){
 		var cdp=parseInt(document.getElementById("ventidad"+i).value);
 		var sumacdp=parseInt(document.getElementById("sumaCDP"+i).value);
 		var sumaaporte=parseInt(document.getElementById("sumaAporte"+i).value);
+		var reembolso=parseInt(document.getElementById("reembolsoEntidad"+i).value);
 		
-		
-		if(cdp>(sumaaporte-sumacdp)){
+		if(cdp>(sumaaporte-sumacdp+reembolso)){
 		var entidad=document.getElementById("Entidad"+i).value
 		alert("El valor del cdp asignado a la entidad "+entidad+" no puede ser mayor a "+(sumaaporte-sumacdp));
 		return false;
@@ -94,7 +94,7 @@ function suma(formulario1){
 }
 	 function enviar(id,action,nombre,valor){
 	 	
-	 	document.listadocdp.accion.value=action;
+	 	 document.listadocdp.accion.value=action;
 	     document.listadocdp.idcdp.value=id;
 	     document.listadocdp.nombrecdp.value=nombre;
 	     document.listadocdp.valor.value=valor;
@@ -162,49 +162,63 @@ function suma(formulario1){
 				<c:set var="cantidade" value="${cantidade+1}"></c:set>
 				
 				</c:forEach>
-				<th style="width:80px;" align="center"><b>Valor total</b></th>
+				<th style="width:80px;" align="center"><b>Valor total Comprometido</b></th>
 				<th style="width:80px;" align="center"><b>Valor Ejecutado</b></th>
 				<th style="width:80px;" align="center"><b>Valor Reembolsado</b></th>
 				<th style="width:80px;" align="center"><b>fecha Registro</b></th>
 				<th style="width:500px;" align="center"><b>observacion</b></th>
 			</tr>
-			
-			
+			<c:set var="reembolsado"  value="0" />
+			<c:set var="ejecutado"  value="0" />
 			<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="lista" varStatus="st">
+				<c:set var="reembolsado"  value="${reembolsado+lista.reembolsototal}"/>
+				<c:set var="ejecutado"  value="${ejecutado+lista.valorejecutado}"/>
+				<tr>
+					<td style="width:400px;" align="right">
+						  <b><input type="text"  name="nombre" readonly="readonly"   value='<c:out value="${lista.nombre}"/>'> </b>
+					</td>
+					<td style="width:80px;" align="right">
+						  <b><input type="text"  name="codigo" readonly="readonly"  value='<c:out value="${lista.codigo}"/>'></b>
+					</td>
+					<c:forEach var="i" items="${lista.valores}" begin="0">
+						 <td style="width:100px;" align="right">
+					     	<input type="text" name="valorEntidad"   readonly="readonly" value='<c:out value="${i}"/>'>
+						</td>
+					</c:forEach>
+					<td style="width:80px;" align="right">
+					 	 <b><input type="text"  name="valortotal"   readonly="readonly" value='<c:out value="${lista.valortotal}"/>'></b>
+					</td>
+					<td style="width:80px;" align="right">
+						  <b><input type="text"  name="valorejecutado"   readonly="readonly" value='<c:out value="${lista.valorejecutado}"/>'></b>
+					</td>
+					<td style="width:80px;" align="right">
+						  <b><input type="text"  name="reembolsototal"   readonly="readonly" value='<c:out value="${lista.reembolsototal}"/>'></b>
+					</td>
+					<td style="width:80px;" align="right">
+						  <b><input type="text"  name="fechaRegistro"  readonly="readonly" value='<c:out value="${lista.fechaRegistro}"/>'></b>
+					</td>
+					<td style="width:500px;" align="right">
+						  <b><input type="text"  name="observacion"  readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
+					</td>
+					<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>'  onclick='enviar("${lista.idcdp}",19,"<c:out value="${lista.nombre}"/>","${lista.valortotal}")'></td>
+					<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>'  onclick='borrar(<c:out value="${lista.idcdp}"/>,"${lista.valortotal}")'></td>
+				</tr>
+			</c:forEach>
+			<c:set var="totalcdp"  value="0" />
 			<tr>
-			<td style="width:400px;" align="right">
-			  <b><input type="text"  name="nombre" readonly="readonly"   value='<c:out value="${lista.nombre}"/>'> </b>
-		    </td>
-		    <td style="width:80px;" align="right">
-			  <b><input type="text"  name="codigo" readonly="readonly"  value='<c:out value="${lista.codigo}"/>'></b>
-			</td>
-			
-			<c:forEach var="i" items="${lista.valores}" begin="0">
-			 <td style="width:100px;" align="right">
-		     <input type="text" name="valorEntidad"   readonly="readonly" value='<c:out value="${i}"/>'>
-			</td>
+		    <td width="5px"></td>
+		    <th><b>Total</b></th>
+		    <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
+			  <td style="width:100px;" align="center">
+				$<c:out value="${lista.VCdps}"/>
+				</td>
+				<c:set var="totalcdp"  value="${totalcdp+lista.VCdps}"/>
 			</c:forEach>
-			
-			
-			<td style="width:80px;" align="right">
-			  <b><input type="text"  name="valortotal"   readonly="readonly" value='<c:out value="${lista.valortotal}"/>'></b>
-			</td>
-			<td style="width:80px;" align="right">
-			  <b><input type="text"  name="valorejecutado"   readonly="readonly" value='<c:out value="${lista.valorejecutado}"/>'></b>
-			</td>
-			<td style="width:80px;" align="right">
-			  <b><input type="text"  name="reembolsototal"   readonly="readonly" value='<c:out value="${lista.reembolsototal}"/>'></b>
-			</td>
-			<td style="width:80px;" align="right">
-			  <b><input type="text"  name="fechaRegistro"  readonly="readonly" value='<c:out value="${lista.fechaRegistro}"/>'></b>
-			</td>
-			<td style="width:500px;" align="right">
-			  <b><input type="text"  name="observacion"  readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
-			</td>
-			<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>'  onclick='enviar("${lista.idcdp}",19,"<c:out value="${lista.nombre}"/>","${lista.valortotal}")'></td>
-			<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>'  onclick='borrar(<c:out value="${lista.idcdp}"/>,"${lista.valortotal}")'></td>
-			</tr>
-			</c:forEach>
+		   	<td width="100px" align="center">$<c:out value="${totalcdp}"/></td>
+		   	<td width="100px" align="center">$<c:out value="${ejecutado}"/></td>
+		   	<td width="100px" align="center">$<c:out value="${reembolsado}"/></td>
+		    </tr>
+		    
 			   
 </table>
 </form>
@@ -248,21 +262,21 @@ function suma(formulario1){
 			   <input type="hidden" name="entidad" id='Entidad<c:out value="${st.count}"/>' value="<c:out value="${lista.entidadid}"/>">
 				<input type="hidden" name="sumaCDP" id='sumaCDP<c:out value="${st.count}"/>' value="<c:out value="${lista.VCdps}"/>">
 				<input type="hidden" name="sumaAporte" id='sumaAporte<c:out value="${st.count}"/>' value="<c:out value="${lista.VAportado}"/>">
+				<input type="hidden" name="reembolsoEntidad" id='reembolsoEntidad<c:out value="${st.count}"/>' value="<c:out value="${lista.VReembolsado}"/>">
+				
 				<td style="width:100px;" align="right">
 				    <input type="hidden" name="idconvent" value='<c:out value="${lista.identidadconvenio}"/>'>  
 					<input id='ventidad<c:out value="${st.count}" />' maxlength="10" size="10" type="text" onkeypress="return soloNumeros(event)" name="valorEntidad" value="0">
 				</td>
 				</c:forEach>
-				
-				<td style="width:400px;" align="right">
-					<b><textarea class="texto" name="observacion" style="width: 99%"></textarea></b>
-				</td>
-				
+						<td style="width:400px;" align="right">
+							<b><textarea class="texto" name="observacion" style="width: 99%"></textarea></b>
+						</td>
 				</tr>
-			
-			
-			
 		</c:if>
+		
+		
+		
 			<tr>
 				<td colspan="3" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>'  onclick="guardar()"></td>
 			</tr>

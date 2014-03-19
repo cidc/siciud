@@ -61,9 +61,7 @@ function eliminar(id,valorcrp){
 function pregunta(){
 
 	if(crear()==true){
-		
-		
-		
+
 		var sumatoria=parseInt(document.formcrpnuevo.sumatoria.value);
 		var efectivo=parseInt(document.formcrpnuevo.valorcrp.value);
 		var tol=parseInt(document.formcrpnuevo.valor.value);
@@ -79,11 +77,9 @@ function pregunta(){
 
 function preguntaReembolso(){
 	if(validarReembolso()==true){
-		alert("Entro");
 		document.formReembolso.submit();
 	}else{
-		alert("mal");
-		
+				
 	}
 }
 
@@ -167,7 +163,13 @@ function validarReembolso(){
 		</table>
 		<table width="80%" align="center"> 
 		<tr>
+		<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="li" varStatus="st">
+			<c:if test="${li.idcdp==requestScope.idcdp}">
+				<c:if test="${ li.reembolsototal=='0'}">
 		<td align="center" colspan="3"><img src='<c:url value="/comp/img/Nuevogasto.gif"/>' onclick='nuevo()'> </td>
+		</c:if>
+		</c:if>
+		</c:forEach>
 		<td align="center" colspan="3"><img src='<c:url value="/comp/img/Rechazar.gif"/>' onclick='reembolso()'> </td>
 		</tr>
         </table>
@@ -211,7 +213,13 @@ function validarReembolso(){
    <td style="width:400px;">
 			   <b><input type="text"  name="observacioncrp" readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
   </td>
+ <c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="li" varStatus="st">
+			<c:if test="${li.idcdp==requestScope.idcdp}">
+				<c:if test="${ li.reembolsototal=='0'}">
   <td width="30px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>' onclick='borrar(<c:out value="${lista.idcrp}"/>,"${lista.valor}")'></td>
+</c:if>
+</c:if>
+</c:forEach>
  <tr/>
  <c:set var="numero"  value="${numero+lista.valor}"/>
 
@@ -231,7 +239,12 @@ function validarReembolso(){
 </c:if>
 
 <br>
-<c:if test="${!empty sessionScope.datoConvenio.listaentidadesConv}">
+
+<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="li" varStatus="st">
+			<c:if test="${li.idcdp==requestScope.idcdp}">
+				<c:if test="${ li.reembolsototal!='0'}">
+
+
 <table class="tablas" align = "center" width="80%">
 	
 	<caption>Reembolsado Entidades</caption>
@@ -259,6 +272,8 @@ function validarReembolso(){
 	</tr>
 </table>	
 </c:if>		
+</c:if>	
+</c:forEach>
 	<br>
 
 
@@ -275,7 +290,7 @@ function validarReembolso(){
 <CAPTION>Nuevo CRP</CAPTION>
 
   <tr> <td class="renglones" width="115px"><b>CRP: </b></td>
-       <td class="renglones"><b>Codigo: </b></td>
+       <td class="renglones"><b>Codigo:</b></td>
        <td class="renglones"><b>Cliente:</b></td>
        <td class="renglones"><b>Valor $:</b></td>
  </tr>
