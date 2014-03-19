@@ -114,7 +114,7 @@
 		</tr>
 	</table>
 	<table align="center" width="95%" class="tablas">
-		<CAPTION>Documentos</CAPTION>
+		<CAPTION>Documentoss</CAPTION>
 		  <tr>
 		    <th>&nbsp;</th>
 		    <th width="75px">Fecha Doc</th>
@@ -203,7 +203,8 @@
 									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>
 									<option value="4" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Finalización</option>
-									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>																		
+									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>	
+									<option value="3">Resoluciones de Avance</option>																	
 								</select>								
 							</td>
 							<th><b>Fecha de Entrega</b></th>
