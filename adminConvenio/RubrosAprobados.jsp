@@ -165,40 +165,46 @@ function suma(formulario1){
 				<th style="width:80px;" align="center"><b>Valor total Comprometido</b></th>
 				<th style="width:80px;" align="center"><b>Valor Ejecutado</b></th>
 				<th style="width:80px;" align="center"><b>Valor Reembolsado</b></th>
+				<th style="width:80px;" align="center"><b>Valor Disponible</b></th>
 				<th style="width:80px;" align="center"><b>fecha Registro</b></th>
 				<th style="width:500px;" align="center"><b>observacion</b></th>
 			</tr>
 			<c:set var="reembolsado"  value="0" />
 			<c:set var="ejecutado"  value="0" />
+			<c:set var="disponible"  value="0" />
 			<c:forEach begin="0" items="${sessionScope.datoConvenio.listacdpsConv}" var="lista" varStatus="st">
 				<c:set var="reembolsado"  value="${reembolsado+lista.reembolsototal}"/>
 				<c:set var="ejecutado"  value="${ejecutado+lista.valorejecutado}"/>
-				<tr>
-					<td style="width:400px;" align="right">
-						  <b><input type="text"  name="nombre" readonly="readonly"   value='<c:out value="${lista.nombre}"/>'> </b>
+				<c:set var="disponible"  value="${disponible+(lista.valortotal-(lista.valorejecutado+lista.reembolsototal))}"/>
+				<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
+					<td style="width:400px;" align="center">
+						  <c:out value="${lista.nombre}"/> 
 					</td>
-					<td style="width:80px;" align="right">
-						  <b><input type="text"  name="codigo" readonly="readonly"  value='<c:out value="${lista.codigo}"/>'></b>
+					<td style="width:80px;" align="center">
+						  <c:out value="${lista.codigo}"/>
 					</td>
 					<c:forEach var="i" items="${lista.valores}" begin="0">
-						 <td style="width:100px;" align="right">
-					     	<input type="text" name="valorEntidad"   readonly="readonly" value='<c:out value="${i}"/>'>
+						 <td style="width:100px;" align="center">
+					     	$<c:out value="${i}"/>
 						</td>
 					</c:forEach>
-					<td style="width:80px;" align="right">
-					 	 <b><input type="text"  name="valortotal"   readonly="readonly" value='<c:out value="${lista.valortotal}"/>'></b>
+					<td style="width:80px;" align="center">
+					 	$<c:out value="${lista.valortotal}"/>
 					</td>
-					<td style="width:80px;" align="right">
-						  <b><input type="text"  name="valorejecutado"   readonly="readonly" value='<c:out value="${lista.valorejecutado}"/>'></b>
+					<td style="width:80px;" align="center">
+						  $<c:out value="${lista.valorejecutado}"/>
 					</td>
-					<td style="width:80px;" align="right">
-						  <b><input type="text"  name="reembolsototal"   readonly="readonly" value='<c:out value="${lista.reembolsototal}"/>'></b>
+					<td style="width:80px;" align="center">
+						$<c:out value="${lista.reembolsototal}"/>
 					</td>
-					<td style="width:80px;" align="right">
-						  <b><input type="text"  name="fechaRegistro"  readonly="readonly" value='<c:out value="${lista.fechaRegistro}"/>'></b>
+					<td style="width:80px;" align="center">
+						$<c:out value="${lista.valortotal-(lista.valorejecutado+lista.reembolsototal)}"/>
 					</td>
-					<td style="width:500px;" align="right">
-						  <b><input type="text"  name="observacion"  readonly="readonly" value='<c:out value="${lista.observacion}"/>'></b>
+					<td style="width:80px;" align="center">
+						  <c:out value="${lista.fechaRegistro}"/>
+					</td>
+					<td style="width:500px;" align="center">
+						  <c:out value="${lista.observacion}"/>
 					</td>
 					<td class="estado" align="center"><img src='<c:url value="/comp/img/Ver.gif"/>'  onclick='enviar("${lista.idcdp}",19,"<c:out value="${lista.nombre}"/>","${lista.valortotal}")'></td>
 					<td width="5px" align="center"><img src='<c:url value="/comp/img/equis1.png"/>'  onclick='borrar(<c:out value="${lista.idcdp}"/>,"${lista.valortotal}")'></td>
@@ -217,6 +223,7 @@ function suma(formulario1){
 		   	<td width="100px" align="center">$<c:out value="${totalcdp}"/></td>
 		   	<td width="100px" align="center">$<c:out value="${ejecutado}"/></td>
 		   	<td width="100px" align="center">$<c:out value="${reembolsado}"/></td>
+		   	<td width="100px" align="center">$<c:out value="${disponible}"/></td>
 		    </tr>
 		    
 			   
