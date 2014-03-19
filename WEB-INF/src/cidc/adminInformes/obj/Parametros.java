@@ -7,6 +7,8 @@ public class Parametros {
 	public static final int insertarDocumentoExterno=3;
 	public static final int insertarDocumentoActaFinalizacion=4;
 	public static final int insertarDocumentoActaCancelacion=5;
+	public static final int insertarDocumentoResolucionesAvance=6;
+	public static final int insertarDocumentoLegalizacionTiempos=7;
 	public static final int insertaInformeConvenio=9;
 	public static final int insertarDocumentoExternoconvenio=8;
 	public static final int insertarDocumentoActaFinalizacionConvenio=9;
