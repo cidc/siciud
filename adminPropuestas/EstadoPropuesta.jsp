@@ -60,7 +60,7 @@
 				<input type="image" src='<c:url value="/comp/img/VerEvaluacion.gif"/>' onclick='asigna(10)'/>
 			</td>
 			</c:if>
-			<c:if test='${sessionScope.datosPropuesta.archivo!=null and sessionScope.datosPropuesta.archivo!=""}'>
+			<%-- <c:if test='${sessionScope.datosPropuesta.archivo!=null and sessionScope.datosPropuesta.archivo!=""}'>
 			<td><a href='<c:url value="/Documentos/Propuestas/${sessionScope.datosPropuesta.archivo}"/>'>
 					<img border="0" src='<c:url value="/comp/img/Propuesta.gif"/>'>
 				</a>
@@ -71,7 +71,7 @@
 					<img border="0" src='<c:url value="/comp/img/Anexos.gif"/>'>
 				</a>
 			</td>
-			</c:if>
+			</c:if> --%>
 			<td>
 				<input type="image" src='<c:url value="/comp/img/ResumenInscripcion.gif"/>' onclick='asigna(12)'/>
 			</td>

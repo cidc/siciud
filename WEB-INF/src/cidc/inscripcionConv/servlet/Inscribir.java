@@ -145,6 +145,8 @@ public class Inscribir extends ServletGeneral {
 					(List<CompromisosOBJ>) sesion.getAttribute("listaComp"))) {
 				mensaje = "Compromisos insertados correctamente";
 				irA = "/InscripcionConv/Cargar.jsp";
+				sesion.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos((int)inscripcionConvOBJ.getPropId(),((ConvocatoriaOBJ) sesion
+						.getAttribute("datosConv")).getConvId()));
 			} else {
 				mensaje = "El registro de los compromisos no pudo ser insertado correctamente \n"
 						+ inscripcionConvDB.getMensaje();

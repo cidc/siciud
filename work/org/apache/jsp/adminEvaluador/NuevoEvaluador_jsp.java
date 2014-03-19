@@ -66,9 +66,9 @@ public final class NuevoEvaluador_jsp extends org.apache.jasper.runtime.HttpJspB
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -118,8 +118,8 @@ public final class NuevoEvaluador_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\t\tdocument.frmComplemento.submit();\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("<form name=\"frmComplemento\" >\r\n");
       out.write("\t<input type=\"hidden\" name=\"accion\" value='0'>\r\n");
@@ -246,7 +246,7 @@ public final class NuevoEvaluador_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("<script>\r\n");
       out.write("\ttipo(document.frmComplemento.tipoEval);\r\n");
       out.write("</script>\r\n");
-      out.write("</html>");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

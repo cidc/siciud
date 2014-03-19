@@ -834,7 +834,7 @@ public class MovilidadDB extends BaseDB{
                         propuestaOBJ.setDocNombre(rs.getString(i++));
                         propFinal.add(propuestaOBJ);
                 }
-                if(propFinal.size()==0){
+                if(propFinal.size()==0){//creo que esto es para buscar solo los nombres de los documentos si no se ha cargado ninguno, pendiente revizar
                 	ps=cn.prepareStatement(rb.getString("DocumentosInscritos2"));
                     ps.setLong(1,idConv);
                     rs=ps.executeQuery();

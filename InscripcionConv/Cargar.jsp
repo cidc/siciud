@@ -83,18 +83,18 @@
 								<th colspan="2" align="center">Documentos Requeridos</th>
 								<tr>
 									<td colspan="2" class="renglones"><b><c:out
-												value="${lista2.docNombre}" />-<c:out
+												value="${lista2.nombreDocumentoRequisito}" />-<c:out
 												value="${sessionScope.datosConv.convId}" />-<c:out
 												value="${lista2.codigo}" /></b></td>
 								</tr>
 								<tr>
-									<td colspan="2"><p class="texto1j">Formato PDF</p></td>
+									<td colspan="2"><p class="texto1j">Formato PDF .</p></td>
 								</tr>
-								<c:if test="${lista2.nombreDocumentoRequisito!=null}">
+								<c:if test="${lista2.docNombre!=null}">
 									<tr>
 										<td class="rengVerde" align="right" colspan="2"><a
 											class="lblanca"
-											href='<c:url value="/Documentos/Propuestas/${lista2.nombreDocumentoRequisito}" />'>Ver Documento</a></td>
+											href='<c:url value="${lista2.docNombre}" />'>Ver Documento</a></td>
 									</tr>
 								</c:if>
 								<tr>

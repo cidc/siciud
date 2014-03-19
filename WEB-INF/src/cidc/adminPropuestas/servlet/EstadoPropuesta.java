@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import cidc.adminPropuestas.db.AdminPropuestaDB;
 import cidc.adminPropuestas.obj.Parametros;
+import cidc.convMovilidad.db.MovilidadDB;
 import cidc.evalPropuesta.db.EvalPropuestaDB;
 import cidc.general.asigPares.db.AsignacionParesDB;
 import cidc.general.db.CursorDB;
@@ -17,6 +18,8 @@ import cidc.general.servlet.ServletGeneral;
 
 public class EstadoPropuesta extends ServletGeneral {
 
+	public static final int TIPOPROYECTO=1;
+	
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		context=config.getServletContext();
 		cursor=new CursorDB();
@@ -26,6 +29,7 @@ public class EstadoPropuesta extends ServletGeneral {
 		AdminPropuestaDB adminPropuestaDB=new AdminPropuestaDB(cursor,usuario.getPerfil());
 		EvalPropuestaDB evalPropuestaDB=new EvalPropuestaDB(cursor,usuario.getPerfil());
 		AsignacionParesDB asignacion=new AsignacionParesDB(cursor,usuario.getPerfil());
+		MovilidadDB movilidadDB=new MovilidadDB(cursor,usuario.getPerfil());
 		int accion=0;
 		mensaje="";
 		retorno[0]="unir";
@@ -86,6 +90,7 @@ public class EstadoPropuesta extends ServletGeneral {
 			break;
 			case Parametros.cmdVerInscripcion:
 				req.setAttribute("resumen",adminPropuestaDB.getResumenInscripcion(req.getParameter("idProp")));
+				req.setAttribute("docs", movilidadDB.buscarDocumentosInscritos(Integer.parseInt(req.getParameter("idProp")),adminPropuestaDB.buscarConvocatoria(Integer.parseInt(req.getParameter("ano")), Integer.parseInt(req.getParameter("num")))));
 				irA="/adminPropuestas/resumenInscripcion.jsp";
 			break;
 			case Parametros.cmdEntregaDocs:
@@ -135,7 +140,7 @@ public class EstadoPropuesta extends ServletGeneral {
 				}
 				irA="/adminPropuestas/ListaPropuestas.jsp";
 				req.setAttribute("listaConv",adminPropuestaDB.ajaxConv());
-				sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getPropuestas(Integer.parseInt((String)sesion.getAttribute("ano")),Integer.parseInt((String)sesion.getAttribute("num")),(String)sesion.getAttribute("activa")));
+				sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getPropuestas(Integer.parseInt((String)sesion.getAttribute("ano")),Integer.parseInt((String)sesion.getAttribute("num")),(String)sesion.getAttribute("activa"),TIPOPROYECTO));
 			//	sesion.setAttribute("datosPropuesta",adminPropuestaDB.estEvalProp(Long.parseLong(""+sesion.getAttribute("prop")),Integer.parseInt(""+sesion.getAttribute("tipEval"))));
 			break;
 			default:

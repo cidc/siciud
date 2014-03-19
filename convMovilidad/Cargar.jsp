@@ -127,7 +127,7 @@
                                                         <td width="75px"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar1(document.${lista2.nombreDocumentoRequisito}.archivo,document.${lista2.nombreDocumentoRequisito},<c:out value="${lista2.idDocumentoRequisito}" />)"></td>
                                                         <c:if test="${lista2.docNombre!=null}">
 														<tr>
-															<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="/Documentos/Movilidad/${lista2.docNombre}" />'>Ver Documento</a></td>
+															<td class="rengVerde" align="right" colspan="2"><a class="lblanca" href='<c:url value="${lista2.docNombre}" />'>Ver Documento</a></td>
 														</tr>
 													</c:if>
 												</tr>			

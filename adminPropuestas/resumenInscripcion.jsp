@@ -91,27 +91,50 @@
 	</c:if>
 	<br>
 	<c:if test="${!empty requestScope.resumen.rubros}">
-	<table class="tablas" align="center" style="width:550px;">
-		<caption>Valores de los Rubros afectados en la propuesta</caption>
-		<tr>
-			<td style="width:300px;" class="renglones"><b>Rubro</b></td>
-			<td class="renglones" colspan="3" align="center"><b>Financiado por:</b></td>
-		</tr>
-		<tr>
-			<th style="width:300px;" class="renglones">&nbsp;</th>
-			<th style="width:30px;" class="renglones">CIDC</th>
-			<th style="width:30px;" class="renglones">UD</th>
-			<th style="width:30px;" class="renglones">Contrap..</th>
-		</tr>
-		<c:forEach begin="0" items="${requestScope.resumen.rubros}" var="rubros">
-		<tr>
-			<td style="width:300px;"><c:out value="${rubros.nombre}"/></td>
-			<td style="text-align:right;width:30px;"><c:out value="${rubros.cidc}"/></td>
-			<td style="text-align:right;width:30px;"><c:out value="${rubros.ud}"/></td>
-			<td style="text-align:right;width:30px;"><c:out value="${rubros.contra}"/></td>
-		</tr>
-		</c:forEach>
-	</table>
+		<table class="tablas" align="center" style="width: 550px;">
+			<caption>Valores de los Rubros afectados en la propuesta</caption>
+			<tr>
+				<td style="width: 300px;" class="renglones"><b>Rubro</b></td>
+				<td class="renglones" colspan="3" align="center"><b>Financiado
+						por:</b></td>
+			</tr>
+			<tr>
+				<th style="width: 300px;" class="renglones">&nbsp;</th>
+				<th style="width: 30px;" class="renglones">CIDC</th>
+				<th style="width: 30px;" class="renglones">UD</th>
+				<th style="width: 30px;" class="renglones">Contrap..</th>
+			</tr>
+			<c:forEach begin="0" items="${requestScope.resumen.rubros}"
+				var="rubros">
+				<tr>
+					<td style="width: 300px;"><c:out value="${rubros.nombre}" /></td>
+					<td style="text-align: right; width: 30px;"><c:out
+							value="${rubros.cidc}" /></td>
+					<td style="text-align: right; width: 30px;"><c:out
+							value="${rubros.ud}" /></td>
+					<td style="text-align: right; width: 30px;"><c:out
+							value="${rubros.contra}" /></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
+	<c:if test="${!empty requestScope.docs}">
+		<table class="tablas" align="center" style="width: 550px;">
+			<caption>Documentos de la propuesta</caption>
+			<tr>
+				<td style="width: 50px;" class="renglones"
+				><b>Documento</b></td>
+				<td class="renglones" align="center"><b>Nombre del Documento</b></td>
+			</tr>
+			<c:forEach begin="0" items="${requestScope.docs}" var="lista">
+				<tr>
+					<c:if test="${requestScope.docNombre!='' or requestScope.docNombre!=null }">
+					<td><a href='<c:url value="${lista.docNombre}" />'><img src="<c:url value="/comp/img/pdf.png" />"></a></td>
+					</c:if>
+					<td style="text-align: right;"><c:out value="${lista.nombreDocumentoRequisito}" />
+				</tr>
+			</c:forEach>
+		</table>
 	</c:if>
 </body>
 

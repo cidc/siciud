@@ -298,7 +298,7 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
       out.write("\t</table>\r\n");
       out.write("\t<form method=\"post\" name=\"frmAjaxNumero\"\r\n");
       out.write("\t\taction=\"");
-      if (_jspx_meth_c_005furl_005f13(_jspx_page_context))
+      if (_jspx_meth_c_005furl_005f14(_jspx_page_context))
         return;
       out.write("\">\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"accion\" value='7'> <input\r\n");
@@ -922,7 +922,7 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
         out.write("\r\n");
         out.write("\t\t\t\t<tr>\r\n");
         out.write("\t\t\t\t\t<td><img src=\"");
-        if (_jspx_meth_c_005furl_005f12(_jspx_th_c_005fif_005f6, _jspx_page_context))
+        if (_jspx_meth_c_005furl_005f13(_jspx_th_c_005fif_005f6, _jspx_page_context))
           return true;
         out.write("\"\r\n");
         out.write("\t\t\t\t\t\tonclick=\"guardar()\"></td>\r\n");
@@ -1253,16 +1253,16 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
       do {
         out.write("\r\n");
         out.write("\t\t\t\t\t\t\t\t\t<a\r\n");
-        out.write("\t\t\t\t\t\t\t\t\t\thref=\"/siciud/Documentos/Movilidad/");
-        if (_jspx_meth_c_005fout_005f10(_jspx_th_c_005fif_005f8, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
+        out.write("\t\t\t\t\t\t\t\t\t\thref=\"");
+        if (_jspx_meth_c_005furl_005f11(_jspx_th_c_005fif_005f8, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
           return true;
         out.write("\"><img\r\n");
         out.write("\t\t\t\t\t\t\t\t\t\tborder=\"0\" src='");
-        if (_jspx_meth_c_005furl_005f11(_jspx_th_c_005fif_005f8, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
+        if (_jspx_meth_c_005furl_005f12(_jspx_th_c_005fif_005f8, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
           return true;
         out.write("'></a>\r\n");
         out.write("\t\t\t\t\t\t\t\t\t");
-        if (_jspx_meth_c_005fout_005f11(_jspx_th_c_005fif_005f8, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
+        if (_jspx_meth_c_005fout_005f10(_jspx_th_c_005fif_005f8, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f3))
           return true;
         out.write("\r\n");
         out.write("\t\t\t\t\t\t\t\t");
@@ -1279,25 +1279,6 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
     return false;
   }
 
-  private boolean _jspx_meth_c_005fout_005f10(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f8, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f10 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f10.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f8);
-    // /adminPropuestas/VerificaPropuestas.jsp(192,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f10 = _jspx_th_c_005fout_005f10.doStartTag();
-    if (_jspx_th_c_005fout_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f10);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f10);
-    return false;
-  }
-
   private boolean _jspx_meth_c_005furl_005f11(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f8, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -1306,8 +1287,8 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f11 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f11.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f8);
-    // /adminPropuestas/VerificaPropuestas.jsp(193,26) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f11.setValue("/comp/img/pdf.png");
+    // /adminPropuestas/VerificaPropuestas.jsp(192,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f11.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005furl_005f11 = _jspx_th_c_005furl_005f11.doStartTag();
     if (_jspx_th_c_005furl_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f11);
@@ -1317,22 +1298,41 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
     return false;
   }
 
-  private boolean _jspx_meth_c_005fout_005f11(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f8, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+  private boolean _jspx_meth_c_005furl_005f12(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f8, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f12 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f12.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f12.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f8);
+    // /adminPropuestas/VerificaPropuestas.jsp(193,26) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f12.setValue("/comp/img/pdf.png");
+    int _jspx_eval_c_005furl_005f12 = _jspx_th_c_005furl_005f12.doStartTag();
+    if (_jspx_th_c_005furl_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f12);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f12);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f10(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f8, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f3)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f11 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f11.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f11.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f8);
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f10 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f10.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f8);
     // /adminPropuestas/VerificaPropuestas.jsp(194,9) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f11.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.docNombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f11 = _jspx_th_c_005fout_005f11.doStartTag();
-    if (_jspx_th_c_005fout_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f11);
+    _jspx_th_c_005fout_005f10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.docNombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f10 = _jspx_th_c_005fout_005f10.doStartTag();
+    if (_jspx_th_c_005fout_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f10);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f11);
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f10);
     return false;
   }
 
@@ -1473,7 +1473,7 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
     if (_jspx_eval_c_005fif_005f10 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("' value=\"");
-        if (_jspx_meth_c_005fout_005f12(_jspx_th_c_005fif_005f10, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f5))
+        if (_jspx_meth_c_005fout_005f11(_jspx_th_c_005fif_005f10, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f5))
           return true;
         out.write('"');
         out.write(' ');
@@ -1491,60 +1491,60 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
     return false;
   }
 
-  private boolean _jspx_meth_c_005fout_005f12(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f10, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f5)
+  private boolean _jspx_meth_c_005fout_005f11(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f10, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f5)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f12 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_005fout_005f12.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f12.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f10);
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f11 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f11.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f11.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f10);
     // /adminPropuestas/VerificaPropuestas.jsp(203,194) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f12.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista7.observa}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    int _jspx_eval_c_005fout_005f12 = _jspx_th_c_005fout_005f12.doStartTag();
-    if (_jspx_th_c_005fout_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f12);
+    _jspx_th_c_005fout_005f11.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista7.observa}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f11 = _jspx_th_c_005fout_005f11.doStartTag();
+    if (_jspx_th_c_005fout_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f11);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f12);
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f11);
     return false;
   }
 
-  private boolean _jspx_meth_c_005furl_005f12(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f6, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:url
-    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f12 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
-    _jspx_th_c_005furl_005f12.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f12.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f6);
-    // /adminPropuestas/VerificaPropuestas.jsp(209,19) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f12.setValue("/comp/img/Guardar.gif");
-    int _jspx_eval_c_005furl_005f12 = _jspx_th_c_005furl_005f12.doStartTag();
-    if (_jspx_th_c_005furl_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f12);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f12);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005furl_005f13(PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005furl_005f13(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f6, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:url
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f13 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f13.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f13.setParent(null);
-    // /adminPropuestas/VerificaPropuestas.jsp(226,10) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f13.setValue("/adminPropuestas/Ajax.x");
+    _jspx_th_c_005furl_005f13.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f6);
+    // /adminPropuestas/VerificaPropuestas.jsp(209,19) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f13.setValue("/comp/img/Guardar.gif");
     int _jspx_eval_c_005furl_005f13 = _jspx_th_c_005furl_005f13.doStartTag();
     if (_jspx_th_c_005furl_005f13.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f13);
       return true;
     }
     _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f13);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005furl_005f14(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f14 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f14.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f14.setParent(null);
+    // /adminPropuestas/VerificaPropuestas.jsp(226,10) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f14.setValue("/adminPropuestas/Ajax.x");
+    int _jspx_eval_c_005furl_005f14 = _jspx_th_c_005furl_005f14.doStartTag();
+    if (_jspx_th_c_005furl_005f14.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f14);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f14);
     return false;
   }
 }

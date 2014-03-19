@@ -155,10 +155,9 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("'\r\n");
       out.write("\t\t\t\t\t\tmethod=\"post\" name=\"finaliza\">\r\n");
-      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"accion\" value=\"1\"> <input\r\n");
-      out.write("\t\t\t\t\t\t\ttype=\"hidden\" name=\"terminar\" value=\"si\"> <input\r\n");
-      out.write("\t\t\t\t\t\t\ttype=\"hidden\" name=\"idProp\"\r\n");
-      out.write("\t\t\t\t\t\t\tvalue='");
+      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"accion\" value=\"1\"> \r\n");
+      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"terminar\" value=\"si\"> \r\n");
+      out.write("\t\t\t\t\t\t<input type=\"hidden\" name=\"idProp\" value='");
       if (_jspx_meth_c_005fout_005f4(_jspx_page_context))
         return;
       out.write("'>\r\n");
@@ -277,7 +276,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("</b></td>\r\n");
           out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
           out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
-          out.write("\t\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Formato PDF</p></td>\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Formato PDF .</p></td>\r\n");
           out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
           out.write("\t\t\t\t\t\t\t\t");
           if (_jspx_meth_c_005fif_005f0(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
@@ -350,7 +349,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
     // /InscripcionConv/Cargar.jsp(85,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.nombreDocumentoRequisito}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f0);
@@ -368,7 +367,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /InscripcionConv/Cargar.jsp(86,43) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(86,58) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.datosConv.convId}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -407,7 +406,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
     // /InscripcionConv/Cargar.jsp(93,8) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.nombreDocumentoRequisito!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -443,7 +442,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
     // /InscripcionConv/Cargar.jsp(97,17) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f1.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("/Documentos/Propuestas/${lista2.nombreDocumentoRequisito}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+    _jspx_th_c_005furl_005f1.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista2.docNombre}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
     if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f1);
@@ -518,7 +517,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent(null);
-    // /InscripcionConv/Cargar.jsp(118,14) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(117,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.archivos.idPropuesta}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -537,7 +536,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f4 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f4.setParent(null);
-    // /InscripcionConv/Cargar.jsp(119,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /InscripcionConv/Cargar.jsp(118,16) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f4.setValue("/comp/img/Terminar.gif");
     int _jspx_eval_c_005furl_005f4 = _jspx_th_c_005furl_005f4.doStartTag();
     if (_jspx_th_c_005furl_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

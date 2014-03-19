@@ -1367,6 +1367,37 @@ public class AdminPropuestaDB extends BaseDB{
 		}
 		return retorno;
 	}
+	/**
+	 * Busca una convocatoria por su añoo y numero para retornar su id
+	 * @param ano
+	 * @param numero
+	 * @return retorna el id de la convocatoria
+	 */
+	public int buscarConvocatoria(int ano, int numero){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("getConvocatoria"));
+			ps.setInt(i++,ano);
+			ps.setInt(i++,numero);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				return rs.getInt(1);
+			}
+		} catch (SQLException e){
+			lanzaExcepcion(e);
+		}catch (Exception e){
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return 0;
+	}
 }
 
 

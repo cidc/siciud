@@ -1,4 +1,4 @@
-package org.apache.jsp.adminPropuestas;
+package org.apache.jsp.EvalPropuestas;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -56,23 +56,21 @@ public final class llenar_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("\r\n");
       out.write("\r\n");
-      cidc.adminPropuestas.obj.FiltroEvaluadorOBJ filtroEval = null;
+      cidc.evalPropuesta.obj.CapturaEvalOBJ capturaEval = null;
       synchronized (session) {
-        filtroEval = (cidc.adminPropuestas.obj.FiltroEvaluadorOBJ) _jspx_page_context.getAttribute("filtroEval", PageContext.SESSION_SCOPE);
-        if (filtroEval == null){
-          filtroEval = new cidc.adminPropuestas.obj.FiltroEvaluadorOBJ();
-          _jspx_page_context.setAttribute("filtroEval", filtroEval, PageContext.SESSION_SCOPE);
+        capturaEval = (cidc.evalPropuesta.obj.CapturaEvalOBJ) _jspx_page_context.getAttribute("capturaEval", PageContext.SESSION_SCOPE);
+        if (capturaEval == null){
+          capturaEval = new cidc.evalPropuesta.obj.CapturaEvalOBJ();
+          _jspx_page_context.setAttribute("capturaEval", capturaEval, PageContext.SESSION_SCOPE);
         }
       }
       out.write('\r');
       out.write('\n');
-      org.apache.jasper.runtime.JspRuntimeLibrary.introspect(_jspx_page_context.findAttribute("filtroEval"), request);
+      org.apache.jasper.runtime.JspRuntimeLibrary.introspect(_jspx_page_context.findAttribute("capturaEval"), request);
       out.write('\r');
       out.write('\n');
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write('\r');
-      out.write('\n');
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -93,8 +91,8 @@ public final class llenar_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ImportTag _jspx_th_c_005fimport_005f0 = (org.apache.taglibs.standard.tag.rt.core.ImportTag) _005fjspx_005ftagPool_005fc_005fimport_0026_005furl_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.ImportTag.class);
     _jspx_th_c_005fimport_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fimport_005f0.setParent(null);
-    // /adminPropuestas/llenar.jsp(5,0) name = url type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fimport_005f0.setUrl("/adminAsignacion/AsignaEvaluador.x");
+    // /EvalPropuestas/llenar.jsp(5,0) name = url type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fimport_005f0.setUrl("/evalPropuestas/GestEvaluacion.x");
     int[] _jspx_push_body_count_c_005fimport_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_c_005fimport_005f0 = _jspx_th_c_005fimport_005f0.doStartTag();
