@@ -940,12 +940,13 @@ public class AdminConvenioDB extends BaseDB{
 		}
 		return retorno;
 	}
-	public boolean eliminarCRP(String idcrp) {
+	public boolean eliminarCRP(String idcrp,String idcdp,String valorcrpeliminado) {
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
 		
 		try {
+			ModificarEjecutado(Integer.parseInt(idcdp),Integer.parseInt(valorcrpeliminado));
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("eliminarCRP"));
 			ps.setInt(1,Integer.parseInt(idcrp));
@@ -1540,6 +1541,38 @@ public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String
 		cn=cursor.getConnection(super.perfil);
 		ps=cn.prepareStatement(rb.getString("actualizarEjecutadoCdp"));
 		ps.setInt(1,valor+valorEjecutadoCdp(idcdp));
+		ps.setInt(2, idcdp);
+		
+		ps.executeUpdate();
+				
+	    retorno = true;
+	 
+	    
+	}catch (Exception e) {
+		System.out.println("se explota en insertar crp");
+		lanzaExcepcion(e);
+	
+	}finally{
+		cerrar(ps);
+		cerrar(cn);
+	}
+	return retorno;
+}
+
+public boolean ModificarEjecutado(int idcdp,int valor){
+	Connection cn=null;
+	PreparedStatement ps=null;
+	boolean retorno = false;
+	int i=1;
+	int valorejecutado=0;
+	
+	try {
+		
+		valorejecutado=valorEjecutadoCdp(idcdp);
+		
+		cn=cursor.getConnection(super.perfil);
+		ps=cn.prepareStatement(rb.getString("actualizarEjecutadoCdp"));
+		ps.setInt(1,(valorejecutado-valor));
 		ps.setInt(2, idcdp);
 		
 		ps.executeUpdate();

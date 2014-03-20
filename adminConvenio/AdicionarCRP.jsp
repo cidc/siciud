@@ -56,6 +56,7 @@ function eliminar(id,valorcrp){
 
 	document.formcargacrp.accion.value=21;
 	document.formcargacrp.crpd.value=id;
+	document.formcargacrp.valorcrpeliminado.value=valorcrp;
 	document.formcargacrp.submit();
 }
 function pregunta(){
@@ -181,6 +182,7 @@ function validarReembolso(){
 <input type="hidden" name="nombrecdp" value="<c:out value="${requestScope.nombrecdp}"/>">
 <input type="hidden" name="idcdp" value="<c:out value="${requestScope.idcdp}"/>">
 <input type="hidden" name="valor" value="<c:out value="${requestScope.valortotal}"/>">
+<input type="hidden" name="valorcrpeliminado" value="">
 
 
 <table  class="tablas" align = "center" width="80%">

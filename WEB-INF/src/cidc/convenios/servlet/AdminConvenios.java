@@ -338,8 +338,11 @@ case Parametros.AdicionarTiempo:
 						 irA="/adminConvenio/AdminConvenio.x?accion=19";
 				break;
 				case Parametros.EliminarCRP:
+					req.getParameter("idcdp");
+					req.getParameter("valorcrpeliminado");
+					 
 					
-					if(adminConv.eliminarCRP(req.getParameter("crpd"))){
+					if(adminConv.eliminarCRP(req.getParameter("crpd"),req.getParameter("idcdp"),req.getParameter("valorcrpeliminado"))){
 						mensaje="El crp fue eliminado satisfactoriamente";
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 						sesion.setAttribute("datoConvenio", objconv);
@@ -349,7 +352,7 @@ case Parametros.AdicionarTiempo:
 					irA="/adminConvenio/AdminConvenio.x?accion=19";
 				break;
 				case Parametros.EliminarCDP:
-					
+					 
 					if(adminConv.eliminarCDP(req.getParameter("idcdp"))){
 						mensaje="El crp fue eliminado satisfactoriamente";
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
