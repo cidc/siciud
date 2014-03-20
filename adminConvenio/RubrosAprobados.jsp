@@ -79,7 +79,7 @@ function validarcdp(){
 		
 		if(cdp>(sumaaporte-sumacdp+reembolso)){
 		var entidad=document.getElementById("Entidad"+i).value
-		alert("El valor del cdp asignado a la entidad "+entidad+" no puede ser mayor a "+(sumaaporte-sumacdp));
+		alert("El valor del cdp asignado a la entidad "+entidad+" no puede ser mayor a "+(sumaaporte-(sumacdp+reembolso)));
 		return false;
 		}
 	}
@@ -168,6 +168,7 @@ function suma(formulario1){
 				<th style="width:80px;" align="center"><b>Valor Disponible</b></th>
 				<th style="width:80px;" align="center"><b>fecha Registro</b></th>
 				<th style="width:500px;" align="center"><b>observacion</b></th>
+				<th style="width:20px;" align="center"><b>CRP</b></th>
 			</tr>
 			<c:set var="reembolsado"  value="0" />
 			<c:set var="ejecutado"  value="0" />
