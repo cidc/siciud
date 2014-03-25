@@ -94,7 +94,7 @@
 									<tr>
 										<td class="rengVerde" align="right" colspan="2"><a
 											class="lblanca"
-											href='<c:url value="${lista2.docNombre}" />'>Ver Documento</a></td>
+											href='<c:url value="${lista2.url}" /><c:url value="${lista2.docNombre}" />'>Ver Documento</a></td>
 									</tr>
 								</c:if>
 								<tr>

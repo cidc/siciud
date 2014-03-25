@@ -188,7 +188,7 @@
 		<td>
 		<c:forEach begin="0" items="${sessionScope.listaDocOBJ}" var="lista2" varStatus="st">
 			<c:if test="${lista.codPropuesta==lista2.codPropuesta}">
-			<a href="<c:url value="${lista2.docNombre}"/>"><img border="0" src='<c:url value="/comp/img/pdf.png"/>'></a>
+			<a href="<c:url value="${lista2.docNombre}" /><c:url value="${lista2.docNombre}"/>"><img border="0" src='<c:url value="/comp/img/pdf.png"/>'></a>
 			<c:out value="${lista.docNombre}"/>
 			</c:if>
 		</c:forEach>

@@ -58,6 +58,7 @@ public class PropuestaOBJ {
 	private String nombreDocumentoRequisito;
 	private int[] aprobacion;
 	private boolean aprobacion2;
+	private String url;
 
 	public long getCodPropuesta() {
 		return codPropuesta;
@@ -389,5 +390,11 @@ public class PropuestaOBJ {
 		public void setAprobacion2(boolean aprobacion2) {
 			this.aprobacion2 = aprobacion2;
 		}
-		 
+		public String getUrl() {
+			return url;
+		}
+		public void setUrl(String url) {
+			this.url = url;
+		}
+		
 }

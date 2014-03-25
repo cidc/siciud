@@ -179,7 +179,7 @@ public class MovilidadDB extends BaseDB{
 		return retorno;
 	}
 	
-	public boolean setRequisitos(long prop,String nombre,int doc, int conv) {
+	public boolean setRequisitos(long prop,String nombre,int doc, int conv, String url) {
                 boolean retorno=false;
                 Connection cn=null;
                 PreparedStatement ps=null;
@@ -193,6 +193,7 @@ public class MovilidadDB extends BaseDB{
                         ps.setLong(i++,doc);
                         ps.setString(i++,nombre);
                         ps.setLong(i++,prop);
+                        ps.setString(i++, url);
                         ps.execute();
                         }
                         retorno=true;
@@ -824,14 +825,17 @@ public class MovilidadDB extends BaseDB{
                 cn=cursor.getConnection(super.perfil);
                 ps=cn.prepareStatement(rb.getString("DocumentosInscritos"));
                 ps.setInt(1,idProp);
-                ps.setLong(2, idConv);
+                ps.setInt(2,idProp);
+                ps.setLong(3, idConv);
                 rs=ps.executeQuery();
+                System.out.println(rs.toString());
                 while(rs.next()){
                         i=1;
                         PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
                         propuestaOBJ.setIdDocumentoRequisito(rs.getInt(i++));
                         propuestaOBJ.setNombreDocumentoRequisito(rs.getString(i++));
                         propuestaOBJ.setDocNombre(rs.getString(i++));
+                        propuestaOBJ.setUrl(rs.getString(i++));
                         propFinal.add(propuestaOBJ);
                 }
                 if(propFinal.size()==0){//creo que esto es para buscar solo los nombres de los documentos si no se ha cargado ninguno, pendiente revizar
