@@ -620,7 +620,7 @@
 
 
 	<!--  AdminConvenios-->
-    <servlet>
+     <servlet>
       <servlet-name>AdminConvenio</servlet-name>
       <servlet-class>cidc.convenios.servlet.AdminConvenios</servlet-class>
     </servlet>
@@ -628,7 +628,38 @@
       <servlet-name>AdminConvenio</servlet-name>
       <url-pattern>/adminConvenio/AdminConvenio.x</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+	  <servlet-name>AdminConvenioAjax</servlet-name>
+	  <servlet-class>cidc.convenios.servlet.Ajax</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AdminConvenioAjax</servlet-name>
+	  <url-pattern>/adminConvenio/Ajax.x</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	  <servlet-name>CargaDocConvenio</servlet-name>
+	  <servlet-class>cidc.convenios.servlet.CargaDocumento</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>CargaDocConvenio</servlet-name>
+	  <url-pattern>/adminConvenio/CargarDocumento.x</url-pattern>
+	</servlet-mapping>
     <!--/  AdminConvenios -->
+    
+    
+	<!--  AdminEntidad-->
+	<servlet>
+	  <servlet-name>GestionEntidad</servlet-name>
+	  <servlet-class>cidc.adminEntidad.servlet.GestionEntidad</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>GestionEntidad</servlet-name>
+	  <url-pattern>/adminEntidad/GestEntidad.x</url-pattern>
+	</servlet-mapping> 
+
+    <!--/  AdminEntidad -->
 
     <!-- Proyectos Antiguos-->
 	<servlet>
