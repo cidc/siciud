@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<html>
+<head>
 <link type='text/css' rel='stylesheet' media='all' href='<c:url value="/comp/js/Calendario/calendar-blue2.css"/>' title='win2k-cold-1' />
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/calendar.js"/>'></script>
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/lang/calendar-es.js"/>'></script>
@@ -9,8 +11,6 @@
 <jsp:useBean id="anoHoy" class="java.util.Date" />
 <fmt:formatDate value="${anoHoy}" type="time" timeStyle="short"
 	pattern="yyyy" var="ano" />
-<html>
-<head>
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/comp/css/formatos.css"/>">
 <c:import url="/general.jsp" />
@@ -130,17 +130,6 @@ var nav4=window.Event ? true : false;
       }
      }
 	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
