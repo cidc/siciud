@@ -115,8 +115,6 @@ public class CargaDocumento extends ServletGeneral  {
 		System.out.println("accion formulario"+req.getParameter("accion"));	
 		System.out.println("accion"+accion);
 		System.out.println("accion"+req.getParameter("nombre"));
-		
-	
 		System.out.println("---caso-->"+accion);
 		switch(accion){
 		

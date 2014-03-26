@@ -3,7 +3,6 @@ package cidc.convenios.obj;
 import java.io.Serializable;
 
 public class AportesOBJ  implements Serializable{
-
 	
 	private String idAporte;
 	private String codAporte;
@@ -16,12 +15,9 @@ public class AportesOBJ  implements Serializable{
 	private String fechaDigita;
 	private String aporteFinanza;
 	private String nconvenioEntidad;	
-	
-	
-	
-	
+
 	public String getIdAporte() {
-		return idAporte;
+		return  idAporte;
 	}
 	public void setIdAporte(String idAporte) {
 		this.idAporte = idAporte;

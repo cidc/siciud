@@ -27,7 +27,7 @@ import cidc.general.servlet.ServletGeneral;
 public class AdminConvenios extends ServletGeneral {
 	
 	
-
+//comentario
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		context=config.getServletContext();
 		cursor=new CursorDB();
