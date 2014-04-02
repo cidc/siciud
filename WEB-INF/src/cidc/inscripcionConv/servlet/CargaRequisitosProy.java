@@ -18,6 +18,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import cidc.adminPropuestas.obj.PropuestaOBJ;
 import cidc.convMovilidad.db.MovilidadDB;
+import cidc.convocatorias.obj.ConvocatoriaOBJ;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
@@ -38,6 +39,7 @@ public class CargaRequisitosProy extends ServletGeneral {
 		Usuario usuario = (Usuario) sesion.getAttribute("loginUsuario");
 		InscripcionConvOBJ inscripcionConvOBJ = (InscripcionConvOBJ) sesion
 				.getAttribute("inscripcionConvOBJ");
+		ConvocatoriaOBJ convSeleccionada = (ConvocatoriaOBJ) sesion.getAttribute("datosConv");
 		mensaje = null;
 		String itemDoc = "";
 		String itemConv = "";
@@ -89,8 +91,8 @@ public class CargaRequisitosProy extends ServletGeneral {
 					System.out.println("archivoAdj:" + itemDoc);
 					if (movilidadDB.setRequisitos(Prop, arch, Doc, Conv,url )) {
 						mensaje = "Documento almacenado correctamente";
-						//InfoGeneral info =(InfoGeneral)sesion.getAttribute("movilidad");
-						req.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos(Integer.parseInt(itemProp),(long)inscripcionConvOBJ.getPropId()));
+						req.removeAttribute("listaDocOBJ");
+						req.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos(Integer.parseInt(itemProp),(long)convSeleccionada.getConvId()));
 					} else
 						mensaje = "El documento no pudo ser almacenado";
 				}

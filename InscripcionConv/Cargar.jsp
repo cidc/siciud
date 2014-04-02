@@ -67,15 +67,15 @@
 			</tr>
 			<tr>
 				<td><c:forEach begin="0" items="${sessionScope.listaDocOBJ}"
-						var="lista2" varStatus="st">
+						var="listDoc" varStatus="st">
 
 						<form action='<c:url value="/RequisitosArchivoProy.x"/>'
-							name="${lista2.docNombre}" method="post"
+							name="${listDoc.nombreDocumentoRequisito}" method="post"
 							enctype="multipart/form-data">
-							<input type="hidden" name="id" value="${lista2.codigo}">
+							<input type="hidden" name="id" value="${listDoc.idDocumentoRequisito}">
 							<input type="hidden" name="propConvId"
 								value="${sessionScope.datosConv.convId}"> <input
-								type="hidden" name="DocId" value="${lista2.codigo}"> <input
+								type="hidden" name="DocId" value="${listDoc.idDocumentoRequisito}"> <input
 								type="hidden" name="idPropuesta"
 								value="${sessionScope.inscripcionConvOBJ.propId}">
 
@@ -83,25 +83,24 @@
 								<th colspan="2" align="center">Documentos Requeridos</th>
 								<tr>
 									<td colspan="2" class="renglones"><b><c:out
-												value="${lista2.nombreDocumentoRequisito}" />-<c:out
-												value="${sessionScope.datosConv.convId}" />-<c:out
-												value="${lista2.codigo}" /></b></td>
+												value="${listDoc.nombreDocumentoRequisito}" />
 								</tr>
 								<tr>
 									<td colspan="2"><p class="texto1j">Formato PDF .</p></td>
 								</tr>
-								<c:if test="${lista2.docNombre!=null}">
+								<c:out value="${listDoc.url}" />
+								<c:if test="${listDoc.url!=null}">
 									<tr>
 										<td class="rengVerde" align="right" colspan="2"><a
 											class="lblanca"
-											href='<c:url value="${lista2.url}" /><c:url value="${lista2.docNombre}" />'>Ver Documento</a></td>
+											href='<c:url value="${listDoc.url}${listDoc.docNombre}"/>'>Ver Documento</a></td>
 									</tr>
 								</c:if>
 								<tr>
 									<td><input size="60%" type="file" name="archivo"></td>
 									<td width="75px"><img
 										src='<c:url value="/comp/img/Guardar.gif"/>'
-										onclick="guardareq(document.${lista2.docNombre}.archivo,document.${lista2.docNombre},<c:out value="${lista2.codigo}" />)">
+										onclick="guardareq(document.${listDoc.nombreDocumentoRequisito}.archivo,document.${listDoc.nombreDocumentoRequisito},<c:out value="${listDoc.idDocumentoRequisito}" />)">
 									</td>
 								</tr>
 							</table>

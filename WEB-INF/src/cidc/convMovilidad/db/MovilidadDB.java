@@ -828,7 +828,7 @@ public class MovilidadDB extends BaseDB{
                 ps.setInt(2,idProp);
                 ps.setLong(3, idConv);
                 rs=ps.executeQuery();
-                System.out.println(rs.toString());
+                System.out.println(ps.toString());
                 while(rs.next()){
                         i=1;
                         PropuestaOBJ propuestaOBJ=new PropuestaOBJ();

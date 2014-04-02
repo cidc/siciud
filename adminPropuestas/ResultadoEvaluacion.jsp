@@ -137,8 +137,7 @@
 
         <tr>
                 	<th align="center"><b>Num</b></th>
-                	<th align="center"><b>Convocatoria</b></th>
-                	<th align="center"><b># Propuesta</b></th>
+                	<th align="center" width="70px"><b>No. Propuesta</b></th>
 			<c:if test="${tipo==1}">
                 	<th align="center"><b>Evaluador Interno</b></th>
                 	<th align="center"><b>Evaluador Externo</b></th>
@@ -146,10 +145,10 @@
 			</c:if>
 			<c:if test="${tipo==2}">
 			<c:forEach begin="0" items="${sessionScope.listaEvalOBJ}" var="lista5" varStatus="st">	
-			<th align="center"><b><c:out value="${lista5.nombre}"/><c:out value="${lista5.apellido}"/></th>
+			<th align="center" width="100px"><b><c:out value="${lista5.nombre} "/><c:out value="${lista5.apellido}"/></th>
 			</c:forEach>
 			</c:if>
-                	<th align="center"><b>Puntaje Total</b></th>
+                	<th align="center" width="100px"><b>Puntaje Total</b></th>
                 	<th align="center"><b>Observaciones</b></th>
         </tr>
         <c:forEach begin="0" items="${sessionScope.listaPropOBJ}" var="lista" varStatus="st">
@@ -160,8 +159,7 @@
 <input type="hidden" name="codAsp2" value="<c:out value="${lista4.codigo}"/>">
 <input type="hidden" name="codCrit2" value="<c:out value="${lista4.criterio}"/>">
 <input type="hidden" name="convId2" value="<c:out value="${lista.conv}"/>">
-                        <td class="listas" width="25px"><c:out value="${num}"/>-<c:out value="${ano}"/></td>
-                        <td class="listas" width="25px"><c:out value="${lista.codPropuesta}"/></td>
+                        <td class="listas" width="70px"><c:out value="${lista.codPropuesta}"/></td>
 
 		<c:if test="${tipo==1}">
 		<input type="hidden" name="codProp" value="<c:out value="${lista.codPropuesta}"/>">

@@ -85,7 +85,7 @@ public class CargaRequisitos extends ServletGeneral {
 					System.out.println("Propuesta:"	+ infoGeneral.getIdPropuesta());
 					String arch = cargaDoc.cargarGenerico(path, archivoAdj,	"Movilidad", infoGeneral.getIdPropuesta() + "Mov"+ itemDoc + "_",infoGeneral.getIdPropuesta());
 					//System.out.println("arch:" + arch);
-					String url ="/Documentos/Movilidad/"+arch;
+					String url ="/Documentos/Movilidad/";
 					if (movilidadDB.setRequisitos(Prop, arch, Doc, Conv, url)) {
 						mensaje = "Documento almacenado correctamente";
 						InfoGeneral info =(InfoGeneral)sesion.getAttribute("movilidad");

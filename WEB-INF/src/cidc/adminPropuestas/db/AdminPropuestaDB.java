@@ -371,6 +371,7 @@ public class AdminPropuestaDB extends BaseDB{
                                 propuestaOBJ.setDocNombre(rs.getString(i++));
                                // convocatoriaOBJ.setComEstado(rs.getBoolean(i++));
                                 propuestaOBJ.setCodPropuesta(rs.getInt(i++));
+                                propuestaOBJ.setUrl(rs.getString(i++));
 				l.add(propuestaOBJ);
                         }
                 } catch (Exception e) {

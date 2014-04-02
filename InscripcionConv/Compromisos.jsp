@@ -51,6 +51,7 @@
 		<input type="hidden" name="propConvId" value="${sessionScope.datosConv.convId}">
 		<table width="90%" class="tablas" align="center" cellpadding="3" cellspacing="0">
 		<caption>Compromisos Obligatorios del Investigador</caption>
+		<c:if test="${!empty sessionScope.listaComp }">
             <tr>
           		<td class="renglones"><b>Nombre del Compromiso</b></td>
           		<td width="270px" class="renglones"><b>Indicador</b></td>
@@ -64,7 +65,11 @@
 					<c:if test="${lista.obligatorio==1}"><c:out value="${lista.valor}"></c:out></c:if>
 					</td>
 				</tr>
-			</c:forEach>
+			</c:forEach>		
+			</c:if>
+			<c:if test="${empty sessionScope.listaComp }">
+			<c:out value="No hay compromisos obligatorios" />
+			</c:if>
 		</table>
 		<table width="90%" class="tablas" align="center" cellpadding="3" cellspacing="0">
 		<caption>Compromisos Opcionales del Investigador</caption>
