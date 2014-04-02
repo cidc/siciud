@@ -461,7 +461,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t\t\t\t<option value=\"1\">Prórroga</option>\r\n");
         out.write("\t\t\t\t\t\t<option value=\"2\">Aplazamiento</option>\r\n");
         out.write("\t\t\t\t\t\t<option value=\"3\">Suspensión</option>\r\n");
-        out.write("\t\t\t\t\t\t<option value=\"4\">Extensión</option>\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"4\">Otro Si</option>\r\n");
         out.write("\t\t\t\t\t</select>\r\n");
         out.write("\t\t\t\t</td>\r\n");
         out.write("\t\t\t\t<td><input type=\"text\" name=\"descripcion\"></td>\r\n");
@@ -1170,7 +1170,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
     if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("Extensión");
+        out.write("Otro Si");
         int evalDoAfterBody = _jspx_th_c_005fif_005f6.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;

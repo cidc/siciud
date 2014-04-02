@@ -124,7 +124,7 @@
 				<c:if test="${lista.tipoTiempo==1}">Prórroga</c:if>
 				<c:if test="${lista.tipoTiempo==2}">Aplazamiento</c:if>
 				<c:if test="${lista.tipoTiempo==3}">Suspensión</c:if>
-				<c:if test="${lista.tipoTiempo==4}">Extensión</c:if>
+				<c:if test="${lista.tipoTiempo==4}">Otro Si</c:if>
 				</td>
 				<td width="150px" align="center"><c:out value="${lista.regitradoPor}"/></td>
 				<td width="150px" align="center"><c:out value="${lista.descripcion}"/></td>
@@ -169,7 +169,7 @@
 						<option value="1">Prórroga</option>
 						<option value="2">Aplazamiento</option>
 						<option value="3">Suspensión</option>
-						<option value="4">Extensión</option>
+						<option value="4">Otro Si</option>
 					</select>
 				</td>
 				<td><input type="text" name="descripcion"></td>

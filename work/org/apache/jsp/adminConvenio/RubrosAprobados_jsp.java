@@ -165,7 +165,7 @@ public final class RubrosAprobados_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\t\t\r\n");
       out.write("\t\tif(cdp>(sumaaporte-sumacdp+reembolso)){\r\n");
       out.write("\t\tvar entidad=document.getElementById(\"Entidad\"+i).value\r\n");
-      out.write("\t\talert(\"El valor del cdp asignado a la entidad \"+entidad+\" no puede ser mayor a \"+(sumaaporte-(sumacdp+reembolso)));\r\n");
+      out.write("\t\talert(\"El valor del cdp asignado a la entidad \"+entidad+\" no puede ser mayor a \"+(sumaaporte-sumacdp+reembolso));\r\n");
       out.write("\t\treturn false;\r\n");
       out.write("\t\t}\r\n");
       out.write("\t}\r\n");

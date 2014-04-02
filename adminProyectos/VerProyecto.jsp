@@ -58,6 +58,7 @@
 						<th><b>Correo</b></th>
 						<th><b>Celular</b></th>
 						<th width="120px"><b>Código</b></th>
+						<th width="120px"><b>Fecha Inicio</b></th>
 						<th width="120px"><b>Fecha Aprobación</b></th>
 						<th width="120px"><b>Duración Proyecto</b></th>
 						<th width="120px"><b>Estimado Fin</b></th>
@@ -67,6 +68,7 @@
 						<td align="center"><c:out value="${sessionScope.proyecto.correo}"/></td>
 						<td align="center"><c:out value="${sessionScope.proyecto.celular}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.codigo}"/></td>
+						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecInicio}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecAprobacion}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.duracion}"/> Meses</td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecEstimadoFin}"/></td>

@@ -79,7 +79,7 @@ function validarcdp(){
 		
 		if(cdp>(sumaaporte-sumacdp+reembolso)){
 		var entidad=document.getElementById("Entidad"+i).value
-		alert("El valor del cdp asignado a la entidad "+entidad+" no puede ser mayor a "+(sumaaporte-(sumacdp+reembolso)));
+		alert("El valor del cdp asignado a la entidad "+entidad+" no puede ser mayor a "+(sumaaporte-sumacdp+reembolso));
 		return false;
 		}
 	}

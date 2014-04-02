@@ -22,6 +22,7 @@ public class Proyecto implements Serializable{
 	private String facultad;
 	private String proyCurricular;
 	private String fecAprobacion;
+	private String fecInicio;
 	private String grupoInvestigacion;
 	private int idGrupo;	
 	private String duracion;
@@ -624,6 +625,14 @@ public class Proyecto implements Serializable{
 
 	public void setDocumento(String documento) {
 		this.documento = documento;
+	}
+
+	public String getFecInicio() {
+		return fecInicio;
+	}
+
+	public void setFecInicio(String fecInicio) {
+		this.fecInicio = fecInicio;
 	}
 	
 }
