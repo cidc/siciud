@@ -66,7 +66,7 @@
 					tenida en cuenta en el proceso de evaluación.</td>
 			</tr>
 			<tr>
-				<td><c:forEach begin="0" items="${sessionScope.listaDocOBJ}"
+				<td><c:forEach begin="0" items="${requestScope.listaDocOBJ}"
 						var="listDoc" varStatus="st">
 
 						<form action='<c:url value="/RequisitosArchivoProy.x"/>'
@@ -86,7 +86,7 @@
 												value="${listDoc.nombreDocumentoRequisito}" />
 								</tr>
 								<tr>
-									<td colspan="2"><p class="texto1j">Formato PDF .</p></td>
+									<td colspan="2"><p class="texto1j">Formato PDF.</p></td>
 								</tr>
 								<c:out value="${listDoc.url}" />
 								<c:if test="${listDoc.url!=null}">

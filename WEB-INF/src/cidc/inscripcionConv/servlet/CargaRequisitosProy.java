@@ -92,7 +92,11 @@ public class CargaRequisitosProy extends ServletGeneral {
 					if (movilidadDB.setRequisitos(Prop, arch, Doc, Conv,url )) {
 						mensaje = "Documento almacenado correctamente";
 						req.removeAttribute("listaDocOBJ");
-						req.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos(Integer.parseInt(itemProp),(long)convSeleccionada.getConvId()));
+						List<PropuestaOBJ> propuestaOBJ= movilidadDB.buscarDocumentosInscritos(Integer.parseInt(itemProp),(long)convSeleccionada.getConvId());
+						for (PropuestaOBJ propuesta : propuestaOBJ) {
+							System.out.println("dir "+propuesta.getUrl()+propuesta.getDocNombre());
+						}
+						req.setAttribute("listaDocOBJ", propuestaOBJ);
 					} else
 						mensaje = "El documento no pudo ser almacenado";
 				}

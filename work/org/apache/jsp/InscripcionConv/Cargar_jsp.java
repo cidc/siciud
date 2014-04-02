@@ -226,7 +226,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
     // /InscripcionConv/Cargar.jsp(69,8) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setBegin(0);
     // /InscripcionConv/Cargar.jsp(69,8) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.listaDocOBJ}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.listaDocOBJ}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     // /InscripcionConv/Cargar.jsp(69,8) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("listDoc");
     // /InscripcionConv/Cargar.jsp(69,8) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
@@ -270,7 +270,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\r\n");
           out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
           out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
-          out.write("\t\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Formato PDF .</p></td>\r\n");
+          out.write("\t\t\t\t\t\t\t\t\t<td colspan=\"2\"><p class=\"texto1j\">Formato PDF.</p></td>\r\n");
           out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
           out.write("\t\t\t\t\t\t\t\t");
           if (_jspx_meth_c_005fout_005f1(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))

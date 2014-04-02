@@ -145,7 +145,7 @@ public class Inscribir extends ServletGeneral {
 					(List<CompromisosOBJ>) sesion.getAttribute("listaComp"))) {
 				mensaje = "Compromisos insertados correctamente";
 				irA = "/InscripcionConv/Cargar.jsp";
-				sesion.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos((int)inscripcionConvOBJ.getPropId(),((ConvocatoriaOBJ) sesion
+				req.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos((int)inscripcionConvOBJ.getPropId(),((ConvocatoriaOBJ) sesion
 						.getAttribute("datosConv")).getConvId()));
 			} else {
 				mensaje = "El registro de los compromisos no pudo ser insertado correctamente \n"
@@ -160,12 +160,12 @@ public class Inscribir extends ServletGeneral {
 			int idProp = Integer.parseInt(req.getParameter("idProp"));
 			ConvocatoriaOBJ convSeleccionada = (ConvocatoriaOBJ) sesion
 					.getAttribute("datosConv");
-			sesion.removeAttribute("listaDocOBJ");
+			req.removeAttribute("listaDocOBJ");
 			sesion.removeAttribute("inscripcionConvOBJ");
 			InscripcionConvOBJ inscConvOBJ = new InscripcionConvOBJ();
 			inscConvOBJ.setPropId(idProp);
 			sesion.setAttribute("inscripcionConvOBJ", inscConvOBJ);
-			sesion.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos(idProp,convSeleccionada.getConvId()));
+			req.setAttribute("listaDocOBJ", movilidadDB.buscarDocumentosInscritos(idProp,convSeleccionada.getConvId()));
 			irA = "/InscripcionConv/Cargar.jsp";
 			break;
 		}
