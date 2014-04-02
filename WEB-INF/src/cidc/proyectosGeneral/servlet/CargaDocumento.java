@@ -177,7 +177,7 @@ public class CargaDocumento extends ServletGeneral {
 				sesion.setAttribute("proyecto",proyectoGeneralDB.buscarProyecto(""+proyecto.getId(),""+proyecto.getClaseProyecto()));
 			break;
 			case Parametros. insertarDocumentoLegalizacionTiempos:
-				nombre="Resolucionesavance_"+proyecto.getId()+"_";
+				nombre="LegalizacionTiempo_"+proyecto.getId()+"_";
 				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/LegalizacionTiempos",archivoAdj,docNuevo,Parametros.insertarDocumentoLegalizacionTiempos,proyecto),proyecto,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else

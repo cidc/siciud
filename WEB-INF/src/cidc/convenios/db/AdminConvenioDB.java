@@ -213,10 +213,10 @@ public class AdminConvenioDB extends BaseDB{
 			cn.setAutoCommit(false);
 			
      
-				if(documento.getTipo()==3)
-					documento.setNombreDocumento("Informe Parcial");
-				if(documento.getTipo()==2)
-					documento.setNombreDocumento("Informe Final");
+				//if(documento.getTipo()==3)
+				//	documento.setNombreDocumento("Informe Parcial");
+				//if(documento.getTipo()==2)
+					//documento.setNombreDocumento("Informe Final");
 				
 				ps=cn.prepareStatement(rb.getString("nuevaCargaDocConvenio"));
 				ps.setLong(i++, Integer.parseInt(getconvenioobj.getIdconvenio()));			

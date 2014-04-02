@@ -16,7 +16,7 @@
 	}
 
 	function cambioTipo(combo){
-		if(combo.value==1||combo.value==4||combo.value==5||combo.value==6){
+		if(combo.value==1||combo.value==4||combo.value==5||combo.value==6||combo.value==7||combo.value==8||combo.value==9){
 			document.getElementById("st11").style.display="none";
 			document.getElementById("st12").style.display="none";
 			document.getElementById("st21").style.display="";
@@ -34,12 +34,7 @@
 				document.frmCargaDoc.nombre.readonly=true;
 				document.frmCargaDoc.nombre.value="Acta de Inicio";
 			}
-		}if(combo.value==2||combo.value==3){
-			document.getElementById("st11").style.display="";
-			document.getElementById("st12").style.display="";
-			document.getElementById("st21").style.display="none";
-			document.getElementById("st22").style.display="none";
-		}			
+		}		
 	}
 	function enviarDocumento(){
 		var msg="";
@@ -62,8 +57,16 @@
 		if(document.frmCargaDoc.tipo.value=="5"){
 			document.frmCargaDoc.accion.value="5";
 		}
-		if(document.frmCargaDoc.tipo.value=="6"){//aquy se debe colocar
+		if(document.frmCargaDoc.tipo.value=="6"){
 			document.frmCargaDoc.accion.value="5";
+		}
+		if(document.frmCargaDoc.tipo.value=="7"){
+			document.frmCargaDoc.accion.value="10";
+		}
+		if(document.frmCargaDoc.tipo.value=="8"){
+			document.frmCargaDoc.accion.value="11";
+		}if(document.frmCargaDoc.tipo.value=="9"){
+			document.frmCargaDoc.accion.value="12";
 		}
 		if(document.frmCargaDoc.fechaDoc.value=="")
 			msg=msg+"-) Fecha del Documento\n";		
@@ -150,28 +153,30 @@
 					
 		  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
 		  <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
-		  <td>
-		   		<c:if test='${lista.nombreArchivo=="" || lista.nombreArchivo==null}'>
-		  			<img border=0 src='<c:url value="/comp/img/equis1.png"/>'>
-		  		</c:if>
+		 
+		   
 		  		<c:if test='${lista.nombreArchivo!="" && lista.nombreArchivo!=null}'>
 		  			<c:if test='${lista.tipo==2||lista.tipo==3}'>	
-		  			<a href='<c:url value="/Documentos/Convenios/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+		  			<td><a href='<c:url value="/Documentos/Convenios/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 					 </c:if>
 				  	<c:if test='${lista.tipo==1}'>
-					  <a href='<c:url value="/Documentos/Convenios/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					  <td><a href='<c:url value="/Documentos/Convenios/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 					 </c:if>
-					 <c:if test='${lista.tipo==21}'>
-					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Propuestas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
-					 </c:if>
-					 <c:if test='${lista.tipo==22}'>
-					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Contratos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
-					 </c:if>
+					 
 					  <c:if test='${lista.tipo==23 or lista.tipo==4 or lista.tipo==5 or lista.tipo==6}'>
-					 	<a href='<c:url value="/Documentos/Convenios/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 	<td><a href='<c:url value="/Documentos/Convenios/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 					 </c:if>
+					 <c:if test='${lista.tipo==7}'>
+				     <td><a href='<c:url value="/Documentos/Convenios/Memorandos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+				     </c:if>
+				     <c:if test='${lista.tipo==8}'>
+				     <td><a href='<c:url value="/Documentos/Convenios/Proyecto/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+				     </c:if>
+				     <c:if test='${lista.tipo==9}'>
+				     <td><a href='<c:url value="/Documentos/Convenios/Otrosi/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+				     </c:if>
 		  		</c:if>
-			</td>
+			
 			  <td align="center"><c:out value="${lista.fechaDoc}" /></td>
 			  <td><c:out value="${lista.nombreDocumento}"  /></td>
 			  <td><c:out value="${lista.observaciones}"  /></td>
@@ -198,9 +203,12 @@
 									<option value="1">Otro Documento</option>
 									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>
-									<option value="4" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Finalización</option>
-									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>
-									<option value="6">Acta de Inicio</option>																		
+									<option value="4" >Acta Finalización</option>
+									<option value="5" >Acta Cierre/Cancelación</option>
+									<option value="6">Acta de Inicio</option>
+									<option value="7">Memorandos</option>	
+									<option value="8">Proyecto</option>
+									<option value="9">Otro si</option>																				
 								</select>								
 							</td>
 							<th><b>Fecha de Entrega</b></th>
@@ -218,16 +226,9 @@
 					    			})
 					   			</script>
 							</td>
-							<th id="st11">Estado</th>
-							<td id="st12">
-								<select name="estado" style="width: 100px;">
-									<option value="1">Revisado</option>
-									<option value="2">Evaluado</option>
-									<option value="3">Devuelto</option>
-								</select>
-							</td>
-							<th id="st21" style="display: none">Nombre Doc</th>
-							<td id="st22" style="display: none"><input name="nombre" style="width: 100%;"></td>
+							
+							<th id="st21">Nombre Doc</th>
+							<td id="st22"><input name="nombre" style="width: 100%;"></td>
 						</tr>					
 					</table>
 				</td>

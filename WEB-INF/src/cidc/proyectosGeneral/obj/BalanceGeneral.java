@@ -9,7 +9,14 @@ public class BalanceGeneral implements Serializable{
 	String totalAprobado;
 	String totalEjecutado;
 	String totalSaldo;
+	String comprometido;
 	
+	public String getComprometido() {
+		return comprometido;
+	}
+	public void setComprometido(String comprometido) {
+		this.comprometido = comprometido;
+	}
 	public String getTotalEjecutado() {
 		return totalEjecutado;
 	}
