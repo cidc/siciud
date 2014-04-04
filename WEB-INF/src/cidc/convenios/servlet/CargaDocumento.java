@@ -15,7 +15,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import cidc.convenios.obj.Parametros;
+import cidc.adminInformes.obj.Parametros;
 import cidc.convenios.db.AdminConvenioDB;
 import cidc.convenios.obj.ExtraDocConvenio;
 import cidc.convenios.obj.GetConvenioOBJ;
@@ -56,6 +56,7 @@ public class CargaDocumento extends ServletGeneral  {
       	
 
 		if (ServletFileUpload.isMultipartContent(req)){
+			System.out.println("Remember love");
 			List items=new ArrayList();
 			try {
 				items = fu.parseRequest(req);
@@ -74,7 +75,7 @@ public class CargaDocumento extends ServletGeneral  {
 				            		docNuevo.setFechaDoc(item.getString());
 				            	}
 				            	if(item.getFieldName().equals("estado")){
-				            		docNuevo.setEstado(Integer.parseInt(item.getString()));
+				            		//docNuevo.setEstado(Integer.parseInt(item.getString()));
 				            	}
 				            	if(item.getFieldName().equals("tipo")){
 				            		docNuevo.setTipo(Integer.parseInt(item.getString()));
@@ -83,7 +84,7 @@ public class CargaDocumento extends ServletGeneral  {
 				            		docNuevo.setObservaciones(item.getString());
 			            //	}
 			           // 	if(accion==3 || accion==4 || accion==5){
-			            		docNuevo.setIdconvenio(Integer.parseInt(objconv.getIdconvenio()));
+			            	//	docNuevo.setIdconvenio(Integer.parseInt(objconv.getIdconvenio()));
 			            		if(item.getFieldName().equals("nombre"))
 			            			docNuevo.setNombreDocumento(item.getString());
 			            		if(item.getFieldName().equals("observaciones"))
@@ -115,6 +116,8 @@ public class CargaDocumento extends ServletGeneral  {
 		System.out.println("accion formulario"+req.getParameter("accion"));	
 		System.out.println("accion"+accion);
 		System.out.println("accion"+req.getParameter("nombre"));
+		
+	
 		System.out.println("---caso-->"+accion);
 		switch(accion){
 		
@@ -153,16 +156,39 @@ public class CargaDocumento extends ServletGeneral  {
 			break;
 			
 			case Parametros.insertarDocumentoExterno:
-				
-				
-				
 				nombre="DocAnexo__"+objconv.getIdconvenio()+"_";
 			System.out.println("---entra a externo-->"+nombre);
 				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
-			break;			
+			break;
+			case Parametros.insertarDocumentoMemorandos:
+				nombre="Memorandos_"+objconv.getIdconvenio()+"_";
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Memorandos",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
+					mensaje="Documento Cargado Satisfactoriamente";
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
+				    sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
+			break;
+			case Parametros.insertarDocumentoProyecto:
+				nombre="Proyecto_"+objconv.getIdconvenio()+"_";
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Proyecto",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
+					mensaje="Documento Cargado Satisfactoriamente";
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
+				    sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
+			break;
+			
+			case Parametros.insertarDocumentoOtrosi:
+				req.getParameter("nombre");
+				nombre="Otrosi_"+req.getParameter("nombre")+objconv.getIdconvenio()+"_";
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Otrosi",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
+					mensaje="Documento Cargado Satisfactoriamente";
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
+				    sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
+			break;
 		}
 
 		retorno[0]="desviar";

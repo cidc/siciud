@@ -68,7 +68,12 @@
 						<td align="center"><c:out value="${sessionScope.proyecto.correo}"/></td>
 						<td align="center"><c:out value="${sessionScope.proyecto.celular}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.codigo}"/></td>
+						<c:if test="${sessionScope.fecInicio!=null}">
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecInicio}"/></td>
+						</c:if>
+						<c:if test="${sessionScope.fecInicio==null}">
+						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecActaInicio}"/></td>
+						</c:if>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecAprobacion}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.duracion}"/> Meses</td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecEstimadoFin}"/></td>
