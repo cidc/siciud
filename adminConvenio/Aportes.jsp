@@ -32,7 +32,6 @@
 		var tol=parseInt(document.frmAporte.total.value);
 		
 		if((efectivo+sumatoria)<=tol){
-			alert("Exito");		
 			enviar();
 		}else{
 			alert("El total Efectivo no debe ser mayor al Total Aprobado");	

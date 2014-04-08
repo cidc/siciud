@@ -31,7 +31,6 @@ public class AdminConvenios extends ServletGeneral {
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		context=config.getServletContext();
 		cursor=new CursorDB();
-		System.out.println("entro server");
 		HttpSession sesion=req.getSession();
 		String irA="/adminConvenio/NuevoConvenio.jsp";
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
@@ -121,7 +120,7 @@ public class AdminConvenios extends ServletGeneral {
 			case Parametros.consultaDocumentos:
 				
 				sesion.setAttribute("listaDocs",adminConv.getListaDocAnexos(Integer.parseInt(objconv.getIdconvenio())));
-				System.out.println("case consultadocumentos");
+				
 				irA="/adminConvenio/Documentos.jsp";
 				
 			break;
@@ -149,7 +148,6 @@ case Parametros.AdicionarTiempo:
 				irA="/adminConvenio/VerTiempos.jsp";
 			break;
 			case Parametros.AdicionarPersona:
-				System.out.println("Entro adicionar");
 				PersonaOBJ objpersona=(PersonaOBJ)sesion.getAttribute("personaCon");
 				objpersona.setRegitradoPor(""+usuario.getIdUsuario());
 				objpersona.setFechaReg(año + "-" + (mes+1) + "-" +dia+"");
@@ -256,10 +254,7 @@ case Parametros.AdicionarTiempo:
 				break;
 				case Parametros.cmdInsertaRubrosAprobados:
 					
-					 System.out.println("entro a insertar rubros");
-					 System.out.println("numero de entidades"+req.getParameter("numeroentidad"));
-					 System.out.println("idrubro"+req.getParameter("idRubro"));
-					 req.setAttribute("listaRubros", adminConv.consultarRubros());
+					  req.setAttribute("listaRubros", adminConv.consultarRubros());
 					 
 					 
 					// adminConv.insertaRubrosAprobrados(Integer.parseInt(req.getParameter("idfinanza")), req.getParameter("idRubro"), req.getParameter("codigo"),req.getParameterValues("valorEntidad"), req.getParameter("observacion"),año + "-" + (mes+1) + "-" +dia+"",usuario.getIdUsuario(),Integer.parseInt(req.getParameter("numeroentidad")),req.getParameterValues("idconvent"));
@@ -365,7 +360,7 @@ case Parametros.AdicionarTiempo:
 					irA="/adminConvenio/AdminConvenio.x?accion=15";
 				break;
 				case Parametros.InsertarReembolso:
-					System.out.println("Reembolso-----");
+					
 					if(adminConv.insertarReembolso(req.getParameterValues("idEntidadcdp"),req.getParameterValues("vreembolso"),Integer.parseInt(req.getParameter("numeroentidad")),Integer.parseInt(req.getParameter("idcdp")))){
 						mensaje="El reembolso fue registrado satisfactoriamente";
 						objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));

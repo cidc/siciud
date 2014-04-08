@@ -56,7 +56,7 @@ public class CargaDocumento extends ServletGeneral  {
       	
 
 		if (ServletFileUpload.isMultipartContent(req)){
-			System.out.println("Remember love");
+		
 			List items=new ArrayList();
 			try {
 				items = fu.parseRequest(req);
@@ -113,12 +113,9 @@ public class CargaDocumento extends ServletGeneral  {
 		String carpeta="";
 		carpeta="Convenios";
 	
-		System.out.println("accion formulario"+req.getParameter("accion"));	
-		System.out.println("accion"+accion);
-		System.out.println("accion"+req.getParameter("nombre"));
 		
 	
-		System.out.println("---caso-->"+accion);
+	
 		switch(accion){
 		
 		
@@ -157,7 +154,7 @@ public class CargaDocumento extends ServletGeneral  {
 			
 			case Parametros.insertarDocumentoExterno:
 				nombre="DocAnexo__"+objconv.getIdconvenio()+"_";
-			System.out.println("---entra a externo-->"+nombre);
+			
 				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else

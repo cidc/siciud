@@ -202,7 +202,6 @@ public class AdminConvenioDB extends BaseDB{
 	}
 	
 	public boolean nuevaCargaDocConvenio(ExtraDocConvenio documento, GetConvenioOBJ getconvenioobj,long idUsuario) {
-		System.out.println("esta en nueva cargadocconvenio");
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -1486,19 +1485,13 @@ public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String
 		ps.setString(i++, fecha);
 		ps.setLong(i++, usuario);
 		ps.executeUpdate();
-		
-		
-		
 		cn=cursor.getConnection(super.perfil);
 		ps=cn.prepareStatement(rb.getString("actualizarEjecutadoCdp"));
 		ps.setInt(1,valor+valorEjecutadoCdp(idcdp));
 		ps.setInt(2, idcdp);
-		
 		ps.executeUpdate();
-				
-	    retorno = true;
-	 
-	    
+		retorno = true;
+		
 	}catch (Exception e) {
 		System.out.println("se explota en insertar crp");
 		lanzaExcepcion(e);
@@ -1532,7 +1525,6 @@ public boolean ModificarEjecutado(int idcdp,int valor){
 	 
 	    
 	}catch (Exception e) {
-		System.out.println("se explota en insertar crp");
 		lanzaExcepcion(e);
 	
 	}finally{
