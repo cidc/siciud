@@ -53,10 +53,14 @@ public class AdminPropuestaDB extends BaseDB{
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("getPropuestasMovProy2"));
+			if (tipo==1) {
+				ps=cn.prepareStatement(rb.getString("preAprobProy"));
+			} if(tipo==2) {
+				ps=cn.prepareStatement(rb.getString("getPropuestasMovProy2"));
+			}
+			
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
-                        ps.setLong(i++,tipo);
                         rs=ps.executeQuery();
                       System.out.println("consulta propuestas"+ps);
                         while(rs.next()){

@@ -140,7 +140,7 @@
 		<input type="hidden" name="codPropuesta" value="0">
 		<input type="hidden" name="tipo" value="${tipo}">
         <table class="tablas" width="98%" >
-        <c:if test="${requestScope.convEstado.tipo=='movilidad' or(requestScope.convEstado.tipo=='proyectos' and !requestScope.convEstado.evalua)}">
+<%--         <c:if test="${requestScope.convEstado.tipo=='movilidad' or(requestScope.convEstado.tipo=='proyectos' and !requestScope.convEstado.evalua)}"> --%>
         <caption >Listado de Propuestas Inscritas y Aprobadas</caption>
 	<%
 	int i=0;
@@ -197,7 +197,7 @@
 		<div style="display:none;">	
 		<%=i =i+1%>
 		</div>
-		<c:if test="${tipo=='movilidad'}">
+		<c:if test="${tipo==1}">
 		<input type="hidden" name="codProp" value="<c:out value="${lista.codPropuesta}"/>">
 		<input type="hidden" name="convId" value="<c:out value="${lista.conv}"/>">
 		<input type="hidden" name="codCrit" value="<c:out value="${lista3.codigo}"/>">
@@ -235,7 +235,7 @@
 
         </c:forEach>
 	</c:forEach>
-	</c:if>
+<%-- 	</c:if> --%>
 	<tr>
 	<th colspan="10">Observaciones de Propuestas</th></tr>
 	<tr><th >Propuesta</th>
