@@ -215,7 +215,14 @@ public class EntidadDB extends  BaseDB{
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			} finally {
+	            try {
+		             rs.close();
+		             ps.close();
+		             cn.close();
+		            }
+		            catch (SQLException e){}
+		            }
 			
 			return listatel;
 		}
@@ -293,6 +300,7 @@ public class EntidadDB extends  BaseDB{
 			}finally{
 				cerrar(ps);
 				cerrar(cn);
+				cerrar(rs);
 			}
 			return lista;
 		}

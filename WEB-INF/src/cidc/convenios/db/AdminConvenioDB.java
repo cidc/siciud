@@ -428,6 +428,7 @@ public class AdminConvenioDB extends BaseDB{
 		 }finally{
 				cerrar(ps);
 				cerrar(cn);
+				cerrar(rs);
 			}
 		 
 		 return id;
@@ -484,6 +485,7 @@ public class AdminConvenioDB extends BaseDB{
 		}finally{
 			cerrar(ps);
 			cerrar(cn);
+			cerrar(rs);
 		}
 		return lista;
 	}
@@ -623,7 +625,14 @@ public class AdminConvenioDB extends BaseDB{
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}finally {
+		           try {
+		               rs.close();
+		               ps.close();
+		               cn.close();
+		              }
+		              catch (SQLException e){}
+		              }
 			
 			return listapersonas;
 		}
@@ -677,10 +686,14 @@ public class AdminConvenioDB extends BaseDB{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			lanzaExcepcion(e);
-		}finally{
-			cerrar(ps);
-			cerrar(cn);
-		}
+		}finally {
+	           try {
+	               rs.close();
+	               ps.close();
+	               cn.close();
+	              }
+	              catch (SQLException e){}
+	              }
 		return convenio;
 	}
 
@@ -916,6 +929,7 @@ public class AdminConvenioDB extends BaseDB{
 		}finally{
 			cerrar(ps);
 			cerrar(cn);
+			cerrar(rs);
 		}
 		return retorno;
 	}
@@ -1130,7 +1144,14 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}finally {
+           try {
+            rs.close();
+            ps.close();
+            cn.close();
+           }
+           catch (SQLException e){}
+           }
 	
 	return ListaEntidadesConv;
 }
@@ -1158,7 +1179,14 @@ public String valorReembolsado(int identidad){
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}finally {
+           try {
+            rs.close();
+            ps.close();
+            cn.close();
+           }
+           catch (SQLException e){}
+           }
 	return valorReembolso;
 }
 
@@ -1188,7 +1216,14 @@ public String valorReembolsado(int identidad){
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}finally {
+	           try {
+	               rs.close();
+	               ps.close();
+	               cn.close();
+	              }
+	              catch (SQLException e){}
+	              }
 		return valorAporte;
  }
  
@@ -1217,7 +1252,14 @@ public String valorReembolsado(int identidad){
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}finally {
+	           try {
+	               rs.close();
+	               ps.close();
+	               cn.close();
+	              }
+	              catch (SQLException e){}
+	              }
 		return valorTotalCdp;
 }
 
@@ -1530,6 +1572,7 @@ public int valorEjecutadoCdp(int id){
 	}finally{
 		cerrar(ps);
 		cerrar(cn);
+		cerrar(rs);
 	}
 	return retorno;
 	
@@ -1577,7 +1620,14 @@ public List<AportesOBJ> buscarAportesEntidad(int id){
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}finally {
+           try {
+            rs.close();
+            ps.close();
+            cn.close();
+           }
+           catch (SQLException e){}
+           }
 	
 	return ListaAporteEnti;
 }
@@ -1665,7 +1715,14 @@ public EntidadAsociadaOBJ entidadaporte(int id){
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}finally {
+           try {
+            rs.close();
+            ps.close();
+            cn.close();
+           }
+           catch (SQLException e){}
+           }
 	
 	return entidad;
 }
