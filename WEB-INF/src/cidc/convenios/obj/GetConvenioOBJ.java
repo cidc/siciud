@@ -15,7 +15,14 @@ public class GetConvenioOBJ implements Serializable{
 	private String codigo;
 	private String fechaInicio;
 	private String numDisp;
+	private String duracion;
 
+	public String getDuracion() {
+		return duracion;
+	}
+	public void setDuracion(String duracion) {
+		this.duracion = duracion;
+	}
 	private String fechaFinalizacion;
 	private String entidades;
 	private String F_Digita;

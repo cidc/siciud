@@ -674,6 +674,7 @@ public class AdminConvenioDB extends BaseDB{
 				convenio.setEstado(rs.getString(i++));
 				convenio.setV_DuraAnos(rs.getString(i++));
 				convenio.setV_Durameses(rs.getString(i++));
+				convenio.setDuracion(rs.getString(i-1));
 				convenio.setV_Duradias(rs.getString(i++));
 				convenio.setFechaInicio(rs.getString(i++));
 				convenio.setTipo(rs.getString(i++));

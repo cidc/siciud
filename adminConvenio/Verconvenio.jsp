@@ -58,6 +58,7 @@ function observacion(caja){
 						<th width="120px"><b>Número disponibilidad</b></th>
 						<th width="120px"><b>Suma valor efectivo $</b></th>
 						<th width="120px"><b>Suma valor especie $</b></th>
+						<th width="120px"><b>Duracion</b></th>
 						<th width="120px"><b>Fecha de registro</b></th>
 						<th width="120px"><b>Fecha de Inicio</b></th>
 						<th width="120px"><b>Fecha de finalizacion</b></th>
@@ -67,6 +68,7 @@ function observacion(caja){
 						<td align="center"><c:out value="${sessionScope.datoConvenio.numDisp}"/></td>
 						<td align="center"><c:out value="${sessionScope.datoConvenio.finanza.VEfectivo}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.finanza.VEspecie}"/></td>
+						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.duracion}(Meses)"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.fecha}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.fechaInicio}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.datoConvenio.fechaFinalizacion}"/></td>
