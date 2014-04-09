@@ -14,27 +14,33 @@
 		document.frmStInforme.estado.value=st;
 		document.frmStInforme.submit();
 	}
-
 	function cambioTipo(combo){
-		if(combo.value==1||combo.value==4||combo.value==5||combo.value==6||combo.value==7||combo.value==8||combo.value==9){
-			document.getElementById("st11").style.display="none";
-			document.getElementById("st12").style.display="none";
+		if(combo.value==1){
+			//||combo.value==4||combo.value==5||combo.value==6||combo.value==7||combo.value==8||combo.value==9
+			//document.getElementById("st11").style.display="none";
+			//document.getElementById("st12").style.display="none";
 			document.getElementById("st21").style.display="";
 			document.getElementById("st22").style.display="";
 			document.frmCargaDoc.nombre.readonly=false;
-			if(combo.value==4){
-				document.frmCargaDoc.nombre.readonly=true;
-				document.frmCargaDoc.nombre.value="Acta de Cierre/Cancelacion";
-			}
-			if(combo.value==5){
-				document.frmCargaDoc.nombre.readonly=true;
-				document.frmCargaDoc.nombre.value="Acta de Finalizacion";
-			}
-			if(combo.value==6){
-				document.frmCargaDoc.nombre.readonly=true;
-				document.frmCargaDoc.nombre.value="Acta de Inicio";
-			}
-		}		
+			//if(combo.value==4){
+			//	document.frmCargaDoc.nombre.readonly=true;
+			//	document.frmCargaDoc.nombre.value="Acta de Cierre/Cancelacion";
+			//}
+			//if(combo.value==5){
+			//	document.frmCargaDoc.nombre.readonly=true;
+			//	document.frmCargaDoc.nombre.value="Acta de Finalizacion";
+			//}
+			//if(combo.value==6){
+			//	document.frmCargaDoc.nombre.readonly=true;
+			//	document.frmCargaDoc.nombre.value="Acta de Inicio";
+			//}
+		}	
+		if(combo.value==2||combo.value==3||combo.value==4||combo.value==5||combo.value==6||combo.value==7||combo.value==8||combo.value==9){
+			document.getElementById("st21").style.display="none";
+			document.getElementById("st22").style.display="none";
+			
+			
+		}
 	}
 	function enviarDocumento(){
 		var msg="";
@@ -227,8 +233,8 @@
 					   			</script>
 							</td>
 							
-							<th id="st21">Nombre Doc</th>
-							<td id="st22"><input name="nombre" style="width: 100%;"></td>
+							<th id="st21" style="display: none">Nombre Doc</th>
+							<td id="st22" style="display: none"><input name="nombre" style="width: 100%;"></td>
 						</tr>					
 					</table>
 				</td>

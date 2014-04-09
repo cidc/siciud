@@ -16,7 +16,7 @@
 	}
 
 	function cambioTipo(combo){
-		if(combo.value==1||combo.value==4||combo.value==5 ||combo.value==6 ||combo.value==7){
+		if(combo.value==1||combo.value==4||combo.value==5){
 			document.getElementById("st11").style.display="none";
 			document.getElementById("st12").style.display="none";
 			document.getElementById("st21").style.display="";
@@ -35,7 +35,13 @@
 			document.getElementById("st12").style.display="";
 			document.getElementById("st21").style.display="none";
 			document.getElementById("st22").style.display="none";
-		}			
+		}
+		if(combo.value==6||combo.value==7){
+			document.getElementById("st11").style.display="";
+			document.getElementById("st12").style.display="";
+			document.getElementById("st21").style.display="none";
+			document.getElementById("st22").style.display="none";
+		}	
 	}
 	function enviarDocumento(){
 		var msg="";
@@ -173,7 +179,7 @@
 			
 		  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
 		  <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>		  	
-			  	<c:if test='${lista.tipo!=2 && lista.tipo!=3 && lista.tipo!=4 && lista.tipo!=5}'>
+			  	<c:if test='${lista.tipo!=2 && lista.tipo!=3 && lista.tipo!=4 && lista.tipo!=5&& lista.tipo!=6 && lista.tipo!=7}'>
 				  <td><a href='<c:url value="/Documentos/Proyectos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 				 </c:if>
 				 <c:if test='${lista.tipo==2||lista.tipo==3}'>

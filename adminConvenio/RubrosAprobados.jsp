@@ -46,8 +46,9 @@ function validarcampos(){
 		 return false;
 	}
 	if(document.formCDP.codigo.value==""){
-		alert("El Codigo del CDP no puede estar vacio ");	
-		 return false;
+		document.formCDP.codigo.value="Sin codigo"
+		//alert("El Codigo del CDP no puede estar vacio ");	
+		// return false;
 	}
 	
 	return true;
