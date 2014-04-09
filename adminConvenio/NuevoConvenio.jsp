@@ -250,16 +250,7 @@ var nav4=window.Event ? true : false;
 			<option value="3" <c:if test="${requestScope.datoConvenio.estadop==3}">selected</c:if>>Terminado</option>
 			<option value="4" <c:if test="${requestScope.datoConvenio.estadop==4}">selected</c:if>>Cancelado</option>
 		</select></td>
-		
-		<td class="renglones"><b>Tipo Proyecto</b></td>
-		<td><select name="tipop">
-			<option value="0" <c:if test="${requestScope.datoConvenio.tipop==0}">selected</c:if>>------------</option>
-			<option value="1" <c:if test="${requestScope.datoConvenio.tipop==1}">selected</c:if>>Vigente</option>
-			<option value="2" <c:if test="${requestScope.datoConvenio.tipop==2}">selected</c:if>>Indefinido</option>
-			<option value="3" <c:if test="${requestScope.datoConvenio.tipop==3}">selected</c:if>>Terminado</option>
-			<option value="4" <c:if test="${requestScope.datoConvenio.tipop==4}">selected</c:if>>Cancelado</option>
-		</select></td>
-		
+			<input type="hidden" name="tipop" style="width:100%"   value='0'> 
 	</tr>
 	<tr> <td class="renglones" colspan="6"><b>Facultad:</b></td></tr>
      <tr> <td colspan="6"> <select name="facultad" style="width: 100%" onchange="ajaxFacultad(this)">
