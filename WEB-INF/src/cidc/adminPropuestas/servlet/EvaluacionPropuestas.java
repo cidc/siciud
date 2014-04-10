@@ -25,6 +25,7 @@ public class EvaluacionPropuestas extends ServletGeneral {
 		Usuario usuario = (Usuario) sesion.getAttribute("loginUsuario");
 		AdminPropuestaDB adminPropuestaDB = new AdminPropuestaDB(cursor,
 				usuario.getPerfil());
+		final int  PARCIAL=1;
 		int accion = 0;
 		int ano=0;
 		int tipo=0;
@@ -59,7 +60,7 @@ public class EvaluacionPropuestas extends ServletGeneral {
 					adminPropuestaDB.getCalificacionGeneral(ano,num,req.getParameter("activa"),tipo));
 			System.out.println("entra a consultas6...");
 			sesion.setAttribute("listaCalObs",
-					adminPropuestaDB.getCalificacionObservaciones(ano,num,req.getParameter("activa"),tipo));
+					adminPropuestaDB.getCalificacionObservaciones(ano,num,req.getParameter("activa"),PARCIAL));
 			System.out.println("entra a consultas7...");
 			req.setAttribute("convEstado",
 					adminPropuestaDB.estadoConvocat(ano,num));

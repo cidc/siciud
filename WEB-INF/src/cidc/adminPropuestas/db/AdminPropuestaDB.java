@@ -134,6 +134,8 @@ public class AdminPropuestaDB extends BaseDB{
                         ps=cn.prepareStatement(rb.getString("getCalificacion"));
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
                         rs=ps.executeQuery();
                         while(rs.next()){
                                 i=1;
@@ -147,6 +149,8 @@ public class AdminPropuestaDB extends BaseDB{
                         }
                       if (tipo==2){
                         ps=cn.prepareStatement(rb.getString("getCalificacionMovilidad"));
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
                         rs=ps.executeQuery();
@@ -234,9 +238,17 @@ public class AdminPropuestaDB extends BaseDB{
                 int i=1;
                 try {
                         cn=cursor.getConnection(super.perfil);
-                        ps=cn.prepareStatement(rb.getString("getCalificacionObservaciones"));
+                        if(tipo==1){
+                        	ps=cn.prepareStatement(rb.getString("getCalificacionObservaciones"));
+                        }if(tipo==2){
+                        	ps=cn.prepareStatement(rb.getString("getObservacionesFinal"));
+                        }
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
+                        if(tipo==2){
+                        	ps.setLong(i++,ano);
+                            ps.setLong(i++,numero);
+                        }
                         rs=ps.executeQuery();
 			System.out.println("Consulta Observaciones:"+ps);
                         while(rs.next()){
@@ -1402,6 +1414,50 @@ public class AdminPropuestaDB extends BaseDB{
 			cerrar(cn);
 		}
 		return 0;
+	}
+	/**
+	 * 
+	 * @param año de la convocatoria
+	 * @param numero de la convocatoria
+	 * @param tipo concocatoria 
+	 * @return
+	 */
+	public List getResumenPropuestas(int ano,int numero,int tipo){
+		List l=new ArrayList();
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			if (tipo==1) {
+				ps=cn.prepareStatement(rb.getString("resumenProy"));
+			} if(tipo==2) {
+				ps=cn.prepareStatement(rb.getString("resumenMov"));
+			}
+			
+                        ps.setLong(i++,ano);
+                        ps.setLong(i++,numero);
+                        rs=ps.executeQuery();
+                      System.out.println("consulta propuestas"+ps);
+                        while(rs.next()){
+                                i=1;
+                                PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
+                                propuestaOBJ.setCodPropuesta(rs.getLong(i++));
+                                propuestaOBJ.setConv(rs.getInt(i++));
+                                l.add(propuestaOBJ);
+                        }
+		
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return l;
 	}
 }
 

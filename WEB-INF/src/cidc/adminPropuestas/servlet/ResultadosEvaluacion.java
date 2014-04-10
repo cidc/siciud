@@ -19,6 +19,7 @@ public class ResultadosEvaluacion extends ServletGeneral {
 		context=config.getServletContext();
 		cursor=new CursorDB();
 		HttpSession sesion=req.getSession();
+		final int  FINALES=2;
 		String irA="/adminPropuestas/ResultadoEvaluacion.jsp";
 		Usuario usuario=(Usuario)sesion.getAttribute("loginUsuario");
 		AdminPropuestaDB adminPropuestaDB=new AdminPropuestaDB(cursor,usuario.getPerfil());
@@ -32,10 +33,10 @@ public class ResultadosEvaluacion extends ServletGeneral {
 		switch(accion){
 			case 1:
                 		System.out.println("entra a consultas...");
-				sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getPropuestas(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),Integer.parseInt(req.getParameter("tipo"))));
-				sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getPropuestas(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),Integer.parseInt(req.getParameter("tipo"))));
+				sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getResumenPropuestas(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),Integer.parseInt(req.getParameter("tipo"))));
+				//sesion.setAttribute("listaPropOBJ",adminPropuestaDB.getPropuestas(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),Integer.parseInt(req.getParameter("tipo"))));
 				sesion.setAttribute("listaCalProy",adminPropuestaDB.getCalificacion(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),Integer.parseInt(req.getParameter("tipo"))));
-				sesion.setAttribute("listaCalObs",adminPropuestaDB.getCalificacionObservaciones(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),Integer.parseInt(req.getParameter("tipo"))));
+				sesion.setAttribute("listaCalObs",adminPropuestaDB.getCalificacionObservaciones(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num")),req.getParameter("activa"),FINALES));
 				sesion.setAttribute("listaEvalOBJ",adminPropuestaDB.ListaEvaluadores());
 				req.setAttribute("convEstado",adminPropuestaDB.estadoConvocat(Integer.parseInt(req.getParameter("ano")),Integer.parseInt(req.getParameter("num"))));
 			break;
