@@ -109,7 +109,7 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
       }
       out.write("\r\n");
       out.write("<body>\r\n");
-      out.write("<h6>version 1.0</h6>\r\n");
+      out.write("<h6>version 3.0</h6>\r\n");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
       out.write('\r');
