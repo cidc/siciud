@@ -2,22 +2,12 @@ package cidc.certificaciones.signer;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
-import java.security.UnrecoverableKeyException;
 import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import edu.logic.pki.KeyStoreTools;
-import edu.logic.pki.PDFSignVerifier;
 import edu.logic.pki.PDFSigner;
 
 public class Firmar {
