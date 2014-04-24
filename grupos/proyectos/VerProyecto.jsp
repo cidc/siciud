@@ -25,6 +25,8 @@
 			}
 			if(document.frmCargaDoc.observaciones.value=="")
 				msg=msg+"-) Observaciones del documento\n";
+			if(document.frmCargaDoc.observaciones.value.length>=100)
+				msg=msg+"-) Las observaciones no pueden ser mayor a 100 carácteres";
 			if(msg!=""){
 				msg="Los siguientes campos son obligatorios\n"+msg;	
 				alert(msg);

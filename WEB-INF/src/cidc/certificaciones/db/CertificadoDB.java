@@ -83,7 +83,7 @@ public class CertificadoDB extends BaseDB{
 				else
 					certificado.setConsCert(consec);
 				certificado.setCod_verificacion("VIICEPS_"+certificado.getTipo()+"_"+consec+"_"+ano);
-				String dir=path+sep+"FirmaCIDC.pfx";
+				String dir=path+sep+"Viiceps.pfx";
 				String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+certificado.getCod_verificacion()+".pdf";
 				generador=new GenerarCertificados();
 				generador.crearCertificadoPertenencia(certificado, ruta, resp,path);
@@ -327,7 +327,7 @@ public class CertificadoDB extends BaseDB{
 				certificado.setConsCert(consec);
 			}
 			certificado.setCod_verificacion("VIICEPS_"+certificado.getTipo()+"_"+consec+"_"+ano);
-			String dir=path+sep+"FirmaCIDC.pfx";
+			String dir=path+sep+"Viiceps.pfx";
 			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+certificado.getCod_verificacion()+".pdf";
 			GenerarCertificados cert= new GenerarCertificados();
 			cert.crearPazySalvo(certificado, ruta, resp,path);
@@ -450,7 +450,7 @@ public class CertificadoDB extends BaseDB{
 			}
 			certificado.setTipo("3");//se asigna el tipo 3 para el certificado de tipo especial
 			certificado.setCod_verificacion("VIICEPS_"+certificado.getTipo()+"_"+consec+"_"+ano);
-			String dir=path+sep+"FirmaCIDC.pfx";
+			String dir=path+sep+"Viiceps.pfx";
 			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+certificado.getCod_verificacion()+".pdf";
 			GenerarCertificados cert= new GenerarCertificados();
 			cert.crearEspecial(certificado, ruta, resp,path);
