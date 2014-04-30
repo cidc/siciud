@@ -64,7 +64,7 @@ public final class AyudaTooltip_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("\t\t<p class=\"texto\"><b>Integrante Bloqueado:</b></p>\r\n");
-      out.write("\t\t<p class=\"texto1j\" >Este integrante necesita ser actualizado. para ver la información de este integrante, favor enviar al correo cidc@udistrital.edu.co el dato del Nombre completo, código de carnet UD y cédula.</p>\t  \r\n");
+      out.write("\t\t<p class=\"texto1j\" >Este integrante necesita ser actualizado. para ver la información de este integrante, favor enviar al correo siciud-viiceps@correo.udistrital.edu.co el dato del Nombre completo, c�digo de carnet UD y c�dula.</p>\t  \r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {

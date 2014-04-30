@@ -56,6 +56,7 @@
 					<tr>
 						<th><b>Director del Proyecto</b></th>
 						<th width="120px"><b>Código</b></th>
+						<th width="120px"><b>Fecha Inicio</b></th>
 						<th width="120px"><b>Fecha Aprobación</b></th>
 						<th width="120px"><b>Duración Proyecto</b></th>
 						<th width="120px"><b>Estimado Fin</b></th>
@@ -63,6 +64,12 @@
 					<tr>
 						<td align="center"><c:out value="${sessionScope.proyecto.director}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.codigo}"/></td>
+						<c:if test="${sessionScope.fecInicio!=null}">
+						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecInicio}"/></td>
+						</c:if>
+						<c:if test="${sessionScope.fecInicio==null}">
+						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecActaInicio}"/></td>
+						</c:if>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecAprobacion}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.duracion}"/> Meses</td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecEstimadoFin}"/></td>

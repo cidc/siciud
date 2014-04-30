@@ -11,4 +11,6 @@ public class Parametros {
 	public static final int BUSCARCERTIFICADOS=6;
 	public static final int DOCPAZYSALVO=8;
 	public static final int CREARCERTACTIVIDADES=9;
+	public static final int CREARCERTESPECIAL=10;
+	public static final int CONSULTAESPECIALES=11;
 }

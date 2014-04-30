@@ -35,7 +35,13 @@
 			document.getElementById("st12").style.display="";
 			document.getElementById("st21").style.display="none";
 			document.getElementById("st22").style.display="none";
-		}			
+		}
+		if(combo.value==6||combo.value==7){
+			document.getElementById("st11").style.display="";
+			document.getElementById("st12").style.display="";
+			document.getElementById("st21").style.display="none";
+			document.getElementById("st22").style.display="none";
+		}	
 	}
 	function enviarDocumento(){
 		var msg="";
@@ -51,6 +57,12 @@
 		}
 		if(document.frmCargaDoc.tipo.value=="5"){
 			document.frmCargaDoc.accion.value="5";
+		}
+		if(document.frmCargaDoc.tipo.value=="6"){
+			document.frmCargaDoc.accion.value="6";
+		}
+		if(document.frmCargaDoc.tipo.value=="7"){
+			document.frmCargaDoc.accion.value="7";
 		}
 		if(document.frmCargaDoc.fechaDoc.value=="")
 			msg=msg+"-) Fecha del Documento\n";		
@@ -126,28 +138,39 @@
 					
 		  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
 		  <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
-		  <td>
+		  
 		   		<c:if test='${lista.nombreArchivo=="" || lista.nombreArchivo==null}'>
-		  			<img border=0 src='<c:url value="/comp/img/equis1.png"/>'>
+		  			<td><img border=0 src='<c:url value="/comp/img/equis1.png"/>'></td>
 		  		</c:if>
+		  		
 		  		<c:if test='${lista.nombreArchivo!="" && lista.nombreArchivo!=null}'>
-		  			<c:if test='${lista.tipo==2||lista.tipo==3}'>	
-		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+		  			<c:if test='${lista.tipo==3}'>	
+		  			<td><a href='<c:url value="/Documentos/ProyectosAntiguos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+					 </c:if>
+					 <c:if test='${lista.tipo==2}'>	
+		  			<td><a href='<c:url value="/Documentos/ProyectosAntiguos/InformesFinales/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 					 </c:if>
 				  	<c:if test='${lista.tipo==1}'>
-					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					  <td><a href='<c:url value="/Documentos/ProyectosAntiguos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 					 </c:if>
 					 <c:if test='${lista.tipo==21}'>
-					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Propuestas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					  <td><a href='<c:url value="/Documentos/ProyectosAntiguos/Propuestas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 					 </c:if>
 					 <c:if test='${lista.tipo==22}'>
-					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Contratos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					  <td><a href='<c:url value="/Documentos/ProyectosAntiguos/Contratos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 					 </c:if>
 					  <c:if test='${lista.tipo==23 or lista.tipo==4 or lista.tipo==5}'>
-					 	<a href='<c:url value="/Documentos/ProyectosAntiguos/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 	<td><a href='<c:url value="/Documentos/ProyectosAntiguos/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 					 </c:if>
+					   <c:if test='${lista.tipo==6}'>
+				  <td><a href='<c:url value="/Documentos/ProyectosAntiguos/Resoluciones/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+				 </c:if>
+				 <c:if test='${lista.tipo==7}'>
+				  <td><a href='<c:url value="/Documentos/ProyectosAntiguos/LegalizacionTiempos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+				 </c:if>
+					 
 		  		</c:if>
-			</td>
+			
 			  <td align="center"><c:out value="${lista.fechaDoc}" /></td>
 			  <td><c:out value="${lista.nombreDocumento}"  /></td>
 			  <td><c:out value="${lista.observaciones}"  /></td>
@@ -174,7 +197,9 @@
 									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>
 									<option value="4" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Finalización</option>
-									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>																		
+									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>	
+									<option value="6">Resoluciones de Avance</option>
+									<option value="7">Legalizacion Tiempos</option>																		
 								</select>								
 							</td>
 							<th><b>Fecha de Entrega</b></th>

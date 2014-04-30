@@ -143,6 +143,7 @@ public class UsuarioDB extends BaseDB{
 					user.setNick(rs.getString(i++));
 					user.setPerfilComp(rs.getString(i++));
 					user.setCedula(rs.getString(i++));
+					user.setMail(rs.getString(i++));
 				}
 				if(user==null)
 					super.setMensaje("Usuario no encontrado...");

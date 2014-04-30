@@ -95,7 +95,7 @@ public final class inscripEvento_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\t\t<table align=\"center\">\n");
       out.write("\t\t\t<tr>\n");
       out.write("\t\t\t\t<td align=\"center\"><br>\n");
-      out.write("\t\t\t\t\t<img border=\"0\" src=\"/siciud/comp/img/Imagen-Home.gif\">\n");
+      out.write("\t\t\t\t\t<img border=\"0\" src=\"/siciud/comp/img/Imagen-Home.png\">\n");
       out.write("\t\t\t\t</td>\n");
       out.write("\t\t\t</tr>\n");
       out.write("\t\t</table>\n");

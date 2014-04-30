@@ -82,9 +82,9 @@ public class CertificadoDB extends BaseDB{
 					certificado.setConsCert(tabla);
 				else
 					certificado.setConsCert(consec);
-				certificado.setCod_verificacion("CIDC_"+certificado.getTipo()+"_"+consec+"_"+ano);
-				String dir=path+sep+"FirmaCIDC.pfx";
-				String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+"CIDC_"+certificado.getTipo()+"_"+certificado.getConsCert()+"_"+ano+".pdf";
+				certificado.setCod_verificacion("VIICEPS_"+certificado.getTipo()+"_"+consec+"_"+ano);
+				String dir=path+sep+"Viiceps.pfx";
+				String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+certificado.getCod_verificacion()+".pdf";
 				generador=new GenerarCertificados();
 				generador.crearCertificadoPertenencia(certificado, ruta, resp,path);
 				if(!insertaCertificadoBD(certificado,generador.marcaAgua(ruta,path),dir)){
@@ -130,7 +130,6 @@ public class CertificadoDB extends BaseDB{
 			ps.setLong(4, certificado.getIdPersona());
 			ps.setString(5, certificado.getCedula());
 			ps.setString(6, url);
-//			ps.setString(6, dir);
 			ps.setInt(7, certificado.getIdGrupo());
 			ps.setInt(8, certificado.getId_certificaciones());
 			ps.execute();
@@ -223,6 +222,12 @@ public class CertificadoDB extends BaseDB{
 		return listacertificados;
 	}
 	
+	/**
+	 * busca todos los certificados que pertenecen a una persona y de un tipo en espacifico
+	 * @param id_persona
+	 * @param tipo 1 para pertenecia a grupos, 2 para paz y salvo, 3 para especial y 4 para proyectos de investigacion
+	 * @return
+	 */
 	public List buscarCertificadosPersona(long id_persona,int tipo){
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -321,12 +326,14 @@ public class CertificadoDB extends BaseDB{
 				certificado.setTipo("2");
 				certificado.setConsCert(consec);
 			}
-			certificado.setCod_verificacion("CIDC_"+certificado.getTipo()+"_"+consec+"_"+ano);
-			String dir=path+sep+"FirmaCIDC.pfx";
-			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+"CIDC_"+certificado.getTipo()+"_"+certificado.getConsCert()+"_"+ano+".pdf";
+			certificado.setCod_verificacion("VIICEPS_"+certificado.getTipo()+"_"+consec+"_"+ano);
+			String dir=path+sep+"Viiceps.pfx";
+			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+certificado.getCod_verificacion()+".pdf";
 			GenerarCertificados cert= new GenerarCertificados();
 			cert.crearPazySalvo(certificado, ruta, resp,path);
-			insertaCertificadoBD(certificado,ruta,dir);
+			if(!insertaCertificadoBD(certificado,cert.marcaAgua(ruta,path),dir)){
+				return null;
+			}
 		} catch (Exception e) {
 			lanzaExcepcion(e);
 		}finally{
@@ -417,4 +424,86 @@ public class CertificadoDB extends BaseDB{
 		}
 		return null;
 	}*/
+	
+	/**
+	 * Este metodo inserta en la base de datos el certificado especial y al tiempo crea el documento en pdf
+	 * @param certificado
+	 * @param path
+	 * @param resp
+	 * @return
+	 */
+	public CertificacionesOBJ certificadoEspecial(CertificacionesOBJ certificado, String path, HttpServletResponse resp){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		String consec=null;
+		int i=1;
+		int ano=Calendar.getInstance().get(Calendar.YEAR);
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("consecutivoCertificado"));
+			rs=ps.executeQuery();
+			while(rs.next()){
+				consec = rs.getString(i++);
+				certificado.setConsCert(consec);
+				certificado.setId_certificaciones(Integer.parseInt(consec));
+			}
+			certificado.setTipo("3");//se asigna el tipo 3 para el certificado de tipo especial
+			certificado.setCod_verificacion("VIICEPS_"+certificado.getTipo()+"_"+consec+"_"+ano);
+			String dir=path+sep+"Viiceps.pfx";
+			String ruta=path+sep+"Documentos"+sep+"Certificados"+sep+certificado.getCod_verificacion()+".pdf";
+			GenerarCertificados cert= new GenerarCertificados();
+			cert.crearEspecial(certificado, ruta, resp,path);
+			if(!insertaCertificadoBD(certificado,cert.marcaAgua(ruta,path),dir)){
+				return null;
+			}
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return null;
+	}
+	
+	/**
+	 * busca todos los certificados de tipo espcial que se hayan generado
+	 * @param tipo
+	 * @return
+	 */
+	public List<CertificacionesOBJ> buscarCertificadosEspeciales(int tipo){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		CertificacionesOBJ certificado=null;
+		List <CertificacionesOBJ>listacertificados=new ArrayList<CertificacionesOBJ>();		
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("BuscarCertificadoEspecial"));
+			ps.setLong(1,tipo);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				certificado=new CertificacionesOBJ();
+				certificado.setId_certificaciones(rs.getInt(i++));
+				certificado.setTipo(rs.getString(i++));
+				certificado.setFecha_cert(rs.getString(i++));
+				certificado.setCod_verificacion(rs.getString(i++));
+				certificado.setAutomatico(rs.getBoolean(i++));
+				certificado.setNombre(rs.getString(i++));
+				certificado.setUrl(rs.getString(i++));				
+				listacertificados.add(certificado);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return listacertificados;
+	}
 }

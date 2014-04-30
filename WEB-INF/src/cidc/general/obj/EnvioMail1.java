@@ -1,6 +1,7 @@
 package cidc.general.obj;
 
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.mail.Address;
 import javax.mail.Authenticator;
@@ -19,11 +20,12 @@ import cidc.general.servlet.ServletGeneral;
 
 public class EnvioMail1 extends ServletGeneral{
 
-	private String usuario="cidc@udistrital.edu.co";
-	private String clave="cidc2007";
-	private String de="Centro_Investigaciones_UD";
-	private String smtpHost="mail.udistrital.edu.co";
-	private String respaldo="cidc@udistrital.edu.co";
+	private ResourceBundle rb=ResourceBundle.getBundle("cidc.general.conect");
+	private String usuario="siciud-viiceps@correo.udistrital.edu.co";
+	private String clave=rb.getString("siciudKey");
+	private String de="VIICEPS";
+	private String smtpHost="smtp.gmail.com";
+	private String respaldo="siciud-viiceps@correo.udistrital.edu.co";
 
 	private class Autenticador extends Authenticator{
 		public PasswordAuthentication getPasswordAuthentication(){

@@ -11,6 +11,7 @@ public class Usuario implements Serializable {
 	private String nick;
 	private String papel;
 	private String cedula;
+	private String mail;
 	public String getCedula() {
 		return cedula;
 	}
@@ -86,5 +87,14 @@ public class Usuario implements Serializable {
 	public void setPapel(String papel) {
 		this.papel = papel;
 	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
 	
 }

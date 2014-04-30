@@ -12,6 +12,29 @@
 		    document.formTab.accion.value = num;
 			document.formTab.submit();
 		}
+	    
+	    function enviarDocumento(){
+			var msg="";
+			if(document.frmCargaDoc.archivo.value=="")
+				msg=msg+"-) Seleccionar un documento para cargar\n";
+			else{
+				archi=document.frmCargaDoc.archivo.value;
+				var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
+				if(!(ext==".pdf"))
+					msg=msg+"-) El archivo debe ser en formato PDF\n";
+			}
+			if(document.frmCargaDoc.observaciones.value=="")
+				msg=msg+"-) Observaciones del documento\n";
+			if(document.frmCargaDoc.observaciones.value.length>=100)
+				msg=msg+"-) Las observaciones no pueden ser mayor a 100 carácteres";
+			if(msg!=""){
+				msg="Los siguientes campos son obligatorios\n"+msg;	
+				alert(msg);
+			}else{
+				document.frmCargaDoc.submit();
+			}
+			
+		}
 </script>
 <c:import url="/general.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -31,7 +54,8 @@
 </form>
 
 <br>
-<form name="form1">
+<form action='<c:url value="/proyectos/CargarInformes.x"/>' name="frmCargaDoc" method="post" enctype="multipart/form-data" accept="utf-8" accept-charset="utf-8">
+<input type="hidden" name="accion" value="28">
 <table class="tablas" align="center" width="90%">
 	<CAPTION>Consulta Proyecto de Investigación</CAPTION>
 	<tr>
@@ -108,7 +132,42 @@
 		</table>
 		</td>
 	</tr>
-
+	</table>
+	<c:if test="${sessionScope.proyectoInvestigador.estado!='Finalizado'}">
+	<table class="tablas" align="center" width="90%">
+		<table align="center" width="90%" class="tablas">
+		<caption>Cargar Documento</caption>
+			<tr>
+				<td colspan="2">
+					<table width="100%" border="1">
+						<tr>
+							<th>Tipo</th>
+							<td>
+								<select name="tipo" style="width:120px;" onchange="cambioTipo(this)" >
+									<option value="0">----------------</option>
+									<option value="3">Informe Parcial</option>
+									<option value="2">Informe Final</option>
+								</select>		
+								<th ><b>Documento</b></th>
+								<td ><input type="file" name="archivo" style="width: 100%"></td>						
+							</td>
+						</tr>					
+					</table>
+				</td>
+			</tr>			
+			<tr>
+				<th colspan="2"><b>Observaciones</b></th>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="observaciones" ></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="enviarDocumento()"></td>
+			</tr>
+		</table>
+	</table>
+	</c:if>
+	<table class="tablas" align="center" width="90%">
 	<tr>
 		<td>
 		<table width="100%">
@@ -167,8 +226,14 @@
 		  			<img border=0 src='<c:url value="/comp/img/equis1.png"/>'>
 		  		</c:if>
 		  		<c:if test='${lista.nombreArchivo!="" && lista.nombreArchivo!=null}'>
-		  			<c:if test='${lista.tipo==2||lista.tipo==3}'>	
+		  			<c:if test='${sessionScope.proyectoInvestigador.tipo==1&&(lista.tipo==3||lista.tipo==2)}'>	
+		  			<a href='<c:url value="/Documentos/Proyectos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+		  			<c:if test='${sessionScope.proyectoInvestigador.tipo==2&&lista.tipo==3}'>	
 		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/Informes/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+					 <c:if test='${sessionScope.proyectoInvestigador.tipo==2&&lista.tipo==2}'>	
+		  			<a href='<c:url value="/Documentos/ProyectosAntiguos/InformesFinales/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
 				  	<c:if test='${lista.tipo==1 and lista.tipoProyecto==2}'>
 					  <a href='<c:url value="/Documentos/ProyectosAntiguos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
@@ -252,6 +317,7 @@
 		</td>
 	</tr>
 	</c:if>
+	
 </table>
 </form>
 

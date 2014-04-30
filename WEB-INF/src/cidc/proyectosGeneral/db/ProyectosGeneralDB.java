@@ -209,6 +209,9 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setFacultad(rs.getString(i++));
 				proyecto.setProyCurricular(rs.getString(i++));
 				proyecto.setDirector(rs.getString(i++));
+				proyecto.setCorreo(rs.getString(i++));
+				proyecto.setCelular(rs.getString(i++));
+				proyecto.setFecInicio(rs.getString(i++));
 				proyecto.setFecAprobacion(rs.getString(i++));
 				proyecto.setNumConvocatoria(rs.getString(i++));
 				proyecto.setConvocatoria(rs.getString(i++));				
@@ -529,6 +532,7 @@ public class ProyectosGeneralDB extends BaseDB {
 						ps.setString(i++, documento.getObservaciones());
 						ps.setInt(i++, proyecto.getId());
 						ps.executeUpdate();
+						System.out.println(ps.toString());
 						retorno=true;
 						noGenerico=false;
 					break;
@@ -552,16 +556,19 @@ public class ProyectosGeneralDB extends BaseDB {
 					documento.setNombreDocumento("Informe Parcial");
 				if(documento.getTipo()==2)
 					documento.setNombreDocumento("Informe Final");
+				if(documento.getTipo()==6)
+					documento.setNombreDocumento("Resoluciones de Avance");
+				if(documento.getTipo()==7)
+					documento.setNombreDocumento("Legalizacion Tiempos");
 				
 				ps=cn.prepareStatement(rb.getString("nuevaCargaDocProyecto"+proyecto.getClaseProyecto()));
 				ps.setLong(i++, proyecto.getId());			
 				ps.setString(i++, documento.getNombreDocumento());
-				ps.setString(i++, documento.getFechaDoc());
 				ps.setString(i++, documento.getNombreArchivo());						
 				ps.setString(i++, documento.getObservaciones());
 				ps.setInt(i++, documento.getTipo());
 				ps.setInt(i++, documento.getEstado());
-				ps.setLong(i++, idUsuario);			
+				ps.setLong(i++, idUsuario);
 				ps.executeUpdate();
 				retorno=true;
 			}
