@@ -195,14 +195,14 @@
 								</c:if>
 							</c:forEach></td>
 						</td>
-						<td class="estado" align="center">
+						 <td class="estado" align="center">
 						<input type="checkbox" name="propAprobada_" '<c:forEach begin="0" items="${sessionScope.listaPropApOBJ}" var="lista6" varStatus="st">' '<c:if test="${lista.codPropuesta==lista6.codPropuesta && lista6.propuestaAp==1}">' checked '</c:if>' '</c:forEach>'>
 						</td>
  						<input type="hidden" name="propAprobada"> 
 						<td class="estado" align="center"><input type="text"
 							name="observaciones" size="30"'<c:forEach begin="0" items="${sessionScope.listaPropApOBJ}" var="lista7" varStatus="st">' '<c:if test="${lista.codPropuesta==lista7.codPropuesta}">' value="<c:out value="${lista7.observa}"/>" '</c:if>' '</c:forEach>'>
 						</td>
-						<td></td>
+						<td></td> 
 					</tr>
 				</c:forEach>
 				<tr>

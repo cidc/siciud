@@ -1016,7 +1016,7 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
             return true;
           out.write("</td>\r\n");
           out.write("\t\t\t\t\t\t</td>\r\n");
-          out.write("\t\t\t\t\t\t<td class=\"estado\" align=\"center\">\r\n");
+          out.write("\t\t\t\t\t\t <td class=\"estado\" align=\"center\">\r\n");
           out.write("\t\t\t\t\t\t<input type=\"checkbox\" name=\"propAprobada_\" '");
           if (_jspx_meth_c_005fforEach_005f4(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
             return true;
@@ -1029,7 +1029,7 @@ public final class VerificaPropuestas_jsp extends org.apache.jasper.runtime.Http
             return true;
           out.write("'>\r\n");
           out.write("\t\t\t\t\t\t</td>\r\n");
-          out.write("\t\t\t\t\t\t<td></td>\r\n");
+          out.write("\t\t\t\t\t\t<td></td> \r\n");
           out.write("\t\t\t\t\t</tr>\r\n");
           out.write("\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f2.doAfterBody();
