@@ -66,9 +66,8 @@ public final class EntregaElementos_jsp extends org.apache.jasper.runtime.HttpJs
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write('\n');
-      out.write('\r');
-      out.write('\n');
+      out.write("\r\n");
+      out.write("\r\n");
       cidc.general.obj.Globales globales = null;
       synchronized (_jspx_page_context) {
         globales = (cidc.general.obj.Globales) _jspx_page_context.getAttribute("globales", PageContext.PAGE_SCOPE);
@@ -78,75 +77,75 @@ public final class EntregaElementos_jsp extends org.apache.jasper.runtime.HttpJs
         }
       }
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("' title='win2k-cold-1' />\n");
+      out.write("' title='win2k-cold-1' />\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
       out.write("'></script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction comando(id){\r\n");
       out.write("\t\tdocument.gastos.accion.value=id;\r\n");
-      out.write("\t}\n");
-      out.write("\n");
-      out.write("\tfunction cambioUbicacion(combo,id){\n");
-      out.write("\t\tif(document.getElementsByName('grupo_Acargo').length<2){\n");
-      out.write("\t\t\tif(combo.selectedIndex==1){\n");
-      out.write("\t\t\t\tdocument.elementos.grupo_Acargo.disabled=false;\n");
-      out.write("\t\t\t}\n");
-      out.write("\t\t\telse{\n");
-      out.write("\t\t\t\tif(combo.selectedIndex==2)\n");
-      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega.value=\"El elemento fue entregado a la biblioteca de la Universidad Distrital\";\t\t\t\n");
-      out.write("\t\t\t\tif(combo.selectedIndex==3)\n");
-      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega.value=\"El no se envía a ninguna dependencia o grupo\";\n");
-      out.write("\t\t\t\tif(combo.selectedIndex==4)\n");
-      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega.value=\"El elemento fue entregado a el departamento de almacén de la Universidad Distrital\";\n");
-      out.write("\t\t\t\tdocument.elementos.grupo_Acargo.disabled=true;\n");
-      out.write("\t\t\t\tdocument.elementos.grupoAcargo.value=0;\n");
-      out.write("\t\t\t}\n");
-      out.write("\t\t\t\n");
-      out.write("\t\t}else{\n");
-      out.write("\t\t\tif(combo.selectedIndex==1){\n");
-      out.write("\t\t\t\tdocument.elementos.grupo_Acargo[(id-1)].disabled=false;\n");
-      out.write("\t\t\t\t\n");
-      out.write("\t\t\t}\n");
-      out.write("\t\t\telse{\n");
-      out.write("\t\t\t\tdocument.elementos.grupoAcargo[(id-1)].value=0;\n");
-      out.write("\t\t\t\tif(combo.selectedIndex==2)\n");
-      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega[(id-1)].value=\"El elemento fue entregado a la biblioteca de la Universidad Distrital\";\t\t\t\t\t\t\t\t\n");
-      out.write("\t\t\t\tif(combo.selectedIndex==3)\n");
-      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega[(id-1)].value=\"El no se envía a ninguna dependencia o grupo\";\n");
-      out.write("\t\t\t\tdocument.elementos.grupo_Acargo[(id-1)].disabled=true;\n");
-      out.write("\t\t\t\tdocument.elementos.grupoAcargo[(id-1)].value=0;\n");
-      out.write("\t\t\t}\n");
-      out.write("\t\t}\n");
-      out.write("\t}\n");
-      out.write("\n");
-      out.write("\tfunction asignaGrupo(combo,id){\n");
-      out.write("\t\t//alert(\"entra \"+id);\n");
-      out.write("\t\tif(document.getElementsByName('grupo_Acargo').length<2){\n");
-      out.write("\t\tdocument.elementos.grupoAcargo.value=combo.value;\n");
-      out.write("\t\tdocument.elementos.observacionEntrega.value=\"El elemento fue entregado al grupo: \"+ combo[combo.selectedIndex].text;\n");
-      out.write("\t\t}else{\n");
-      out.write("\t\t\tdocument.elementos.grupoAcargo[(id-1)].value=combo.value;\n");
-      out.write("\t\t\tdocument.elementos.observacionEntrega[(id-1)].value=\"El elemento fue entregado al grupo: \"+ combo[combo.selectedIndex].text;\n");
-      out.write("\t\t}\n");
-      out.write("\t}\n");
+      out.write("\t}\r\n");
+      out.write("\r\n");
+      out.write("\tfunction cambioUbicacion(combo,id){\r\n");
+      out.write("\t\tif(document.getElementsByName('grupo_Acargo').length<2){\r\n");
+      out.write("\t\t\tif(combo.selectedIndex==1){\r\n");
+      out.write("\t\t\t\tdocument.elementos.grupo_Acargo.disabled=false;\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\t\telse{\r\n");
+      out.write("\t\t\t\tif(combo.selectedIndex==2)\r\n");
+      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega.value=\"El elemento fue entregado a la biblioteca de la Universidad Distrital\";\t\t\t\r\n");
+      out.write("\t\t\t\tif(combo.selectedIndex==3)\r\n");
+      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega.value=\"El no se envía a ninguna dependencia o grupo\";\r\n");
+      out.write("\t\t\t\tif(combo.selectedIndex==4)\r\n");
+      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega.value=\"El elemento fue entregado a el departamento de almacén de la Universidad Distrital\";\r\n");
+      out.write("\t\t\t\tdocument.elementos.grupo_Acargo.disabled=true;\r\n");
+      out.write("\t\t\t\tdocument.elementos.grupoAcargo.value=0;\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\t\t\r\n");
+      out.write("\t\t}else{\r\n");
+      out.write("\t\t\tif(combo.selectedIndex==1){\r\n");
+      out.write("\t\t\t\tdocument.elementos.grupo_Acargo[(id-1)].disabled=false;\r\n");
+      out.write("\t\t\t\t\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\t\telse{\r\n");
+      out.write("\t\t\t\tdocument.elementos.grupoAcargo[(id-1)].value=0;\r\n");
+      out.write("\t\t\t\tif(combo.selectedIndex==2)\r\n");
+      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega[(id-1)].value=\"El elemento fue entregado a la biblioteca de la Universidad Distrital\";\t\t\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\tif(combo.selectedIndex==3)\r\n");
+      out.write("\t\t\t\t\tdocument.elementos.observacionEntrega[(id-1)].value=\"El no se envía a ninguna dependencia o grupo\";\r\n");
+      out.write("\t\t\t\tdocument.elementos.grupo_Acargo[(id-1)].disabled=true;\r\n");
+      out.write("\t\t\t\tdocument.elementos.grupoAcargo[(id-1)].value=0;\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t}\r\n");
+      out.write("\r\n");
+      out.write("\tfunction asignaGrupo(combo,id){\r\n");
+      out.write("\t\t//alert(\"entra \"+id);\r\n");
+      out.write("\t\tif(document.getElementsByName('grupo_Acargo').length<2){\r\n");
+      out.write("\t\tdocument.elementos.grupoAcargo.value=combo.value;\r\n");
+      out.write("\t\tdocument.elementos.observacionEntrega.value=\"El elemento fue entregado al grupo: \"+ combo[combo.selectedIndex].text;\r\n");
+      out.write("\t\t}else{\r\n");
+      out.write("\t\t\tdocument.elementos.grupoAcargo[(id-1)].value=combo.value;\r\n");
+      out.write("\t\t\tdocument.elementos.observacionEntrega[(id-1)].value=\"El elemento fue entregado al grupo: \"+ combo[combo.selectedIndex].text;\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t}\r\n");
       out.write("\t\r\n");
       out.write("\tfunction eliminar(id){\r\n");
       out.write("\t\tif(confirm(\"¿Está seguro de realizar esta acción?\")){\r\n");
@@ -159,28 +158,28 @@ public final class EntregaElementos_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\t\t\tdocument.gastos.submit();\r\n");
       out.write("\t\t}\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
-      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
+      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\r\n");
       out.write("\t<form name=\"elementos\" method=\"post\" action='");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
         return;
-      out.write("'>\n");
+      out.write("'>\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("\t\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"accion\" value='11'>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"idProyecto\" value='");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
-      out.write("'>\n");
+      out.write("'>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"idRub\" value='");
       if (_jspx_meth_c_005fout_005f1(_jspx_page_context))
         return;
-      out.write("'>\t\t\n");
+      out.write("'>\t\t\r\n");
       out.write("\t\t\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
@@ -191,7 +190,7 @@ public final class EntregaElementos_jsp extends org.apache.jasper.runtime.HttpJs
       if (_jspx_meth_c_005fif_005f9(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("</body>\n");
+      out.write("</body>\r\n");
 
 session.removeAttribute("listaDevolutivo");
 
@@ -204,6 +203,7 @@ session.removeAttribute("listaDevolutivo");
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -364,19 +364,19 @@ session.removeAttribute("listaDevolutivo");
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t<table>\n");
-        out.write("\t\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t<table>\r\n");
+        out.write("\t\t\t<tr>\r\n");
         out.write("\t\t\t\t<td><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f6(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' onclick=\"comando(12)\"></td>\t\t\t\t\n");
+        out.write("' onclick=\"comando(12)\"></td>\t\t\t\t\r\n");
         out.write("\t\t\t\t<td><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f7(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' onclick=\"comando(10)\"></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t</table>\n");
+        out.write("' onclick=\"comando(10)\"></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -490,18 +490,18 @@ session.removeAttribute("listaDevolutivo");
         out.write("\t       \t<th align=\"right\" width=\"10px\"><b>#</b></th>\r\n");
         out.write("        \t<th align=\"center\" width=\"200px\"><b>Descripción Elemento</b></th>\r\n");
         out.write("        \t<th align=\"center\" width=\"100px\"><b>Código</b></th>\r\n");
-        out.write("        \t<th align=\"center\" width=\"300px\">Datos de Entrega:</th>\n");
+        out.write("        \t<th align=\"center\" width=\"300px\">Datos de Entrega:</th>\r\n");
         out.write("        \t\r\n");
         out.write("        </tr>\r\n");
         out.write("\t");
         if (_jspx_meth_c_005fforEach_005f0(_jspx_th_c_005fif_005f1, _jspx_page_context))
           return true;
-        out.write("\n");
-        out.write("\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td align=\"center\" colspan=\"5\"><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f8(_jspx_th_c_005fif_005f1, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
+        out.write("'></td>\r\n");
         out.write("\t\t</tr>\r\n");
         out.write("\t\t</table>\r\n");
         out.write("\t");
@@ -566,86 +566,86 @@ session.removeAttribute("listaDevolutivo");
           out.write("\t\t\t<td width=\"10px\" class=\"listas\">");
           if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t<input type=\"hidden\" name=\"idGasto\" value='");
           if (_jspx_meth_c_005fout_005f4(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'>\n");
-          out.write("\t\t\t</td>\n");
+          out.write("'>\r\n");
+          out.write("\t\t\t</td>\r\n");
           out.write("\t\t\t<td class=\"listas\" width=\"200px\">");
           if (_jspx_meth_c_005fout_005f5(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t<td class=\"listas\" width=\"100px\"><input type=\"text\" name=\"codigo\" value='");
           if (_jspx_meth_c_005fout_005f6(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'></td>\n");
-          out.write("\t\t\t<td width=\"300px\">\n");
-          out.write("\t\t\t\t<table width=\"100%\" class=\"tablas\">\n");
-          out.write("\t\t\t\t\t<tr>\n");
-          out.write("\t\t\t\t\t\t<td>\n");
+          out.write("'></td>\r\n");
+          out.write("\t\t\t<td width=\"300px\">\r\n");
+          out.write("\t\t\t\t<table width=\"100%\" class=\"tablas\">\r\n");
+          out.write("\t\t\t\t\t<tr>\r\n");
+          out.write("\t\t\t\t\t\t<td>\r\n");
           out.write("\t\t\t\t\t\t\t<select name=\"ubicar\" onchange='cambioUbicacion(this,");
           if (_jspx_meth_c_005fout_005f7(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(")'>\n");
-          out.write("\t\t\t\t\t\t\t\t<option value=\"n\">---Enviar A:----</option>\t\t\t\t\t\t\t\t\n");
+          out.write(")'>\r\n");
+          out.write("\t\t\t\t\t\t\t\t<option value=\"n\">---Enviar A:----</option>\t\t\t\t\t\t\t\t\r\n");
           out.write("\t\t\t\t\t\t\t\t<option value=\"g\" ");
           if (_jspx_meth_c_005fif_005f3(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(">Grupo/Semillero de Investigación</option>\n");
+          out.write(">Grupo/Semillero de Investigación</option>\r\n");
           out.write("\t\t\t\t\t\t\t\t<option value=\"b\" ");
           if (_jspx_meth_c_005fif_005f4(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(">Biblioteca</option>\n");
+          out.write(">Biblioteca</option>\r\n");
           out.write("\t\t\t\t\t\t\t\t<option value=\"p\" ");
           if (_jspx_meth_c_005fif_005f5(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(">Se queda en proyecto</option>\n");
+          out.write(">Se queda en proyecto</option>\r\n");
           out.write("\t\t\t\t\t\t\t\t<option value=\"a\" ");
           if (_jspx_meth_c_005fif_005f6(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(">Almacén</option>\t\t\t\t\t\t\t\t\n");
-          out.write("\t\t\t\t\t\t\t</select>\n");
-          out.write("\t\t\t\t\t\t</td>\n");
-          out.write("\t\t\t\t\t\t<td>\n");
+          out.write(">Almacén</option>\t\t\t\t\t\t\t\t\r\n");
+          out.write("\t\t\t\t\t\t\t</select>\r\n");
+          out.write("\t\t\t\t\t\t</td>\r\n");
+          out.write("\t\t\t\t\t\t<td>\r\n");
           out.write("\t\t\t\t\t\t\t<input type='text' name='fechaEntrega' style=\"width: 70%\" readonly='true' id='f_date_a_");
           if (_jspx_meth_c_005fout_005f8(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("' size='13' value='");
           if (_jspx_meth_c_005fout_005f9(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'>\n");
+          out.write("'>\r\n");
           out.write("\t\t\t\t\t\t\t<button type='button' id='f_trigger_a_");
           if (_jspx_meth_c_005fout_005f10(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'>...</button>\n");
-          out.write("\t\t\t\t\t\t\t<script type='text/javascript'>\n");
-          out.write("\t\t\t\t    \t\t\tCalendar.setup({\n");
+          out.write("'>...</button>\r\n");
+          out.write("\t\t\t\t\t\t\t<script type='text/javascript'>\r\n");
+          out.write("\t\t\t\t    \t\t\tCalendar.setup({\r\n");
           out.write("\t\t\t\t\t    \t\t\tinputField     :    'f_date_a_");
           if (_jspx_meth_c_005fout_005f11(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("',\n");
-          out.write("\t\t\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\n");
-          out.write("\t\t\t\t\t    \t\t\tshowsTime      :    false,\n");
+          out.write("',\r\n");
+          out.write("\t\t\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
+          out.write("\t\t\t\t\t    \t\t\tshowsTime      :    false,\r\n");
           out.write("\t\t\t\t\t    \t\t\tbutton         :    'f_trigger_a_");
           if (_jspx_meth_c_005fout_005f12(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("',\n");
-          out.write("\t\t\t\t\t    \t\t\tsingleClick    :    false,\n");
-          out.write("\t\t\t\t\t    \t\t\tstep           :    1\n");
-          out.write("\t\t\t\t    \t\t\t})\n");
-          out.write("\t\t\t    \t\t\t</script>\n");
-          out.write("\t\t\t\t\t\t</td>\n");
-          out.write("\t\t\t\t\t</tr>\n");
-          out.write("\t\t\t\t\t<tr>\n");
-          out.write("\t\t\t\t\t\t<td colspan=\"2\">\n");
+          out.write("',\r\n");
+          out.write("\t\t\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+          out.write("\t\t\t\t\t    \t\t\tstep           :    1\r\n");
+          out.write("\t\t\t\t    \t\t\t})\r\n");
+          out.write("\t\t\t    \t\t\t</script>\r\n");
+          out.write("\t\t\t\t\t\t</td>\r\n");
+          out.write("\t\t\t\t\t</tr>\r\n");
+          out.write("\t\t\t\t\t<tr>\r\n");
+          out.write("\t\t\t\t\t\t<td colspan=\"2\">\r\n");
           out.write("\t\t\t\t\t\t\t<input type=\"hidden\" name=\"grupoAcargo\" id='grupo");
           if (_jspx_meth_c_005fout_005f13(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("' value='");
           if (_jspx_meth_c_005fout_005f14(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'>\n");
+          out.write("'>\r\n");
           out.write("\t\t\t\t\t\t\t<select name=\"grupo_Acargo\" style=\"300px\" ");
           if (_jspx_meth_c_005fif_005f7(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
@@ -655,27 +655,27 @@ session.removeAttribute("listaDevolutivo");
           out.write("\" onchange='asignaGrupo(this,");
           if (_jspx_meth_c_005fout_005f16(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(")'>\n");
-          out.write("\t\t\t\t\t\t\t\t<option value=\"0\">---Grupo/Semillero de Investigación--------</option>\n");
+          out.write(")'>\r\n");
+          out.write("\t\t\t\t\t\t\t\t<option value=\"0\">---Grupo/Semillero de Investigación--------</option>\r\n");
           out.write("\t\t\t\t\t\t\t\t");
           if (_jspx_meth_c_005fforEach_005f1(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
-          out.write("\t\t\t\t\t\t\t</select>\n");
-          out.write("\t\t\t\t\t\t</td>\t\n");
-          out.write("\t\t\t\t\t</tr>\n");
-          out.write("\t\t\t\t\t<tr>\n");
-          out.write("\t\t\t\t\t\t<th colspan=\"2\" align=\"center\">Observación</th>\n");
-          out.write("\t\t\t\t\t</tr>\n");
-          out.write("\t\t\t\t\t<tr>\n");
-          out.write("\t\t\t\t\t\t<td colspan=\"2\">\n");
+          out.write("\r\n");
+          out.write("\t\t\t\t\t\t\t</select>\r\n");
+          out.write("\t\t\t\t\t\t</td>\t\r\n");
+          out.write("\t\t\t\t\t</tr>\r\n");
+          out.write("\t\t\t\t\t<tr>\r\n");
+          out.write("\t\t\t\t\t\t<th colspan=\"2\" align=\"center\">Observación</th>\r\n");
+          out.write("\t\t\t\t\t</tr>\r\n");
+          out.write("\t\t\t\t\t<tr>\r\n");
+          out.write("\t\t\t\t\t\t<td colspan=\"2\">\r\n");
           out.write("\t\t\t\t\t\t\t<textarea rows=\"1\" cols=\"\" name=\"observacionEntrega\">");
           if (_jspx_meth_c_005fout_005f19(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</textarea>\n");
-          out.write("\t\t\t\t\t\t</td>\t\t\n");
-          out.write("\t\t\t\t\t</tr>\n");
-          out.write("\t\t\t\t</table>\n");
+          out.write("</textarea>\r\n");
+          out.write("\t\t\t\t\t\t</td>\t\t\r\n");
+          out.write("\t\t\t\t\t</tr>\r\n");
+          out.write("\t\t\t\t</table>\r\n");
           out.write("\t\t\t</td>\t\t\t\t\t\r\n");
           out.write("\t\t</tr>\r\n");
           out.write("\t");
@@ -1147,7 +1147,7 @@ session.removeAttribute("listaDevolutivo");
       int _jspx_eval_c_005fforEach_005f1 = _jspx_th_c_005fforEach_005f1.doStartTag();
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t\t\t\t\t\t<option value='");
           if (_jspx_meth_c_005fout_005f17(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
@@ -1158,7 +1158,7 @@ session.removeAttribute("listaDevolutivo");
           out.write('>');
           if (_jspx_meth_c_005fout_005f18(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
-          out.write("</option>\n");
+          out.write("</option>\r\n");
           out.write("\t\t\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

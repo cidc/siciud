@@ -162,7 +162,7 @@ public class filtro implements Filter {
 	public void destroy(){
 		// TODO Auto-generated method stub
 		config=null;
-		System.out.println("********************* Sistema SICIUD ---> destruccion del filtro");
+		System.out.println("***-****************** Sistema SICIUD ---> destruccion del filtro");
 		sesion.removeAttribute("loginUsuario");
 	}
 

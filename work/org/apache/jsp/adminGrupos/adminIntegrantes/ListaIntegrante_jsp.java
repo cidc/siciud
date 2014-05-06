@@ -69,9 +69,9 @@ public final class ListaIntegrante_jsp extends org.apache.jasper.runtime.HttpJsp
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("\r\n");
       cidc.general.login.Usuario loginUsuario = null;
       synchronized (session) {
         loginUsuario = (cidc.general.login.Usuario) _jspx_page_context.getAttribute("loginUsuario", PageContext.SESSION_SCOPE);
@@ -81,52 +81,52 @@ public final class ListaIntegrante_jsp extends org.apache.jasper.runtime.HttpJsp
         }
       }
       out.write("\r\n");
-      out.write("<html>\n");
-      out.write("<head>\n");
+      out.write("<html>\r\n");
+      out.write("<head>\r\n");
       out.write("<script type=\"text/javascript\" src='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type=\"text/javascript\" src=");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type=\"text/javascript\" src='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
       out.write("'></script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("<script>\n");
-      out.write("\n");
-      out.write("\tHelpBalloon.Options.prototype = Object.extend(HelpBalloon.Options.prototype,\n");
-      out.write("\t\t{\n");
+      out.write("\r\n");
+      out.write("<script>\r\n");
+      out.write("\r\n");
+      out.write("\tHelpBalloon.Options.prototype = Object.extend(HelpBalloon.Options.prototype,\r\n");
+      out.write("\t\t{\r\n");
       out.write("\t\t\ticon: '");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
-      out.write("',\n");
+      out.write("',\r\n");
       out.write("\t\t\tbutton: '");
       if (_jspx_meth_c_005furl_005f4(_jspx_page_context))
         return;
-      out.write("',\n");
+      out.write("',\r\n");
       out.write("\t\t\tballoonPrefix: '");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
         return;
-      out.write("'\n");
-      out.write("\t\t});\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\tfunction tooltip(tipo)\n");
-      out.write("\t{\n");
+      out.write("'\r\n");
+      out.write("\t\t});\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\tfunction tooltip(tipo)\r\n");
+      out.write("\t{\r\n");
       out.write("\t    var x='");
       if (_jspx_meth_c_005furl_005f6(_jspx_page_context))
         return;
-      out.write("'\n");
-      out.write("        var hb4 = new HelpBalloon\n");
-      out.write("\t\t\t  ({\n");
-      out.write("\t  \t\t  dataURL: x\n");
-      out.write("\t\t\t  });\n");
+      out.write("'\r\n");
+      out.write("        var hb4 = new HelpBalloon\r\n");
+      out.write("\t\t\t  ({\r\n");
+      out.write("\t  \t\t  dataURL: x\r\n");
+      out.write("\t\t\t  });\r\n");
       out.write("\t}\r\n");
       out.write("\tfunction com(id){\r\n");
       out.write("\t\tdocument.comandos.accion.value=id;\r\n");
@@ -143,8 +143,8 @@ public final class ListaIntegrante_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\t\tdocument.lista.flagMod.value=1;\r\n");
       out.write("\t\tdocument.lista.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("<br>\r\n");
       out.write("\t<form action='");
@@ -157,7 +157,7 @@ public final class ListaIntegrante_jsp extends org.apache.jasper.runtime.HttpJsp
         return;
       out.write("'>\r\n");
       out.write("\t\t<table width=\"100%\">\r\n");
-      out.write("\t\t\t<tr>\n");
+      out.write("\t\t\t<tr>\r\n");
       out.write("\t\t\t");
 if(!loginUsuario.isPerfil("10")){ 
       out.write("\r\n");
@@ -166,7 +166,7 @@ if(!loginUsuario.isPerfil("10")){
       if (_jspx_meth_c_005furl_005f9(_jspx_page_context))
         return;
       out.write("\" onclick=\"com(20)\">\r\n");
-      out.write("\t\t\t\t</td>\n");
+      out.write("\t\t\t\t</td>\r\n");
       out.write("\t\t\t");
 } 
       out.write("\r\n");
@@ -200,6 +200,7 @@ if(!loginUsuario.isPerfil("10")){
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -591,31 +592,31 @@ if(!loginUsuario.isPerfil("10")){
           if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("</td>\r\n");
-          out.write("\t\t\t<td width=\"80px\">\n");
+          out.write("\t\t\t<td width=\"80px\">\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f2(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f3(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f4(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f5(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f6(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f7(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t</td>\r\n");
           out.write("\t\t\t");
           if (_jspx_meth_c_005fif_005f8(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
@@ -625,15 +626,15 @@ if(!loginUsuario.isPerfil("10")){
           if (_jspx_meth_c_005fif_005f9(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("\r\n");
-          out.write("\t\t\t<td width=\"50px\" align=\"center\">\n");
+          out.write("\t\t\t<td width=\"50px\" align=\"center\">\r\n");
           out.write("\t\t\t");
           if (_jspx_meth_c_005fif_005f10(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t");
           if (_jspx_meth_c_005fif_005f11(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t</td>\r\n");
           out.write("\t\t</tr>\r\n");
           out.write("\t");
@@ -998,10 +999,10 @@ if(!loginUsuario.isPerfil("10")){
     int _jspx_eval_c_005fif_005f10 = _jspx_th_c_005fif_005f10.doStartTag();
     if (_jspx_eval_c_005fif_005f10 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t\t\t\t\t <script type=\"text/javascript\">\n");
-        out.write("\t\t\t\t\t\t tooltip(1);\n");
-        out.write("\t\t\t\t\t\t </script>\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t <script type=\"text/javascript\">\r\n");
+        out.write("\t\t\t\t\t\t tooltip(1);\r\n");
+        out.write("\t\t\t\t\t\t </script>\r\n");
         out.write("\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f10.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1029,7 +1030,7 @@ if(!loginUsuario.isPerfil("10")){
     int _jspx_eval_c_005fif_005f11 = _jspx_th_c_005fif_005f11.doStartTag();
     if (_jspx_eval_c_005fif_005f11 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t<img src='");
         if (_jspx_meth_c_005furl_005f14(_jspx_th_c_005fif_005f11, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
@@ -1042,7 +1043,7 @@ if(!loginUsuario.isPerfil("10")){
         out.write(',');
         if (_jspx_meth_c_005fout_005f6(_jspx_th_c_005fif_005f11, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
           return true;
-        out.write(")'>\n");
+        out.write(")'>\r\n");
         out.write("\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f11.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

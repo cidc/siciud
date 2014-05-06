@@ -66,6 +66,9 @@ public class CargaDocumento extends ServletGeneral {
         cursor=new CursorDB();
         proyectoGeneralDB=new ProyectosGeneralDB(cursor,usuario.getPerfil());
         
+        
+       
+        
         mensaje="";        	
 
 		if (ServletFileUpload.isMultipartContent(req)){
@@ -164,7 +167,23 @@ public class CargaDocumento extends ServletGeneral {
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
-			break;			
+			break;	
+			case Parametros.insertarDocumentoResolucionesAvance:
+				nombre="Resolucionesavance_"+proyecto.getId()+"_";
+				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/Resoluciones",archivoAdj,docNuevo,Parametros.insertarDocumentoResolucionesAvance,proyecto),proyecto,usuario.getIdUsuario()))
+					mensaje="Documento Cargado Satisfactoriamente";
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
+				sesion.setAttribute("proyecto",proyectoGeneralDB.buscarProyecto(""+proyecto.getId(),""+proyecto.getClaseProyecto()));
+			break;
+			case Parametros. insertarDocumentoLegalizacionTiempos:
+				nombre="LegalizacionTiempo_"+proyecto.getId()+"_";
+				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/LegalizacionTiempos",archivoAdj,docNuevo,Parametros.insertarDocumentoLegalizacionTiempos,proyecto),proyecto,usuario.getIdUsuario()))
+					mensaje="Documento Cargado Satisfactoriamente";
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
+				sesion.setAttribute("proyecto",proyectoGeneralDB.buscarProyecto(""+proyecto.getId(),""+proyecto.getClaseProyecto()));
+			break;
 		}
 
 		retorno[0]="desviar";

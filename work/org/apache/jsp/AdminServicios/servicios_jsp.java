@@ -69,13 +69,13 @@ public final class servicios_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("</head>\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction ajaxServicios(obj){\r\n");
@@ -106,7 +106,7 @@ public final class servicios_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\tdocument.servicios.action.value=\"1\";\r\n");
       out.write("\t\tdocument.servicios.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
+      out.write("</script>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("<br>\r\n");
       out.write("\t<form name=\"servicios\" action='");
@@ -137,10 +137,10 @@ public final class servicios_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<tr>\r\n");
       out.write("\t\t\t\t<td colspan=\"4\" align=\"center\">\r\n");
       out.write("\t\t\t\t\t<table width=\"100%\" class=\"tablas\">\r\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<th><b>Id</b></th>\n");
-      out.write("\t\t\t\t\t\t\t<th><b>Nombre</b></th>\n");
-      out.write("\t\t\t\t\t\t\t<th>&nbsp;</th>\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<th><b>Id</b></th>\r\n");
+      out.write("\t\t\t\t\t\t\t<th><b>Nombre</b></th>\r\n");
+      out.write("\t\t\t\t\t\t\t<th>&nbsp;</th>\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f1(_jspx_page_context))
@@ -169,7 +169,7 @@ public final class servicios_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<input type=\"hidden\" name=\"accion\" value=''>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"dato\" value=''>\r\n");
       out.write("\t</form>\r\n");
-      out.write("</body>\n");
+      out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -177,6 +177,7 @@ public final class servicios_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -336,15 +337,15 @@ public final class servicios_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f1 = _jspx_th_c_005fforEach_005f1.doStartTag();
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t\t\t<tr ");
           if (_jspx_meth_c_005fif_005f0(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
-          out.write(">\n");
+          out.write(">\r\n");
           out.write("\t\t\t\t\t\t\t<td>");
           if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t\t\t\t\t<td>");
           if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
@@ -356,7 +357,7 @@ public final class servicios_jsp extends org.apache.jasper.runtime.HttpJspBase
           if (_jspx_meth_c_005fout_005f5(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
           out.write("'></td>\r\n");
-          out.write("\t\t\t\t\t\t</tr>\n");
+          out.write("\t\t\t\t\t\t</tr>\r\n");
           out.write("\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

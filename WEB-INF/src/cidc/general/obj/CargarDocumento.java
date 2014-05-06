@@ -84,13 +84,23 @@ public class CargarDocumento{
 	}
 
 	public String cargarGenerico(String path, FileItem archivo, String carpeta,String prefijo,long idArchivo) throws Exception{
+		System.out.println("entra a cargargenerico");
 		File sitio=new File(path);
+		System.out.println("1");
 		DiskFileItemFactory factory = new DiskFileItemFactory();
+		System.out.println("2");
 		factory.setSizeThreshold(10240*1024);
+		System.out.println("3");
         factory.setRepository(sitio);
+        System.out.println("4");
         String nombreArchivo=prefijo+idArchivo+archivo.getName().substring(archivo.getName().lastIndexOf("."),archivo.getName().length());
+        System.out.println("5");
         String ruta=path+sep+"Documentos"+sep+carpeta+sep+nombreArchivo;
+        System.out.println("6");
+        System.out.println("ruta"+ruta);
+        
         archivo.write(new File(ruta));
+        System.out.println("7");
 		return nombreArchivo;
 	}
 

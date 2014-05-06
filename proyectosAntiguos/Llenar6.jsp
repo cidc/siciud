@@ -5,3 +5,4 @@
 <jsp:useBean id = "listRubrosApro" scope = "session" class = "cidc.proyectosAntiguos.obj.DatosAjax" />
 <jsp:setProperty property = "*" name = "listRubrosApro" />
 <c:import url = "/proyectosAntiguos/GestProyectos.x" />
+   

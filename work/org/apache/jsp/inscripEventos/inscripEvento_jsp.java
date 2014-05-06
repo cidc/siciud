@@ -57,13 +57,14 @@ public final class inscripEvento_jsp extends org.apache.jasper.runtime.HttpJspBa
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
+      out.write('\r');
       out.write('\n');
       java.util.Date fecha = null;
       synchronized (_jspx_page_context) {
@@ -88,17 +89,17 @@ public final class inscripEvento_jsp extends org.apache.jasper.runtime.HttpJspBa
       if (_jspx_meth_fmt_005fformatDate_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("\n");
-      out.write("</head>\n");
+      out.write("\r\n");
+      out.write("</head>\r\n");
       out.write("\t<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
-      out.write("\t<br>\n");
-      out.write("\t\t<table align=\"center\">\n");
-      out.write("\t\t\t<tr>\n");
-      out.write("\t\t\t\t<td align=\"center\"><br>\n");
-      out.write("\t\t\t\t\t<img border=\"0\" src=\"/siciud/comp/img/Imagen-Home.gif\">\n");
-      out.write("\t\t\t\t</td>\n");
-      out.write("\t\t\t</tr>\n");
-      out.write("\t\t</table>\n");
+      out.write("\t<br>\r\n");
+      out.write("\t\t<table align=\"center\">\r\n");
+      out.write("\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t<td align=\"center\"><br>\r\n");
+      out.write("\t\t\t\t\t<img border=\"0\" src=\"/siciud/comp/img/Imagen-Home.png\">\r\n");
+      out.write("\t\t\t\t</td>\r\n");
+      out.write("\t\t\t</tr>\r\n");
+      out.write("\t\t</table>\r\n");
       out.write("\r\n");
       out.write("\t</body>\r\n");
       out.write("</html>");
@@ -108,6 +109,7 @@ public final class inscripEvento_jsp extends org.apache.jasper.runtime.HttpJspBa
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);

@@ -66,14 +66,14 @@ public final class ListaPersonas_jsp extends org.apache.jasper.runtime.HttpJspBa
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\r\n");
       out.write("\tfunction busqueda(cmd){\r\n");
@@ -109,12 +109,12 @@ public final class ListaPersonas_jsp extends org.apache.jasper.runtime.HttpJspBa
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
       out.write("';\r\n");
-      out.write("\t\tdocument.lista.codigo.value=id;\n");
+      out.write("\t\tdocument.lista.codigo.value=id;\r\n");
       out.write("\t\tdocument.lista.grupo.value=grupo;\r\n");
       out.write("\t\tdocument.lista.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t<table width=\"100%\">\r\n");
       out.write("\t\t<tr>\r\n");
@@ -169,6 +169,7 @@ public final class ListaPersonas_jsp extends org.apache.jasper.runtime.HttpJspBa
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -332,7 +333,7 @@ public final class ListaPersonas_jsp extends org.apache.jasper.runtime.HttpJspBa
         out.write("\r\n");
         out.write("\t<form name=\"lista\" >\r\n");
         out.write("\t<input type=\"hidden\" name=\"accion\" value=\"14\">\r\n");
-        out.write("\t<input type=\"hidden\" name=\"codigo\" value=\"\">\n");
+        out.write("\t<input type=\"hidden\" name=\"codigo\" value=\"\">\r\n");
         out.write("\t<input type=\"hidden\" name=\"grupo\" value=\"\">\r\n");
         out.write("\t<table class=\"tablas\" align=\"center\" width=\"95%\">\r\n");
         out.write("\t<caption>Listado de Grupos o Semilleros de Investigación</caption>\r\n");
@@ -340,7 +341,7 @@ public final class ListaPersonas_jsp extends org.apache.jasper.runtime.HttpJspBa
         out.write("\t\t\t<td align=\"center\" class=\"renglones\" width=\"20px\"><b>#</b></td>\r\n");
         out.write("\t\t\t<td align=\"center\" class=\"renglones\" width=\"120px\"><b>Nombres</b></td>\r\n");
         out.write("\t\t\t<td align=\"center\" class=\"renglones\" width=\"120px\"><b>Apellidos</b></td>\r\n");
-        out.write("\t\t\t<td align=\"center\" class=\"renglones\" width=\"200px\"><b>Facultad</b></td>\n");
+        out.write("\t\t\t<td align=\"center\" class=\"renglones\" width=\"200px\"><b>Facultad</b></td>\r\n");
         out.write("\t\t\t<td align=\"center\" class=\"renglones\" width=\"25%\"><b>Grupo Investigación</b></td>\r\n");
         out.write("\t\t\t<td align=\"center\" class=\"renglones\" width=\"47px\"><b>Ver</b></td>\r\n");
         out.write("\t\t</tr>\r\n");
@@ -402,7 +403,7 @@ public final class ListaPersonas_jsp extends org.apache.jasper.runtime.HttpJspBa
           out.write("\t\t\t<td width=\"200px\">");
           if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t<td>");
           if (_jspx_meth_c_005fout_005f4(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;

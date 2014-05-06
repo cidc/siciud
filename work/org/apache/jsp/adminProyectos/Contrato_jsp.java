@@ -66,9 +66,9 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -88,35 +88,35 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\" type=\"time\" timeStyle=\"short\" pattern=\"yyyy-mm-dd\" var=\"hoy\"/>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("<script>\n");
-      out.write("\n");
-      out.write("\tfunction gestorAdmin(flaggestor){\t\t\n");
-      out.write("\t\tif(document.contrato.flaggestor.checked){\n");
-      out.write("\t\t\tdocument.contrato.gestorfinanciero.value=\"true\";\n");
-      out.write("\t\t\tdocument.contrato.gestor.disabled=false;\n");
-      out.write("\t\t\tdocument.contrato.cedulaGestor.disabled=false;\n");
-      out.write("\t\t\tdocument.contrato.cedulaGestorDe.disabled=false;\n");
-      out.write("\t\t\tdocument.contrato.realizador.disabled=false;\n");
-      out.write("\t\t\tdocument.contrato.cedulaRealizador.disabled=false;\n");
-      out.write("\t\t\tdocument.contrato.cedulaRealizadorDe.disabled=false;\t\t\t\t\t\n");
-      out.write("\t\t}\n");
-      out.write("\t\telse{\n");
-      out.write("\t\t\tdocument.contrato.gestorfinanciero.value=\"false\";\n");
-      out.write("\t\t\tdocument.contrato.gestor.disabled=true;\n");
-      out.write("\t\t\tdocument.contrato.gestor.value=\"\";\n");
-      out.write("\t\t\tdocument.contrato.cedulaGestor.disabled=true;\n");
-      out.write("\t\t\tdocument.contrato.cedulaGestor.value=\"\";\n");
-      out.write("\t\t\tdocument.contrato.cedulaGestorDe.disabled=true;\n");
-      out.write("\t\t\tdocument.contrato.cedulaGestorDe.value=\"\";\n");
-      out.write("\t\t\tdocument.contrato.realizador.disabled=true;\n");
-      out.write("\t\t\tdocument.contrato.realizador.value=\"\";\n");
-      out.write("\t\t\tdocument.contrato.cedulaRealizador.disabled=true;\n");
-      out.write("\t\t\tdocument.contrato.cedulaRealizador.value=\"\";\n");
-      out.write("\t\t\tdocument.contrato.cedulaRealizadorDe.disabled=true;\n");
-      out.write("\t\t\tdocument.contrato.cedulaRealizadorDe.value=\"\";\n");
-      out.write("\t\t}\n");
-      out.write("\t\t\t\t\t\t\t\n");
+      out.write("\r\n");
+      out.write("<script>\r\n");
+      out.write("\r\n");
+      out.write("\tfunction gestorAdmin(flaggestor){\t\t\r\n");
+      out.write("\t\tif(document.contrato.flaggestor.checked){\r\n");
+      out.write("\t\t\tdocument.contrato.gestorfinanciero.value=\"true\";\r\n");
+      out.write("\t\t\tdocument.contrato.gestor.disabled=false;\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaGestor.disabled=false;\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaGestorDe.disabled=false;\r\n");
+      out.write("\t\t\tdocument.contrato.realizador.disabled=false;\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaRealizador.disabled=false;\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaRealizadorDe.disabled=false;\t\t\t\t\t\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\telse{\r\n");
+      out.write("\t\t\tdocument.contrato.gestorfinanciero.value=\"false\";\r\n");
+      out.write("\t\t\tdocument.contrato.gestor.disabled=true;\r\n");
+      out.write("\t\t\tdocument.contrato.gestor.value=\"\";\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaGestor.disabled=true;\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaGestor.value=\"\";\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaGestorDe.disabled=true;\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaGestorDe.value=\"\";\r\n");
+      out.write("\t\t\tdocument.contrato.realizador.disabled=true;\r\n");
+      out.write("\t\t\tdocument.contrato.realizador.value=\"\";\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaRealizador.disabled=true;\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaRealizador.value=\"\";\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaRealizadorDe.disabled=true;\r\n");
+      out.write("\t\t\tdocument.contrato.cedulaRealizadorDe.value=\"\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\t\t\t\t\t\t\r\n");
       out.write("\t}\r\n");
       out.write("\tfunction direc(nombre){\r\n");
       out.write("\t\tdocument.getElementById('nombre').innerHTML=nombre;\r\n");
@@ -124,50 +124,50 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\tfunction ver(accion){\r\n");
       out.write("\t\tdocument.comandos.accion.value=accion;\r\n");
       out.write("\t\tdocument.comandos.submit();\r\n");
-      out.write("\t}\n");
-      out.write("\t\n");
-      out.write("\tfunction guardar(){\t\t\n");
-      out.write("\t\tif(validar()){\t\t\t\n");
+      out.write("\t}\r\n");
+      out.write("\t\r\n");
+      out.write("\tfunction guardar(){\t\t\r\n");
+      out.write("\t\tif(validar()){\t\t\t\r\n");
       out.write("\t\t\tdocument.estudiantes.action=\"");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("\";\n");
-      out.write("\t\t\tdocument.estudiantes.submit();\n");
-      out.write("\t\t}\t\t\n");
-      out.write("\t}\n");
-      out.write("\tfunction validar(){\n");
-      out.write("\t\tmensaje=\"\";\n");
-      out.write("\t\tif(document.estudiantes.nombre.value==\"\"){\n");
-      out.write("\t\t\tmensaje=mensaje+\"\\n-) Ingrese el Nombre del investigador\";\n");
-      out.write("\t\t}\t\t\n");
-      out.write("\t\tif(document.estudiantes.apellido.value==\"\"){\n");
-      out.write("\t\t\tmensaje=mensaje+\"\\n-) Ingrese el apellido del investigador\";\n");
-      out.write("\t\t}\t\n");
-      out.write("\t\tif(document.estudiantes.codigo.value==\"\"){\n");
-      out.write("\t\t\tmensaje=mensaje+\"\\n-) Ingrese el código del investigador\";\n");
-      out.write("\t\t}\t\t\n");
-      out.write("\t\tif(document.estudiantes.documento.value==\"\"){\n");
-      out.write("\t\t\tmensaje=mensaje+\"\\n-) Ingrese el documento del investigador\";\n");
-      out.write("\t\t}\n");
-      out.write("\t\tif(document.estudiantes.proyectocurricular.selectedIndex==0){\n");
-      out.write("\t\t\tmensaje=mensaje+\"\\n-) Seleccione un proyecto de investigación.\";\n");
-      out.write("\t\t}\n");
-      out.write("\t\tif(mensaje!=\"\"){\n");
-      out.write("\t\t\tmensaje=\"Los siguientes campos son obligatorios: \"+mensaje;\n");
-      out.write("\t\t\talert (mensaje);\n");
-      out.write("\t\t}\t\t\t\t\n");
-      out.write("\t\telse\n");
-      out.write("\t\t\treturn true;\n");
-      out.write("\t\treturn false;\t\t\n");
-      out.write("\t}\n");
-      out.write("\tfunction enviar(id,accion,cont){\n");
-      out.write("\t\tdocument.estudiantes.accion.value=accion;\n");
-      out.write("\t\tdocument.estudiantes.id.value=id;\n");
-      out.write("\t\tdocument.estudiantes.submit();\n");
-      out.write("\t}\n");
+      out.write("\";\r\n");
+      out.write("\t\t\tdocument.estudiantes.submit();\r\n");
+      out.write("\t\t}\t\t\r\n");
+      out.write("\t}\r\n");
+      out.write("\tfunction validar(){\r\n");
+      out.write("\t\tmensaje=\"\";\r\n");
+      out.write("\t\tif(document.estudiantes.nombre.value==\"\"){\r\n");
+      out.write("\t\t\tmensaje=mensaje+\"\\n-) Ingrese el Nombre del investigador\";\r\n");
+      out.write("\t\t}\t\t\r\n");
+      out.write("\t\tif(document.estudiantes.apellido.value==\"\"){\r\n");
+      out.write("\t\t\tmensaje=mensaje+\"\\n-) Ingrese el apellido del investigador\";\r\n");
+      out.write("\t\t}\t\r\n");
+      out.write("\t\tif(document.estudiantes.codigo.value==\"\"){\r\n");
+      out.write("\t\t\tmensaje=mensaje+\"\\n-) Ingrese el código del investigador\";\r\n");
+      out.write("\t\t}\t\t\r\n");
+      out.write("\t\tif(document.estudiantes.documento.value==\"\"){\r\n");
+      out.write("\t\t\tmensaje=mensaje+\"\\n-) Ingrese el documento del investigador\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\tif(document.estudiantes.proyectocurricular.selectedIndex==0){\r\n");
+      out.write("\t\t\tmensaje=mensaje+\"\\n-) Seleccione un proyecto de investigación.\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\tif(mensaje!=\"\"){\r\n");
+      out.write("\t\t\tmensaje=\"Los siguientes campos son obligatorios: \"+mensaje;\r\n");
+      out.write("\t\t\talert (mensaje);\r\n");
+      out.write("\t\t}\t\t\t\t\r\n");
+      out.write("\t\telse\r\n");
+      out.write("\t\t\treturn true;\r\n");
+      out.write("\t\treturn false;\t\t\r\n");
+      out.write("\t}\r\n");
+      out.write("\tfunction enviar(id,accion,cont){\r\n");
+      out.write("\t\tdocument.estudiantes.accion.value=accion;\r\n");
+      out.write("\t\tdocument.estudiantes.id.value=id;\r\n");
+      out.write("\t\tdocument.estudiantes.submit();\r\n");
+      out.write("\t}\r\n");
       out.write("\t\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
@@ -184,6 +184,7 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -288,9 +289,9 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t<input type=\"hidden\" name=\"id\" value='");
         if (_jspx_meth_c_005fout_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'/>\n");
+        out.write("'/>\r\n");
         out.write("\t<input type=\"hidden\" name=\"gestorfinanciero\" value=\"false\"/>\r\n");
-        out.write("\t<table class=\"tablas\" align=\"center\" width=\"60%\">\t\n");
+        out.write("\t<table class=\"tablas\" align=\"center\" width=\"60%\">\t\r\n");
         out.write("\t<CAPTION>Creación contrato de investigación</CAPTION>\r\n");
         out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Nombre de Proyecto</b></td>\r\n");
@@ -302,21 +303,21 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("</td>\r\n");
         out.write("\t\t</tr>\r\n");
         out.write("\t\t<tr>\r\n");
-        out.write("\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Grupo de Investigación</b></td>\n");
+        out.write("\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Grupo de Investigación</b></td>\r\n");
         out.write("\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Tiene Gestor Financiero</b></td>\r\n");
         out.write("\t\t</tr>\r\n");
         out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td colspan=\"2\">");
         if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td colspan=\"2\"><input type=\"checkbox\" name=\"flaggestor\" onchange=\"gestorAdmin(this)\"></td>\t\t\t\r\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Nombre Director Proyecto</b></td>\n");
         out.write("\t\t</tr>\r\n");
         out.write("\t\t<tr>\r\n");
-        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Director del Proyecto de Grado/Investigador Principal</b></td>\n");
+        out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Nombre Director Proyecto</b></td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Director del Proyecto de Grado/Investigador Principal</b></td>\r\n");
         out.write("\t\t\t<td colspan=\"3\"><input type=\"text\" name=\"director\" size=\"15\" style=\"width: 45%\" value='");
         if (_jspx_meth_c_005fout_005f4(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
@@ -331,70 +332,70 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (_jspx_meth_c_005fout_005f6(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'></td>\r\n");
-        out.write("\t\t</tr>\t\t\t\n");
-        out.write("\t\t\t<tr>\n");
-        out.write("\t\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Tutor del proyecto (Solo Si es convocatoria #12)</b></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t\t<tr>\n");
-        out.write("\t\t\t\t<td width=\"200px\" class=\"renglones\"><b>Tutor del proyecto de investigación</b></td>\n");
+        out.write("\t\t</tr>\t\t\t\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Tutor del proyecto (Solo Si es convocatoria #12)</b></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td width=\"200px\" class=\"renglones\"><b>Tutor del proyecto de investigación</b></td>\r\n");
         out.write("\t\t\t\t<td colspan=\"3\"><input type=\"text\" name=\"tutor\" size=\"15\" style=\"width: 45%\" value='");
         if (_jspx_meth_c_005fout_005f7(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t\t<tr>\n");
-        out.write("\t\t\t\t<td width=\"200px\" class=\"renglones\"><b>Cedula Tutor del Proyecto</b></td>\n");
+        out.write("'></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td width=\"200px\" class=\"renglones\"><b>Cedula Tutor del Proyecto</b></td>\r\n");
         out.write("\t\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"cedulaTutor\" size=\"15\" style=\"width: 45%\" value='");
         if (_jspx_meth_c_005fout_005f8(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'> de <input type=\"text\" name=\"cedulaTutorDe\" size=\"15\" style=\"width: 45%\" value='");
         if (_jspx_meth_c_005fout_005f9(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
-        out.write("\t\t\t</tr>\t\t\t\t\t\t\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Realizador de Proyecto</b></td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Nombre del Realizador del Proyecto</b></td>\n");
+        out.write("'></td>\r\n");
+        out.write("\t\t\t</tr>\t\t\t\t\t\t\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Realizador de Proyecto</b></td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Nombre del Realizador del Proyecto</b></td>\r\n");
         out.write("\t\t\t<td colspan=\"3\"><input type=\"text\" name=\"realizador\" size=\"15\" style=\"width: 45%\" disabled value='");
         if (_jspx_meth_c_005fout_005f10(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' disabled></td>\n");
-        out.write("\t\t</tr>\t\t\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Cédula del Realizador</b></td>\n");
+        out.write("' disabled></td>\r\n");
+        out.write("\t\t</tr>\t\t\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Cédula del Realizador</b></td>\r\n");
         out.write("\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"cedulaRealizador\" size=\"15\" style=\"width: 45%\" disabled value='");
         if (_jspx_meth_c_005fout_005f11(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'> de <input type=\"text\" name=\"cedulaRealizadorDe\" size=\"15\" style=\"width: 45%\" disabled value='");
         if (_jspx_meth_c_005fout_005f12(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Nombre Gestor Administrativo</b></td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Gestor Financiero del Proyecto</b></td>\n");
+        out.write("'></td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Nombre Gestor Administrativo</b></td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Gestor Financiero del Proyecto</b></td>\r\n");
         out.write("\t\t\t<td colspan=\"3\"><input type=\"text\" name=\"gestor\" size=\"15\" style=\"width: 45%\" disabled value='");
         if (_jspx_meth_c_005fout_005f13(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' disabled></td>\n");
-        out.write("\t\t</tr>\t\t\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Cédula del Gestor Administrativo</b></td>\n");
+        out.write("' disabled></td>\r\n");
+        out.write("\t\t</tr>\t\t\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td width=\"200px\" class=\"renglones\"><b>Cédula del Gestor Administrativo</b></td>\r\n");
         out.write("\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"cedulaGestor\" size=\"15\" style=\"width: 45%\" disabled value='");
         if (_jspx_meth_c_005fout_005f14(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'> de <input type=\"text\" name=\"cedulaGestorDe\" size=\"15\" style=\"width: 45%\" disabled value='");
         if (_jspx_meth_c_005fout_005f15(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Datos generales del proyecto</b></td>\n");
+        out.write("'></td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b>Datos generales del proyecto</b></td>\r\n");
         out.write("\t\t</tr>\r\n");
         out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td class=\"renglones\"><b>Duración del Proyecto</b></td>\r\n");
@@ -435,58 +436,58 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\"></td>\r\n");
         out.write("\t\t</tr>\r\n");
         out.write("\t</table>\r\n");
-        out.write("\t</form>\n");
-        out.write("\t<table class=\"tablas\" align=\"center\" width=\"60%\">\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<td colspan=\"4\" align=\"center\" >\n");
+        out.write("\t</form>\r\n");
+        out.write("\t<table class=\"tablas\" align=\"center\" width=\"60%\">\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<td colspan=\"4\" align=\"center\" >\r\n");
         out.write("\t\t\t<form method=\"post\" action='");
         if (_jspx_meth_c_005furl_005f5(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' name=\"estudiantes\">\n");
-        out.write("\t\t\t<input type=\"hidden\" name=\"accion\" value=\"19\">\n");
-        out.write("\t\t\t<input type=\"hidden\" name=\"id\" value=\"\">\n");
-        out.write("\t\t\t<input type=\"hidden\" name=\"papel\" value=\"Coinvestigador\">\n");
-        out.write("\t\t\t<input type=\"hidden\" name=\"desde\" value=\"contrato\">\n");
-        out.write("\t\t\t\t<table class=\"tablas\" width=\"100%\">\t\t\t\t\n");
-        out.write("\t\t\t\t\t<caption>Estudiantes Realizadores/Asociados</caption>\t\t\t\n");
-        out.write("\t\t\t\t\t<tr>\n");
-        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Nombre</b></td>\n");
-        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Apellido</b></td>\n");
-        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Código</b></td>\n");
-        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Cedula</b></td>\n");
-        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Proyecto Curricular</b></td>\t\t\t\t\t\t\n");
-        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Acción</b></td>\n");
-        out.write("\t\t\t\t\t</tr>\n");
+        out.write("' name=\"estudiantes\">\r\n");
+        out.write("\t\t\t<input type=\"hidden\" name=\"accion\" value=\"19\">\r\n");
+        out.write("\t\t\t<input type=\"hidden\" name=\"id\" value=\"\">\r\n");
+        out.write("\t\t\t<input type=\"hidden\" name=\"papel\" value=\"Coinvestigador\">\r\n");
+        out.write("\t\t\t<input type=\"hidden\" name=\"desde\" value=\"contrato\">\r\n");
+        out.write("\t\t\t\t<table class=\"tablas\" width=\"100%\">\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t<caption>Estudiantes Realizadores/Asociados</caption>\t\t\t\r\n");
+        out.write("\t\t\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Nombre</b></td>\r\n");
+        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Apellido</b></td>\r\n");
+        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Código</b></td>\r\n");
+        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Cedula</b></td>\r\n");
+        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Proyecto Curricular</b></td>\t\t\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t\t<td class=\"renglones\" align=\"center\"><b>Acción</b></td>\r\n");
+        out.write("\t\t\t\t\t</tr>\r\n");
         out.write("\t\t\t\t\t");
         if (_jspx_meth_c_005fif_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("\n");
-        out.write("\t\t\t\t\t<tr>\n");
-        out.write("\t\t\t\t\t\t<td><input type=\"text\" name=\"nombre\"></td>\n");
-        out.write("\t\t\t\t\t\t<td><input type=\"text\" name=\"apellido\"></td>\n");
-        out.write("\t\t\t\t\t\t<td><input type=\"text\" name=\"codigo\"></td>\n");
-        out.write("\t\t\t\t\t\t<td><input type=\"text\" name=\"documento\"></td>\n");
-        out.write("\t\t\t\t\t\t<td>\n");
-        out.write("\t\t\t\t\t\t<select name=\"proyectocurricular\">\t\t\t\t\t\t\t\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t\t\t<td><input type=\"text\" name=\"nombre\"></td>\r\n");
+        out.write("\t\t\t\t\t\t<td><input type=\"text\" name=\"apellido\"></td>\r\n");
+        out.write("\t\t\t\t\t\t<td><input type=\"text\" name=\"codigo\"></td>\r\n");
+        out.write("\t\t\t\t\t\t<td><input type=\"text\" name=\"documento\"></td>\r\n");
+        out.write("\t\t\t\t\t\t<td>\r\n");
+        out.write("\t\t\t\t\t\t<select name=\"proyectocurricular\">\t\t\t\t\t\t\t\r\n");
         out.write("\t\t\t\t\t\t\t");
         if (_jspx_meth_c_005fforEach_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("\n");
-        out.write("\t\t\t\t\t\t</select>\t\t\t\t\t\t\t\t\t\n");
-        out.write("\t\t\t\t\t\t</td>\n");
-        out.write("\t\t\t\t\t</tr>\t\n");
-        out.write("\t\t\t\t\t<tr>\n");
-        out.write("\t\t\t\t\t\t<td colspan=\"5\" align=\"center\">\n");
+        out.write("\r\n");
+        out.write("\t\t\t\t\t\t</select>\t\t\t\t\t\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t\t</tr>\t\r\n");
+        out.write("\t\t\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t\t\t<td colspan=\"5\" align=\"center\">\r\n");
         out.write("\t\t\t\t\t\t\t<img src='");
         if (_jspx_meth_c_005furl_005f7(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' onclick='guardar()'>\t\t\t\t\t\t\t\n");
-        out.write("\t\t\t\t\t\t</td>\n");
-        out.write("\t\t\t\t\t</tr>\n");
-        out.write("\t\t\t\t</table>\n");
-        out.write("\t\t\t</form>\t\t\n");
-        out.write("\t\t\t</td>\n");
-        out.write("\t\t</tr>\t\n");
+        out.write("' onclick='guardar()'>\t\t\t\t\t\t\t\r\n");
+        out.write("\t\t\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t\t</tr>\r\n");
+        out.write("\t\t\t\t</table>\r\n");
+        out.write("\t\t\t</form>\t\t\r\n");
+        out.write("\t\t\t</td>\r\n");
+        out.write("\t\t</tr>\t\r\n");
         out.write("\t</table>\r\n");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -970,11 +971,11 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t\t");
         if (_jspx_meth_c_005fforEach_005f0(_jspx_th_c_005fif_005f1, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1010,36 +1011,36 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
-          out.write("\t\t\t\t\t\t\t<tr>\t\t\t\t\t\n");
+          out.write("\r\n");
+          out.write("\t\t\t\t\t\t\t<tr>\t\t\t\t\t\r\n");
           out.write("\t\t\t\t\t\t\t\t<td width=\"100px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f20(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t\t\t\t\t\t<td align=\"center\">");
           if (_jspx_meth_c_005fout_005f21(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t\t\t\t\t\t<td width=\"100px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f22(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t\t\t\t\t\t<td width=\"100px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f23(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t\t\t\t\t\t<td width=\"100px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f24(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t\t\t\t\t\t<td width=\"5px\" align=\"center\"><img src='");
           if (_jspx_meth_c_005furl_005f6(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("' onclick='enviar(");
           if (_jspx_meth_c_005fout_005f25(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(",20)'></td>\n");
-          out.write("\t\t\t\t\t\t\t</tr>\n");
+          out.write(",20)'></td>\r\n");
+          out.write("\t\t\t\t\t\t\t</tr>\r\n");
           out.write("\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1214,7 +1215,7 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f1 = _jspx_th_c_005fforEach_005f1.doStartTag();
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t\t\t\t\t<option value=\"");
           if (_jspx_meth_c_005fout_005f26(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
@@ -1222,7 +1223,7 @@ public final class Contrato_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write('>');
           if (_jspx_meth_c_005fout_005f27(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
-          out.write("</option>\t\t\t\t\t\t\n");
+          out.write("</option>\t\t\t\t\t\t\r\n");
           out.write("\t\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

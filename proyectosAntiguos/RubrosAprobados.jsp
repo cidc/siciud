@@ -95,7 +95,7 @@
 </form>
 <br>
 
-<form action='<c:url value="/proyectosAntiguos/Llenar6.jsp"/>' name="listadoRubros">
+<form action='<c:url value="/proyectosAntiguos/GestProyectos.x"/>' name="listadoRubros">
 	<input type="hidden" name="validar" value="28">
 	<table align="center" class="tablas">
 	<caption>Lista de rubros aprobados</caption>

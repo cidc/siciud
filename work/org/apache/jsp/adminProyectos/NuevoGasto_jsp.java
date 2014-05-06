@@ -63,9 +63,9 @@ public final class NuevoGasto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -174,14 +174,14 @@ public final class NuevoGasto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\talert(\"Los Siguientes campos deben ser corregidos:\\n\"+mensaje);\r\n");
       out.write("\t\t}\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
-      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\t\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
+      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\t\r\n");
       out.write("\r\n");
       out.write("\t<form name=\"gastos\" method=\"post\" action='");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
         return;
-      out.write("'>\n");
+      out.write("'>\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
@@ -266,11 +266,11 @@ public final class NuevoGasto_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t</tr>\r\n");
       out.write("\t\t</table>\r\n");
       out.write("\t</form>\r\n");
-      out.write("</body>\n");
+      out.write("</body>\r\n");
       out.write("\r\n");
       out.write("<script type=\"text/javascript\">\r\n");
       out.write("\tdocument.gastos.saldo.value=eliminaFormatoMoneda(document.gastos.saldo.value);\r\n");
-      out.write("\tdocument.gastos.ejecutado.value=eliminaFormatoMoneda(document.gastos.ejecutado.value);\n");
+      out.write("\tdocument.gastos.ejecutado.value=eliminaFormatoMoneda(document.gastos.ejecutado.value);\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
         return;
@@ -283,6 +283,7 @@ public final class NuevoGasto_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -443,19 +444,19 @@ public final class NuevoGasto_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t<table>\n");
-        out.write("\t\t\t<tr>\n");
+        out.write("\r\n");
+        out.write("\t\t<table>\r\n");
+        out.write("\t\t\t<tr>\r\n");
         out.write("\t\t\t\t<td><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f6(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' onclick=\"comando(12)\"></td>\t\t\t\t\n");
+        out.write("' onclick=\"comando(12)\"></td>\t\t\t\t\r\n");
         out.write("\t\t\t\t<td><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f7(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("' onclick=\"comando(10)\"></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t</table>\n");
+        out.write("' onclick=\"comando(10)\"></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -593,7 +594,7 @@ public final class NuevoGasto_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005furl_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f8.setParent(null);
     // /adminProyectos/NuevoGasto.jsp(160,45) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f8.setValue("/comp/img/RegistroGasto.gif");
+    _jspx_th_c_005furl_005f8.setValue("/comp/img/RegistraGasto.gif");
     int _jspx_eval_c_005furl_005f8 = _jspx_th_c_005furl_005f8.doStartTag();
     if (_jspx_th_c_005furl_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f8);
@@ -622,7 +623,7 @@ public final class NuevoGasto_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\tdocument.gastos.tipoGasto.selectedIndex=2;\r\n");
         out.write("\t\tdocument.gastos.tipoGasto[1].disabled=true;\r\n");
         out.write("\t\tdeshabilitar(document.gastos.tipoGasto,1);\r\n");
-        out.write("\t}\n");
+        out.write("\t}\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

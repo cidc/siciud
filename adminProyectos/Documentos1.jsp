@@ -16,7 +16,7 @@
 	}
 
 	function cambioTipo(combo){
-		if(combo.value==1||combo.value==4||combo.value==5){
+		if(combo.value==1||combo.value==4||combo.value==5||combo.value==6 ||combo.value==7){
 			document.getElementById("st11").style.display="none";
 			document.getElementById("st12").style.display="none";
 			document.getElementById("st21").style.display="";
@@ -51,6 +51,12 @@
 		}
 		if(document.frmCargaDoc.tipo.value=="5"){
 			document.frmCargaDoc.accion.value="5";
+		}
+		if(document.frmCargaDoc.tipo.value=="6"){
+			document.frmCargaDoc.accion.value="6";
+		}
+		if(document.frmCargaDoc.tipo.value=="7"){
+			document.frmCargaDoc.accion.value="7";
 		}
 		if(document.frmCargaDoc.fechaDoc.value=="")
 			msg=msg+"-) Fecha del Documento\n";		
@@ -90,7 +96,7 @@
 </table>
 <br>
 	<table width="95%" class="tablas" align="center">
-		<CAPTION>Datos generales del proyecto</CAPTION>
+		<CAPTION>Datos generales del proyectoU</CAPTION>
 		<tr>
 			<th colspan="5"><b>Nombre de Proyecto</b></th>
 		</tr>
@@ -114,7 +120,7 @@
 		</tr>
 	</table>
 	<table align="center" width="95%" class="tablas">
-		<CAPTION>Documentos</CAPTION>
+		<CAPTION>Documentoss</CAPTION>
 		  <tr>
 		    <th>&nbsp;</th>
 		    <th width="75px">Fecha Doc</th>
@@ -167,7 +173,7 @@
 			
 		  <c:forEach begin="0" items="${sessionScope.listaDocs}" var="lista" varStatus="st">
 		  <tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>		  	
-			  	<c:if test='${lista.tipo!=2 && lista.tipo!=3 && lista.tipo!=4 && lista.tipo!=5}'>
+			  	<c:if test='${lista.tipo!=2 && lista.tipo!=3 && lista.tipo!=4 && lista.tipo!=5 && lista.tipo!=6 && lista.tipo!=7}'>
 				  <td><a href='<c:url value="/Documentos/Proyectos/Otros/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 				 </c:if>
 				 <c:if test='${lista.tipo==2||lista.tipo==3}'>
@@ -175,6 +181,12 @@
 				 </c:if>
 		   		<c:if test='${lista.tipo==4||lista.tipo==5}'>
 				  <td><a href='<c:url value="/Documentos/Proyectos/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+				 </c:if>
+				 <c:if test='${lista.tipo==6}'>
+				  <td><a href='<c:url value="/Documentos/Proyectos/Resoluciones/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+				 </c:if>
+				 <c:if test='${lista.tipo==7}'>
+				  <td><a href='<c:url value="/Documentos/Proyectos/LegalizacionTiempos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 				 </c:if>
 			 
 			  <td align="center"><c:out value="${lista.fechaDoc}" /></td>
@@ -203,7 +215,9 @@
 									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>
 									<option value="4" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Finalización</option>
-									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>																		
+									<option value="5" <c:if test="${sessionScope.proyecto.fecActaFin!=null}">disabled</c:if>>Acta Cierre/Cancelación</option>	
+									<option value="6">Resoluciones de Avance</option>
+									<option value="7">Legalizacion Tiempos</option>																		
 								</select>								
 							</td>
 							<th><b>Fecha de Entrega</b></th>

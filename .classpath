@@ -37,6 +37,8 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/httpmime-4.2.5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/imap.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/itext-1.3.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/itext-xtra-5.3.5.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/itextpdf-5.3.5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jaxen-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jdom-1.0.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jdom.jar"/>
@@ -59,10 +61,5 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/xom-1.1.jar"/>
 	<classpathentry kind="src" path="WEB-INF/src"/>
 	<classpathentry kind="src" output="work" path="work"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/itextpdf-5.3.5.jar"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/itext-xtra-5.3.5.jar"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bcpkix-jdk15on-147.jar"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bcprov-jdk15on-147.jar"/>
-	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/signer.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

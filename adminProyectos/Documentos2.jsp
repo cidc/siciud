@@ -90,7 +90,7 @@
 </table>
 <br>
 	<table width="95%" class="tablas" align="center">
-		<CAPTION>Datos generales del proyecto</CAPTION>
+		<CAPTION>Datos generales del proyectoI</CAPTION>
 		<tr>
 			<th colspan="5"><b>Nombre de Proyecto</b></th>
 		</tr>

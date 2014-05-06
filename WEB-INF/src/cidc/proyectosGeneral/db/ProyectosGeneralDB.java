@@ -373,7 +373,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			cerrar(rs);
 			cerrar(ps);
 		}
-		System.out.println("Valor del proyecto de investigación"+g.moneda(cidc.toString()));
+		//System.out.println("Valor del proyecto de investigación"+g.moneda(cidc.toString()));
 		return g.moneda(cidc.toString());
 	}
 	
@@ -1097,6 +1097,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		 Globales global=new Globales();
 		 int i=1;
 		 if(proyecto.getClaseProyecto()==1){
+			 
 			 if(proyecto.getFecActaInicio()!=null && proyecto.getDuracion()!=null)
 					proyecto.setFecEstimadoFin(global.sumarMesesFecha(proyecto.getFecActaInicio(),Integer.parseInt(proyecto.getDuracion())));
 		 }else{

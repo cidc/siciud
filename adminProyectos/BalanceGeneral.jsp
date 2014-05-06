@@ -82,7 +82,7 @@
 		<input type="hidden" name="idRub" value="0">
 		<input type="hidden" name="idProyecto" value='<c:out value="${sessionScope.proyecto.id}"/>'/>
 		<table width="95%" align="center" class="tablas">
-			<caption>Ficha Balance Rubros</caption>
+			<caption>Ficha Balance Rubross</caption>
 			<tr>
 				<td align="center" class="renglones"><b>Rubro</b></td>
 				<td align="center" class="renglones" width="75px"><b>Aprobado</b></td>

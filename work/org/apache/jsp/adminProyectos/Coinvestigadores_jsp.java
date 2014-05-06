@@ -66,52 +66,52 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<script type=\"text/javascript\" language=\"javascript\" src='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<link rel=\"stylesheet\" href='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("' type=\"text/css\" media=\"screen\" />\n");
+      out.write("' type=\"text/css\" media=\"screen\" />\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
-      out.write("' title='win2k-cold-1' />\n");
+      out.write("' title='win2k-cold-1' />\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f4(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
         return;
       out.write("'></script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("\tvar nav4=window.Event ? true : false;\n");
-      out.write("\tfunction numeros(eve){\n");
-      out.write("\t\tvar key=nav4?eve.which :eve.keyCode;\n");
-      out.write("\t\treturn(key<=13 || (key>=48 && key<=57));\n");
+      out.write("\tvar nav4=window.Event ? true : false;\r\n");
+      out.write("\tfunction numeros(eve){\r\n");
+      out.write("\t\tvar key=nav4?eve.which :eve.keyCode;\r\n");
+      out.write("\t\treturn(key<=13 || (key>=48 && key<=57));\r\n");
       out.write("\t}\r\n");
       out.write("\tfunction enviar(id,accion,cont){\r\n");
-      out.write("\t\tdocument.frmCoinvest.accion.value=accion;\n");
-      out.write("\t\tdocument.frmCoinvest.fechaInicio.value=document.getElementById(\"f_date_a\"+cont).value;\n");
+      out.write("\t\tdocument.frmCoinvest.accion.value=accion;\r\n");
+      out.write("\t\tdocument.frmCoinvest.fechaInicio.value=document.getElementById(\"f_date_a\"+cont).value;\r\n");
       out.write("\t\tdocument.frmCoinvest.fechaFin.value=document.getElementById(\"f_date_b\"+cont).value;\r\n");
-      out.write("\t\tdocument.frmCoinvest.id.value=id;\n");
+      out.write("\t\tdocument.frmCoinvest.id.value=id;\r\n");
       out.write("\t\tdocument.frmCoinvest.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
@@ -128,6 +128,7 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -290,86 +291,86 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
       do {
         out.write("\r\n");
         out.write("<br>\r\n");
-        out.write("\t<table cellpadding=\"0\" cellspacing=\"0\">\n");
-        out.write("\t\t<tr>\n");
+        out.write("\t<table cellpadding=\"0\" cellspacing=\"0\">\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f6(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f7(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f8(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f9(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f10(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f11(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f12(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f13(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t\t\t\t\t<td><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f14(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
-        out.write("\t\t</tr>\n");
+        out.write("'></td>\r\n");
+        out.write("\t\t</tr>\r\n");
         out.write("\t</table>\r\n");
-        out.write("<br>\n");
-        out.write("\t\n");
-        out.write("\t<table width=\"95%\" class=\"tablas\" align=\"center\">\n");
-        out.write("\t\t<CAPTION>Datos generales del proyecto</CAPTION>\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<th colspan=\"5\"><b>Nombre de Proyecto</b></th>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
+        out.write("<br>\r\n");
+        out.write("\t\r\n");
+        out.write("\t<table width=\"95%\" class=\"tablas\" align=\"center\">\r\n");
+        out.write("\t\t<CAPTION>Datos generales del proyecto</CAPTION>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<th colspan=\"5\"><b>Nombre de Proyecto</b></th>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td colspan=\"5\">");
         if (_jspx_meth_c_005fout_005f0(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Director del Proyecto</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Código</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Fecha Aprobación</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Estimado Fin</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Total Aprobado</b></th>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
+        out.write("</td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Director del Proyecto</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Código</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Fecha Aprobación</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Estimado Fin</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Total Aprobado</b></th>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f4(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f5(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t</table>\n");
-        out.write("\t\n");
+        out.write("</td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t</table>\r\n");
+        out.write("\t\r\n");
         out.write("\t");
         if (_jspx_meth_c_005fif_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
@@ -378,67 +379,67 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
         out.write('	');
         if (_jspx_meth_c_005fif_005f3(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("\n");
-        out.write("\t\n");
+        out.write("\r\n");
+        out.write("\t\r\n");
         out.write("\t<form method=\"post\" action='");
         if (_jspx_meth_c_005furl_005f18(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'>\n");
-        out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"19\">\n");
-        out.write("\t\t<input type=\"hidden\" name=\"id\" value=\"\">\n");
-        out.write("\t\t\n");
-        out.write("\t\t<table align=\"center\" width=\"95%\" class=\"tablas\">\n");
-        out.write("\t\t<caption>Registro de nuevo investigador asociado</caption>\n");
-        out.write("\t\t\t<tr>\n");
-        out.write("\t\t\t\t<th width=\"100px\">Fecha Ingreso</th>\n");
-        out.write("\t\t\t\t<th width=\"100px\">Fecha Salida</th>\n");
-        out.write("\t\t\t\t<th width=\"100px\">Documento</th>\n");
-        out.write("\t\t\t\t<th>Nombres</th>\n");
-        out.write("\t\t\t\t<th>Apellidos</th>\n");
-        out.write("\t\t\t\t<th>Papel</th>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t\t<tr>\n");
-        out.write("\t\t\t\t<td  width=\"150px\">\n");
-        out.write("\t\t\t\t\t<input type='text' name='fechaInicio' style=\"width: 70%\" readonly='true' id='f_date_a' size='12'>\n");
-        out.write("\t\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\n");
-        out.write("\t\t\t\t\t<script type='text/javascript'>\n");
-        out.write("\t\t    \t\t\tCalendar.setup({\n");
-        out.write("\t\t\t    \t\t\tinputField     :    'f_date_a',\n");
-        out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\n");
-        out.write("\t\t\t    \t\t\tshowsTime      :    false,\n");
-        out.write("\t\t\t    \t\t\tbutton         :    'f_trigger_a',\n");
-        out.write("\t\t\t    \t\t\tsingleClick    :    false,\n");
-        out.write("\t\t\t    \t\t\tstep           :    1\n");
-        out.write("\t\t    \t\t\t})\n");
-        out.write("\t    \t\t\t</script>\n");
-        out.write("\t\t\t\t</td>\n");
-        out.write("\t\t\t\t<td  width=\"150px\">\n");
-        out.write("\t\t\t\t\t<input type='text' name='fechaFin' style=\"width: 70%\" readonly='true' id='f_date_b' size='12'>\n");
-        out.write("\t\t\t\t\t<button type='button' id='f_trigger_b'>...</button>\n");
-        out.write("\t\t\t\t\t<script type='text/javascript'>\n");
-        out.write("\t\t    \t\t\tCalendar.setup({\n");
-        out.write("\t\t\t    \t\t\tinputField     :    'f_date_b',\n");
-        out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\n");
-        out.write("\t\t\t    \t\t\tshowsTime      :    false,\n");
-        out.write("\t\t\t    \t\t\tbutton         :    'f_trigger_b',\n");
-        out.write("\t\t\t    \t\t\tsingleClick    :    false,\n");
-        out.write("\t\t\t    \t\t\tstep           :    1\n");
-        out.write("\t\t    \t\t\t})\n");
-        out.write("\t    \t\t\t</script>\n");
-        out.write("\t\t\t\t</td>\n");
-        out.write("\t\t\t\t<td width=\"100px\"><input type=\"text\" onkeypress=\"return numeros(event)\" name=\"documento\" ></td>\n");
-        out.write("\t\t\t\t<td><input type=\"text\" name=\"nombre\" ></td>\n");
-        out.write("\t\t\t\t<td><input type=\"text\" name=\"apellido\" ></td>\n");
-        out.write("\t\t\t\t<td><input type=\"text\" name=\"papel\" ></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t\t<tr>\n");
+        out.write("'>\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"19\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"id\" value=\"\">\r\n");
+        out.write("\t\t\r\n");
+        out.write("\t\t<table align=\"center\" width=\"95%\" class=\"tablas\">\r\n");
+        out.write("\t\t<caption>Registro de nuevo investigador asociado</caption>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<th width=\"100px\">Fecha Ingreso</th>\r\n");
+        out.write("\t\t\t\t<th width=\"100px\">Fecha Salida</th>\r\n");
+        out.write("\t\t\t\t<th width=\"100px\">Documento</th>\r\n");
+        out.write("\t\t\t\t<th>Nombres</th>\r\n");
+        out.write("\t\t\t\t<th>Apellidos</th>\r\n");
+        out.write("\t\t\t\t<th>Papel</th>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td  width=\"150px\">\r\n");
+        out.write("\t\t\t\t\t<input type='text' name='fechaInicio' style=\"width: 70%\" readonly='true' id='f_date_a' size='12'>\r\n");
+        out.write("\t\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\r\n");
+        out.write("\t\t\t\t\t<script type='text/javascript'>\r\n");
+        out.write("\t\t    \t\t\tCalendar.setup({\r\n");
+        out.write("\t\t\t    \t\t\tinputField     :    'f_date_a',\r\n");
+        out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
+        out.write("\t\t\t    \t\t\tshowsTime      :    false,\r\n");
+        out.write("\t\t\t    \t\t\tbutton         :    'f_trigger_a',\r\n");
+        out.write("\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+        out.write("\t\t\t    \t\t\tstep           :    1\r\n");
+        out.write("\t\t    \t\t\t})\r\n");
+        out.write("\t    \t\t\t</script>\r\n");
+        out.write("\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t<td  width=\"150px\">\r\n");
+        out.write("\t\t\t\t\t<input type='text' name='fechaFin' style=\"width: 70%\" readonly='true' id='f_date_b' size='12'>\r\n");
+        out.write("\t\t\t\t\t<button type='button' id='f_trigger_b'>...</button>\r\n");
+        out.write("\t\t\t\t\t<script type='text/javascript'>\r\n");
+        out.write("\t\t    \t\t\tCalendar.setup({\r\n");
+        out.write("\t\t\t    \t\t\tinputField     :    'f_date_b',\r\n");
+        out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
+        out.write("\t\t\t    \t\t\tshowsTime      :    false,\r\n");
+        out.write("\t\t\t    \t\t\tbutton         :    'f_trigger_b',\r\n");
+        out.write("\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+        out.write("\t\t\t    \t\t\tstep           :    1\r\n");
+        out.write("\t\t    \t\t\t})\r\n");
+        out.write("\t    \t\t\t</script>\r\n");
+        out.write("\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t<td width=\"100px\"><input type=\"text\" onkeypress=\"return numeros(event)\" name=\"documento\" ></td>\r\n");
+        out.write("\t\t\t\t<td><input type=\"text\" name=\"nombre\" ></td>\r\n");
+        out.write("\t\t\t\t<td><input type=\"text\" name=\"apellido\" ></td>\r\n");
+        out.write("\t\t\t\t<td><input type=\"text\" name=\"papel\" ></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
         out.write("\t\t\t\t<td colspan=\"6\" align=\"center\"><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f19(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t</table>\n");
-        out.write("\t</form>\n");
+        out.write("'></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table>\r\n");
+        out.write("\t</form>\r\n");
         out.write("\t\r\n");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -757,19 +758,19 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
           return true;
         out.write("' method=\"post\">\r\n");
         out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"0\">\r\n");
-        out.write("\t\t<input type=\"hidden\" name=\"id\" value=\"0\">\n");
-        out.write("\t\t<input type=\"hidden\" name=\"fechaInicio\" value=\"\">\n");
+        out.write("\t\t<input type=\"hidden\" name=\"id\" value=\"0\">\r\n");
+        out.write("\t\t<input type=\"hidden\" name=\"fechaInicio\" value=\"\">\r\n");
         out.write("\t\t<input type=\"hidden\" name=\"fechaFin\" value=\"\">\r\n");
         out.write("\t\t<table width=\"95%\" align=\"center\" class=\"tablas\">\r\n");
         out.write("\t\t\t<caption>Lista de Investigadores asociados al proyecto</caption>\r\n");
         out.write("\t\t\t<tr>\r\n");
         out.write("\t\t\t\t<th width=\"5px\">&nbsp;</th>\r\n");
         out.write("\t\t\t\t<th width=\"75px\"><b>Fecha Ingreso</b></th>\r\n");
-        out.write("\t\t\t\t<th width=\"75px\"><b>Fecha Salida</b></th>\t\t\t\t\n");
+        out.write("\t\t\t\t<th width=\"75px\"><b>Fecha Salida</b></th>\t\t\t\t\r\n");
         out.write("\t\t\t\t<th width=\"100px\"><b>Documento</b></th>\r\n");
-        out.write("\t\t\t\t<th><b>Nombre</b></th>\n");
-        out.write("\t\t\t\t<th width=\"100px\"><b>Papel</b></th>\n");
-        out.write("\t\t\t\t<th width=\"5px\">&nbsp;</th>\n");
+        out.write("\t\t\t\t<th><b>Nombre</b></th>\r\n");
+        out.write("\t\t\t\t<th width=\"100px\"><b>Papel</b></th>\r\n");
+        out.write("\t\t\t\t<th width=\"5px\">&nbsp;</th>\r\n");
         out.write("\t\t\t\t<th width=\"5px\">&nbsp;</th>\r\n");
         out.write("\t\t\t</tr>\r\n");
         out.write("\t\t\t");
@@ -777,7 +778,7 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
           return true;
         out.write("\r\n");
         out.write("\t\t</table>\r\n");
-        out.write("\t</form>\n");
+        out.write("\t</form>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -841,64 +842,64 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
           if (_jspx_meth_c_005fout_005f6(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("</td>\r\n");
-          out.write("\t\t\t\t<td  width=\"175px\" align=\"center\">\n");
+          out.write("\t\t\t\t<td  width=\"175px\" align=\"center\">\r\n");
           out.write("\t\t\t\t\t<input type='text' name='fechaEntrada' style=\"width: 75%\" readonly='true' id='f_date_a");
           if (_jspx_meth_c_005fout_005f7(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("' size='12' value='");
           if (_jspx_meth_c_005fout_005f8(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'>\n");
+          out.write("'>\r\n");
           out.write("\t\t\t\t\t<button type='button' id='f_trigger_a");
           if (_jspx_meth_c_005fout_005f9(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'>...</button>\n");
-          out.write("\t\t\t\t\t<script type='text/javascript'>\n");
-          out.write("\t\t    \t\t\tCalendar.setup({\n");
+          out.write("'>...</button>\r\n");
+          out.write("\t\t\t\t\t<script type='text/javascript'>\r\n");
+          out.write("\t\t    \t\t\tCalendar.setup({\r\n");
           out.write("\t\t\t    \t\t\tinputField     :    'f_date_a");
           if (_jspx_meth_c_005fout_005f10(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("',\n");
-          out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\n");
-          out.write("\t\t\t    \t\t\tshowsTime      :    false,\n");
+          out.write("',\r\n");
+          out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
+          out.write("\t\t\t    \t\t\tshowsTime      :    false,\r\n");
           out.write("\t\t\t    \t\t\tbutton         :    'f_trigger_a");
           if (_jspx_meth_c_005fout_005f11(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("',\n");
-          out.write("\t\t\t    \t\t\tsingleClick    :    false,\n");
-          out.write("\t\t\t    \t\t\tstep           :    1\n");
-          out.write("\t\t    \t\t\t})\n");
-          out.write("\t    \t\t\t</script>\t\t\t\t\n");
+          out.write("',\r\n");
+          out.write("\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+          out.write("\t\t\t    \t\t\tstep           :    1\r\n");
+          out.write("\t\t    \t\t\t})\r\n");
+          out.write("\t    \t\t\t</script>\t\t\t\t\r\n");
           out.write("\t\t\t\t</td>\r\n");
-          out.write("\t\t\t\t<td  width=\"175px\" align=\"center\">\n");
+          out.write("\t\t\t\t<td  width=\"175px\" align=\"center\">\r\n");
           out.write("\t\t\t\t\t<input type='text' name='fechaSalida' style=\"width: 75%\" readonly='true' id='f_date_b");
           if (_jspx_meth_c_005fout_005f12(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write("' size='12' value='");
           if (_jspx_meth_c_005fout_005f13(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'>\n");
+          out.write("'>\r\n");
           out.write("\t\t\t\t\t<button type='button' id='f_trigger_b");
           if (_jspx_meth_c_005fout_005f14(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("'>...</button>\n");
-          out.write("\t\t\t\t\t<script type='text/javascript'>\n");
-          out.write("\t\t    \t\t\tCalendar.setup({\n");
+          out.write("'>...</button>\r\n");
+          out.write("\t\t\t\t\t<script type='text/javascript'>\r\n");
+          out.write("\t\t    \t\t\tCalendar.setup({\r\n");
           out.write("\t\t\t    \t\t\tinputField     :    'f_date_b");
           if (_jspx_meth_c_005fout_005f15(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("',\n");
-          out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\n");
-          out.write("\t\t\t    \t\t\tshowsTime      :    false,\n");
+          out.write("',\r\n");
+          out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
+          out.write("\t\t\t    \t\t\tshowsTime      :    false,\r\n");
           out.write("\t\t\t    \t\t\tbutton         :    'f_trigger_b");
           if (_jspx_meth_c_005fout_005f16(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("',\n");
-          out.write("\t\t\t    \t\t\tsingleClick    :    false,\n");
-          out.write("\t\t\t    \t\t\tstep           :    1\n");
-          out.write("\t\t    \t\t\t})\n");
-          out.write("\t    \t\t\t</script>\t\t\t\t\n");
-          out.write("\t\t\t\t</td>\n");
+          out.write("',\r\n");
+          out.write("\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+          out.write("\t\t\t    \t\t\tstep           :    1\r\n");
+          out.write("\t\t    \t\t\t})\r\n");
+          out.write("\t    \t\t\t</script>\t\t\t\t\r\n");
+          out.write("\t\t\t\t</td>\r\n");
           out.write("\t\t\t\t<td width=\"100px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f17(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
@@ -906,7 +907,7 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
           out.write("\t\t\t\t<td align=\"center\">");
           if (_jspx_meth_c_005fout_005f18(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t\t<td width=\"100px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f19(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
@@ -920,7 +921,7 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
           out.write(",20,");
           if (_jspx_meth_c_005fout_005f21(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write(")'></td>\n");
+          out.write(")'></td>\r\n");
           out.write("\t\t\t\t<td width=\"5px\" align=\"center\"><img src='");
           if (_jspx_meth_c_005furl_005f17(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
@@ -931,6 +932,7 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
           if (_jspx_meth_c_005fout_005f23(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write(")'></td>\r\n");
+          out.write("\t\t\t\t\t\r\n");
           out.write("\t\t\t</tr>\r\n");
           out.write("\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
@@ -1367,13 +1369,13 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f3 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminProyectos/Coinvestigadores.jsp(125,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/Coinvestigadores.jsp(126,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${empty sessionScope.proyecto.listaCoInvestigadores}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
     if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t<h3 align=\"center\">No hay más personas registradas en este proyecto</h3>\n");
+        out.write("\r\n");
+        out.write("\t<h3 align=\"center\">No hay más personas registradas en este proyecto</h3>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f3.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1396,7 +1398,7 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f18 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f18.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f18.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminProyectos/Coinvestigadores.jsp(129,29) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/Coinvestigadores.jsp(130,29) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f18.setValue("/adminProyectos/llenarInvestigador.jsp");
     int _jspx_eval_c_005furl_005f18 = _jspx_th_c_005furl_005f18.doStartTag();
     if (_jspx_th_c_005furl_005f18.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1415,7 +1417,7 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f19 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f19.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f19.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminProyectos/Coinvestigadores.jsp(178,60) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/Coinvestigadores.jsp(179,60) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f19.setValue("/comp/img/Enviar.gif");
     int _jspx_eval_c_005furl_005f19 = _jspx_th_c_005furl_005f19.doStartTag();
     if (_jspx_th_c_005furl_005f19.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1434,7 +1436,7 @@ public final class Coinvestigadores_jsp extends org.apache.jasper.runtime.HttpJs
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f4 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f4.setParent(null);
-    // /adminProyectos/Coinvestigadores.jsp(184,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/Coinvestigadores.jsp(185,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto==null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
     if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {

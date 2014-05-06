@@ -66,9 +66,9 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -88,7 +88,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("'></script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\r\n");
       out.write("\tfunction cambioTipo(boton){\r\n");
@@ -132,9 +132,9 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t}\r\n");
       out.write("\t\tif(document.nuevo.tipo.value==\"1\" && document.nuevo.categoria.selectedIndex==0){\r\n");
       out.write("\t\t\tmensaje=mensaje+\"\\n-) Categoría Colciencias\";\r\n");
-      out.write("\t\t}\n");
-      out.write("\t\tif(document.nuevo.codAreaSNIES.value==\"0\"){\n");
-      out.write("\t\t\tmensaje=mensaje+\"\\n-) Area Snies\";\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\tif(document.nuevo.codAreaSNIES.value==\"0\"){\r\n");
+      out.write("\t\t\tmensaje=mensaje+\"\\n-) Area Snies\";\r\n");
       out.write("\t\t}\r\n");
       out.write("\t\tif(mensaje!=\"\"){\r\n");
       out.write("\t\t\tmensaje=\"Los siguientes campos son obligatorios: \"+mensaje;\r\n");
@@ -143,17 +143,35 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\telse\r\n");
       out.write("\t\t\treturn true;\r\n");
       out.write("\t\treturn false;\r\n");
-      out.write("\t}\n");
-      out.write("\n");
-      out.write("\tfunction ajaxProyecto(obj){\n");
-      out.write("\t\tdocument.frmAjaxProyecto.dato.value=obj.options[obj.selectedIndex].value;\n");
-      out.write("\t\tdocument.frmAjaxProyecto.para.value='1';\n");
-      out.write("\t \tdocument.frmAjaxProyecto.target=\"frameOculto\";\n");
-      out.write("\t\tdocument.frmAjaxProyecto.submit();\n");
       out.write("\t}\r\n");
       out.write("\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("\tfunction ajaxProyecto(obj){\r\n");
+      out.write("\t\tdocument.frmAjaxProyecto.dato.value=obj.options[obj.selectedIndex].value;\r\n");
+      out.write("\t\tdocument.frmAjaxProyecto.para.value='1';\r\n");
+      out.write("\t \tdocument.frmAjaxProyecto.target=\"frameOculto\";\r\n");
+      out.write("\t\tdocument.frmAjaxProyecto.submit();\r\n");
+      out.write("\t}\r\n");
+      out.write("\t\r\n");
+      out.write("\tfunction validarNro(e) {\r\n");
+      out.write("\t\tvar key;\r\n");
+      out.write("\t\tif(window.event){ // IE\r\n");
+      out.write("\t\t\tkey = e.keyCode;\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\telse if(e.which){ // Netscape/Firefox/Opera\r\n");
+      out.write("\t\t\t\tkey = e.which;\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\r\n");
+      out.write("\t\tif (key < 48 || key > 57)\r\n");
+      out.write("\t\t    {\r\n");
+      out.write("\t\t    if(key == 8) // Detectar . (punto) y backspace (retroceso)\r\n");
+      out.write("\t\t        { return true; }\r\n");
+      out.write("\t\t    else \r\n");
+      out.write("\t\t        { return false; }\r\n");
+      out.write("\t\t    }\r\n");
+      out.write("\t\treturn true;\r\n");
+      out.write("\t}\r\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("<br>\r\n");
       out.write("\t<form action='");
@@ -167,19 +185,19 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("'>\r\n");
       out.write("\t\t<table width=\"100%\">\r\n");
       out.write("\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t<td  align=\"left\">\n");
+      out.write("\t\t\t\t<td  align=\"left\">\r\n");
       out.write("\t\t\t\t\t<img src=\"");
       if (_jspx_meth_c_005furl_005f6(_jspx_page_context))
         return;
-      out.write("\" onclick=\"ver(6)\">\n");
+      out.write("\" onclick=\"ver(6)\">\r\n");
       out.write("\t\t\t\t\t<a href='");
       if (_jspx_meth_c_005furl_005f7(_jspx_page_context))
         return;
       out.write("'><img border=\"0\" src=\"");
       if (_jspx_meth_c_005furl_005f8(_jspx_page_context))
         return;
-      out.write("\"></a>\n");
-      out.write("\t\t\t\t</td>\n");
+      out.write("\"></a>\r\n");
+      out.write("\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t<td width=\"50%\" align=\"left\">\r\n");
       out.write("\t\t\t\t\t<a href='");
       if (_jspx_meth_c_005furl_005f9(_jspx_page_context))
@@ -217,7 +235,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<table align=\"center\" width=\"80%\">\r\n");
       out.write("\t\t\t<tr>\r\n");
       out.write("\t\t\t\t<td>\r\n");
-      out.write("\t\t\t\t\t<table class=\"tablas\" align=\"center\" width=\"100%\" border=\"1\">\n");
+      out.write("\t\t\t\t\t<table class=\"tablas\" align=\"center\" width=\"100%\" border=\"1\">\r\n");
       out.write("\t\t\t\t\t<CAPTION>Información general Grupo / Semillero investigación</CAPTION>\r\n");
       out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td class=\"renglones\"><b>Facultad:</b></td>\r\n");
@@ -256,19 +274,19 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write(">\r\n");
       out.write("\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td class=\"renglones\">Proyecto Curricular</td>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"4\" class=\"renglones\">\n");
-      out.write("\t\t\t\t\t\t\t\t<select name=\"codproyCurr\">\n");
-      out.write("\t\t\t\t\t\t\t\t\t<option value=\"0\">-----------------------------------------------------------------------</option>\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td class=\"renglones\">Proyecto Curricular</td>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"4\" class=\"renglones\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t<select name=\"codproyCurr\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<option value=\"0\">-----------------------------------------------------------------------</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t\t\t\t\t</select>\t\t\t\t\t\t\t\n");
-      out.write("\t\t\t\t\t\t\t</td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t\t\t\t</select>\t\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\r\n");
       out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b><span id=\"para\">Nombre Grupo/Semillero Investigación</span></b></td>\r\n");
@@ -279,34 +297,34 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("'></td>\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"6\">\n");
-      out.write("\t\t\t\t\t\t\t<table width=\"100%\">\n");
-      out.write("\t\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Siglas</b></td>\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"6\">\r\n");
+      out.write("\t\t\t\t\t\t\t<table width=\"100%\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Siglas</b></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td><input type=\"text\" name=\"siglas\" size=\"10\" value='");
       if (_jspx_meth_c_005fout_005f7(_jspx_page_context))
         return;
-      out.write("'></td>\n");
+      out.write("'></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Tipo</b><input type=\"hidden\" name=\"tipo\" value='");
       if (_jspx_meth_c_005fout_005f8(_jspx_page_context))
         return;
-      out.write("'></td>\n");
+      out.write("'></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td class=\"texto\"><b>Grupo</b><input type=\"radio\" name=\"boton\" ");
       if (_jspx_meth_c_005fif_005f8(_jspx_page_context))
         return;
-      out.write(" value=\"1\" onClick=\"cambioTipo(this)\"></td>\n");
+      out.write(" value=\"1\" onClick=\"cambioTipo(this)\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td class=\"texto\"><b>Semillero</b><input type=\"radio\" ");
       if (_jspx_meth_c_005fif_005f9(_jspx_page_context))
         return;
-      out.write(" name=\"boton\" value=\"2\" onClick=\"cambioTipo(this)\"></td>\n");
-      out.write("\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Código Colciencias</b></td>\n");
+      out.write(" name=\"boton\" value=\"2\" onClick=\"cambioTipo(this)\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Código Colciencias</b></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<td><input type=\"text\" name=\"codColciencias\" size=\"20\" value='");
       if (_jspx_meth_c_005fout_005f9(_jspx_page_context))
         return;
-      out.write("'></td>\n");
-      out.write("\t\t\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t\t</table>\n");
+      out.write("'></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t</table>\r\n");
       out.write("\t\t\t\t\t\t\t</td>\t\t\t\t\t\t\t\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t<tr>\r\n");
@@ -328,7 +346,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\">\r\n");
       out.write("\t\t\t\t\t\t\t\t<table width=\"100%\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Fecha de Creación</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td width=\"30%\" class=\"renglones\"><b>Fecha de Creación CIDC</b></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t<td >\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t<input type='text' name='fechaCreacion' style=\"width:80%\" class='caj' readonly='true' id='f_date_b' size='13' value='");
       if (_jspx_meth_c_005fout_005f12(_jspx_page_context))
@@ -346,75 +364,118 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t    \t\t\t})\r\n");
       out.write("\t\t\t\t\t\t    \t\t\t</script>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Estado</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Número de Acta CIDC</b></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t<td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t<select name=\"estado\" style=\"width: 100%\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\" ");
-      if (_jspx_meth_c_005fif_005f10(_jspx_page_context))
-        return;
-      out.write(">Activo</option>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\" ");
-      if (_jspx_meth_c_005fif_005f11(_jspx_page_context))
-        return;
-      out.write(">Inactivo</option>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t</select>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" name=\"numeroCIDC\" onkeypress=\"javascript:return validarNro(event)\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.numeroCIDC}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Archivo Acta CIDC</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<a href=\"/siciud/Documentos/Actas_Grupos/");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.actaCidc}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" target=\"_blank\"><img src=\"/siciud/comp/img/pdf.png\" /></a>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td width=\"30%\" class=\"renglones\"><b>Fecha de Creación Facultad</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td >\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<input type='text' name='fechaCreacionFacultad' style=\"width:80%\" class='caj' readonly='true' id='f_date_b_fac' size='13' value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.fechaCreacionFacultad}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<button type='button' id='f_trigger_b_fac'>...</button>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<script type='text/javascript'>\r\n");
+      out.write("\t\t\t\t\t\t\t\t    \t\t\tCalendar.setup({\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tinputField     :    'f_date_b_fac',\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tifFormat       :    '%d/%m/%Y',\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tshowsTime      :    true,\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tbutton         :    'f_trigger_b_fac',\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tstep           :    1\r\n");
+      out.write("\t\t\t\t\t\t\t\t    \t\t\t})\r\n");
+      out.write("\t\t\t\t\t\t\t    \t\t\t</script>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Número de acta</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" name=\"numeroFac\" onkeypress=\"javascript:return validarNro(event)\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.numeroFac}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Archivo Acta FAcultad</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<a href=\"/siciud/Documentos/Actas_Grupos/");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.actaFacultad}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("\" target=\"_blank\"><img src=\"/siciud/comp/img/pdf.png\" /></a>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t</table>\r\n");
       out.write("\t\t\t\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Categoría Colciencias</b></td>\r\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"3\">\r\n");
+      out.write("\t\t\t\t\t\t\t<td class=\"renglones\"><b>Categoría Colciencias</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t\t\t\t<select name=\"categoria\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t<option value=\"0\">--------------</option>\n");
+      out.write("\t\t\t\t\t\t\t\t\t<option value=\"0\">--------------</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<option value=\"1\" ");
-      if (_jspx_meth_c_005fif_005f12(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f10(_jspx_page_context))
         return;
       out.write(">Sin Clasificación</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<option value=\"2\" ");
-      if (_jspx_meth_c_005fif_005f13(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f11(_jspx_page_context))
         return;
       out.write(">Institucionalizado en UD</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<option value=\"6\" ");
-      if (_jspx_meth_c_005fif_005f14(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f12(_jspx_page_context))
         return;
       out.write(">Reconocido - Colciencias</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<option value=\"7\" ");
-      if (_jspx_meth_c_005fif_005f15(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f13(_jspx_page_context))
         return;
       out.write(">D - Colciencias</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<option value=\"3\" ");
-      if (_jspx_meth_c_005fif_005f16(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f14(_jspx_page_context))
         return;
       out.write(">C - Colciencias</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<option value=\"4\" ");
-      if (_jspx_meth_c_005fif_005f17(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f15(_jspx_page_context))
         return;
       out.write(">B - Colciencias</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<option value=\"5\" ");
-      if (_jspx_meth_c_005fif_005f18(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f16(_jspx_page_context))
         return;
       out.write(">A - Colciencias</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<option value=\"8\" ");
-      if (_jspx_meth_c_005fif_005f19(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f17(_jspx_page_context))
         return;
       out.write(">A1 - Colciencias</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t</select>\r\n");
       out.write("\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td class=\"renglones\">Área de Conocimiento (SNIES)</td>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"4\" class=\"renglones\">\n");
-      out.write("\t\t\t\t\t\t\t\t<select name=\"codAreaSNIES\">\n");
-      out.write("\t\t\t\t\t\t\t\t\t<option value=\"0\">-----------------------------------------------------------------------</option>\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"2\" class=\"renglones\"><b>Estado</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"2\" >\r\n");
+      out.write("\t\t\t\t\t\t\t\t<select name=\"estado\" style=\"width: 100%\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<option value=\"1\" ");
+      if (_jspx_meth_c_005fif_005f18(_jspx_page_context))
+        return;
+      out.write(">Activo</option>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<option value=\"2\" ");
+      if (_jspx_meth_c_005fif_005f19(_jspx_page_context))
+        return;
+      out.write(">Inactivo</option>\r\n");
+      out.write("\t\t\t\t\t\t\t\t</select>\r\n");
+      out.write("\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td class=\"renglones\">Área de Conocimiento (SNIES)</td>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"4\" class=\"renglones\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t<select name=\"codAreaSNIES\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<option value=\"0\">-----------------------------------------------------------------------</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f1(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t\t\t\t\t</select>\t\t\t\t\t\t\t\n");
-      out.write("\t\t\t\t\t\t\t</td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t\t\t\t</select>\t\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Correo Electrónico</b></td>\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
@@ -423,15 +484,15 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_005fout_005f15(_jspx_page_context))
         return;
       out.write("' ></td>\r\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>GrupLac</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>GrupLac</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\"><input type=\"text\" name=\"grupLac\" size=\"75\" value='");
       if (_jspx_meth_c_005fout_005f16(_jspx_page_context))
         return;
-      out.write("' ></td>\n");
+      out.write("' ></td>\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Página Web</b></td>\r\n");
@@ -441,34 +502,34 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_005fout_005f17(_jspx_page_context))
         return;
       out.write("'></td>\r\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Misión del Grupo</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Misión del Grupo</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\"><textarea name=\"mision\" style=\"width:100%\">");
       if (_jspx_meth_c_005fout_005f18(_jspx_page_context))
         return;
-      out.write("</textarea></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Visión del Grupo</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
+      out.write("</textarea></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Visión del Grupo</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\"><textarea name=\"vision\" style=\"width:100%\">");
       if (_jspx_meth_c_005fout_005f19(_jspx_page_context))
         return;
-      out.write("</textarea></td>\n");
+      out.write("</textarea></td>\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Descripción del Grupo</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Descripción del Grupo</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\"><textarea name=\"descripcion\" style=\"width:100%\">");
       if (_jspx_meth_c_005fout_005f20(_jspx_page_context))
         return;
-      out.write("</textarea></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
+      out.write("</textarea></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Observaciones</b></td>\r\n");
       out.write("\t\t\t\t\t\t</tr>\t\t\t\t\t\t\r\n");
@@ -488,18 +549,18 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\" onclick=\"guardar()\"></td>\r\n");
       out.write("\t\t\t</tr>\r\n");
       out.write("\t\t</table>\t\t\t\t\r\n");
-      out.write("\t</form>\n");
-      out.write("\t<table>\n");
-      out.write("\t\t<tr>\n");
-      out.write("\t\t\t<td style=\"display:none\"><iframe name=\"frameOculto\" id=\"frameOculto\"></iframe></td>\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t</table>\n");
+      out.write("\t</form>\r\n");
+      out.write("\t<table>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td style=\"display:none\"><iframe name=\"frameOculto\" id=\"frameOculto\"></iframe></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t</table>\r\n");
       out.write("\t<form method=\"post\" name=\"frmAjaxProyecto\" action=\"");
       if (_jspx_meth_c_005furl_005f13(_jspx_page_context))
         return;
-      out.write("\">\n");
-      out.write("\t\t\t<input type=\"hidden\" name=\"dato\" value=''>\n");
-      out.write("\t\t\t<input type=\"hidden\" name=\"para\" value=''>\n");
+      out.write("\">\r\n");
+      out.write("\t\t\t<input type=\"hidden\" name=\"dato\" value=''>\r\n");
+      out.write("\t\t\t<input type=\"hidden\" name=\"para\" value=''>\r\n");
       out.write("\t</form>\r\n");
       out.write("</body>\r\n");
       out.write("<script>\r\n");
@@ -513,6 +574,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -649,7 +711,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f5 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f5.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(75,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(93,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f5.setValue("/adminGrupos/AdminGrupos.x");
     int _jspx_eval_c_005furl_005f5 = _jspx_th_c_005furl_005f5.doStartTag();
     if (_jspx_th_c_005furl_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -668,7 +730,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(77,44) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(95,44) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.infoGrupo.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -687,7 +749,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f6 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f6.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f6.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(81,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(99,15) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f6.setValue("/comp/img/Integrantes.gif");
     int _jspx_eval_c_005furl_005f6 = _jspx_th_c_005furl_005f6.doStartTag();
     if (_jspx_th_c_005furl_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -706,7 +768,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f7 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f7.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(82,14) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(100,14) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f7.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("/inventario/InventarioGrupos.x?accion=4&idGrupo=${sessionScope.grupo.codigo}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005furl_005f7 = _jspx_th_c_005furl_005f7.doStartTag();
     if (_jspx_th_c_005furl_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -725,7 +787,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f8 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f8.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(82,131) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(100,131) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f8.setValue("/comp/img/Inventario2.gif");
     int _jspx_eval_c_005furl_005f8 = _jspx_th_c_005furl_005f8.doStartTag();
     if (_jspx_th_c_005furl_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -744,7 +806,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f9 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f9.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(85,14) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(103,14) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f9.setValue("/adminGrupos/AdminGrupos.x?accion=0");
     int _jspx_eval_c_005furl_005f9 = _jspx_th_c_005furl_005f9.doStartTag();
     if (_jspx_th_c_005furl_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -763,7 +825,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f10 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f10.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(85,90) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(103,90) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f10.setValue("/comp/img/Home.png");
     int _jspx_eval_c_005furl_005f10 = _jspx_th_c_005furl_005f10.doStartTag();
     if (_jspx_th_c_005furl_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -782,7 +844,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(92,25) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(110,25) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.infoGrupo.nombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -801,7 +863,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f11 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f11.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(96,42) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(114,42) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f11.setValue("/adminGrupos/llenar.jsp");
     int _jspx_eval_c_005furl_005f11 = _jspx_th_c_005furl_005f11.doStartTag();
     if (_jspx_th_c_005furl_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -820,7 +882,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(98,44) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(116,44) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -839,7 +901,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(99,43) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(117,43) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.idDir}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -858,7 +920,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(109,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(127,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.facultad==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -885,7 +947,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(110,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(128,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.facultad==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -912,7 +974,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f2.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(111,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(129,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.facultad==3}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
     if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -939,7 +1001,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f3 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f3.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(112,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(130,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.facultad==4}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
     if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -966,7 +1028,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f4 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f4.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(113,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(131,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f4.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.facultad==5}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f4 = _jspx_th_c_005fif_005f4.doStartTag();
     if (_jspx_eval_c_005fif_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -993,7 +1055,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f5 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f5.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(118,61) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(136,61) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.movilidad==true}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
     if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1020,7 +1082,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f6 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f6.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f6.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(119,62) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(137,62) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f6.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.movilidad==false}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
     if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1047,20 +1109,20 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f0.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(127,9) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(145,9) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setBegin(0);
-    // /adminGrupos/VerGrupo.jsp(127,9) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(145,9) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.proyectosCurriculares}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /adminGrupos/VerGrupo.jsp(127,9) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(145,9) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVar("lista");
-    // /adminGrupos/VerGrupo.jsp(127,9) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(145,9) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f0.setVarStatus("st");
     int[] _jspx_push_body_count_c_005fforEach_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t\t\t\t\t\t\t<option style=\"text-transform: lowercase;\" value='");
           if (_jspx_meth_c_005fout_005f4(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
@@ -1071,7 +1133,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write('>');
           if (_jspx_meth_c_005fout_005f5(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</option>\n");
+          out.write("</option>\r\n");
           out.write("\t\t\t\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1100,7 +1162,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminGrupos/VerGrupo.jsp(128,60) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(146,60) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1119,7 +1181,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f7 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminGrupos/VerGrupo.jsp(128,94) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(146,94) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.codproyCurr==lista.codigo}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
     if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1146,7 +1208,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /adminGrupos/VerGrupo.jsp(128,171) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(146,171) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.nombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f5 = _jspx_th_c_005fout_005f5.doStartTag();
     if (_jspx_th_c_005fout_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1165,7 +1227,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f6.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f6.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(138,83) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(156,83) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.nombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f6 = _jspx_th_c_005fout_005f6.doStartTag();
     if (_jspx_th_c_005fout_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1184,7 +1246,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f7.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(145,63) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(163,63) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.siglas}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f7 = _jspx_th_c_005fout_005f7.doStartTag();
     if (_jspx_th_c_005fout_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1203,7 +1265,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f8 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f8.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(146,82) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(164,82) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.tipo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f8 = _jspx_th_c_005fout_005f8.doStartTag();
     if (_jspx_th_c_005fout_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1222,7 +1284,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f8 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f8.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(147,72) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(165,72) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f8.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.tipo==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f8 = _jspx_th_c_005fif_005f8.doStartTag();
     if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1249,7 +1311,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f9 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f9.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(148,63) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(166,63) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.tipo==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f9 = _jspx_th_c_005fif_005f9.doStartTag();
     if (_jspx_eval_c_005fif_005f9 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1276,7 +1338,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f9 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f9.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(150,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(168,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.codColciencias}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f9 = _jspx_th_c_005fout_005f9.doStartTag();
     if (_jspx_th_c_005fout_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1295,7 +1357,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f10 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f10.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(160,84) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(178,84) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.dirNombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f10 = _jspx_th_c_005fout_005f10.doStartTag();
     if (_jspx_th_c_005fout_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1314,7 +1376,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f11 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f11.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(162,98) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(180,98) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f11.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.dirApellido}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f11 = _jspx_th_c_005fout_005f11.doStartTag();
     if (_jspx_th_c_005fout_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1333,7 +1395,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f12 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f12.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f12.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(170,127) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(188,127) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f12.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.fechaCreacion}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f12 = _jspx_th_c_005fout_005f12.doStartTag();
     if (_jspx_th_c_005fout_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1352,8 +1414,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f10 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f10.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(186,30) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f10.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.estado==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(243,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f10.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f10 = _jspx_th_c_005fif_005f10.doStartTag();
     if (_jspx_eval_c_005fif_005f10 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1379,8 +1441,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f11 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f11.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(187,30) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f11.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.estado==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(244,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f11.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f11 = _jspx_th_c_005fif_005f11.doStartTag();
     if (_jspx_eval_c_005fif_005f11 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1406,8 +1468,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f12 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f12.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f12.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(199,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f12.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(245,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f12.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==6}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f12 = _jspx_th_c_005fif_005f12.doStartTag();
     if (_jspx_eval_c_005fif_005f12 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1433,8 +1495,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f13 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f13.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f13.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(200,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f13.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(246,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f13.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==7}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f13 = _jspx_th_c_005fif_005f13.doStartTag();
     if (_jspx_eval_c_005fif_005f13 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1460,8 +1522,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f14 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f14.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f14.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(201,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f14.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==6}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(247,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f14.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==3}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f14 = _jspx_th_c_005fif_005f14.doStartTag();
     if (_jspx_eval_c_005fif_005f14 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1487,8 +1549,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f15 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f15.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f15.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(202,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f15.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==7}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(248,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f15.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==4}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f15 = _jspx_th_c_005fif_005f15.doStartTag();
     if (_jspx_eval_c_005fif_005f15 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1514,8 +1576,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f16 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f16.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f16.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(203,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f16.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==3}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(249,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f16.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==5}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f16 = _jspx_th_c_005fif_005f16.doStartTag();
     if (_jspx_eval_c_005fif_005f16 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1541,8 +1603,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f17 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f17.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f17.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(204,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f17.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==4}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(250,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f17.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==8}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f17 = _jspx_th_c_005fif_005f17.doStartTag();
     if (_jspx_eval_c_005fif_005f17 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1568,8 +1630,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f18 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f18.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f18.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(205,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f18.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==5}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(256,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f18.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.estado==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f18 = _jspx_th_c_005fif_005f18.doStartTag();
     if (_jspx_eval_c_005fif_005f18 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1595,8 +1657,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f19 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f19.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f19.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(206,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f19.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.categoria==8}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminGrupos/VerGrupo.jsp(257,27) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f19.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.estado==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f19 = _jspx_th_c_005fif_005f19.doStartTag();
     if (_jspx_eval_c_005fif_005f19 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1622,20 +1684,20 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fforEach_005f1.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(215,9) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(266,9) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setBegin(0);
-    // /adminGrupos/VerGrupo.jsp(215,9) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(266,9) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.areasSNIES}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /adminGrupos/VerGrupo.jsp(215,9) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(266,9) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVar("lista");
-    // /adminGrupos/VerGrupo.jsp(215,9) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(266,9) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVarStatus("st");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {
       int _jspx_eval_c_005fforEach_005f1 = _jspx_th_c_005fforEach_005f1.doStartTag();
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t\t\t\t\t\t\t<option style=\"text-transform: lowercase;\" value='");
           if (_jspx_meth_c_005fout_005f13(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
@@ -1646,7 +1708,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write('>');
           if (_jspx_meth_c_005fout_005f14(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
-          out.write("</option>\n");
+          out.write("</option>\r\n");
           out.write("\t\t\t\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1675,7 +1737,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f13 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f13.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f13.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /adminGrupos/VerGrupo.jsp(216,60) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(267,60) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f13.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f13 = _jspx_th_c_005fout_005f13.doStartTag();
     if (_jspx_th_c_005fout_005f13.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1694,7 +1756,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f20 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f20.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f20.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /adminGrupos/VerGrupo.jsp(216,94) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(267,94) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f20.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.codAreaSNIES==lista.codigo}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f20 = _jspx_th_c_005fif_005f20.doStartTag();
     if (_jspx_eval_c_005fif_005f20 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -1721,7 +1783,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f14 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f14.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f14.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /adminGrupos/VerGrupo.jsp(216,172) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(267,172) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f14.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${lista.nombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f14 = _jspx_th_c_005fout_005f14.doStartTag();
     if (_jspx_th_c_005fout_005f14.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1740,7 +1802,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f15 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f15.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f15.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(225,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(276,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f15.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.mail}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f15 = _jspx_th_c_005fout_005f15.doStartTag();
     if (_jspx_th_c_005fout_005f15.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1759,7 +1821,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f16 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f16.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f16.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(231,74) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(282,74) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f16.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.grupLac}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f16 = _jspx_th_c_005fout_005f16.doStartTag();
     if (_jspx_th_c_005fout_005f16.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1778,7 +1840,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f17 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f17.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f17.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(237,70) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(288,70) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f17.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.web}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f17 = _jspx_th_c_005fout_005f17.doStartTag();
     if (_jspx_th_c_005fout_005f17.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1797,7 +1859,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f18 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f18.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f18.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(243,66) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(294,66) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f18.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.mision}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f18 = _jspx_th_c_005fout_005f18.doStartTag();
     if (_jspx_th_c_005fout_005f18.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1816,7 +1878,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f19 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f19.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f19.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(249,66) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(300,66) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f19.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.vision}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f19 = _jspx_th_c_005fout_005f19.doStartTag();
     if (_jspx_th_c_005fout_005f19.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1835,7 +1897,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f20 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f20.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f20.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(255,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(306,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f20.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.descripcion}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f20 = _jspx_th_c_005fout_005f20.doStartTag();
     if (_jspx_th_c_005fout_005f20.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1854,7 +1916,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f21 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f21.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f21.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(261,73) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(312,73) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f21.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.observaciones}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f21 = _jspx_th_c_005fout_005f21.doStartTag();
     if (_jspx_th_c_005fout_005f21.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1873,7 +1935,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f12 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f12.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f12.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(267,33) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(318,33) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f12.setValue("/comp/img/Guardar.gif");
     int _jspx_eval_c_005furl_005f12 = _jspx_th_c_005furl_005f12.doStartTag();
     if (_jspx_th_c_005furl_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1892,7 +1954,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f13 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f13.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f13.setParent(null);
-    // /adminGrupos/VerGrupo.jsp(276,52) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/VerGrupo.jsp(327,52) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f13.setValue("/adminGrupos/Ajax.x");
     int _jspx_eval_c_005furl_005f13 = _jspx_th_c_005furl_005f13.doStartTag();
     if (_jspx_th_c_005furl_005f13.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
