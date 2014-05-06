@@ -191,18 +191,21 @@ public class GestionGrupos extends ServletGeneral {
 				sesion.setAttribute("integrante2",inte1);
 				irA="/adminGrupos/adminIntegrantes/Integrante.jsp";
 			break;
-			case Parametros.claveInvestigador:
-		//		System.out.println("entra a case de asignaci�n " +irA);
-				GruposGestionDB gruposGestionDB=new GruposGestionDB(cursor,usuario.getPerfil());
-				req.setAttribute("st", ""+Parametros.actualizaIntegranteGrupo);
-		//		System.out.println("datos enviados son: " +req.getParameter("id")+" --- "+req.getParameter("papel"));
-				if(gruposGestionDB.claveInvestigador(req.getParameter("id"),req.getParameter("papel"))){
-					mensaje="La clave fue asignada Satisfactoriamente";
-				}else{
-					mensaje="No se pudo asignar la clave del integrante.. favor volver a intentar";
-				}
-				irA="/adminGrupos/adminIntegrantes/Integrante.jsp";
-		//		System.out.println("Se va del case" +irA);
+		case Parametros.claveInvestigador:
+			String ID = "";
+			ID = completeid((Integrante) sesion.getAttribute("integrante2"));
+			System.out.println("\n el ID del investigador es: " + ID);
+			GruposGestionDB gruposGestionDB = new GruposGestionDB(cursor,
+					usuario.getPerfil());
+			req.setAttribute("st", "" + Parametros.actualizaIntegranteGrupo);
+			if (gruposGestionDB.claveInvestigador(req.getParameter("id"),
+					req.getParameter("papel"), ID)) {
+				mensaje = "La clave fue asignada Satisfactoriamente";
+			} else {
+				mensaje = "No se pudo asignar la clave del integrante.. favor volver a intentar";
+			}
+			irA = "/adminGrupos/adminIntegrantes/Integrante.jsp";
+			// System.out.println("Se va del case" +irA);
 			break;
 
 			//********************case nuevo gestión integrantes********************************************************
@@ -231,4 +234,53 @@ public class GestionGrupos extends ServletGeneral {
 		retorno[2]=mensaje;
 		return retorno;
 	}
+	
+	public String getidname(String name) {
+		String id_name = "";
+		int espacionombre = 0;
+		while (name.indexOf(" ") != -1) {
+			espacionombre = name.indexOf(" ");
+			id_name = id_name + name.charAt(0);
+			// System.out.println("\n el nombre aqui es :"+name+" El id_name es "
+			// + id_name);
+			name = name.substring(espacionombre + 1, name.length());
+		}
+		id_name = id_name + name.charAt(0);
+		// System.out.println("\n el nombre aqui es :"+name+" y el producto: " +
+		// id_name);
+		return id_name;
+	}
+
+	public String getidlastname(String lastname) {
+		String id_lastname = "";
+		int espacionombre = 0;
+		if (lastname.indexOf(" ") == -1) {
+			id_lastname = lastname;
+		} else {
+			espacionombre = lastname.indexOf(" ");
+			id_lastname = lastname.substring(0, espacionombre);
+			lastname = lastname.substring(espacionombre + 1, lastname.length());
+		}
+		while (lastname.indexOf(" ") != -1) {
+			espacionombre = lastname.indexOf(" ");
+			id_lastname = id_lastname + lastname.charAt(0);
+			lastname = lastname.substring(espacionombre + 1, lastname.length());
+		}
+		id_lastname = id_lastname + lastname.charAt(0);
+		return id_lastname;
+	}
+
+	public String completeid(Integrante integ) {
+		String nombre = integ.getNombres();
+		String apellido = integ.getApellidos();
+		String ID = "";
+		String numero = Long.toString(integ.getId());
+		nombre = nombre.trim();
+		nombre = nombre.toLowerCase();
+		apellido = apellido.trim();
+		apellido = apellido.toLowerCase();
+		ID = getidname(nombre) + getidlastname(apellido) + numero;
+		return ID;
+	}
+
 }

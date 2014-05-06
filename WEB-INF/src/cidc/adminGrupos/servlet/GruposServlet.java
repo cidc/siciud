@@ -141,14 +141,26 @@ public class GruposServlet extends ServletGeneral {
 				retorno[0]="desviar";
 			break;
 			case Parametros.claveInvestigador:
+				Integrante integ = (Integrante)sesion.getAttribute("integrante2");
+				String nombre = integ.getNombres();
+				String apellido = integ.getApellidos();
+				String ID = "";
+				String numero = Long.toString(integ.getId());
+				nombre = nombre.trim();
+				nombre = nombre.toLowerCase();
+				apellido = apellido.trim();
+				apellido = apellido.toLowerCase();
+				ID = completeid(getidname(nombre), getidlastname(apellido)) + numero;
+				System.out.println("\n el ID del investigador es: "+ ID);
 				req.setAttribute("st", ""+Parametros.actualizaIntegranteGrupo);
-				if(gruposGestionDB.claveInvestigador(req.getParameter("id"),req.getParameter("papel"))){
-					mensaje="La clave fue asignada Satisfactoriamente";
+				System.out.println("nombre "+integ.getNombres()+integ.getApellidos());
+				if(gruposGestionDB.claveInvestigador(req.getParameter("id"),req.getParameter("papel"),ID)){
+				mensaje="La clave fue asignada Satisfactoriamente";
 				}else{
-					mensaje="No se pudo asignar la clave del integrante.. favor volver a intentar";
+				mensaje="No se pudo asignar la clave del integrante.. favor volver a intentar";
 				}
 				irA="/grupos/Integrante.jsp";
-			break;
+				break;
 			case Parametros.IntegranteGrupo:
 				System.out.println("--entra a una cosa vacia que no tiene casi nada--->");
 				req.setAttribute("st", ""+Parametros.nuevoIntegranteGrupo);
@@ -182,14 +194,71 @@ public class GruposServlet extends ServletGeneral {
 		return retorno;
 	}
 	
-	public String getNombreGrupo(List listaGrupos,String id){
-		String retorno=null;
-		ListaGrupos grupo=null;
-		for(int i=0;i<listaGrupos.size();i++){
-			grupo=(ListaGrupos)listaGrupos.get(i);
-			if(id.endsWith(""+grupo.getIdGrupo()))
-				retorno=grupo.getNombreGrupo();
+	public String getNombreGrupo(List listaGrupos, String id) {
+		String retorno = null;
+		ListaGrupos grupo = null;
+		for (int i = 0; i < listaGrupos.size(); i++) {
+			grupo = (ListaGrupos) listaGrupos.get(i);
+			if (id.endsWith("" + grupo.getIdGrupo()))
+				retorno = grupo.getNombreGrupo();
 		}
 		return retorno;
 	}
+
+	/**
+	 * getidname() obtiene el nombre del integrante del Grupo de Investigacion y
+	 * retorna id_name una cadena tratada.
+	 * 
+	 */
+	public String getidname(String name) {
+		String id_name = "";
+		int espacionombre = 0;
+		while (name.indexOf(" ") != -1) {
+			espacionombre = name.indexOf(" ");
+			id_name = id_name + name.charAt(0);
+			name = name.substring(espacionombre + 1, name.length());
+		}
+		id_name = id_name + name.charAt(0);
+		return id_name;
+	}
+	/**
+	* getidlastname() obtiene el o los apellidos del integrante del grupo de
+	* investigación, trata la cadena y retorna el string.
+	*
+	*/
+	public String getidlastname(String lastname) {
+		String id_lastname = "";
+		int espacionombre = 0;
+
+		if (lastname.indexOf(" ") == -1) {
+			id_lastname = lastname;
+		} else {
+			espacionombre = lastname.indexOf(" ");
+			id_lastname = lastname.substring(0, espacionombre);
+			lastname = lastname.substring(espacionombre + 1, lastname.length());
+		}
+
+		while (lastname.indexOf(" ") != -1) {
+			espacionombre = lastname.indexOf(" ");
+			id_lastname = id_lastname + lastname.charAt(0);
+			lastname = lastname.substring(espacionombre + 1, lastname.length());
+		}
+		id_lastname = id_lastname + lastname.charAt(0);
+		return id_lastname;
+	}
+	/**
+	*
+	* @param name Toma id_name y lo concatena con id_lastname;
+	* @param lastname Toma id_lastname y lo concatena con id_name
+	* @return
+	*/
+	public String completeid (String name, String lastname)
+		{
+			return name+lastname;
+		}
 }
+	
+	
+	
+
+

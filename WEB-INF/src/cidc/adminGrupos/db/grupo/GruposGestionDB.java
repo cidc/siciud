@@ -155,7 +155,7 @@ public class GruposGestionDB extends BaseDB{
 		return integrante;
 	}
 
-	public boolean claveInvestigador(String idPersona,String papel){
+	public boolean claveInvestigador(String idPersona,String papel, String identificador){
 	//	//System.out.println("persona "+idPersona+" papel "+papel);
 		boolean retorno=false;
 		if(papel.equals("1"))
@@ -166,10 +166,11 @@ public class GruposGestionDB extends BaseDB{
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		String perfil=null,nick=null,key=null;
+		String perfil=null,nick=identificador,key=null;
 		String []datos=new String[5];
 		int i=1;
 		key=clave.getClave();
+	
 		//System.out.println("Bandera 1");
 		try {
 			cn=cursor.getConnection(super.perfil);
@@ -193,7 +194,7 @@ public class GruposGestionDB extends BaseDB{
 				ps.setString(i++,key);
 				ps.setString(i++,papel+",0,0");
 				ps.executeUpdate();
-				nick="investigador";
+				nick=identificador;
 			}else{
 				//System.out.println("Bandera 5");
 				String []partes=perfil.split(",");
