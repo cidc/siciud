@@ -38,9 +38,25 @@
 	}
 
 	function enviar(ac){
-		document.frmComplemento.action='<c:url value="/adminEvaluador/llenar2.jsp"/>';
-		document.frmComplemento.accion.value=ac;
-		document.frmComplemento.submit();
+		if(document.frmComplemento.tipoEval.value==1){
+			if(document.frmComplemento.superArea.value!=0 && document.frmComplemento.area.value!=0 && document.frmComplemento.id.value!=0){
+				document.frmComplemento.action='<c:url value="/adminEvaluador/llenar2.jsp"/>';
+				document.frmComplemento.accion.value=ac;
+				document.frmComplemento.submit();
+				
+			}else
+				{alert("Por favor diligencie todos los campos");}
+		}
+		if(document.frmComplemento.tipoEval.value==2){
+			if(document.frmComplemento.nombres.value!="" && document.frmComplemento.apellidos.value!="" && document.frmComplemento.mail.value!="" && document.frmComplemento.celular.value!="" 
+					&& document.frmComplemento.superArea.value!=0 && document.frmComplemento.area.value!=0){
+				document.frmComplemento.action='<c:url value="/adminEvaluador/llenar2.jsp"/>';
+				document.frmComplemento.accion.value=ac;
+				document.frmComplemento.submit();
+			}else
+			{alert("Por favor diligencie todos los campos");}
+		}
+		
 	}
 
 </script>
