@@ -104,7 +104,7 @@ public class SesionUsuario extends ServletGeneral {
 							Parametros.userVisitante);
 					if (gestionGrupoDB.claveInvestigador(
 							String.valueOf(user.getIdUsuario()),
-							user.getPapel())) {
+							user.getPapel(),"")) {
 						irA = "/menu.jsp";
 						super.mensaje = "Cambio de Contraseña Exitoso";
 					} else {
