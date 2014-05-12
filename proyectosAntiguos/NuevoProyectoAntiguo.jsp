@@ -173,7 +173,7 @@
      <tr> <td class="renglones" style="width: 50px"><b>Año: </b> </td>
           <td> <select name="ano">
                <option value="0">----</option>
-     	       <c:forEach begin = "1985" end="2010" var="an">
+     	       <c:forEach begin = "1985" end="${requestScope.ano}" var="an">
 	     	       <option value='<c:out value="${an}"/>'><c:out value="${an}"/></option>
      	       </c:forEach>
                </select>

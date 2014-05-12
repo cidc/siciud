@@ -1,6 +1,7 @@
 package cidc.proyectosAntiguos.servlet;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -336,6 +337,8 @@ public class ProyectosAntiguos extends ServletGeneral {
 				      sesion.removeAttribute("proyectos");
 				      if(sesion.getAttribute("ajaxProyCur")==null)
 					    sesion.setAttribute("ajaxProyCur",proyAntiguosDB.consultaProyectos());
+				      Calendar c=Calendar.getInstance();
+				      req.setAttribute("ano", c.get(Calendar.YEAR));
 		     break;
 
 			}
