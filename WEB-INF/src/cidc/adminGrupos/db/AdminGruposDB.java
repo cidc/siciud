@@ -27,6 +27,7 @@ import cidc.general.obj.Parametros;
 import cidc.inscripcionConv.obj.GruposOBJ;
 import cidc.inscripcionConv.obj.ProyCurOBJ;
 import cidc.adminGrupos.obj.AreasConocimiento;
+import cidc.adminGrupos.servlet.GestionGrupos;
 
 
 
@@ -330,6 +331,7 @@ public class AdminGruposDB extends BaseDB{
 			cn.setAutoCommit(false);
 			ps=cn.prepareStatement(rb.getString("verGrupo"));
 			ps.setLong(1, Long.parseLong(id));
+			System.out.println("consulta -->"+ps.toString());
 			rs=ps.executeQuery();
 			while(rs.next()){
 				grupo=new GrupoInvestigacion();
@@ -1254,9 +1256,11 @@ public class AdminGruposDB extends BaseDB{
 		System.out.println("---insertando investigador-->"+datosIntegrante.getFlag());
 		if(datosIntegrante.getFlag()==0){
 			st=cn.prepareStatement(rb.getString("insertarInvestigador"));
+			System.out.println("Inserto inv 1 \n");
 		}else{
 			st=cn.prepareStatement(rb.getString("insertarInvestigador2"));
 			st.setLong(i++,datosIntegrante.getId());
+			System.out.println("Inserto inv 2 \n");
 		}
 
 		st.setInt(i++, datosIntegrante.getCodFacultad());
@@ -1267,6 +1271,7 @@ public class AdminGruposDB extends BaseDB{
 		st.setString(i++, datosIntegrante.getFechaSalidaGrupo());
 		st.executeUpdate();
 		System.out.println("insertar persona: "+st.toString());
+		System.out.println("\nEl nick2 de la persona es: "+ completeid(datosIntegrante)+"\n");
 		retorno=true;
 			
 		cerrar(rs);
@@ -1555,6 +1560,60 @@ public class AdminGruposDB extends BaseDB{
 		}
 		return retorno;
 
+	}
+	public String getidname(String name){
+		String id_name = "";
+		int espacionombre = 0;
+			
+			while(name.indexOf(" ") != -1){
+				espacionombre = name.indexOf(" ");
+				id_name = id_name + name.charAt(0);
+				//System.out.println("\n el nombre aqui es :"+name+" El id_name es " + id_name);
+				name = name.substring(espacionombre+1, name.length());
+			}
+			id_name = id_name + name.charAt(0);
+			//System.out.println("\n el nombre aqui es :"+name+" y el producto: " + id_name);
+		
+		return id_name; 
+	}
+	
+	public String getidlastname(String lastname){
+		
+		String id_lastname = "";
+		int espacionombre = 0;
+		
+		if(lastname.indexOf(" ") == -1)
+		{
+			id_lastname = lastname;
+		}else{
+			espacionombre = lastname.indexOf(" ");
+			id_lastname = lastname.substring(0,espacionombre);
+			lastname = lastname.substring(espacionombre+1, lastname.length());
+			}
+			while(lastname.indexOf(" ") != -1){
+				espacionombre = lastname.indexOf(" ");
+				id_lastname = id_lastname + lastname.charAt(0);
+				lastname = lastname.substring(espacionombre+1, lastname.length());
+				}
+			id_lastname = id_lastname + lastname.charAt(0);
+		return id_lastname;
+	}
+	
+	public String completeid (Integrante integ)
+	{
+		String nombre = integ.getNombres();
+		String apellido = integ.getApellidos();
+		String ID = "";
+		String numero = Long.toString(integ.getId());
+		
+		nombre = nombre.trim();
+		nombre = nombre.toLowerCase();
+		apellido = apellido.trim();
+		apellido = apellido.toLowerCase();
+		
+		ID = getidname(nombre)+ getidlastname(apellido) + numero;
+		
+		return ID;
 	}
 }
 

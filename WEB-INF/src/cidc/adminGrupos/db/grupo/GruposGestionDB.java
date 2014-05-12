@@ -155,7 +155,7 @@ public class GruposGestionDB extends BaseDB{
 		return integrante;
 	}
 
-	public boolean claveInvestigador(String idPersona,String papel){
+	public boolean claveInvestigador(String idPersona,String papel, String identificador){
 	//	//System.out.println("persona "+idPersona+" papel "+papel);
 		boolean retorno=false;
 		if(papel.equals("1"))
@@ -170,6 +170,7 @@ public class GruposGestionDB extends BaseDB{
 		String []datos=new String[5];
 		int i=1;
 		key=clave.getClave();
+		nick= identificador;
 		//System.out.println("Bandera 1");
 		try {
 			cn=cursor.getConnection(super.perfil);
@@ -179,7 +180,8 @@ public class GruposGestionDB extends BaseDB{
 			while(rs.next()){
 				//System.out.println("Bandera 2");
 				perfil=rs.getString(1);
-				nick=rs.getString(2);
+//Borrado Por Diego	-->    nick=rs.getString(2);
+				nick=identificador;
 				datos[2]=rs.getString(3);
 				datos[1]=rs.getString(4);
 				datos[0]=rs.getString(5);
@@ -189,13 +191,15 @@ public class GruposGestionDB extends BaseDB{
 				//System.out.println("Bandera 4");
 				ps=cn.prepareStatement(rb.getString("nuevoUsuario"));
 				ps.setLong(i++, Long.parseLong(idPersona));
-				ps.setString(i++,"investigador");
+				nick=identificador;
+				ps.setString(i++,nick);
 				ps.setString(i++,key);
 				ps.setString(i++,papel+",0,0");
 				ps.executeUpdate();
-				nick="investigador";
-			}else{
+				System.out.println("\nBandera 1\n");
+				}else{
 				//System.out.println("Bandera 5");
+					
 				String []partes=perfil.split(",");
 				String nuevoPerfil=null;
 				if(!partes[0].equals(papel)){
@@ -204,29 +208,41 @@ public class GruposGestionDB extends BaseDB{
 					else
 						if(partes[2].equals("0") && !partes[1].equals(papel))
 							nuevoPerfil=partes[0]+","+partes[1]+","+papel;
+					System.out.println("\nBandera 2\n");
 				}
 				//System.out.println("Bandera 6");
 				if(nuevoPerfil!=null){
 					//System.out.println("Bandera 7");
+					
+					System.out.println("\nActualizo base de datos aqui\n");
 					ps=cn.prepareStatement(rb.getString("asignaPerfKey"));
 					ps.setString(i++,key);
 					ps.setString(i++,nuevoPerfil);
+					//ps.setString(i++, nick);
 					ps.setLong(i++, Long.parseLong(idPersona));
 					ps.executeUpdate();
+					System.out.println("\nBandera 3\n");
 		//			//System.out.println("Asigna perfil y psw "+nuevoPerfil);
 				}else{
 					//System.out.println("Bandera 8");
 					ps=cn.prepareStatement(rb.getString("cambioClave"));
 					ps.setString(i++,key);
+					ps.setString(i++,nick);
 					ps.setLong(i++, Long.parseLong(idPersona));
+					//ps.setString(i++, nick);
 					ps.executeUpdate();
 		//			//System.out.println("solo cambia clave");
+					System.out.println("\nBandera 4\n");
 				}
 				//System.out.println("Bandera 9");
 			}
 			datos[3]=nick;
 			datos[4]=key;
 			mailClaveNueva(datos);
+			
+			System.out.println("\nAqui el nick es = " + nick);
+			System.out.println("\nBandera Final\n");
+			
 			//System.out.println("Bandera 10");
 			retorno=true;
 		}catch (SQLException e) {
@@ -276,6 +292,7 @@ public class GruposGestionDB extends BaseDB{
 		boolean retorno=false;
 		int i=1;
 		try {
+			System.out.println("Bandera Nuevo Integrante 1");
 			cn=cursor.getConnection(super.perfil);
 			cn.setAutoCommit(false);
 			ps=cn.prepareStatement(rb.getString("nuevaPersona"));
@@ -308,6 +325,7 @@ public class GruposGestionDB extends BaseDB{
 			cerrar(ps);
 			cerrar(cn);
 		}
+		System.out.println("Bandera Nuevo Integrante 2");
 		return retorno;
 	}
 }
