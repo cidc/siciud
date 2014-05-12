@@ -188,10 +188,11 @@ public class GruposGestionDB extends BaseDB{
 			}
 			//System.out.println("Bandera 3");
 			if(perfil==null){
-				//System.out.println("Bandera 4");
+				nick=identificador;
+				System.out.println("Bandera 4");
 				ps=cn.prepareStatement(rb.getString("nuevoUsuario"));
 				ps.setLong(i++, Long.parseLong(idPersona));
-				nick=identificador;
+				System.out.println("\nY el nick es : "+ nick +" \n");
 				ps.setString(i++,nick);
 				ps.setString(i++,key);
 				ps.setString(i++,papel+",0,0");
