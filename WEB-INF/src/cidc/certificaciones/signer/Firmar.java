@@ -20,7 +20,7 @@ public String firmarPDF(File documento,String ruta) throws Exception{
         KeyStore p12 = KeyStore.getInstance("pkcs12");
         p12.load(new FileInputStream(ruta),rb.getString("clave1").toCharArray());
         Enumeration en = p12.aliases();
-        File pdfSigned=null;
+        File pdfSigned=null; 
         while (en.hasMoreElements()) {
             String object = (String) en.nextElement();
             PrivateKey key = (PrivateKey) p12.getKey(object, rb.getString("clave1").toCharArray());
