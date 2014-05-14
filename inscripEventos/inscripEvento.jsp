@@ -15,7 +15,7 @@
 		<table align="center">
 			<tr>
 				<td align="center"><br>
-					<img border="0" src="/siciud/comp/img/Imagen-Home.png">
+					<img border="0" src="/siciud/comp/img/Imagen-Home1.png">
 				</td>
 			</tr>
 		</table>
