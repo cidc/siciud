@@ -111,7 +111,8 @@ public class SesionUsuario extends ServletGeneral {
                                         }
 
                                 } else {
-                                        super.mensaje = "Este Correo No Se Encuentra Registrado";
+  
+                                	super.mensaje = "Este Correo No Se Encuentra Registrado";
                                         irA = "/RecordarClave.jsp";
                                 }
                         }else{

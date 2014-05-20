@@ -49,11 +49,11 @@
 						<img src='<c:url value="/comp/img/1.gif"/>' onclick='ver(9,<c:out value="${movilidad.idPropuesta}" />)'>
 					</td>
 					<td>
-						<img src='<c:url value="/comp/img/2.gif"/>' onclick='ver(10,<c:out value="${movilidad.idPropuesta}" />)'>
+						<img src='<c:url value="/comp/img/2.gif"/>' onclick='ver(11,<c:out value="${movilidad.idPropuesta}" />)'>
 					</td>
-					<td>
+					<%-- <td>
 						<img src='<c:url value="/comp/img/3.gif"/>' onclick='ver(11,<c:out value="${movilidad.idPropuesta}" />)'>
-					</td>		
+					</td> --%>		
 				</tr>
 			</table>		
 		</div>
