@@ -60,9 +60,9 @@ public final class general_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\r\n");
-      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\n");
+      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n");
       out.write("<noscript><meta http-equiv=\"refresh\" content=\"0;url=sinScript.html\" /></noscript> \r\n");
       out.write("\r\n");
       out.write("<link type='text/css' rel='stylesheet' href='");
@@ -80,9 +80,9 @@ public final class general_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("\r\n");
-      out.write("<script>\n");
+      out.write("<script>\r\n");
       out.write("\r\n");
       out.write("\tfunction mensajeAlert(msg){\r\n");
       out.write("\t\tif(msg){\r\n");
@@ -102,6 +102,7 @@ public final class general_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);

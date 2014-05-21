@@ -72,9 +72,9 @@ public final class NuevoProyectoAntiguo_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("\r\n");
       out.write("    \r\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<script>\r\n");
       out.write("        var nav4=window.Event ? true : false;\r\n");
@@ -235,13 +235,13 @@ public final class NuevoProyectoAntiguo_jsp extends org.apache.jasper.runtime.Ht
       out.write("</script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\n");
-      out.write("<title>Datos Generales</title>\n");
-      out.write("</head>\n");
+      out.write("\r\n");
+      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n");
+      out.write("<title>Datos Generales</title>\r\n");
+      out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("<br>\r\n");
-      out.write("<form name=\"form1\">\n");
+      out.write("<form name=\"form1\">\r\n");
       out.write("<table class=\"tablas\" align = \"center\" width=\"80%\">\r\n");
       out.write("     <CAPTION>Registro Proyecto de Investigación Antiguo</CAPTION>\r\n");
       out.write("     <tr> <td> <table width=\"100%\">\r\n");
@@ -394,14 +394,14 @@ public final class NuevoProyectoAntiguo_jsp extends org.apache.jasper.runtime.Ht
       out.write("\t\t<input type=\"hidden\" name=\"dato\" value=''>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"para\" value=''>\r\n");
       out.write("\t</form>\r\n");
-      out.write("\n");
+      out.write("\r\n");
       out.write("</body>\r\n");
       out.write("<script>\r\n");
       out.write("mostrar(document.form1.cant_coinv);\r\n");
       out.write("ajaxFacultad(document.form1.facultad);\r\n");
       out.write("</script>\r\n");
  session.removeAttribute("proyectos"); 
-      out.write("\n");
+      out.write("\r\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -409,6 +409,7 @@ public final class NuevoProyectoAntiguo_jsp extends org.apache.jasper.runtime.Ht
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);

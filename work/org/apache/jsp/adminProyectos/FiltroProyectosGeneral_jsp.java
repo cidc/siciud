@@ -66,9 +66,9 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -76,7 +76,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\">\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction ajaxGrupos(obj){\r\n");
       out.write("\t//alert(\"tipo=\"+document.filtro.tipo.value);\r\n");
@@ -89,8 +89,8 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t\t}\r\n");
       out.write("\t}\r\n");
       out.write("\t\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t<form name=\"filtro\" method=\"post\" action='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
@@ -101,66 +101,66 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t<table class=\"tablas\" align=\"center\" width=\"80%\">\r\n");
       out.write("\t<CAPTION>Filtro de consulta</CAPTION>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<th><b>Facultad:</b></th>\n");
-      out.write("\t\t\t<th colspan=\"3\"><b>Proyecto Curricular:</b></th>\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t\t<tr>\n");
-      out.write("\t\t\t<td>\n");
-      out.write("\t\t\t\t<select name=\"facultad\" onchange=\"ajaxGrupos(this)\" >\n");
-      out.write("\t\t\t\t\t<option value=\"0\">------------</option>\n");
-      out.write("\t\t\t\t\t<option value=\"1\">Tecnológica</option>\n");
-      out.write("\t\t\t\t\t<option value=\"2\">Ingeniería</option>\n");
-      out.write("\t\t\t\t\t<option value=\"3\">Medio Ambiente</option>\n");
-      out.write("\t\t\t\t\t<option value=\"4\">Educación</option>\n");
-      out.write("\t\t\t\t\t<option value=\"5\">Asab</option>\n");
-      out.write("\t\t\t\t</select>\n");
-      out.write("\t\t\t</td>\n");
-      out.write("\t\t\t<td colspan=\"3\">\n");
-      out.write("\t\t\t\t<select name=\"proyCur\" style=\"width:100%\">\n");
-      out.write("\t\t\t\t\t<option value=''>----------------------------------------</option>\n");
+      out.write("\t\t\t<th><b>Facultad:</b></th>\r\n");
+      out.write("\t\t\t<th colspan=\"3\"><b>Proyecto Curricular:</b></th>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td>\r\n");
+      out.write("\t\t\t\t<select name=\"facultad\" onchange=\"ajaxGrupos(this)\" >\r\n");
+      out.write("\t\t\t\t\t<option value=\"0\">------------</option>\r\n");
+      out.write("\t\t\t\t\t<option value=\"1\">Tecnológica</option>\r\n");
+      out.write("\t\t\t\t\t<option value=\"2\">Ingeniería</option>\r\n");
+      out.write("\t\t\t\t\t<option value=\"3\">Medio Ambiente</option>\r\n");
+      out.write("\t\t\t\t\t<option value=\"4\">Educación</option>\r\n");
+      out.write("\t\t\t\t\t<option value=\"5\">Asab</option>\r\n");
+      out.write("\t\t\t\t</select>\r\n");
+      out.write("\t\t\t</td>\r\n");
+      out.write("\t\t\t<td colspan=\"3\">\r\n");
+      out.write("\t\t\t\t<select name=\"proyCur\" style=\"width:100%\">\r\n");
+      out.write("\t\t\t\t\t<option value=''>----------------------------------------</option>\r\n");
       out.write("\t\t\t\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t</select>\n");
-      out.write("\t\t\t</td>\n");
-      out.write("\t\t</tr>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t</select>\r\n");
+      out.write("\t\t\t</td>\r\n");
+      out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<th><b>Codigo:</b></th>\r\n");
-      out.write("\t\t\t<th><b>Estado:</b></th>\n");
-      out.write("\t\t\t<th><b>Tipo Grupo:</b></th>\n");
+      out.write("\t\t\t<th><b>Estado:</b></th>\r\n");
+      out.write("\t\t\t<th><b>Tipo Grupo:</b></th>\r\n");
       out.write("\t\t\t<th><b>Tipo Proyecto</b></th>\r\n");
-      out.write("\t\t</tr>\n");
+      out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td width=\"25%\"><input type=\"text\" name=\"codigo\" \tstyle=\"width: 100%\"></td>\r\n");
-      out.write("\t\t\t<td width=\"25%\">\n");
-      out.write("\t\t\t\t<select name=\"estado\">\n");
-      out.write("\t\t\t\t\t   <option value=\"\" >------------</option>\n");
-      out.write("                       <option value=\"1\" >Aprobado</option>\n");
-      out.write("                       <option value=\"2\" >Vigente</option>\n");
-      out.write("                       <option value=\"3\" >Finalizado</option>\n");
-      out.write("                       <option value=\"4\" >Cancelado</option>\n");
-      out.write("                       <option value=\"5\" >En Prueba</option>\n");
-      out.write("                       <option value=\"6\" >Aplazado</option>\n");
-      out.write("\t\t\t\t</select>\n");
-      out.write("\t\t\t</td>\n");
+      out.write("\t\t\t<td width=\"25%\">\r\n");
+      out.write("\t\t\t\t<select name=\"estado\">\r\n");
+      out.write("\t\t\t\t\t   <option value=\"\" >------------</option>\r\n");
+      out.write("                       <option value=\"1\" >Aprobado</option>\r\n");
+      out.write("                       <option value=\"2\" >Vigente</option>\r\n");
+      out.write("                       <option value=\"3\" >Finalizado</option>\r\n");
+      out.write("                       <option value=\"4\" >Cancelado</option>\r\n");
+      out.write("                       <option value=\"5\" >En Prueba</option>\r\n");
+      out.write("                       <option value=\"6\" >Aplazado</option>\r\n");
+      out.write("\t\t\t\t</select>\r\n");
+      out.write("\t\t\t</td>\r\n");
       out.write("\t\t\t<td width=\"25%\" align=\"center\">\r\n");
       out.write("\t\t\t\t<table>\r\n");
       out.write("\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t<select name=\"tipoGrupo\">\n");
-      out.write("\t\t\t\t\t\t   <option value=\"\" >----------</option>\n");
-      out.write("\t                       <option value=\"1\">Grupo</option>\n");
-      out.write("\t                       <option value=\"2\">Semillero</option>\n");
+      out.write("\t\t\t\t\t\t<select name=\"tipoGrupo\">\r\n");
+      out.write("\t\t\t\t\t\t   <option value=\"\" >----------</option>\r\n");
+      out.write("\t                       <option value=\"1\">Grupo</option>\r\n");
+      out.write("\t                       <option value=\"2\">Semillero</option>\r\n");
       out.write("\t                    </select>\r\n");
       out.write("\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t</table>\r\n");
-      out.write("\t\t\t</td>\t\t\t\n");
-      out.write("\t\t\t<td>\n");
-      out.write("\t\t\t\t<select name=\"tipoProyecto\" onchange=\"ajaxTipoProy(this)\">\n");
-      out.write("\t\t\t\t\t<option value=\"\" >----------</option>\n");
-      out.write("\t\t\t\t\t<option value=\"1\">Convocatoria</option>\n");
-      out.write("\t\t\t\t\t<option value=\"2\">Convenio</option>\n");
-      out.write("\t\t\t\t</select>\n");
+      out.write("\t\t\t</td>\t\t\t\r\n");
+      out.write("\t\t\t<td>\r\n");
+      out.write("\t\t\t\t<select name=\"tipoProyecto\" onchange=\"ajaxTipoProy(this)\">\r\n");
+      out.write("\t\t\t\t\t<option value=\"\" >----------</option>\r\n");
+      out.write("\t\t\t\t\t<option value=\"1\">Convocatoria</option>\r\n");
+      out.write("\t\t\t\t\t<option value=\"2\">Convenio</option>\r\n");
+      out.write("\t\t\t\t</select>\r\n");
       out.write("\t\t\t</td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
@@ -176,20 +176,20 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("\t\t\t\t</select>\r\n");
       out.write("\t\t\t</td>\r\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t\t<tr> \n");
-      out.write("\t\t\t<th colspan=\"4\">Nombre del Proyecto</th>\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t\t<tr>\n");
-      out.write("\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"nombreProyecto\"></td>\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t\t<tr> \n");
-      out.write("\t\t\t<th colspan=\"4\">Palabras Claves</th>\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t\t<tr>\n");
-      out.write("\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"palabrasClaves\"></td>\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t\t\t\t\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr> \r\n");
+      out.write("\t\t\t<th colspan=\"4\">Nombre del Proyecto</th>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"nombreProyecto\"></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr> \r\n");
+      out.write("\t\t\t<th colspan=\"4\">Palabras Claves</th>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"palabrasClaves\"></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t\t\t\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td colspan=\"4\" align=\"center\"><input type=\"image\" src='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
@@ -201,11 +201,11 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t<table align=\"center\" width=\"100%\">\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td style=\"display:none\"><iframe name=\"frameOculto\" id=\"frameOculto\"></iframe></td>\r\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t\t<tr>\n");
-      out.write("\t\t\t<td width=\"100%\"><iframe width=\"100%\" height=\"700px\" scrolling=\"auto\" name=\"frameLista\" id=\"frameLista\" frameborder=\"0\"></iframe></td>\n");
       out.write("\t\t</tr>\r\n");
-      out.write("\t</table>\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td width=\"100%\"><iframe width=\"100%\" height=\"700px\" scrolling=\"auto\" name=\"frameLista\" id=\"frameLista\" frameborder=\"0\"></iframe></td>\r\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t</table>\r\n");
       out.write("\t<form method=\"post\" name=\"frmAjax\" action=\"");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
@@ -222,6 +222,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -306,11 +307,11 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t\t");
         if (_jspx_meth_c_005fforEach_005f0(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -346,7 +347,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t\t\t<option value='");
           if (_jspx_meth_c_005fout_005f0(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
@@ -354,7 +355,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
           out.write('>');
           if (_jspx_meth_c_005fout_005f1(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</option>\n");
+          out.write("</option>\r\n");
           out.write("\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

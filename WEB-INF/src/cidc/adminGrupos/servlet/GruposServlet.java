@@ -38,13 +38,9 @@ public class GruposServlet extends ServletGeneral {
 		if(req.getParameter("accion")!=null)
 			accion=Integer.parseInt(req.getParameter("accion"));
 		retorno[0]="unir";
-		System.out.println("grupos servlet accion: "+ accion + "Haga algo");
-		
+		System.out.println("grupos servlet accion: "+accion);
 		switch(accion){
 			case Parametros.VerGrupo:
-				
-				System.out.println("**********VerGrupo = ");
-				
 				sesion.removeAttribute("infoGrupo");
 				grupo=adminGruposDB.getVerGrupo(req.getParameter("idGrupo"),sesion.getAttribute("listaMisGrupos"));
 				List listaProy=adminGruposDB.AjaxProyectoCur(grupo.getFacultad());
@@ -53,12 +49,8 @@ public class GruposServlet extends ServletGeneral {
 				grupo.setAreasSNIES(listaAreas);
 				sesion.setAttribute("infoGrupo", grupo);
 				irA="/grupos/VerGrupo.jsp";
-				
 			break;
 			case Parametros.ActualizaGrupo:
-				
-				System.out.println("*********Actualizar = ");
-				
 				if(adminGruposDB.ActualizaGrupo2((GrupoInvestigacion)sesion.getAttribute("grupo1"))){
 					GrupoInvestigacion gr=(GrupoInvestigacion)sesion.getAttribute("infoGrupo");
 					GrupoInvestigacion gr1=(GrupoInvestigacion)sesion.getAttribute("grupo1");
@@ -74,33 +66,23 @@ public class GruposServlet extends ServletGeneral {
 				else
 					mensaje="El registro no pudo ser modificado";
 				irA="/grupos/VerGrupo.jsp";
-				
-				System.out.println("*******Actualizar = ");
 			break;
 			case Parametros.buscaIntegrantesGrupo:
-				
-				System.out.println(" **********Buscar = ");
 			//	System.out.println("--entra a buscar integrantes de--->"+req.getParameter("idGrupo"));
 				idGrupo=Long.parseLong(req.getParameter("idGrupo"));
 				req.setAttribute("listaIntegrantes",adminGruposDB.buscaIntegrantesGrupo(idGrupo));
 				req.setAttribute("nombreGrupo", getNombreGrupo((java.util.List)sesion.getAttribute("listaMisGrupos"),req.getParameter("idGrupo")));
 				irA="/grupos/ListaIntegrantes.jsp";
 				sesion.setAttribute("idGrupo",req.getParameter("idGrupo"));
-				
-
 			break;
 			case Parametros.consultaPersonaOracle:
-				System.out.println("*******consultaPer... = ");
 				//bscar todos cod, cc
 				if(req.getParameter("cedula")!=null && req.getParameter("codigoUd")!=null)
 					sesion.setAttribute("Integrantes",adminGruposDB.consultarIntegrantes(req.getParameter("cedula"),req.getParameter("codigoUd")));
 				irA="/grupos/ListaPersonasOracle.jsp";
-				
 			break;
 			case Parametros.verIntegranteGrupo:
-				System.out.println("***********VerIntegrante = ");
 				idGrupo=0;
-				
 				if(req.getParameter("flagMod").equals("1"))
 					req.setAttribute("st", ""+Parametros.nuevoIntegranteGrupo);				
 				else{
@@ -123,9 +105,6 @@ public class GruposServlet extends ServletGeneral {
 				
 			break;
 			case Parametros.actualizaIntegranteGrupo:
-				
-				System.out.println("***************ActualizarIntegrante = ");
-				
 				Integrante nuevo=null;
 				req.setAttribute("st", ""+Parametros.actualizaIntegranteGrupo);
 				idGrupo=Long.parseLong(""+sesion.getAttribute("idGrupo"));
@@ -153,9 +132,6 @@ public class GruposServlet extends ServletGeneral {
 					irA="/grupos/IntegranteExterno.jsp";
 			break;
 			case Parametros.eliminaIntegranteGrupo:
-				
-				System.out.println("***************EliminarIntegrante = ");
-				
 				idGrupo=Long.parseLong(""+sesion.getAttribute("idGrupo"));
 				if(adminGruposDB.eliminaIntegranteGrupo((Integrante)sesion.getAttribute("integrante2"),idGrupo))
 					mensaje="El integrante fue eliminado correctamente";
@@ -166,8 +142,6 @@ public class GruposServlet extends ServletGeneral {
 				retorno[0]="desviar";
 			break;
 			case Parametros.claveInvestigador:
-				
-				System.out.println("********************Claveinvesti = ");
 				
 				Integrante integ = (Integrante)sesion.getAttribute("integrante2");
 				String nombre = integ.getNombres();
@@ -182,7 +156,7 @@ public class GruposServlet extends ServletGeneral {
 				
 				ID = completeid(getidname(nombre), getidlastname(apellido)) + numero;
 				
-				System.out.println("\n el ID del investigador es: "+ ID);
+				//System.out.println("\n el ID del investigador es: "+ ID);
 				
 				req.setAttribute("st", ""+Parametros.actualizaIntegranteGrupo);
 			
@@ -193,26 +167,14 @@ public class GruposServlet extends ServletGeneral {
 					mensaje="No se pudo asignar la clave del integrante.. favor volver a intentar";
 				}
 				irA="/grupos/Integrante.jsp";
-				
-				
-				System.out.println("Claveinvestigador = ");
-				
 			break;
 			case Parametros.IntegranteGrupo:
-				System.out.println("*************IntegranteGrupo = ");
-				
-				
 				System.out.println("--entra a una cosa vacia que no tiene casi nada--->");
 				req.setAttribute("st", ""+Parametros.nuevoIntegranteGrupo);
 				irA="/grupos/Integrante.jsp";
 				sesion.removeAttribute("integrante");
-				
-
 			break;
 			case Parametros.nuevoIntegranteGrupo:
-				
-				System.out.println("*******************nuevoIntegranteGrupo = ");
-				
 				idGrupo=Long.parseLong(""+sesion.getAttribute("idGrupo"));
 				if(adminGruposDB.insertarPersona((Integrante)sesion.getAttribute("integrante"),idGrupo)){
 					System.out.println("Bandera Crear UsuarioInvestigador");
@@ -223,23 +185,14 @@ public class GruposServlet extends ServletGeneral {
 				req.setAttribute("listaIntegrantes",adminGruposDB.buscaIntegrantesGrupo(idGrupo));
 				
 				irA="/grupos/ListaIntegrantes.jsp";
-				
-
 			break;
 			case Parametros.formNuevoInteExt:
-				
-				System.out.println("***********************FormNuevo... = ");
-				
 				sesion.removeAttribute("integrante2");
 				irA="/grupos/IntegranteExterno.jsp";
 				req.setAttribute("st","7");
 				req.setAttribute("flagmod",""+Parametros.nuevoIntegranteGrupo);
-				
-				System.out.println("FormNuevo... = ");
-				
 			break;
 			default:
-				System.out.println("****************Default... = ");
 				irA="/grupos/ListaPersonasOracle.jsp";	
 			break;
 		}

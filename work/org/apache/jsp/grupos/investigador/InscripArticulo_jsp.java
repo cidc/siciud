@@ -66,14 +66,14 @@ public final class InscripArticulo_jsp extends org.apache.jasper.runtime.HttpJsp
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\r\n");
       out.write("\tfunction comando(){\r\n");
@@ -139,8 +139,8 @@ public final class InscripArticulo_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\t\treturn false;\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t<br>\r\n");
       out.write("\t<br>\r\n");
@@ -281,13 +281,14 @@ public final class InscripArticulo_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\t\t</table>\r\n");
       out.write("\t</form>\r\n");
       out.write("</body>\r\n");
-      out.write("</html>");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);

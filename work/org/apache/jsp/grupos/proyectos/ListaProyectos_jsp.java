@@ -66,14 +66,14 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction ver(id,tipo){\r\n");
       out.write("\t\tdocument.lista.action='");
@@ -84,8 +84,8 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\t\tdocument.lista.tipo.value=tipo;\r\n");
       out.write("\t\tdocument.lista.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\r\n");
       out.write("\t");
@@ -105,6 +105,7 @@ public final class ListaProyectos_jsp extends org.apache.jasper.runtime.HttpJspB
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);

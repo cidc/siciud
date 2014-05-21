@@ -197,7 +197,7 @@ public class GestionGrupos extends ServletGeneral {
 				String ID = "";
 				ID = completeid((Integrante)sesion.getAttribute("integrante2"));
 				
-				System.out.println("\n el ID del investigador es: "+ ID);
+				//System.out.println("\n el ID del investigador es: "+ ID);
 				
 				GruposGestionDB gruposGestionDB=new GruposGestionDB(cursor,usuario.getPerfil());
 				req.setAttribute("st", ""+Parametros.actualizaIntegranteGrupo);

@@ -189,15 +189,15 @@ public class GruposGestionDB extends BaseDB{
 			//System.out.println("Bandera 3");
 			if(perfil==null){
 				nick=identificador;
-				System.out.println("Bandera 4");
+				//System.out.println("Bandera 4");
 				ps=cn.prepareStatement(rb.getString("nuevoUsuario"));
 				ps.setLong(i++, Long.parseLong(idPersona));
-				System.out.println("\nY el nick es : "+ nick +" \n");
+				//System.out.println("\nY el nick es : "+ nick +" \n");
 				ps.setString(i++,nick);
 				ps.setString(i++,key);
 				ps.setString(i++,papel+",0,0");
 				ps.executeUpdate();
-				System.out.println("\nBandera 1\n");
+				//System.out.println("\nBandera 1\n");
 				}else{
 				//System.out.println("Bandera 5");
 					
@@ -209,7 +209,7 @@ public class GruposGestionDB extends BaseDB{
 					else
 						if(partes[2].equals("0") && !partes[1].equals(papel))
 							nuevoPerfil=partes[0]+","+partes[1]+","+papel;
-					System.out.println("\nBandera 2\n");
+					//System.out.println("\nBandera 2\n");
 				}
 				//System.out.println("Bandera 6");
 				if(nuevoPerfil!=null){
@@ -233,7 +233,7 @@ public class GruposGestionDB extends BaseDB{
 					//ps.setString(i++, nick);
 					ps.executeUpdate();
 		//			//System.out.println("solo cambia clave");
-					System.out.println("\nBandera 4\n");
+		//			System.out.println("\nBandera 4\n");
 				}
 				//System.out.println("Bandera 9");
 			}
@@ -241,8 +241,8 @@ public class GruposGestionDB extends BaseDB{
 			datos[4]=key;
 			mailClaveNueva(datos);
 			
-			System.out.println("\nAqui el nick es = " + nick);
-			System.out.println("\nBandera Final\n");
+			//System.out.println("\nAqui el nick es = " + nick);
+			//System.out.println("\nBandera Final\n");
 			
 			//System.out.println("Bandera 10");
 			retorno=true;
