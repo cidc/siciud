@@ -69,9 +69,9 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -91,7 +91,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("'></script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction guardar(){\r\n");
       out.write("\t\tdocument.nuevo.action='");
@@ -100,8 +100,8 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("';\r\n");
       out.write("\t\tdocument.nuevo.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("<br>\r\n");
       out.write("\t<table align=\"center\">\r\n");
@@ -235,7 +235,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<th colspan=\"3\"><b>Página Web</b></th>\r\n");
       out.write("\t\t</tr>\r\n");
-      out.write("\t\t<tr>\n");
+      out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td colspan=\"3\">\r\n");
       out.write("\t\t\t");
       if (_jspx_meth_c_005fif_005f15(_jspx_page_context))
@@ -244,33 +244,33 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t");
       if (_jspx_meth_c_005fif_005f16(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("\t\t\t</td>\r\n");
-      out.write("\t\t</tr>\n");
-      out.write("\t\t<tr>\n");
-      out.write("\t\t\t<td class=\"renglones\">Proyecto Curricular</td>\n");
-      out.write("\t\t\t<td colspan=\"4\" class=\"renglones\">\n");
-      out.write("\t\t\t\t<select name=\"codproyCurr\">\n");
-      out.write("\t\t\t\t\t<option value=\"0\">-----------------------------------------------------------------------</option>\n");
+      out.write("\t\t</tr>\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"renglones\">Proyecto Curricular</td>\r\n");
+      out.write("\t\t\t<td colspan=\"4\" class=\"renglones\">\r\n");
+      out.write("\t\t\t\t<select name=\"codproyCurr\">\r\n");
+      out.write("\t\t\t\t\t<option value=\"0\">-----------------------------------------------------------------------</option>\r\n");
       out.write("\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t</select>\t\t\t\t\t\t\t\n");
-      out.write("\t\t\t</td>\n");
-      out.write("\t\t</tr>\t\t\n");
-      out.write("\t\t<tr>\n");
-      out.write("\t\t\t<td class=\"renglones\">Área de Conocimiento (SNIES)</td>\n");
-      out.write("\t\t\t\t<td colspan=\"4\" class=\"renglones\">\n");
-      out.write("\t\t\t\t\t<select name=\"codAreaSNIES\">\n");
-      out.write("\t\t\t\t\t\t<option value=\"0\">-----------------------------------------------------------------------</option>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t</select>\t\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t</td>\r\n");
+      out.write("\t\t</tr>\t\t\r\n");
+      out.write("\t\t<tr>\r\n");
+      out.write("\t\t\t<td class=\"renglones\">Área de Conocimiento (SNIES)</td>\r\n");
+      out.write("\t\t\t\t<td colspan=\"4\" class=\"renglones\">\r\n");
+      out.write("\t\t\t\t\t<select name=\"codAreaSNIES\">\r\n");
+      out.write("\t\t\t\t\t\t<option value=\"0\">-----------------------------------------------------------------------</option>\r\n");
       out.write("\t\t\t\t\t\t\t");
       if (_jspx_meth_c_005fforEach_005f1(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t\t</select>\t\t\t\t\t\t\t\n");
-      out.write("\t\t\t\t</td>\n");
-      out.write("\t\t</tr>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t</select>\t\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t</td>\r\n");
+      out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td colspan=\"3\" align=\"center\"><img  src=\"");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
@@ -287,6 +287,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -1128,7 +1129,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t\t\t\t<option style=\"text-transform: lowercase;\" value='");
           if (_jspx_meth_c_005fout_005f11(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
@@ -1139,7 +1140,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write('>');
           if (_jspx_meth_c_005fout_005f12(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</option>\n");
+          out.write("</option>\r\n");
           out.write("\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1246,7 +1247,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f1 = _jspx_th_c_005fforEach_005f1.doStartTag();
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t\t\t\t\t<option style=\"text-transform: lowercase;\" value='");
           if (_jspx_meth_c_005fout_005f13(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
@@ -1257,7 +1258,7 @@ public final class VerGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write('>');
           if (_jspx_meth_c_005fout_005f14(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
-          out.write("</option>\n");
+          out.write("</option>\r\n");
           out.write("\t\t\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

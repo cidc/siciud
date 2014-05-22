@@ -1,16 +1,2 @@
-/NuevoConvenio_jsp.class
-/ListaConvenios_jsp.class
-/Verconvenio_jsp.class
 /Ajax_jsp.class
-/Documentos_jsp.class
-/EntidadConvenio_jsp.class
-/Grupos_jsp.class
-/Personas_jsp.class
-/RubrosAprobados_jsp.class
-/VerTiempos_jsp.class
-/AdicionarCRP_jsp.class
-/Aportes_jsp.class
-/llenarAporte_jsp.class
-/llenarEntidadConv_jsp.class
-/llenar_jsp.class
-/llenarTiempo_jsp.class
+/NuevoConvenio_jsp.class

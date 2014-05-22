@@ -66,50 +66,50 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<script type=\"text/javascript\" language=\"javascript\" src='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<link rel=\"stylesheet\" href='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("' type=\"text/css\" media=\"screen\" />\n");
+      out.write("' type=\"text/css\" media=\"screen\" />\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
-      out.write("' title='win2k-cold-1' />\n");
+      out.write("' title='win2k-cold-1' />\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f4(_jspx_page_context))
         return;
-      out.write("'></script>\n");
+      out.write("'></script>\r\n");
       out.write("<script type='text/javascript' src='");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
         return;
       out.write("'></script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("\tvar nav4=window.Event ? true : false;\n");
-      out.write("\tfunction numeros(eve){\n");
-      out.write("\t\tvar key=nav4?eve.which :eve.keyCode;\n");
-      out.write("\t\treturn(key<=13 || (key>=48 && key<=57));\n");
+      out.write("\tvar nav4=window.Event ? true : false;\r\n");
+      out.write("\tfunction numeros(eve){\r\n");
+      out.write("\t\tvar key=nav4?eve.which :eve.keyCode;\r\n");
+      out.write("\t\treturn(key<=13 || (key>=48 && key<=57));\r\n");
       out.write("\t}\r\n");
       out.write("\tfunction eliminar(id){\r\n");
       out.write("\t\tdocument.frmTiempos.accion.value=18;\r\n");
       out.write("\t\tdocument.frmTiempos.idTiempo.value=id;\r\n");
       out.write("\t\tdocument.frmTiempos.submit();\r\n");
       out.write("\t}\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
@@ -126,6 +126,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -288,86 +289,86 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\r\n");
         out.write("<br>\r\n");
-        out.write("\t<table cellpadding=\"0\" cellspacing=\"0\">\n");
-        out.write("\t\t<tr>\n");
+        out.write("\t<table cellpadding=\"0\" cellspacing=\"0\">\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f6(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f7(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f8(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f9(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f10(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f11(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
+        out.write("'></a></td>\r\n");
         out.write("\t\t\t<td><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f12(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
+        out.write("'></td>\r\n");
         out.write("\t\t\t<td><a href='");
         if (_jspx_meth_c_005furl_005f13(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("'><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f14(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></a></td>\n");
-        out.write("\t\t</tr>\n");
+        out.write("'></a></td>\r\n");
+        out.write("\t\t</tr>\r\n");
         out.write("\t</table>\r\n");
-        out.write("<br>\n");
-        out.write("\t\n");
-        out.write("\t<table width=\"95%\" class=\"tablas\" align=\"center\">\n");
-        out.write("\t\t<CAPTION>Datos generales del proyecto</CAPTION>\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<th colspan=\"5\"><b>Nombre de Proyecto</b></th>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
+        out.write("<br>\r\n");
+        out.write("\t\r\n");
+        out.write("\t<table width=\"95%\" class=\"tablas\" align=\"center\">\r\n");
+        out.write("\t\t<CAPTION>Datos generales del proyecto</CAPTION>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<th colspan=\"5\"><b>Nombre de Proyecto</b></th>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td colspan=\"5\">");
         if (_jspx_meth_c_005fout_005f0(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Director del Proyecto</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Código</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Fecha Aprobación</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Estimado Fin</b></th>\n");
-        out.write("\t\t\t<th width=\"20%\"><b>Total Aprobado</b></th>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t<tr>\n");
+        out.write("</td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Director del Proyecto</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Código</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Fecha Aprobación</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Estimado Fin</b></th>\r\n");
+        out.write("\t\t\t<th width=\"20%\"><b>Total Aprobado</b></th>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f4(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
+        out.write("</td>\r\n");
         out.write("\t\t\t<td width=\"20%\" align=\"center\">");
         if (_jspx_meth_c_005fout_005f5(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("</td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t</table>\n");
-        out.write("\t\n");
+        out.write("</td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t</table>\r\n");
+        out.write("\t\r\n");
         out.write("\t");
         if (_jspx_meth_c_005fif_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
@@ -376,55 +377,55 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write('	');
         if (_jspx_meth_c_005fif_005f7(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("\n");
-        out.write("\t\n");
+        out.write("\r\n");
+        out.write("\t\r\n");
         out.write("\t<form method=\"post\" action='");
         if (_jspx_meth_c_005furl_005f17(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'>\n");
-        out.write("\t<input type=\"hidden\" name=\"accion\" value=\"17\"> \n");
-        out.write("\t\t<table align=\"center\" width=\"90%\" class=\"tablas\">\n");
-        out.write("\t\t<caption>Registro de nuevo tiempo adicional</caption>\n");
-        out.write("\t\t\t<tr>\n");
-        out.write("\t\t\t\t<th width=\"175px\">Fecha Asignación</th>\n");
-        out.write("\t\t\t\t<th width=\"100px\">Tiempo Aprobado</th>\n");
-        out.write("\t\t\t\t<th width=\"100px\">Tipo</th>\n");
-        out.write("\t\t\t\t<th>Observaciones</th>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t\t<tr>\n");
-        out.write("\t\t\t\t<td  width=\"175px\">\n");
-        out.write("\t\t\t\t\t<input type='text' name='fechaTiempo' style=\"width: 75%\" readonly='true' id='f_date_a' size='12'>\n");
-        out.write("\t\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\n");
-        out.write("\t\t\t\t\t<script type='text/javascript'>\n");
-        out.write("\t\t    \t\t\tCalendar.setup({\n");
-        out.write("\t\t\t    \t\t\tinputField     :    'f_date_a',\n");
-        out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\n");
-        out.write("\t\t\t    \t\t\tshowsTime      :    false,\n");
-        out.write("\t\t\t    \t\t\tbutton         :    'f_trigger_a',\n");
-        out.write("\t\t\t    \t\t\tsingleClick    :    false,\n");
-        out.write("\t\t\t    \t\t\tstep           :    1\n");
-        out.write("\t\t    \t\t\t})\n");
-        out.write("\t    \t\t\t</script>\n");
-        out.write("\t\t\t\t</td>\n");
-        out.write("\t\t\t\t<td width=\"100px\"><input type=\"text\" maxlength=\"3\" onkeypress=\"return numeros(event)\" name=\"valorTiempo\" style=\"width: 50%;text-align: right;\"> Meses</td>\n");
-        out.write("\t\t\t\t<td width=\"100px\">\n");
-        out.write("\t\t\t\t\t<select name=\"tipoTiempo\">\n");
-        out.write("\t\t\t\t\t\t<option value=\"1\">Prórroga</option>\n");
-        out.write("\t\t\t\t\t\t<option value=\"2\">Aplazamiento</option>\n");
-        out.write("\t\t\t\t\t\t<option value=\"3\">Suspensión</option>\n");
-        out.write("\t\t\t\t\t\t<option value=\"4\">Extensión</option>\n");
-        out.write("\t\t\t\t\t</select>\n");
-        out.write("\t\t\t\t</td>\n");
-        out.write("\t\t\t\t<td><input type=\"text\" name=\"descripcion\"></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t\t<tr>\n");
+        out.write("'>\r\n");
+        out.write("\t<input type=\"hidden\" name=\"accion\" value=\"17\"> \r\n");
+        out.write("\t\t<table align=\"center\" width=\"90%\" class=\"tablas\">\r\n");
+        out.write("\t\t<caption>Registro de nuevo tiempo adicional</caption>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<th width=\"175px\">Fecha Asignación</th>\r\n");
+        out.write("\t\t\t\t<th width=\"100px\">Tiempo Aprobado</th>\r\n");
+        out.write("\t\t\t\t<th width=\"100px\">Tipo</th>\r\n");
+        out.write("\t\t\t\t<th>Observaciones</th>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
+        out.write("\t\t\t\t<td  width=\"175px\">\r\n");
+        out.write("\t\t\t\t\t<input type='text' name='fechaTiempo' style=\"width: 75%\" readonly='true' id='f_date_a' size='12'>\r\n");
+        out.write("\t\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\r\n");
+        out.write("\t\t\t\t\t<script type='text/javascript'>\r\n");
+        out.write("\t\t    \t\t\tCalendar.setup({\r\n");
+        out.write("\t\t\t    \t\t\tinputField     :    'f_date_a',\r\n");
+        out.write("\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
+        out.write("\t\t\t    \t\t\tshowsTime      :    false,\r\n");
+        out.write("\t\t\t    \t\t\tbutton         :    'f_trigger_a',\r\n");
+        out.write("\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+        out.write("\t\t\t    \t\t\tstep           :    1\r\n");
+        out.write("\t\t    \t\t\t})\r\n");
+        out.write("\t    \t\t\t</script>\r\n");
+        out.write("\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t<td width=\"100px\"><input type=\"text\" maxlength=\"3\" onkeypress=\"return numeros(event)\" name=\"valorTiempo\" style=\"width: 50%;text-align: right;\"> Meses</td>\r\n");
+        out.write("\t\t\t\t<td width=\"100px\">\r\n");
+        out.write("\t\t\t\t\t<select name=\"tipoTiempo\">\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"1\">Prórroga</option>\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"2\">Aplazamiento</option>\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"3\">Suspensión</option>\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"4\">Extensión</option>\r\n");
+        out.write("\t\t\t\t\t</select>\r\n");
+        out.write("\t\t\t\t</td>\r\n");
+        out.write("\t\t\t\t<td><input type=\"text\" name=\"descripcion\"></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t\t<tr>\r\n");
         out.write("\t\t\t\t<td colspan=\"4\" align=\"center\"><input type=\"image\" src='");
         if (_jspx_meth_c_005furl_005f18(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
-        out.write("'></td>\n");
-        out.write("\t\t\t</tr>\n");
-        out.write("\t\t</table>\n");
-        out.write("\t</form>\n");
+        out.write("'></td>\r\n");
+        out.write("\t\t\t</tr>\r\n");
+        out.write("\t\t</table>\r\n");
+        out.write("\t</form>\r\n");
         out.write("\t\r\n");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -749,10 +750,10 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t<tr>\r\n");
         out.write("\t\t\t\t<th width=\"5px\">&nbsp;</th>\r\n");
         out.write("\t\t\t\t<th width=\"75px\"><b>Fecha Asignación</b></th>\r\n");
-        out.write("\t\t\t\t<th width=\"75px\"><b>Aprobado</b></th>\t\t\t\t\n");
+        out.write("\t\t\t\t<th width=\"75px\"><b>Aprobado</b></th>\t\t\t\t\r\n");
         out.write("\t\t\t\t<th width=\"75px\"><b>Tipo</b></th>\r\n");
-        out.write("\t\t\t\t<th width=\"150px\"><b>Registrado por</b></th>\n");
-        out.write("\t\t\t\t<th ><b>Observación</b></th>\n");
+        out.write("\t\t\t\t<th width=\"150px\"><b>Registrado por</b></th>\r\n");
+        out.write("\t\t\t\t<th ><b>Observación</b></th>\r\n");
         out.write("\t\t\t\t<th width=\"10px\">&nbsp;</th>\r\n");
         out.write("\t\t\t</tr>\r\n");
         out.write("\t\t\t");
@@ -760,7 +761,7 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
           return true;
         out.write("\r\n");
         out.write("\t\t</table>\r\n");
-        out.write("\t</form>\n");
+        out.write("\t</form>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -831,29 +832,29 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\t\t\t\t<td width=\"75px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f8(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("  (meses)</td>\n");
-          out.write("\t\t\t\t<td width=\"75px\" align=\"center\">\n");
+          out.write("  (meses)</td>\r\n");
+          out.write("\t\t\t\t<td width=\"75px\" align=\"center\">\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f3(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f4(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f5(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fif_005f6(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t\t\t\t</td>\r\n");
           out.write("\t\t\t\t<td width=\"150px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f9(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
-          out.write("</td>\n");
+          out.write("</td>\r\n");
           out.write("\t\t\t\t<td width=\"150px\" align=\"center\">");
           if (_jspx_meth_c_005fout_005f10(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
@@ -1167,8 +1168,8 @@ public final class VerTiempos_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
     if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t<h3 align=\"center\">No hay tiempos adicionales aprobados para este proyecto</h3>\n");
+        out.write("\r\n");
+        out.write("\t<h3 align=\"center\">No hay tiempos adicionales aprobados para este proyecto</h3>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f7.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

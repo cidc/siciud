@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import cidc.evalMovilidad.db.EvalMovilidadDB;
-import cidc.evalMovilidad.obj.Criterio;
+import cidc.evalComite.obj.Criterio;
 import cidc.evalMovilidad.obj.ParametrosOBJ;
 import cidc.evalMovilidad.obj.TrayectoriaInvest;
 import cidc.general.db.CursorDB;

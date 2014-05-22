@@ -1,10 +1,10 @@
-package org.apache.jsp;
+package org.apache.jsp.proyectosAntiguos;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class AyudaTooltip_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class Llenar2_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -55,18 +55,25 @@ public final class AyudaTooltip_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
 
       out.write("\r\n");
+      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
       out.write("\r\n");
-      out.write("<html>\r\n");
-      out.write("<head>\r\n");
+      cidc.proyectosAntiguos.obj.CoinvestigadoresOBJ coin = null;
+      synchronized (session) {
+        coin = (cidc.proyectosAntiguos.obj.CoinvestigadoresOBJ) _jspx_page_context.getAttribute("coin", PageContext.SESSION_SCOPE);
+        if (coin == null){
+          coin = new cidc.proyectosAntiguos.obj.CoinvestigadoresOBJ();
+          _jspx_page_context.setAttribute("coin", coin, PageContext.SESSION_SCOPE);
+        }
+      }
+      out.write('\r');
+      out.write('\n');
+      org.apache.jasper.runtime.JspRuntimeLibrary.introspect(_jspx_page_context.findAttribute("coin"), request);
+      out.write("\r\n");
+      out.write("\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("</head>\r\n");
-      out.write("<body>\r\n");
-      out.write("\t\t<p class=\"texto\"><b>Integrante Bloqueado:</b></p>\r\n");
-      out.write("\t\t<p class=\"texto1j\" >Este integrante necesita ser actualizado. para ver la información de este integrante, favor enviar al correo siciud-viiceps@correo.udistrital.edu.co el dato del Nombre completo, código de carnet UD y cédula.</p>\t  \r\n");
-      out.write("</body>\r\n");
-      out.write("</html>");
+      out.write('\r');
+      out.write('\n');
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -88,8 +95,8 @@ public final class AyudaTooltip_jsp extends org.apache.jasper.runtime.HttpJspBas
     org.apache.taglibs.standard.tag.rt.core.ImportTag _jspx_th_c_005fimport_005f0 = (org.apache.taglibs.standard.tag.rt.core.ImportTag) _005fjspx_005ftagPool_005fc_005fimport_0026_005furl_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.ImportTag.class);
     _jspx_th_c_005fimport_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fimport_005f0.setParent(null);
-    // /AyudaTooltip.jsp(6,0) name = url type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fimport_005f0.setUrl("/general.jsp");
+    // /proyectosAntiguos/Llenar2.jsp(8,0) name = url type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fimport_005f0.setUrl("/proyectosAntiguos/GestProyectos.x");
     int[] _jspx_push_body_count_c_005fimport_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_c_005fimport_005f0 = _jspx_th_c_005fimport_005f0.doStartTag();

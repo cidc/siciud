@@ -1,4 +1,4 @@
-package cidc.evalMovilidad.obj;
+package cidc.evalComite.obj;
 
 public class InfoEvento {
 

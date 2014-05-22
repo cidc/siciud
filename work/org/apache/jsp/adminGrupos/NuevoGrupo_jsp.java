@@ -60,10 +60,10 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -91,7 +91,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("' type=\"text/css\" media=\"screen\" />\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
       out.write("\tfunction cambioTipo(boton){\r\n");
       out.write("\t\tif(boton.value==2){\r\n");
@@ -122,6 +122,9 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\tif(document.nuevo.tipo.value==\"0\"){\r\n");
       out.write("\t\t\tmensaje=mensaje+\"\\n-) Tipo\";\r\n");
       out.write("\t\t}\r\n");
+      out.write("\t\tif(document.nuevo.fechaCreacion.value==\"\"){\r\n");
+      out.write("\t\t\tmensaje=mensaje+\"\\n-) Fecha de Creación\";\r\n");
+      out.write("\t\t}\r\n");
       out.write("\t\tif(document.nuevo.nombDirector.value==\"\"){\r\n");
       out.write("\t\t\tmensaje=mensaje+\"\\n-) Nombre del Director\";\r\n");
       out.write("\t\t}\r\n");
@@ -130,6 +133,9 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t}\r\n");
       out.write("\t\tif(document.nuevo.tipo.value==\"1\" && document.nuevo.categoria.selectedIndex==0){\r\n");
       out.write("\t\t\tmensaje=mensaje+\"\\n-) Categoría Colciencias\";\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\tif(document.nuevo.numeroCIDC.value==\"\"){\r\n");
+      out.write("\t\t\tmensaje=mensaje+\"\\n-) Número de acta del CIDC\";\r\n");
       out.write("\t\t}\r\n");
       out.write("\t\tif(mensaje!=\"\"){\r\n");
       out.write("\t\t\tmensaje=\"Los siguientes campos son obligatorios: \"+mensaje;\r\n");
@@ -140,8 +146,26 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\treturn false;\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
+      out.write("\tfunction validarNro(e) {\r\n");
+      out.write("\t\tvar key;\r\n");
+      out.write("\t\tif(window.event){ // IE\r\n");
+      out.write("\t\t\tkey = e.keyCode;\r\n");
+      out.write("\t\t}\r\n");
+      out.write("\t\telse if(e.which){ // Netscape/Firefox/Opera\r\n");
+      out.write("\t\t\t\tkey = e.which;\r\n");
+      out.write("\t\t\t}\r\n");
+      out.write("\t\r\n");
+      out.write("\t\tif (key < 48 || key > 57)\r\n");
+      out.write("\t\t    {\r\n");
+      out.write("\t\t    if(key == 8) // Detectar  backspace (retroceso)\r\n");
+      out.write("\t\t        { return true; }\r\n");
+      out.write("\t\t    else \r\n");
+      out.write("\t\t        { return false; }\r\n");
+      out.write("\t\t    }\r\n");
+      out.write("\t\treturn true;\r\n");
+      out.write("\t}\r\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("<br>\r\n");
       out.write("\t<table width=\"100%\">\r\n");
@@ -210,6 +234,13 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"8\">A1 - Colciencias</option>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t</select>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Estado</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"estado\" style=\"width: 100%\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">Activo</option>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">Inactivo</option>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t</select>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t</table>\r\n");
       out.write("\t\t\t\t\t\t\t\t</td>\r\n");
@@ -218,7 +249,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t\t<td colspan=\"5\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<table width=\"100%\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Fecha de Creación</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Fecha de Creación CIDC</b></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<td >\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<input type='text' name='fechaCreacion' class='caj' readonly='true' id='f_date_b' size='13'>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<button type='button' id='f_trigger_b'>...</button>\r\n");
@@ -233,12 +264,30 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t\t    \t\t\t})\r\n");
       out.write("\t\t\t\t\t\t\t    \t\t\t</script>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Estado</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Número de Acta CIDC</b></td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<td>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"estado\" style=\"width: 100%\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">Activo</option>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">Inactivo</option>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t</select>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" name=\"numeroCIDC\" onkeypress=\"javascript:return validarNro(event)\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Fecha de Creación Facultad</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<td >\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<input type='text' name='fechaCreacionFacultad' class='caj' readonly='true' id='f_date_b_fac' size='13'>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<button type='button' id='f_trigger_b_fac'>...</button>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<script type='text/javascript'>\r\n");
+      out.write("\t\t\t\t\t\t\t\t    \t\t\tCalendar.setup({\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tinputField     :    'f_date_b_fac',\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tifFormat       :    '%d/%m/%Y',\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tshowsTime      :    true,\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tbutton         :    'f_trigger_b_fac',\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tsingleClick    :    false,\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t    \t\t\tstep           :    1\r\n");
+      out.write("\t\t\t\t\t\t\t\t    \t\t\t})\r\n");
+      out.write("\t\t\t\t\t\t\t    \t\t\t</script>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t</td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<td class=\"renglones\"><b>Número de acta</b></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" name=\"numeroFac\" onkeypress=\"javascript:return validarNro(event)\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t</table>\r\n");
@@ -276,41 +325,41 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t<td colspan=\"5\"><input type=\"text\" name=\"mail\" size=\"75\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t</tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>GrupLac</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
+      out.write("\t\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>GrupLac</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\"><input type=\"text\" name=\"grupLac\" size=\"75\" value='");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
-      out.write("' ></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Página Web</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
+      out.write("' ></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Página Web</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\"><input type=\"text\" name=\"web\" size=\"75\" value='");
       if (_jspx_meth_c_005fout_005f1(_jspx_page_context))
         return;
-      out.write("'></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Descripción del Grupo</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
+      out.write("'></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Descripción del Grupo</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\"><textarea name=\"descripcion\" style=\"width:100%\">");
       if (_jspx_meth_c_005fout_005f2(_jspx_page_context))
         return;
-      out.write("</textarea></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Observaciones</b></td>\n");
-      out.write("\t\t\t\t\t\t</tr>\t\t\t\t\t\t\n");
-      out.write("\t\t\t\t\t\t<tr>\n");
+      out.write("</textarea></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Observaciones</b></td>\r\n");
+      out.write("\t\t\t\t\t\t</tr>\t\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t<td colspan=\"5\"><textarea name=\"observaciones\" style=\"width:100%\">");
       if (_jspx_meth_c_005fout_005f3(_jspx_page_context))
         return;
-      out.write("</textarea></td>\n");
+      out.write("</textarea></td>\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t</table>\r\n");
       out.write("\t\t\t\t\t</td>\r\n");
@@ -331,6 +380,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -505,7 +555,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f7 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f7.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(66,12) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(90,12) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f7.setValue("/adminGrupos/AdminGrupos.x?accion=0");
     int _jspx_eval_c_005furl_005f7 = _jspx_th_c_005furl_005f7.doStartTag();
     if (_jspx_th_c_005furl_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -524,7 +574,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f8 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f8.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(66,88) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(90,88) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f8.setValue("/comp/img/Home.png");
     int _jspx_eval_c_005furl_005f8 = _jspx_th_c_005furl_005f8.doStartTag();
     if (_jspx_th_c_005furl_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -543,7 +593,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f9 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f9.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(168,21) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(217,21) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f9.setValue("/adminGrupos/AdminGrupos.x?accion=20&director=si");
     int _jspx_eval_c_005furl_005f9 = _jspx_th_c_005furl_005f9.doStartTag();
     if (_jspx_th_c_005furl_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -562,7 +612,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f10 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f10.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(170,22) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(219,22) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f10.setValue("/comp/img/humanito.gif");
     int _jspx_eval_c_005furl_005f10 = _jspx_th_c_005furl_005f10.doStartTag();
     if (_jspx_th_c_005furl_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -581,7 +631,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(187,74) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(236,74) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.grupLac}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -600,7 +650,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(193,70) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(242,70) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.web}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -619,7 +669,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(199,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(248,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.descripcion}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -638,7 +688,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f3.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(205,73) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(254,73) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.grupo.observaciones}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -657,7 +707,7 @@ public final class NuevoGrupo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f11 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f11.setParent(null);
-    // /adminGrupos/NuevoGrupo.jsp(211,34) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminGrupos/NuevoGrupo.jsp(260,34) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f11.setValue("/comp/img/Guardar.gif");
     int _jspx_eval_c_005furl_005f11 = _jspx_th_c_005furl_005f11.doStartTag();
     if (_jspx_th_c_005furl_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

@@ -69,9 +69,9 @@ public final class IntegranteExterno_jsp extends org.apache.jasper.runtime.HttpJ
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("\r\n");
       cidc.general.login.Usuario loginUsuario = null;
       synchronized (session) {
         loginUsuario = (cidc.general.login.Usuario) _jspx_page_context.getAttribute("loginUsuario", PageContext.SESSION_SCOPE);
@@ -95,7 +95,7 @@ public final class IntegranteExterno_jsp extends org.apache.jasper.runtime.HttpJ
       if (_jspx_meth_fmt_005fformatDate_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<link type='text/css' rel='stylesheet' media='all' href='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -115,15 +115,15 @@ public final class IntegranteExterno_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("'></script>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("\n");
-      out.write("\t\tvar nav4=window.Event ? true : false;\n");
-      out.write("\t\t\n");
-      out.write("\t\tfunction numeros(eve){\n");
-      out.write("\t\t\tvar key=nav4?eve.which :eve.keyCode;\n");
-      out.write("\t\t\treturn(key<=13 || (key>=48 && key<=57));\n");
-      out.write("\t\t}\n");
+      out.write("\r\n");
+      out.write("\t\tvar nav4=window.Event ? true : false;\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\tfunction numeros(eve){\r\n");
+      out.write("\t\t\tvar key=nav4?eve.which :eve.keyCode;\r\n");
+      out.write("\t\t\treturn(key<=13 || (key>=48 && key<=57));\r\n");
+      out.write("\t\t}\r\n");
       out.write("\r\n");
       out.write("\tfunction com(id){\r\n");
       out.write("\t\tdocument.comandos.accion.value=id;\r\n");
@@ -203,7 +203,7 @@ public final class IntegranteExterno_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\t\talert(\"Este integrante está desvinculado del grupo actualmente\");\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
-      out.write("\tfunction acci(acc){\n");
+      out.write("\tfunction acci(acc){\r\n");
       out.write("\t\tif(validar()){\r\n");
       out.write("\t\t\tdocument.nuevo.accion.value=acc;\r\n");
       out.write("\t\t\tdocument.nuevo.submit();\r\n");
@@ -213,8 +213,8 @@ public final class IntegranteExterno_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\r\n");
       out.write("</script>\r\n");
       out.write("\r\n");
-      out.write("\n");
-      out.write("</head>\n");
+      out.write("\r\n");
+      out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("\t<br>\r\n");
       out.write("\t<form name=\"comandos\" action='");
@@ -222,7 +222,7 @@ public final class IntegranteExterno_jsp extends org.apache.jasper.runtime.HttpJ
         return;
       out.write("' method=\"post\">\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"accion\" value=''>\r\n");
-      out.write("\t\t\n");
+      out.write("\t\t\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"idGrupo\" value='");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
@@ -240,7 +240,7 @@ public final class IntegranteExterno_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\" onclick=\"com(6)\">\r\n");
       out.write("\t\t\t\t");
 if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){ 
-      out.write("\n");
+      out.write("\r\n");
       out.write("\t\t\t\t\t<img src=\"");
       if (_jspx_meth_c_005furl_005f8(_jspx_page_context))
         return;
@@ -262,8 +262,8 @@ if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){
       out.write("\t<form action='");
       if (_jspx_meth_c_005furl_005f9(_jspx_page_context))
         return;
-      out.write("' name=\"nuevo\" method=\"post\">\n");
-      out.write("\t\t<input type=\"hidden\" name=\"papel\" value='6'>\n");
+      out.write("' name=\"nuevo\" method=\"post\">\r\n");
+      out.write("\t\t<input type=\"hidden\" name=\"papel\" value='6'>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"codigoUd\" value='00'>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"idGrupo\" value=\"");
       if (_jspx_meth_c_005fout_005f2(_jspx_page_context))
@@ -272,7 +272,7 @@ if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){
       out.write("\t\t<input type=\"hidden\" name=\"accion\" value=\"");
       if (_jspx_meth_c_005fout_005f3(_jspx_page_context))
         return;
-      out.write("\">\n");
+      out.write("\">\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"id\" value='");
       if (_jspx_meth_c_005fout_005f4(_jspx_page_context))
         return;
@@ -288,22 +288,22 @@ if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){
       if (_jspx_meth_c_005fout_005f5(_jspx_page_context))
         return;
       out.write("'></td>\r\n");
-      out.write("\t\t\t<th><b>Tipo Documento:</b></th>\n");
-      out.write("\t\t\t<td>\n");
-      out.write("\t\t\t\t<select name=\"tipoCed\">\n");
-      out.write("\t\t\t\t<option value=\"0\">---</option>\n");
+      out.write("\t\t\t<th><b>Tipo Documento:</b></th>\r\n");
+      out.write("\t\t\t<td>\r\n");
+      out.write("\t\t\t\t<select name=\"tipoCed\">\r\n");
+      out.write("\t\t\t\t<option value=\"0\">---</option>\r\n");
       out.write("\t\t\t\t<option value=\"1\" ");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
-      out.write(">C.C.</option>\n");
+      out.write(">C.C.</option>\r\n");
       out.write("\t\t\t\t<option value=\"3\" ");
       if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
         return;
-      out.write(">C.E.</option>\n");
+      out.write(">C.E.</option>\r\n");
       out.write("\t\t\t\t<option value=\"2\" ");
       if (_jspx_meth_c_005fif_005f2(_jspx_page_context))
         return;
-      out.write(">T.I</option>\n");
+      out.write(">T.I</option>\r\n");
       out.write("\t\t\t</select>\r\n");
       out.write("\t\t\t</td>\r\n");
       out.write("\t\t</tr>\r\n");
@@ -312,21 +312,21 @@ if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){
       out.write("\t\t\t<td><input  type=\"text\" name=\"deCed\" value='");
       if (_jspx_meth_c_005fout_005f6(_jspx_page_context))
         return;
-      out.write("'></td>\n");
-      out.write("\t\t\t<th><b>Genero:</b></th>\n");
-      out.write("\t\t\t<td>\n");
-      out.write("\t\t\t\t<select name=\"genero\">\n");
-      out.write("\t\t\t\t\t<option value=\"0\" >-----------</option>\n");
+      out.write("'></td>\r\n");
+      out.write("\t\t\t<th><b>Genero:</b></th>\r\n");
+      out.write("\t\t\t<td>\r\n");
+      out.write("\t\t\t\t<select name=\"genero\">\r\n");
+      out.write("\t\t\t\t\t<option value=\"0\" >-----------</option>\r\n");
       out.write("\t\t\t\t\t<option value=\"1\" ");
       if (_jspx_meth_c_005fif_005f3(_jspx_page_context))
         return;
-      out.write(">Femenino</option>\n");
+      out.write(">Femenino</option>\r\n");
       out.write("\t\t\t\t\t<option value=\"2\" ");
       if (_jspx_meth_c_005fif_005f4(_jspx_page_context))
         return;
-      out.write(">Masculino</option>\n");
-      out.write("\t\t\t\t</select>\n");
-      out.write("\t\t\t</td>\n");
+      out.write(">Masculino</option>\r\n");
+      out.write("\t\t\t\t</select>\r\n");
+      out.write("\t\t\t</td>\r\n");
       out.write("\t\t</tr>\t\t\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<th><b>Nombres:</b></th>\r\n");
@@ -439,10 +439,11 @@ if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){
         return;
       out.write("\r\n");
       out.write("\t</table>\r\n");
-      out.write("\t<br>\n");
+      out.write("\t<br>\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fif_005f7(_jspx_page_context))
         return;
+      out.write('\r');
       out.write('\n');
       out.write('	');
       //  c:if
@@ -454,6 +455,7 @@ if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){
       int _jspx_eval_c_005fif_005f8 = _jspx_th_c_005fif_005f8.doStartTag();
       if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
+          out.write('\r');
           out.write('\n');
           out.write('	');
 if(loginUsuario.isPerfil("10")){ 
@@ -462,7 +464,7 @@ if(loginUsuario.isPerfil("10")){
           out.write("\t<img src=\"");
           if (_jspx_meth_c_005furl_005f12(_jspx_th_c_005fif_005f8, _jspx_page_context))
             return;
-          out.write("\" onclick=\"acci(20)\">\n");
+          out.write("\" onclick=\"acci(20)\">\r\n");
           out.write("\t");
           if (_jspx_meth_c_005fif_005f9(_jspx_th_c_005fif_005f8, _jspx_page_context))
             return;
@@ -472,9 +474,10 @@ if(loginUsuario.isPerfil("10")){
           if (_jspx_meth_c_005fif_005f10(_jspx_th_c_005fif_005f8, _jspx_page_context))
             return;
           out.write("\r\n");
-          out.write("\t</center>\n");
+          out.write("\t</center>\r\n");
           out.write("\t");
 } 
+          out.write('\r');
           out.write('\n');
           out.write('	');
           int evalDoAfterBody = _jspx_th_c_005fif_005f8.doAfterBody();
@@ -515,6 +518,7 @@ if(loginUsuario.isPerfil("10")){
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -1360,20 +1364,20 @@ if(loginUsuario.isPerfil("10")){
     int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
     if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("\t\t<table align=\"center\">\n");
-        out.write("\t\t<tr>\n");
-        out.write("\t\t<td>\n");
+        out.write("\r\n");
+        out.write("\t\t<table align=\"center\">\r\n");
+        out.write("\t\t<tr>\r\n");
+        out.write("\t\t<td>\r\n");
         out.write("\t\t\t<img src=\"");
         if (_jspx_meth_c_005furl_005f11(_jspx_th_c_005fif_005f7, _jspx_page_context))
           return true;
         out.write("\" onclick=\"acci(");
         if (_jspx_meth_c_005fout_005f19(_jspx_th_c_005fif_005f7, _jspx_page_context))
           return true;
-        out.write(")\">\n");
-        out.write("\t\t</td>\n");
-        out.write("\t\t</tr>\n");
-        out.write("\t\t</table>\n");
+        out.write(")\">\r\n");
+        out.write("\t\t</td>\r\n");
+        out.write("\t\t</tr>\r\n");
+        out.write("\t\t</table>\r\n");
         out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f7.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

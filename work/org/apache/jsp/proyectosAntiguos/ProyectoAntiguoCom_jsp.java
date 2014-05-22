@@ -224,7 +224,7 @@ if(loginUsuario.isPerfil("16")||loginUsuario.isPerfil("7")||loginUsuario.isPerfi
       out.write("\t          <option value='5' ");
       if (_jspx_meth_c_005fif_005f4(_jspx_page_context))
         return;
-      out.write(">En Prueba</option>\n");
+      out.write(">En Prueba</option>\r\n");
       out.write("\t          <option value='6' ");
       if (_jspx_meth_c_005fif_005f5(_jspx_page_context))
         return;
@@ -557,6 +557,7 @@ if(loginUsuario.isPerfil("16")||loginUsuario.isPerfil("7")||loginUsuario.isPerfi
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);

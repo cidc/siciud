@@ -22,6 +22,7 @@ import cidc.general.servlet.ServletGeneral;
 
 public class GruposServlet extends ServletGeneral {
 
+
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		context=config.getServletContext();
 		cursor=new CursorDB();
@@ -141,8 +142,26 @@ public class GruposServlet extends ServletGeneral {
 				retorno[0]="desviar";
 			break;
 			case Parametros.claveInvestigador:
+				
+				Integrante integ = (Integrante)sesion.getAttribute("integrante2");
+				String nombre = integ.getNombres();
+				String apellido = integ.getApellidos();
+				String ID = "";
+				String numero = Long.toString(integ.getId());
+				
+				nombre = nombre.trim();
+				nombre = nombre.toLowerCase();
+				apellido = apellido.trim();
+				apellido = apellido.toLowerCase();
+				
+				ID = completeid(getidname(nombre), getidlastname(apellido)) + numero;
+				
+				//System.out.println("\n el ID del investigador es: "+ ID);
+				
 				req.setAttribute("st", ""+Parametros.actualizaIntegranteGrupo);
-				if(gruposGestionDB.claveInvestigador(req.getParameter("id"),req.getParameter("papel"))){
+			
+				if(gruposGestionDB.claveInvestigador(req.getParameter("id"),req.getParameter("papel"), ID)){
+					
 					mensaje="La clave fue asignada Satisfactoriamente";
 				}else{
 					mensaje="No se pudo asignar la clave del integrante.. favor volver a intentar";
@@ -157,9 +176,10 @@ public class GruposServlet extends ServletGeneral {
 			break;
 			case Parametros.nuevoIntegranteGrupo:
 				idGrupo=Long.parseLong(""+sesion.getAttribute("idGrupo"));
-				if(adminGruposDB.insertarPersona((Integrante)sesion.getAttribute("integrante"),idGrupo))
+				if(adminGruposDB.insertarPersona((Integrante)sesion.getAttribute("integrante"),idGrupo)){
+					System.out.println("Bandera Crear UsuarioInvestigador");
 					mensaje="El integrante fue insertado correctamente";
-				else
+				}else
 					mensaje="El integrante no pudo ser insertado correctamente \n"+adminGruposDB.getMensaje();
 				
 				req.setAttribute("listaIntegrantes",adminGruposDB.buscaIntegrantesGrupo(idGrupo));
@@ -191,5 +211,61 @@ public class GruposServlet extends ServletGeneral {
 				retorno=grupo.getNombreGrupo();
 		}
 		return retorno;
+	}
+/**
+ * getidname() obtiene el nombre del integrante del Grupo de Investigacion
+ * 				y retorna id_name una cadena tratada.
+ * 
+ */
+	public String getidname(String name){
+		String id_name = "";
+		int espacionombre = 0;
+			
+			while(name.indexOf(" ") != -1){
+				espacionombre = name.indexOf(" ");
+				id_name = id_name + name.charAt(0);
+				name = name.substring(espacionombre+1, name.length());
+			}
+			id_name = id_name + name.charAt(0);
+		return id_name; 
+	}
+
+/**
+ * getidlastname() obtiene el o los apellidos del integrante del grupo de
+ * 					investigación, trata la cadena y retorna el string.
+ * 
+ */
+	public String getidlastname(String lastname){
+		
+		String id_lastname = "";
+		int espacionombre = 0;
+		
+		if(lastname.indexOf(" ") == -1)
+		{
+			id_lastname = lastname;
+		}else{
+			espacionombre = lastname.indexOf(" ");
+			id_lastname = lastname.substring(0,espacionombre);
+			lastname = lastname.substring(espacionombre+1, lastname.length());
+			}
+			while(lastname.indexOf(" ") != -1){
+				espacionombre = lastname.indexOf(" ");
+				id_lastname = id_lastname + lastname.charAt(0);
+				lastname = lastname.substring(espacionombre+1, lastname.length());
+				}
+			id_lastname = id_lastname + lastname.charAt(0);
+		return id_lastname;
+	}
+	
+/**
+ * 
+ * @param name Toma id_name y lo concatena con id_lastname;
+ * @param lastname Toma id_lastname y lo concatena con id_name
+ * @return
+ */
+	
+	public String completeid (String name, String lastname)
+	{
+		return name+lastname;
 	}
 }

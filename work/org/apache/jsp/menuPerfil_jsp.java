@@ -63,10 +63,10 @@ public final class menuPerfil_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
-      out.write("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n");
       out.write("\r\n");
-      out.write("<html>\n");
+      out.write("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\r\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
@@ -76,7 +76,7 @@ public final class menuPerfil_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("</head>\n");
+      out.write("</head>\r\n");
       out.write("<body >\r\n");
       out.write("<iframe name=\"menuInterno\" src='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
@@ -84,7 +84,7 @@ public final class menuPerfil_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("'width=\"100%\" height=\"100%\" frameborder=\"0\">\r\n");
       out.write("</iframe>\r\n");
       out.write("</body>\r\n");
-      out.write("\n");
+      out.write("\r\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -92,6 +92,7 @@ public final class menuPerfil_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);

@@ -72,72 +72,72 @@ public final class FiltroElemento_jsp extends org.apache.jasper.runtime.HttpJspB
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
       out.write("\r\n");
-      out.write("\n");
       out.write("\r\n");
-      out.write("<html>\n");
-      out.write("<head>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
+      out.write("<head>\r\n");
       if (_jspx_meth_c_005fimport_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("<script type=\"text/javascript\">\n");
-      out.write("function buscar(){\n");
-      out.write("\tdocument.filtro.submit();\n");
-      out.write("}\n");
-      out.write("</script>\n");
-      out.write("</head>\n");
-      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\n");
-      out.write("<br>\n");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\">\r\n");
+      out.write("function buscar(){\r\n");
+      out.write("\tdocument.filtro.submit();\r\n");
+      out.write("}\r\n");
+      out.write("</script>\r\n");
+      out.write("</head>\r\n");
+      out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
+      out.write("<br>\r\n");
       out.write("<form name=\"filtro\" action='");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("'>\n");
-      out.write("<input type=\"hidden\" name=\"accion\" value=\"2\"> \n");
-      out.write("<table class=\"tablas\" align=\"center\">\n");
-      out.write("<CAPTION>Búsqueda de Elemento</CAPTION>\n");
-      out.write("\t<tr>\n");
-      out.write("\t\t<th>Placa Elemento</th>\n");
+      out.write("'>\r\n");
+      out.write("<input type=\"hidden\" name=\"accion\" value=\"2\"> \r\n");
+      out.write("<table class=\"tablas\" align=\"center\">\r\n");
+      out.write("<CAPTION>Búsqueda de Elemento</CAPTION>\r\n");
+      out.write("\t<tr>\r\n");
+      out.write("\t\t<th>Placa Elemento</th>\r\n");
       out.write("\t\t<td><input type=\"text\" name=\"codigo\" value='");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
-      out.write("'></td>\n");
-      out.write("\t\t<th>Nombre Elemento</th>\n");
+      out.write("'></td>\r\n");
+      out.write("\t\t<th>Nombre Elemento</th>\r\n");
       out.write("\t\t<td><input type=\"text\" name=\"nombreElemento\" value='");
       if (_jspx_meth_c_005fout_005f1(_jspx_page_context))
         return;
-      out.write("'></td>\n");
-      out.write("\t\t<td>\n");
-      out.write("            <select name=\"categoria\">\n");
-      out.write("                    <option value=\"0\" >Todo</option>\n");
+      out.write("'></td>\r\n");
+      out.write("\t\t<td>\r\n");
+      out.write("            <select name=\"categoria\">\r\n");
+      out.write("                    <option value=\"0\" >Todo</option>\r\n");
       out.write("                    <option value=\"1\" ");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
-      out.write(">Bibliográfico</option>\n");
+      out.write(">Bibliográfico</option>\r\n");
       out.write("                    <option value=\"2\" ");
       if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
         return;
-      out.write(">Software</option>\n");
+      out.write(">Software</option>\r\n");
       out.write("                    <option value=\"3\" ");
       if (_jspx_meth_c_005fif_005f2(_jspx_page_context))
         return;
-      out.write(">Equipos o Computo</option>                    \n");
-      out.write("            </select>\n");
-      out.write("       </td>\n");
-      out.write("\t</tr>\n");
-      out.write("\t<tr>\n");
+      out.write(">Equipos o Computo</option>                    \r\n");
+      out.write("            </select>\r\n");
+      out.write("       </td>\r\n");
+      out.write("\t</tr>\r\n");
+      out.write("\t<tr>\r\n");
       out.write("\t\t<td colspan=\"4\" align=\"center\"><img src='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("' onclick=\"buscar()\"></td>\n");
-      out.write("\t</tr>\n");
-      out.write("</table>\t\n");
-      out.write("</form>\n");
+      out.write("' onclick=\"buscar()\"></td>\r\n");
+      out.write("\t</tr>\r\n");
+      out.write("</table>\t\r\n");
+      out.write("</form>\r\n");
       out.write("\t<form name=\"filtro1\" action='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
-      out.write("'>\n");
-      out.write("\t<br>\n");
+      out.write("'>\r\n");
+      out.write("\t<br>\r\n");
       out.write("\t");
       //  c:if
       org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f3 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
@@ -148,11 +148,11 @@ public final class FiltroElemento_jsp extends org.apache.jasper.runtime.HttpJspB
       int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
       if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
-          out.write("\t\t<div align=\"center\">\n");
-          out.write("\t\t\t<fieldset style=\"width:1000px;\">\t        \n");
-          out.write("\t\t\t<table align=\"center\" class=\"tablas\" width=\"95%\">\t\n");
-          out.write("\t\t\t\t<caption>Lista de elementos Encontrados</caption>\t\t\n");
+          out.write("\r\n");
+          out.write("\t\t<div align=\"center\">\r\n");
+          out.write("\t\t\t<fieldset style=\"width:1000px;\">\t        \r\n");
+          out.write("\t\t\t<table align=\"center\" class=\"tablas\" width=\"95%\">\t\r\n");
+          out.write("\t\t\t\t<caption>Lista de elementos Encontrados</caption>\t\t\r\n");
           out.write("\t\t\t\t\t");
           //  display:table
           org.displaytag.tags.TableTag _jspx_th_display_005ftable_005f0 = (org.displaytag.tags.TableTag) _005fjspx_005ftagPool_005fdisplay_005ftable_0026_005fstyle_005frequestURI_005fpagesize_005fname_005fid_005fexport_005fclass.get(org.displaytag.tags.TableTag.class);
@@ -184,47 +184,47 @@ public final class FiltroElemento_jsp extends org.apache.jasper.runtime.HttpJspB
             row = (java.lang.Object) _jspx_page_context.findAttribute("row");
             row_rowNum = (java.lang.Integer) _jspx_page_context.findAttribute("row_rowNum");
             do {
-              out.write("\t\t\t\t\n");
+              out.write("\t\t\t\t\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fsetProperty_005f0(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\t\t\t\t\t\n");
+              out.write("\t\t\t\t\t\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fsetProperty_005f1(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f0(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\t\t\t\n");
+              out.write("\t\t\t\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f1(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f2(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f3(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f4(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f5(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t\t\t\t\t");
               if (_jspx_meth_display_005fcolumn_005f6(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\n");
+              out.write("\r\n");
               out.write("\t\t\t    \t\t\t");
               if (_jspx_meth_display_005fsetProperty_005f2(_jspx_th_display_005ftable_005f0, _jspx_page_context))
                 return;
-              out.write("\t    \t\t\t\n");
+              out.write("\t    \t\t\t\r\n");
               out.write("\t\t\t\t\t");
               int evalDoAfterBody = _jspx_th_display_005ftable_005f0.doAfterBody();
               row = (java.lang.Object) _jspx_page_context.findAttribute("row");
@@ -241,10 +241,10 @@ public final class FiltroElemento_jsp extends org.apache.jasper.runtime.HttpJspB
             return;
           }
           _005fjspx_005ftagPool_005fdisplay_005ftable_0026_005fstyle_005frequestURI_005fpagesize_005fname_005fid_005fexport_005fclass.reuse(_jspx_th_display_005ftable_005f0);
-          out.write("\t\n");
-          out.write("\t\t\t</table>\t\n");
-          out.write("\t\t\t</fieldset>\t\n");
-          out.write("\t\t</div>\n");
+          out.write("\t\r\n");
+          out.write("\t\t\t</table>\t\r\n");
+          out.write("\t\t\t</fieldset>\t\r\n");
+          out.write("\t\t</div>\r\n");
           out.write("\t");
           int evalDoAfterBody = _jspx_th_c_005fif_005f3.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -256,7 +256,7 @@ public final class FiltroElemento_jsp extends org.apache.jasper.runtime.HttpJspB
         return;
       }
       _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f3);
-      out.write("\n");
+      out.write("\r\n");
       out.write("\t</form>\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
@@ -266,6 +266,7 @@ public final class FiltroElemento_jsp extends org.apache.jasper.runtime.HttpJspB
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
