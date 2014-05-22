@@ -1000,20 +1000,22 @@ public class ProyectosGeneralDB extends BaseDB {
 		PreparedStatement ps=null;
 		int i=1;
 		try {
-			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("registraGasto"+proyecto.getClaseProyecto()));
-			ps.setLong(i++,gasto.getIdProyecto());
-			ps.setLong(i++,gasto.getIdRubro());
-			ps.setDouble(i++,Double.parseDouble(gasto.getValorGasto()));
-			ps.setString(i++,gasto.getDescripcion());
-			ps.setInt(i++,gasto.getTipoGasto());
-			ps.setString(i++,gasto.getFecha());
-			ps.setInt(i++,gasto.getPara());
-			ps.setString(i++,gasto.getCodigo());
-			ps.setString(i++,gasto.getObservaciones());
-			ps.executeUpdate();
+			retorno=buscarPlaca(gasto.getCodigo(),proyecto.getClaseProyecto());
+			if(!retorno){
+				cn=cursor.getConnection(super.perfil);
+				ps=cn.prepareStatement(rb.getString("registraGasto"+proyecto.getClaseProyecto()));
+				ps.setLong(i++,gasto.getIdProyecto());
+				ps.setLong(i++,gasto.getIdRubro());
+				ps.setDouble(i++,Double.parseDouble(gasto.getValorGasto()));
+				ps.setString(i++,gasto.getDescripcion());
+				ps.setInt(i++,gasto.getTipoGasto());
+				ps.setString(i++,gasto.getFecha());
+				ps.setInt(i++,gasto.getPara());
+				ps.setString(i++,gasto.getCodigo());
+				ps.setString(i++,gasto.getObservaciones());
+				ps.executeUpdate();
+			}
 		//	System.out.println("----->"+ps);
-			retorno=true;
 		}catch (SQLException e) {
 			lanzaExcepcion(e);
 		}catch (Exception e) {
@@ -1022,7 +1024,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			cerrar(ps);
 			cerrar(cn);
 		}
-		return retorno;
+		return !retorno;
 	}
 	public List<Rubros> consultarRubros(Proyecto proyecto) {
 		List<Rubros> listaRubros = new ArrayList<Rubros>();
@@ -1436,6 +1438,32 @@ public class ProyectosGeneralDB extends BaseDB {
 		}
 		
 		return listaCompromisos;
+	}
+	
+	public boolean buscarPlaca(String placa, int tipo) {
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("buscarPlaca"+tipo));
+			ps.setString(i++,placa);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				retorno=true;
+			}
+			System.out.println("----->"+ps);
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
 	}
 }
 

@@ -78,7 +78,7 @@ public class GenerarPDF{
     Paragraph preface = new Paragraph();
     // We add one empty line
     // Lets write a big header
-    Image image1 = Image.getInstance("/usr/local/tomcat/webapps/siciud/comp/img/logopdf.png");
+    Image image1 = Image.getInstance("/usr/local/tomcat/webapps/siciud/comp/img/logopdf1.png");
     image1.scalePercent(new Float("70"));
     document.add(image1);
     addEmptyLine(preface, 1);
