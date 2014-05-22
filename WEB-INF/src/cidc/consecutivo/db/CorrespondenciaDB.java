@@ -7,14 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.itextpdf.text.pdf.PdfDocument.Destination;
-
 import cidc.consecutivo.obj.CorrespondenciaObj;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.obj.Globales;
-import cidc.general.ws_coneccion_Bizagi.ConeccionDB_WS;
 
 public class CorrespondenciaDB extends BaseDB{
 	

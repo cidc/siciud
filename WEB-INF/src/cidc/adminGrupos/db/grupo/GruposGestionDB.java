@@ -155,7 +155,6 @@ public class GruposGestionDB extends BaseDB{
 		return integrante;
 	}
 
-<<<<<<< HEAD
 	public boolean claveInvestigador(String idPersona,String papel, String identificador){
 	//	//System.out.println("persona "+idPersona+" papel "+papel);
 		boolean retorno=false;
@@ -189,11 +188,10 @@ public class GruposGestionDB extends BaseDB{
 			}
 			//System.out.println("Bandera 3");
 			if(perfil==null){
-				nick=identificador;
 				//System.out.println("Bandera 4");
 				ps=cn.prepareStatement(rb.getString("nuevoUsuario"));
 				ps.setLong(i++, Long.parseLong(idPersona));
-				//System.out.println("\nY el nick es : "+ nick +" \n");
+				nick=identificador;
 				ps.setString(i++,nick);
 				ps.setString(i++,key);
 				ps.setString(i++,papel+",0,0");
@@ -234,99 +232,16 @@ public class GruposGestionDB extends BaseDB{
 					//ps.setString(i++, nick);
 					ps.executeUpdate();
 		//			//System.out.println("solo cambia clave");
-		//			System.out.println("\nBandera 4\n");
-=======
-	public boolean claveInvestigador(String idPersona,String papel){
-		//	//System.out.println("persona "+idPersona+" papel "+papel);
-			boolean retorno=false;
-			if(papel.equals("1"))
-				papel="10";
-			else
-				papel="8";
-			CrearClaves clave=new CrearClaves();
-			Connection cn=null;
-			PreparedStatement ps=null;
-			ResultSet rs=null;
-			String perfil=null,nick=null,key=null;
-			String []datos=new String[5];
-			int i=1;
-			key=clave.getClave();
-			//System.out.println("Bandera 1");
-			try {
-				cn=cursor.getConnection(super.perfil);
-				ps=cn.prepareStatement(rb.getString("verPerfil"));
-				ps.setLong(1,Long.parseLong(idPersona));
-				rs=ps.executeQuery();
-				while(rs.next()){
-					//System.out.println("Bandera 2");
-					perfil=rs.getString(1);
-					nick=rs.getString(2);
-					datos[2]=rs.getString(3);
-					datos[1]=rs.getString(4);
-					datos[0]=rs.getString(5);
+					System.out.println("\nBandera 4\n");
 				}
-				//System.out.println("Bandera 3");
-				if(perfil==null){
-					//System.out.println("Bandera 4");
-					ps=cn.prepareStatement(rb.getString("nuevoUsuario"));
-					ps.setLong(i++, Long.parseLong(idPersona));
-					ps.setString(i++,"investigador");
-					ps.setString(i++,key);
-					ps.setString(i++,papel+",0,0");
-					ps.executeUpdate();
-					nick="investigador";
-				}else{
-					//System.out.println("Bandera 5");
-					String []partes=perfil.split(",");
-					String nuevoPerfil=null;
-					if(!partes[0].equals(papel)){
-						if(partes[1].equals("0"))
-							nuevoPerfil=partes[0]+","+papel+",0";
-						else
-							if(partes[2].equals("0") && !partes[1].equals(papel))
-								nuevoPerfil=partes[0]+","+partes[1]+","+papel;
-					}
-					//System.out.println("Bandera 6");
-					if(nuevoPerfil!=null){
-						//System.out.println("Bandera 7");
-						ps=cn.prepareStatement(rb.getString("asignaPerfKey"));
-						ps.setString(i++,key);
-						ps.setString(i++,nuevoPerfil);
-						ps.setLong(i++, Long.parseLong(idPersona));
-						ps.executeUpdate();
-			//			//System.out.println("Asigna perfil y psw "+nuevoPerfil);
-					}else{
-						//System.out.println("Bandera 8");
-						ps=cn.prepareStatement(rb.getString("cambioClave"));
-						ps.setString(i++,key);
-						ps.setLong(i++, Long.parseLong(idPersona));
-						ps.executeUpdate();
-			//			//System.out.println("solo cambia clave");
-					}
-					//System.out.println("Bandera 9");
->>>>>>> origin/master
-				}
-				datos[3]=nick;
-				datos[4]=key;
-				mailClaveNueva(datos);
-				//System.out.println("Bandera 10");
-				retorno=true;
-			}catch (SQLException e) {
-				lanzaExcepcion(e);
-			}catch (Exception e) {
-				lanzaExcepcion(e);
-			}finally{
-				cerrar(rs);
-				cerrar(ps);
-				cerrar(cn);
+				//System.out.println("Bandera 9");
 			}
-<<<<<<< HEAD
 			datos[3]=nick;
 			datos[4]=key;
 			mailClaveNueva(datos);
 			
-			//System.out.println("\nAqui el nick es = " + nick);
-			//System.out.println("\nBandera Final\n");
+			System.out.println("\nAqui el nick es = " + nick);
+			System.out.println("\nBandera Final\n");
 			
 			//System.out.println("Bandera 10");
 			retorno=true;
@@ -339,11 +254,9 @@ public class GruposGestionDB extends BaseDB{
 			cerrar(ps);
 			cerrar(cn);
 		}
-=======
->>>>>>> origin/master
 
-			return retorno;
-		}
+		return retorno;
+	}
 
 	public void mailClaveNueva(String []datos) throws AddressException,MessagingException{
 		String []direcciones={datos[1]};

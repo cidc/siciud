@@ -102,12 +102,10 @@ public class SesionUsuario extends ServletGeneral {
                                 if (user != null) {
                                         gestionGrupoDB = new GruposGestionDB(cursor,
                                                         Parametros.userVisitante);
-<<<<<<< HEAD
+
                                         if (gestionGrupoDB.claveInvestigador(
 							String.valueOf(user.getIdUsuario()),user.getPapel(),"")) {
-=======
-                                        if (gestionGrupoDB.claveInvestigador(String.valueOf(user.getIdUsuario()), user.getPapel())) {
->>>>>>> origin/master
+
                                                 irA = "/menu.jsp";
                                                 super.mensaje = "Cambio de Contraseña Exitoso";
                                         } else {

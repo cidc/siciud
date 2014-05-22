@@ -1256,19 +1256,11 @@ public class AdminGruposDB extends BaseDB{
 		System.out.println("---insertando investigador-->"+datosIntegrante.getFlag());
 		if(datosIntegrante.getFlag()==0){
 			st=cn.prepareStatement(rb.getString("insertarInvestigador"));
-<<<<<<< HEAD
-			//System.out.println("Inserto inv 1 \n");
-		}else{
-			st=cn.prepareStatement(rb.getString("insertarInvestigador2"));
-			st.setLong(i++,datosIntegrante.getId());
-			//System.out.println("Inserto inv 2 \n");
-=======
 			System.out.println("Inserto inv 1 \n");
 		}else{
 			st=cn.prepareStatement(rb.getString("insertarInvestigador2"));
 			st.setLong(i++,datosIntegrante.getId());
 			System.out.println("Inserto inv 2 \n");
->>>>>>> origin/master
 		}
 
 		st.setInt(i++, datosIntegrante.getCodFacultad());
@@ -1279,11 +1271,7 @@ public class AdminGruposDB extends BaseDB{
 		st.setString(i++, datosIntegrante.getFechaSalidaGrupo());
 		st.executeUpdate();
 		System.out.println("insertar persona: "+st.toString());
-<<<<<<< HEAD
-		//System.out.println("\nEl nick2 de la persona es: "+ completeid(datosIntegrante)+"\n");
-=======
 		System.out.println("\nEl nick2 de la persona es: "+ completeid(datosIntegrante)+"\n");
->>>>>>> origin/master
 		retorno=true;
 			
 		cerrar(rs);
