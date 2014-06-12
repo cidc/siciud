@@ -40,7 +40,7 @@ public class EnvioMail2 {
 		//System.out.println("Bandera 9-1-2 "+usuario);
 		this.clave=rb.getString(cuenta+"Key");
 		//System.out.println("Bandera 9-1-3 "+clave);
-		this.de="Dirección de la gestión de programas científicos de investigación de pregrado y postgrado<"+usuario+">";
+		this.de="Centro de Investigaciones y Desarrollo Científico<"+usuario+">";
 		//System.out.println("desde "+this.de);
 	}
 
@@ -87,17 +87,17 @@ public class EnvioMail2 {
 		return retorno;
 	}
 
-	public static void main(String []args){
-		EnvioMail2 e= new EnvioMail2("siciud");
-		String [] lista={"gloriafer18@gmail.com","gloria_fer18@hotmail.com"};
-		try {
-			e.enviar(lista, "hola", "<b>tons que parce<b><h2>esta cosa ya funciona</h2>");
-		} catch (AddressException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (MessagingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	}
+//	public static void main(String []args){
+//		EnvioMail2 e= new EnvioMail2("siciud");
+//		String [] lista={"gloriafer18@gmail.com","gloria_fer18@hotmail.com"};
+//		try {
+//			e.enviar(lista, "hola", "<b>tons que parce<b><h2>esta cosa ya funciona</h2>");
+//		} catch (AddressException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (MessagingException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//	}
 }
