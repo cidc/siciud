@@ -906,4 +906,12 @@
           <servlet-name>ResultadosEvaluacion</servlet-name>
           <url-pattern>/AdminPropuestas/ResultadoEvaluacion.x</url-pattern>
         </servlet-mapping>
+    <servlet>
+ 	  <servlet-name>ArchivoInformes</servlet-name>
+ 	  <servlet-class>cidc.proyectos.servlet.CargarInformes</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+ 	  <servlet-name>ArchivoInformes</servlet-name>
+ 	  <url-pattern>/proyectos/CargarInformes.x</url-pattern>
+ 	</servlet-mapping>
 </web-app>

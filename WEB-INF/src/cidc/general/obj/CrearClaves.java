@@ -4,7 +4,7 @@ public class CrearClaves {
 	private int cont=0,numLetraASCII;
 	private char letra;
 
-	public String getClave(){
+	public String getClave(){//segundo metodo para revizar clave investigador
 	StringBuffer codigo = new StringBuffer();
 	while(cont<10){
 	    numLetraASCII=(int)(Character.MAX_HIGH_SURROGATE*Math.random());//Esto es para que de numero del 0 al maximo numero de la codificacion UTF-16

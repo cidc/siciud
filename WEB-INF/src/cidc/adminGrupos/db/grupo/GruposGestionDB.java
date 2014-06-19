@@ -155,7 +155,7 @@ public class GruposGestionDB extends BaseDB{
 		return integrante;
 	}
 
-	public boolean claveInvestigador(String idPersona,String papel, String identificador){
+	public boolean claveInvestigador(String idPersona,String papel, String identificador){//metodo de clave para revisar
 	//	//System.out.println("persona "+idPersona+" papel "+papel);
 		boolean retorno=false;
 		if(papel.equals("1"))
@@ -180,7 +180,6 @@ public class GruposGestionDB extends BaseDB{
 			while(rs.next()){
 				//System.out.println("Bandera 2");
 				perfil=rs.getString(1);
-//Borrado Por Diego	-->    nick=rs.getString(2);
 				nick=identificador;
 				datos[2]=rs.getString(3);
 				datos[1]=rs.getString(4);
