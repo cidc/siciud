@@ -250,6 +250,12 @@
 					  <c:if test='${lista.tipo==23 or lista.tipo==4 or lista.tipo==5}'>
 					 	<a href='<c:url value="/Documentos/ProyectosAntiguos/Actas/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
 					 </c:if>
+					 <c:if test="${sessionScope.proyectoInvestigador.tipo==1&&(lista.tipo==6)}">
+					 	<a href='<c:url value="/Documentos/Proyectos/Resoluciones/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
+					 <c:if test="${sessionScope.proyectoInvestigador.tipo==1&&(lista.tipo==7)}">
+					 	<a href='<c:url value="/Documentos/Proyectos/LegalizacionTiempos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a>
+					 </c:if>
 		  		</c:if>
 			</td>
 				<td><c:out value="${lista.nombreDocumento}"  /></td>

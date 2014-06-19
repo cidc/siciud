@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
+import cidc.adminGrupos.obj.Integrante;
 import cidc.general.inicio.CargaInicio;
 import cidc.general.login.Usuario;
 import cidc.general.obj.Parametros;
@@ -227,11 +228,11 @@ public class UsuarioDB extends BaseDB{
 	 * @param correo
 	 * @return retorna un objeto de tipo usuario con los datos necesarios para reestablecer la contraseña
 	 */
-	public Usuario buscarPorCorreo(String correo){
+	public Integrante buscarPorCorreo(String correo){
 		Connection cn=null;
 		PreparedStatement pst=null;
 		ResultSet rs=null;
-		Usuario user=null;
+		Integrante user=null;
 		int i=1;
 		try {
 			cn=cursor.getConnection(Parametros.userVisitante);
@@ -241,9 +242,11 @@ public class UsuarioDB extends BaseDB{
 			rs=pst.executeQuery();
 			if(rs.next()){
 				int j=1;
-				user=new Usuario();
-				user.setIdUsuario(rs.getLong(j++));
-				user.setPapel(rs.getString(j++));
+				user=new Integrante();
+				user.setId(rs.getLong(j++));
+				user.setPapel(Integer.valueOf(rs.getString(j++)));
+				user.setNombres(rs.getString(j++));
+				user.setApellidos(rs.getString(j++));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
