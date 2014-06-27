@@ -475,11 +475,11 @@
 							<option value='3'>3</option>
 							<option value='4'>4</option>
 							<option value='5'>5</option>
-							<option value='6'>6</option>
+							<!-- <option value='6'>6</option>
 							<option value='7'>7</option>
 							<option value='8'>8</option>
 							<option value='9'>9</option>
-							<option value='10'>10</option>
+							<option value='10'>10</option> -->
 						</select>
 					</th>
 				</tr>
@@ -496,7 +496,7 @@
 								<td align="right"><input maxlength="2" class="cajas10" size="5" type="text" name="propCoInvHoras" onkeypress="return numeros(event)"style="text-align: right" onkeypress="return numeros(event)" value="0" disabled> H/S</td>
 								<td><select name="propCoInvPapel" disabled>
 										<option value="Coinvestigador">Coinvestigador</option>
-										<option value="Asesor">Asesor</option>
+<!-- 										<option value="Asesor">Asesor</option> -->
 									</select>
 								</td>
 							</tr>

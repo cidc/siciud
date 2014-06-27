@@ -610,11 +610,13 @@ public class MovilidadDB extends BaseDB{
 		texto.append(general.getFechaFin());
 		texto.append(rb1.getString("e15"));
 		texto.append(rb1.getString("e16"));
-		//texto.append(req.getCompromisos1()+"<br>"+req.getCompromisos2());
-		texto.append(req.getCompromisos1()+"<br>");
-		texto.append(rb1.getString("e17"));
-		//texto.append(req.getCompromisos3()+"<br>"+req.getCompromisos4());
-		texto.append(req.getCompromisos3()+"<br>");
+		if (req!=null) {
+			//texto.append(req.getCompromisos1()+"<br>"+req.getCompromisos2());
+			texto.append(req.getCompromisos1() + "<br>");
+			texto.append(rb1.getString("e17"));
+			//texto.append(req.getCompromisos3()+"<br>"+req.getCompromisos4());
+			texto.append(req.getCompromisos3() + "<br>");
+		}
 		/*texto.append(rb1.getString("e18"));
 		texto.append(req.getBeneficiosGrupo1());
 		texto.append(rb1.getString("e19"));
@@ -648,7 +650,7 @@ public class MovilidadDB extends BaseDB{
 		texto.append(rb1.getString("fieldsetCierra"));
 		texto.append(rb1.getString("tablaCierra"));
 		//System.out.println("bandera 4");
-		if(req.getPartiEvent()!=null)
+		if(req!=null&&req.getPartiEvent()!=null)
 			if(req.getPartiEvent().length>0){
 				texto.append(rb1.getString("e212"));
 				for(int j=0;j<req.getPartiEvent().length;j++){
