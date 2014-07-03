@@ -306,4 +306,32 @@ public class PlanAccionDB extends BaseDB{
 		}
 		return retorno;
 	}
+	/**
+	 * este metodo se encarga de actualizar los porcentajes de las actividades de los planes de accion 
+	 * @param actividad continen la informacion de idActividad y el pocentaje
+	 * @return
+	 */
+	public boolean ingresarPorcentaje(Actividades actividad){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("IngresarPorcentaje"));
+			ps.setLong(i++, actividad.getIdActividad());
+			ps.setInt(i, actividad.getPorcentaje());
+			ps.executeUpdate();
+			
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			lanzaExcepcion(e);
+			retorno=false;
+		}finally{
+			//obligatorio en todas las conexiones con la base de datos 
+			cerrar(ps);
+			cerrar(cn);			
+		}
+		return retorno;
+	}
 }

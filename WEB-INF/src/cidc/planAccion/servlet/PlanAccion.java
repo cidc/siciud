@@ -48,6 +48,7 @@ public class PlanAccion extends ServletGeneral {
 		System.out.println("El id del grupo es" +id_grupo_plan);
 		int periodoActual =Calendar.getInstance().get(Calendar.YEAR);
 		boolean consultarPlan=(sesion.getAttribute("consultar")==null)?false:(Boolean) sesion.getAttribute("consultar");
+		boolean informe=(sesion.getAttribute("Informe")==null)?false:(Boolean) sesion.getAttribute("Informe");
 //		if(sesion.getAttribute("consultar")==null)
 //			consultarPlan = false;
 //		else
@@ -85,6 +86,9 @@ public class PlanAccion extends ServletGeneral {
 //					sesion.setAttribute("habilitar", false);
 				System.out.println("Valor idPlan ***********" + planaccionDB.getPlanAccionDatos().getIdPlan()+"deshabilitar"+sesion.getAttribute("deshabilitar")+
 						"ano actual"+sesion.getAttribute("anoActual"));				
+			if (informe) {
+				irA="/planAccion/InformeGestion.jsp";
+			}else
 				irA="/planAccion/DatosPlanAccion.jsp";
 			break;
 			//Agrega Plan de Acción
@@ -145,7 +149,21 @@ public class PlanAccion extends ServletGeneral {
 				sesion.setAttribute("listaActividades", planaccionDB.consultaPlanAccion(info));
 				irA="/planAccion/DatosPlanAccion.jsp";
 				break;
+			case Parametros.CONSULTAGRUPO:
+				sesion.setAttribute("Informe", true);
+				sesion.setAttribute("anoActual", ""+periodoActual);
+				irA="/planAccion/InformeGestion.jsp";
+				break;
+			case Parametros.INGRESARINFORME:
+				actividad=(Actividades)sesion.getAttribute("actividad");
+			if (planaccionDB.ingresarPorcentaje(actividad)) {
+				mensaje="Informe Ingresado con Éxito";
+			}else
+				mensaje="Ha ocurrido un error, por favor intente de nuevo ";
+			irA="/planAccion/InformeGestion.jsp";
+				break;
 			default:
+				sesion.setAttribute("Informe", false);
 				sesion.setAttribute("anoActual", ""+periodoActual);
 				sesion.removeAttribute("listaActividades");
 				sesion.removeAttribute("nombrePdf");
