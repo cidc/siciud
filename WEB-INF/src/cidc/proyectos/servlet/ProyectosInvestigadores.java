@@ -108,6 +108,10 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				System.out.println("ingreso al servlet");
 				irA="/grupos/proyectos/InfoSolicitud.jsp";
 				break;
+			case Parametros.MODIFICACIONRUBRO:
+				usuario=proyectosDB.consultaDatosPersonales(usuario);
+				irA="/grupos/proyectos/SolModRub.jsp";
+				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));
 			irA="/grupos/proyectos/ListaProyectos.jsp";

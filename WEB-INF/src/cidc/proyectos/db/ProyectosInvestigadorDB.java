@@ -24,6 +24,7 @@ import jxl.read.biff.BiffException;
 
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
+import cidc.general.login.Usuario;
 import cidc.general.obj.Globales;
 import cidc.proyectos.obj.BalanceGeneral;
 import cidc.proyectos.obj.CambiosProy;
@@ -525,7 +526,30 @@ public class ProyectosInvestigadorDB extends BaseDB {
 		return lista;
 	}
 
-
+	public Usuario consultaDatosPersonales(Usuario usuario){
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		Connection cn=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("consultaDatosPersonales"));
+			ps.setLong(1,usuario.getIdUsuario());
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				
+			}
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+		}
+		return usuario;
+	}
 
 
 }
