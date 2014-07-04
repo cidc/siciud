@@ -157,6 +157,7 @@ public class PlanAccion extends ServletGeneral {
 			case Parametros.INGRESARINFORME:
 				actividad=(Actividades)sesion.getAttribute("actividad");
 			if (planaccionDB.ingresarPorcentaje(actividad)) {
+				sesion.setAttribute("listaActividades", planaccionDB.consultaPlanAccion(info));
 				mensaje="Informe Ingresado con Éxito";
 			}else
 				mensaje="Ha ocurrido un error, por favor intente de nuevo ";

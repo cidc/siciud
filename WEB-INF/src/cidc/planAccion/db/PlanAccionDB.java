@@ -80,6 +80,7 @@ public class PlanAccionDB extends BaseDB{
 					actividades.setActividad(rs.getString(i++));
 					actividades.setDescripcion(rs.getString(i++));
 					actividades.setMeta(rs.getString(i++));
+					actividades.setPorcentaje(rs.getInt(i++));
 					lista.add(actividades);
 				}	
 			}
@@ -319,9 +320,10 @@ public class PlanAccionDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("IngresarPorcentaje"));
+			ps.setInt(i++, actividad.getPorcentaje());
 			ps.setLong(i++, actividad.getIdActividad());
-			ps.setInt(i, actividad.getPorcentaje());
 			ps.executeUpdate();
+			retorno=true;
 			
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
