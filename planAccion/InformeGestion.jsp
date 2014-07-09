@@ -48,6 +48,13 @@ function validar1(){
 		return true;
 	return false;	
 }
+function eliminar(id){
+	alert(id);
+	document.frmActividades.idActividad.value=id;
+	document.frmActividades.accion.value=9;
+	document.frmActividades.action='<c:url value="/planAccion/PlanAccion.x"/>';
+	document.frmActividades.submit();		
+}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>

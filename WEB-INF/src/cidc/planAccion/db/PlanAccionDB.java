@@ -336,4 +336,23 @@ public class PlanAccionDB extends BaseDB{
 		}
 		return retorno;
 	}
+	
+	public boolean eliminarPorcentaje(Actividades actividad){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("IngresarPorcentaje"));
+			ps.setInt(i++, 0);
+			ps.setLong(i++, actividad.getIdActividad());
+			ps.execute();
+			retorno=true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return retorno;
+	}
 }

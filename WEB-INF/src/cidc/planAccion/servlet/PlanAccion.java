@@ -163,6 +163,15 @@ public class PlanAccion extends ServletGeneral {
 				mensaje="Ha ocurrido un error, por favor intente de nuevo ";
 			irA="/planAccion/InformeGestion.jsp";
 				break;
+			case Parametros.ELIMINARPORCENTAJE:
+				actividad=(Actividades)sesion.getAttribute("actividad");
+				if(planaccionDB.eliminarPorcentaje(actividad)){
+					sesion.setAttribute("listaActividades", planaccionDB.consultaPlanAccion(info));
+					mensaje="Informe eliminado con éxito";
+				}else
+					mensaje="Ha ocurrido un error, por favor intente de nuevo ";
+				irA="/planAccion/InformeGestion.jsp";
+				break;
 			default:
 				sesion.setAttribute("Informe", false);
 				sesion.setAttribute("anoActual", ""+periodoActual);
