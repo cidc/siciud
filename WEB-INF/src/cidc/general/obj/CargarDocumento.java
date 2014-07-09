@@ -83,6 +83,16 @@ public class CargarDocumento{
 		return nombreArchivo;
 	}
 
+	/**
+	 * 
+	 * @param path contexto de la aplicacion 
+	 * @param archivo documento a guardar
+	 * @param carpeta nombre de la carpeta en que se almacenara el archivo
+	 * @param prefijo prefijo de identificacion 
+	 * @param idArchivo id del documento
+	 * @return retorna el nombre del documento creado
+	 * @throws Exception
+	 */
 	public String cargarGenerico(String path, FileItem archivo, String carpeta,String prefijo,long idArchivo) throws Exception{
 		File sitio=new File(path);
 		DiskFileItemFactory factory = new DiskFileItemFactory();

@@ -110,6 +110,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				break;
 			case Parametros.MODIFICACIONRUBRO:
 				usuario=proyectosDB.consultaDatosPersonales(usuario);
+				sesion.setAttribute("loginUsuario", usuario);
 				irA="/grupos/proyectos/SolModRub.jsp";
 				break;
 			default:

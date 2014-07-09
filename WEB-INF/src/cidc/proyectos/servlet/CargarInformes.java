@@ -151,6 +151,15 @@ public class CargarInformes extends ServletGeneral{
 			}
 			irA="/grupos/proyectos/VerProyecto.jsp";
 				break;
+				
+			case cidc.proyectos.obj.Parametros.CARGARSOLICITUDRUBRO:
+				System.out.println("entre");
+			try {
+				cargarDocumento.cargarGenerico(path, archivoAdj, "/Bizagi", "ModRub-", 1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+				break;
 		}
 
 		retorno[0]="desviar";

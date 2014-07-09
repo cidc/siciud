@@ -134,7 +134,7 @@ public final class VerProyecto_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
       out.write("' onclick=\"tabs(29)\"/></td>\r\n");
-      out.write("\t\t\t<td><a href=\"/siciud/grupos/proyectos/SolModRub.jsp\" >Solicitudes</a> </td>\r\n");
+      out.write("\t\t\t\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t</table>\r\n");
       out.write("</form>\r\n");

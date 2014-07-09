@@ -536,9 +536,14 @@ public class ProyectosInvestigadorDB extends BaseDB {
 			ps=cn.prepareStatement(rb.getString("consultaDatosPersonales"));
 			ps.setLong(1,usuario.getIdUsuario());
 			rs=ps.executeQuery();
+			i=1;
 			while(rs.next()){
-				i=1;
-				
+				usuario.setNombre(rs.getString(i++));
+				usuario.setCedula(rs.getString(i++));
+				usuario.setMail(rs.getString(i++));
+				usuario.setDireccion(rs.getString(i++));
+				usuario.setTipoDoc(rs.getString(i++));
+				usuario.setCelular(rs.getString(i++));
 			}
 		}catch (SQLException e) {
 			lanzaExcepcion(e);
