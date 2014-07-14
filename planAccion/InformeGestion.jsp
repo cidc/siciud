@@ -30,18 +30,17 @@ function validarFiltro(){
 	return false;	
 }
 function guardar(id){
-	document.frmActividades.idActividad.value=document.getElementById("idActividad"+id).value;
-	alert(document.frmActividades.idActividad.value);
-	document.frmActividades.porcentaje.value=document.getElementById("porcentaje"+id).value;
-	document.frmActividades.idCriterio.value=id;
-	if(validar1()){		
+	//document.frmActividades.idActividad.value=document.getElementById("idActividad"+id).value;
+	alert("entre");
+	//document.frmActividades.porcentaje.value=document.getElementById("porcentaje"+id).value;
+	//document.frmActividades.idCriterio.value=id;
+		alert("entro 2");
 		document.frmActividades.action='<c:url value="/planAccion/llenar.jsp"/>';
-		document.frmActividades.submit();
-	}				
+		document.frmActividades.submit();			
 }
 function validar1(){
 	var mensaje="";
-	if(document.frmActividades.porcentaje.value==""){
+	if(document.frmActividades.porcentaje_.value==""){
 		mensaje=mensaje+"\n-) Ingrese un porcentaje por favor";
 	}		
 	else
@@ -143,10 +142,9 @@ function eliminar(id){
 							<td><p class="texto1j">
 									<c:out value="${actividades.meta}" />
 								</p></td>
-							<td><textarea class="area2" class="area2" 
-								style="width:50px;" name="porcentaje"
-								id='porcentaje<c:out value="${st.count}"/>'><c:out value="${actividades.porcentaje}" /></textarea></td>
-							<input type="hidden" id="idActividad<c:out value="${st.count}"/>" value="<c:out value="${actividades.idActividad}"/>" />
+							<td><input type="text" class="area2" 
+								style="width:50px;" name="porcentajes_" value="<c:out value="${actividades.porcentaje}" />">
+							<input type="hidden" name="idActividades" value="<c:out value="${actividades.idActividad}"/>" /></td>
 							<c:if test="${!sessionScope.consultar}">
 								<td align="center" width="15px"><img src='<c:url value="/comp/img/no.png"/>'
 									onclick="eliminar(<c:out value="${actividades.idActividad}"/>)">
