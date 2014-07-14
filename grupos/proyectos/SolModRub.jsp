@@ -11,13 +11,18 @@
 function tabs(num){
 	if(num==30){
 		document.formArchivo.action="<c:url value='/proyectos/CargarInformes.x' />";
-		document.formArchivo.submit();
 	}
 	else{
 		document.formTab.action="<c:url value='/GestionProyectos/ProyectosInvestigador.x' />";
     	document.formTab.accion.value = num;
-		document.formTab.submit();
+    	document.formDatos.mail.value = document.getElementById("mail").value;
+    	alert(document.getElementById("mail").value);
+    	alert(document.formDatos.celular.value);
+    	alert(document.formDatos.direccion.value);
+    	document.formDatos.celular.value = document.getElementById("celular").value; 
+    	document.formDatos.direccion.value = document.getElementById("direccion").value;
 	}
+	document.formTab.submit();
 }
 </script>
 </head>
@@ -35,6 +40,9 @@ function tabs(num){
 </form>	
 <form name="formDatos" method="post" >
 	<input type="hidden" name="accion">
+	<input type="hidden" name="mail">
+	<input type="hidden" name="celular">
+	<input type="hidden" name="direccion">
 	<table class="tablas" align="center" width="90%">
 	<caption>SOLICITUD DE MODIFICACION DE RUBROS</caption>
 		<tr>
@@ -47,10 +55,10 @@ function tabs(num){
 			<td>No de Documento</td><td><c:out value="${sessionScope.loginUsuario.cedula}" /></td>
 		</tr>
 		<tr>
-			<td>Correo Electrónico</td><td><input type="text" id="correo" value="<c:out value="${sessionScope.loginUsuario.mail}" />"></td>
+			<td>Correo Electrónico</td><td><input type="text" id="mail" value="<c:out value="${sessionScope.loginUsuario.mail}" />"></td>
 		</tr>
 		<tr>
-			<td>Teléfono Móvil</td><td><input type="text" id="movil" value="<c:out value="${sessionScope.loginUsuario.celular}" />"></td>
+			<td>Teléfono Móvil</td><td><input type="text" id="celular" value="<c:out value="${sessionScope.loginUsuario.celular}" />"></td>
 		</tr>
 		<tr>
 			<td>Dirección de Correspondencia</td><td><input type="text" id="direccion" value="<c:out value="${sessionScope.loginUsuario.direccion}" />"></td>
@@ -59,7 +67,7 @@ function tabs(num){
 			<td colspan="2">Por favor verifique que los datos registrados en el formulario estén actualizados, de lo contrario ingrese la informacion correcta y presione el boton Actualizar. Recuerde que en caso que el CIDC lo requiera, lo contactará por alguno de estos medios</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><img border="0" src='<c:url value="/comp/img/Actualizar.gif"/>'/></td>
+			<td colspan="2" align="center"><img border="0" src='<c:url value="/comp/img/Actualizar.gif"/>' onclick="tabs(31)" /></td>
 		</tr>
 	</table>
 </form>

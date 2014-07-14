@@ -21,7 +21,7 @@ session.removeAttribute("requisitos");%>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br>
 <div align="center">
-	<fieldset style="width:90%;"><legend>Información General</legend>
+	<fieldset style="width:90%;"><legend>Información General</legend> 
 	<p align="center" class="texto1">Bienvenido al sistema de inscripción para la solicitud de apoyo económico para la apropiación social del conocimiento a partir de presentación de ponencias en modalidad oral en eventos Nacionales y/o Internacionales.</p>
 	<!-- el numero 3 de la condicion hace referencia a que tanto docentes como estudiantes se pueden inscribir a la convocatoria -->
 	<c:if test="${(sessionScope.datosConv.rol!=3) and (sessionScope.datosConv.rol!=requestScope.rol) }">

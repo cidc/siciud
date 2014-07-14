@@ -50,6 +50,10 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			proyecto = (ProyectoGenerico)sesion.getAttribute("proyectoInvestigador");
 		if(req.getParameter("accion")!=null)
 			accion = Integer.parseInt(req.getParameter("accion"));
+		System.out.println(""+req.getParameter("mail"));
+		System.out.println(""+req.getParameter("celular"));
+		System.out.println(""+req.getParameter("direccion"));
+		mensaje="";
 		switch(accion){
 			case Parametros.cmdVerProyecto:
 				ProyectoGenerico proyectoGen=proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo"));
@@ -111,6 +115,18 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			case Parametros.MODIFICACIONRUBRO:
 				usuario=proyectosDB.consultaDatosPersonales(usuario);
 				sesion.setAttribute("loginUsuario", usuario);
+				irA="/grupos/proyectos/SolModRub.jsp";
+				break;
+			case Parametros.ACTUALIZARDATOS:
+				usuario.setMail(req.getParameter("mail"));
+				usuario.setCelular(req.getParameter("celular"));
+				usuario.setDireccion(req.getParameter("direccion"));
+				if(proyectosDB.actualizarDatos(usuario)){
+					usuario=proyectosDB.consultaDatosPersonales(usuario);
+					sesion.setAttribute("loginUsuario", usuario);
+					mensaje="Datos Actualizados Correctamente";
+				}else
+					mensaje="Ha ocurrido un error, por favor intente de nuevo";
 				irA="/grupos/proyectos/SolModRub.jsp";
 				break;
 			default:

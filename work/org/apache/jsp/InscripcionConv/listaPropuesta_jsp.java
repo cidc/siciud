@@ -95,7 +95,7 @@ session.removeAttribute("requisitos");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
       out.write("<br>\r\n");
       out.write("<div align=\"center\">\r\n");
-      out.write("\t<fieldset style=\"width:90%;\"><legend>Información General</legend>\r\n");
+      out.write("\t<fieldset style=\"width:90%;\"><legend>Información General</legend> \r\n");
       out.write("\t<p align=\"center\" class=\"texto1\">Bienvenido al sistema de inscripción para la solicitud de apoyo económico para la apropiación social del conocimiento a partir de presentación de ponencias en modalidad oral en eventos Nacionales y/o Internacionales.</p>\r\n");
       out.write("\t<!-- el numero 3 de la condicion hace referencia a que tanto docentes como estudiantes se pueden inscribir a la convocatoria -->\r\n");
       out.write("\t");

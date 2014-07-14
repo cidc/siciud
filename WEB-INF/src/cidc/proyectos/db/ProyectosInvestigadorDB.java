@@ -526,6 +526,11 @@ public class ProyectosInvestigadorDB extends BaseDB {
 		return lista;
 	}
 
+	/**
+	 * consulta los datos personales de un usuario
+	 * @param usuario : objeto del tipo usuario con el ID del usuario 
+	 * @return
+	 */
 	public Usuario consultaDatosPersonales(Usuario usuario){
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -556,5 +561,22 @@ public class ProyectosInvestigadorDB extends BaseDB {
 		return usuario;
 	}
 
-
+	public boolean actualizarDatos(Usuario usuario){
+		PreparedStatement ps=null;
+		Connection cn=null;
+		boolean retorno=false;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("actualizarDatos"));
+			ps.setString(i++, usuario.getMail());
+			ps.setString(i++, usuario.getCelular());
+			ps.setString(i++, usuario.getDireccion());
+			ps.setLong(i++, usuario.getIdUsuario());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return retorno;
+	}
 }

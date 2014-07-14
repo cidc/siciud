@@ -35,5 +35,6 @@ public class Parametros {
 	public static final int cargarInforme=28;
 	public static final int MODIFICACIONRUBRO=29;
 	public static final int CARGARSOLICITUDRUBRO=30;
+	public static final int ACTUALIZARDATOS=31;
 }
 
