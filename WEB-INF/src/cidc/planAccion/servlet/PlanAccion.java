@@ -150,7 +150,8 @@ public class PlanAccion extends ServletGeneral {
 				break;
 			case Parametros.CONSULTAGRUPO:
 				sesion.setAttribute("Informe", true);
-				sesion.setAttribute("anoActual", ""+(periodoActual-1));
+				periodoActual-=1;
+				sesion.setAttribute("anoActual", ""+(periodoActual));
 				irA="/planAccion/InformeGestion.jsp";
 				break;
 			case Parametros.INGRESARINFORME:
