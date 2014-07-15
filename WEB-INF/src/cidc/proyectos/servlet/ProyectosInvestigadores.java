@@ -50,9 +50,6 @@ public class ProyectosInvestigadores extends ServletGeneral {
 			proyecto = (ProyectoGenerico)sesion.getAttribute("proyectoInvestigador");
 		if(req.getParameter("accion")!=null)
 			accion = Integer.parseInt(req.getParameter("accion"));
-		System.out.println(""+req.getParameter("mail"));
-		System.out.println(""+req.getParameter("celular"));
-		System.out.println(""+req.getParameter("direccion"));
 		mensaje="";
 		switch(accion){
 			case Parametros.cmdVerProyecto:
@@ -118,9 +115,10 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				irA="/grupos/proyectos/SolModRub.jsp";
 				break;
 			case Parametros.ACTUALIZARDATOS:
-				usuario.setMail(req.getParameter("mail"));
-				usuario.setCelular(req.getParameter("celular"));
-				usuario.setDireccion(req.getParameter("direccion"));
+				Usuario usuario2=(Usuario) sesion.getAttribute("usuarioT");
+				usuario.setMail(usuario2.getMail());
+				usuario.setCelular(usuario2.getCelular());
+				usuario.setDireccion(usuario2.getDireccion());
 				if(proyectosDB.actualizarDatos(usuario)){
 					usuario=proyectosDB.consultaDatosPersonales(usuario);
 					sesion.setAttribute("loginUsuario", usuario);
