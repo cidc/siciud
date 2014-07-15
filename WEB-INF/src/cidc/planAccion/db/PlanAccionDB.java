@@ -316,28 +316,30 @@ public class PlanAccionDB extends BaseDB{
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
-		int i=1;
-		try {
-			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("IngresarPorcentaje"));
-			ps.setInt(i++, actividad.getPorcentaje());
-			ps.setLong(i++, actividad.getIdActividad());
-			ps.executeUpdate();
-			retorno=true;
-			
-		}catch (Exception e) {
-			// TODO Auto-generated catch block
-			lanzaExcepcion(e);
-			retorno=false;
-		}finally{
-			//obligatorio en todas las conexiones con la base de datos 
-			cerrar(ps);
-			cerrar(cn);			
+		for (int j = 0; j < actividad.getIdActividades().length; j++) {
+			int i=1;
+			try {
+				cn = cursor.getConnection(super.perfil);
+				ps = cn.prepareStatement(rb.getString("IngresarPorcentaje"));
+				ps.setInt(i++, actividad.getPorcentajes_()[j]);
+				ps.setLong(i++, actividad.getIdActividades()[j]);
+				ps.executeUpdate();
+				retorno = true;
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				lanzaExcepcion(e);
+				retorno = false;
+			} finally {
+				//obligatorio en todas las conexiones con la base de datos 
+				cerrar(ps);
+				cerrar(cn);
+			}
 		}
 		return retorno;
 	}
 	
-	public boolean eliminarPorcentaje(Actividades actividad){
+	public boolean eliminarPorcentaje( int idActividad){
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -346,7 +348,7 @@ public class PlanAccionDB extends BaseDB{
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("IngresarPorcentaje"));
 			ps.setInt(i++, 0);
-			ps.setLong(i++, actividad.getIdActividad());
+			ps.setLong(i++, idActividad);
 			ps.execute();
 			retorno=true;
 		} catch (Exception e) {

@@ -65,7 +65,7 @@ public class PlanAccion extends ServletGeneral {
 			//Buscar Planes de Accion relacionados a este grupo de invsetigación.
 			case Parametros.BUSCARPLANES:
 				System.out.println("Caso 1 ************"+req.getParameter("periodo"));
-				if(consultarPlan){
+				if(consultarPlan||informe){
 					info.setAnoinicio(req.getParameter("periodo"));
 					info.setAnofinal(req.getParameter("periodo"));
 					sesion.setAttribute("anoActual", req.getParameter("periodo"));
@@ -73,17 +73,16 @@ public class PlanAccion extends ServletGeneral {
 					info.setAnoinicio(""+periodoActual);
 					info.setAnofinal(""+periodoActual);
 				}
+			try {
 				sesion.removeAttribute("nombrePdf");
 				sesion.setAttribute("nombreGrupo", planaccionDB.consultarNombre(info).getNombregrupo().toUpperCase());
-				sesion.setAttribute("listaActividades", planaccionDB.consultaPlanAccion(info));
-				sesion.setAttribute("listaCriterios", planaccionDB.consultaCriterios());
-				sesion.setAttribute("planaccion", planaccionDB.getPlanAccionDatos());
-				sesion.setAttribute("habilitar", (!((String)sesion.getAttribute("anoActual")).equals("2013"))?true:false);
-//				if(!((String)sesion.getAttribute("anoActual")).equals("2013")){
-//					sesion.setAttribute("habilitar", true);
-//				}
-//				else
-//					sesion.setAttribute("habilitar", false);
+				sesion.setAttribute("listaActividades",planaccionDB.consultaPlanAccion(info));
+				sesion.setAttribute("listaCriterios",planaccionDB.consultaCriterios());
+				sesion.setAttribute("planaccion",planaccionDB.getPlanAccionDatos());
+				sesion.setAttribute("habilitar", (!((String) sesion.getAttribute("anoActual")).equals("2013")) ? true: false);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 				System.out.println("Valor idPlan ***********" + planaccionDB.getPlanAccionDatos().getIdPlan()+"deshabilitar"+sesion.getAttribute("deshabilitar")+
 						"ano actual"+sesion.getAttribute("anoActual"));				
 			if (informe) {
@@ -151,7 +150,7 @@ public class PlanAccion extends ServletGeneral {
 				break;
 			case Parametros.CONSULTAGRUPO:
 				sesion.setAttribute("Informe", true);
-				sesion.setAttribute("anoActual", ""+periodoActual);
+				sesion.setAttribute("anoActual", ""+(periodoActual-1));
 				irA="/planAccion/InformeGestion.jsp";
 				break;
 			case Parametros.INGRESARINFORME:
@@ -164,8 +163,7 @@ public class PlanAccion extends ServletGeneral {
 			irA="/planAccion/InformeGestion.jsp";
 				break;
 			case Parametros.ELIMINARPORCENTAJE:
-				actividad=(Actividades)sesion.getAttribute("actividad");
-				if(planaccionDB.eliminarPorcentaje(actividad)){
+				if(planaccionDB.eliminarPorcentaje(Integer.parseInt(req.getParameter("idActividad")))){
 					sesion.setAttribute("listaActividades", planaccionDB.consultaPlanAccion(info));
 					mensaje="Informe eliminado con éxito";
 				}else

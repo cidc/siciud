@@ -19,7 +19,7 @@ function validarFiltro(){
 		mensaje=mensaje+"\n-) Grupo/Semillero de investigación";
 	}
 	if(document.filtro.anoinicio.selectedIndex==0){
-		mensaje=mensaje+"\n-) Año de Incio";
+		mensaje=mensaje+"\n-) Año de Iincio";
 	}
 	if(mensaje!=""){
 		mensaje="Los siguientes campos son obligatorios: "+mensaje;
@@ -80,9 +80,9 @@ function eliminar(id){
 			</tr>
 			<tr>
 				<th><b>Periodo Actual</b></th>
-				<td><span id="anoInicio">&nbsp;<c:out
-							value="${sessionScope.anoActual}" /></span></td>
-				<input type="hidden" name="anoinicio" value="" />
+				<td><span id="anoInicio">&nbsp;<c:out value="${sessionScope.anoActual}" /></span>
+				<input type="hidden" name="periodo" value="<c:out value="${sessionScope.anoActual}" />" />
+				<input type="hidden" name="anoinicio" value="" /></td>
 			</tr>
 			<tr>
 				<td colspan="6" align="center"><img
@@ -92,6 +92,7 @@ function eliminar(id){
 		</table>
 		<br>
 	</form>
+<form name="frmActividades" action="">
 	<c:if test="${sessionScope.listaCriterios!=null}">
 		<table align="center">
 			<tr>
@@ -144,7 +145,8 @@ function eliminar(id){
 								</p></td>
 							<td><input type="text" class="area2" 
 								style="width:50px;" name="porcentajes_" value="<c:out value="${actividades.porcentaje}" />">
-							<input type="hidden" name="idActividades" value="<c:out value="${actividades.idActividad}"/>" /></td>
+							<input type="hidden" name="idActividades" value="<c:out value="${actividades.idActividad}"/>" />
+							<input type="hidden" name="idActividad" value="<c:out value="${actividades.idActividad}"/>" /></td>
 							<c:if test="${!sessionScope.consultar}">
 								<td align="center" width="15px"><img src='<c:url value="/comp/img/no.png"/>'
 									onclick="eliminar(<c:out value="${actividades.idActividad}"/>)">
@@ -162,12 +164,10 @@ function eliminar(id){
 			</table>
 		</c:forEach>
 	</c:if>
-<form name="frmActividades" action="">
+
 		<input type="hidden" name="accion" value="8" />
 		<input type="hidden" name="porcentaje" value="" />
 		<input type="hidden" name="idCriterio" value="" />
-		<input type="hidden" name="idActividad" value="" /> 
-		
 	</form>
 </body>
 </html>
