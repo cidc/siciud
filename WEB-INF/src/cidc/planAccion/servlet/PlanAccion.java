@@ -48,7 +48,7 @@ public class PlanAccion extends ServletGeneral {
 		System.out.println("El id del grupo es" +id_grupo_plan);
 		int periodoActual =Calendar.getInstance().get(Calendar.YEAR);
 		boolean consultarPlan=(sesion.getAttribute("consultar")==null)?false:(Boolean) sesion.getAttribute("consultar");
-		boolean informe=(sesion.getAttribute("Informe")==null)?false:(Boolean) sesion.getAttribute("Informe");
+		boolean informe=(sesion.getAttribute("Informe")==null)?true:(Boolean) sesion.getAttribute("Informe");
 //		if(sesion.getAttribute("consultar")==null)
 //			consultarPlan = false;
 //		else
@@ -149,7 +149,7 @@ public class PlanAccion extends ServletGeneral {
 				irA="/planAccion/DatosPlanAccion.jsp";
 				break;
 			case Parametros.CONSULTAGRUPO:
-				sesion.setAttribute("Informe", true);
+				sesion.setAttribute("Informe", false);
 				periodoActual-=1;
 				sesion.setAttribute("anoActual", ""+(periodoActual));
 				irA="/planAccion/InformeGestion.jsp";
@@ -170,6 +170,17 @@ public class PlanAccion extends ServletGeneral {
 				}else
 					mensaje="Ha ocurrido un error, por favor intente de nuevo ";
 				irA="/planAccion/InformeGestion.jsp";
+				break;
+			case Parametros.CAMBIAINFORME:
+				if (!informe) {
+					sesion.setAttribute("arregloAnos", crearhistorico(periodoActual-1));
+					informe=true;
+				}else{
+					informe=false;
+				}
+				sesion.removeAttribute("Informe");
+				sesion.setAttribute("Informe", informe);
+				sesion.removeAttribute("listaActividades");
 				break;
 			default:
 				sesion.setAttribute("Informe", false);

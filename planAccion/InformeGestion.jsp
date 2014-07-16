@@ -54,10 +54,21 @@ function eliminar(id){
 	document.frmActividades.action='<c:url value="/planAccion/PlanAccion.x"/>';
 	document.frmActividades.submit();		
 }
+function cambio(){
+	document.frmActividades.accion.value='10';
+	document.frmActividades.action='<c:url value="/planAccion/PlanAccion.x"/>';
+	document.frmActividades.submit();
+}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
+<c:if test="${!sessionScope.Informe}">
+	<img src='<c:url value="/comp/img/ingresar_plan.png"/>' onclick="cambio()">
+</c:if>
+<c:if test="${sessionScope.Informe}">
+	<img src='<c:url value="/comp/img/historico.png"/>' onclick="cambio()">
+</c:if>
 	<form name="filtro" method="post"
 		action='<c:url value="/planAccion/PlanAccion.x"/>'>
 		<input type="hidden" name="accion" value="1" />
@@ -79,10 +90,22 @@ function eliminar(id){
 				</select></td>
 			</tr>
 			<tr>
-				<th><b>Periodo Actual</b></th>
-				<td><span id="anoInicio">&nbsp;<c:out value="${sessionScope.anoActual}" /></span>
-				<input type="hidden" name="periodo" value="<c:out value="${sessionScope.anoActual}" />" />
-				<input type="hidden" name="anoinicio" value="" /></td>
+				<th><b>Período</b></th><td>
+				<c:if test="${!sessionScope.Informe}">
+				<span id="anoInicio">&nbsp;<c:out value="${sessionScope.anoActual}" /></span>
+				</c:if>
+				<input type="hidden" name="anoinicio" value="<c:out value="${sessionScope.anoActual}" />" />
+<!-- 				<input type="hidden" name="anoinicio" value="" /> -->
+				<c:if test="${sessionScope.Informe}">
+				<select name="periodo" onchange="">
+							<c:forEach begin="0" items="${sessionScope.arregloAnos}" var="lista" >
+								<option value="<c:out value="${lista}"/>">
+									<c:out value="${lista}" />
+								</option>
+							</c:forEach>
+				</select>
+				</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="6" align="center"><img

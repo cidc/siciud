@@ -11,6 +11,7 @@ public class Parametros {
 	public static final int CONSULTAGRUPO=7;
 	public static final int INGRESARINFORME=8;
 	public static final int ELIMINARPORCENTAJE=9;
+	public static final int CAMBIAINFORME=10;
 	public static final String FECHACIERRE="30-07-2014";
 }
 
