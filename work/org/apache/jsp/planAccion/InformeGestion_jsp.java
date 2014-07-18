@@ -93,7 +93,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\tif(document.filtro.idGrupo.selectedIndex==0){\r\n");
       out.write("\t\tmensaje=mensaje+\"\\n-) Grupo/Semillero de investigación\";\r\n");
       out.write("\t}\r\n");
-      out.write("\tif(document.filtro.anoinicio.selectedIndex==0){\r\n");
+      out.write("\tif(document.filtro.periodo.selectedIndex==0){\r\n");
       out.write("\t\tmensaje=mensaje+\"\\n-) Año de Iincio\";\r\n");
       out.write("\t}\r\n");
       out.write("\tif(mensaje!=\"\"){\r\n");
@@ -136,21 +136,23 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\tdocument.frmActividades.submit();\t\t\r\n");
       out.write("}\r\n");
       out.write("function cambio(){\r\n");
-      out.write("\tdocument.frmActividades.accion.value='10';\r\n");
-      out.write("\tdocument.frmActividades.action='");
+      out.write("\tdocument.filtro.accion.value='10';\r\n");
+      out.write("\tdocument.filtro.action='");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
       out.write("';\r\n");
-      out.write("\tdocument.frmActividades.submit();\r\n");
+      out.write("\tdocument.filtro.submit();\r\n");
       out.write("}\r\n");
       out.write("</script>\r\n");
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
+      out.write("\t");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
       out.write('\r');
       out.write('\n');
+      out.write('	');
       if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
         return;
       out.write("\r\n");
@@ -186,7 +188,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
       if (_jspx_meth_c_005fif_005f2(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("\t\t\t\t<input type=\"hidden\" name=\"anoinicio\" value=\"");
+      out.write("\t\t\t\t<input type=\"hidden\" name=\"periodo\" value=\"");
       if (_jspx_meth_c_005fout_005f4(_jspx_page_context))
         return;
       out.write("\" />\r\n");
@@ -324,7 +326,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f3 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f3.setParent(null);
-    // /planAccion/InformeGestion.jsp(59,33) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /planAccion/InformeGestion.jsp(59,25) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f3.setValue("/planAccion/PlanAccion.x");
     int _jspx_eval_c_005furl_005f3 = _jspx_th_c_005furl_005f3.doStartTag();
     if (_jspx_th_c_005furl_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -343,8 +345,8 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /planAccion/InformeGestion.jsp(66,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!sessionScope.Informe}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /planAccion/InformeGestion.jsp(66,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.ConsultaInforme}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -353,6 +355,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
         if (_jspx_meth_c_005furl_005f4(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("' onclick=\"cambio()\">\r\n");
+        out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -393,8 +396,8 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent(null);
-    // /planAccion/InformeGestion.jsp(69,0) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.Informe}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /planAccion/InformeGestion.jsp(69,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!sessionScope.ConsultaInforme}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -403,6 +406,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
         if (_jspx_meth_c_005furl_005f5(_jspx_th_c_005fif_005f1, _jspx_page_context))
           return true;
         out.write("' onclick=\"cambio()\">\r\n");
+        out.write("\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -571,7 +575,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     _jspx_th_c_005fif_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f2.setParent(null);
     // /planAccion/InformeGestion.jsp(94,4) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!sessionScope.Informe}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!sessionScope.ConsultaInforme}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f2 = _jspx_th_c_005fif_005f2.doStartTag();
     if (_jspx_eval_c_005fif_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -621,7 +625,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent(null);
-    // /planAccion/InformeGestion.jsp(97,49) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /planAccion/InformeGestion.jsp(97,47) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.anoActual}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -641,7 +645,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     _jspx_th_c_005fif_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f3.setParent(null);
     // /planAccion/InformeGestion.jsp(99,4) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.Informe}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f3.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.ConsultaInforme}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f3 = _jspx_th_c_005fif_005f3.doStartTag();
     if (_jspx_eval_c_005fif_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
