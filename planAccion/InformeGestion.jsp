@@ -9,6 +9,9 @@
 <script type="text/javascript">
 function buscar(){
 	if (validarFiltro()){
+		if(${sessionScope.ConsultaInforme}){
+			document.filtro.periodo.value=document.filtro.comboPeriodo.value;
+		}
 		document.filtro.action='<c:url value="/planAccion/llenar.jsp"/>';
 		document.filtro.submit();
 	}	
@@ -64,7 +67,7 @@ function cambio(){
 </head>
 <body>
 	<c:if test="${sessionScope.ConsultaInforme}">
-	<img src='<c:url value="/comp/img/ingresar_plan.png"/>' onclick="cambio()">
+	<img src='<c:url value="/comp/img/Atras.gif"/>' onclick="cambio()">
 	</c:if>
 	<c:if test="${!sessionScope.ConsultaInforme}">
 	<img src='<c:url value="/comp/img/historico.png"/>' onclick="cambio()">
@@ -77,8 +80,7 @@ function cambio(){
 			<caption>Filtrar Por Grupo</caption>
 			<tr>
 				<th><b>Grupo de Investigación</b></th>
-				<td colspan="5"><select name="idGrupo"
-					onchange="periodo(${sessionScope.anoActual})">
+				<td colspan="5"><select name="idGrupo">
 						<option value="0">----</option>
 						<c:forEach begin="0" items="${sessionScope.listaMisGrupos}"
 							var="lista" varStatus="st">
@@ -97,7 +99,7 @@ function cambio(){
 				<input type="hidden" name="periodo" value="<c:out value="${sessionScope.anoActual}" />" />
 <!-- 				<input type="hidden" name="anoinicio" value="" /> -->
 				<c:if test="${sessionScope.ConsultaInforme}">
-				<select name="periodo" onchange="">
+				<select name="comboPeriodo" onchange="">
 							<c:forEach begin="0" items="${sessionScope.arregloAnos}" var="lista" >
 								<option value="<c:out value="${lista}"/>">
 									<c:out value="${lista}" />
@@ -148,8 +150,10 @@ function cambio(){
 					</c:if>
 					<th width="140px" class="renglones" align="center">Descripción</th>
 					<th align="center" width="100px">Meta</th>
+					<c:if test="${!sessionScope.ConsultaInforme}">
 					<th align="center" width="50px">Porcentaje</th>
 					<th align="center" width="41px">&nbsp;</th>
+					</c:if>
 				</tr>
 				<br>
 				<c:forEach begin="0" items="${sessionScope.listaActividades}"
@@ -166,6 +170,7 @@ function cambio(){
 							<td><p class="texto1j">
 									<c:out value="${actividades.meta}" />
 								</p></td>
+							<c:if test="${!sessionScope.ConsultaInforme}">
 							<td><input type="text" class="area2" 
 								style="width:50px;" name="porcentajes_" value="<c:out value="${actividades.porcentaje}" />">
 							<input type="hidden" name="idActividades" value="<c:out value="${actividades.idActividad}"/>" />
@@ -174,6 +179,7 @@ function cambio(){
 								<td align="center" width="15px"><img src='<c:url value="/comp/img/no.png"/>'
 									onclick="eliminar(<c:out value="${actividades.idActividad}"/>)">
 								</td>
+							 </c:if>
 							</c:if>
 						</tr>
 					</c:if>
