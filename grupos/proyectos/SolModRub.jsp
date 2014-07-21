@@ -19,11 +19,21 @@ function guardar(num){
 		document.formArchivo.action="<c:url value='/proyectos/CargarInformes.x' />";
 		document.formArchivo.accion.value = num;
 		document.formArchivo.submit();
-	}else{
+	}else if(validarNum()){
 		document.formPersonal.action="<c:url value='/grupos/proyectos/llenar2.jsp' />";
     	document.formPersonal.accion.value = num;
+    	document.formPersonal.submit();
 	}
-	document.formPersonal.submit();
+	
+}
+
+function validarNum(){
+	if (isNaN(document.formPersonal.celular.value)) {
+		alert("Error:\nEL numero de Celular no debe contener letras.");
+		document.formPersonal.celular.focus();
+		return false;
+		 }
+	return true;
 }
 </script>
 </head>
@@ -39,7 +49,8 @@ function guardar(num){
 		</tr>
 	</table>
 </form>	
-<form name="formPersonal" method="post" >
+<c:if test="${!requestScope.visible}">
+	<form name="formPersonal" method="post" onLoad="mensajeAlert(document.getElementById('msg'));">
 	<input type="hidden" name="accion">
 	<table class="tablas" align="center" width="90%">
 	<caption>SOLICITUD DE MODIFICACION DE RUBROS</caption>
@@ -69,7 +80,9 @@ function guardar(num){
 		</tr>
 	</table>
 </form>
-<form name="formArchivo" method="post" action="/proyectos/CargarInformes.x" enctype="multipart/form-data">
+</c:if>
+<c:if test="${requestScope.visible}">
+	<form name="formArchivo" method="post" action="/proyectos/CargarInformes.x" enctype="multipart/form-data" onLoad="mensajeAlert(document.getElementById('msg'));">
 	<input type="hidden" name="accion" value="30">
 	<table width="90%" align="center" class="tablas">
 	<caption>CARGA DE CARTA DE SOLICITUD</caption>
@@ -81,5 +94,6 @@ function guardar(num){
 		<tr><td colspan="2" align="center"><img border="0" src='<c:url value="/comp/img/CargaDoc.gif"/>' onclick="guardar(30)"/></td></tr>
 	</table>
 </form>
+</c:if>
 </body>
 </html>

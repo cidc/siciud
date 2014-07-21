@@ -156,6 +156,8 @@ public class CargarInformes extends ServletGeneral{
 				System.out.println("entre");
 			try {
 				cargarDocumento.cargarGenerico(path, archivoAdj, "/Bizagi", "ModRub-", 1);
+				req.setAttribute("visible", false);
+				irA="/grupos/proyectos/SolModRub.jsp";
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -110,6 +110,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				irA="/grupos/proyectos/InfoSolicitud.jsp";
 				break;
 			case Parametros.MODIFICACIONRUBRO:
+				req.setAttribute("visible", false);
 				usuario=proyectosDB.consultaDatosPersonales(usuario);
 				sesion.setAttribute("loginUsuario", usuario);
 				irA="/grupos/proyectos/SolModRub.jsp";
@@ -122,6 +123,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				if(proyectosDB.actualizarDatos(usuario)){
 					usuario=proyectosDB.consultaDatosPersonales(usuario);
 					sesion.setAttribute("loginUsuario", usuario);
+					req.setAttribute("visible", true);
 					mensaje="Datos Actualizados Correctamente";
 				}else
 					mensaje="Ha ocurrido un error, por favor intente de nuevo";

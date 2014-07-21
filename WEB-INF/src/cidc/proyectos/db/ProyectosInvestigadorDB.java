@@ -574,6 +574,7 @@ public class ProyectosInvestigadorDB extends BaseDB {
 			ps.setString(i++, usuario.getDireccion());
 			ps.setLong(i++, usuario.getIdUsuario());
 			ps.executeUpdate();
+			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
