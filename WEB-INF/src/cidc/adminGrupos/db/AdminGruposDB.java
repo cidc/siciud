@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -1054,7 +1055,9 @@ public class AdminGruposDB extends BaseDB{
 			}
 		}
 		objA.setProyectosCurriculares(AjaxProyectoCur(objA.getCodFacultad()));
-	
+		Globales glob= new Globales();
+		glob.splitFechaSimple(new Date());
+	objA.setFechaVinculacion(glob.getAnoHoy()+"-"+glob.getMesHoy()+"-"+glob.getDiaHoy());
 		return objA;
 	}
 

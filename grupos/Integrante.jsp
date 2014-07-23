@@ -92,11 +92,11 @@
 
 		if(document.nuevo.cvlac.value!=""){
 			if(document.nuevo.cvlac.value.length>=64){
-				var dir=document.nuevo.cvlac.value.substring(0,67);
-				if(dir!="http://201.234.78.173:8081/cvlac/visualizador/generarCurriculoCv.do")
-					mensaje=mensaje+"\n-) Dirección no válida para CvLac";
+				var dir=document.nuevo.cvlac.value.substring(0,68);
+				if(dir!="http://190.216.132.131:8081/cvlac/visualizador/generarCurriculoCv.do")
+					ms=ms+"\n-) Dirección no válida para CvLac";
 			}else{
-				mensaje=mensaje+"\n-) Dirección no válida para CvLac";
+				ms=ms+"\n-) Dirección no válida para CvLac";
 			}
 		}
 		if(ms!=""){
@@ -314,9 +314,9 @@
 							</select>
 						</td>
 						<td>
-							<input type='text' name='fechaVinculacion' class='caj' readonly='true' id='f_date_b' size='13' value='<c:out value="${sessionScope.integrante2.fechaVinculacion}" />'>
-							<button type="button" id='f_trigger_b' >...</button>
-							<script type='text/javascript'>
+							<input type='text' name='fechaVinculacion' class='caj' id='f_date_b' size='13' readonly value='<c:out value="${sessionScope.integrante2.fechaVinculacion}" />'>
+<!-- 							<button type="button" id='f_trigger_b' >...</button> -->
+							<!-- <script type='text/javascript'>
 				    			Calendar.setup({
 					    			inputField     :    'f_date_b',
 					    			ifFormat       :    '%Y-%m-%d',
@@ -325,7 +325,7 @@
 					    			singleClick    :    false,
 					    			step           :    1
 				    			})
-			    			</script>
+			    			</script> -->
 						</td>
 						<td>
 							<input type='text' name='fechaSalidaGrupo' class='caj' readonly='true' id='f_date_c' size='13' value='<c:out value="${sessionScope.integrante2.fechaSalidaGrupo}"/>'>
