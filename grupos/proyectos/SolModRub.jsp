@@ -9,8 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script>
 function tabs(num){
-	
 		document.formTab.action="<c:url value='/GestionProyectos/ProyectosInvestigador.x' />";
+		document.formTab.accion.value = num;
 		document.formTab.submit();
 }
 
@@ -41,11 +41,13 @@ function validarNum(){
 
 <form name="formTab" method="post">
 	<input type="hidden" name="accion">
+	<input type="hidden" name="tipo" value='<c:out value="${sessionScope.proyectoInvestigador.tipo}"/>'>
+	<input type="hidden" name="id" value='<c:out value="${sessionScope.proyectoInvestigador.idProyecto}"/>'>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
-			<td><img border="0" src='<c:url value="/comp/img/tabs/General1.gif"/>'></td>
-			<td><img border="0" src='<c:url value="/comp/img/tabs/Balance2.gif"/>' onclick="tabs(6)"></td>
-			<td><img border="0" src='<c:url value="/comp/img/Actualizar.gif"/>' onclick="tab(29)"/></td>
+			<td><img border="0" src='<c:url value="/comp/img/InformacionGral.gif"/>' onclick="tabs(1)"></td>
+			<td><img border="0" src='<c:url value="/comp/img/Balance2.gif"/>' onclick="tabs(6)"></td>
+			<td><img border="0" src='<c:url value="/comp/img/Solicitudes.gif"/>' /></td>
 		</tr>
 	</table>
 </form>	

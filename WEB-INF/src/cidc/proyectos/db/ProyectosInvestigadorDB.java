@@ -549,6 +549,7 @@ public class ProyectosInvestigadorDB extends BaseDB {
 				usuario.setDireccion(rs.getString(i++));
 				usuario.setTipoDoc(rs.getString(i++));
 				usuario.setCelular(rs.getString(i++));
+				usuario.setGenero(rs.getString(i++));
 			}
 		}catch (SQLException e) {
 			lanzaExcepcion(e);

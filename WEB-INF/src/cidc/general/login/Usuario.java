@@ -15,6 +15,8 @@ public class Usuario implements Serializable {
 	private String direccion;
 	private String celular;
 	private String tipoDoc;
+	private String genero;
+	
 	
 	public String getCedula() {
 		return cedula;
@@ -123,6 +125,13 @@ public class Usuario implements Serializable {
 	public void setTipoDoc(String tipoDoc) {
 		this.tipoDoc = tipoDoc;
 	}
-	
-	
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+		
 }
