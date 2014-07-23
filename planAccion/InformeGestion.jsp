@@ -62,6 +62,11 @@ function cambio(){
 	document.filtro.action='<c:url value="/planAccion/PlanAccion.x"/>';
 	document.filtro.submit();
 }
+//Función que permite solo Números
+function ValidaSoloNumeros() {
+ if ((event.keyCode < 48) || (event.keyCode > 57)) 
+  event.returnValue = false;
+}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
@@ -171,7 +176,7 @@ function cambio(){
 									<c:out value="${actividades.meta}" />
 								</p></td>
 							<c:if test="${!sessionScope.ConsultaInforme}">
-							<td><input type="text" class="area2" 
+							<td><input type="text" class="area2"  onkeypress="ValidaSoloNumeros()"
 								style="width:50px;" name="porcentajes_" value="<c:out value="${actividades.porcentaje}" />">
 							<input type="hidden" name="idActividades" value="<c:out value="${actividades.idActividad}"/>" />
 							<input type="hidden" name="idActividad" value="<c:out value="${actividades.idActividad}"/>" /></td>
