@@ -45,8 +45,9 @@ function validar1(){
 	var mensaje="";
 	if(document.frmActividades.porcentaje_.value==""){
 		mensaje=mensaje+"\n-) Ingrese un porcentaje por favor";
-	}		
-	else
+	}else if(document.frmActividades.porcentaje_.value>100){
+		mensaje=mensaje+"\n-) El valor no puede ser superior a 100";
+	}else
 		return true;
 	return false;	
 }
@@ -155,12 +156,9 @@ function ValidaSoloNumeros() {
 					</c:if>
 					<th width="140px" class="renglones" align="center">Descripción</th>
 					<th align="center" width="100px">Meta</th>
-					<c:if test="${!sessionScope.ConsultaInforme}">
 					<th align="center" width="50px">Porcentaje</th>
 					<th align="center" width="41px">&nbsp;</th>
-					</c:if>
 				</tr>
-				<br>
 				<c:forEach begin="0" items="${sessionScope.listaActividades}"
 					var="actividades" varStatus="st1">
 					<c:if test="${(criterio.idCriterio==actividades.idCriterio)}">
@@ -185,6 +183,9 @@ function ValidaSoloNumeros() {
 									onclick="eliminar(<c:out value="${actividades.idActividad}"/>)">
 								</td>
 							 </c:if>
+							</c:if>
+							<c:if test="${sessionScope.ConsultaInforme}">
+								<td><c:out value="${actividades.porcentaje}" /></td>
 							</c:if>
 						</tr>
 					</c:if>
