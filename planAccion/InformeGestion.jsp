@@ -16,6 +16,7 @@ function buscar(){
 		document.filtro.submit();
 	}	
 }	
+
 function validarFiltro(){
 	var mensaje="";
 	if(document.filtro.idGrupo.selectedIndex==0){
@@ -33,24 +34,11 @@ function validarFiltro(){
 	return false;	
 }
 function guardar(id){
-	//document.frmActividades.idActividad.value=document.getElementById("idActividad"+id).value;
-	alert("entre");
-	//document.frmActividades.porcentaje.value=document.getElementById("porcentaje"+id).value;
-	//document.frmActividades.idCriterio.value=id;
-		alert("entro 2");
-		document.frmActividades.action='<c:url value="/planAccion/llenar.jsp"/>';
-		document.frmActividades.submit();			
+			document.frmActividades.action='<c:url value="/planAccion/llenar.jsp"/>';
+			document.frmActividades.submit();
+		
 }
-function validar1(){
-	var mensaje="";
-	if(document.frmActividades.porcentaje_.value==""){
-		mensaje=mensaje+"\n-) Ingrese un porcentaje por favor";
-	}else if(document.frmActividades.porcentaje_.value>100){
-		mensaje=mensaje+"\n-) El valor no puede ser superior a 100";
-	}else
-		return true;
-	return false;	
-}
+
 function eliminar(id){
 	alert(id);
 	document.frmActividades.idActividad.value=id;
@@ -64,9 +52,31 @@ function cambio(){
 	document.filtro.submit();
 }
 //Función que permite solo Números
-function ValidaSoloNumeros() {
- if ((event.keyCode < 48) || (event.keyCode > 57)) 
-  event.returnValue = false;
+function soloNumeros(e){
+	var key = window.Event ? e.which : e.keyCode
+	return (key >= 48 && key <= 57)
+}
+
+function validarCombos(){
+	alert("entre");
+	var mensaje="";
+	formulario = document.frmActividades;
+	for(var i=0; i<formulario.elements.length; i++) {
+	  var elemento = formulario.elements[i];
+	  if(elemento.type == "text") {
+	    /* if(elemento.value>100) {
+	    	mensaje=mensaje+"\n-) El valor no puede ser superior a 100";
+	    }if(elemento.value==""){
+	    	mensaje=mensaje+"\n-) Ingrese un porcentaje por favor";
+	    }
+	    if(mensaje!=null){
+	    	return false
+	    } */
+	    alert("valor"+elemento.value)
+	  }
+	}
+	alert(mensaje);
+	return true;
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -174,10 +184,10 @@ function ValidaSoloNumeros() {
 									<c:out value="${actividades.meta}" />
 								</p></td>
 							<c:if test="${!sessionScope.ConsultaInforme}">
-							<td><input type="text" class="area2"  onkeypress="ValidaSoloNumeros()"
-								style="width:50px;" name="porcentajes_" value="<c:out value="${actividades.porcentaje}" />">
+							<td><input type="text" class="area2"  onKeyPress="return soloNumeros(event)"
+								style="width:50px;" id="porcentajes" name="porcentajes_" value="<c:out value="${actividades.porcentaje}" />">
 							<input type="hidden" name="idActividades" value="<c:out value="${actividades.idActividad}"/>" />
-							<input type="hidden" name="idActividad" value="<c:out value="${actividades.idActividad}"/>" /></td>
+ 							<input type="hidden" name="idActividad" value="<c:out value="${actividades.idActividad}"/>" /></td>
 							<c:if test="${!sessionScope.consultar}">
 								<td align="center" width="15px"><img src='<c:url value="/comp/img/no.png"/>'
 									onclick="eliminar(<c:out value="${actividades.idActividad}"/>)">
