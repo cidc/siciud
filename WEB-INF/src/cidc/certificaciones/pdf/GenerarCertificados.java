@@ -83,7 +83,7 @@ public class GenerarCertificados {
 		clausulasinicio.add(new Phrase(" identificado(a) con la cédula de ciudadanía "+certificado.getCedula()+" de "+certificado.numCedDe+", ",texto10));
 		clausulasinicio.add(new Phrase("a la fecha, se encuentra a ",texto10));
 		clausulasinicio.add(new Phrase("PAZ Y SALVO",texto10n));
-		clausulasinicio.add(new Phrase(" por todo concepto en la Dirección de la gestion de programas científicos de investigación de pregrado y postgrado. ",texto10));
+		clausulasinicio.add(new Phrase(" por todo concepto en el Centro de Investigaciones y Desarrollo Científico. ",texto10));
 		clausulasinicio.add(new Phrase("\n\nSe expide la presente a solicitud del (de la) interesado(a) a los ",texto10));
 		clausulasinicio.add(new Phrase(" "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10));
 		contenido=clausulasinicio.toString();
@@ -119,10 +119,10 @@ public class GenerarCertificados {
 			PdfWriter.getInstance(document, new FileOutputStream("Certificado.pdf"));
 			
 			document.open();			
-			document.addTitle("\n EL SUSCRITO VICERRECTOR \n CERTIFICA QUE:");
+			document.addTitle("\n EL SUSCRITO DIRECTOR \n CERTIFICA QUE:");
 			document.addSubject("Certificado Electrónico");
 			document.addKeywords("Certificado, electrónico,o.j.a.s");
-			document.addAuthor("VIICEPS");
+			document.addAuthor("CIDC");
 			document.addCreator("Sistema SICIUD");
 			agregarCabecera(pathArchivo,codigo);
 		} catch (FileNotFoundException e) {
@@ -170,7 +170,7 @@ public class GenerarCertificados {
 					
 		try {				
 			
-			Image escudo=Image.getInstance(path.substring(0,path.lastIndexOf("Documentos"))+sep+"comp"+sep+"img"+sep+"cabCertificado.png");
+			Image escudo=Image.getInstance(path.substring(0,path.lastIndexOf("Documentos"))+sep+"comp"+sep+"img"+sep+"cabCertificado1.png");
 			escudo.setBorder(0);
 			tablaEscudo.getDefaultCell().setBorder(Rectangle.NO_BORDER);
 			tablaEscudo.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -186,12 +186,12 @@ public class GenerarCertificados {
 	        Qr.setBorder(Rectangle.NO_BORDER);
 	        codigos.addCell(Qr);
 	        tablaEscudo.addCell(codigos);
-			c0=new PdfPCell(new Paragraph("\nEL SUSCRITO VICERRECTOR DE",texto11n));
+			c0=new PdfPCell(new Paragraph("\nEL SUSCRITO DIRECTOR DEL",texto11n));
 			c0.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c0.setBorder(Rectangle.NO_BORDER);
 			tablaEscudo.addCell(c0);
 			PdfPCell c1 = null;
-			c1=new PdfPCell(new Paragraph("INVESTIGACIÓN, INNOVACIÓN, CREACIÓN, EXTENSIÓN Y PROYECCIÓN SOCIAL",texto11n));
+			c1=new PdfPCell(new Paragraph("CENTRO DE INVESTIGACIONES Y DESARROLLO CIENTIFICO",texto11n));
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c1.setBorder(Rectangle.NO_BORDER);
 			tablaEscudo.addCell(c1);
@@ -233,7 +233,7 @@ public class GenerarCertificados {
 			directorCIDC.setHorizontalAlignment(Element.ALIGN_CENTER);
 			directorCIDC.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(directorCIDC);
-			PdfPCell tituloCIDC=new PdfPCell(new Phrase("Vicerrector Investigación, Innovación, Creación, Extensión y Proyección Social",texto10));
+			PdfPCell tituloCIDC=new PdfPCell(new Phrase("Director del Centro de Investigaciones y Desarrollo Científico",texto10));
 			tituloCIDC.setHorizontalAlignment(Element.ALIGN_CENTER);
 			tituloCIDC.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(tituloCIDC);
@@ -253,11 +253,11 @@ public class GenerarCertificados {
 			fecha.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(fecha);
 			PdfPCell frase1=new PdfPCell(new Phrase("Nota 2: El contenido y la validez de la firma digital utilizada pueden ser verificadas en el portal web de la " +
-					"Vicerrectoría de Investigación, Innovación, Creación, Extensión y Proyección Social",texto10));
+					"Centro de Investigaciones y Desarrollo Científico",texto10));
 			frase1.setHorizontalAlignment(Element.ALIGN_LEFT);
 			frase1.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(frase1);
-			PdfPCell frase3=new PdfPCell(new Phrase("http://viiceps.udistrital.edu.co/web/",texto9));
+			PdfPCell frase3=new PdfPCell(new Phrase("http://cidc.udistrital.edu.co/web/",texto9));
 			frase3.setHorizontalAlignment(Element.ALIGN_LEFT);
 			frase3.setBorder(Rectangle.NO_BORDER);
 			tablaFirma.addCell(frase3);
@@ -270,7 +270,7 @@ public class GenerarCertificados {
 			PdfPTable nuevoPiePdfPTable = new PdfPTable(2);
 			nuevoPiePdfPTable.setWidths(new int[] { 600,700 });
 			nuevoPiePdfPTable.setTotalWidth(560);
-			PdfPCell celda1= new PdfPCell(new Phrase("Dirección de la Gestión de Programas Científicos de Pregrado y Postgrado",paginacion));
+			PdfPCell celda1= new PdfPCell(new Phrase("Centro de Investigaciones y Desarrollo Científico",paginacion));
 			celda1.setHorizontalAlignment(Element.ALIGN_LEFT);
 			celda1.setBorder(Rectangle.NO_BORDER);
 			nuevoPiePdfPTable.addCell(celda1);
@@ -280,7 +280,7 @@ public class GenerarCertificados {
 			celda2.setBorder(Rectangle.NO_BORDER);
 			nuevoPiePdfPTable.addCell(celda2);
 			
-			PdfPCell celda3= new PdfPCell(new Phrase("Web: viiceps.udistrital.edu.co - Mail: siciud-viiceps@correo.udistrital.edu.co",paginacion));
+			PdfPCell celda3= new PdfPCell(new Phrase("Web: cidc.udistrital.edu.co - Mail: siciud-cidc@correo.udistrital.edu.co",paginacion));
 			celda3.setHorizontalAlignment(Element.ALIGN_LEFT);
 			celda3.setBorder(Rectangle.NO_BORDER);
 			nuevoPiePdfPTable.addCell(celda3);
@@ -338,7 +338,7 @@ public class GenerarCertificados {
 		clausulasinicio.add(new Phrase("\""+certificado.getNombreGrupo()+"\"",texto10n));
 		clausulasinicio.add(new Phrase(", institucionalizado el ",texto10));
 		clausulasinicio.add(new Phrase(global.getDiaFecha(certificado.getFecha_cert(), 1) +" de "+global.getNombreMes(certificado.getFecha_cert(), 1) +" de "+ global.getAnoFecha(certificado.getFecha_cert()),texto10));
-		clausulasinicio.add(new Phrase(", por la Dirección de la Gestión de Programas Científicos de Pregrado y Postgrado de la Universidad Distrital Francisco José de Caldas ",texto10));
+		clausulasinicio.add(new Phrase(", por el Centro de Investigaciones y Desarrollo Científico de la Universidad Distrital Francisco José de Caldas ",texto10));
 		String categoria ="";
 		if(certificado.getCategoriaGrupo().equals("1")||certificado.getCategoriaGrupo().equals("2")){
 			categoria=(certificado.getCategoriaGrupo().equals("1"))?", el cual se encuentra sin clasificación ":"";
