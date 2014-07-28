@@ -180,9 +180,11 @@ public class PlanAccion extends ServletGeneral {
 				}else{
 					consultaInf=false;
 				}
+				sesion.removeAttribute("listaCriterios");
 				sesion.removeAttribute("ConsultaInforme");
 				sesion.setAttribute("ConsultaInforme", consultaInf);
 				sesion.removeAttribute("listaActividades");
+				sesion.setAttribute("anoActual", periodoActual-1);
 				irA="/planAccion/InformeGestion.jsp";
 				break;
 			default:

@@ -321,7 +321,11 @@ public class PlanAccionDB extends BaseDB{
 			try {
 				cn = cursor.getConnection(super.perfil);
 				ps = cn.prepareStatement(rb.getString("IngresarPorcentaje"));
-				ps.setInt(i++, actividad.getPorcentajes_()[j]);
+				if(actividad.getPorcentajes_()[j]>100){
+					ps.setInt(i++, 100);
+				}else{
+					ps.setInt(i++, actividad.getPorcentajes_()[j]);
+				}
 				ps.setLong(i++, actividad.getIdActividades()[j]);
 				ps.executeUpdate();
 				retorno = true;

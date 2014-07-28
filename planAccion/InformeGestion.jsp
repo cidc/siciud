@@ -40,7 +40,6 @@ function guardar(id){
 }
 
 function eliminar(id){
-	alert(id);
 	document.frmActividades.idActividad.value=id;
 	document.frmActividades.accion.value=9;
 	document.frmActividades.action='<c:url value="/planAccion/PlanAccion.x"/>';
@@ -58,7 +57,6 @@ function soloNumeros(e){
 }
 
 function validarCombos(){
-	alert("entre");
 	var mensaje="";
 	formulario = document.frmActividades;
 	for(var i=0; i<formulario.elements.length; i++) {
@@ -72,7 +70,6 @@ function validarCombos(){
 	    if(mensaje!=null){
 	    	return false
 	    } */
-	    alert("valor"+elemento.value)
 	  }
 	}
 	alert(mensaje);
@@ -144,13 +141,6 @@ function validarCombos(){
 				<td align="center">PERIODO <c:out
 						value="${sessionScope.anoActual}" /></td>
 			</tr>
-			<c:if test="${!sessionScope.corte}">
-				<tr>
-					<td aling="center"><c:out
-							value="La fecha límite para ingresar el plan de acción ha expirado" />
-					</td>
-				</tr>
-			</c:if>
 		</table>
 		<br>
 
@@ -167,7 +157,7 @@ function validarCombos(){
 					<th width="140px" class="renglones" align="center">Descripción</th>
 					<th align="center" width="100px">Meta</th>
 					<th align="center" width="50px">Porcentaje</th>
-					<th align="center" width="41px">&nbsp;</th>
+<!-- 					<th align="center" width="41px">&nbsp;</th> -->
 				</tr>
 				<c:forEach begin="0" items="${sessionScope.listaActividades}"
 					var="actividades" varStatus="st1">
@@ -188,11 +178,11 @@ function validarCombos(){
 								style="width:50px;" id="porcentajes" name="porcentajes_" value="<c:out value="${actividades.porcentaje}" />">
 							<input type="hidden" name="idActividades" value="<c:out value="${actividades.idActividad}"/>" />
  							<input type="hidden" name="idActividad" value="<c:out value="${actividades.idActividad}"/>" /></td>
-							<c:if test="${!sessionScope.consultar}">
+							<%-- <c:if test="${!sessionScope.consultar}">
 								<td align="center" width="15px"><img src='<c:url value="/comp/img/no.png"/>'
 									onclick="eliminar(<c:out value="${actividades.idActividad}"/>)">
 								</td>
-							 </c:if>
+							 </c:if> --%>
 							</c:if>
 							<c:if test="${sessionScope.ConsultaInforme}">
 								<td><c:out value="${actividades.porcentaje}" /></td>
@@ -200,14 +190,16 @@ function validarCombos(){
 						</tr>
 					</c:if>
 				</c:forEach>
-				<c:if test="${!sessionScope.consultar && sessionScope.corte}">
+			</table>
+		</c:forEach>
+		<table align="center"  width="90%">
+			<c:if test="${!sessionScope.ConsultaInforme}">
 					<tr>
 						<td colspan="4" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>'
 							onclick='guardar(<c:out value="${st.count}"/>)'></td>
 					</tr>
 				</c:if>
-			</table>
-		</c:forEach>
+		</table>
 	</c:if>
 
 		<input type="hidden" name="accion" value="8" />
