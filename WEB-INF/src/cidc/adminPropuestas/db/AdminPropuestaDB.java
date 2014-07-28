@@ -479,15 +479,17 @@ public class AdminPropuestaDB extends BaseDB{
                 int i=1;
                 try {
                         cn=cursor.getConnection(super.perfil);
-                        ps=cn.prepareStatement(rb.getString("lista_evaluadores"));
-                        rs=ps.executeQuery();
-                        while(rs.next()){
-                                i=1;
+//                        ps=cn.prepareStatement(rb.getString("lista_evaluadores"));
+//                        rs=ps.executeQuery();
+                        i=1;
+                        while(i!=7){
+                                
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
-                                propuestaOBJ.setCodigo(rs.getInt(i++));
-                                propuestaOBJ.setNombre(rs.getString(i++));
-                                propuestaOBJ.setApellido(rs.getString(i++));
+                                propuestaOBJ.setCodigo(18);
+                                propuestaOBJ.setNombre("Comité");
+                                propuestaOBJ.setApellido("CIDC");
                                 l.add(propuestaOBJ);
+                                i++;
                         }
                 }catch (SQLException e) {
                         lanzaExcepcion(e);
