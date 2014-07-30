@@ -34,8 +34,12 @@ function validarFiltro(){
 	return false;	
 }
 function guardar(id){
+	alert("entre 123");
+	if(validarCombos()){
 			document.frmActividades.action='<c:url value="/planAccion/llenar.jsp"/>';
 			document.frmActividades.submit();
+	}else
+		return false;
 		
 }
 
@@ -57,23 +61,23 @@ function soloNumeros(e){
 }
 
 function validarCombos(){
+	alert("entre");
 	var mensaje="";
 	formulario = document.frmActividades;
 	for(var i=0; i<formulario.elements.length; i++) {
 	  var elemento = formulario.elements[i];
 	  if(elemento.type == "text") {
-	    /* if(elemento.value>100) {
-	    	mensaje=mensaje+"\n-) El valor no puede ser superior a 100";
-	    }if(elemento.value==""){
-	    	mensaje=mensaje+"\n-) Ingrese un porcentaje por favor";
-	    }
-	    if(mensaje!=null){
-	    	return false
-	    } */
+	    if(elemento.value!=null) {
+	    	mensaje=mensaje+"\n-) Por favor revice los campos, existe campos vacios";
+	    	break;
+	    } 
 	  }
 	}
 	alert(mensaje);
-	return true;
+	if (mensaje!=null)
+		return true;
+	else
+		return false;
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

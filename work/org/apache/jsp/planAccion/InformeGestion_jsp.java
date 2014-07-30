@@ -111,18 +111,20 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\treturn false;\t\r\n");
       out.write("}\r\n");
       out.write("function guardar(id){\r\n");
+      out.write("\talert(\"entre 123\");\r\n");
+      out.write("\tif(validarCombos()){\r\n");
       out.write("\t\t\tdocument.frmActividades.action='");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
       out.write("';\r\n");
       out.write("\t\t\tdocument.frmActividades.submit();\r\n");
+      out.write("\t}else\r\n");
+      out.write("\t\treturn false;\r\n");
       out.write("\t\t\r\n");
       out.write("}\r\n");
       out.write("\r\n");
       out.write("function eliminar(id){\r\n");
-      out.write("\talert(id);\r\n");
       out.write("\tdocument.frmActividades.idActividad.value=id;\r\n");
-      out.write("\talert(document.frmActividades.idActividad.value);\r\n");
       out.write("\tdocument.frmActividades.accion.value=9;\r\n");
       out.write("\tdocument.frmActividades.action='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
@@ -151,19 +153,17 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\tfor(var i=0; i<formulario.elements.length; i++) {\r\n");
       out.write("\t  var elemento = formulario.elements[i];\r\n");
       out.write("\t  if(elemento.type == \"text\") {\r\n");
-      out.write("\t    /* if(elemento.value>100) {\r\n");
-      out.write("\t    \tmensaje=mensaje+\"\\n-) El valor no puede ser superior a 100\";\r\n");
-      out.write("\t    }if(elemento.value==\"\"){\r\n");
-      out.write("\t    \tmensaje=mensaje+\"\\n-) Ingrese un porcentaje por favor\";\r\n");
-      out.write("\t    }\r\n");
-      out.write("\t    if(mensaje!=null){\r\n");
-      out.write("\t    \treturn false\r\n");
-      out.write("\t    } */\r\n");
-      out.write("\t    alert(\"valor\"+elemento.value)\r\n");
+      out.write("\t    if(elemento.value!=null) {\r\n");
+      out.write("\t    \tmensaje=mensaje+\"\\n-) Por favor revice los campos, existe campos vacios\";\r\n");
+      out.write("\t    \tbreak;\r\n");
+      out.write("\t    } \r\n");
       out.write("\t  }\r\n");
       out.write("\t}\r\n");
       out.write("\talert(mensaje);\r\n");
-      out.write("\treturn true;\r\n");
+      out.write("\tif (mensaje!=null)\r\n");
+      out.write("\t\treturn true;\r\n");
+      out.write("\telse\r\n");
+      out.write("\t\treturn false;\r\n");
       out.write("}\r\n");
       out.write("</script>\r\n");
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n");
@@ -307,7 +307,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f1.setParent(null);
-    // /planAccion/InformeGestion.jsp(37,35) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /planAccion/InformeGestion.jsp(39,35) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f1.setValue("/planAccion/llenar.jsp");
     int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
     if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -326,7 +326,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f2.setParent(null);
-    // /planAccion/InformeGestion.jsp(47,33) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /planAccion/InformeGestion.jsp(49,33) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f2.setValue("/planAccion/PlanAccion.x");
     int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
     if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -345,7 +345,7 @@ public final class InformeGestion_jsp extends org.apache.jasper.runtime.HttpJspB
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f3 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f3.setParent(null);
-    // /planAccion/InformeGestion.jsp(52,25) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /planAccion/InformeGestion.jsp(54,25) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f3.setValue("/planAccion/PlanAccion.x");
     int _jspx_eval_c_005furl_005f3 = _jspx_th_c_005furl_005f3.doStartTag();
     if (_jspx_th_c_005furl_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
