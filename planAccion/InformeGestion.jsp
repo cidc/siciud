@@ -34,12 +34,12 @@ function validarFiltro(){
 	return false;	
 }
 function guardar(id){
-	alert("entre 123");
-	if(validarCombos()){
+	//alert("entre 123");
+//	if(validarCombos()){
 			document.frmActividades.action='<c:url value="/planAccion/llenar.jsp"/>';
 			document.frmActividades.submit();
-	}else
-		return false;
+//	}else
+//		return false;
 		
 }
 
@@ -60,25 +60,27 @@ function soloNumeros(e){
 	return (key >= 48 && key <= 57)
 }
 
-function validarCombos(){
-	alert("entre");
+/* function validarCombos(){
+	//alert("entre");
 	var mensaje="";
 	formulario = document.frmActividades;
 	for(var i=0; i<formulario.elements.length; i++) {
 	  var elemento = formulario.elements[i];
 	  if(elemento.type == "text") {
-	    if(elemento.value!=null) {
+	    if(elemento.value==null) {
 	    	mensaje=mensaje+"\n-) Por favor revice los campos, existe campos vacios";
 	    	break;
 	    } 
 	  }
 	}
-	alert(mensaje);
-	if (mensaje!=null)
-		return true;
-	else
+	
+	if (mensaje!=""){
+		alert(mensaje);
 		return false;
-}
+	}
+	else
+		return true;
+} */
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
@@ -134,7 +136,7 @@ function validarCombos(){
 		</table>
 		<br>
 	</form>
-<form name="frmActividades" action="">
+<form name="frmActividades" >
 	<c:if test="${sessionScope.listaCriterios!=null}">
 		<table align="center">
 			<tr>
