@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -49,12 +50,13 @@ public class PlanAccion extends ServletGeneral {
 		int periodoActual =Calendar.getInstance().get(Calendar.YEAR);
 		boolean consultarPlan=(sesion.getAttribute("consultar")==null)?false:(Boolean) sesion.getAttribute("consultar");
 		boolean informe=(sesion.getAttribute("Informe")==null)?false:(Boolean) sesion.getAttribute("Informe");
+		ResourceBundle rb=ResourceBundle.getBundle("cidc.general.conect");
 //		if(sesion.getAttribute("consultar")==null)
 //			consultarPlan = false;
 //		else
 //			consultarPlan=(Boolean) sesion.getAttribute("consultar");
 		mensaje="";
-		sesion.setAttribute("corte", (diferenciasDeFechas(new Date(), deStringToDate(Parametros.FECHACIERRE)))?true:false); 
+		sesion.setAttribute("corte", (diferenciasDeFechas(new Date(), deStringToDate(rb.getString("FECHACIERRE"))))?true:false); 
 //		if(diferenciasDeFechas(new Date(), deStringToDate(Parametros.FECHACIERRE)))
 //			sesion.setAttribute("corte", true);
 //		else
