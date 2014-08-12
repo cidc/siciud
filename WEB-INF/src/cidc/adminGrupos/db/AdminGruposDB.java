@@ -1002,7 +1002,9 @@ public class AdminGruposDB extends BaseDB{
 	//		System.out.println("consulta en post nula");
 			//insertar en personal e investigadores post.
 			objA=objB;
-
+			Globales glob= new Globales();
+			glob.splitFechaSimple(new Date());
+			objA.setFechaVinculacion(glob.getAnoHoy()+"-"+glob.getMesHoy()+"-"+glob.getDiaHoy());
 			objA.setCodFacultad(facultad(objA.getCodFacultad()));
 			objA.setFlag(0);
 	//		System.out.println("consulta hecha desde Oracle");
@@ -1055,9 +1057,6 @@ public class AdminGruposDB extends BaseDB{
 			}
 		}
 		objA.setProyectosCurriculares(AjaxProyectoCur(objA.getCodFacultad()));
-		Globales glob= new Globales();
-		glob.splitFechaSimple(new Date());
-	objA.setFechaVinculacion(glob.getAnoHoy()+"-"+glob.getMesHoy()+"-"+glob.getDiaHoy());
 		return objA;
 	}
 
