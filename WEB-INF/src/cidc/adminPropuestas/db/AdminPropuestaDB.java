@@ -471,8 +471,8 @@ public class AdminPropuestaDB extends BaseDB{
                 return l;
         }
 
-                public List ListaEvaluadores(){
-                List l=new ArrayList();
+                public List<PropuestaOBJ> ListaEvaluadores(){
+                List<PropuestaOBJ> l=new ArrayList();
                 Connection cn=null;
                 PreparedStatement ps=null;
                 ResultSet rs=null;
@@ -481,11 +481,11 @@ public class AdminPropuestaDB extends BaseDB{
                         cn=cursor.getConnection(super.perfil);
 //                        ps=cn.prepareStatement(rb.getString("lista_evaluadores"));
 //                        rs=ps.executeQuery();
-                        i=1;
-                        while(i!=7){
+                        i=0;
+                        while(i!=6){
                                 
                                 PropuestaOBJ propuestaOBJ=new PropuestaOBJ();
-                                propuestaOBJ.setCodigo(18);
+                                propuestaOBJ.setCodigo(18+i);
                                 propuestaOBJ.setNombre("Comité");
                                 propuestaOBJ.setApellido("CIDC");
                                 l.add(propuestaOBJ);
