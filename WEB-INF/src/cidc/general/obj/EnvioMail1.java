@@ -21,11 +21,11 @@ import cidc.general.servlet.ServletGeneral;
 public class EnvioMail1 extends ServletGeneral{
 
 	private ResourceBundle rb=ResourceBundle.getBundle("cidc.general.conect");
-	private String usuario="siciud-viiceps@correo.udistrital.edu.co";
+	private String usuario="siciud-cidc@correo.udistrital.edu.co";
 	private String clave=rb.getString("siciudKey");
 	private String de="VIICEPS";
 	private String smtpHost="smtp.gmail.com";
-	private String respaldo="siciud-viiceps@correo.udistrital.edu.co";
+	private String respaldo="siciud-cidc@correo.udistrital.edu.co";
 
 	private class Autenticador extends Authenticator{
 		public PasswordAuthentication getPasswordAuthentication(){

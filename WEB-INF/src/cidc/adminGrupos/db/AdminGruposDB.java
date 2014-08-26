@@ -1143,6 +1143,24 @@ public class AdminGruposDB extends BaseDB{
 			
 			System.out.println("---insertando-->"+datosIntegrante.getFlag());
 			if(datosIntegrante.getFlag()==1){
+				st = cn.prepareStatement(rb.getString("insertarPersonaExt"));
+				st.setString(i++, datosIntegrante.getCedula());
+				st.setInt(i++, datosIntegrante.getTipoCed());
+				st.setString(i++, datosIntegrante.getDeCed());
+				st.setInt(i++, datosIntegrante.getGenero());
+				st.setString(i++, datosIntegrante.getNombres());
+				st.setString(i++, datosIntegrante.getApellidos());
+				st.setString(i++, datosIntegrante.getTel1());
+				st.setString(i++, datosIntegrante.getTel2());
+				st.setString(i++, datosIntegrante.getCel1());
+				st.setString(i++, datosIntegrante.getCel2());
+				st.setString(i++, datosIntegrante.getMail());
+				st.setString(i++, datosIntegrante.getMailInst());
+				st.setString(i++, datosIntegrante.getFechaIngreso());
+				st.setString(i++, datosIntegrante.getFechaSalida());
+				st.setString(i++, datosIntegrante.getCvlac());
+				System.out.println("insertar persona ext: " + st.toString());
+				st.execute();
 				insertarInvestigador(cn,datosIntegrante,idGrupo);
 			}
 			if(datosIntegrante.getFlag()==0){
@@ -1256,15 +1274,8 @@ public class AdminGruposDB extends BaseDB{
 		ResultSet rs=null;
 		int i=1;
 		System.out.println("---insertando investigador-->"+datosIntegrante.getFlag());
-		if(datosIntegrante.getFlag()==0){
-			st=cn.prepareStatement(rb.getString("insertarInvestigador"));
-			System.out.println("Inserto inv 1 \n");
-		}else{
-			st=cn.prepareStatement(rb.getString("insertarInvestigador2"));
-			st.setLong(i++,datosIntegrante.getId());
-			System.out.println("Inserto inv 2 \n");
-		}
-
+		st=cn.prepareStatement(rb.getString("insertarInvestigador"));
+		System.out.println("Inserto inv 1 \n");
 		st.setInt(i++, datosIntegrante.getCodFacultad());
 		st.setLong(i++, idGrupo);
 		st.setInt(i++, datosIntegrante.getCodproyCurr());
