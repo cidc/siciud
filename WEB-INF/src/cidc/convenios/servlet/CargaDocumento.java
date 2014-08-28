@@ -14,6 +14,7 @@ import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.displaytag.util.ParamEncoder;
 
 import cidc.adminInformes.obj.Parametros;
 import cidc.convenios.db.AdminConvenioDB;
@@ -186,6 +187,14 @@ public class CargaDocumento extends ServletGeneral  {
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 				    sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
 			break;
+			case Parametros.insertarContrato:
+				nombre="Contrato_"+objconv.getIdconvenio()+"_";
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Contratos",archivoAdj,docNuevo,Parametros.insertaInformeConvenio,objconv),objconv,usuario.getIdUsuario()))
+					mensaje="Documento Cargado Satisfactoriamente";
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
+				    sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
+				break;
 		}
 
 		retorno[0]="desviar";
