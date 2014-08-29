@@ -8,10 +8,12 @@ import java.text.DecimalFormat;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
@@ -370,5 +372,21 @@ public class Globales{
 		cod="CIDC_"+fmt+"_"+year;
 		System.out.println("El numero formateado " + cod);
 		return cod;
+	}
+	
+	/**
+	 * El metodo crea una lista de años, inicia en el año que se envia como parametro y termina en el actual
+	 * @param ano año desde el cual inicia la lista
+	 * @return retorna una lista de años desde el año que se envia como parametro inicial hasta el año actual
+	 */
+	public List<Integer> listarAnos(String ano){
+		int inicio=Integer.parseInt(ano);
+		List<Integer> lista =new ArrayList<Integer>();
+		int actual=Integer.parseInt(getAnoHoy());
+		for (int i = inicio; i <= actual; i++) {
+			lista.add(inicio);
+			inicio++;
+		}
+		return lista;
 	}
 }

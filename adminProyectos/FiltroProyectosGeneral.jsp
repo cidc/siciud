@@ -55,7 +55,7 @@
 			<th><b>Codigo:</b></th>
 			<th><b>Estado:</b></th>
 			<th><b>Tipo Grupo:</b></th>
-			<th><b>Tipo Proyecto</b></th>
+			<th><b>Año</b></th>
 		</tr>
 		<tr>
 			<td width="25%"><input type="text" name="codigo" 	style="width: 100%"></td>
@@ -82,11 +82,17 @@
 				</table>
 			</td>			
 			<td>
-				<select name="tipoProyecto" onchange="ajaxTipoProy(this)">
+			<select name="ano" >
+			<option value="0">-----</option>
+			<c:forEach begin="0" items="${requestScope.ano}" var="ano" varStatus="st">
+				<option value="${ano}"><c:out value="${ano}"/></option>
+			</c:forEach>
+			</select>
+				<!-- <select name="tipoProyecto" onchange="ajaxTipoProy(this)">
 					<option value="" >----------</option>
 					<option value="1">Convocatoria</option>
 					<option value="2">Convenio</option>
-				</select>
+				</select> -->
 			</td>
 		</tr>
 		<tr>

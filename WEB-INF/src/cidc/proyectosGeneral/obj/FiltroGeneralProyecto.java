@@ -14,6 +14,7 @@ public class FiltroGeneralProyecto implements Serializable{
 	private String convocatoriaAno;
 	private String nombreProyecto;
 	private String palabrasClaves;
+	private String ano;
 	
 	
 	
@@ -77,6 +78,12 @@ public class FiltroGeneralProyecto implements Serializable{
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public String getAno() {
+		return ano;
+	}
+	public void setAno(String ano) {
+		this.ano = ano;
 	}
 	
 }
