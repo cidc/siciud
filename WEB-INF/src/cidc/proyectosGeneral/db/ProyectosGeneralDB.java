@@ -80,6 +80,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			ps.setString(i++, filtro.getTipoProyecto());
 			ps.setString(i++, filtro.getNombreProyecto());	
 			ps.setString(i++, filtro.getPalabrasClaves());
+			ps.setString(i++, "%"+filtro.getAno()+"%");
 
 			ps.setString(i++, filtro.getFacultad());
 			ps.setString(i++, filtro.getProyCur());
@@ -90,6 +91,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			ps.setString(i++, filtro.getTipoProyecto());
 			ps.setString(i++, filtro.getNombreProyecto());
 			ps.setString(i++, filtro.getPalabrasClaves());
+			ps.setString(i++, filtro.getAno());
 			
 			rs=ps.executeQuery();
 			i=1;
