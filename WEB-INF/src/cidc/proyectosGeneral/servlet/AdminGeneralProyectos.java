@@ -139,7 +139,7 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				if(proyectosGeneralDB.registraGasto((GastosRubro)sesion.getAttribute("RegistraGasto"),proyecto))
 					mensaje="El registro fue insertado correctamente";
 				else
-					mensaje="El registro no pudo ser insertado correctamente";
+					mensaje="La placa que intenta registrar ya existe";
 				req.setAttribute("bandera","si");
 				sesion.removeAttribute("RegistraGasto");
 				irA="/adminProyectos/ListaGastos.jsp";
