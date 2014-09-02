@@ -83,7 +83,7 @@
 			</td>			
 			<td>
 			<select name="ano" >
-			<option value="0">-----</option>
+			<option value="">-----</option>
 			<c:forEach begin="0" items="${requestScope.ano}" var="ano" varStatus="st">
 				<option value="${ano}"><c:out value="${ano}"/></option>
 			</c:forEach>

@@ -80,19 +80,19 @@ public class ProyectosGeneralDB extends BaseDB {
 			ps.setString(i++, filtro.getTipoProyecto());
 			ps.setString(i++, filtro.getNombreProyecto());	
 			ps.setString(i++, filtro.getPalabrasClaves());
-			ps.setString(i++, "%"+filtro.getAno()+"%");
+			ps.setString(i++, (filtro.getAno()==null)?"%":"%"+filtro.getAno()+"%");
 
-			ps.setString(i++, filtro.getFacultad());
-			ps.setString(i++, filtro.getProyCur());
-			ps.setString(i++, filtro.getGrupo());
-			ps.setString(i++, filtro.getCodigo());
-			ps.setString(i++, filtro.getEstado());
-			ps.setString(i++, filtro.getTipoGrupo());
-			ps.setString(i++, filtro.getTipoProyecto());
-			ps.setString(i++, filtro.getNombreProyecto());
-			ps.setString(i++, filtro.getPalabrasClaves());
-			ps.setString(i++, filtro.getAno());
-			
+//			ps.setString(i++, filtro.getFacultad());
+//			ps.setString(i++, filtro.getProyCur());
+//			ps.setString(i++, filtro.getGrupo());
+//			ps.setString(i++, filtro.getCodigo());
+//			ps.setString(i++, filtro.getEstado());
+//			ps.setString(i++, filtro.getTipoGrupo());
+//			ps.setString(i++, filtro.getTipoProyecto());
+//			ps.setString(i++, filtro.getNombreProyecto());
+//			ps.setString(i++, filtro.getPalabrasClaves());
+			//ps.setString(i++, filtro.getAno());
+			System.out.println("consulta "+ps.toString());
 			rs=ps.executeQuery();
 			i=1;
 			while(rs.next()){

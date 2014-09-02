@@ -157,7 +157,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t\t\t</td>\t\t\t\r\n");
       out.write("\t\t\t<td>\r\n");
       out.write("\t\t\t<select name=\"ano\" >\r\n");
-      out.write("\t\t\t<option value=\"0\">-----</option>\r\n");
+      out.write("\t\t\t<option value=\"\">-----</option>\r\n");
       out.write("\t\t\t");
       if (_jspx_meth_c_005fforEach_005f1(_jspx_page_context))
         return;
