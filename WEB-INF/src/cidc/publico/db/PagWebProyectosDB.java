@@ -78,8 +78,8 @@ public class PagWebProyectosDB extends BaseDB
 				ps.setString(i++, filtro.getIdGrupo());
 				ps.setString(i++, filtro.getNombreDirector());
 				ps.setString(i++, filtro.getApellidoDirector());
+				System.out.println("----->"+ps);
 				rs=ps.executeQuery();
-			//	System.out.println("----->"+ps);
 				
 			while(rs.next())
 			{
