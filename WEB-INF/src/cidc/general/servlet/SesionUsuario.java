@@ -55,6 +55,8 @@ public class SesionUsuario extends ServletGeneral {
 		String irA = "";
 		switch (accion) {
 		case 1:
+			nick=nick.trim();
+			clave=clave.trim();
 			if (clave != null)
 				user = usuarioDB.consultar(nick, clave);
 
