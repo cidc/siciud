@@ -832,7 +832,12 @@ public class AdminPropuestaDB extends BaseDB{
 		return retorno;
 	}
 
-
+/**
+ * El metodo actualiza los puntajes de las propuestas inscritas a las convocatorias
+ * @param propuestaOBJ
+ * @param tipo 1= proyectos de investigacion, 2=movilidad
+ * @return
+ */
 	public boolean ActualizaEvaluacionPropuestas(PropuestaOBJ propuestaOBJ,
 			int tipo) {
 		boolean retorno = false;
@@ -846,15 +851,17 @@ public class AdminPropuestaDB extends BaseDB{
 				System.out.println("ENTROOOO");
 				for (int i = 0; i < propuestaOBJ.getCodEvaluador().length; i++) {
 					c = 1;
-					ps = cn.prepareStatement(rb.getString("ActualizaEvaluarPropuesta"));
-					ps.setFloat(c++, propuestaOBJ.getValorCal()[i]);
-					ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
-					ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
-					ps.setInt(c++, propuestaOBJ.getConvId()[i]);
-					ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
-					ps.setInt(c++, propuestaOBJ.getCodEvaluador()[i]);
-					System.out.println("Primera consulta" + ps);
-					ps.execute();
+					if (verificarPropuestaMovilidad(propuestaOBJ,c)) {
+						ps = cn.prepareStatement(rb.getString("ActualizaEvaluarPropuesta"));
+						ps.setFloat(c++, propuestaOBJ.getValorCal()[i]);
+						ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
+						ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
+						ps.setInt(c++, propuestaOBJ.getConvId()[i]);
+						ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
+						ps.setInt(c++, propuestaOBJ.getCodEvaluador()[i]);
+						System.out.println("Primera consulta" + ps);
+						ps.execute();
+					}
 				}
 				ps = cn.prepareStatement(rb.getString("aprobacionPropuesta"));
 				for (int j = 0; j < propuestaOBJ.getCodPropu().length; j++) {
@@ -910,6 +917,56 @@ public class AdminPropuestaDB extends BaseDB{
 		return retorno;
 	}
 
+	/**
+	 * el metodo verifica si la propuesta ya fue calificada, si es asi no realiza ninguna accion, de lo contrario inserta el puntaje de esa propuesta 
+	 * en la tabla evaluacion_movilidad
+	 * @param propuestaOBJ objecto con todas las propuestas
+	 * @param cont numero que indica cual propuesta se va a verificar
+	 * @return
+	 */
+	public boolean verificarPropuestaMovilidad(PropuestaOBJ propuestaOBJ,int cont){
+		boolean retorno=false;
+        Connection cn=null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        try {
+        	cn=cursor.getConnection(super.perfil);
+            ps=cn.prepareStatement(rb.getString("verificaPropuesta"));
+            ps.setInt(1,propuestaOBJ.getCodProp()[cont]);
+            rs=ps.executeQuery();
+            while (rs.next()) {
+				retorno=true;
+				break;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+        if(!retorno){
+        	try {
+				ps = cn.prepareStatement(rb.getString("EvaluarPropuesta"));
+				System.out.println("--------");
+				int c = 1;
+				ps.setInt(c++, propuestaOBJ.getCodCrit()[cont]);
+				System.out.println("P1:" + propuestaOBJ.getCodCrit()[cont]);
+				ps.setInt(c++, propuestaOBJ.getCodAsp()[cont]);
+				System.out.println("P2:" + propuestaOBJ.getCodAsp()[cont]);
+				ps.setInt(c++, propuestaOBJ.getConvId()[cont]);
+				System.out.println("P3:" + propuestaOBJ.getConvId()[cont]);
+				ps.setLong(c++, propuestaOBJ.getCodProp()[cont]);
+				System.out.println("P4:" + propuestaOBJ.getCodProp()[cont]);
+				ps.setInt(c++, propuestaOBJ.getCodEvaluador()[cont]);
+				System.out.println("P5:"+ propuestaOBJ.getCodEvaluador()[cont]);
+				ps.setFloat(c++, propuestaOBJ.getValorCal()[cont]);
+				System.out.println("P6:" + propuestaOBJ.getValorCal()[cont]);
+				System.out.println("consulta verificacion" + ps);
+				ps.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+		return retorno;
+	}
         public boolean borrar(int convId){
                 boolean retorno=false;
                 Connection cn=null;
