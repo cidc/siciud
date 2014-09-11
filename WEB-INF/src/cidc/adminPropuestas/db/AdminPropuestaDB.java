@@ -284,6 +284,7 @@ public class AdminPropuestaDB extends BaseDB{
                         ps.setLong(i++,ano);
                         ps.setLong(i++,numero);
                         ps.setBoolean(i++,Boolean.parseBoolean(estado));
+                        System.out.println("ps "+ps.toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
                                 i=1;
@@ -738,7 +739,12 @@ public class AdminPropuestaDB extends BaseDB{
 		}
 		return retorno;
 	}
-
+/**
+ * este metodo realiza la insercion y actualizacion de los puntajes de las propuestas de cualquiera de las dos convocatorias 
+ * @param propuestaOBJ propuestas de una convocatoria
+ * @param tipo proyecto=1 y movilidad=2
+ * @return el retorno es un booleano que indica si se realizo la operacion exitosamente
+ */
 	public boolean EvaluacionPropuestas(PropuestaOBJ propuestaOBJ, int tipo) {
 		boolean retorno = false;
 		Connection cn = null;
@@ -797,17 +803,33 @@ public class AdminPropuestaDB extends BaseDB{
 			}
 			if (propuestaOBJ.getCodProp() != null && tipo == 1) {
 				System.out.println("Entroooo");
-				ps = cn.prepareStatement(rb.getString("EvaluarPropuestaProy"));
-				for (int i = 0; i < propuestaOBJ.getCodProp().length; i++) {
-					c = 1;
-					ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
-					ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
-					ps.setInt(c++, propuestaOBJ.getConvId()[i]);
-					ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
-					ps.setFloat(c++, propuestaOBJ.getObservaciones1()[i]);
-					ps.setFloat(c++, propuestaOBJ.getObservaciones2()[i]);
-					ps.setFloat(c++, propuestaOBJ.getObservaciones3()[i]);
-					ps.execute();
+				try{
+					ps = cn.prepareStatement(rb.getString("EvaluarPropuestaProy"));
+					for (int i = 0; i < propuestaOBJ.getCodProp().length; i++) {
+						c = 1;
+						ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
+						ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
+						ps.setInt(c++, propuestaOBJ.getConvId()[i]);
+						ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
+						ps.setFloat(c++, propuestaOBJ.getObservaciones1()[i]);
+						ps.setFloat(c++, propuestaOBJ.getObservaciones2()[i]);
+						ps.setFloat(c++, propuestaOBJ.getObservaciones3()[i]);
+						ps.execute();
+					}
+				}catch(SQLException e){
+					ps = cn.prepareStatement(rb.getString("ActualizaEvaluarPropuestaProy"));
+					for (int i = 0; i < propuestaOBJ.getCodProp().length; i++) {
+						c = 1;
+						ps.setFloat(c++, propuestaOBJ.getObservaciones1()[i]);
+						ps.setFloat(c++, propuestaOBJ.getObservaciones2()[i]);
+						ps.setFloat(c++, propuestaOBJ.getObservaciones3()[i]);
+						ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
+						ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
+						ps.setInt(c++, propuestaOBJ.getConvId()[i]);
+						ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
+						System.out.println("Primera consulta" + ps);
+						ps.execute();
+					}
 				}
 			}/*else{
 				System.out.println("Entroooo else");
@@ -819,10 +841,9 @@ public class AdminPropuestaDB extends BaseDB{
 					ps.execute();
 				}
 			}*/
-
-			ps = cn.prepareStatement(rb.getString("CalificarPropuesta"));
 			for (int j = 0; j < propuestaOBJ.getCodPropu().length; j++) {
 				try {
+					ps = cn.prepareStatement(rb.getString("CalificarPropuesta"));
 					System.out.println("Entro"+ propuestaOBJ.getCodPropu().length);
 					d = 1;
 					ps.setInt(d++, propuestaOBJ.getCodPropu()[j]);
