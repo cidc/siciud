@@ -8,7 +8,7 @@
 <c:import url="/general.jsp" />
 <script>
 	function guardar(item,frm){
-		if(ValidarFormulario(frm)){
+		if(ValidarFormulario(item)){
 			document.getElementById("f"+item).style.display='none';
 			document.getElementById("g"+item).style.display='none';
 			document.getElementById("carga"+item+"1").style.display='';
@@ -17,19 +17,18 @@
 		}
 	}
 
-	function ValidarFormulario(forma){
-		if(forma.fichero.value==""){
-			alert("Debe seleccionar un Archivo para cargar");
-			return false;
-		}else{
-			archi=forma.fichero.value;
-			var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
-			if(!(ext==".pdf")){
-				alert("El archivo debe ser en formato PDF");
-				return false;
-			}
-		}
-		return true;
+	function ValidarFormulario(caja){
+		var archi=caja.value;
+        if(caja.value==""){
+                alert("Debe seleccionar un Archivo para cargar");
+                return false;
+        }
+        var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
+        if(!(ext==".pdf")){
+        	alert("El archivo debe estar en formato PDF");
+            return false;
+        }
+        return true;
 	}
 
 	function temina(){
@@ -42,10 +41,21 @@
                         formulario.submit();
         	}
         }
-        function ValidarFormularioDoc(forma){
-                if(forma.value==""){
+	
+	function ValidarFormularioDoc(caja){
+                if(caja.value==""){
                         alert("Debe seleccionar un Archivo para cargar");
                         return false;
+                }
+        		var archi=caja.value;
+                if(caja.value==""){
+                        alert("Debe seleccionar un Archivo para cargar");
+                        return false;
+                }
+                var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
+                if(!(ext==".pdf")){
+                	alert("El archivo debe estar en formato PDF");
+                    return false;
                 }
                 return true;
         }

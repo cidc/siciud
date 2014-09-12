@@ -803,33 +803,32 @@ public class AdminPropuestaDB extends BaseDB{
 			}
 			if (propuestaOBJ.getCodProp() != null && tipo == 1) {
 				System.out.println("Entroooo");
-				try{
-					ps = cn.prepareStatement(rb.getString("EvaluarPropuestaProy"));
+					
 					for (int i = 0; i < propuestaOBJ.getCodProp().length; i++) {
-						c = 1;
-						ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
-						ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
-						ps.setInt(c++, propuestaOBJ.getConvId()[i]);
-						ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
-						ps.setFloat(c++, propuestaOBJ.getObservaciones1()[i]);
-						ps.setFloat(c++, propuestaOBJ.getObservaciones2()[i]);
-						ps.setFloat(c++, propuestaOBJ.getObservaciones3()[i]);
-						ps.execute();
-					}
-				}catch(SQLException e){
-					ps = cn.prepareStatement(rb.getString("ActualizaEvaluarPropuestaProy"));
-					for (int i = 0; i < propuestaOBJ.getCodProp().length; i++) {
-						c = 1;
-						ps.setFloat(c++, propuestaOBJ.getObservaciones1()[i]);
-						ps.setFloat(c++, propuestaOBJ.getObservaciones2()[i]);
-						ps.setFloat(c++, propuestaOBJ.getObservaciones3()[i]);
-						ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
-						ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
-						ps.setInt(c++, propuestaOBJ.getConvId()[i]);
-						ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
-						System.out.println("Primera consulta" + ps);
-						ps.execute();
-					}
+						try{
+							ps = cn.prepareStatement(rb.getString("EvaluarPropuestaProy"));
+							c = 1;
+							ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
+							ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
+							ps.setInt(c++, propuestaOBJ.getConvId()[i]);
+							ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
+							ps.setFloat(c++, propuestaOBJ.getObservaciones1()[i]);
+							ps.setFloat(c++, propuestaOBJ.getObservaciones2()[i]);
+							ps.setFloat(c++, propuestaOBJ.getObservaciones3()[i]);
+							ps.execute();
+						}catch(SQLException e){
+							ps = cn.prepareStatement(rb.getString("ActualizaEvaluarPropuestaProy"));
+							c = 1;
+							ps.setFloat(c++, propuestaOBJ.getObservaciones1()[i]);
+							ps.setFloat(c++, propuestaOBJ.getObservaciones2()[i]);
+							ps.setFloat(c++, propuestaOBJ.getObservaciones3()[i]);
+							ps.setInt(c++, propuestaOBJ.getCodCrit()[i]);
+							ps.setInt(c++, propuestaOBJ.getCodAsp()[i]);
+							ps.setInt(c++, propuestaOBJ.getConvId()[i]);
+							ps.setLong(c++, propuestaOBJ.getCodProp()[i]);
+							System.out.println("Primera consulta" + ps);
+							ps.execute();
+						}
 				}
 			}/*else{
 				System.out.println("Entroooo else");
