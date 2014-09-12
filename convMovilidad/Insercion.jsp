@@ -527,7 +527,7 @@
 					<table align="center">
 						<tr>
 							<td  colspan="4" align="center"><img src='<c:url value="/comp/img/Guardar.gif"/>' onclick="guardar()"></td>
-							<td valign="middle"><b>Paso 1 de 3</b></td>
+							<td valign="middle"><b>Paso 1 de 2</b></td>
 						</tr>
 					</table>
 				</td>
