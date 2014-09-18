@@ -947,7 +947,7 @@ public class DocumentosPDF {
 			c1.setBorder(Rectangle.NO_BORDER);
 			tablaPagPie.addCell(c1);
 			
-			PdfPCell c2 = new PdfPCell(new Paragraph("3239300 ext 2610 siciud-viiceps@correo.udistrital.edu.co",texto8));
+			PdfPCell c2 = new PdfPCell(new Paragraph("3239300 ext 2610 siciud-cidc@correo.udistrital.edu.co",texto8));
 			c2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c2.setBorder(Rectangle.NO_BORDER);
 			c2.setColspan(3);

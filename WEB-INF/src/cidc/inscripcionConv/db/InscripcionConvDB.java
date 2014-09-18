@@ -955,7 +955,7 @@ public class InscripcionConvDB extends BaseDB{
 		texto.append(rb1.getString("trAbre")+rb1.getString("td1")+rb1.getString("nombreProp")+rb1.getString("tdCierra"));
 		texto.append(rb1.getString("tdAbre")+general.getPropuesta()+rb1.getString("tdCierra"));
 		texto.append(rb1.getString("td1")+rb1.getString("numeroInsc")+rb1.getString("tdCierra"));
-		texto.append(rb1.getString("tdAbre")+general.getIdPropuesta()+"-"+gl.getAnoCortoHoy()+"-VIICEPS <br>"+rb1.getString("tdCierra"));
+		texto.append(rb1.getString("tdAbre")+general.getIdPropuesta()+"-"+gl.getAnoCortoHoy()+"-CIDC <br>"+rb1.getString("tdCierra"));
 		texto.append(rb1.getString("trCierra"));
 		texto.append(rb1.getString("trCierra"));
 		Vector<ResumenInscOBJ> vector=documentosInsertados(Integer.parseInt(general.getConvocatoria()),(int)general.getIdPropuesta());
@@ -1019,7 +1019,7 @@ public class InscripcionConvDB extends BaseDB{
 		}*/
 		EnvioMail2 mail=new EnvioMail2("siciud");
 		try {
-			mail.enviar(destino,"Inscripción Convocatoria VIICEPS",""+texto);
+			mail.enviar(destino,"Inscripción Convocatoria CIDC",""+texto);
 			Reporte reporteMail=new Reporte(cursor,super.perfil);
 			reporteMail.reportar(persona.getNombre(),"Inscripción Convocatoria"+gl.getAnoHoy(),destino[0],consMail);
 			retorno=true;

@@ -213,23 +213,24 @@ public class AdminConvenioDB extends BaseDB{
 			
      
 
-			if(documento.getTipo()==3)
-			   documento.setNombreDocumento("Informe Parcial");
-		    if(documento.getTipo()==2)
+			if (documento.getTipo() == 3)
+				documento.setNombreDocumento("Informe Parcial");
+			if (documento.getTipo() == 2)
 				documento.setNombreDocumento("Informe Final");
-		    if(documento.getTipo()==4)
-				   documento.setNombreDocumento("Acta Finalización");
-			    if(documento.getTipo()==5)
-					documento.setNombreDocumento("Acta Cierre/Cancelación");
-			    if(documento.getTipo()==6)
-					   documento.setNombreDocumento("Acta de Inicio");
-				    if(documento.getTipo()==7)
-						documento.setNombreDocumento("Memorandos");
-				    if(documento.getTipo()==8)
-						   documento.setNombreDocumento("Proyecto");
-					    if(documento.getTipo()==9)
-							documento.setNombreDocumento("Otro si");
-				
+			if (documento.getTipo() == 4)
+				documento.setNombreDocumento("Acta Finalización");
+			if (documento.getTipo() == 5)
+				documento.setNombreDocumento("Acta Cierre/Cancelación");
+			if (documento.getTipo() == 6)
+				documento.setNombreDocumento("Acta de Inicio");
+			if (documento.getTipo() == 7)
+				documento.setNombreDocumento("Memorandos");
+			if (documento.getTipo() == 8)
+				documento.setNombreDocumento("Proyecto");
+			if (documento.getTipo() == 9)
+				documento.setNombreDocumento("Otro si");
+			if (documento.getTipo() == 10)
+				documento.setNombreDocumento("Convenio o Contrato");
 				ps=cn.prepareStatement(rb.getString("nuevaCargaDocConvenio"));
 				ps.setLong(i++, Integer.parseInt(getconvenioobj.getIdconvenio()));			
 				ps.setString(i++, documento.getNombreDocumento());

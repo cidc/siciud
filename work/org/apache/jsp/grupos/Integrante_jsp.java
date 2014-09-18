@@ -205,11 +205,11 @@ public final class Integrante_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\t\tif(document.nuevo.cvlac.value!=\"\"){\r\n");
       out.write("\t\t\tif(document.nuevo.cvlac.value.length>=64){\r\n");
-      out.write("\t\t\t\tvar dir=document.nuevo.cvlac.value.substring(0,67);\r\n");
-      out.write("\t\t\t\tif(dir!=\"http://201.234.78.173:8081/cvlac/visualizador/generarCurriculoCv.do\")\r\n");
-      out.write("\t\t\t\t\tmensaje=mensaje+\"\\n-) Dirección no válida para CvLac\";\r\n");
+      out.write("\t\t\t\tvar dir=document.nuevo.cvlac.value.substring(0,68);\r\n");
+      out.write("\t\t\t\tif(dir!=\"http://190.216.132.131:8081/cvlac/visualizador/generarCurriculoCv.do\")\r\n");
+      out.write("\t\t\t\t\tms=ms+\"\\n-) Dirección no válida para CvLac\";\r\n");
       out.write("\t\t\t}else{\r\n");
-      out.write("\t\t\t\tmensaje=mensaje+\"\\n-) Dirección no válida para CvLac\";\r\n");
+      out.write("\t\t\t\tms=ms+\"\\n-) Dirección no válida para CvLac\";\r\n");
       out.write("\t\t\t}\r\n");
       out.write("\t\t}\r\n");
       out.write("\t\tif(ms!=\"\"){\r\n");
@@ -555,12 +555,12 @@ if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){
       out.write("\t\t\t\t\t\t\t</select>\r\n");
       out.write("\t\t\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t\t\t<td>\r\n");
-      out.write("\t\t\t\t\t\t\t<input type='text' name='fechaVinculacion' class='caj' readonly='true' id='f_date_b' size='13' value='");
+      out.write("\t\t\t\t\t\t\t<input type='text' name='fechaVinculacion' class='caj' id='f_date_b' size='13' readonly value='");
       if (_jspx_meth_c_005fout_005f28(_jspx_page_context))
         return;
       out.write("'>\r\n");
-      out.write("\t\t\t\t\t\t\t<button type=\"button\" id='f_trigger_b' >...</button>\r\n");
-      out.write("\t\t\t\t\t\t\t<script type='text/javascript'>\r\n");
+      out.write("<!-- \t\t\t\t\t\t\t<button type=\"button\" id='f_trigger_b' >...</button> -->\r\n");
+      out.write("\t\t\t\t\t\t\t<!-- <script type='text/javascript'>\r\n");
       out.write("\t\t\t\t    \t\t\tCalendar.setup({\r\n");
       out.write("\t\t\t\t\t    \t\t\tinputField     :    'f_date_b',\r\n");
       out.write("\t\t\t\t\t    \t\t\tifFormat       :    '%Y-%m-%d',\r\n");
@@ -569,7 +569,7 @@ if(loginUsuario.isPerfil("10") && request.getAttribute("st").equals("9")){
       out.write("\t\t\t\t\t    \t\t\tsingleClick    :    false,\r\n");
       out.write("\t\t\t\t\t    \t\t\tstep           :    1\r\n");
       out.write("\t\t\t\t    \t\t\t})\r\n");
-      out.write("\t\t\t    \t\t\t</script>\r\n");
+      out.write("\t\t\t    \t\t\t</script> -->\r\n");
       out.write("\t\t\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t\t\t<input type='text' name='fechaSalidaGrupo' class='caj' readonly='true' id='f_date_c' size='13' value='");
@@ -688,7 +688,6 @@ if(loginUsuario.isPerfil("10")){
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
-        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -2318,7 +2317,7 @@ if(loginUsuario.isPerfil("10")){
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f28 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f28.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f28.setParent(null);
-    // /grupos/Integrante.jsp(317,109) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /grupos/Integrante.jsp(317,102) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f28.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.integrante2.fechaVinculacion}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f28 = _jspx_th_c_005fout_005f28.doStartTag();
     if (_jspx_th_c_005fout_005f28.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

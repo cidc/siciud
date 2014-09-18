@@ -18,7 +18,7 @@ import java.util.TreeMap;
 
 import cidc.convMovilidad.obj.InfoGeneral;
 import cidc.convMovilidad.obj.Requisitos;
-import cidc.evalMovilidad.obj.Criterio;
+import cidc.evalComite.obj.Criterio;
 import cidc.evalMovilidad.obj.InfoEvento;
 import cidc.evalMovilidad.obj.PropuestaMovilidad;
 import cidc.evalMovilidad.obj.TrayectoriaInvest;

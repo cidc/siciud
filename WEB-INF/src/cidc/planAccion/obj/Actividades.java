@@ -8,6 +8,9 @@ public class Actividades {
 	private String descripcion;
 	private String meta;
 	private long idCriterio;
+	private int porcentaje;
+	private int[] porcentajes_;
+	private int[] idActividades;
 	
 	public long getIdActividad() {
 		return idActividad;
@@ -44,5 +47,24 @@ public class Actividades {
 	}
 	public void setIdCriterio(long idCriterio) {
 		this.idCriterio = idCriterio;
+	}
+	public int getPorcentaje() {
+		return porcentaje;
+	}
+	public void setPorcentaje(int porcentaje) {
+		this.porcentaje = porcentaje;
+	}
+	public int[] getPorcentajes_() {
+		return porcentajes_;
+	}
+	public void setPorcentajes_(int[] porcentaje_) {
+		this.porcentajes_ = porcentaje_;
+	}
+	public int[] getIdActividades() {
+		return idActividades;
+	}
+	public void setIdActividades(int[] idActividades) {
+		this.idActividades = idActividades;
 	}	
+	
 }

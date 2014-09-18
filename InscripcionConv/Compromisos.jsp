@@ -151,7 +151,7 @@
 	<br>
 	<c:if test="${!empty requestScope.resumen.coInvestigadores}">
 	<table class="tablas" align="center" style="width:550px;">
-	<caption>Co-Investigadores inscritos</caption>
+	<caption>Investigadores inscritos</caption>
 		<tr>
 			<td class="renglones"><b>Doc. Identidad:<b></td>
 			<td class="renglones"><b>Nombres:</b></td>

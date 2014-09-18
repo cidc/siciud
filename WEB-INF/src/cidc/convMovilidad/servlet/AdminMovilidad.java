@@ -112,7 +112,8 @@ public class AdminMovilidad extends ServletGeneral {
 							mensaje="La inscripcion fue finalizada con exito, por favor verifique su correo electronico, en el cual encontrar el resumen de la propuesta inscrita";
 						}
 					} catch (Exception e) {
-						System.out.println("excepcion controlada");;
+						e.printStackTrace();
+						//System.out.println("excepcion controlada");;
 					}
 				}
 				else{
@@ -139,8 +140,12 @@ public class AdminMovilidad extends ServletGeneral {
 				//EN ESTE CASE SE CONSULTA LA INFORMACIÓN GENERAL DE LA PROPUESTA DE MOVILIDAD
 				System.out.println("Paso 01");
 				info=(InfoGeneral)sesion.getAttribute("movilidad");
-				if(req.getParameter("id")!=null)
+				if(req.getParameter("id")!=null){
 					sesion.setAttribute("movilidad", movilidadDB.consultaIndividual(req.getParameter("id")));
+					if(info==null)
+						info=new InfoGeneral();
+					info.setIdPropuesta(Long.parseLong(req.getParameter("id")));
+				}
 				
 				irA="/convMovilidad/Insercion.jsp";
 			break;

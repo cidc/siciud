@@ -31,7 +31,7 @@ public class EnvioMail {
 	public EnvioMail(String cuenta){
 		this.usuario=rb.getString(cuenta);
 		this.clave=rb.getString(cuenta+"Key");
-		this.de="Dirección de la gestión de programas científicos de investigación de pregrado y postgrado<"+usuario+">";
+		this.de="Centro de Investigaciones y Desarrollo Científico<"+usuario+">";
 	}
 
 	public boolean enviar(String[] destinatarios, String asunto, String texto) throws MessagingException,AddressException{

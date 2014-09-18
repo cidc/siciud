@@ -67,6 +67,20 @@
 		if(document.nuevo.genero.selectedIndex==0){
 			ms=ms+"\n-) Género";
 		}
+		if(document.nuevo.cedula.value==""){
+			ms=ms+"\n-) Cédula";
+		}
+		if(document.nuevo.tipoCed.selectedIndex==0){
+			ms=ms+"\n-) Tipo de documento";
+		}
+		if(document.nuevo.nombres.value==""){
+			ms=ms+"\n-) Nombres";
+		}
+		if(document.nuevo.apellidos.value==""){
+			ms=ms+"\n-) Apellidos";
+		}if(document.nuevo.cel1.value==""){
+			ms=ms+"\n-) Celular 1";
+		}
 
 
 		if(document.nuevo.cvlac.value!=""){
