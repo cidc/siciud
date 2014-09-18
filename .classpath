@@ -3,16 +3,13 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/activation.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/axis.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-codec-1.6.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/commons-collections-3.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-fileupload-1.0.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-fileupload-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-httpclient-3.0.1-sources.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-httpclient-3.0.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-lang-2.5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-lang3-3.1.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging-api-1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/displaytag-1.2.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/displaytag-export-poi-1.2.jar"/>
@@ -31,12 +28,10 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/httpcore-nio-4.2.4.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/httpmime-4.2.5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/imap.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/itext-1.3.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jaxen-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jdom-1.0.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jdom.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jstl-1.0.2.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/jxl.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/log4j-1.2.14.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/mail.jar"/>
@@ -45,7 +40,6 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/ojdbc5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/org.apache.servicemix.bundles.httpcore-4.0-alpha6_1.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/poi-3.2-FINAL.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/poi-contrib-3.0.2-FINAL-20080204.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/poi-scratchpad-3.0.2-FINAL-20080204.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/servlet-api.jar"/>
@@ -59,5 +53,26 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/barcode4j-2.1.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/bsh-2.1b5.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/castor-1.2.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/commons-beanutils-1.8.2.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/commons-logging-1.1.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/groovy-all-2.0.1.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/iText-2.1.7.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/iTextAsian.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/jasperreports-5.6.0.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/jasperreports-chart-themes-5.6.0-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/jasperreports-fonts-5.6.0.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/jasperreports-functions-5.6.0-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/jfreechart-1.0.12.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/jxl-2.6.10.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/poi-3.6.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/poi-ooxml-3.6-20091214.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/poi-ooxml-schemas-3.6-20091214.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/joda-time-2.1.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/antlr-2.7.6.jar"/>
+	<classpathentry kind="var" path="JASPERLIB_2/ant-1.7.1.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
