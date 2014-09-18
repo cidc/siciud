@@ -1,4 +1,4 @@
-package cidc.evalMovilidad.db;
+package cidc.evalComite.db;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

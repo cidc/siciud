@@ -159,8 +159,7 @@
 				</tr>
 				<tr>
 					<th><b>Periodo Actual</b></th>
-					<td><span id="anoInicio">&nbsp;<c:out
-								value="${sessionScope.anoActual}" /></span></td>
+					<td><span id="anoInicio">&nbsp;<c:out value="${sessionScope.anoActual}" /></span></td>
 					<input type="hidden" name="anoinicio" value="" />
 				</tr>
 				<tr>

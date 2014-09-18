@@ -1,4 +1,4 @@
-package cidc.EvalComite.servlet;
+package cidc.evalComite.servlet;
 
 import java.io.IOException;
 
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cidc.EvalComite.db.EvalMovilidadDB;
-import cidc.EvalComite.obj.Criterio;
-import cidc.EvalComite.obj.ParametrosOBJ;
-import cidc.EvalComite.obj.TrayectoriaInvest;
+import cidc.evalMovilidad.db.EvalMovilidadDB;
+import cidc.evalComite.obj.Criterio;
+import cidc.evalComite.obj.ParametrosOBJ;
+import cidc.evalComite.obj.TrayectoriaInvest;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.servlet.ServletGeneral;

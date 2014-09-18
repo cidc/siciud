@@ -80,6 +80,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			ps.setString(i++, filtro.getTipoProyecto());
 			ps.setString(i++, filtro.getNombreProyecto());	
 			ps.setString(i++, filtro.getPalabrasClaves());
+			ps.setString(i++, (filtro.getAno()==null)?"%":"%"+filtro.getAno()+"%");
 
 			ps.setString(i++, filtro.getFacultad());
 			ps.setString(i++, filtro.getProyCur());
@@ -90,7 +91,9 @@ public class ProyectosGeneralDB extends BaseDB {
 			ps.setString(i++, filtro.getTipoProyecto());
 			ps.setString(i++, filtro.getNombreProyecto());
 			ps.setString(i++, filtro.getPalabrasClaves());
+			ps.setString(i++, (filtro.getAno()==null)?"%":filtro.getAno());
 			
+			System.out.println("consulta "+ps.toString());
 			rs=ps.executeQuery();
 			i=1;
 			while(rs.next()){
@@ -1000,7 +1003,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		PreparedStatement ps=null;
 		int i=1;
 		try {
-			retorno=buscarPlaca(gasto.getCodigo(),proyecto.getClaseProyecto());
+			retorno=buscarPlaca(gasto.getCodigo());
 			if(!retorno){
 				cn=cursor.getConnection(super.perfil);
 				ps=cn.prepareStatement(rb.getString("registraGasto"+proyecto.getClaseProyecto()));
@@ -1440,7 +1443,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		return listaCompromisos;
 	}
 	
-	public boolean buscarPlaca(String placa, int tipo) {
+	public boolean buscarPlaca(String placa) {
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -1448,7 +1451,8 @@ public class ProyectosGeneralDB extends BaseDB {
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("buscarPlaca"+tipo));
+			ps=cn.prepareStatement(rb.getString("buscarPlaca"));
+			ps.setString(i++,placa);
 			ps.setString(i++,placa);
 			rs=ps.executeQuery();
 			while(rs.next()){

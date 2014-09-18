@@ -35,7 +35,7 @@
 			//	document.frmCargaDoc.nombre.value="Acta de Inicio";
 			//}
 		}	
-		if(combo.value==2||combo.value==3||combo.value==4||combo.value==5||combo.value==6||combo.value==7||combo.value==8||combo.value==9){
+		if(!combo.value==0||!combo.value==1){
 			document.getElementById("st21").style.display="none";
 			document.getElementById("st22").style.display="none";
 			
@@ -73,7 +73,10 @@
 			document.frmCargaDoc.accion.value="11";
 		}if(document.frmCargaDoc.tipo.value=="9"){
 			document.frmCargaDoc.accion.value="12";
+		}if(document.frmCargaDoc.tipo.value="10"){
+			document.frmCargaDoc.accion.value="13";
 		}
+		
 		if(document.frmCargaDoc.fechaDoc.value=="")
 			msg=msg+"-) Fecha del Documento\n";		
 		if(document.frmCargaDoc.archivo.value=="")
@@ -181,6 +184,9 @@
 				     <c:if test='${lista.tipo==9}'>
 				     <td><a href='<c:url value="/Documentos/Convenios/Otrosi/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
 				     </c:if>
+				     <c:if test='${lista.tipo==10}'>
+				     <td><a href='<c:url value="/Documentos/Convenios/Contratos/${lista.nombreArchivo}"/>'><img border=0 src='<c:url value="/comp/img/pdf.png"/>'></a></td>
+				     </c:if>
 		  		</c:if>
 			
 			  <td align="center"><c:out value="${lista.fechaDoc}" /></td>
@@ -206,6 +212,7 @@
 							<td>
 								<select name="tipo" style="width:120px;" onchange="cambioTipo(this)" >
 									<option value="0">----------------</option>
+									<option value="10">Convenio o Contrato</option>
 									<option value="1">Otro Documento</option>
 									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>

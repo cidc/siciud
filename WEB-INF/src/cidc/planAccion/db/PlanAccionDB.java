@@ -80,6 +80,7 @@ public class PlanAccionDB extends BaseDB{
 					actividades.setActividad(rs.getString(i++));
 					actividades.setDescripcion(rs.getString(i++));
 					actividades.setMeta(rs.getString(i++));
+					actividades.setPorcentaje(rs.getInt(i++));
 					lista.add(actividades);
 				}	
 			}
@@ -304,6 +305,60 @@ public class PlanAccionDB extends BaseDB{
 			cerrar(ps);
 			cerrar(cn);			
 		}
+		return retorno;
+	}
+	/**
+	 * este metodo se encarga de actualizar los porcentajes de las actividades de los planes de accion 
+	 * @param actividad continen la informacion de idActividad y el pocentaje
+	 * @return
+	 */
+	public boolean ingresarPorcentaje(Actividades actividad){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		for (int j = 0; j < actividad.getIdActividades().length; j++) {
+			int i=1;
+			try {
+				cn = cursor.getConnection(super.perfil);
+				ps = cn.prepareStatement(rb.getString("IngresarPorcentaje"));
+				if(actividad.getPorcentajes_()[j]>100){
+					ps.setInt(i++, 100);
+				}else{
+					ps.setInt(i++, actividad.getPorcentajes_()[j]);
+				}
+				ps.setLong(i++, actividad.getIdActividades()[j]);
+				ps.executeUpdate();
+				retorno = true;
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				lanzaExcepcion(e);
+				retorno = false;
+			} finally {
+				//obligatorio en todas las conexiones con la base de datos 
+				cerrar(ps);
+				cerrar(cn);
+			}
+		}
+		return retorno;
+	}
+	
+	public boolean eliminarPorcentaje( int idActividad){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("IngresarPorcentaje"));
+			ps.setInt(i++, 0);
+			ps.setLong(i++, idActividad);
+			ps.execute();
+			retorno=true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		return retorno;
 	}
 }

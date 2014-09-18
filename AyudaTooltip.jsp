@@ -7,6 +7,6 @@
 </head>
 <body>
 		<p class="texto"><b>Integrante Bloqueado:</b></p>
-		<p class="texto1j" >Este integrante necesita ser actualizado. para ver la información de este integrante, favor enviar al correo siciud-viiceps@correo.udistrital.edu.co el dato del Nombre completo, código de carnet UD y cédula.</p>	  
+		<p class="texto1j" >Este integrante necesita ser actualizado. para ver la información de este integrante, favor enviar al correo siciud-cidc@correo.udistrital.edu.co el dato del Nombre completo, código de carnet UD y cédula.</p>	  
 </body>
 </html>

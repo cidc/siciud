@@ -33,11 +33,11 @@ public class ClaseNuevaEjm extends BaseDB {
                         rs=ps.executeQuery();
                         while(rs.next()){
                                 i=1;
-                                info=new InfoEvento();
-                                info.setNombreEvento(rs.getString(i++));
-                                info.setPagWeb(rs.getString(i++));
-                                info.setCant(rs.getInt(i++));
-				                                lista.add(info);
+//                                info=new InfoEvento();
+//                                info.setNombreEvento(rs.getString(i++));
+//                                info.setPagWeb(rs.getString(i++));
+//                                info.setCant(rs.getInt(i++));
+//				                                lista.add(info);
                         }
                 } catch (Exception e) {
                         // TODO Auto-generated catch block

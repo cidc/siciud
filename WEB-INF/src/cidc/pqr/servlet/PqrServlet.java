@@ -283,7 +283,7 @@ public class PqrServlet extends ServletGeneral{
 	   				parrafo+="Nombre o Razón Social:"+datos.getPersonaNombreRazon()+". \n";
 	   				parrafo+="Teléfono: 3239300 ext "+datos.getPersonaTelMov()+". \n";
 	   				parrafo+="Correo Electrónico: "+datos.getPersonaCorreo()+" \n\n";
-	   				parrafo+="Si requiere actualizar la información indicada, favor envíe un correo electrónico a siciud-viiceps@correo.udistrital.edu.co indicando en el asunto " +
+	   				parrafo+="Si requiere actualizar la información indicada, favor envíe un correo electrónico a siciud-cidc@correo.udistrital.edu.co indicando en el asunto " +
 	   						"\"Actualización datos de contacto\". \n\n\nSU CASO HA SEGUIDO EL SIGUIENTE TRAMITE:\n\n";
 	   				
 	   				

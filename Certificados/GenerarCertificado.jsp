@@ -102,7 +102,6 @@
 						<c:if test="${sessionScope.persona.papel==6}">Invitado</c:if>
 						<c:if test="${sessionScope.persona.papel==7}">No Registrado</c:if>
 						<c:if test="${sessionScope.persona.papel==8}">No Registrado</c:if>
-						<c:if test="${sessionScope.persona.papel==1}">No Registrado</c:if>
 						<c:if test="${sessionScope.persona.papel==9}">No Registrado</c:if>
 						<c:if test="${sessionScope.persona.papel==10}">No Registrado</c:if>				
 					</td>

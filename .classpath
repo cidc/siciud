@@ -53,6 +53,7 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="var" path="JASPERLIB_2/barcode4j-2.1.jar"/>
 	<classpathentry kind="var" path="JASPERLIB_2/bsh-2.1b5.jar"/>
 	<classpathentry kind="var" path="JASPERLIB_2/castor-1.2.jar"/>
@@ -74,5 +75,12 @@
 	<classpathentry kind="var" path="JASPERLIB_2/joda-time-2.1.jar"/>
 	<classpathentry kind="var" path="JASPERLIB_2/antlr-2.7.6.jar"/>
 	<classpathentry kind="var" path="JASPERLIB_2/ant-1.7.1.jar"/>
+=======
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/itextpdf-5.3.5.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/itext-xtra-5.3.5.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bcpkix-jdk15on-147.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bcprov-jdk15on-147.jar"/>
+	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/signer.jar"/>
+>>>>>>> origin/version-9
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

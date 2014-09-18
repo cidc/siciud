@@ -148,7 +148,7 @@
 					<td>
 						<input type="image" src='<c:url value="/comp/img/Terminar.gif"/>'>
 					</td>
-					<td valign="middle"><b>Paso 3 de 3</b></td>
+					<td valign="middle"><b>Paso 2 de 2</b></td>
 				</tr>
 			</table>
 		</form>
