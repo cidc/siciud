@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="2380" pageHeight="1684" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="2340" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="34a0c7a9-be4c-4545-a9be-81680efd4e90">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="1242"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[select p.picodigo as "Codigo del Proyecto",
+	i.inscpropnombre as "Nombre del Proyecto",
+	per.pernombres||' '|| per.perapellidos as "Nombre Investigador",
+	per.permail as "Correo Del Investigador",
+	case p.piestado when 1 then 'Aprobado' when 2 then 'Vigente' when 3 then 'Finalizado' when 4 then 'Cancelado' when 5 then 'Sin estado Asignado' when 6 then 'Aplazado' when 7 then 'Proc. Finalizacion' else 'nada' end as "Estado del Proyecto",
+        --(to_date(pifechaactinicio, 'YYYY-MM-DD') + interval '1 MONTH') as "Fecha Finalizacion",
+        case cgs.cgstipo when 1 then 'Proyecto de Investigacion' when '2' then 'Grupos/Semilleros' else 'No asignado' end as "Tipo de Proyecto (Grupos / Semilleros)",
+        b.asnombre as "Clasificacion. Snies", -- Al Realizar el join desaparece 1 registro de 421 a 420, seguramente hay 1 asignacion a un area falsa
+        case i.inscfacultad when 1 then 'Facultad Tecnológica' when 2 then 'Facultad de Ingeniería' when 3 then 'Facultad de Medio Ambiente y Recursos Naturales' when 4 then 'Facultad de Ciencias y Educación' when 5 then 'Ma. EN ESTUDIOS ARTÍSTICOS' end as "Facultad",
+        'Co-investigadores' as "Co-investigadores",
+	coalesce(to_date(p.pifechaactinicio, 'YYYY-MM-DD'), null, to_date('0', 'YYYY-MM-DD')) as "Fecha Acta Inicio Proyecto",
+	c.convduracion as "Duracion inicial (Meses)",
+	sum(t.ptvalortiempo) as "Duracion Agregada (Meses)",
+	coalesce(to_date(p.pifechaactinicio, 'YYYY-MM-DD'), null, to_date('0', 'YYYY-MM-DD')) + (c.convduracion * INTERVAL '1 MONTH')
+	+ (coalesce(sum(t.ptvalortiempo), null, 0) * INTERVAL '1 MONTH') as "Fecha Final Total",
+	array_to_string(ARRAY(
+        SELECT co.incoinvnombres ||' '||co.incoinvapellidos ||' ('||incoinvpapel||')' FROM inscrip_coinvestigador co WHERE co.inscid = i.inscid ORDER BY co.incoinvnombres) ,', ') As "Coinvestigadores",
+	i.inscconvid as "Id Convocatoria",
+	c.convano as "Ano de Convocatoria",
+	c.convnumero as "No Convocatoria",
+	c.convnombre as "Nombre de Convocatoria"
+	--c.convnombre as "Nombre de la Convocatoria"
+	from inscrip_propuesta i, convocatoria c, b_areas_snies b, cidc_grup_semill cgs, personal per, proyectoinvest p
+full outer join proyectotiempos t on p.piid = t.ptidproyecto
+where p.piidprop=i.inscid and i.inscconvid = c.convid and i.inscinvprin=per.perid and i.inscgrupo=cgs.cgsid and cgsareasnies=asid
+group by p.picodigo, i.inscid, i.inscpropnombre, per.pernombres, perapellidos, per.permail, piestado, cgs.cgstipo, c.convano, c.convnumero, c.convnombre, b.asnombre, p.pifechaactinicio, i.inscconvid, c.convduracion
+order by p.picodigo asc]]>
+	</queryString>
+	<field name="Codigo del Proyecto" class="java.lang.String"/>
+	<field name="Nombre del Proyecto" class="java.lang.String"/>
+	<field name="Nombre Investigador" class="java.lang.String"/>
+	<field name="Correo Del Investigador" class="java.lang.String"/>
+	<field name="Estado del Proyecto" class="java.lang.String"/>
+	<field name="Tipo de Proyecto (Grupos / Semilleros)" class="java.lang.String"/>
+	<field name="Clasificacion. Snies" class="java.lang.String"/>
+	<field name="Facultad" class="java.lang.String"/>
+	<field name="Co-investigadores" class="java.lang.String"/>
+	<field name="Fecha Acta Inicio Proyecto" class="java.sql.Date"/>
+	<field name="Duracion inicial (Meses)" class="java.lang.Integer"/>
+	<field name="Duracion Agregada (Meses)" class="java.lang.Long"/>
+	<field name="Fecha Final Total" class="java.sql.Timestamp"/>
+	<field name="Coinvestigadores" class="java.lang.String"/>
+	<field name="Id Convocatoria" class="java.lang.Integer"/>
+	<field name="Ano de Convocatoria" class="java.lang.Integer"/>
+	<field name="No Convocatoria" class="java.lang.Integer"/>
+	<field name="Nombre de Convocatoria" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="2263" y="0" width="77" height="102" uuid="7da2347c-9810-4764-af59-b79cba6724e0"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="2261" height="66" backcolor="#000000" uuid="532d5149-9a9e-4118-9fbd-2b216f3be343"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="a7f84400-89c3-4447-9d61-aaff3a41572d"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry Title]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="e35b9b9e-4a7e-4968-b705-7e1bc173b84e"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Cherry SubTitle]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="2261" height="32" forecolor="#000000" backcolor="#CC0000" uuid="57521836-ba92-4a51-9082-f6201ed1b151"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="2104" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="6f8ddd9a-beaa-4d2e-82a5-511583ac0550"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="2" y="0" width="94" height="18" forecolor="#000000" uuid="194ffad7-dade-4a5e-b149-e35647ff0e99"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Codigo del Proyecto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="96" y="0" width="373" height="18" forecolor="#000000" uuid="54bb3230-2429-4826-ad2f-e8b5c06625c2"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre del Proyecto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="469" y="0" width="145" height="18" forecolor="#000000" uuid="494f367b-b1a9-4964-9036-641dad71c72a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre Investigador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="614" y="0" width="170" height="18" forecolor="#000000" uuid="4102fb02-48ef-4732-93ff-d32402729fa3"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Correo Del Investigador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="784" y="0" width="150" height="18" forecolor="#000000" uuid="379d55b5-0a15-4ced-a1ff-4f5c54b00268"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Estado del Proyecto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="934" y="0" width="202" height="18" forecolor="#000000" uuid="e4e01011-8f6a-4c15-a05a-f605d969ac25"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tipo de Proyecto (Grupos / Semilleros)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1136" y="0" width="155" height="18" forecolor="#000000" uuid="49fe5774-fcf9-4e08-8825-6a738bbe2a74"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Clasificacion. Snies]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1291" y="0" width="128" height="18" forecolor="#000000" uuid="ad6c97ff-52f3-47d9-aa82-d7de5905f3f2"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha Acta Inicio Proyecto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1419" y="0" width="39" height="18" forecolor="#000000" uuid="7af08d0a-45c5-48ae-b2a6-e01da12c1a88"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Duracion inicial (Meses)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1458" y="0" width="78" height="18" forecolor="#000000" uuid="59cbabd3-2b88-4f27-872c-5c791611f5e5"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Duracion Agregada (Meses)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1536" y="0" width="137" height="18" forecolor="#000000" uuid="d3dc237d-407d-4898-a651-4773ece015fa"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fecha Final Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1673" y="0" width="198" height="18" forecolor="#000000" uuid="ae2dedad-a3b8-4a7d-af4a-d6900ebcfe9c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Coinvestigadores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1871" y="0" width="23" height="18" forecolor="#000000" uuid="f5fad481-a170-400f-a947-406d7248e3f4"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Id Convocatoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1917" y="0" width="25" height="18" forecolor="#000000" uuid="fd130b34-cd05-492c-88e1-db1c42a5bc9f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ano de Convocatoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1963" y="0" width="32" height="18" forecolor="#000000" uuid="1b78467e-1939-4938-acbd-05e6a0e0d4ae"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[No Convocatoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="2008" y="0" width="332" height="18" forecolor="#000000" uuid="35d9ac08-385c-4dd4-b36e-380e88b444c7"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre de Convocatoria]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="2340" height="18" uuid="e423437c-2b9e-427b-8da0-2aca4bbaf62d"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="96" height="18" uuid="14bb04af-4d1d-493f-a2dc-3e293d1730ea"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Codigo del Proyecto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="96" y="0" width="373" height="18" uuid="8ccbad8c-4800-4cae-8d08-21772539470e"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Nombre del Proyecto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="469" y="0" width="145" height="18" uuid="7f0f59ec-2638-4231-91b4-536e32cd9728"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Nombre Investigador}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="614" y="0" width="170" height="18" uuid="f408e725-2a45-4e2d-b1c9-2b612e335c58"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Correo Del Investigador}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="934" y="0" width="202" height="18" uuid="ecda6313-665d-4b16-8e34-0affb4578e81"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Tipo de Proyecto (Grupos / Semilleros)}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1136" y="0" width="155" height="18" uuid="6a08a787-c154-4e1d-a630-f8bfd1d5795c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Clasificacion. Snies}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1291" y="0" width="128" height="18" uuid="91e8bc37-0a46-4734-989e-2d011a6e7fad"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Fecha Acta Inicio Proyecto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1419" y="0" width="39" height="18" uuid="97139743-90fd-470e-86cb-9e9b5fbf2483"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Duracion inicial (Meses)}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1458" y="0" width="78" height="18" uuid="9cf7f2cb-7c0c-424c-92ac-ec9b17bf229a"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Duracion Agregada (Meses)}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1536" y="0" width="137" height="18" uuid="68deef11-bde9-4154-ab9d-4e29f763e1fc"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Fecha Final Total}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1673" y="0" width="198" height="18" uuid="d526892b-7a28-4aa0-b311-8a58fb11627d"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Coinvestigadores}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1871" y="0" width="46" height="18" uuid="c796dd36-d9dc-4c5e-a664-fc099a9f3849"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Id Convocatoria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1917" y="0" width="46" height="18" uuid="b1efaf1c-1a37-453b-a90f-383b1b3d083e"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Ano de Convocatoria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="1963" y="0" width="45" height="18" uuid="726cadf6-71ff-47b7-b52a-759ca89c06d6"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{No Convocatoria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="2008" y="0" width="332" height="18" uuid="a5d0858e-caec-49b1-ac19-32e3eb24fe57"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Nombre de Convocatoria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="784" y="0" width="150" height="18" uuid="98a13c3f-68d8-4b87-8ca8-331059334a72"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Estado del Proyecto}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="2340" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="244b940b-c071-4551-a12c-40b4df60ee4e"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="2300" y="5" width="40" height="20" forecolor="#FFFFFF" uuid="cdc20b42-494b-4189-94fc-351ca5a80dfe"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="2220" y="5" width="80" height="20" forecolor="#FFFFFF" uuid="cbaa3950-87a8-46ae-98a3-a9063b6892d1"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="ab14247d-7ba6-43ab-841e-4209caf04c69"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
