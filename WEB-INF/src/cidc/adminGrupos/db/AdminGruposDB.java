@@ -1191,7 +1191,7 @@ public class AdminGruposDB extends BaseDB{
 					else
 						st.setDouble(i++, Double.parseDouble(datosIntegrante
 								.getCodigoUd()));
-					st.executeUpdate();
+					st.execute();
 					System.out.println("insertar persona: " + st.toString());
 				}else{
 					datosIntegrante.setId(Long.parseLong(idPersona));
@@ -1225,7 +1225,7 @@ public class AdminGruposDB extends BaseDB{
 				else
 					st.setDouble(i++, Double.parseDouble(datosIntegrante.getCodigoUd()));
 				st.setLong(i++,datosIntegrante.getId());
-				st.executeUpdate();
+				st.execute();
 				insertarInvestigador(cn,datosIntegrante,idGrupo);
 			}
 			cn.commit();
@@ -1274,7 +1274,12 @@ public class AdminGruposDB extends BaseDB{
 		ResultSet rs=null;
 		int i=1;
 		System.out.println("---insertando investigador-->"+datosIntegrante.getFlag());
-		st=cn.prepareStatement(rb.getString("insertarInvestigador"));
+		if(datosIntegrante.getId()!=0){
+						st=cn.prepareStatement(rb.getString("insertarInvestigadorAntiguo"));
+						st.setLong(i++, datosIntegrante.getId());
+		}
+		else
+						st=cn.prepareStatement(rb.getString("insertarInvestigador"));
 		System.out.println("Inserto inv 1 \n");
 		st.setInt(i++, datosIntegrante.getCodFacultad());
 		st.setLong(i++, idGrupo);
@@ -1282,8 +1287,8 @@ public class AdminGruposDB extends BaseDB{
 		st.setInt(i++, datosIntegrante.getPapel());
 		st.setString(i++, datosIntegrante.getFechaVinculacion());
 		st.setString(i++, datosIntegrante.getFechaSalidaGrupo());
-		st.executeUpdate();
 		System.out.println("insertar persona: "+st.toString());
+		st.executeUpdate();
 		System.out.println("\nEl nick2 de la persona es: "+ completeid(datosIntegrante)+"\n");
 		retorno=true;
 			
