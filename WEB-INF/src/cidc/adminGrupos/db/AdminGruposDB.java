@@ -1275,11 +1275,11 @@ public class AdminGruposDB extends BaseDB{
 		int i=1;
 		System.out.println("---insertando investigador-->"+datosIntegrante.getFlag());
 		if(datosIntegrante.getId()!=0){
-			st=cn.prepareStatement(rb.getString("insertarInvestigadorAntiguo"));
-			st.setLong(i++, datosIntegrante.getId());
+						st=cn.prepareStatement(rb.getString("insertarInvestigadorAntiguo"));
+						st.setLong(i++, datosIntegrante.getId());
 		}
 		else
-			st=cn.prepareStatement(rb.getString("insertarInvestigador"));
+						st=cn.prepareStatement(rb.getString("insertarInvestigador"));
 		System.out.println("Inserto inv 1 \n");
 		st.setInt(i++, datosIntegrante.getCodFacultad());
 		st.setLong(i++, idGrupo);
