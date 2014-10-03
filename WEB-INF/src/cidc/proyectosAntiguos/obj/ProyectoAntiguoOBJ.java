@@ -31,6 +31,7 @@ public class ProyectoAntiguoOBJ implements Serializable{
     private int tipo;
     private int convenio;
     private String convocatoria = null;
+    private int convocatorias;
     private int estado;
     private String[] apellCoinvest = null;
     private String[] nomCoinvest = null;
@@ -389,5 +390,11 @@ public class ProyectoAntiguoOBJ implements Serializable{
 	public void setSaldoRubro(String saldoRubro) {
 		this.saldoRubro = saldoRubro;
 	}
-
+	public int getConvocatorias() {
+		return convocatorias;
+	}
+	public void setConvocatorias(int convocatorias) {
+		this.convocatorias = convocatorias;
+	}
+	
 }

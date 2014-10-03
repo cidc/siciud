@@ -105,14 +105,6 @@
 		  alert("El código del proyecto no puede estar vacio");
 		  return false;
 		 }
-		 if(document.getElementById("no").checked)
-		 {
-          if(formulario.convocatoria.value=="")
-		  {
-		   alert("Debe digitar la convocatoria del proyecto");
-		   return false;
-		  }
-		 }
 		 if(document.form1.cant_coinv.selectedIndex!=0)
 		 {
 		  for(var i=1; i<=document.form1.cant_coinv.value; i++)
@@ -125,10 +117,6 @@
            }
           }
 		 }
-	     if(document.getElementById("no").checked){
-          if(!document.getElementById("comp1").checked && !document.getElementById("comp2").checked && !document.getElementById("comp3").checked && !document.getElementById("comp4").checked!="checked")
-          {alert("Debe seleccionar uno o mas compromisos del proyecto"); return false;}
-         }
 		 return true;
 	   }
 
@@ -144,14 +132,13 @@
                             {alert("Debe seleccionar el Semillero o Grupo de Investigación del proyecto"); return false;}
                            else{if(document.form1.investigador.selectedIndex==0)
                                 {alert("Debe seleccionar el Investigador Principal del proyecto"); return false;}
-                                else{if(document.getElementById("si").checked)
-                                     {if(document.form1.convenio.selectedIndex==0)
-                                      {alert("Debe seleccionar el Convenio del proyecto"); return false;}
+                                else{
+                                     if(document.form1.convocatoria.selectedIndex==0)
+                                      {alert("Debe seleccionar la convocatoria del proyecto"); return false;}
                                       if(document.form1.estado.selectedIndex==0)
                                       {alert("Debe seleccionar el estado del Proyecto"); return false;}
                                       else{return true;}
-                                     }
-                                     else {return true;}
+                                     
                                 }
                                }
                           }
@@ -178,23 +165,20 @@
      	       </c:forEach>
                </select>
           </td>
-          <td class="renglones"><b>Codigo:</b></td>
-          <td><input type="text" maxlength="11" name="codigo" style="width: 85%" onkeypress="return numeros(event)"></td>
-          <td class="renglones" width="90px"><b>Convenio:</b></td>
-          <td><input type="radio" name="tipo" value="2" onclick="radios(2)" checked="checked" id="si">Si<input type="radio" name="tipo" value="1" onclick="radios(1)" id="no">No</td>
+          <td colspan="2" class="renglones"><b>Codigo:</b></td>
+          <td colspan="2"><input type="text" maxlength="11" name="codigo" style="width: 85%" onkeypress="return numeros(event)"></td>
      </tr>
      </table> </td></tr>
-     <tr> <td class="renglones"><b><span id="txt_convenio">Convenio:</span></b></td></tr>
+     <tr> <td class="renglones"><b><span id="txt_convocatoria">Convocatorias:</span></b></td></tr>
      <tr id="select1">
-          <td> <select name="convenio" style="width: 100%">
+          <td> <select name="convocatoria" style="width: 100%">
                <option value="0">---------------------------</option>
-               <c:forEach begin = "0" items="${requestScope.convenios}" var="conv">
-                          <option value='<c:out value="${conv.codigo}"/>'> <c:out value="${conv.nombre}"/> </option>
+               <c:forEach begin = "0" items="${requestScope.convocatoria}" var="conv">
+                          <option value='<c:out value="${conv.convNombre}"/>'> <c:out value="${conv.convNombre}"/> </option>
                </c:forEach>
                </select>
           </td>
      </tr>
-     <tr style="display: none" id="txtConvo"> <td><input type="text" name="convocatoria" style="width: 97%"></td></tr>
      <tr> <td class="renglones"><b>Nombre Proyecto:</b></td></tr>
      <tr> <td><textarea class="texto" name="nombre" style="width: 99%"></textarea></td></tr>
      <tr> <td class="renglones"><b>Facultad:</b></td></tr>
@@ -282,17 +266,6 @@
      <tr> <td><textarea class="texto" name="objetivo" style="width: 99%"></textarea></td></tr>
      <tr> <td class="renglones"><b>Abstract/Resumen:</b></td></tr>
      <tr> <td><textarea class="texto" name="resumen" style="width: 99%"></textarea></td></tr>
-     <tr id="tr_compromisos" style="display: none">
-          <td> <table width="100%">
-                 <tr> <td class="renglones" colspan="2"><b>Compromisos:</b></td></tr>
-                 <tr> <td><input type="checkbox" value="1" name="compromisos" id="comp1" checked="checked">Informe Académico</td>
-                      <td><input type="checkbox" value="2" name="compromisos" id="comp2" checked="checked">Informe Técnico</td>
-                 </tr>
-                 <tr> <td><input type="checkbox" value="3" name="compromisos" id="comp3" checked="checked">Informe Financiero</td>
-                      <td><input type="checkbox" value="4" name="compromisos" id="comp4" checked="checked">Artículo Revista Científica</td>
-                 </tr>
-               </table>
-     </td> </tr>
                <tr> <td class="renglones"><b>Observaciones:</b></td></tr>
                <tr> <td><textarea class="texto" name="observacion" style="width: 99%"></textarea></td></tr>
                <tr> <td class="renglones" align="center"><b>Estado Proyecto: </b>
