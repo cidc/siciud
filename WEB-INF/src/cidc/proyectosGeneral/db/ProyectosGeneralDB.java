@@ -254,6 +254,8 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setFecActaFin(rs.getString(i++));
 				proyecto.setIdActaFin(rs.getInt(i++));
 				proyecto.setDocumento(rs.getString(i++));
+				proyecto.setCorreo(rs.getString(i++));
+				proyecto.setCelular(rs.getString(i++));
 				/********************************************/		
 				
 				

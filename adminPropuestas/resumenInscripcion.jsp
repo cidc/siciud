@@ -129,7 +129,7 @@
 			<c:forEach begin="0" items="${requestScope.docs}" var="lista">
 				<tr>
 					<c:if test="${requestScope.docNombre!='' or requestScope.docNombre!=null }">
-					<td><a href='<c:url value="${lista.docNombre}" />'><img src="<c:url value="/comp/img/pdf.png" />"></a></td>
+					<td><a href='<c:url value="${lista.url}/${lista.docNombre}" />'><img src="<c:url value="/comp/img/pdf.png" />"></a></td>
 					</c:if>
 					<td style="text-align: right;"><c:out value="${lista.nombreDocumentoRequisito}" />
 				</tr>

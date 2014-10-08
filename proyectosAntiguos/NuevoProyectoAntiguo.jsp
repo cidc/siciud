@@ -263,10 +263,6 @@
      </table> </td> </tr>
      <tr> <td class="renglones" style="width: 99%"><b>Palabras Claves:</b></td></tr>
      <tr> <td><textarea class="texto" name="palabras" style="width: 99%"></textarea></td></tr>
-     <tr> <td class="renglones"><b>Objetivo General:</b></td></tr>
-     <tr> <td><textarea class="texto" name="objetivo" style="width: 99%"></textarea></td></tr>
-     <tr> <td class="renglones"><b>Abstract/Resumen:</b></td></tr>
-     <tr> <td><textarea class="texto" name="resumen" style="width: 99%"></textarea></td></tr>
                <tr> <td class="renglones"><b>Observaciones:</b></td></tr>
                <tr> <td><textarea class="texto" name="observacion" style="width: 99%"></textarea></td></tr>
                <tr> <td class="renglones" align="center"><b>Estado Proyecto: </b>

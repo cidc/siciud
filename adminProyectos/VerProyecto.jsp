@@ -85,12 +85,16 @@
 							<th with="150px"><b>Facultad</b></th>
 							<th with="150px"><b>Grupo/Semillero de Investigación</b></th>
 							<th with="150px"><b>Proyecto Curricular</b></th>
+							<th><b>Teléfono Celular</b></th>
+							<th><b>Correo Electrónico</b></th>
 						</tr>
 						<tr>
 							<td><c:out value="${sessionScope.proyecto.documento}" /></td>
 							<td with="150px"><c:out value="${sessionScope.proyecto.facultad}" /></td>
 							<td with="150px"><c:out value="${sessionScope.proyecto.grupoInvestigacion}" /></td>
 							<td with="150px"><c:out value="${sessionScope.proyecto.proyCurricular}" /></td>
+							<td><c:out value="${sessionScope.proyecto.celular}" /></td>
+							<td><c:out value="${sessionScope.proyecto.correo}" /></td>
 						</tr>
 					</table>
 				</td>

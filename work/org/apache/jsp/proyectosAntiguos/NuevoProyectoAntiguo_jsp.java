@@ -330,10 +330,6 @@ public final class NuevoProyectoAntiguo_jsp extends org.apache.jasper.runtime.Ht
       out.write("     </table> </td> </tr>\r\n");
       out.write("     <tr> <td class=\"renglones\" style=\"width: 99%\"><b>Palabras Claves:</b></td></tr>\r\n");
       out.write("     <tr> <td><textarea class=\"texto\" name=\"palabras\" style=\"width: 99%\"></textarea></td></tr>\r\n");
-      out.write("     <tr> <td class=\"renglones\"><b>Objetivo General:</b></td></tr>\r\n");
-      out.write("     <tr> <td><textarea class=\"texto\" name=\"objetivo\" style=\"width: 99%\"></textarea></td></tr>\r\n");
-      out.write("     <tr> <td class=\"renglones\"><b>Abstract/Resumen:</b></td></tr>\r\n");
-      out.write("     <tr> <td><textarea class=\"texto\" name=\"resumen\" style=\"width: 99%\"></textarea></td></tr>\r\n");
       out.write("               <tr> <td class=\"renglones\"><b>Observaciones:</b></td></tr>\r\n");
       out.write("               <tr> <td><textarea class=\"texto\" name=\"observacion\" style=\"width: 99%\"></textarea></td></tr>\r\n");
       out.write("               <tr> <td class=\"renglones\" align=\"center\"><b>Estado Proyecto: </b>\r\n");
@@ -778,7 +774,7 @@ public final class NuevoProyectoAntiguo_jsp extends org.apache.jasper.runtime.Ht
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f1.setParent(null);
-    // /proyectosAntiguos/NuevoProyectoAntiguo.jsp(284,49) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /proyectosAntiguos/NuevoProyectoAntiguo.jsp(280,49) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f1.setValue("/comp/img/Guardar.gif");
     int _jspx_eval_c_005furl_005f1 = _jspx_th_c_005furl_005f1.doStartTag();
     if (_jspx_th_c_005furl_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -797,7 +793,7 @@ public final class NuevoProyectoAntiguo_jsp extends org.apache.jasper.runtime.Ht
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f2.setParent(null);
-    // /proyectosAntiguos/NuevoProyectoAntiguo.jsp(294,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /proyectosAntiguos/NuevoProyectoAntiguo.jsp(290,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f2.setValue("/proyectosAntiguos/Ajax.x");
     int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
     if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
