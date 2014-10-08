@@ -173,6 +173,7 @@
      <tr id="select1">
           <td> <select name="convocatoria" style="width: 100%">
                <option value="0">---------------------------</option>
+               <option value="1">Proyecto Institucionalizado</option>
                <c:forEach begin = "0" items="${requestScope.convocatoria}" var="conv">
                           <option value='<c:out value="${conv.convNombre}"/>'> <c:out value="${conv.convNombre}"/> </option>
                </c:forEach>
