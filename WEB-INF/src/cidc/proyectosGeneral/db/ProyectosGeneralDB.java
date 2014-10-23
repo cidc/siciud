@@ -201,6 +201,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("verProyecto1"));
 			ps.setLong(1, Long.parseLong(id));
+			System.out.println(ps.toString());
 			rs=ps.executeQuery();
 			while(rs.next()){
 				i=1;
@@ -254,8 +255,9 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setFecActaFin(rs.getString(i++));
 				proyecto.setIdActaFin(rs.getInt(i++));
 				proyecto.setDocumento(rs.getString(i++));
-				proyecto.setCorreo(rs.getString(i++));
-				proyecto.setCelular(rs.getString(i++));
+				proyecto.setTutor(rs.getString(i++));
+				if(proyecto.getTutor().equals(proyecto.getDirector()))
+					proyecto.setTutor(null);
 				/********************************************/		
 				
 				
