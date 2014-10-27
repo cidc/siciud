@@ -194,6 +194,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
+		ResultSet rs1=null;
 		Globales g= new Globales();
 		String fechas=null;
 		int i=1;
@@ -232,6 +233,18 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setEjecucion(""+(Integer.parseInt(proyecto.getDuracion())-4));
 				proyecto.setInformes("1");
 				proyecto.setEvaluacion("3");
+				String[] numConv =proyecto.getNumConvocatoria().split("-");
+				//esta condicion es para buscar el documento de propuesta para proyectos del 2014 en adelante
+				if(Integer.parseInt(numConv[1])>=2014){
+					ps=cn.prepareStatement(rb.getString("archivoProyecto"));
+					ps.setLong(1, Long.parseLong(id));
+					System.out.println(ps.toString());
+					rs1=ps.executeQuery();
+					while(rs1.next()){
+						int j=1;
+						proyecto.setArchivo(rs1.getString(j++));
+					}
+				}
 				/********************************************/
 				
 				proyecto.setValor(calculoValor(cn,id));
