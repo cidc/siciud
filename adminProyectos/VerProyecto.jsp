@@ -87,7 +87,7 @@
 							<th with="150px"><b>Proyecto Curricular</b></th>
 							<th><b>Teléfono Celular</b></th>
 							<th><b>Correo Electrónico</b></th>
-							<c:if test="${sessionScope.proyecto.tutor!=null}" ><th><b>Docente Tutor</b></th></c:if>
+							<c:if test="${sessionScope.proyecto.tutor!=null}" ><th><b>Docente Director</b></th></c:if>
 						</tr>
 						<tr>
 							<td><c:out value="${sessionScope.proyecto.documento}" /></td>
