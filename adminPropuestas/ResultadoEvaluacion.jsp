@@ -209,10 +209,10 @@
 		</c:if>
 		</c:forEach>
 		</c:if>
-			<input type="text" name="puntaje" size="20" value="${sum}" disabled>
+			<input type="text" name="puntaje" size="20" value="${sum/6}" disabled>
 		</td>
 		<td class="estado" align="center">
-			<input type="text" name="observaciones" size="20" '<c:forEach begin="0" items="${sessionScope.listaCalObs}" var="lista7" varStatus="st">' '<c:if test="${lista7.codPropuesta==lista.codPropuesta}">' value="${lista7.observa}" '</c:if>' '</c:forEach>' disabled>
+			<textarea name="observaciones"  disabled ><c:forEach begin="0" items="${sessionScope.listaCalObs}" var="lista7" varStatus="st"> <c:if test="${lista7.codPropuesta==lista.codPropuesta}"> <c:out value="${lista7.observa}" /> </c:if> </c:forEach></textarea>
 		</td>
 	</tr>
 			</c:if>

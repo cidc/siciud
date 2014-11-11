@@ -16,6 +16,7 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
+import cidc.convocatorias.obj.ConvocatoriaOBJ;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.obj.Globales;
@@ -202,15 +203,16 @@ public class ProyectosAntiguosDB extends  BaseDB {
 	   PreparedStatement ps = null;
 	   int i = 1;
        String comp = "";
-       if(proyecto.getTipo()== 2)
-       {
-    	 comp = proyecto.getCompromisos()[0];
-         for(int j=0; j<= proyecto.getCompromisos().length-1; j++)
-		    {
-        	 if (j!=0)
-        	 {comp = comp + ","+proyecto.getCompromisos()[j];}
-        	}
-       }
+       proyecto.setTipo(1);
+//       if(proyecto.getTipo()== 2)
+//       {
+//    	 comp = proyecto.getCompromisos()[0];
+//         for(int j=0; j<= proyecto.getCompromisos().length-1; j++)
+//		    {
+//        	 if (j!=0)
+//        	 {comp = comp + ","+proyecto.getCompromisos()[j];}
+//        	}
+//       }
 	   try
 	   {
 		cn = cursor.getConnection(super.perfil);
@@ -1631,4 +1633,31 @@ public class ProyectosAntiguosDB extends  BaseDB {
 		}
 		return retorno;
 	}
+	
+	public List<ConvocatoriaOBJ> consultarConvocatorias(){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<ConvocatoriaOBJ> lista=new ArrayList<ConvocatoriaOBJ>(); 
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("consultaConvocatorias"));
+			System.out.println("consulta "+ps.toString());
+			rs=ps.executeQuery();
+			while (rs.next()) {
+				int i=1;
+				ConvocatoriaOBJ conv=new ConvocatoriaOBJ();
+				conv.setConvNombre(rs.getString(i++));
+				conv.setConvId(rs.getInt(i++));
+				lista.add(conv);
+			}
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}		
+		return lista;
+	}
+	
 }

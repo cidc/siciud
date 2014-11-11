@@ -102,7 +102,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t<CAPTION>Filtro de consulta</CAPTION>\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<th><b>Facultad:</b></th>\r\n");
-      out.write("\t\t\t<th colspan=\"3\"><b>Proyecto Curricular:</b></th>\r\n");
+      out.write("\t\t\t<th colspan=\"4\"><b>Proyecto Curricular:</b></th>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td>\r\n");
@@ -115,7 +115,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t\t\t\t\t<option value=\"5\">Asab</option>\r\n");
       out.write("\t\t\t\t</select>\r\n");
       out.write("\t\t\t</td>\r\n");
-      out.write("\t\t\t<td colspan=\"3\">\r\n");
+      out.write("\t\t\t<td colspan=\"4\">\r\n");
       out.write("\t\t\t\t<select name=\"proyCur\" style=\"width:100%\">\r\n");
       out.write("\t\t\t\t\t<option value=''>----------------------------------------</option>\r\n");
       out.write("\t\t\t\t");
@@ -129,7 +129,8 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t\t\t<th><b>Codigo:</b></th>\r\n");
       out.write("\t\t\t<th><b>Estado:</b></th>\r\n");
       out.write("\t\t\t<th><b>Tipo Grupo:</b></th>\r\n");
-      out.write("\t\t\t<th><b>Tipo Proyecto</b></th>\r\n");
+      out.write("\t\t\t<th><b>Tipo Convocatoria</b></th>\r\n");
+      out.write("\t\t\t<th><b>Año</b></th>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td width=\"25%\"><input type=\"text\" name=\"codigo\" \tstyle=\"width: 100%\"></td>\r\n");
@@ -154,20 +155,33 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t                    </select>\r\n");
       out.write("\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t</table>\r\n");
+      out.write("\t\t\t</td>\r\n");
+      out.write("\t\t\t<td>\r\n");
+      out.write("\t\t\t\t<select width=\"25%\" name=\"tipoConvocatoria\">\r\n");
+      out.write("\t\t\t\t\t<option value=\"1\">Proyectos de Investigación</option>\r\n");
+      out.write("\t\t\t\t\t<option value=\"3\">Apoyo a Grupos y Semilleros</option>\r\n");
+      out.write("\t\t\t\t</select>\r\n");
       out.write("\t\t\t</td>\t\t\t\r\n");
       out.write("\t\t\t<td>\r\n");
-      out.write("\t\t\t\t<select name=\"tipoProyecto\" onchange=\"ajaxTipoProy(this)\">\r\n");
+      out.write("\t\t\t<select width=\"25%\" name=\"ano\">\r\n");
+      out.write("\t\t\t<option value=\"\">-----</option>\r\n");
+      out.write("\t\t\t");
+      if (_jspx_meth_c_005fforEach_005f1(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("\t\t\t</select>\r\n");
+      out.write("\t\t\t\t<!-- <select name=\"tipoProyecto\" onchange=\"ajaxTipoProy(this)\">\r\n");
       out.write("\t\t\t\t\t<option value=\"\" >----------</option>\r\n");
       out.write("\t\t\t\t\t<option value=\"1\">Convocatoria</option>\r\n");
       out.write("\t\t\t\t\t<option value=\"2\">Convenio</option>\r\n");
-      out.write("\t\t\t\t</select>\r\n");
+      out.write("\t\t\t\t</select> -->\r\n");
       out.write("\t\t\t</td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<td colspan=\"4\" class=\"renglones\"><b><span id=\"para\">Grupo Investigación</span></b></td>\r\n");
+      out.write("\t\t\t<td colspan=\"5\" class=\"renglones\"><b><span id=\"para\">Grupo Investigación</span></b></td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<td colspan=\"4\">\r\n");
+      out.write("\t\t\t<td colspan=\"5\">\r\n");
       out.write("\t\t\t\t<select name=\"grupo\" onchange=\"ajaxInvestigadores(this)\">\r\n");
       out.write("\t\t\t\t\t<option value=''>----------------------------------------</option>\r\n");
       out.write("\t\t\t\t");
@@ -178,20 +192,20 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       out.write("\t\t\t</td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr> \r\n");
-      out.write("\t\t\t<th colspan=\"4\">Nombre del Proyecto</th>\r\n");
+      out.write("\t\t\t<th colspan=\"5\">Nombre del Proyecto</th>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"nombreProyecto\"></td>\r\n");
+      out.write("\t\t\t<td colspan=\"5\"><input type=\"text\" name=\"nombreProyecto\"></td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr> \r\n");
-      out.write("\t\t\t<th colspan=\"4\">Palabras Claves</th>\r\n");
+      out.write("\t\t\t<th colspan=\"5\">Palabras Claves</th>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<td colspan=\"4\"><input type=\"text\" name=\"palabrasClaves\"></td>\r\n");
+      out.write("\t\t\t<td colspan=\"5\"><input type=\"text\" name=\"palabrasClaves\"></td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t\t\t\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<td colspan=\"4\" align=\"center\"><input type=\"image\" src='");
+      out.write("\t\t\t<td colspan=\"5\" align=\"center\"><input type=\"image\" src='");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
       out.write("'></td>\r\n");
@@ -222,7 +236,6 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
-        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -414,53 +427,21 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
     return false;
   }
 
-  private boolean _jspx_meth_c_005fif_005f1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fif_005f1.setParent(null);
-    // /adminProyectos/FiltroProyectosGeneral.jsp(99,4) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!empty sessionScope.ajaxGrupos}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
-    if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("\t\t\t\t\t");
-        if (_jspx_meth_c_005fforEach_005f1(_jspx_th_c_005fif_005f1, _jspx_page_context))
-          return true;
-        out.write("\r\n");
-        out.write("\t\t\t\t");
-        int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fif_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fforEach_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f1, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005fforEach_005f1(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:forEach
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_005fforEach_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fforEach_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f1);
-    // /adminProyectos/FiltroProyectosGeneral.jsp(100,5) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setParent(null);
+    // /adminProyectos/FiltroProyectosGeneral.jsp(94,3) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setBegin(0);
-    // /adminProyectos/FiltroProyectosGeneral.jsp(100,5) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.ajaxGrupos}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /adminProyectos/FiltroProyectosGeneral.jsp(100,5) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fforEach_005f1.setVar("grupos");
-    // /adminProyectos/FiltroProyectosGeneral.jsp(100,5) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/FiltroProyectosGeneral.jsp(94,3) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.ano}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    // /adminProyectos/FiltroProyectosGeneral.jsp(94,3) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f1.setVar("ano");
+    // /adminProyectos/FiltroProyectosGeneral.jsp(94,3) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fforEach_005f1.setVarStatus("st");
     int[] _jspx_push_body_count_c_005fforEach_005f1 = new int[] { 0 };
     try {
@@ -468,15 +449,14 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\t\t\t\t<option value='");
+          out.write("\t\t\t\t<option value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ano}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write('"');
+          out.write('>');
           if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
             return true;
-          out.write('\'');
-          out.write('>');
-          if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fforEach_005f1, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f1))
-            return true;
           out.write("</option>\r\n");
-          out.write("\t\t\t\t\t");
+          out.write("\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -504,8 +484,8 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /adminProyectos/FiltroProyectosGeneral.jsp(101,21) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${grupos.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    // /adminProyectos/FiltroProyectosGeneral.jsp(95,27) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ano}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f2);
@@ -515,22 +495,123 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
     return false;
   }
 
-  private boolean _jspx_meth_c_005fout_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f1)
+  private boolean _jspx_meth_c_005fif_005f1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f1.setParent(null);
+    // /adminProyectos/FiltroProyectosGeneral.jsp(112,4) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${!empty sessionScope.ajaxGrupos}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
+    if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("\t\t\t\t\t");
+        if (_jspx_meth_c_005fforEach_005f2(_jspx_th_c_005fif_005f1, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("\t\t\t\t");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f1, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f1);
+    // /adminProyectos/FiltroProyectosGeneral.jsp(113,5) name = begin type = int reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setBegin(0);
+    // /adminProyectos/FiltroProyectosGeneral.jsp(113,5) name = items type = java.lang.Object reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.ajaxGrupos}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    // /adminProyectos/FiltroProyectosGeneral.jsp(113,5) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setVar("grupos");
+    // /adminProyectos/FiltroProyectosGeneral.jsp(113,5) name = varStatus type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setVarStatus("st");
+    int[] _jspx_push_body_count_c_005fforEach_005f2 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f2 = _jspx_th_c_005fforEach_005f2.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("\t\t\t\t\t\t<option value='");
+          if (_jspx_meth_c_005fout_005f3(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write('\'');
+          out.write('>');
+          if (_jspx_meth_c_005fout_005f4(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
+            return true;
+          out.write("</option>\r\n");
+          out.write("\t\t\t\t\t");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f2.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f2.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvarStatus_005fvar_005fitems_005fbegin.reuse(_jspx_th_c_005fforEach_005f2);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:out
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f3.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f1);
-    // /adminProyectos/FiltroProyectosGeneral.jsp(101,56) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fout_005f3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${grupos.nombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    _jspx_th_c_005fout_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminProyectos/FiltroProyectosGeneral.jsp(114,21) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${grupos.codigo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f3 = _jspx_th_c_005fout_005f3.doStartTag();
     if (_jspx_th_c_005fout_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f3);
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f3);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fout_005f4(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fforEach_005f2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_005fforEach_005f2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fout_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f2);
+    // /adminProyectos/FiltroProyectosGeneral.jsp(114,56) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${grupos.nombre}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
+    if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f4);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f4);
     return false;
   }
 
@@ -542,7 +623,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f2 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f2.setParent(null);
-    // /adminProyectos/FiltroProyectosGeneral.jsp(121,59) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/FiltroProyectosGeneral.jsp(134,59) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f2.setValue("/comp/img/Buscar.gif");
     int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
     if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -561,7 +642,7 @@ public final class FiltroProyectosGeneral_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f3 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f3.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f3.setParent(null);
-    // /adminProyectos/FiltroProyectosGeneral.jsp(133,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/FiltroProyectosGeneral.jsp(146,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f3.setValue("/GestionProyectos/Ajax.x");
     int _jspx_eval_c_005furl_005f3 = _jspx_th_c_005furl_005f3.doStartTag();
     if (_jspx_th_c_005furl_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

@@ -254,7 +254,7 @@ public final class Cargar_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("'>\r\n");
       out.write("\t\t\t\t\t</td>\r\n");
-      out.write("\t\t\t\t\t<td valign=\"middle\"><b>Paso 3 de 3</b></td>\r\n");
+      out.write("\t\t\t\t\t<td valign=\"middle\"><b>Paso 2 de 2</b></td>\r\n");
       out.write("\t\t\t\t</tr>\r\n");
       out.write("\t\t\t</table>\r\n");
       out.write("\t\t</form>\r\n");

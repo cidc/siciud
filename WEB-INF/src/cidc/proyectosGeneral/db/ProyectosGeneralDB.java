@@ -80,6 +80,8 @@ public class ProyectosGeneralDB extends BaseDB {
 			ps.setString(i++, filtro.getTipoProyecto());
 			ps.setString(i++, filtro.getNombreProyecto());	
 			ps.setString(i++, filtro.getPalabrasClaves());
+			ps.setString(i++, (filtro.getAno()==null)?"%":"%"+filtro.getAno()+"%");
+			ps.setInt(i++, filtro.getTipoConvocatoria());
 
 			ps.setString(i++, filtro.getFacultad());
 			ps.setString(i++, filtro.getProyCur());
@@ -90,7 +92,10 @@ public class ProyectosGeneralDB extends BaseDB {
 			ps.setString(i++, filtro.getTipoProyecto());
 			ps.setString(i++, filtro.getNombreProyecto());
 			ps.setString(i++, filtro.getPalabrasClaves());
+			ps.setString(i++, (filtro.getAno()==null)?"%":filtro.getAno());
+			ps.setInt(i++, filtro.getTipoConvocatoria());
 			
+			System.out.println("consulta "+ps.toString());
 			rs=ps.executeQuery();
 			i=1;
 			while(rs.next()){
@@ -189,6 +194,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
+		ResultSet rs1=null;
 		Globales g= new Globales();
 		String fechas=null;
 		int i=1;
@@ -196,6 +202,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("verProyecto1"));
 			ps.setLong(1, Long.parseLong(id));
+			System.out.println(ps.toString());
 			rs=ps.executeQuery();
 			while(rs.next()){
 				i=1;
@@ -226,6 +233,18 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setEjecucion(""+(Integer.parseInt(proyecto.getDuracion())-4));
 				proyecto.setInformes("1");
 				proyecto.setEvaluacion("3");
+				String[] numConv =proyecto.getNumConvocatoria().split("-");
+				//esta condicion es para buscar el documento de propuesta para proyectos del 2014 en adelante
+				if(Integer.parseInt(numConv[1])>=2014){
+					ps=cn.prepareStatement(rb.getString("archivoProyecto"));
+					ps.setLong(1, Long.parseLong(id));
+					System.out.println(ps.toString());
+					rs1=ps.executeQuery();
+					while(rs1.next()){
+						int j=1;
+						proyecto.setArchivo(rs1.getString(j++));
+					}
+				}
 				/********************************************/
 				
 				proyecto.setValor(calculoValor(cn,id));
@@ -249,6 +268,9 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setFecActaFin(rs.getString(i++));
 				proyecto.setIdActaFin(rs.getInt(i++));
 				proyecto.setDocumento(rs.getString(i++));
+				proyecto.setTutor(rs.getString(i++));
+				if(proyecto.getTutor().equals(proyecto.getDirector()))
+					proyecto.setTutor(null);
 				/********************************************/		
 				
 				
@@ -1000,7 +1022,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		PreparedStatement ps=null;
 		int i=1;
 		try {
-			retorno=buscarPlaca(gasto.getCodigo(),proyecto.getClaseProyecto());
+			retorno=buscarPlaca(gasto.getCodigo());
 			if(!retorno){
 				cn=cursor.getConnection(super.perfil);
 				ps=cn.prepareStatement(rb.getString("registraGasto"+proyecto.getClaseProyecto()));
@@ -1440,7 +1462,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		return listaCompromisos;
 	}
 	
-	public boolean buscarPlaca(String placa, int tipo) {
+	public boolean buscarPlaca(String placa) {
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -1448,7 +1470,8 @@ public class ProyectosGeneralDB extends BaseDB {
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("buscarPlaca"+tipo));
+			ps=cn.prepareStatement(rb.getString("buscarPlaca"));
+			ps.setString(i++,placa);
 			ps.setString(i++,placa);
 			rs=ps.executeQuery();
 			while(rs.next()){

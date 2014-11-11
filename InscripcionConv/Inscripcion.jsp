@@ -460,11 +460,11 @@
 		</fieldset>
 		<c:if test="${sessionScope.datosConv.convAno!=2012 and (sessionScope.datosConv.convNumero!=5 or sessionScope.datosConv.convNumero!=6 or sessionScope.datosConv.convNumero!=17)}">
 		<fieldset style="width:80%;">
-    	<legend class="texto1"><b>Equipo de trabajo Co-Investigadores</b></legend>
+    	<legend class="texto1"><b>Equipo de trabajo Investigadores</b></legend>
 			<table class="tablas" width="100%">
 			<CAPTION>Equipo de Trabajo</CAPTION>
 				<tr>
-					<td align="center"><b>Favor Seleccionar la cantidad de Co-investigadores que conforman su equipo de trabajo</b></td>
+					<td align="center"><b>Favor Seleccionar la cantidad de Investigadores que conforman su equipo de trabajo</b></td>
 				</tr>
 				<tr>
 					<th><b>Cantidad</b>

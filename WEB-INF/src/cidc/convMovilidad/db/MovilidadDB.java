@@ -584,6 +584,8 @@ public class MovilidadDB extends BaseDB{
 		texto.append(persona.getNombre());
 		texto.append(rb1.getString("e2"));
 		texto.append(persona.getNombGrupo());
+		texto.append(rb1.getString("eid"));
+		texto.append(general.getIdPropuesta());
 		texto.append(rb1.getString("e3"));
 		texto.append(general.getTipoLetra());
 		texto.append(rb1.getString("e4"));
@@ -608,8 +610,8 @@ public class MovilidadDB extends BaseDB{
 		texto.append(general.getFechaInicio());
 		texto.append(rb1.getString("e14"));
 		texto.append(general.getFechaFin());
-		texto.append(rb1.getString("e15"));
-		texto.append(rb1.getString("e16"));
+//		texto.append(rb1.getString("e15"));
+//		texto.append(rb1.getString("e16"));
 		if (req!=null) {
 			//texto.append(req.getCompromisos1()+"<br>"+req.getCompromisos2());
 			texto.append(req.getCompromisos1() + "<br>");

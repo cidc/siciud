@@ -14,6 +14,7 @@ import cidc.adminGrupos.db.AdminGruposDB;
 import cidc.adminPropuestas.db.AdminPropuestaDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
+import cidc.general.obj.Globales;
 import cidc.general.servlet.ServletGeneral;
 import cidc.proyectosGeneral.obj.CoInvest;
 import cidc.proyectosGeneral.obj.Devolutivo;
@@ -139,7 +140,7 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				if(proyectosGeneralDB.registraGasto((GastosRubro)sesion.getAttribute("RegistraGasto"),proyecto))
 					mensaje="El registro fue insertado correctamente";
 				else
-					mensaje="El registro no pudo ser insertado correctamente";
+					mensaje="La placa que intenta registrar ya existe";
 				req.setAttribute("bandera","si");
 				sesion.removeAttribute("RegistraGasto");
 				irA="/adminProyectos/ListaGastos.jsp";
@@ -235,6 +236,8 @@ public class AdminGeneralProyectos extends ServletGeneral {
 			break;
 			default:
 				irA="/adminProyectos/FiltroProyectosGeneral.jsp";
+				Globales glob = new Globales();
+				req.setAttribute("ano", glob.listarAnos("1999"));
 				sesion.setAttribute("ajaxProyCur",proyectosGeneralDB.AjaxProyectoCur());
 			break;
 		}		

@@ -258,9 +258,9 @@
 	<td>
 		<img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()">
 		</td>
-	<td><%if(loginUsuario.isPerfil("1")){ %>
+	<%-- <td><%if(loginUsuario.isPerfil("1")){ %>
 		<img src="<c:url value="/comp/img/Actualizar.gif"/>" onclick="actualizar()">
-		<%}%></td>
+		<%}%></td> --%>
 	</tr>
 	</table>
 	</form>

@@ -27,7 +27,7 @@
 	<CAPTION>Filtro de consulta</CAPTION>
 		<tr>
 			<th><b>Facultad:</b></th>
-			<th colspan="3"><b>Proyecto Curricular:</b></th>
+			<th colspan="4"><b>Proyecto Curricular:</b></th>
 		</tr>
 		<tr>
 			<td>
@@ -40,7 +40,7 @@
 					<option value="5">Asab</option>
 				</select>
 			</td>
-			<td colspan="3">
+			<td colspan="4">
 				<select name="proyCur" style="width:100%">
 					<option value=''>----------------------------------------</option>
 				<c:if test="${!empty sessionScope.ajaxProyCur}">
@@ -55,7 +55,8 @@
 			<th><b>Codigo:</b></th>
 			<th><b>Estado:</b></th>
 			<th><b>Tipo Grupo:</b></th>
-			<th><b>Tipo Proyecto</b></th>
+			<th><b>Tipo Convocatoria</b></th>
+			<th><b>Año</b></th>
 		</tr>
 		<tr>
 			<td width="25%"><input type="text" name="codigo" 	style="width: 100%"></td>
@@ -80,20 +81,32 @@
 	                    </select>
 					</tr>
 				</table>
+			</td>
+			<td>
+				<select width="25%" name="tipoConvocatoria">
+					<option value="1">Proyectos de Investigación</option>
+					<option value="3">Apoyo a Grupos y Semilleros</option>
+				</select>
 			</td>			
 			<td>
-				<select name="tipoProyecto" onchange="ajaxTipoProy(this)">
+			<select width="25%" name="ano">
+			<option value="">-----</option>
+			<c:forEach begin="0" items="${requestScope.ano}" var="ano" varStatus="st">
+				<option value="${ano}"><c:out value="${ano}"/></option>
+			</c:forEach>
+			</select>
+				<!-- <select name="tipoProyecto" onchange="ajaxTipoProy(this)">
 					<option value="" >----------</option>
 					<option value="1">Convocatoria</option>
 					<option value="2">Convenio</option>
-				</select>
+				</select> -->
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" class="renglones"><b><span id="para">Grupo Investigación</span></b></td>
+			<td colspan="5" class="renglones"><b><span id="para">Grupo Investigación</span></b></td>
 		</tr>
 		<tr>
-			<td colspan="4">
+			<td colspan="5">
 				<select name="grupo" onchange="ajaxInvestigadores(this)">
 					<option value=''>----------------------------------------</option>
 				<c:if test="${!empty sessionScope.ajaxGrupos}">
@@ -105,20 +118,20 @@
 			</td>
 		</tr>
 		<tr> 
-			<th colspan="4">Nombre del Proyecto</th>
+			<th colspan="5">Nombre del Proyecto</th>
 		</tr>
 		<tr>
-			<td colspan="4"><input type="text" name="nombreProyecto"></td>
+			<td colspan="5"><input type="text" name="nombreProyecto"></td>
 		</tr>
 		<tr> 
-			<th colspan="4">Palabras Claves</th>
+			<th colspan="5">Palabras Claves</th>
 		</tr>
 		<tr>
-			<td colspan="4"><input type="text" name="palabrasClaves"></td>
+			<td colspan="5"><input type="text" name="palabrasClaves"></td>
 		</tr>
 				
 		<tr>
-			<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Buscar.gif"/>'></td>
+			<td colspan="5" align="center"><input type="image" src='<c:url value="/comp/img/Buscar.gif"/>'></td>
 		</tr>
 	</table>
 	</form>

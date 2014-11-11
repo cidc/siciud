@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -1001,7 +1002,9 @@ public class AdminGruposDB extends BaseDB{
 	//		System.out.println("consulta en post nula");
 			//insertar en personal e investigadores post.
 			objA=objB;
-
+			Globales glob= new Globales();
+			glob.splitFechaSimple(new Date());
+			objA.setFechaVinculacion(glob.getAnoHoy()+"-"+glob.getMesHoy()+"-"+glob.getDiaHoy());
 			objA.setCodFacultad(facultad(objA.getCodFacultad()));
 			objA.setFlag(0);
 	//		System.out.println("consulta hecha desde Oracle");
@@ -1054,7 +1057,6 @@ public class AdminGruposDB extends BaseDB{
 			}
 		}
 		objA.setProyectosCurriculares(AjaxProyectoCur(objA.getCodFacultad()));
-	
 		return objA;
 	}
 
@@ -1141,6 +1143,24 @@ public class AdminGruposDB extends BaseDB{
 			
 			System.out.println("---insertando-->"+datosIntegrante.getFlag());
 			if(datosIntegrante.getFlag()==1){
+				st = cn.prepareStatement(rb.getString("insertarPersonaExt"));
+				st.setString(i++, datosIntegrante.getCedula());
+				st.setInt(i++, datosIntegrante.getTipoCed());
+				st.setString(i++, datosIntegrante.getDeCed());
+				st.setInt(i++, datosIntegrante.getGenero());
+				st.setString(i++, datosIntegrante.getNombres());
+				st.setString(i++, datosIntegrante.getApellidos());
+				st.setString(i++, datosIntegrante.getTel1());
+				st.setString(i++, datosIntegrante.getTel2());
+				st.setString(i++, datosIntegrante.getCel1());
+				st.setString(i++, datosIntegrante.getCel2());
+				st.setString(i++, datosIntegrante.getMail());
+				st.setString(i++, datosIntegrante.getMailInst());
+				st.setString(i++, datosIntegrante.getFechaIngreso());
+				st.setString(i++, datosIntegrante.getFechaSalida());
+				st.setString(i++, datosIntegrante.getCvlac());
+				System.out.println("insertar persona ext: " + st.toString());
+				st.execute();
 				insertarInvestigador(cn,datosIntegrante,idGrupo);
 			}
 			if(datosIntegrante.getFlag()==0){
@@ -1171,7 +1191,7 @@ public class AdminGruposDB extends BaseDB{
 					else
 						st.setDouble(i++, Double.parseDouble(datosIntegrante
 								.getCodigoUd()));
-					st.executeUpdate();
+					st.execute();
 					System.out.println("insertar persona: " + st.toString());
 				}else{
 					datosIntegrante.setId(Long.parseLong(idPersona));
@@ -1205,7 +1225,7 @@ public class AdminGruposDB extends BaseDB{
 				else
 					st.setDouble(i++, Double.parseDouble(datosIntegrante.getCodigoUd()));
 				st.setLong(i++,datosIntegrante.getId());
-				st.executeUpdate();
+				st.execute();
 				insertarInvestigador(cn,datosIntegrante,idGrupo);
 			}
 			cn.commit();
@@ -1254,23 +1274,21 @@ public class AdminGruposDB extends BaseDB{
 		ResultSet rs=null;
 		int i=1;
 		System.out.println("---insertando investigador-->"+datosIntegrante.getFlag());
-		if(datosIntegrante.getFlag()==0){
-			st=cn.prepareStatement(rb.getString("insertarInvestigador"));
-			System.out.println("Inserto inv 1 \n");
-		}else{
-			st=cn.prepareStatement(rb.getString("insertarInvestigador2"));
-			st.setLong(i++,datosIntegrante.getId());
-			System.out.println("Inserto inv 2 \n");
+		if(datosIntegrante.getId()!=0){
+						st=cn.prepareStatement(rb.getString("insertarInvestigadorAntiguo"));
+						st.setLong(i++, datosIntegrante.getId());
 		}
-
+		else
+						st=cn.prepareStatement(rb.getString("insertarInvestigador"));
+		System.out.println("Inserto inv 1 \n");
 		st.setInt(i++, datosIntegrante.getCodFacultad());
 		st.setLong(i++, idGrupo);
 		st.setInt(i++, datosIntegrante.getCodproyCurr());
 		st.setInt(i++, datosIntegrante.getPapel());
 		st.setString(i++, datosIntegrante.getFechaVinculacion());
 		st.setString(i++, datosIntegrante.getFechaSalidaGrupo());
-		st.executeUpdate();
 		System.out.println("insertar persona: "+st.toString());
+		st.executeUpdate();
 		System.out.println("\nEl nick2 de la persona es: "+ completeid(datosIntegrante)+"\n");
 		retorno=true;
 			
