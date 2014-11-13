@@ -20,6 +20,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import cidc.adminInformes.obj.Parametros;
+import cidc.bizagi.soa.WorkflowEngineSOA;
+import cidc.bizagi.soa.WorkflowEngineSOAImplService;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
@@ -155,9 +157,25 @@ public class CargarInformes extends ServletGeneral{
 			case cidc.proyectos.obj.Parametros.CARGARSOLICITUDRUBRO:
 				System.out.println("entre");
 			try {
-				cargarDocumento.cargarGenerico(path, archivoAdj, "/Bizagi", "ModRub-", 1);
-				req.setAttribute("visible", false);
-				irA="/grupos/proyectos/SolModRub.jsp";
+				String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">" +
+						"<soapenv:Header/><soapenv:Body><soa:createCasesAsString><!--Optional:--><arg0><![CDATA[<BizAgiWSParam><domain>domain</domain>" +
+						"<userName>admon</userName><Cases><Case><Process>ModificacionRubros</Process><Entities><ModificacionRubros><Persona busnessKey=\"DocumentodeIdentidadNIT=1016029813\">" +
+						"<DocumentodeIdentidadNIT>1016029813</DocumentodeIdentidadNIT><CorreoElectronico>falsoCess13@gmail.com</CorreoElectronico>" +
+						"<NombreRazonSocial>chapulin colorado 13</NombreRazonSocial></Persona><Proyecto><NombredelProyecto>proyecto falso 13</NombredelProyecto>" +
+						"<CodigodelProyecto>2-2-2-2</CodigodelProyecto></Proyecto></ModificacionRubros></Entities></Case></Cases></BizAgiWSParam>]]></arg0>" +
+						"</soa:createCasesAsString></soapenv:Body></soapenv:Envelope>";
+				cargarDocumento.cargarGenerico(path, archivoAdj, "/Bizagi",
+						"ModRub-", 1);
+				WorkflowEngineSOAImplService wfs = new WorkflowEngineSOAImplService();
+				WorkflowEngineSOA wfe = wfs.getWorkflowEngineSOAImplPort();
+				String respWS =null;
+				if(!(respWS= wfe.createCasesAsString(xml)).equals(null)){
+					req.setAttribute("visible", false);
+					ProyectosInvestigadorDB proyDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
+					proyDB.guardarSolicitudBPM(usuario, null, "Modificacion de Proyecto", path);
+					System.out.println(respWS);
+				}
+				irA = "/grupos/proyectos/SolModRub.jsp";
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -562,6 +562,11 @@ public class ProyectosInvestigadorDB extends BaseDB {
 		return usuario;
 	}
 
+	/**
+	 * El metodo se encarga de actualizar los datos del usuario para que pueda realizar una solicitud al sistema BPM Bizagi
+	 * @param usuario debe contener el correo electronico, telefono celular, direccion de correspondencia, y id de usuario
+	 * @return retorna verdadero si la operacion es exitosa.
+	 */
 	public boolean actualizarDatos(Usuario usuario){
 		PreparedStatement ps=null;
 		Connection cn=null;
@@ -578,6 +583,32 @@ public class ProyectosInvestigadorDB extends BaseDB {
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		return retorno;
+	}
+	
+	/**
+	 * El metodo se encarga de guardar la informacion necesaria para llevar el historial de solicitudes creadas desde SICIUD a Bizagi
+	 * @param usuario el objeto debe contener el id del usuario
+	 * @param proy el objeto debe contener el id del proyecto de investigacion 
+	 * @param tipoSol especifica que tipo de solicitud se esta ralizando
+	 * @param url especifica la direccion del documento de solicitud en el servidor
+	 * @return retorna verdadero si la operacion es exitosa
+	 */
+	public boolean guardarSolicitudBPM(Usuario usuario, Proyecto proy, String tipoSol,String url){
+		PreparedStatement ps=null;
+		Connection cn=null;
+		boolean retorno=false;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("crearSolicitud"));
+			ps.setLong(i++, usuario.getIdUsuario());
+			ps.setInt(i++, Integer.parseInt(proy.getId()));
+			ps.setString(i++, tipoSol);
+			ps.setString(i++, url);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return retorno;
 	}
