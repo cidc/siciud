@@ -1,6 +1,9 @@
 package cidc.general.obj;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -18,6 +21,8 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.codec.binary.Base64;
 
 import cidc.general.login.Usuario;
 
@@ -388,5 +393,29 @@ public class Globales{
 			inicio++;
 		}
 		return lista;
+	}
+	
+	/**
+	 * El metodo codifica un archivo a base64 
+	 * @param file
+	 * @return
+	 */
+	public String convertirBase64(File file){
+		byte[] fileArray = new byte[(int) file.length()];
+		InputStream inputStream;
+		Base64 base64 = new Base64();
+		String encodedFile = "";
+		try {
+			inputStream = new FileInputStream(file);
+			inputStream.read(fileArray);
+			encodedFile = base64.encodeToString(fileArray);
+			inputStream.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(encodedFile);	
+		
+		return encodedFile;
+		
 	}
 }

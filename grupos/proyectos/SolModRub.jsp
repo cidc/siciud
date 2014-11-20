@@ -93,6 +93,14 @@ function validarNum(){
 			<td>Carta de Solicitud de Modificación de Rubros</td>
 			<td><input type="file" id="archivo" name="archivo" ></td>
 		</tr>
+		<tr><td>
+		<select name="tipoModificacion">
+						<option value="1">Modificación de Rubros</option>
+						<option value="2">Extensión</option>
+						<option value="3">Suspensión</option>
+						<option value="4">Prórroga</option>
+		</select>
+		<td></tr>
 		<tr><td colspan="2" align="center"><img border="0" src='<c:url value="/comp/img/CargaDoc.gif"/>' onclick="guardar(30)"/></td></tr>
 	</table>
 </form>

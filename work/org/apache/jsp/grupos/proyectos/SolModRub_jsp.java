@@ -575,6 +575,14 @@ public final class SolModRub_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t<td>Carta de Solicitud de Modificación de Rubros</td>\r\n");
         out.write("\t\t\t<td><input type=\"file\" id=\"archivo\" name=\"archivo\" ></td>\r\n");
         out.write("\t\t</tr>\r\n");
+        out.write("\t\t<tr><td>\r\n");
+        out.write("\t\t<select name=\"tipoModificacion\">\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"1\">Modificación de Rubros</option>\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"2\">Extensión</option>\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"3\">Suspensión</option>\r\n");
+        out.write("\t\t\t\t\t\t<option value=\"4\">Prórroga</option>\r\n");
+        out.write("\t\t</select>\r\n");
+        out.write("\t\t<td></tr>\r\n");
         out.write("\t\t<tr><td colspan=\"2\" align=\"center\"><img border=\"0\" src='");
         if (_jspx_meth_c_005furl_005f7(_jspx_th_c_005fif_005f1, _jspx_page_context))
           return true;
@@ -602,7 +610,7 @@ public final class SolModRub_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f7 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f1);
-    // /grupos/proyectos/SolModRub.jsp(96,58) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /grupos/proyectos/SolModRub.jsp(104,58) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f7.setValue("/comp/img/CargaDoc.gif");
     int _jspx_eval_c_005furl_005f7 = _jspx_th_c_005furl_005f7.doStartTag();
     if (_jspx_th_c_005furl_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
