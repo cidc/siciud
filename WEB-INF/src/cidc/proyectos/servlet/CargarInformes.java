@@ -82,9 +82,6 @@ public class CargarInformes extends ServletGeneral{
 				            	}
 				            	if(item.getFieldName().equals("observaciones"))
 				            		docNuevo.setObservaciones(item.getString());
-				            	if(item.getFieldName().equals("tipoModificacion")){
-				            		 tipoMod=Integer.parseInt(item.getString());
-				            	}
 			            }else{
 			            	archivoAdj=item;
 			            }
@@ -159,29 +156,9 @@ public class CargarInformes extends ServletGeneral{
 				break;
 				
 			case cidc.proyectos.obj.Parametros.CARGARSOLICITUDRUBRO:
-				System.out.println("entre");
 			try {
-				//System.out.println(tipoMod); esto hay que pasarlo a palabras
-				String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">" +
-						"<soapenv:Header/><soapenv:Body><soa:createCasesAsString><!--Optional:--><arg0><![CDATA[<BizAgiWSParam><domain>domain</domain>" +
-						"<userName>admon</userName><Cases><Case><Process>ModificacionRubros</Process><Entities><ModificacionRubros><Persona busnessKey=\"DocumentodeIdentidadNIT=1016029813\">" +
-						"<DocumentodeIdentidadNIT>1016029813</DocumentodeIdentidadNIT><CorreoElectronico>falsoCess13@gmail.com</CorreoElectronico>" +
-						"<NombreRazonSocial>chapulin colorado 13</NombreRazonSocial></Persona><Proyecto><NombredelProyecto>proyecto falso 13</NombredelProyecto>" +
-						"<CodigodelProyecto>2-2-2-2</CodigodelProyecto></Proyecto><TipoRequerimiento businessKey=\"ModificacionRubros='Prórroga'\"/></ModificacionRubros></Entities></Case></Cases></BizAgiWSParam>]]></arg0>" +
-						"</soa:createCasesAsString></soapenv:Body></soapenv:Envelope>";
-				File base64= new File(path+"/Documentos/Bizagi/"+cargarDocumento.cargarGenerico(path, archivoAdj, "/Bizagi","ModRub-", 1));
-				Globales glob= new Globales();
-				String archivoBase64 = glob.convertirBase64(base64);
-				WorkflowEngineSOAImplService wfs = new WorkflowEngineSOAImplService();
-				WorkflowEngineSOA wfe = wfs.getWorkflowEngineSOAImplPort();
-				String respWS =null;
-				if(!(respWS= wfe.createCasesAsString(xml)).equals(null)){
-					req.setAttribute("visible", false);
-					ProyectosInvestigadorDB proyDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
-					proyDB.guardarSolicitudBPM(usuario, null, "Modificacion de Proyecto", path);
-					System.out.println(respWS);
-				}
-				irA = "/grupos/proyectos/SolModRub.jsp";
+				String nomArchivo=cargarDocumento.cargarGenerico(path, archivoAdj, "/Bizagi","ModRub-", 1);
+				irA = "/GestionProyectos/ProyectosInvestigador.x?accion=32&nomArchivo="+nomArchivo;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

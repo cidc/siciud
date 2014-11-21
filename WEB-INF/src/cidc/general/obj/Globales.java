@@ -413,7 +413,7 @@ public class Globales{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(encodedFile);	
+		//System.out.println(encodedFile);	
 		
 		return encodedFile;
 		

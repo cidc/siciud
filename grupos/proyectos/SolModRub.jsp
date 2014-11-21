@@ -51,8 +51,85 @@ function validarNum(){
 		</tr>
 	</table>
 </form>	
-<c:if test="${!requestScope.visible}">
-	<form name="formPersonal" method="post" onLoad="mensajeAlert(document.getElementById('msg'));">
+<table class="tablas" align="center" width="90%">
+	<CAPTION>Consulta Proyecto de Investigación</CAPTION>
+	<tr>
+		<td>
+		<table width="100%">
+			<tr>
+				<th style="width: 50px"><b>Año: </b></th>
+				<td><c:out value="${sessionScope.proyectoInvestigador.ano}" /></td>
+				<th><b>Codigo:</b></th>
+				<td><c:out value="${sessionScope.proyectoInvestigador.codigo}" /></td>
+				<th align="center"><b>Estado Proyecto: </b></th>
+				<td><c:out value="${sessionScope.proyectoInvestigador.estado}" /></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<th><b>Convocatoria:</b></th>
+	</tr>
+	<tr>
+		<td><c:out
+			value="${sessionScope.proyectoInvestigador.numConvocatoria}" /> - <c:out
+			value="${sessionScope.proyectoInvestigador.convocatoria}"
+			default="No registra Convocatoria" /></td>
+	</tr>
+	<tr>
+		<th><b>Nombre Proyecto:</b></th>
+	</tr>
+	<tr>
+		<td><c:out value="${sessionScope.proyectoInvestigador.nombre}" /></td>
+	</tr>
+
+	<tr>
+		<td>
+		<table width="100%">
+			<tr>
+				<th style="width: 210px"><b>Facultad:</b></th>
+				<th><b>Proyecto Curricular:</b></th>
+			</tr>
+			<tr>
+				<td><c:out
+					value="${sessionScope.proyectoInvestigador.facultad}" /></td>
+				<td><c:out
+					value="${sessionScope.proyectoInvestigador.proyCurricular}" /></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<tr>
+		<th><b>Grupo/Semillero:</b></th>
+	</tr>
+	<tr>
+		<td><c:out
+			value="${sessionScope.proyectoInvestigador.grupoInvestigacion}" /></td>
+	</tr>
+
+	<tr>
+		<td>
+		<table width="100%">
+			<tr>
+				<th><b>Investigador Principal:</b></th>
+				<th width="70px"><b>Duración:</b></th>
+				<th width="150px"><b>Presupuesto Aprobado:</b></th>
+			</tr>
+			<tr>
+				<td><c:out
+					value="${sessionScope.proyectoInvestigador.director}" /></td>
+				<td width="70px"><c:out
+					value="${sessionScope.proyectoInvestigador.duracion}" default="0" /> Meses</td>
+				<td style="text-align: right;width: 105px"><c:out
+					value="${sessionScope.proyectoInvestigador.valorLetras}" /></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	</table>
+<c:if test="${!requestScope.visible and requestScope.estado}">
+	<form name="formPersonal"  onLoad="mensajeAlert(document.getElementById('msg'));">
 	<input type="hidden" name="accion">
 	<table class="tablas" align="center" width="90%">
 	<caption>SOLICITUD DE MODIFICACION DE RUBROS</caption>
@@ -75,6 +152,16 @@ function validarNum(){
 			<td>Dirección de Correspondencia</td><td><input type="text" name="direccion" value="<c:out value="${sessionScope.loginUsuario.direccion}" />"></td>
 		</tr>
 		<tr>
+		<td>Tipo de Solicitud</td>
+		<td>
+		<select name="tipoModificacion">
+						<option value="1">Modificación de Rubros</option>
+						<option value="2">Extensión</option>
+						<option value="3">Suspensión</option>
+						<option value="4">Prórroga</option>
+		</select>
+		<td></tr>
+		<tr>
 			<td colspan="2">Por favor verifique que los datos registrados en el formulario estén actualizados, de lo contrario ingrese la informacion correcta y presione el boton Actualizar. Recuerde que en caso que el CIDC lo requiera, lo contactará por alguno de estos medios</td>
 		</tr>
 		<tr>
@@ -82,6 +169,9 @@ function validarNum(){
 		</tr>
 	</table>
 </form>
+</c:if>
+<c:if test="${!requestScope.estado}">
+<h1>Usted no puede hacer solicitudes, su proyecto no se encuentra Vigente</h1>
 </c:if>
 <c:if test="${requestScope.visible}">
 	<form name="formArchivo" method="post" action="/proyectos/CargarInformes.x" enctype="multipart/form-data" onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -93,14 +183,6 @@ function validarNum(){
 			<td>Carta de Solicitud de Modificación de Rubros</td>
 			<td><input type="file" id="archivo" name="archivo" ></td>
 		</tr>
-		<tr><td>
-		<select name="tipoModificacion">
-						<option value="1">Modificación de Rubros</option>
-						<option value="2">Extensión</option>
-						<option value="3">Suspensión</option>
-						<option value="4">Prórroga</option>
-		</select>
-		<td></tr>
 		<tr><td colspan="2" align="center"><img border="0" src='<c:url value="/comp/img/CargaDoc.gif"/>' onclick="guardar(30)"/></td></tr>
 	</table>
 </form>

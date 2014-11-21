@@ -1,5 +1,6 @@
 package cidc.proyectos.servlet;
 
+import java.io.File;
 import java.io.IOException;
 
 import java.util.ArrayList;
@@ -14,10 +15,13 @@ import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.FileItem;
 import org.displaytag.util.ParamEncoder;
 
+import cidc.bizagi.soa.WorkflowEngineSOA;
+import cidc.bizagi.soa.WorkflowEngineSOAImplService;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
 import cidc.general.obj.CargarDocumento;
+import cidc.general.obj.Globales;
 import cidc.general.servlet.ServletGeneral;
 import cidc.proyectos.db.ProyectosInvestigadorDB;
 import cidc.proyectos.obj.BalanceGeneral;
@@ -110,13 +114,20 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				irA="/grupos/proyectos/InfoSolicitud.jsp";
 				break;
 			case Parametros.MODIFICACIONRUBRO:
-				req.setAttribute("visible", false);
-				usuario=proyectosDB.consultaDatosPersonales(usuario);
-				sesion.setAttribute("loginUsuario", usuario);
+				//valida que el estado del proyecto sea vigente (quitar la negacion)
+				if(!proyecto.getEstado().equals("Vigente")){
+					req.setAttribute("estado", true);
+					req.setAttribute("visible", false);
+					usuario=proyectosDB.consultaDatosPersonales(usuario);
+					sesion.setAttribute("loginUsuario", usuario);
+				}else
+					req.setAttribute("estado", false);
+					
 				irA="/grupos/proyectos/SolModRub.jsp";
 				break;
 			case Parametros.ACTUALIZARDATOS:
 				Usuario usuario2=(Usuario) sesion.getAttribute("usuarioT");
+				System.out.println(req.getParameter("tipoModificacion"));
 				usuario.setMail(usuario2.getMail());
 				usuario.setCelular(usuario2.getCelular());
 				usuario.setDireccion(usuario2.getDireccion());
@@ -124,10 +135,40 @@ public class ProyectosInvestigadores extends ServletGeneral {
 					usuario=proyectosDB.consultaDatosPersonales(usuario);
 					sesion.setAttribute("loginUsuario", usuario);
 					req.setAttribute("visible", true);
+					req.setAttribute("estado", true);
 					mensaje="Datos Actualizados Correctamente";
 				}else
 					mensaje="Ha ocurrido un error, por favor intente de nuevo";
 				irA="/grupos/proyectos/SolModRub.jsp";
+				break;
+			case Parametros.ENVIODATOSWEBSERVICE:
+				System.out.println(req.getParameter("nomArchivo"));
+				try {
+					//System.out.println(tipoMod); esto hay que pasarlo a palabras
+					String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\">" +
+							"<soapenv:Header/><soapenv:Body><soa:createCasesAsString><!--Optional:--><arg0><![CDATA[<BizAgiWSParam><domain>domain</domain>" +
+							"<userName>admon</userName><Cases><Case><Process>ModificacionRubros</Process><Entities><ModificacionRubros><Persona busnessKey=\"DocumentodeIdentidadNIT=1016029813\">" +
+							"<DocumentodeIdentidadNIT>1016029813</DocumentodeIdentidadNIT><CorreoElectronico>falsoCess13@gmail.com</CorreoElectronico>" +
+							"<NombreRazonSocial>chapulin colorado 13</NombreRazonSocial></Persona><Proyecto><NombredelProyecto>proyecto falso 13</NombredelProyecto>" +
+							"<CodigodelProyecto>2-2-2-2</CodigodelProyecto></Proyecto><TipoRequerimiento businessKey=\"ModificacionRubros='Prórroga'\"/></ModificacionRubros></Entities></Case></Cases></BizAgiWSParam>]]></arg0>" +
+							"</soa:createCasesAsString></soapenv:Body></soapenv:Envelope>";
+					File base64= new File(path+"/Documentos/Bizagi/"+req.getParameter("nomArchivo"));
+					Globales glob= new Globales();
+					String archivoBase64 = glob.convertirBase64(base64);
+					WorkflowEngineSOAImplService wfs = new WorkflowEngineSOAImplService();
+					WorkflowEngineSOA wfe = wfs.getWorkflowEngineSOAImplPort();
+					String respWS =null;
+					if(!(respWS= wfe.createCasesAsString(xml)).equals(null)){
+						req.setAttribute("visible", false);
+						ProyectosInvestigadorDB proyDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
+						proyDB.guardarSolicitudBPM(usuario, null, "Modificacion de Proyecto", path);
+						System.out.println(respWS);
+					}
+					irA = "/grupos/proyectos/SolModRub.jsp";
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				mensaje="";
 				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));
