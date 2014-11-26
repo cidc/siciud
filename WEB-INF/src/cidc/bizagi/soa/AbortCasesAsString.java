@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "abortCasesAsString", propOrder = {
+@XmlType(name = "abortCasesAsString2", propOrder = {
     "arg0"
 })
 public class AbortCasesAsString {

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "WorkflowEngineSOAImplService", targetNamespace = "http://SOA.BizAgi/", wsdlLocation = "http://10.20.230.106:8080/BizAgi-war/WebServices/WorkflowEngineSOA?wsdl")
+@WebServiceClient(name = "WorkflowEngineSOAImplService", targetNamespace = "http://SOA.BizAgi/", wsdlLocation = "http://10.20.230.94:7001/BizAgi-war/WebServices/WorkflowEngineSOA?wsdl")
 public class WorkflowEngineSOAImplService
     extends Service
 {
@@ -30,9 +30,9 @@ public class WorkflowEngineSOAImplService
         try {
             URL baseUrl;
             baseUrl = cidc.bizagi.soa.WorkflowEngineSOAImplService.class.getResource(".");
-            url = new URL(baseUrl, "http://10.20.230.106:8080/BizAgi-war/WebServices/WorkflowEngineSOA?wsdl");
+            url = new URL(baseUrl, "http://10.20.230.94:7001/BizAgi-war/WebServices/WorkflowEngineSOA?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://10.20.230.106:8080/BizAgi-war/WebServices/WorkflowEngineSOA?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://10.20.230.94:7001/BizAgi-war/WebServices/WorkflowEngineSOA?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         WORKFLOWENGINESOAIMPLSERVICE_WSDL_LOCATION = url;

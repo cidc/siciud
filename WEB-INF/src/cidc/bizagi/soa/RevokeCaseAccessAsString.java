@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "revokeCaseAccessAsString", propOrder = {
+@XmlType(name = "revokeCaseAccessAsString1", propOrder = {
     "arg0"
 })
 public class RevokeCaseAccessAsString {

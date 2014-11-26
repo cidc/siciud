@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getEventsAsString", propOrder = {
+@XmlType(name = "getEventsAsString1", propOrder = {
     "arg0"
 })
 public class GetEventsAsString {

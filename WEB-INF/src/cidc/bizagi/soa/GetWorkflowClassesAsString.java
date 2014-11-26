@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getWorkflowClassesAsString", propOrder = {
+@XmlType(name = "getWorkflowClassesAsString1", propOrder = {
     "arg0"
 })
 public class GetWorkflowClassesAsString {

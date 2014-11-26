@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "performActivityAsString", propOrder = {
+@XmlType(name = "performActivityAsString1", propOrder = {
     "arg0"
 })
 public class PerformActivityAsString {

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "grantCaseAccessAsStringResponse", propOrder = {
+@XmlType(name = "grantCaseAccessAsStringResponse1", propOrder = {
     "_return"
 })
 public class GrantCaseAccessAsStringResponse {

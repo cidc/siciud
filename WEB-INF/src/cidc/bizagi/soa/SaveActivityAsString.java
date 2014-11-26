@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "saveActivityAsString", propOrder = {
+@XmlType(name = "saveActivityAsString1", propOrder = {
     "arg0"
 })
 public class SaveActivityAsString {

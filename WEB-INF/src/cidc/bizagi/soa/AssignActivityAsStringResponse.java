@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "assignActivityAsStringResponse", propOrder = {
+@XmlType(name = "assignActivityAsStringResponse1", propOrder = {
     "_return"
 })
 public class AssignActivityAsStringResponse {

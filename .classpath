@@ -64,5 +64,10 @@
 	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bcpkix-jdk15on-147.jar"/>
 	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/bcprov-jdk15on-147.jar"/>
 	<classpathentry kind="lib" path="D:/TOMCAT 6.0/webapps/siciud/WEB-INF/lib/signer.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Administrador/Downloads/jaxb-ri-2.2.7/lib/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Administrador/Downloads/jaxb-ri-2.2.7/lib/jaxb-core.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Administrador/Downloads/jaxb-ri-2.2.7/lib/jaxb-impl.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Administrador/Downloads/jaxb-ri-2.2.7/lib/jaxb-jxc.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Administrador/Downloads/jaxb-ri-2.2.7/lib/jaxb-xjc.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

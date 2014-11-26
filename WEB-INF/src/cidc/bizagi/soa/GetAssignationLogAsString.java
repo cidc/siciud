@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getAssignationLogAsString", propOrder = {
+@XmlType(name = "getAssignationLogAsString1", propOrder = {
     "arg0"
 })
 public class GetAssignationLogAsString {

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "setEventAsString", propOrder = {
+@XmlType(name = "setEventAsString1", propOrder = {
     "arg0"
 })
 public class SetEventAsString {

@@ -24,6 +24,28 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GetCaseDataUsingSchemaLiteResponse_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingSchemaLiteResponse");
+    private final static QName _GetEntitiesUsingSchemaAsStringResponse_QNAME = new QName("http://SOA.BizAgi/", "getEntitiesUsingSchemaAsStringResponse");
+    private final static QName _GetCaseDataUsingSchemaLite_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingSchemaLite");
+    private final static QName _GetCaseDataUsingXPathsAsStringResponse_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingXPathsAsStringResponse");
+    private final static QName _GetEntitiesAsString_QNAME = new QName("http://SOA.BizAgi/", "getEntitiesAsString");
+    private final static QName _SaveEntityAsStringResponse_QNAME = new QName("http://SOA.BizAgi/", "saveEntityAsStringResponse");
+    private final static QName _GetEntitySchemaStrResponse_QNAME = new QName("http://SOA.BizAgi/", "getEntitySchemaStrResponse");
+    private final static QName _GetCaseDataUsingSchemaLiteAsString_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingSchemaLiteAsString");
+    private final static QName _GetCaseDataUsingSchemaLiteAsStringResponse_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingSchemaLiteAsStringResponse");
+    private final static QName _GetEntitySchemaStr_QNAME = new QName("http://SOA.BizAgi/", "getEntitySchemaStr");
+    private final static QName _SaveEntityWithKeyAsString_QNAME = new QName("http://SOA.BizAgi/", "saveEntityWithKeyAsString");
+    private final static QName _SaveEntityWithKeyAsStringResponse_QNAME = new QName("http://SOA.BizAgi/", "saveEntityWithKeyAsStringResponse");
+    private final static QName _SaveEntityAsString_QNAME = new QName("http://SOA.BizAgi/", "saveEntityAsString");
+    private final static QName _GetCaseDataUsingSchema_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingSchema");
+    private final static QName _GetCaseDataUsingXPathsResponse_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingXPathsResponse");
+    private final static QName _GetCaseDataUsingSchemaResponse_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingSchemaResponse");
+    private final static QName _GetCaseDataUsingXPaths_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingXPaths");
+    private final static QName _GetEntitiesUsingSchemaAsString_QNAME = new QName("http://SOA.BizAgi/", "getEntitiesUsingSchemaAsString");
+    private final static QName _GetCaseDataUsingSchemaAsStringResponse_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingSchemaAsStringResponse");
+    private final static QName _GetCaseDataUsingXPathsAsString_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingXPathsAsString");
+    private final static QName _GetCaseDataUsingSchemaAsString_QNAME = new QName("http://SOA.BizAgi/", "getCaseDataUsingSchemaAsString");
+    private final static QName _GetEntitiesAsStringResponse_QNAME = new QName("http://SOA.BizAgi/", "getEntitiesAsStringResponse");
     private final static QName _PingResponse_QNAME = new QName("http://SOA.BizAgi/", "pingResponse");
     private final static QName _AssignActivityAsStringResponse_QNAME = new QName("http://SOA.BizAgi/", "assignActivityAsStringResponse");
     private final static QName _RevokeCaseAccessAsString_QNAME = new QName("http://SOA.BizAgi/", "revokeCaseAccessAsString");
@@ -67,6 +89,386 @@ public class ObjectFactory {
      */
     public ObjectFactory() {
     }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingSchema }
+     * 
+     */
+    public GetCaseDataUsingSchema createGetCaseDataUsingSchema() {
+        return new GetCaseDataUsingSchema();
+    }
+
+    /**
+     * Create an instance of {@link GetEntitySchemaStr }
+     * 
+     */
+    public GetEntitySchemaStr createGetEntitySchemaStr() {
+        return new GetEntitySchemaStr();
+    }
+
+    /**
+     * Create an instance of {@link GetEntitiesAsStringResponse }
+     * 
+     */
+    public GetEntitiesAsStringResponse createGetEntitiesAsStringResponse() {
+        return new GetEntitiesAsStringResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingSchemaLiteAsStringResponse }
+     * 
+     */
+    public GetCaseDataUsingSchemaLiteAsStringResponse createGetCaseDataUsingSchemaLiteAsStringResponse() {
+        return new GetCaseDataUsingSchemaLiteAsStringResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetEntitiesUsingSchemaAsString }
+     * 
+     */
+    public GetEntitiesUsingSchemaAsString createGetEntitiesUsingSchemaAsString() {
+        return new GetEntitiesUsingSchemaAsString();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingSchemaLiteResponse }
+     * 
+     */
+    public GetCaseDataUsingSchemaLiteResponse createGetCaseDataUsingSchemaLiteResponse() {
+        return new GetCaseDataUsingSchemaLiteResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingSchemaResponse }
+     * 
+     */
+    public GetCaseDataUsingSchemaResponse createGetCaseDataUsingSchemaResponse() {
+        return new GetCaseDataUsingSchemaResponse();
+    }
+
+    /**
+     * Create an instance of {@link SaveEntityWithKeyAsString }
+     * 
+     */
+    public SaveEntityWithKeyAsString createSaveEntityWithKeyAsString() {
+        return new SaveEntityWithKeyAsString();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingSchemaAsStringResponse }
+     * 
+     */
+    public GetCaseDataUsingSchemaAsStringResponse createGetCaseDataUsingSchemaAsStringResponse() {
+        return new GetCaseDataUsingSchemaAsStringResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetEntitiesAsString }
+     * 
+     */
+    public GetEntitiesAsString createGetEntitiesAsString() {
+        return new GetEntitiesAsString();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingSchemaAsString }
+     * 
+     */
+    public GetCaseDataUsingSchemaAsString createGetCaseDataUsingSchemaAsString() {
+        return new GetCaseDataUsingSchemaAsString();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingSchemaLite }
+     * 
+     */
+    public GetCaseDataUsingSchemaLite createGetCaseDataUsingSchemaLite() {
+        return new GetCaseDataUsingSchemaLite();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingXPathsAsString }
+     * 
+     */
+    public GetCaseDataUsingXPathsAsString createGetCaseDataUsingXPathsAsString() {
+        return new GetCaseDataUsingXPathsAsString();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingXPathsAsStringResponse }
+     * 
+     */
+    public GetCaseDataUsingXPathsAsStringResponse createGetCaseDataUsingXPathsAsStringResponse() {
+        return new GetCaseDataUsingXPathsAsStringResponse();
+    }
+
+    /**
+     * Create an instance of {@link SaveEntityWithKeyAsStringResponse }
+     * 
+     */
+    public SaveEntityWithKeyAsStringResponse createSaveEntityWithKeyAsStringResponse() {
+        return new SaveEntityWithKeyAsStringResponse();
+    }
+
+    /**
+     * Create an instance of {@link SaveEntityAsString }
+     * 
+     */
+    public SaveEntityAsString createSaveEntityAsString() {
+        return new SaveEntityAsString();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingXPathsResponse }
+     * 
+     */
+    public GetCaseDataUsingXPathsResponse createGetCaseDataUsingXPathsResponse() {
+        return new GetCaseDataUsingXPathsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingSchemaLiteAsString }
+     * 
+     */
+    public GetCaseDataUsingSchemaLiteAsString createGetCaseDataUsingSchemaLiteAsString() {
+        return new GetCaseDataUsingSchemaLiteAsString();
+    }
+
+    /**
+     * Create an instance of {@link GetEntitiesUsingSchemaAsStringResponse }
+     * 
+     */
+    public GetEntitiesUsingSchemaAsStringResponse createGetEntitiesUsingSchemaAsStringResponse() {
+        return new GetEntitiesUsingSchemaAsStringResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCaseDataUsingXPaths }
+     * 
+     */
+    public GetCaseDataUsingXPaths createGetCaseDataUsingXPaths() {
+        return new GetCaseDataUsingXPaths();
+    }
+
+    /**
+     * Create an instance of {@link GetEntitySchemaStrResponse }
+     * 
+     */
+    public GetEntitySchemaStrResponse createGetEntitySchemaStrResponse() {
+        return new GetEntitySchemaStrResponse();
+    }
+
+    /**
+     * Create an instance of {@link SaveEntityAsStringResponse }
+     * 
+     */
+    public SaveEntityAsStringResponse createSaveEntityAsStringResponse() {
+        return new SaveEntityAsStringResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingSchemaLiteResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingSchemaLiteResponse")
+    public JAXBElement<GetCaseDataUsingSchemaLiteResponse> createGetCaseDataUsingSchemaLiteResponse(GetCaseDataUsingSchemaLiteResponse value) {
+        return new JAXBElement<GetCaseDataUsingSchemaLiteResponse>(_GetCaseDataUsingSchemaLiteResponse_QNAME, GetCaseDataUsingSchemaLiteResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEntitiesUsingSchemaAsStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getEntitiesUsingSchemaAsStringResponse")
+    public JAXBElement<GetEntitiesUsingSchemaAsStringResponse> createGetEntitiesUsingSchemaAsStringResponse(GetEntitiesUsingSchemaAsStringResponse value) {
+        return new JAXBElement<GetEntitiesUsingSchemaAsStringResponse>(_GetEntitiesUsingSchemaAsStringResponse_QNAME, GetEntitiesUsingSchemaAsStringResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingSchemaLite }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingSchemaLite")
+    public JAXBElement<GetCaseDataUsingSchemaLite> createGetCaseDataUsingSchemaLite(GetCaseDataUsingSchemaLite value) {
+        return new JAXBElement<GetCaseDataUsingSchemaLite>(_GetCaseDataUsingSchemaLite_QNAME, GetCaseDataUsingSchemaLite.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingXPathsAsStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingXPathsAsStringResponse")
+    public JAXBElement<GetCaseDataUsingXPathsAsStringResponse> createGetCaseDataUsingXPathsAsStringResponse(GetCaseDataUsingXPathsAsStringResponse value) {
+        return new JAXBElement<GetCaseDataUsingXPathsAsStringResponse>(_GetCaseDataUsingXPathsAsStringResponse_QNAME, GetCaseDataUsingXPathsAsStringResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEntitiesAsString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getEntitiesAsString")
+    public JAXBElement<GetEntitiesAsString> createGetEntitiesAsString(GetEntitiesAsString value) {
+        return new JAXBElement<GetEntitiesAsString>(_GetEntitiesAsString_QNAME, GetEntitiesAsString.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveEntityAsStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "saveEntityAsStringResponse")
+    public JAXBElement<SaveEntityAsStringResponse> createSaveEntityAsStringResponse(SaveEntityAsStringResponse value) {
+        return new JAXBElement<SaveEntityAsStringResponse>(_SaveEntityAsStringResponse_QNAME, SaveEntityAsStringResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEntitySchemaStrResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getEntitySchemaStrResponse")
+    public JAXBElement<GetEntitySchemaStrResponse> createGetEntitySchemaStrResponse(GetEntitySchemaStrResponse value) {
+        return new JAXBElement<GetEntitySchemaStrResponse>(_GetEntitySchemaStrResponse_QNAME, GetEntitySchemaStrResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingSchemaLiteAsString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingSchemaLiteAsString")
+    public JAXBElement<GetCaseDataUsingSchemaLiteAsString> createGetCaseDataUsingSchemaLiteAsString(GetCaseDataUsingSchemaLiteAsString value) {
+        return new JAXBElement<GetCaseDataUsingSchemaLiteAsString>(_GetCaseDataUsingSchemaLiteAsString_QNAME, GetCaseDataUsingSchemaLiteAsString.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingSchemaLiteAsStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingSchemaLiteAsStringResponse")
+    public JAXBElement<GetCaseDataUsingSchemaLiteAsStringResponse> createGetCaseDataUsingSchemaLiteAsStringResponse(GetCaseDataUsingSchemaLiteAsStringResponse value) {
+        return new JAXBElement<GetCaseDataUsingSchemaLiteAsStringResponse>(_GetCaseDataUsingSchemaLiteAsStringResponse_QNAME, GetCaseDataUsingSchemaLiteAsStringResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEntitySchemaStr }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getEntitySchemaStr")
+    public JAXBElement<GetEntitySchemaStr> createGetEntitySchemaStr(GetEntitySchemaStr value) {
+        return new JAXBElement<GetEntitySchemaStr>(_GetEntitySchemaStr_QNAME, GetEntitySchemaStr.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveEntityWithKeyAsString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "saveEntityWithKeyAsString")
+    public JAXBElement<SaveEntityWithKeyAsString> createSaveEntityWithKeyAsString(SaveEntityWithKeyAsString value) {
+        return new JAXBElement<SaveEntityWithKeyAsString>(_SaveEntityWithKeyAsString_QNAME, SaveEntityWithKeyAsString.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveEntityWithKeyAsStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "saveEntityWithKeyAsStringResponse")
+    public JAXBElement<SaveEntityWithKeyAsStringResponse> createSaveEntityWithKeyAsStringResponse(SaveEntityWithKeyAsStringResponse value) {
+        return new JAXBElement<SaveEntityWithKeyAsStringResponse>(_SaveEntityWithKeyAsStringResponse_QNAME, SaveEntityWithKeyAsStringResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveEntityAsString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "saveEntityAsString")
+    public JAXBElement<SaveEntityAsString> createSaveEntityAsString(SaveEntityAsString value) {
+        return new JAXBElement<SaveEntityAsString>(_SaveEntityAsString_QNAME, SaveEntityAsString.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingSchema }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingSchema")
+    public JAXBElement<GetCaseDataUsingSchema> createGetCaseDataUsingSchema(GetCaseDataUsingSchema value) {
+        return new JAXBElement<GetCaseDataUsingSchema>(_GetCaseDataUsingSchema_QNAME, GetCaseDataUsingSchema.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingXPathsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingXPathsResponse")
+    public JAXBElement<GetCaseDataUsingXPathsResponse> createGetCaseDataUsingXPathsResponse(GetCaseDataUsingXPathsResponse value) {
+        return new JAXBElement<GetCaseDataUsingXPathsResponse>(_GetCaseDataUsingXPathsResponse_QNAME, GetCaseDataUsingXPathsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingSchemaResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingSchemaResponse")
+    public JAXBElement<GetCaseDataUsingSchemaResponse> createGetCaseDataUsingSchemaResponse(GetCaseDataUsingSchemaResponse value) {
+        return new JAXBElement<GetCaseDataUsingSchemaResponse>(_GetCaseDataUsingSchemaResponse_QNAME, GetCaseDataUsingSchemaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingXPaths }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingXPaths")
+    public JAXBElement<GetCaseDataUsingXPaths> createGetCaseDataUsingXPaths(GetCaseDataUsingXPaths value) {
+        return new JAXBElement<GetCaseDataUsingXPaths>(_GetCaseDataUsingXPaths_QNAME, GetCaseDataUsingXPaths.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEntitiesUsingSchemaAsString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getEntitiesUsingSchemaAsString")
+    public JAXBElement<GetEntitiesUsingSchemaAsString> createGetEntitiesUsingSchemaAsString(GetEntitiesUsingSchemaAsString value) {
+        return new JAXBElement<GetEntitiesUsingSchemaAsString>(_GetEntitiesUsingSchemaAsString_QNAME, GetEntitiesUsingSchemaAsString.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingSchemaAsStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingSchemaAsStringResponse")
+    public JAXBElement<GetCaseDataUsingSchemaAsStringResponse> createGetCaseDataUsingSchemaAsStringResponse(GetCaseDataUsingSchemaAsStringResponse value) {
+        return new JAXBElement<GetCaseDataUsingSchemaAsStringResponse>(_GetCaseDataUsingSchemaAsStringResponse_QNAME, GetCaseDataUsingSchemaAsStringResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingXPathsAsString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingXPathsAsString")
+    public JAXBElement<GetCaseDataUsingXPathsAsString> createGetCaseDataUsingXPathsAsString(GetCaseDataUsingXPathsAsString value) {
+        return new JAXBElement<GetCaseDataUsingXPathsAsString>(_GetCaseDataUsingXPathsAsString_QNAME, GetCaseDataUsingXPathsAsString.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetCaseDataUsingSchemaAsString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getCaseDataUsingSchemaAsString")
+    public JAXBElement<GetCaseDataUsingSchemaAsString> createGetCaseDataUsingSchemaAsString(GetCaseDataUsingSchemaAsString value) {
+        return new JAXBElement<GetCaseDataUsingSchemaAsString>(_GetCaseDataUsingSchemaAsString_QNAME, GetCaseDataUsingSchemaAsString.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEntitiesAsStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://SOA.BizAgi/", name = "getEntitiesAsStringResponse")
+    public JAXBElement<GetEntitiesAsStringResponse> createGetEntitiesAsStringResponse(GetEntitiesAsStringResponse value) {
+        return new JAXBElement<GetEntitiesAsStringResponse>(_GetEntitiesAsStringResponse_QNAME, GetEntitiesAsStringResponse.class, null, value);
+    }
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: bizagi.soa
+     * 
+     */
+
 
     /**
      * Create an instance of {@link GetAssignationLogAsString }
@@ -679,5 +1081,4 @@ public class ObjectFactory {
     public JAXBElement<GrantCaseAccessAsString> createGrantCaseAccessAsString(GrantCaseAccessAsString value) {
         return new JAXBElement<GrantCaseAccessAsString>(_GrantCaseAccessAsString_QNAME, GrantCaseAccessAsString.class, null, value);
     }
-
 }
