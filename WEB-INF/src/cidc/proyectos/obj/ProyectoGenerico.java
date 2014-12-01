@@ -27,6 +27,7 @@ public class ProyectoGenerico implements Serializable{
 	private String archivoProp;
 	private String terminosRef;
 	private String observacionDigit;
+	private String fechaEstimadaFin;
 
 	private Documento propuesta;
 	private Documento contrato;
@@ -254,6 +255,12 @@ public class ProyectoGenerico implements Serializable{
 	}
 	public void setTipo2(int tipo2) {
 		this.tipo2 = tipo2;
+	}
+	public String getFechaEstimadaFin() {
+		return fechaEstimadaFin;
+	}
+	public void setFechaEstimadaFin(String fechaEstimadaFin) {
+		this.fechaEstimadaFin = fechaEstimadaFin;
 	}
 	
 

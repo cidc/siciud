@@ -1116,7 +1116,11 @@ public class ProyectosGeneralDB extends BaseDB {
 		 }
 		 return retorno;
 	}
-	
+	/**
+	 * Este metodo retorna una lista con todos los tiempos adicionados al proyecto 
+	 * @param proyecto
+	 * @return
+	 */
 	public List<Tiempos> getListaTiempos(Proyecto proyecto){
 		 List<Tiempos> listaTiempos = new ArrayList<Tiempos>();
 		 Connection cn = null;
@@ -1487,6 +1491,57 @@ public class ProyectosGeneralDB extends BaseDB {
 			cerrar(cn);
 		}
 		return retorno;
+	}
+	/**
+	 * Este metodo retorna la fecha estimada de cierre del proyecto
+	 * @param proyecto
+	 * @param flag
+	 * @return
+	 */
+	public String getListaTiempos(Proyecto proyecto, int flag){
+		 List<Tiempos> listaTiempos = new ArrayList<Tiempos>();
+		 Connection cn = null;
+		 PreparedStatement ps = null;
+		 ResultSet rs = null;
+		 Tiempos tiempo =null;
+		 Globales global=new Globales();
+		 int i=1;
+		 if(proyecto.getClaseProyecto()==1){
+			 if(proyecto.getFecActaInicio()!=null && proyecto.getDuracion()!=null)
+					proyecto.setFecEstimadoFin(global.sumarMesesFecha(proyecto.getFecActaInicio(),Integer.parseInt(proyecto.getDuracion())));
+		 }else{
+			 if(proyecto.getFecAprobacion()!=null && proyecto.getDuracion()!=null)
+					proyecto.setFecEstimadoFin(global.sumarMesesFecha(proyecto.getFecAprobacion(),Integer.parseInt(proyecto.getDuracion())));
+		 }
+      try {
+			  cn = cursor.getConnection(super.perfil);
+			  ps = cn.prepareStatement(rb.getString("getTiemposAdicionales"+proyecto.getClaseProyecto()));
+			  ps.setInt(1, proyecto.getId());
+			  rs=ps.executeQuery();
+			  while(rs.next())
+			  {
+				  i=1;
+				  tiempo = new Tiempos();
+				  tiempo.setIdTiempo(rs.getInt(i++));
+				  tiempo.setTipoTiempo(rs.getInt(i++));
+				  tiempo.setValorTiempo(rs.getInt(i++));
+				  tiempo.setDescripcion(rs.getString(i++));
+				  tiempo.setRegitradoPor(rs.getString(i++));
+				  tiempo.setFechaTiempo(rs.getString(i++));
+				  proyecto.setFecEstimadoFin(global.sumarMesesFecha(proyecto.getFecEstimadoFin(), tiempo.getValorTiempo()));
+				  listaTiempos.add(tiempo);
+			  }
+		     } catch (SQLException e) {lanzaExcepcion(e);}
+		       catch (Exception e) {lanzaExcepcion(e);}
+		 finally
+		 {
+			 try{
+				 rs.close();
+				 ps.close();
+				 cn.close();
+			 }catch(Exception e){}
+		 }
+		return proyecto.getFecEstimadoFin();
 	}
 }
 

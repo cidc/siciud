@@ -119,7 +119,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				break;
 			case Parametros.MODIFICACIONRUBRO:
 				//valida que el estado del proyecto sea vigente (quitar la negacion)
-				if(!proyecto.getEstado().equals("Vigente")){
+				if(proyecto.getEstado().equals("Vigente")){
 					req.setAttribute("estado", true);
 					req.setAttribute("visible", false);
 					usuario=proyectosDB.consultaDatosPersonales(usuario);
@@ -131,7 +131,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				break;
 			case Parametros.ACTUALIZARDATOS:
 				Usuario usuario2=(Usuario) sesion.getAttribute("usuarioT");
-				System.out.println(req.getParameter("tipoModificacion"));
+				int tipoMod=Integer.parseInt(req.getParameter("tipoModificacion"));
 				usuario.setMail(usuario2.getMail());
 				usuario.setCelular(usuario2.getCelular());
 				usuario.setDireccion(usuario2.getDireccion());
@@ -154,19 +154,23 @@ public class ProyectosInvestigadores extends ServletGeneral {
 					EntityManagerSOAImplService pruebaservicio = new EntityManagerSOAImplService();
 					EntityManagerSOAImpl calc = pruebaservicio.getEntityManagerSOAImplPort();
 					System.out.println(calc.getCaseDataUsingSchemaAsString(5091, inputXML));*/
+					
 					String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\"><soapenv:Header/>   <soapenv:Body><soa:createCasesAsString><!--Optional:-->         <arg0><![CDATA[<BizAgiWSParam><domain>domain</domain><userName>admon</userName><Cases><Case><Process>ModificacionRubros</Process><Entities><ModificacionRubros><Persona businessKey=\"DocumentodeIdentidadNIT=90100350369\"><DocumentodeIdentidadNIT>90100350369</DocumentodeIdentidadNIT><CorreoElectronico>faloCe23@gmail.com</CorreoElectronico><NombreRazonSocial>chapn colorado23</NombreRazonSocial></Persona><Proyecto businessKey=\"CodigodelProyecto='2-2-2-2'\"><NombredelProyecto>proyecto falso 13</NombredelProyecto><CodigodelProyecto>2-2-2-2</CodigodelProyecto></Proyecto><TipoRequerimiento businessKey=\"ModificacionRubros='Prórroga'\"/></ModificacionRubros></Entities></Case></Cases></BizAgiWSParam>]]></arg0>      </soa:createCasesAsString>   </soapenv:Body></soapenv:Envelope>";
-					File base64= new File(path+"/Documentos/Bizagi/"+req.getParameter("nomArchivo"));
+					String nombreArchivo=path+"/Documentos/Bizagi/"+req.getParameter("nomArchivo");
+					File base64= new File(nombreArchivo);
 					Globales glob= new Globales();
 					String archivoBase64 = glob.convertirBase64(base64);
-					WorkflowEngineSOAImplService wfs = new WorkflowEngineSOAImplService();
-					WorkflowEngineSOA wfe = wfs.getWorkflowEngineSOAImplPort();
-					String respWS =null;
-					if(!(respWS= wfe.createCasesAsString(xml)).equals(null)){
-						req.setAttribute("visible", false);
+//					WorkflowEngineSOAImplService wfs = new WorkflowEngineSOAImplService();
+//					WorkflowEngineSOA wfe = wfs.getWorkflowEngineSOAImplPort();
+//					String respWS =null;
+//					if(!(respWS= wfe.createCasesAsString(xml)).equals(null)){
+						req.setAttribute("visible", true);
+						req.setAttribute("estado", true);
 						ProyectosInvestigadorDB proyDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
-						proyDB.guardarSolicitudBPM(usuario, null, "Modificacion de Proyecto", path);
-						System.out.println(respWS);
-					}
+						proyDB.guardarSolicitudBPM(usuario, proyecto, String.valueOf(sesion.getAttribute("TipoModificacion")), nombreArchivo);
+						sesion.removeAttribute("TipoModificacion");
+//						System.out.println(respWS);
+//					}
 					irA = "/grupos/proyectos/SolModRub.jsp";
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -207,6 +211,19 @@ public class ProyectosInvestigadores extends ServletGeneral {
 	        	baseDB.lanzaExcepcion(e);
 	        }
 		return docNuevo;
+	}
+	/**
+	 * se encarga de hacer el mapeo entre clases para invocar al metodo que retorna la fecha de cierre del proyecto
+	 * @param proyectoGen
+	 */
+	public void obtenerFechaFin(ProyectoGenerico proyectoGen){
+		ProyectosGeneralDB pGDB= new ProyectosGeneralDB(cursor,usuario.getPerfil());
+		Proyecto proyecto=new Proyecto();
+		proyecto.setId((int) proyectoGen.getIdProyecto());
+		proyecto.setDuracion(proyectoGen.getDuracion());
+		proyecto.setFecAprobacion(proyectoGen.getFecAprobacion());
+		proyecto.setTipoProyecto(proyectoGen.getTipo());
+		proyectoGen.setFechaEstimadaFin(pGDB.getListaTiempos(proyecto,0));
 	}
 }
 

@@ -157,7 +157,8 @@ public class CargarInformes extends ServletGeneral{
 				
 			case cidc.proyectos.obj.Parametros.CARGARSOLICITUDRUBRO:
 			try {
-				String nomArchivo=cargarDocumento.cargarGenerico(path, archivoAdj, "/Bizagi","ModRub-", 1);
+				Long idArchivo=proyectosDB.getIdSolicitudBizagi();
+				String nomArchivo=cargarDocumento.cargarGenerico(path, archivoAdj, "/Bizagi","ModRub-", idArchivo);
 				irA = "/GestionProyectos/ProyectosInvestigador.x?accion=32&nomArchivo="+nomArchivo;
 			} catch (Exception e) {
 				e.printStackTrace();

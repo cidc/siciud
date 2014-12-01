@@ -14,11 +14,14 @@ function tabs(num){
 		document.formTab.submit();
 }
 
-function guardar(num){
+function guardar(num,caja){
 	if(num==30){
-		document.formArchivo.action="<c:url value='/proyectos/CargarInformes.x' />";
-		document.formArchivo.accion.value = num;
-		document.formArchivo.submit();
+		
+		if(ValidarFormulario(caja)){
+			document.formArchivo.action="<c:url value='/proyectos/CargarInformes.x' />";
+			document.formArchivo.accion.value = num;
+			document.formArchivo.submit();
+		}
 	}else if(validarNum()){
 		document.formPersonal.action="<c:url value='/grupos/proyectos/llenar2.jsp' />";
     	document.formPersonal.accion.value = num;
@@ -34,6 +37,20 @@ function validarNum(){
 		return false;
 		 }
 	return true;
+}
+
+function ValidarFormulario(caja){
+	var archi=caja.value;
+    if(caja.value==""){
+            alert("Debe seleccionar un Archivo para cargar");
+            return false;
+    }
+    var ext=archi.substr(archi.lastIndexOf('.'),archi.length);
+    if(!(ext==".pdf")){
+    	alert("El archivo debe estar en formato PDF");
+        return false;
+    }
+    return true;
 }
 </script>
 </head>
@@ -183,7 +200,7 @@ function validarNum(){
 			<td>Carta de Solicitud de Modificación de Rubros</td>
 			<td><input type="file" id="archivo" name="archivo" ></td>
 		</tr>
-		<tr><td colspan="2" align="center"><img border="0" src='<c:url value="/comp/img/CargaDoc.gif"/>' onclick="guardar(30)"/></td></tr>
+		<tr><td colspan="2" align="center"><img border="0" src='<c:url value="/comp/img/CargaDoc.gif"/>' onclick="guardar(30,document.formArchivo.archivo)"/></td></tr>
 	</table>
 </form>
 </c:if>

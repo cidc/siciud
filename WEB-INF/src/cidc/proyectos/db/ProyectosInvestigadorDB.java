@@ -595,18 +595,44 @@ public class ProyectosInvestigadorDB extends BaseDB {
 	 * @param url especifica la direccion del documento de solicitud en el servidor
 	 * @return retorna verdadero si la operacion es exitosa
 	 */
-	public boolean guardarSolicitudBPM(Usuario usuario, Proyecto proy, String tipoSol,String url){
+	public boolean guardarSolicitudBPM(Usuario usuario, ProyectoGenerico proy, String tipoSol,String url){
 		PreparedStatement ps=null;
 		Connection cn=null;
 		boolean retorno=false;
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("crearSolicitud"));
+			ps=cn.prepareStatement(rb.getString("crearSolicitudModificacionProyecto"));
 			ps.setLong(i++, usuario.getIdUsuario());
-			ps.setInt(i++, Integer.parseInt(proy.getId()));
+			ps.setLong(i++, proy.getIdProyecto());
 			ps.setString(i++, tipoSol);
 			ps.setString(i++, url);
+			ps.executeQuery();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return retorno;
+	}
+	
+	/**
+	 * Retorna el siguiente id disponible de la tabla bizagi_solicitudes
+	 * @return
+	 */
+	public Long getIdSolicitudBizagi(){
+		PreparedStatement ps=null;
+		Connection cn=null;
+		ResultSet rs=null;
+		Long retorno=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("IdSolicitudBizagi"));
+			rs=ps.executeQuery();
+			i=1;
+			while(rs.next()){
+				retorno=rs.getLong(i++);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
