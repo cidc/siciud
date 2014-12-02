@@ -1495,7 +1495,7 @@ public class ProyectosGeneralDB extends BaseDB {
 	/**
 	 * Este metodo retorna la fecha estimada de cierre del proyecto
 	 * @param proyecto
-	 * @param flag
+	 * @param flag bandera para hacer sobrecarga de metodo
 	 * @return
 	 */
 	public String getListaTiempos(Proyecto proyecto, int flag){

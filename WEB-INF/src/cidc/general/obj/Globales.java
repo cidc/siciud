@@ -418,4 +418,16 @@ public class Globales{
 		return encodedFile;
 		
 	}
+	/**
+	 * el metodo suma o resta dias a una fecha
+	 * @param fecha fecha inicial 
+	 * @param dias si el parametro es negativo el metodo resta dias, de lo contrario suma
+	 * @return
+	 */
+	public Date sumarRestarDiasFecha(Date fecha, int dias){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(fecha); 
+		calendar.add(Calendar.DAY_OF_YEAR, dias);  
+		return calendar.getTime(); 
+	}
 }

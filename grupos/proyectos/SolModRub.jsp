@@ -54,7 +54,7 @@ function ValidarFormulario(caja){
 }
 </script>
 </head>
-<body>
+<body onLoad="mensajeAlert(document.getElementById('msg'));">
 
 <form name="formTab" method="post">
 	<input type="hidden" name="accion">
@@ -131,6 +131,7 @@ function ValidarFormulario(caja){
 			<tr>
 				<th><b>Investigador Principal:</b></th>
 				<th width="70px"><b>Duración:</b></th>
+				<th width="150px"><b>Fecha Estimada Cierre:</b></th>
 				<th width="150px"><b>Presupuesto Aprobado:</b></th>
 			</tr>
 			<tr>
@@ -138,6 +139,8 @@ function ValidarFormulario(caja){
 					value="${sessionScope.proyectoInvestigador.director}" /></td>
 				<td width="70px"><c:out
 					value="${sessionScope.proyectoInvestigador.duracion}" default="0" /> Meses</td>
+				<td style="text-align: right;width: 105px"><c:out
+					value="${sessionScope.proyectoInvestigador.fechaEstimadaFin}" /></td>
 				<td style="text-align: right;width: 105px"><c:out
 					value="${sessionScope.proyectoInvestigador.valorLetras}" /></td>
 			</tr>

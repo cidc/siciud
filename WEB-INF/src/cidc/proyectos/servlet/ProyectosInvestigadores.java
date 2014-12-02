@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.Authenticator;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -44,6 +47,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 
 	       Usuario usuario = null;
 
+	@SuppressWarnings("deprecation")
 	public String [] operaciones(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 		String irA="/grupos/proyectos/ListaProyectos.jsp";
 		cursor=new CursorDB();
@@ -53,6 +57,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 		ProyectosInvestigadorDB proyectosDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
 		ProyectosGeneralDB proyGeneral=new ProyectosGeneralDB(cursor, usuario.getPerfil());
 		ProyectoGenerico proyecto =null;
+		final int PRORROGA=4;
 		String path=super.context.getRealPath(req.getContextPath()).substring(0,req.getRealPath(req.getContextPath()).lastIndexOf(sep));
 		if(sesion.getAttribute("proyectoInvestigador")!=null)
 			proyecto = (ProyectoGenerico)sesion.getAttribute("proyectoInvestigador");
@@ -62,12 +67,13 @@ public class ProyectosInvestigadores extends ServletGeneral {
 		switch(accion){
 			case Parametros.cmdVerProyecto:
 				ProyectoGenerico proyectoGen=proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo"));
+				proyectoGen=obtenerFechaFin(proyectoGen);
 				sesion.setAttribute("proyectoInvestigador", proyectoGen);
 				//ProyectoXML proy=new ProyectoXML();
 				//String resp2=proy.crearProyectoBizagi(proyectoGen);
 				//System.out.println("resp crear proy "+resp2);
 				sesion.setAttribute("proyectoDocumentos", proyGeneral.getListaDocAnexos(Long.parseLong(req.getParameter("id")),Integer.parseInt(req.getParameter("tipo"))));
-				sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo")));
+				//sesion.setAttribute("proyectoInvestigador", proyectosDB.getProyecto(req.getParameter("id"),req.getParameter("tipo")));
 				irA="/grupos/proyectos/VerProyecto.jsp";
 			break;
 			case Parametros.cmdBalanceGral:
@@ -138,9 +144,34 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				if(proyectosDB.actualizarDatos(usuario)){
 					usuario=proyectosDB.consultaDatosPersonales(usuario);
 					sesion.setAttribute("loginUsuario", usuario);
-					req.setAttribute("visible", true);
-					req.setAttribute("estado", true);
-					mensaje="Datos Actualizados Correctamente";
+					Date fechaMin=null;
+					Date fechaMax=null;
+					boolean retorno=false;
+					Globales glob= new Globales(); 
+					try {
+						SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
+						Date fechaCierre=formato.parse(proyecto.getFechaEstimadaFin());
+						Date fechaInicio=formato.parse(proyecto.getFecActaInicio());
+						mensaje="Datos Actualizados Correctamente";
+						switch(tipoMod){
+							case PRORROGA:
+								fechaMin=glob.sumarRestarDiasFecha(fechaCierre, -60);
+								fechaMax=glob.sumarRestarDiasFecha(fechaCierre, -30);
+								if(glob.entreFechas(fechaMin, fechaMax, new Date())){
+									retorno=true;
+								}
+								break;
+							default:
+								fechaMax=glob.sumarRestarDiasFecha(fechaCierre, -30);
+								if(glob.entreFechas(fechaInicio, fechaMax, new Date())){
+									retorno=true;
+								}
+						}
+					mensaje=(retorno)?"Datos Actualizados Correctamente":"El proyecto no se encuentra en los tiempos establecidos para hacer esta solicitud";
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+					
 				}else
 					mensaje="Ha ocurrido un error, por favor intente de nuevo";
 				irA="/grupos/proyectos/SolModRub.jsp";
@@ -216,14 +247,16 @@ public class ProyectosInvestigadores extends ServletGeneral {
 	 * se encarga de hacer el mapeo entre clases para invocar al metodo que retorna la fecha de cierre del proyecto
 	 * @param proyectoGen
 	 */
-	public void obtenerFechaFin(ProyectoGenerico proyectoGen){
+	public ProyectoGenerico obtenerFechaFin(ProyectoGenerico proyectoGen){
 		ProyectosGeneralDB pGDB= new ProyectosGeneralDB(cursor,usuario.getPerfil());
 		Proyecto proyecto=new Proyecto();
 		proyecto.setId((int) proyectoGen.getIdProyecto());
 		proyecto.setDuracion(proyectoGen.getDuracion());
 		proyecto.setFecAprobacion(proyectoGen.getFecAprobacion());
 		proyecto.setTipoProyecto(proyectoGen.getTipo());
+		proyecto.setClaseProyecto(proyectoGen.getTipo());
 		proyectoGen.setFechaEstimadaFin(pGDB.getListaTiempos(proyecto,0));
+		return proyectoGen;
 	}
 }
 
