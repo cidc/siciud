@@ -149,6 +149,8 @@ public class ProyectosInvestigadores extends ServletGeneral {
 					boolean retorno=false;
 					Globales glob= new Globales(); 
 					try {
+						if(proyecto.getTipo()==2)
+							proyecto.setFecActaInicio(glob.cambiarFormatoFecha(proyecto.getFecActaInicio()));
 						SimpleDateFormat formato= new SimpleDateFormat("yyyy-MM-dd");
 						Date fechaCierre=formato.parse(proyecto.getFechaEstimadaFin());
 						Date fechaInicio=formato.parse(proyecto.getFecActaInicio());
@@ -169,7 +171,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 						}
 					mensaje=(retorno)?"Datos Actualizados Correctamente":"El proyecto no se encuentra en los tiempos establecidos para hacer esta solicitud";
 					} catch (Exception e) {
-						// TODO: handle exception
+						e.printStackTrace();
 					}
 					
 				}else

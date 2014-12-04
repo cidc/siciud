@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.Format;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -429,5 +430,19 @@ public class Globales{
 		calendar.setTime(fecha); 
 		calendar.add(Calendar.DAY_OF_YEAR, dias);  
 		return calendar.getTime(); 
+	}
+	
+	/**
+	 * el metodo trannforma una fecha de formato dd/MM/yyyy a yyyy/MM/dd
+	 * @param fecha
+	 * @return
+	 * @throws ParseException
+	 */
+	public String cambiarFormatoFecha(String fecha) throws ParseException{
+		SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
+		Date salida=formato.parse(fecha);
+		SimpleDateFormat formato2=new SimpleDateFormat("yyyy-MM-dd");
+		String fechaSalida=formato2.format(salida);
+		return fechaSalida;
 	}
 }
