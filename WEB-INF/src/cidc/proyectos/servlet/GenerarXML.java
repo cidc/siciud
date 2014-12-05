@@ -59,7 +59,7 @@ public class GenerarXML {//podemos crear una clase abstracta y una interfaz que 
 	}
 	
 	
-public String crearCaso(Usuario usuario,ProyectoGenerico proy, int tipoRequerimiento ){
+public String crearCaso(Usuario usuario,ProyectoGenerico proy, int tipoRequerimiento,String archivoBase64 ){
 	String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\"><soapenv:Header/><soapenv:Body>" +
 			"<soa:createCasesAsString><!--Optional:--><arg0><![CDATA[<BizAgiWSParam><domain>domain</domain>" +
 			"<userName>admon</userName><Cases><Case>" +
@@ -69,8 +69,24 @@ public String crearCaso(Usuario usuario,ProyectoGenerico proy, int tipoRequerimi
 			"<Proyecto businessKey=\"CodigodelProyecto='"+proy.getCodigo()+"'\">" +
 			"</Proyecto>" +
 			"<TipoRequerimiento businessKey=\"ModificacionRubros='"+tipoRequerimiento+"'\"/>" +
+			"<CartaSolicitud><Archivo>" +
+			"<File fileName=\"Carta de Solicitud.pdf\">"+
+			archivoBase64+
+			"</File></Archivo></CartaSolicitud>"+
 			"</ModificacionRubros></Entities></Case></Cases></BizAgiWSParam>" +
 			"]]></arg0></soa:createCasesAsString></soapenv:Body></soapenv:Envelope>";
 		return xml;
+	}
+
+public String avanzarCaso(String idCaso){
+	String xml="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\"><soapenv:Header/>" +
+			"<soapenv:Body><soa:performActivityAsString><!--Optional:--><arg0><![CDATA[ <BizAgiWSParam>" +
+			"<domain>domain</domain><userName>admon</userName><ActivityData>" +
+			"<radNumber>"+idCaso+"</radNumber>" +
+			"<taskName>Task1</taskName>" +
+			"</ActivityData>" +
+			"</BizAgiWSParam>]]></arg0>" +
+			"</soa:performActivityAsString></soapenv:Body></soapenv:Envelope>";
+	return xml;
 	}
 }

@@ -595,7 +595,7 @@ public class ProyectosInvestigadorDB extends BaseDB {
 	 * @param url especifica la direccion del documento de solicitud en el servidor
 	 * @return retorna verdadero si la operacion es exitosa
 	 */
-	public boolean guardarSolicitudBPM(Usuario usuario, ProyectoGenerico proy, String tipoSol,String url){
+	public boolean guardarSolicitudBPM(Usuario usuario,String idCaso, ProyectoGenerico proy, String tipoSol,String url){
 		PreparedStatement ps=null;
 		Connection cn=null;
 		boolean retorno=false;
@@ -604,10 +604,12 @@ public class ProyectosInvestigadorDB extends BaseDB {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("crearSolicitudModificacionProyecto"));
 			ps.setLong(i++, usuario.getIdUsuario());
+			ps.setString(i++, idCaso);
 			ps.setLong(i++, proy.getIdProyecto());
+			ps.setInt(i++, proy.getTipo());
 			ps.setString(i++, tipoSol);
 			ps.setString(i++, url);
-			ps.executeQuery();
+			ps.execute();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

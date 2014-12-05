@@ -169,7 +169,13 @@ public class ProyectosInvestigadores extends ServletGeneral {
 									retorno=true;
 								}
 						}
-					mensaje=(retorno)?"Datos Actualizados Correctamente":"El proyecto no se encuentra en los tiempos establecidos para hacer esta solicitud";
+						if(retorno){
+							req.setAttribute("estado", true);
+							req.setAttribute("visible", true);
+							sesion.setAttribute("TipoModificacion", req.getParameter("tipoModificacion"));
+							mensaje="Datos Actualizados Correctamente";
+						}else	
+							mensaje="El proyecto no se encuentra en los tiempos establecidos para hacer esta solicitud";
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -200,7 +206,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 						req.setAttribute("visible", true);
 						req.setAttribute("estado", true);
 						ProyectosInvestigadorDB proyDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
-						proyDB.guardarSolicitudBPM(usuario, proyecto, String.valueOf(sesion.getAttribute("TipoModificacion")), nombreArchivo);
+						proyDB.guardarSolicitudBPM(usuario, "", proyecto, String.valueOf(sesion.getAttribute("TipoModificacion")), nombreArchivo);
 						sesion.removeAttribute("TipoModificacion");
 //						System.out.println(respWS);
 //					}
@@ -208,7 +214,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				mensaje="";
+				mensaje="Su solicion fue creada exitosamente";
 				break;
 			default:
 				req.setAttribute("listaProyectos", proyectosDB.getListaProyectos(usuario.getIdUsuario()));

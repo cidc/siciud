@@ -198,7 +198,7 @@ function ValidarFormulario(caja){
 	<input type="hidden" name="accion" value="30">
 	<table width="90%" align="center" class="tablas">
 	<caption>CARGA DE CARTA DE SOLICITUD</caption>
-		<tr><td colspan="2" align="center">mensaje de prueba</td></tr>
+		<tr><td colspan="2" align="center">Por favor cargue la carta de solicitud para el respectivo procedimiento</td></tr>
 		<tr>
 			<td>Carta de Solicitud de Modificación de Rubros</td>
 			<td><input type="file" id="archivo" name="archivo" ></td>

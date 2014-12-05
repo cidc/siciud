@@ -994,7 +994,7 @@ public final class SolModRub_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t<input type=\"hidden\" name=\"accion\" value=\"30\">\r\n");
         out.write("\t<table width=\"90%\" align=\"center\" class=\"tablas\">\r\n");
         out.write("\t<caption>CARGA DE CARTA DE SOLICITUD</caption>\r\n");
-        out.write("\t\t<tr><td colspan=\"2\" align=\"center\">mensaje de prueba</td></tr>\r\n");
+        out.write("\t\t<tr><td colspan=\"2\" align=\"center\">Por favor cargue la carta de solicitud para el respectivo procedimiento</td></tr>\r\n");
         out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td>Carta de Solicitud de Modificación de Rubros</td>\r\n");
         out.write("\t\t\t<td><input type=\"file\" id=\"archivo\" name=\"archivo\" ></td>\r\n");
