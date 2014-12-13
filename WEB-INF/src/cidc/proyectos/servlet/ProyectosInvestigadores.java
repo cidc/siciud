@@ -128,6 +128,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 				if(proyecto.getEstado().equals("Vigente")){
 					req.setAttribute("estado", true);
 					req.setAttribute("visible", false);
+					req.setAttribute("historico", proyectosDB.consultarHistoricoSolicitudes(usuario.getIdUsuario(), proyecto.getIdProyecto()));
 					usuario=proyectosDB.consultaDatosPersonales(usuario);
 					sesion.setAttribute("loginUsuario", usuario);
 				}else
@@ -195,8 +196,8 @@ public class ProyectosInvestigadores extends ServletGeneral {
 					System.out.println(calc.getCaseDataUsingSchemaAsString(5091, inputXML));*/
 					
 					String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soa=\"http://SOA.BizAgi/\"><soapenv:Header/>   <soapenv:Body><soa:createCasesAsString><!--Optional:-->         <arg0><![CDATA[<BizAgiWSParam><domain>domain</domain><userName>admon</userName><Cases><Case><Process>ModificacionRubros</Process><Entities><ModificacionRubros><Persona businessKey=\"DocumentodeIdentidadNIT=90100350369\"><DocumentodeIdentidadNIT>90100350369</DocumentodeIdentidadNIT><CorreoElectronico>faloCe23@gmail.com</CorreoElectronico><NombreRazonSocial>chapn colorado23</NombreRazonSocial></Persona><Proyecto businessKey=\"CodigodelProyecto='2-2-2-2'\"><NombredelProyecto>proyecto falso 13</NombredelProyecto><CodigodelProyecto>2-2-2-2</CodigodelProyecto></Proyecto><TipoRequerimiento businessKey=\"ModificacionRubros='Prórroga'\"/></ModificacionRubros></Entities></Case></Cases></BizAgiWSParam>]]></arg0>      </soa:createCasesAsString>   </soapenv:Body></soapenv:Envelope>";
-					String nombreArchivo=path+"/Documentos/Bizagi/"+req.getParameter("nomArchivo");
-					File base64= new File(nombreArchivo);
+					String nombreArchivo="/Documentos/Bizagi/"+req.getParameter("nomArchivo");
+					File base64= new File(path+nombreArchivo);
 					Globales glob= new Globales();
 					String archivoBase64 = glob.convertirBase64(base64);
 //					WorkflowEngineSOAImplService wfs = new WorkflowEngineSOAImplService();
@@ -206,7 +207,7 @@ public class ProyectosInvestigadores extends ServletGeneral {
 						req.setAttribute("visible", true);
 						req.setAttribute("estado", true);
 						ProyectosInvestigadorDB proyDB=new ProyectosInvestigadorDB(cursor,usuario.getPerfil());
-						proyDB.guardarSolicitudBPM(usuario, "", proyecto, String.valueOf(sesion.getAttribute("TipoModificacion")), nombreArchivo);
+						proyDB.guardarSolicitudBPM(usuario, "", proyecto, String.valueOf(sesion.getAttribute("TipoModificacion")), "/siciud"+nombreArchivo);
 						sesion.removeAttribute("TipoModificacion");
 //						System.out.println(respWS);
 //					}

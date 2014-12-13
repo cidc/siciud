@@ -35,6 +35,7 @@ import cidc.proyectos.obj.GastosRubro;
 import cidc.proyectos.obj.Proyecto;
 import cidc.proyectos.obj.ProyectoGenerico;
 import cidc.proyectos.obj.Rubros;
+import cidc.proyectos.obj.Solicitudes;
 import cidc.proyectos.servlet.GastosExcel;
 import cidc.proyectosAntiguos.obj.GeneralOBJ;
 
@@ -583,6 +584,8 @@ public class ProyectosInvestigadorDB extends BaseDB {
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
+		}finally{
+			cerrar(ps);
 		}
 		return retorno;
 	}
@@ -613,12 +616,14 @@ public class ProyectosInvestigadorDB extends BaseDB {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			cerrar(ps);
 		}
 		return retorno;
 	}
 	
 	/**
-	 * Retorna el siguiente id disponible de la tabla bizagi_solicitudes
+	 * Retorna el actual id  de la tabla bizagi_solicitudes
 	 * @return
 	 */
 	public Long getIdSolicitudBizagi(){
@@ -633,11 +638,48 @@ public class ProyectosInvestigadorDB extends BaseDB {
 			rs=ps.executeQuery();
 			i=1;
 			while(rs.next()){
-				retorno=rs.getLong(i++);
+				retorno=rs.getLong(i++)+1;//se le suma 1 para obtener el id siguiente disponible
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
 		}
 		return retorno;
+	}
+	
+	public List<Solicitudes> consultarHistoricoSolicitudes(long idPer, long idProy){
+		PreparedStatement ps=null;
+		Connection cn=null;
+		ResultSet rs=null;
+		Solicitudes sol=null;
+		List<Solicitudes> lista=new ArrayList<Solicitudes>();
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("historicoSolicitudes"));
+			ps.setLong(i++, idPer);
+			ps.setLong(i++, idProy);
+			ps.setLong(i++, idPer);
+			ps.setLong(i++, idProy);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				sol=new Solicitudes();
+				sol.setNumeroCaso(rs.getString(i++));
+				sol.setTipoSolicitud(rs.getString(i++));
+				sol.setNombreProyecto(rs.getString(i++));
+				sol.setFechaSolicitud(rs.getDate(i++));
+				sol.setUrlDoc(rs.getString(i++));
+				lista.add(sol);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+		}
+		return lista;
 	}
 }

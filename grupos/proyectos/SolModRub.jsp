@@ -152,6 +152,25 @@ function ValidarFormulario(caja){
 	<form name="formPersonal"  onLoad="mensajeAlert(document.getElementById('msg'));">
 	<input type="hidden" name="accion">
 	<table class="tablas" align="center" width="90%">
+	
+	<caption>Solicitudes Realizadas</caption>
+	<tr>
+		<th align="center"><b>Tipo de Modificación</b></th>
+		<th align="center"><b>Nombre del Proyecto</b></th>
+		<th align="center"><b>Fecha de Solicitud</b></th>
+		<th align="center"><b>Documento Solicitud</b></th>
+	</tr>
+	<c:forEach items="${requestScope.historico}" var="lista" varStatus="st">
+	<tr>
+		<td><c:out value="${lista.tipoSolicitud}" /></td>
+		<td><c:out value="${lista.nombreProyecto}" /></td>
+		<td align="center"><c:out value="${lista.fechaSolicitud}" /></td>
+		<td align="center"><a href="<c:out value="${lista.urlDoc}" />" ><img src="/siciud/comp/img/pdf.png"></a></td>
+	</tr>
+	</c:forEach>
+	</table>
+	
+	<table class="tablas" align="center" width="90%">
 	<caption>SOLICITUD DE MODIFICACION DE RUBROS</caption>
 		<tr>
 			<td>Nombre</td><td><c:out value="${sessionScope.loginUsuario.nombre}" /><td>
