@@ -13,7 +13,7 @@ public class GenerarXML {//podemos crear una clase abstracta y una interfaz que 
 		
 	}
 	
-	public String crearPersona(Usuario usuario, ProyectoGenerico proy){
+	public String crearPersonaYProyecto(Usuario usuario, ProyectoGenerico proy){
 		switch (Integer.parseInt(usuario.getGenero())) {
 		case 1://femenino
 				usuario.setGenero("Sra.");
@@ -88,5 +88,19 @@ public String avanzarCaso(String idCaso){
 			"</BizAgiWSParam>]]></arg0>" +
 			"</soa:performActivityAsString></soapenv:Body></soapenv:Envelope>";
 	return xml;
+	}
+
+public int leerIdCaso(String idCaso){
+	int id=0;
+	if(idCaso.contains("<processId>")){
+		try {
+			id=Integer.parseInt(idCaso.substring(218, 221));
+			System.out.println("id de caso: "+id);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	return id;
 	}
 }

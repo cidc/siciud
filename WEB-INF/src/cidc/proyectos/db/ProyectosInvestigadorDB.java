@@ -649,6 +649,12 @@ public class ProyectosInvestigadorDB extends BaseDB {
 		return retorno;
 	}
 	
+	/**
+	 * Consulta las solicitudes de modificacion de un proyecto que ha realizado una persona 
+	 * @param idPer
+	 * @param idProy
+	 * @return retorna una lista con todas las solicitudes
+	 */
 	public List<Solicitudes> consultarHistoricoSolicitudes(long idPer, long idProy){
 		PreparedStatement ps=null;
 		Connection cn=null;
