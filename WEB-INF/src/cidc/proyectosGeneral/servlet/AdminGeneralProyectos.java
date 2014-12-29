@@ -236,6 +236,10 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				sesion.removeAttribute("integrante");		
 				irA="/adminProyectos/Coinvestigadores.jsp";
 			break;
+			case ParametrosOBJ.COMPROMISOS:
+				sesion.setAttribute("compromisos",proyectosGeneralDB.buscarCompromisos(proyecto.getIdPropuesta()));
+				irA="/adminProyectos/Productos.jsp";
+				break;
 			default:
 				irA="/adminProyectos/FiltroProyectosGeneral.jsp";
 				Globales glob = new Globales();

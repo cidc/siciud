@@ -34,7 +34,8 @@
 			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=6"/>'><img border="0" src='<c:url value="/comp/img/tabs/Documentos1.gif"/>'></a></td>
 			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=7"/>'><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></a></td>
 			<td><a href='<c:url value="/adminProyectos/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Tiempos1.gif"/>'></a></td>
-						<td><img border="0" src='<c:url value="/comp/img/tabs/Investigadores2.gif"/>'></td>
+			<td><img border="0" src='<c:url value="/comp/img/tabs/Investigadores1.gif"/>'></td>
+			<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=22"/>'><img border="0" src='<c:url value="/comp/img/tabs/Productos.gif"/>'></a></td>
 		</tr>
 	</table>
 <br>

@@ -58,6 +58,7 @@ public class ProyectosGeneralDB extends BaseDB {
 	public ProyectosGeneralDB(CursorDB c, int perfil) {
 		super(c, perfil);
 		rb=ResourceBundle.getBundle("cidc.proyectosGeneral.consultas");
+		
 	}
 
 	public List<Proyecto> getListaProyectos(FiltroGeneralProyecto filtro){
@@ -1491,6 +1492,44 @@ public class ProyectosGeneralDB extends BaseDB {
 			cerrar(cn);
 		}
 		return retorno;
+	}
+	
+	/**
+	 * Busca los productos entregables de un proyecto de investigación 
+	 * @param idProp
+	 * @return
+	 */
+	public List<ResumenCompromOBJ> buscarCompromisos(int idProp){
+		rb=ResourceBundle.getBundle("cidc.adminPropuestas.consultas");
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<ResumenCompromOBJ> listComp=new ArrayList<ResumenCompromOBJ>();
+		ResumenCompromOBJ compromOBJ;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("getResumenCompromisos"));
+			ps.setLong(1,idProp);
+			rs=ps.executeQuery();
+			int i=0;
+			while(rs.next()){
+				i=1;
+//				System.out.println("encuntra datos de rubros");
+				compromOBJ=new ResumenCompromOBJ();
+				compromOBJ.setProducto(rs.getString(i++));
+				compromOBJ.setIndicador(rs.getString(i++));
+				compromOBJ.setCantidad(rs.getInt(i++));
+				listComp.add(compromOBJ);
+			}
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return listComp;
 	}
 }
 

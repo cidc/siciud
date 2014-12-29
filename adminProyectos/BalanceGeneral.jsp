@@ -35,9 +35,10 @@
 					<tr>
 						<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=2&id=${sessionScope.proyecto.id}&tipo=${sessionScope.proyecto.claseProyecto}"/>'><img border="0" src='<c:url value="/comp/img/tabs/General1.gif"/>'></a></td>
 						<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=6"/>'><img border="0" src='<c:url value="/comp/img/tabs/Documentos1.gif"/>'></a></td>
-						<td><img border="0" src='<c:url value="/comp/img/tabs/Balance2.gif"/>'></td>
+						<td><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></td>
 						<td><a href='<c:url value="/adminProyectos/VerTiempos.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Tiempos1.gif"/>'></a></td>
 						<td><a href='<c:url value="/adminProyectos/Coinvestigadores.jsp"/>'><img border="0" src='<c:url value="/comp/img/tabs/Investigadores1.gif"/>'></a></td>
+						<td><a href='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x?accion=22"/>'><img border="0" src='<c:url value="/comp/img/tabs/Productos.gif"/>'></a></td>
 					</tr>
 				</table>			
 			</td>
