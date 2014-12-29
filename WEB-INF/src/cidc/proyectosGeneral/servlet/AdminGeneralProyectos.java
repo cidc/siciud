@@ -54,7 +54,9 @@ public class AdminGeneralProyectos extends ServletGeneral {
 			case ParametrosOBJ.verProyecto:
 				sesion.removeAttribute("proyecto");
 				sesion.removeAttribute("balanceProyecto");
-				sesion.setAttribute("proyecto",proyectosGeneralDB.buscarProyecto(req.getParameter("id"),req.getParameter("tipo")));						
+				proyecto=proyectosGeneralDB.buscarProyecto(req.getParameter("id"),req.getParameter("tipo"));
+				sesion.setAttribute("proyecto",proyecto);
+				sesion.setAttribute("balanceProyecto",proyectosGeneralDB.getBalanceProyecto(proyecto));				
 				irA="/adminProyectos/VerProyecto.jsp";
 			break;			
 			case ParametrosOBJ.InsertaObservacionProyecto:

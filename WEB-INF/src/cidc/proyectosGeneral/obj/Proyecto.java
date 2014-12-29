@@ -88,7 +88,7 @@ public class Proyecto implements Serializable{
 	private String realizador;
 	private String cedulaRealizador;
 	private String cedulaRealizadorDe;	
-	
+	private String CantCoInvest;
 	
 	////*********************************************************
 	
@@ -633,6 +633,14 @@ public class Proyecto implements Serializable{
 
 	public void setFecInicio(String fecInicio) {
 		this.fecInicio = fecInicio;
+	}
+
+	public String getCantCoInvest() {
+		return CantCoInvest;
+	}
+
+	public void setCantCoInvest(String cantCoInvest) {
+		CantCoInvest = cantCoInvest;
 	}
 	
 }

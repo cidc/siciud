@@ -150,6 +150,7 @@ public class ProyectosGeneralDB extends BaseDB {
             cn = cursor.getConnection(super.perfil);
             ps = cn.prepareStatement(rb.getString("verProyecto2"));
             ps.setLong(1, Long.parseLong(id));
+            ps.setLong(2, Long.parseLong(id));
             rs = ps.executeQuery();
             while (rs.next()){
             	i=1;
@@ -158,6 +159,7 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setId(Integer.parseInt(id));				
 				proyecto.setIdPropuesta(Integer.parseInt(id));
 				proyecto.setTipoProyecto(rs.getInt(i++));
+				proyecto.setCantCoInvest(rs.getString(i++));
 				proyecto.setCodigo(rs.getString(i++));
 				proyecto.setProyecto(rs.getString(i++));
 				proyecto.setFacultad(rs.getString(i++));				
@@ -202,6 +204,7 @@ public class ProyectosGeneralDB extends BaseDB {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("verProyecto1"));
 			ps.setLong(1, Long.parseLong(id));
+			ps.setLong(2, Long.parseLong(id));
 			System.out.println(ps.toString());
 			rs=ps.executeQuery();
 			while(rs.next()){
@@ -211,6 +214,7 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setTipoProyecto(1);
 				proyecto.setId(Integer.parseInt(id));
 				proyecto.setCodigo(rs.getString(i++));
+				proyecto.setCantCoInvest(rs.getString(i++));
 				proyecto.setIdPropuesta(rs.getInt(i++));
 				proyecto.setProyecto(rs.getString(i++));
 				proyecto.setFacultad(rs.getString(i++));

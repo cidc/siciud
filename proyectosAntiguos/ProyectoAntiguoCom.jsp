@@ -61,13 +61,16 @@
           <td class="renglones" align="center"><b>Estado Proyecto: </b></td>
           <td>
           <select name="estado">
-	          <option value='1' <c:if test="${sessionScope.proyectos.estado==1}">selected</c:if>>Inscrito</option>
-	          <option value='2' <c:if test="${sessionScope.proyectos.estado==2}">selected</c:if>>Institucionalizado</option>
-	          <option value='3' <c:if test="${sessionScope.proyectos.estado==3}">selected</c:if>>Finalizado</option>
-	          <option value='4' <c:if test="${sessionScope.proyectos.estado==4}">selected</c:if>>Cancelado</option>
-	          <option value='5' <c:if test="${sessionScope.proyectos.estado==5}">selected</c:if>>En Prueba</option>
-	          <option value='6' <c:if test="${sessionScope.proyectos.estado==6}">selected</c:if>>Aplazado</option>
-	         </select>
+			<option value="1" <c:if test="${sessionScope.proyectos.estado==1}">selected</c:if>>En Trámite</option>
+			<option value="2" <c:if test="${sessionScope.proyectos.estado==2}">selected</c:if>>Vigente</option>
+			<option value="3" <c:if test="${sessionScope.proyectos.estado==3}">selected</c:if>>Finalizado</option>
+			<option value="4" <c:if test="${sessionScope.proyectos.estado==4}">selected</c:if>>Cancelado</option>
+			<option value="5" <c:if test="${sessionScope.proyectos.estado==5}">selected</c:if>>En Prueba</option>
+			<option value="6" <c:if test="${sessionScope.proyectos.estado==6}">selected</c:if>>Suspendido</option>
+			<option value="7" <c:if test="${sessionScope.proyectos.estado==7}">selected</c:if>>Proc.Finalización</option>
+			<option value="8" <c:if test="${sessionScope.proyectos.estado==8}">selected</c:if>>Crítico</option>
+			<option value="9" <c:if test="${sessionScope.proyectos.estado==9}">selected</c:if>>Plazo Adicional</option>
+	      </select>
           </td>
      </tr>
      </table> 
@@ -171,6 +174,10 @@
      		</table>
 	     </td>
 	    </tr>
+		<%-- 
+		
+		este bloque no se elimina debido a que se usara en el futuro para gestionar los subestados
+		
 		<tr>
 	     	<td>
 		     	<form name="estadoBandera" method="post" action="<c:url value='/proyectosAntiguos/GestProyectos.x' />">
@@ -208,7 +215,7 @@
 		     		</table>
 		     	</form>
 	     	</td>
-	     </tr>
+	     </tr> --%>
 	     <tr>
 	     	<td>
 	     	<form name="observProyect" method="post">

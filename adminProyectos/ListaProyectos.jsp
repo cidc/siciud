@@ -25,7 +25,7 @@
         <caption >Listado de Proyectos Vigentes</caption>
         <tr>
 	        <td width="10px" class="renglones" align="center"><b>#</b></td>
-	       	<td width="10px" class="renglones" align="center"><b>str</b></td>
+	       	
 	       	<td width="80px" class="renglones" align="center"><b>Codigo</b></td>
         	<td width="150px" class="renglones" align="center"><b>Director</b></td>
         	<td class="renglones" align="center"><b>Nombre Proyecto</b></td>
@@ -34,7 +34,7 @@
 	<c:forEach begin="0" items="${sessionScope.listaProyectos}" var="lista" varStatus="st">
 		<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if>>
 			<td width="10px" class="renglones"><b><c:out value="${st.count}"/></b></td>
-			<td align="center"><img src='<c:url value="/comp/img/flag${lista.flag}.gif"/>'></td>
+			
 			<td width="80px" class="listas"><c:out value="${lista.codigo}"/></td>
 			<td width="150px" class="listas"><c:out value="${lista.director}"/></td>
 			<td class="listas"><c:out value="${lista.proyecto}"/></td>

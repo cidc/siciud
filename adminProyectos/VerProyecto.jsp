@@ -56,6 +56,7 @@
 					<tr>
 						<th><b>Director del Proyecto</b></th>
 						<th width="120px"><b>Código</b></th>
+						<th width="120px"><b>Cant Co-Investigadores</b></th>
 						<th width="120px"><b>Fecha Inicio</b></th>
 						<th width="120px"><b>Fecha Aprobación</b></th>
 						<th width="120px"><b>Duración Proyecto</b></th>
@@ -64,6 +65,9 @@
 					<tr>
 						<td align="center"><c:out value="${sessionScope.proyecto.director}"/></td>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.codigo}"/></td>
+						<c:if test="${sessionScope.proyecto.cantCoInvest!=0}" >
+						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.cantCoInvest}"/></td>
+						</c:if>
 						<c:if test="${sessionScope.fecInicio!=null}">
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecInicio}"/></td>
 						</c:if>
@@ -88,6 +92,7 @@
 							<th><b>Teléfono Celular</b></th>
 							<th><b>Correo Electrónico</b></th>
 							<c:if test="${sessionScope.proyecto.tutor!=null}" ><th><b>Docente Director</b></th></c:if>
+							<th><b>Total Aprobado</b></th>
 						</tr>
 						<tr>
 							<td><c:out value="${sessionScope.proyecto.documento}" /></td>
@@ -97,6 +102,7 @@
 							<td><c:out value="${sessionScope.proyecto.celular}" /></td>
 							<td><c:out value="${sessionScope.proyecto.correo}" /></td>
 							<c:if test="${sessionScope.proyecto.tutor!=null}" ><td><c:out value="${sessionScope.proyecto.tutor}" /></td></c:if>
+							<td align="center"><c:out value="${sessionScope.balanceProyecto.totalAprobado}"/></td>	
 						</tr>
 					</table>
 				</td>
@@ -119,13 +125,15 @@
 							<td width="125px" align="center">
 								<select name="estado">
 									  <option value="0" <c:if test="${sessionScope.proyecto.estado==0}">selected</c:if>>------------</option>
-			                          <option value="1" <c:if test="${sessionScope.proyecto.estado==1}">selected</c:if>>Aprobado</option>
+			                          <option value="1" <c:if test="${sessionScope.proyecto.estado==1}">selected</c:if>>En trámite</option>
 			                          <option value="2" <c:if test="${sessionScope.proyecto.estado==2}">selected</c:if>>Vigente</option>
 			                          <option value="3" <c:if test="${sessionScope.proyecto.estado==3}">selected</c:if>>Finalizado</option>
 			                          <option value="4" <c:if test="${sessionScope.proyecto.estado==4}">selected </c:if>>Cancelado</option>
 			                          <option value="5" <c:if test="${sessionScope.proyecto.estado==5}">selected</c:if>>En Prueba</option>
-			                          <option value="6" <c:if test="${sessionScope.proyecto.estado==6}">selected</c:if>>Aplazado</option>
+			                          <option value="6" <c:if test="${sessionScope.proyecto.estado==6}">selected</c:if>>Suspendido</option>
 			                          <option value="7" <c:if test="${sessionScope.proyecto.estado==7}">selected</c:if>>Proc. Finalización</option>
+			                          <option value="8" <c:if test="${sessionScope.proyecto.estado==8}">selected</c:if>>Crítico</option>
+			                          <option value="9" <c:if test="${sessionScope.proyecto.estado==9}">selected</c:if>>Plazo Adicional</option>
 								</select>
 							</td>
 							</c:if>
@@ -139,6 +147,8 @@
 			                          <c:if test="${sessionScope.proyecto.estado==5}">En Prueba</c:if>
 			                          <c:if test="${sessionScope.proyecto.estado==6}">Aplazado</c:if>
 			                          <c:if test="${sessionScope.proyecto.estado==7}">Proc. Finalización</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==8}">Crítico</c:if>
+			                          <c:if test="${sessionScope.proyecto.estado==9}">Plazo Adicional</c:if>
 							</td>
 							</c:if>
 						</tr>
@@ -154,7 +164,11 @@
 	</form>
 <br>
 
-	<form name="estadoBandera" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
+	<%-- 
+	
+		este bloque no se elimina debido a que se usara en el futuro para gestionar los subestados
+	
+		<form name="estadoBandera" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
      	<input type="hidden" name="accion" value="5">
      		<table width="95%" class="tablas" align="center">
      			<CAPTION>Estado de revisión del proyecto</CAPTION>
@@ -188,7 +202,7 @@
 	     		</c:if>
      			</tr>
      		</table>
-     	</form>
+     	</form> --%>
 
      	<form name="observProyect" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
      		<input type="hidden" name="accion" value="3">

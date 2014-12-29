@@ -108,7 +108,7 @@ public class ProyectosAntiguos extends ServletGeneral {
 			 case ParametrosOBJ.ListaConvenios:
 				     if (usuario.getPerfil()== 16){irA="/proyectosAntiguos/ProyectoAntiguo.jsp";}
 			         if (usuario.getPerfil()!= 16){irA="/proyectosAntiguos/ProyectoAntiguoCom.jsp";}
-			         req.setAttribute("convenios",proyAntiguosDB.consultarConvenios());
+			         //req.setAttribute("convenios",proyAntiguosDB.consultarConvenios());
 			         if(sesion.getAttribute("ajaxProyCur")==null)
 				    	 sesion.setAttribute("ajaxProyCur",proyAntiguosDB.consultaProyectos());
 			         mensaje="";

@@ -63,12 +63,15 @@
 			<td width="25%">
 				<select name="estado">
 					   <option value="" >------------</option>
-                       <option value="1" >Aprobado</option>
+                       <option value="1" >En Trámite</option>
                        <option value="2" >Vigente</option>
                        <option value="3" >Finalizado</option>
                        <option value="4" >Cancelado</option>
                        <option value="5" >En Prueba</option>
-                       <option value="6" >Aplazado</option>
+                       <option value="6" >Suspendido</option>
+                       <option value="7" >Proc. Finalización</option>
+                       <option value="8" >Crítico</option>
+                       <option value="9" >Plazo Adicional</option>
 				</select>
 			</td>
 			<td width="25%" align="center">

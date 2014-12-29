@@ -64,12 +64,15 @@
 			<td>
 	        	<select name="estado" style="width: 100%">
 	                  <option value="0">------------------</option>
-	                  <option value="1">Inscrito</option>
-	                  <option value="2">Institucionalizado</option>
-	                  <option value="3">Finalizado</option>
-	                  <option value="4">Cancelado</option>
-	                  <option value="5">En Prueba</option>
-	                  <option value="6">Aplazado</option>
+	                  <option value="1" >En Trámite</option>
+                       <option value="2" >Vigente</option>
+                       <option value="3" >Finalizado</option>
+                       <option value="4" >Cancelado</option>
+                       <option value="5" >En Prueba</option>
+                       <option value="6" >Suspendido</option>
+                       <option value="7" >Proc. Finalización</option>
+                       <option value="8" >Crítico</option>
+                       <option value="9" >Plazo Adicional</option>
 	             </select>
 	        </td>
 	         <td>
@@ -126,7 +129,7 @@
 <table id="lista" class="tablas" align="center" width="95%" >
 <CAPTION>Lista de Proyectos Antiguos</CAPTION>
 <tr>  <th align="center"><b>#</b></th>
-	  <th width="16px"><b>St</b></th>
+	  
 	  <th align="center"><b>Código</b></th>
       <th width="190px" align="center"><b>Director</b></th>
       <th align="center"><b>Nombre de Proyecto</b></th>
@@ -135,12 +138,7 @@
 <c:forEach begin = "0" items = "${sessionScope.lista}" var = "proy" varStatus="st">
   <tr <c:if test="${st.count mod 2 == 0}">class="trb"</c:if>>
   	   <td class="renglones"><b><c:out value = "${st.count}"/></b></td>
-	   <td width="16px">
-		   <c:if test="${proy.flag==0}"><img src='<c:url value="/comp/img/flag0.gif"/>'></c:if>
-		   <c:if test="${proy.flag==1}"><img src='<c:url value="/comp/img/flag1.gif"/>'></c:if>
-		   <c:if test="${proy.flag==2}"><img src='<c:url value="/comp/img/flag2.gif"/>'></c:if>
-		   <c:if test="${proy.flag==3}"><img src='<c:url value="/comp/img/flag3.gif"/>'></c:if>
-	   </td>
+	   
 	   <td><c:out value = "${proy.codigo}"/></td>
        <td><c:out value = "${proy.nombreInvestigador}"/></td>
        <td><c:out value = "${proy.nombre}"/></td>
