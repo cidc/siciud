@@ -141,8 +141,9 @@ public class CargaDocumento extends ServletGeneral {
 				proyectoGeneralDB.actualizaEstadoInforme(req.getParameter("idInforme"),req.getParameter("estado"),proyecto);
 			break;
 			case Parametros.insertarDocumentoActaFinalizacion:
-				nombre="ActaFin_"+proyecto.getId()+"_";				
-				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/Actas",archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacion,proyecto),proyecto,usuario.getIdUsuario()))
+				nombre="ActaFin_"+proyecto.getId()+"_";	
+				ExtraDocProyecto extraDoc=cargaDocumento(path,nombre, carpeta+"/Actas",archivoAdj,docNuevo,Parametros.insertarDocumentoActaFinalizacion,proyecto);
+				if(proyectoGeneralDB.nuevaCargaDocProyecto(extraDoc,proyecto,usuario.getIdUsuario())&&proyectoGeneralDB.insertarFechaActaFinalizacion(proyecto.getId(), extraDoc.getFechaDoc(), proyecto.getClaseProyecto()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";

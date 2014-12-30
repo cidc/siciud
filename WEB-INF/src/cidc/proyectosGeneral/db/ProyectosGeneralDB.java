@@ -1531,5 +1531,37 @@ public class ProyectosGeneralDB extends BaseDB {
 		}
 		return listComp;
 	}
+	
+	/**
+	 * este metodo recibe una fecha y la inserta como la fecha en que se firmo el acta de finalizacion del proyecto
+	 * @param id
+	 * @param fecha
+	 * @return
+	 */
+	public boolean insertarFechaActaFinalizacion(int id, String fecha, int claseProy){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		boolean retorno=false;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			if(claseProy==1)
+				ps=cn.prepareStatement(rb.getString("insertarFechaActaTerminacion1"));
+			else
+				ps=cn.prepareStatement(rb.getString("insertarFechaActaTerminacion2"));
+			ps.setString(i++, fecha);
+			ps.setInt(i++, id);
+			System.out.println("--> "+ps.toString());
+			retorno=ps.execute();
+		} catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
 }
 
