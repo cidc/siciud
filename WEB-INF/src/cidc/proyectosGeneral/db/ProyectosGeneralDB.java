@@ -168,6 +168,7 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setDirector(rs.getString(i++));
 				proyecto.setAno(rs.getInt(i++));		
 				proyecto.setFecAprobacion(rs.getString(i++));
+				proyecto.setFecActaFin(rs.getString(i));
 				proyecto.setNumConvocatoria(rs.getString(i++));
 				proyecto.setConvocatoria(rs.getString(i++));				
 				proyecto.setValor(rs.getString(i++));
@@ -225,6 +226,7 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setCelular(rs.getString(i++));
 				proyecto.setFecInicio(rs.getString(i++));
 				proyecto.setFecAprobacion(rs.getString(i++));
+				proyecto.setFecActaFin(rs.getString(i++));
 				proyecto.setNumConvocatoria(rs.getString(i++));
 				proyecto.setConvocatoria(rs.getString(i++));				
 				proyecto.setDuracion(rs.getString(i++));
