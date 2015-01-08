@@ -41,19 +41,19 @@
 		if(document.nuevo.propNombre.value==""){
 			mensaje=mensaje+"\n-) Nombre de la Propuesta";
 		}
-		/*if(document.nuevo.proyectoinv.selectedIndex==0){
+		if(document.nuevo.proyectoinv.selectedIndex==0){
 			mensaje=mensaje+"\n-) Nombre del Proyecto asociado al Plan de Accion del grupo de Investigación";
-		}*/
+		}
 		if(document.nuevo.propDirPro.selectedIndex==0){
 			mensaje=mensaje+"\n-) Nombre del profesor Director del proyecto. (Prof. Planta)";
 		}
-		/*if(document.nuevo.propAbstract.value==""){
+		if(document.nuevo.propAbstract.value==""){
 			mensaje=mensaje+"\n-) Abstract de la Propuesta";
 		}
 		if(document.nuevo.propPalClave.value==""){
 			mensaje=mensaje+"\n-) Palabras Claves de la Propuesta";
 		}
-
+		/*
 		if(document.nuevo.propHorasInv.value=="0" ||document.nuevo.propHorasInv.value==""){
 			mensaje=mensaje+"\n-) Horas de dedicación a la semana por parte del investigador principal";
 		}
@@ -447,7 +447,7 @@
 				</tr>	
 				<c:if test="${sessionScope.datosConv.convAno!=2012 and sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6}">
 				<tr>
-					<th colspan="2" ><b>Abstract: (Inglés)</b></th>
+					<th colspan="2" ><b>Abstract: (Inglés o Español)</b></th>
 				</tr>
 				<tr>
 					<td colspan="2">
