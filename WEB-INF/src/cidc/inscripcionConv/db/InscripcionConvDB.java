@@ -15,6 +15,7 @@ import java.util.Vector;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
+import cidc.adminGrupos.obj.AreasConocimiento;
 import cidc.convMovilidad.obj.InfoGeneral;
 import cidc.convMovilidad.obj.Requisitos;
 import cidc.general.db.BaseDB;
@@ -302,7 +303,11 @@ public class InscripcionConvDB extends BaseDB{
 			ps.setInt(i++,inscripcionConvOBJ.getPropHorasInv());
 			ps.setString(i++, inscripcionConvOBJ.getProyectoinv()); // proyecto segun Plan de Accion
 			ps.setString(i++, inscripcionConvOBJ.getPropDirPro()); // Director del proyecto de inv
-			ps.setLong(i++,inscripcionConvOBJ.getPropConvId());		
+			ps.setLong(i++,inscripcionConvOBJ.getPropConvId());
+			ps.setInt(i++, inscripcionConvOBJ.getAreaSnies());
+			ps.setInt(i++, inscripcionConvOBJ.getObjSocio());
+			ps.setInt(i++, 1);
+			ps.setInt(i++, 1);
 			ps.executeUpdate();
 
 		//	System.out.println("El serial va en "+cod);
@@ -1165,5 +1170,38 @@ public class InscripcionConvDB extends BaseDB{
 		return docs;
 	}
 
+	/**
+	 * Retorna la lista de objetivos socioeconomicos presentes en la tabla b_objsocio
+	 * @return
+	 */
+	public List<AreasConocimiento> objetoSocioEconomico() {
+		List<AreasConocimiento> l=new ArrayList<AreasConocimiento>();
+		AreasConocimiento areaSNIES=null;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		try {
+			cn = cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("objetoSocio"));			
+			rs=ps.executeQuery();
+			while(rs.next()){
+				int i=1;
+				areaSNIES=new AreasConocimiento();
+				areaSNIES.setCodigoObjSocio(rs.getInt(i++));
+				areaSNIES.setNombreObjSocio(rs.getString(i++));
+				l.add(areaSNIES);
+			}
+		} catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(rs);
+			cerrar(ps);
+			cerrar(cn);
+		}
+	//	System.out.println(l.size());
+		return l;
+	}
 }
 

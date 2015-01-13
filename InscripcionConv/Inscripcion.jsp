@@ -37,7 +37,13 @@
 		}
 		if(document.nuevo.propGrupoInv.selectedIndex==0){
 			mensaje=mensaje+"\n-) Grupo de Investigación";
-		}		
+		}
+		if(document.nuevo.areaSnies.selectedIndex==0){
+			mensaje=mensaje+"\n-) Área de Conocimiento";
+		}
+		if(document.nuevo.objSocio.selectedIndex==0){
+			mensaje=mensaje+"\n-) Objetivo Socioeconómico";
+		}
 		if(document.nuevo.propNombre.value==""){
 			mensaje=mensaje+"\n-) Nombre de la Propuesta";
 		}
@@ -347,10 +353,16 @@
 			<table class="tablas" width="100%">
 			<CAPTION>Datos Generales</CAPTION>
 				<tr>
+					<th width="20%"><b>Investigador Principal:</b></th>
 					<th width="20%"><b>Facultad:</b></th>
-					<th><b>Proyecto Curricular:</b></th>
 				</tr>
 				<tr>
+					<td width="30%">
+						<input type="hidden" name="propMailInvest" value='<c:out value="${sessionScope.persona.mail}"/>'>
+						<input type="hidden" name="propInvesPrincId" value='<c:out value="${sessionScope.persona.idPersona}"/>'>
+						<input type="hidden" name="propNombreInvestig" value='<c:out value="${sessionScope.persona.nombre}"/>'>
+						<c:out value="${sessionScope.persona.nombre}"/>
+					</td>
 					<td width="20%">
 						<select name="propFacultad" style="width:100%">
 							<option value="0">---------------</option>
@@ -361,6 +373,12 @@
 							<option value="5" <c:if test="${sessionScope.persona.facultad==5}">selected</c:if>>Asab</option>
 						</select>
 					</td>
+				</tr>
+				<tr>
+					<th><b>Proyecto Curricular:</b></th>
+					<th width="50%"><b><span id="para">Grupo Investigación. </span></b></th>
+				</tr>
+				<tr>
 					<td>
 						<select style="width:100%" name="propProyCur">
 							<option value='0'>------------------------ </option>
@@ -370,18 +388,6 @@
 							</c:forEach>
 						</c:if>
 						</select>
-					</td>
-				</tr>
-				<tr>
-					<th width="20%"><b>Investigador Principal:</b></th>
-					<th width="50%"><b><span id="para">Grupo Investigación. </span></b></th>
-				</tr>
-				<tr>
-					<td width="30%">
-						<input type="hidden" name="propMailInvest" value='<c:out value="${sessionScope.persona.mail}"/>'>
-						<input type="hidden" name="propInvesPrincId" value='<c:out value="${sessionScope.persona.idPersona}"/>'>
-						<input type="hidden" name="propNombreInvestig" value='<c:out value="${sessionScope.persona.nombre}"/>'>
-						<c:out value="${sessionScope.persona.nombre}"/>
 					</td>
 					<td width="50%">
 						<select style="width:100%" name="propGrupoInv" onchange="ajaxProyecto(this)">
@@ -403,7 +409,28 @@
 						</select>
 					</td>
 				</tr>
-
+				<tr>
+				 <th ><b>Área de Conocimiento</b></th>
+				 <th ><b>Objetivo Socioeconómico</b></th>
+				</tr>
+				<tr>
+					<td tyle="width:100%">
+						<select  name="areaSnies">
+							<option value='0'>------------------------ </option>
+							<c:forEach begin="0" items="${requestScope.AreaSnies}" var="lista" varStatus="st">
+							<option value="<c:out value="${lista.codigo}" />"><c:out value="${lista.nombre}" /></option>
+							</c:forEach>
+						</select>
+					</td>
+					<td style="width:100%" >
+						<select name="objSocio">
+							<option value='0'>------------------------ </option>
+							<c:forEach begin="0" items="${requestScope.objSocio}" var="lista" varStatus="st">
+							<option value="<c:out value="${lista.codigoObjSocio}" />"><c:out value="${lista.nombreObjSocio}" /></option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
 				<tr>
 					<th colspan="2"><b>Nombre de la Propuesta:</b></th>
 				</tr>
@@ -445,7 +472,6 @@
 						<textarea name="propPalClave" rows="1" cols="65"></textarea>
 					</td>
 				</tr>	
-				<c:if test="${sessionScope.datosConv.convAno!=2012 and sessionScope.datosConv.convNumero!=5 and sessionScope.datosConv.convNumero!=6}">
 				<tr>
 					<th colspan="2" ><b>Abstract: (Inglés o Español)</b></th>
 				</tr>
@@ -454,7 +480,6 @@
 						<textarea name="propAbstract" rows="3" cols="65"></textarea>
 					</td>
 				</tr>
-				</c:if>				
 			</table>
 
 		</fieldset>
@@ -475,11 +500,6 @@
 							<option value='3'>3</option>
 							<option value='4'>4</option>
 							<option value='5'>5</option>
-							<!-- <option value='6'>6</option>
-							<option value='7'>7</option>
-							<option value='8'>8</option>
-							<option value='9'>9</option>
-							<option value='10'>10</option> -->
 						</select>
 					</th>
 				</tr>

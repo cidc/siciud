@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cidc.adminGrupos.db.AdminGruposDB;
 import cidc.convocatorias.db.ConvocatoriasDB;
 import cidc.convocatorias.obj.CompromisosOBJ;
 import cidc.convocatorias.obj.ConvocatoriaOBJ;
@@ -86,6 +87,9 @@ public class Inscribir extends ServletGeneral {
 			}
 			break;
 		case ParametrosOBJ.cmdPaso0:
+			AdminGruposDB gruposDB= new AdminGruposDB(cursor, usuario.getPerfil());
+			req.setAttribute("AreaSnies", gruposDB.AjaxAreasSnies());
+			req.setAttribute("objSocio", inscripcionConvDB.objetoSocioEconomico());
 			System.out.println("entroooo");
 			sesion.setAttribute("persona", persona);
 			sesion.setAttribute("ajaxProyCur",

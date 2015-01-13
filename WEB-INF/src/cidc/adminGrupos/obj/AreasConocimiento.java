@@ -7,6 +7,8 @@ public class AreasConocimiento implements Serializable{
 	private int codigo;
 	private String nombre;	
 	private boolean subarea;
+	private int codigoObjSocio;
+	private String nombreObjSocio;
 	
 	
 	public int getCodigo() {
@@ -26,6 +28,18 @@ public class AreasConocimiento implements Serializable{
 	}
 	public void setSubarea(boolean subarea) {
 		this.subarea = subarea;
+	}
+	public int getCodigoObjSocio() {
+		return codigoObjSocio;
+	}
+	public void setCodigoObjSocio(int codigoObjSocio) {
+		this.codigoObjSocio = codigoObjSocio;
+	}
+	public String getNombreObjSocio() {
+		return nombreObjSocio;
+	}
+	public void setNombreObjSocio(String nombreObjSocio) {
+		this.nombreObjSocio = nombreObjSocio;
 	}
 	
 	

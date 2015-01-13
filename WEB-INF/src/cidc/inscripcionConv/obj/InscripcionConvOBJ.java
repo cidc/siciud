@@ -45,6 +45,8 @@ public class InscripcionConvOBJ implements Serializable{
 	private int []idCompromisos;
 	private int []cantComp;
 	private String []compromiso_;
+	private int areaSnies;
+	private int objSocio;
 	
 	
 	public int[] getPropGrupoAsociado() {
@@ -220,6 +222,18 @@ public class InscripcionConvOBJ implements Serializable{
 	}
 	public void setCompromiso_(String[] compromiso_) {
 		this.compromiso_ = compromiso_;
+	}
+	public int getAreaSnies() {
+		return areaSnies;
+	}
+	public void setAreaSnies(int areaSnies) {
+		this.areaSnies = areaSnies;
+	}
+	public int getObjSocio() {
+		return objSocio;
+	}
+	public void setObjSocio(int objSocio) {
+		this.objSocio = objSocio;
 	}	
 	
 }
