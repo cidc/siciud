@@ -26,7 +26,7 @@
            <tr>
              <th width="296" height="40" bgcolor="#5dad30">Por Filtros</th>
              <td width="344"><center>
-               <input name="button3" type="submit" id="button3" value="Aplicar Filtros" autofocus onclick="window.open('http://10.20.12.101:8080/jasperserver/flow.html?_flowId=viewReportFlow&standAlone=true&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Fgruposdeinvestigacion&reportUnit=%2Freports%2Fgruposdeinvestigacion%2Fprueba2_1&j_username=invitado&j_password=invitado&singlesingon=y&decorate=no', 'mywindow','menubar=1,resizable=1,location=0,width=1150,height=800')">
+               <input name="button3" type="submit" id="button3" value="Aplicar Filtros" autofocus onclick="window.open('http://200.69.103.29:23187/jasperserver/flow.html?_flowId=viewReportFlow&standAlone=true&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Fgruposdeinvestigacion&reportUnit=%2Freports%2Fgruposdeinvestigacion%2Fprueba2_1&j_username=invitado&j_password=invitado&singlesingon=y&decorate=no', 'mywindow','menubar=1,resizable=1,location=0,width=1150,height=800')">
              </center>
       </tr>
            </table>
@@ -37,7 +37,7 @@
             <tr>
               <th width="296" height="40" bgcolor="#5dad30"><p>Proyectos Pr<span class="cualquiera">&oacute</span>ximos a Vencerse</p></th>
               <td width="344"><center>
-                <input name="button6" type="submit" id="button6" value="Ingresar Tiempo" onclick="window.open('http://10.20.12.101:8080/jasperserver/flow.html?_flowId=viewReportFlow&standAlone=true&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Fgruposdeinvestigacion&reportUnit=%2Freports%2Fgruposdeinvestigacion%2FProyectos_Proximos_a_Vencer&j_username=invitado&j_password=invitado&decorate=no', 'mywindow','menubar=1,resizable=1,location=0,width=1150,height=400')">
+                <input name="button6" type="submit" id="button6" value="Ingresar Tiempo" onclick="window.open('http://200.69.103.29:23187/jasperserver/flow.html?_flowId=viewReportFlow&standAlone=true&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Fgruposdeinvestigacion&reportUnit=%2Freports%2Fgruposdeinvestigacion%2FProyectos_Proximos_a_Vencer&j_username=invitado&j_password=invitado&decorate=no', 'mywindow','menubar=1,resizable=1,location=0,width=1150,height=400')">
               </center>
           </table>
         </form>
@@ -47,7 +47,7 @@
               <th width="296" height="129" bgcolor="#5dad30"><p>Indicadores Proyectos de Investigaci<span class="cualquiera">&oacute</span>n</p></th>
               <td width="344"><center>
                 <p>
-                  <input name="button6"  type="image" id="button6" title="Visualizar Indicadores" onclick="window.open('http://10.20.12.101:8080/jasperserver/flow.html?_flowId=viewReportFlow&amp;standAlone=true&amp;_flowId=viewReportFlow&amp;ParentFolderUri=%2Freports%2FIndicadores&amp;reportUnit=%2Freports%2FIndicadores%2FIndicadores_Grupos_Investigacion&amp;j_username=invitado&amp;j_password=invitado&amp;decorate=no', 'mywindow','menubar=1,resizable=1,location=0,width=1150,height=400')" value="Indicadores" src="../comp/img/indicadores2.jpg" alt="Visualizar Indicadores" align="middle">
+                  <input name="button6"  type="image" id="button6" title="Visualizar Indicadores" onclick="window.open('http://200.69.103.29:23187/jasperserver/flow.html?_flowId=viewReportFlow&amp;standAlone=true&amp;_flowId=viewReportFlow&amp;ParentFolderUri=%2Freports%2FIndicadores&amp;reportUnit=%2Freports%2FIndicadores%2FIndicadores_Grupos_Investigacion&amp;j_username=invitado&amp;j_password=invitado&amp;decorate=no', 'mywindow','menubar=1,resizable=1,location=0,width=1150,height=400')" value="Indicadores" src="../comp/img/indicadores2.jpg" alt="Visualizar Indicadores" align="middle">
                 </p>
               </center>
           </table>
