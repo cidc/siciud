@@ -113,14 +113,7 @@ public class CargaDocumento extends ServletGeneral  {
 		//System.out.println("--ruta completa es:--->"+path);
 		String carpeta="";
 		carpeta="Convenios";
-	
-		
-	
-	
 		switch(accion){
-		
-		
-		
 			case Parametros.insertaInformeConvenio:
 				nombre="Informe_"+objconv.getIdconvenio()+"_"; 
 				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Informes",archivoAdj,docNuevo,Parametros.insertaInformeConvenio,objconv),objconv,usuario.getIdUsuario()))
@@ -179,7 +172,6 @@ public class CargaDocumento extends ServletGeneral  {
 			break;
 			
 			case Parametros.insertarDocumentoOtrosi:
-				req.getParameter("nombre");
 				nombre="Otrosi_"+req.getParameter("nombre")+objconv.getIdconvenio()+"_";
 				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Otrosi",archivoAdj,docNuevo,Parametros.insertarDocumentoExternoconvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
@@ -190,6 +182,14 @@ public class CargaDocumento extends ServletGeneral  {
 			case Parametros.insertarContrato:
 				nombre="Contrato_"+objconv.getIdconvenio()+"_";
 				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Contratos",archivoAdj,docNuevo,Parametros.insertaInformeConvenio,objconv),objconv,usuario.getIdUsuario()))
+					mensaje="Documento Cargado Satisfactoriamente";
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
+				    sesion.setAttribute("datoConvenio", adminconv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio())));
+				break;
+			case Parametros.insertaInformeProyecto:
+				nombre="Otros_"+objconv.getIdconvenio();
+				if(adminconv.nuevaCargaDocConvenio(cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertaInformeConvenio,objconv),objconv,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";

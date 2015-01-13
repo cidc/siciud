@@ -15,6 +15,7 @@ public class FiltroGeneralProyecto implements Serializable{
 	private String nombreProyecto;
 	private String palabrasClaves;
 	private String ano;
+	private int tipoConvocatoria;
 	
 	
 	
@@ -84,6 +85,12 @@ public class FiltroGeneralProyecto implements Serializable{
 	}
 	public void setAno(String ano) {
 		this.ano = ano;
+	}
+	public int getTipoConvocatoria() {
+		return tipoConvocatoria;
+	}
+	public void setTipoConvocatoria(int tipoConvocatoria) {
+		this.tipoConvocatoria = tipoConvocatoria;
 	}
 	
 }

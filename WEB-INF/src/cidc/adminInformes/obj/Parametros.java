@@ -17,5 +17,4 @@ public class Parametros {
 	public static final int insertarDocumentoProyecto=11;
 	public static final int insertarDocumentoOtrosi=12;
 	public static final int insertarContrato=13;
-
 }

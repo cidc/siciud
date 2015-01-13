@@ -66,7 +66,7 @@ public class ProyectosAntiguos extends ServletGeneral {
                      else
                     	 mensaje="Problemas al almacenar la informaci�n del proyecto";
 			         sesion.setAttribute("proyectos", proyAntiguosDB.consultarProyectoAntiguo(proyAntiguosDB.getObjProyecto().getId()));
-                     req.setAttribute("convenios",proyAntiguosDB.consultarConvenios());
+                     //req.setAttribute("convenios",proyAntiguosDB.consultarConvenios());
     	             break;
 
 			 case ParametrosOBJ.PaginaFiltro:
@@ -90,7 +90,6 @@ public class ProyectosAntiguos extends ServletGeneral {
 			         int idProyecto = Integer.parseInt(req.getParameter("idProyecto"));
 			         objProyecto = proyAntiguosDB.consultarProyectoAntiguo(idProyecto);
 			         sesion.setAttribute("proyectos", objProyecto);
-			         req.setAttribute("convenios",proyAntiguosDB.consultarConvenios());
 			         mensaje="";
 			         break;
 
@@ -333,7 +332,8 @@ public class ProyectosAntiguos extends ServletGeneral {
 				 irA="/proyectosAntiguos/RubrosAprobados.jsp";
 			 break;
 		     default: irA = "/proyectosAntiguos/NuevoProyectoAntiguo.jsp";
-				      req.setAttribute("convenios",proyAntiguosDB.consultarConvenios());
+				     // req.setAttribute("convenios",proyAntiguosDB.consultarConvenios());
+		     		req.setAttribute("convocatoria",proyAntiguosDB.consultarConvocatorias());
 				      sesion.removeAttribute("proyectos");
 				      if(sesion.getAttribute("ajaxProyCur")==null)
 					    sesion.setAttribute("ajaxProyCur",proyAntiguosDB.consultaProyectos());

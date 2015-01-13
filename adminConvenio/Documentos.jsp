@@ -14,28 +14,11 @@
 		document.frmStInforme.estado.value=st;
 		document.frmStInforme.submit();
 	}
-	function cambioTipo(combo){
+	function cambioTipo1(combo){
 		if(combo.value==1){
-			//||combo.value==4||combo.value==5||combo.value==6||combo.value==7||combo.value==8||combo.value==9
-			//document.getElementById("st11").style.display="none";
-			//document.getElementById("st12").style.display="none";
-			document.getElementById("st21").style.display="";
-			document.getElementById("st22").style.display="";
-			document.frmCargaDoc.nombre.readonly=false;
-			//if(combo.value==4){
-			//	document.frmCargaDoc.nombre.readonly=true;
-			//	document.frmCargaDoc.nombre.value="Acta de Cierre/Cancelacion";
-			//}
-			//if(combo.value==5){
-			//	document.frmCargaDoc.nombre.readonly=true;
-			//	document.frmCargaDoc.nombre.value="Acta de Finalizacion";
-			//}
-			//if(combo.value==6){
-			//	document.frmCargaDoc.nombre.readonly=true;
-			//	document.frmCargaDoc.nombre.value="Acta de Inicio";
-			//}
-		}	
-		if(!combo.value==0||!combo.value==1){
+			document.getElementById("st21").style.display="block";
+			document.getElementById("st22").style.display="block";
+		}else{
 			document.getElementById("st21").style.display="none";
 			document.getElementById("st22").style.display="none";
 			
@@ -46,37 +29,38 @@
 		var msg="";
 		if(document.frmCargaDoc.tipo.selectedIndex==0)
 			msg=msg+"-) Tipo de documento\n";
-		if(document.frmCargaDoc.tipo.value=="1"){			
+		if(document.frmCargaDoc.tipo.selectedIndex=="1"){			
 			if(document.frmCargaDoc.nombre.value=="")
 				msg=msg+"-) Nombre del documento\n";
-			document.frmCargaDoc.accion.value="3";
+			document.frmCargaDoc.accion.selectedIndex="3";
 		}
-		if(document.frmCargaDoc.tipo.value=="4"){
+		if(document.frmCargaDoc.tipo.selectedIndex=="4"){
 			document.frmCargaDoc.accion.value="4";
 		}
-		if(document.frmCargaDoc.tipo.value=="2"){
+		if(document.frmCargaDoc.tipo.selectedIndex=="2"){
 			document.frmCargaDoc.accion.value="9";
 		}
-		if(document.frmCargaDoc.tipo.value=="3"){
+		if(document.frmCargaDoc.tipo.selectedIndex=="3"){
 			document.frmCargaDoc.accion.value="9";
 		}
-		if(document.frmCargaDoc.tipo.value=="5"){
+		if(document.frmCargaDoc.tipo.selectedIndex=="5"){
 			document.frmCargaDoc.accion.value="5";
 		}
-		if(document.frmCargaDoc.tipo.value=="6"){
+		if(document.frmCargaDoc.tipo.selectedIndex=="6"){
 			document.frmCargaDoc.accion.value="5";
 		}
-		if(document.frmCargaDoc.tipo.value=="7"){
+		if(document.frmCargaDoc.tipo.selectedIndex=="7"){
 			document.frmCargaDoc.accion.value="10";
 		}
-		if(document.frmCargaDoc.tipo.value=="8"){
+		if(document.frmCargaDoc.tipo.selectedIndex=="8"){
 			document.frmCargaDoc.accion.value="11";
-		}if(document.frmCargaDoc.tipo.value=="9"){
+		}
+		if(document.frmCargaDoc.tipo.selectedIndex=="9"){
 			document.frmCargaDoc.accion.value="12";
-		}if(document.frmCargaDoc.tipo.value="10"){
+		}
+		if(document.frmCargaDoc.tipo.selectedIndex=="10"){
 			document.frmCargaDoc.accion.value="13";
 		}
-		
 		if(document.frmCargaDoc.fechaDoc.value=="")
 			msg=msg+"-) Fecha del Documento\n";		
 		if(document.frmCargaDoc.archivo.value=="")
@@ -210,9 +194,8 @@
 						<tr>
 							<th>Tipo</th>
 							<td>
-								<select name="tipo" style="width:120px;" onchange="cambioTipo(this)" >
+								<select name="tipo" style="width:120px;" onchange="cambioTipo1(this)" >
 									<option value="0">----------------</option>
-									<option value="10">Convenio o Contrato</option>
 									<option value="1">Otro Documento</option>
 									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>
@@ -221,7 +204,8 @@
 									<option value="6">Acta de Inicio</option>
 									<option value="7">Memorandos</option>	
 									<option value="8">Proyecto</option>
-									<option value="9">Otro si</option>																				
+									<option value="9">Otro si</option>			
+									<option value="10">Convenio o Contrato</option>																	
 								</select>								
 							</td>
 							<th><b>Fecha de Entrega</b></th>
