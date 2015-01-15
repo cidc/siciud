@@ -61,6 +61,7 @@
 			<td align="center" class="renglones" >Número</td>
 			<td align="center" class="renglones" >Remitente</td>
 			<td align="center" class="renglones" >Destinatario</td>
+			<td align="center" class="renglones" >Fecha</td>
 			<td align="center" class="renglones" >Asunto</td>
 		</tr>
 		<c:forEach items="${requestScope.listaFiltro}" var="lista" begin="0">
@@ -68,6 +69,7 @@
 			<td align="center"><c:out value="${lista.cod}" /></td>
 			<td align="center" style="width:140px"><c:out value="${lista.remitente}" /></td>
 			<td align="center" style="width:140px"><c:out value="${lista.destinatario}" /></td>
+			<td align="center"><c:out value="${lista.fecha}" /></td>
 			<td align="center" style="width:600px"><c:out value="${lista.observaciones}" /></td>
 		</tr>
 		</c:forEach>

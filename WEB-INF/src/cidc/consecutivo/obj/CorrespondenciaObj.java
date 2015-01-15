@@ -1,5 +1,7 @@
 package cidc.consecutivo.obj;
 
+import java.util.Date;
+
 public class CorrespondenciaObj {
 
 	private int id;
@@ -8,6 +10,7 @@ public class CorrespondenciaObj {
 	private String destinatario;
 	private String observaciones;
 	private int ano;
+	private Date fecha;
 	
 	public CorrespondenciaObj(int id, String cod, String remitente,
 			String destinatario, String observaciones,int ano) {
@@ -68,6 +71,14 @@ public class CorrespondenciaObj {
 
 	public void setAno(int ano) {
 		this.ano = ano;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 
