@@ -88,8 +88,9 @@
 			ms=ms+"\n-) Área Snies";
 		}if(document.nuevo.fechaVinculacion.value==""){
 			ms=ms+"\n-) Fecha de vinculación";
+		}if(document.nuevo.fechaSalidaGrupo.value!=""&&restarFechas()){
+			ms=ms+"\nLa fecha de Salida del Integrante no ser mayor al dia de hoy";
 		}
-
 		if(document.nuevo.cvlac.value!=""){
 			if(document.nuevo.cvlac.value.length>=64){
 				var dir=document.nuevo.cvlac.value.substring(0,68);
@@ -116,9 +117,18 @@
 
 	function acci(acc){
 	if(validar()){
-	document.nuevo.accion.value=acc;
-	document.nuevo.submit();
+		document.nuevo.accion.value=acc;
+		document.nuevo.submit();
+		}
 	}
+	
+	function restarFechas() {
+		var fech1 = document.nuevo.fechaSalidaGrupo.value;
+		var fech2 = new Date();
+		if((Date.parse(fech1)) > (Date.parse(fech2))){
+			return true; //fecha invalida
+		}
+		return false; //fecha valida
 	}
 
 
