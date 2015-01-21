@@ -168,7 +168,7 @@ public class ProyectosGeneralDB extends BaseDB {
 				proyecto.setDirector(rs.getString(i++));
 				proyecto.setAno(rs.getInt(i++));		
 				proyecto.setFecAprobacion(rs.getString(i++));
-				proyecto.setFecActaFin(rs.getString(i));
+				proyecto.setFecActaFin(rs.getString(i++));
 				proyecto.setNumConvocatoria(rs.getString(i++));
 				proyecto.setConvocatoria(rs.getString(i++));				
 				proyecto.setValor(rs.getString(i++));
