@@ -1144,6 +1144,7 @@ public class AdminGruposDB extends BaseDB{
 			System.out.println("---insertando-->"+datosIntegrante.getFlag());
 			if(datosIntegrante.getFlag()==1){
 				st = cn.prepareStatement(rb.getString("insertarPersonaExt"));
+				datosIntegrante.setId(0);// se envia 0 para indicar que es una persona nueva
 				st.setString(i++, datosIntegrante.getCedula());
 				st.setInt(i++, datosIntegrante.getTipoCed());
 				st.setString(i++, datosIntegrante.getDeCed());

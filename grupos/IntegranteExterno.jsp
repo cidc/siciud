@@ -149,7 +149,7 @@
 		<input type="hidden" name="codigoUd" value='00'>
 		<input type="hidden" name="idGrupo" value="<c:out value="${sessionScope.idGrupo}" />">
 		<input type="hidden" name="accion" value="<c:out value="${requestScope.flagMod}" />">
-		<input type="hidden" name="id" value='<c:out value="${sessionScope.integrante2.id}"/>'>
+<%-- 		<input type="hidden" name="id" value='<c:out value="${sessionScope.integrante2.id}"/>'> --%>
 		<!-- hidden para la bandera datoInt.flag -->
 
 			<table class="tablas" align="center">
