@@ -61,10 +61,10 @@ var nav4=window.Event ? true : false;
 			alert("El nombre del convenio no puede estar vacio");
 			return false;
 		}
-		if(forma.fecha.value==""){
-			alert("La fecha de registro del convenio no puede estar vacio");
-			return false;
-		}
+// 		if(forma.fecha.value==""){
+// 			alert("La fecha de registro del convenio no puede estar vacio");
+// 			return false;
+// 		}
 		if(forma.fechaInicio.value==""){
 			alert("La fecha de Inicio del convenio no puede estar vacio");
 			return false;
@@ -74,7 +74,7 @@ var nav4=window.Event ? true : false;
 			return false;
 		   }
 		if(forma.VAprobado.value<=1)
-		   {  alert("La duración del proyecto no puede ser menor a 6 meses");
+		   {  alert("La el valor del convenio no puede ser menor a 1");
 			return false;
 		   }
 		if(forma.nombreproyecto.value==""){
@@ -222,7 +222,7 @@ var nav4=window.Event ? true : false;
 				<td style="width: 100px; "><input type="text" maxlength="3" name="duracion" style="text-align:right; width:80%" value="0" onkeypress="return numeros(event)" size="2">
 				</td>
 				 <td class="renglones" style="width: 179px; "><b>Valor Aprobado:</b></td>
-				<td><input type="text" maxlength="9" name="VAprobado" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
+				<td><input type="text" maxlength="10" name="VAprobado" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)"></td>
 				</td>
 				
 				
