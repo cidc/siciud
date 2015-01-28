@@ -23,9 +23,11 @@
 				if(combo.selectedIndex==2)
 					document.elementos.observacionEntrega.value="El elemento fue entregado a la biblioteca de la Universidad Distrital";			
 				if(combo.selectedIndex==3)
-					document.elementos.observacionEntrega.value="El no se envía a ninguna dependencia o grupo";
+					document.elementos.observacionEntrega.value="El elemento no se envía a ninguna dependencia o grupo";
 				if(combo.selectedIndex==4)
 					document.elementos.observacionEntrega.value="El elemento fue entregado a el departamento de almacén de la Universidad Distrital";
+				if(combo.selectedIndex==5)
+					document.elementos.observacionEntrega.value="El elemento fue entregado al docente Director del Grupo/Semillero";
 				document.elementos.grupo_Acargo.disabled=true;
 				document.elementos.grupoAcargo.value=0;
 			}
@@ -40,7 +42,9 @@
 				if(combo.selectedIndex==2)
 					document.elementos.observacionEntrega[(id-1)].value="El elemento fue entregado a la biblioteca de la Universidad Distrital";								
 				if(combo.selectedIndex==3)
-					document.elementos.observacionEntrega[(id-1)].value="El no se envía a ninguna dependencia o grupo";
+					document.elementos.observacionEntrega[(id-1)].value="El elemento no se envía a ninguna dependencia o grupo";
+				if(combo.selectedIndex==5)
+					document.elementos.observacionEntrega.value="El elemento fue entregado al docente Director del Grupo/Semillero";
 				document.elementos.grupo_Acargo[(id-1)].disabled=true;
 				document.elementos.grupoAcargo[(id-1)].value=0;
 			}
@@ -110,7 +114,8 @@
 								<option value="g" <c:if test="${lista.ubicacion=='g'}">selected</c:if>>Grupo/Semillero de Investigación</option>
 								<option value="b" <c:if test="${lista.ubicacion=='b'}">selected</c:if>>Biblioteca</option>
 								<option value="p" <c:if test="${lista.ubicacion=='p'}">selected</c:if>>Se queda en proyecto</option>
-								<option value="a" <c:if test="${lista.ubicacion=='a'}">selected</c:if>>Almacén</option>								
+								<option value="a" <c:if test="${lista.ubicacion=='a'}">selected</c:if>>Almacén</option>
+								<option value="d" <c:if test="${lista.ubicacion=='d'}">selected</c:if>>Director Grupo/Semillero</option>								
 							</select>
 						</td>
 						<td>
