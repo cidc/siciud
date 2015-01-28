@@ -964,15 +964,23 @@ public class InscripcionConvDB extends BaseDB{
 		texto.append(rb1.getString("trCierra"));
 		texto.append(rb1.getString("trCierra"));
 		Vector<ResumenInscOBJ> vector=documentosInsertados(Integer.parseInt(general.getConvocatoria()),(int)general.getIdPropuesta());
-		for (ResumenInscOBJ resumenInscOBJ : vector) {
+		if(vector.size()==0){
 			texto.append(rb1.getString("trAbre"));
-			texto.append(rb1.getString("td4")+rb1.getString("docNombre")+resumenInscOBJ.getDocAnexo()+rb1.getString("tdCierra"));
+			texto.append(rb1.getString("td4")+rb1.getString("documentos")+rb1.getString("tdCierra"));
 			texto.append(rb1.getString("trCierra"));
 			texto.append(rb1.getString("trAbre"));
-			texto.append(rb1.getString("tdAbre")+resumenInscOBJ.getNombreDoc()+rb1.getString("tdCierra"));
+			texto.append(rb1.getString("tdAbre")+" Por favor verifique su inscripción, no se ha cargado ningún documento"+rb1.getString("tdCierra"));
 			texto.append(rb1.getString("trCierra"));
+		}else{
+			for (ResumenInscOBJ resumenInscOBJ : vector) {
+				texto.append(rb1.getString("trAbre"));
+				texto.append(rb1.getString("td4")+rb1.getString("docNombre")+resumenInscOBJ.getDocAnexo()+rb1.getString("tdCierra"));
+				texto.append(rb1.getString("trCierra"));
+				texto.append(rb1.getString("trAbre"));
+				texto.append(rb1.getString("tdAbre")+resumenInscOBJ.getNombreDoc()+rb1.getString("tdCierra"));
+				texto.append(rb1.getString("trCierra"));
+			}
 		}
-		
 		texto.append(rb1.getString("trAbre"));
 		texto.append(rb1.getString("td4")+rb1.getString("fechaInicio")+rb1.getString("tdCierra"));
 		texto.append(rb1.getString("trCierra"));

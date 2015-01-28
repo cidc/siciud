@@ -640,13 +640,19 @@ public class MovilidadDB extends BaseDB{
 		texto.append(rb1.getString("legendAbre")+"<b>"+rb1.getString("msn1")+"</b>");
 		InscripcionConvDB insc= new InscripcionConvDB(cursor, perfil);
 		Vector<ResumenInscOBJ> vector=insc.documentosInsertados((int)general.getPropConvId(),Integer.parseInt(idPropuesta));
-		for (ResumenInscOBJ resumenInscOBJ : vector) {
+		if(vector.size()==0){
 			texto.append(rb1.getString("trAbre"));
-			texto.append(rb1.getString("td4")+"<b>"+rb1.getString("docNombre")+"</b>"+resumenInscOBJ.getDocAnexo()+rb1.getString("tdCierra"));
+			texto.append(rb1.getString("tdAbre")+" Por favor verifique su inscripción, no se ha cargado ningún documento"+rb1.getString("tdCierra"));
 			texto.append(rb1.getString("trCierra"));
-			texto.append(rb1.getString("trAbre"));
-			texto.append(rb1.getString("tdAbre")+resumenInscOBJ.getNombreDoc()+rb1.getString("tdCierra"));
-			texto.append(rb1.getString("trCierra"));
+		}else{
+			for (ResumenInscOBJ resumenInscOBJ : vector) {
+				texto.append(rb1.getString("trAbre"));
+				texto.append(rb1.getString("td4")+"<b>"+rb1.getString("docNombre")+"</b>"+resumenInscOBJ.getDocAnexo()+rb1.getString("tdCierra"));
+				texto.append(rb1.getString("trCierra"));
+				texto.append(rb1.getString("trAbre"));
+				texto.append(rb1.getString("tdAbre")+resumenInscOBJ.getNombreDoc()+rb1.getString("tdCierra"));
+				texto.append(rb1.getString("trCierra"));
+			}
 		}
 		texto.append(rb1.getString("legendCierra"));
 		texto.append(rb1.getString("fieldsetCierra"));
