@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -322,39 +323,42 @@ public class GenerarCertificados {
 		Phrase []textoDocumento=new Phrase [20];
 		Phrase clausulas=new Phrase();
 		Phrase clausulasinicio=new Phrase();		
-//		Date date = new Date();
-//		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
-//		String formattedDate = sdf.format(date);		
-//		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
-		clausulasinicio.add(new Phrase("\n\n\nEl(La) investigador(a) ",texto10));
-		clausulasinicio.add(new Phrase(certificado.getNombre().toUpperCase()+",",texto10n));
-		clausulasinicio.add(new Phrase(" identificado(a) con la cédula de ciudadanía N° "+certificado.getCedula()+" de "+ certificado.getNumCedDe()+" ",texto10));
-		clausulasinicio.add(new Phrase((certificado.getFechaSalida()!=null?"pertenecio":"pertenece"),texto10));
-		clausulasinicio.add(new Phrase(" desde el "+global.getDiaFecha(certificado.getFechaIngreso(), 1) +" de "+global.getNombreMes(certificado.getFechaIngreso(), 1) +" de "+ global.getAnoFecha(certificado.getFechaIngreso())+" ",texto10));
-		if(certificado.getFechaSalida()!=null&&!certificado.getFechaSalida().equals("")){
-			clausulasinicio.add(new Phrase(" hasta el "+global.getDiaFecha(certificado.getFechaSalida(), 1) +" de "+global.getNombreMes(certificado.getFechaSalida(), 1) +" de "+ global.getAnoFecha(certificado.getFechaSalida())+" ",texto10));
-		}			
-		clausulasinicio.add(new Phrase("en calidad de "+certificado.getPapel()+" al "+certificado.getTipoGrupo()+" de investigación ",texto10));
-		clausulasinicio.add(new Phrase("\""+certificado.getNombreGrupo()+"\"",texto10n));
-		clausulasinicio.add(new Phrase(", institucionalizado el ",texto10));
-		clausulasinicio.add(new Phrase(global.getDiaFecha(certificado.getFecha_cert(), 1) +" de "+global.getNombreMes(certificado.getFecha_cert(), 1) +" de "+ global.getAnoFecha(certificado.getFecha_cert()),texto10));
-		clausulasinicio.add(new Phrase(", por el Centro de Investigaciones y Desarrollo Científico de la Universidad Distrital Francisco José de Caldas ",texto10));
-		String categoria ="";
-		if(certificado.getCategoriaGrupo().equals("1")||certificado.getCategoriaGrupo().equals("2")){
-			categoria=(certificado.getCategoriaGrupo().equals("1"))?", el cual se encuentra sin clasificación ":"";
-		}else{
-			categoria=", el cual se encuentra clasificado en categoria "+certificado.getCategoriaGrupo()+" por Colciencias en la convocatoria de grupos colombianos de investigación.";
-		}
-		clausulasinicio.add(new Phrase(categoria,texto10));
-		clausulasinicio.add(new Phrase(" Bajo la dirección de la(el) profesor(a) "+certificado.getNombreDirector().toUpperCase()+".\n\n",texto10));
-		clausulasinicio.add(new Phrase("Se genera la presente certificación a solucitud del (de la) interesado(a) a los ",texto10));
-		clausulasinicio.add(new Phrase(" "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10));
-		contenido=clausulasinicio.toString()+" "+clausulas.toString();	
-		
-		textoDocumento[0]=clausulasinicio;
-		textoDocumento[1]=clausulas;
-		
+		Date fecInicio = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
+			fecInicio=sdf.parse(certificado.getFechaIngreso());
+	//		clausulasinicio.add(new Phrase("Generado el: "+formattedDate+"\n\n\n",texto10n));
+			clausulasinicio.add(new Phrase("\n\n\nEl(La) investigador(a) ",texto10));
+			clausulasinicio.add(new Phrase(certificado.getNombre().toUpperCase()+",",texto10n));
+			clausulasinicio.add(new Phrase(" identificado(a) con la cédula de ciudadanía N° "+certificado.getCedula()+" de "+ certificado.getNumCedDe()+" ",texto10));
+			clausulasinicio.add(new Phrase((certificado.getFechaSalida()!=null?"pertenecio":"pertenece"),texto10));
+			clausulasinicio.add(new Phrase(" desde el "+global.getDiaFecha(fecInicio) +" de "+global.getMesFecha(fecInicio) +" de "+ global.getanoFecha(fecInicio)+" ",texto10));
+			if(certificado.getFechaSalida()!=null&&!certificado.getFechaSalida().equals("")){
+				Date fecFin = new Date();
+				fecFin=sdf.parse(certificado.getFechaSalida());
+				clausulasinicio.add(new Phrase(" hasta el "+global.getDiaFecha(fecFin) +" de "+global.getMesFecha(fecFin) +" de "+ global.getanoFecha(fecFin)+" ",texto10));
+			}			
+			clausulasinicio.add(new Phrase("en calidad de "+certificado.getPapel()+" al "+certificado.getTipoGrupo()+" de investigación ",texto10));
+			clausulasinicio.add(new Phrase("\""+certificado.getNombreGrupo()+"\"",texto10n));
+			clausulasinicio.add(new Phrase(", institucionalizado el ",texto10));
+			clausulasinicio.add(new Phrase(global.getDiaFecha(certificado.getFecha_cert(), 1) +" de "+global.getNombreMes(certificado.getFecha_cert(), 1) +" de "+ global.getAnoFecha(certificado.getFecha_cert()),texto10));
+			clausulasinicio.add(new Phrase(", por el Centro de Investigaciones y Desarrollo Científico de la Universidad Distrital Francisco José de Caldas ",texto10));
+			String categoria ="";
+			if(certificado.getCategoriaGrupo().equals("1")||certificado.getCategoriaGrupo().equals("2")){
+				categoria=(certificado.getCategoriaGrupo().equals("1"))?", el cual se encuentra sin clasificación ":"";
+			}else{
+				categoria=", el cual se encuentra clasificado en categoria "+certificado.getCategoriaGrupo()+" por Colciencias en la convocatoria de grupos colombianos de investigación.";
+			}
+			clausulasinicio.add(new Phrase(categoria,texto10));
+			clausulasinicio.add(new Phrase(" Bajo la dirección de la(el) profesor(a) "+certificado.getNombreDirector().toUpperCase()+".\n\n",texto10));
+			clausulasinicio.add(new Phrase("Se genera la presente certificación a solucitud del (de la) interesado(a) a los ",texto10));
+			clausulasinicio.add(new Phrase(" "+global.getDiaHoy()+" días del mes de "+global.getNombreMesHoy()+" de "+global.getAnoHoy()+".",texto10));
+			contenido=clausulasinicio.toString()+" "+clausulas.toString();	
+			
+			textoDocumento[0]=clausulasinicio;
+			textoDocumento[1]=clausulas;
+		
+		
 			certificado.setCuerpo_cer(contenido);
 			inicarDocumentoCertificado(resp,path,certificado.getCod_verificacion());
 			agregarContenido(textoDocumento);
@@ -364,6 +368,10 @@ public class GenerarCertificados {
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		System.out.println("-Certificado Electrónico pertenencia creado->");
 		return resp;

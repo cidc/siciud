@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.Format;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -142,8 +143,9 @@ public class Globales{
 		//tipoFecha= 1 cuando es dia-mes-a�o
 		splitFecha2(fecha);
 	//	System.out.println("----"+this.datosFecha[tipoFecha]);
-		return (this.datosFecha[tipoFecha]);
+		return (this.datosFecha[tipoFecha-1]);
 	}
+	
 	public String getNombreMes(String fecha, int tipoFecha){
 		String mes="";
 		//tipoFecha= 1 cuando es mes-dia-a�o
@@ -388,5 +390,42 @@ public class Globales{
 			inicio++;
 		}
 		return lista;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public int getDiaFecha(Date fecha){
+		Calendar myGDate=new GregorianCalendar();
+		myGDate.setTime(fecha);
+		return myGDate.get(Calendar.DATE);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public String getMesFecha(Date fecha){
+		Calendar myGDate=new GregorianCalendar();
+		myGDate.setTime(fecha);
+		int op=myGDate.get(Calendar.MONTH)+1;
+		String mes="";
+		switch(op){
+			case 1:mes="Enero";break;
+			case 2:mes="Febrero";break;
+			case 3:mes="Marzo";	break;
+			case 4:mes="Abril";	break;
+			case 5:mes="Mayo";	break;
+			case 6:mes="Junio";	break;
+			case 7:mes="Julio";	break;
+			case 8:mes="Agosto";break;
+			case 9:mes="Septiembre";break;
+			case 10:mes="Octubre";break;
+			case 11:mes="Noviembre";break;
+			case 12:mes="Diciembre";break;
+		}
+		return mes;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public int getanoFecha(Date fecha){
+		Calendar myGDate=new GregorianCalendar();
+		myGDate.setTime(fecha);
+		return myGDate.get(Calendar.YEAR);
 	}
 }
