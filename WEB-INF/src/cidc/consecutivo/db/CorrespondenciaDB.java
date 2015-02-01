@@ -119,7 +119,7 @@ public class CorrespondenciaDB extends BaseDB{
 		return user;
 	}
 	
-	public List<CorrespondenciaObj> consultarFiltro(String cod, String remitente,  String detinatario,  String observacion, String fecha){
+	public List<CorrespondenciaObj> consultarFiltro(CorrespondenciaObj crp){
 		List<CorrespondenciaObj> miLista= null;
 		Connection cn =null;
 		PreparedStatement ps=null;
@@ -127,23 +127,23 @@ public class CorrespondenciaDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("consultaFiltro"));
-			if(cod=="")
+			if(crp.getCod()==null)
 				ps.setString(1, "%");
 			else
-				ps.setString(1, "%"+cod+"%");
-			if(remitente=="")
+				ps.setString(1, "%"+crp.getCod()+"%");
+			if(crp.getRemitente()==null)
 				ps.setString(2, "%");
 			else
-				ps.setString(2, "%"+remitente+"%");
-			if(detinatario=="")
+				ps.setString(2, "%"+crp.getRemitente()+"%");
+			if(crp.getDestinatario()==null)
 				ps.setString(3, "%");
 			else
-				ps.setString(3, "%"+detinatario+"%");
-			if(observacion=="")
+				ps.setString(3, "%"+crp.getDestinatario()+"%");
+			if(crp.getObservaciones()==null)
 				ps.setString(4, "%");
 			else
-				ps.setString(4, "%"+observacion+"%");
-			ps.setString(5, "%"+fecha+"%");
+				ps.setString(4, "%"+crp.getObservaciones()+"%");
+			ps.setString(5, "%"+crp.getAno()+"%");
 			rs=ps.executeQuery();
 			System.out.println("consulta: "+ps.toString());
 			miLista = new ArrayList<CorrespondenciaObj>();
@@ -178,7 +178,7 @@ public class CorrespondenciaDB extends BaseDB{
 			while(rs.next()){
 				cod=rs.getString(1);
 			}
-			 year=Integer.parseInt(cod.substring(10, 14));
+			 year=Integer.parseInt(cod);
 		} catch (Exception e) {
 			lanzaExcepcion(e);
 		}finally{

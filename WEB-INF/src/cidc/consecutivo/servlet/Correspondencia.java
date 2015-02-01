@@ -38,17 +38,17 @@ public class Correspondencia extends ServletGeneral{
 			if (cons.insertarRegistro(usuario.getNombre(), req.getParameter("destinatario"),
 					req.getParameter("observaciones"))) {
 				cons.aumentaConsecutivo();
-				mensaje = "insercion exitosa";
+				mensaje = "El consecutivo se ha registrado correctamente";
 			} else
-				mensaje = "ha ocurrido un error";
+				mensaje = "Ha ocurrido un error, por favor intentelo de nuevo";
 			req.setAttribute("listaConsecutivos", cons.ObtenerUltimos());
 			irA = "/consecutivo/Correspondencia.jsp";
 			break;
 		case FILTRODEBUSQUEDA:
 			CorrespondenciaObj obj =(CorrespondenciaObj) sesion.getAttribute("datosConsecutivo");
-			req.setAttribute("listaFiltro", cons.consultarFiltro(req.getParameter("cod"), req.getParameter("remitente"), 
-					req.getParameter("destinatario"), req.getParameter("observaciones"),req.getParameter("ano")));
+			req.setAttribute("listaFiltro", cons.consultarFiltro(obj));
 			irA="/consecutivo/Buscar.jsp";
+			mensaje="";
 			break;
 		default:
 				req.setAttribute("listaConsecutivos", cons.ObtenerUltimos());

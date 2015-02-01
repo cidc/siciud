@@ -1,21 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link type="text/css" rel="stylesheet" href="<c:url value="/comp/css/formatos.css"/>">
 <c:import url="/general.jsp"/>
-</head>
 <script>
 
 	function buscar(){
-		document.busqueda.accion.value=2;
-		document.busqueda.action='<c:url value="/consecutivo/llenar.jsp"/>';
-		document.busqueda.submit();
+		if(document.busqueda.ano.selectedIndex!=0){
+			document.busqueda.accion.value=2;
+			document.busqueda.action='<c:url value="/consecutivo/llenar.jsp"/>';
+			document.busqueda.submit();
+		}
+		else{
+			alert("Por favor elija un año");
+			return false;
+		}
 	}
 
 </script>
-<body>
+<body >
 	<form name="busqueda" >
 	<input type="hidden" name="accion">
 		<table class="tablas" align="center">
@@ -36,7 +41,7 @@
 			<td align="center" class="renglones" colspan="2">Año</td>
 			<td colspan="2">
 				<select class="combo" name="ano" >
-				<option value="">------</option>
+				<option value="0">------</option>
 				<c:forEach items="${sessionScope.listAno}" var="lista" varStatus="st">
 					<option value="${lista}"><c:out value="${lista}"/></option>
 				</c:forEach>

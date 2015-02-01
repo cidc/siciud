@@ -4,8 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link type="text/css" rel="stylesheet" href="<c:url value="/comp/css/formatos.css"/>">
-<c:import url="/general.jsp"/>
 </head>
+<c:import url="/general.jsp"/>
 <script>
 	function guardar(){
 		if(ValidarFormulario()){
@@ -33,7 +33,7 @@
 		document.ingresar.submit();
 	}
 </script>
-<body>
+<body onLoad="mensajeAlert(document.getElementById('msg'));">
 <br/>
 <br/>
 <br/>
