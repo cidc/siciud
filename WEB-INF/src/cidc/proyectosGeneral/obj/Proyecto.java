@@ -89,6 +89,8 @@ public class Proyecto implements Serializable{
 	private String cedulaRealizador;
 	private String cedulaRealizadorDe;	
 	private String CantCoInvest;
+	private int[] idCompromisos;
+	private int[] cumplido; //indica si el producto o compromiso fue culminado y entregado
 	
 	////*********************************************************
 	
@@ -641,6 +643,22 @@ public class Proyecto implements Serializable{
 
 	public void setCantCoInvest(String cantCoInvest) {
 		CantCoInvest = cantCoInvest;
+	}
+
+	public int[] getIdCompromisos() {
+		return idCompromisos;
+	}
+
+	public void setIdCompromisos(int[] idCompromisos) {
+		this.idCompromisos = idCompromisos;
+	}
+
+	public int[] getCumplido() {
+		return cumplido;
+	}
+
+	public void setCumplido(int[] cumplido) {
+		this.cumplido = cumplido;
 	}
 	
 }

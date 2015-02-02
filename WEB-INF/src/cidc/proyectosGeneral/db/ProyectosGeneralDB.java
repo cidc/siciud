@@ -1502,7 +1502,6 @@ public class ProyectosGeneralDB extends BaseDB {
 	 * @return
 	 */
 	public List<ResumenCompromOBJ> buscarCompromisos(int idProp){
-		rb=ResourceBundle.getBundle("cidc.adminPropuestas.consultas");
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -1510,17 +1509,19 @@ public class ProyectosGeneralDB extends BaseDB {
 		ResumenCompromOBJ compromOBJ;
 		try {
 			cn=cursor.getConnection(super.perfil);
-			ps=cn.prepareStatement(rb.getString("getResumenCompromisos"));
+			ps=cn.prepareStatement(rb.getString("getResumenCompromisos2"));
 			ps.setLong(1,idProp);
 			rs=ps.executeQuery();
-			int i=0;
 			while(rs.next()){
-				i=1;
+				int i=1;
 //				System.out.println("encuntra datos de rubros");
 				compromOBJ=new ResumenCompromOBJ();
+				compromOBJ.setIdProp(rs.getInt(i++));
+				compromOBJ.setIdCompromiso(rs.getInt(i++));
 				compromOBJ.setProducto(rs.getString(i++));
 				compromOBJ.setIndicador(rs.getString(i++));
 				compromOBJ.setCantidad(rs.getInt(i++));
+				compromOBJ.setCumplido(rs.getBoolean(i++));
 				listComp.add(compromOBJ);
 			}
 		}catch (SQLException e) {
@@ -1564,6 +1565,44 @@ public class ProyectosGeneralDB extends BaseDB {
 			cerrar(cn);
 		}
 		return retorno;
+	}
+	
+	/**
+	 * Este metodo se encarga se guardar un boleano que indica que el producto ha sido entregado
+	 * @param proyecto
+	 * @return
+	 */
+	public boolean guardarProductos(Proyecto proyecto){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		try {
+			cn=cursor.getConnection(perfil);
+			for(int j=0; j<proyecto.getIdCompromisos().length;j++){
+				int i=1;
+				boolean cumplido=false;
+				ps=cn.prepareStatement(rb.getString("guardarProductos"));
+				for(int k=0;k<proyecto.getCumplido().length;k++){
+					if(proyecto.getIdCompromisos()[j]==proyecto.getCumplido()[k])
+						cumplido=true;
+				}
+				ps.setBoolean(i++, cumplido);
+				ps.setInt(i++, proyecto.getIdPropuesta());
+				ps.setInt(i++, proyecto.getIdCompromisos()[j]);
+				ps.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return true;
 	}
 }
 

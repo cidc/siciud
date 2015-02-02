@@ -31,4 +31,5 @@ public class ParametrosOBJ implements Serializable{
 	public static final int cmdActaInicio=3;
 	public static final int cmdActaInicioPdf=4;
 	public static final int COMPROMISOS=22;
+	public static final int ENTREGACOMPROMISOS=23;
 }

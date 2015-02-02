@@ -11,15 +11,10 @@
 <script type='text/javascript' src='<c:url value="/comp/js/Calendario/calendar-setup.js"/>'></script>
 <c:import url="/general.jsp"/>
 <script>
-	var nav4=window.Event ? true : false;
-	function numeros(eve){
-		var key=nav4?eve.which :eve.keyCode;
-		return(key<=13 || (key>=48 && key<=57));
-	}
-	function eliminar(id){
-		document.frmTiempos.accion.value=18;
-		document.frmTiempos.idTiempo.value=id;
-		document.frmTiempos.submit();
+	function guardar(){
+		//hecks(document.nuevoCompromisos);
+		document.Productos.action='<c:url value="/adminProyectos/llenar2.jsp"/>';
+		document.Productos.submit();
 	}
 </script>
 </head>
@@ -65,6 +60,8 @@
 	<br>
 	<br>
 	<c:if test="${!empty sessionScope.compromisos}">
+	<form name="Productos" method="post">
+	<input type="hidden" name="accion" value='23'>
 	<table width="95%" class="tablas" align="center">
 	<caption>Compromisos del Investigador principal</caption>
 		<tr>
@@ -72,6 +69,7 @@
 			<td class="renglones"><b>Producto</b></td>
 			<td class="renglones"><b>Indicador</b></td>
 			<td class="renglones"><b>Cant</b></td>
+			<td class="renglones"><b>¿Compromiso Entregado?</b></td>
 		</tr>
 		<c:forEach begin="0" items="${sessionScope.compromisos}" var="compromisos" varStatus="st">
 		<tr>
@@ -79,9 +77,15 @@
 			<td><c:out value="${compromisos.producto}"/></td>
 			<td><c:out value="${compromisos.indicador}"/></td>
 			<td align="center"><c:out value="${compromisos.cantidad}"/></td>
+			<td width="5px"><input type="checkbox" name="cumplido" value="<c:out value="${compromisos.idCompromiso}"/>" <c:if test="${compromisos.cumplido}">checked="checked"</c:if>/><td>
+				 	<input type="hidden" name="idCompromisos" value="<c:out value="${compromisos.idCompromiso}"/>">
 		</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="5"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()"> </td>
+		</tr>
 	</table>
+	</form>
 	</c:if>
 	<c:if test="${sessionScope.proyecto==null}">
 <br><br><br>

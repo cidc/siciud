@@ -240,6 +240,15 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				sesion.setAttribute("compromisos",proyectosGeneralDB.buscarCompromisos(proyecto.getIdPropuesta()));
 				irA="/adminProyectos/Productos.jsp";
 				break;
+			case ParametrosOBJ.ENTREGACOMPROMISOS:
+				System.out.println("entre");
+				if(proyectosGeneralDB.guardarProductos(proyecto)){
+					sesion.setAttribute("compromisos",proyectosGeneralDB.buscarCompromisos(proyecto.getIdPropuesta()));
+					mensaje="Productos almacenados con Éxito";
+				}else
+					mensaje="Ha ocurrido un error por favor intente de nuevo";
+				irA="/adminProyectos/Productos.jsp";
+				break;
 			default:
 				irA="/adminProyectos/FiltroProyectosGeneral.jsp";
 				Globales glob = new Globales();
