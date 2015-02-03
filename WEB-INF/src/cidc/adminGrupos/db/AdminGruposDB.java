@@ -916,6 +916,7 @@ public class AdminGruposDB extends BaseDB{
 				while(rs.next()){
 					i=1;
 					datos=new Integrante();
+					datos.setGrupo(idGrupo);
 					datos.setId(rs.getLong(i++));
 					datos.setCodigoUd(rs.getString(i++));					
 					datos.setCedula(rs.getString(i++));
@@ -963,7 +964,7 @@ public class AdminGruposDB extends BaseDB{
 				cn=cursor.getConnection(super.perfil);
 				ps=cn.prepareStatement(rb.getString("consultarDatosIntegranteGrupo"));
 				ps.setInt(1, Integer.parseInt(idPersona));
-		//		ps.setLong(2, idGrupo);
+				ps.setLong(2, datos.getGrupo());
 				System.out.println("---stIntegrante-->"+ps.toString());
 				rs=ps.executeQuery();
 				while(rs.next()){

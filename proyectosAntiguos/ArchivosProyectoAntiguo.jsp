@@ -117,7 +117,7 @@
      <script type="text/javascript">
  			Calendar.setup({
    			inputField     :    'f_date_ai',
-   			ifFormat       :    '%d/%m/%Y',
+   			ifFormat       :    '%Y-%m-%d',
    			showsTime      :    false,
    			button         :    'id_fecha_ai',
    			singleClick    :    false,
@@ -150,7 +150,7 @@
      <script type="text/javascript">
  			Calendar.setup({
    			inputField     :    'f_date_con',
-   			ifFormat       :    '%d/%m/%Y',
+   			ifFormat       :    '%Y-%m-%d',
    			showsTime      :    false,
    			button         :    'id_fecha_con',
    			singleClick    :    false,
@@ -186,7 +186,7 @@
      <script type="text/javascript">
  			Calendar.setup({
    			inputField     :    'f_date_if',
-   			ifFormat       :    '%d/%m/%Y',
+   			ifFormat       :    '%Y-%m-%d',
    			showsTime      :    false,
    			button         :    'id_fecha_if',
    			singleClick    :    false,
@@ -240,7 +240,7 @@
      <script type="text/javascript">
  			Calendar.setup({
    			inputField     :    'f_date_af',
-   			ifFormat       :    '%d/%m/%Y',
+   			ifFormat       :    '%Y-%m-%d',
    			showsTime      :    false,
    			button         :    'id_fecha_af',
    			singleClick    :    false,
