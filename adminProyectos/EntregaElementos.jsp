@@ -115,7 +115,7 @@
 								<option value="b" <c:if test="${lista.ubicacion=='b'}">selected</c:if>>Biblioteca</option>
 								<option value="p" <c:if test="${lista.ubicacion=='p'}">selected</c:if>>Se queda en proyecto</option>
 								<option value="a" <c:if test="${lista.ubicacion=='a'}">selected</c:if>>Almacén</option>
-								<option value="d" <c:if test="${lista.ubicacion=='d'}">selected</c:if>>Director Grupo/Semillero</option>								
+								<option value="d" <c:if test="${lista.ubicacion=='d'}">selected</c:if>>Docente de Planta</option>								
 							</select>
 						</td>
 						<td>
