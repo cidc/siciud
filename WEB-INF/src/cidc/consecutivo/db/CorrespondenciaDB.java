@@ -1,11 +1,14 @@
 package cidc.consecutivo.db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import org.apache.poi.hssf.util.HSSFColor.GOLD;
 
 import cidc.consecutivo.obj.CorrespondenciaObj;
 import cidc.general.db.BaseDB;
@@ -20,6 +23,10 @@ public class CorrespondenciaDB extends BaseDB{
 		rb=ResourceBundle.getBundle("cidc.consecutivo.consultas");
 	}
 	
+	/**
+	 * Trae una lista con los ultimos diez registros almacenados en la tabla correspondencia
+	 * @return
+	 */
 	public List<CorrespondenciaObj> ObtenerUltimos(){
 		CorrespondenciaObj corresp=null;
 		List<CorrespondenciaObj> registro= new ArrayList<CorrespondenciaObj>();
@@ -28,13 +35,17 @@ public class CorrespondenciaDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("consulta_inicial"));
+			Globales gl =new Globales();
+			ps.setString(1, "%"+gl.getAnoHoy()+"%");
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()){
+				int i=1;
 				corresp = new CorrespondenciaObj();
-				corresp.setCod(rs.getString(1));
-				corresp.setRemitente(rs.getString(2));
-				corresp.setDestinatario(rs.getString(3));
-				corresp.setObservaciones(rs.getString(4));
+				corresp.setCod(rs.getString(i++));
+				corresp.setRemitente(rs.getString(i++));
+				corresp.setDestinatario(rs.getString(i++));
+				corresp.setObservaciones(rs.getString(i++));
+				corresp.setFecha(rs.getDate(i++));
 				registro.add(corresp);
 			}
 		} catch (Exception e) {
@@ -47,6 +58,14 @@ public class CorrespondenciaDB extends BaseDB{
 		return registro;
 	}
 	
+	/**
+	 * crea un nuevo registro en la tabla correspondencia 
+	 * @param remitente persona que asigna el consecutivo
+	 * @param dest persona a quien va dirigido el destinatario
+	 * @param obs observaciones 
+	 * @param year año de asignacion
+	 * @return
+	 */
 	public boolean insertarRegistro(String remitente, String dest, String obs, int year){
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -60,14 +79,15 @@ public class CorrespondenciaDB extends BaseDB{
 				secuencia=rs.getInt(1);
 			}
 			Globales glob= new Globales();
+			int i=1;
 			String cod=glob.codigo(String.valueOf(secuencia));
 			ps=cn.prepareStatement(rb.getString("insertar"));
-			ps.setInt(1, secuencia);
-			ps.setString(2,cod);
-			ps.setString(3, remitente);
-			ps.setString(4, dest);
-			ps.setString(5, obs);
-			ps.setInt(6, year);
+			ps.setInt(i++, secuencia);
+			ps.setString(i++,cod);
+			ps.setString(i++, remitente);
+			ps.setString(i++, dest);
+			ps.setString(i++, obs);
+			ps.setInt(i++, year);
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -79,6 +99,10 @@ public class CorrespondenciaDB extends BaseDB{
 		return false;
 	}
 	
+	/**
+	 * aumenta la secuencia de los consecutivos
+	 * @return
+	 */
 	public boolean aumentaConsecutivo(){
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -95,7 +119,11 @@ public class CorrespondenciaDB extends BaseDB{
 		}
 		return false;
 	}
-	
+	/**
+	 * consulta el nombre del usuario que asigna el consecutivo
+	 * @param user
+	 * @return
+	 */
 	public Usuario consultaUsuario(Usuario user){
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -116,7 +144,11 @@ public class CorrespondenciaDB extends BaseDB{
 		}
 		return user;
 	}
-	
+	/**
+	 * consulta todos consecutivos asignados, que cumplan con los criterios de busqueda 
+	 * @param crp
+	 * @return
+	 */
 	public List<CorrespondenciaObj> consultarFiltro(CorrespondenciaObj crp){
 		List<CorrespondenciaObj> miLista= null;
 		Connection cn =null;
@@ -146,11 +178,13 @@ public class CorrespondenciaDB extends BaseDB{
 			System.out.println("consulta: "+ps.toString());
 			miLista = new ArrayList<CorrespondenciaObj>();
 			while(rs.next()){
+				int i=1;
 				CorrespondenciaObj cons=new CorrespondenciaObj();
-				cons.setCod(rs.getString(1));
-				cons.setRemitente(rs.getString(2));
-				cons.setDestinatario(rs.getString(3));
-				cons.setObservaciones(rs.getString(4));
+				cons.setCod(rs.getString(i++));
+				cons.setRemitente(rs.getString(i++));
+				cons.setDestinatario(rs.getString(i++));
+				cons.setObservaciones(rs.getString(i++));
+				cons.setFecha(rs.getDate(i++));
 				miLista.add(cons);
 				
 			}
@@ -162,7 +196,10 @@ public class CorrespondenciaDB extends BaseDB{
 		}
 		return miLista;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int consultarAño(){
 		Connection cn=null;
 		ResultSet rs=null;
@@ -185,7 +222,9 @@ public class CorrespondenciaDB extends BaseDB{
 		}
 		return year;
 	}
-	
+	/**
+	 * este metodo reinicia el numero del consecutivo cada vez que se cambia el año
+	 */
 	public void reiniciarNumeracion(){
 		Connection cn=null;
 		PreparedStatement ps=null;

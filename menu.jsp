@@ -10,7 +10,11 @@
 <c:import url="/general.jsp"/>
 <jsp:useBean id="crypto" scope="page" class="cidc.general.obj.EncriptarURL"/>
 <body>
+<<<<<<< HEAD
 <h6>version 12.1</h6>
+=======
+<h6>version 11.1</h6>
+>>>>>>> origin/version-11
 <c:if test="${sessionScope.loginUsuario.nombre!=null}">
 
 <table background='<c:url value="/comp/img/FondoUsuario.png" />' width="150px">
