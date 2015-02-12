@@ -54,7 +54,7 @@
 					<img src="<c:url value="/comp/img/NuevoIntegrante-UD.gif"/>" onclick="com(0)">
 				</td>
 				<td align="left">
-					<img src="<c:url value="/comp/img/NuevoIntegrante-UD.gif"/>" onclick="com(21)">
+					<img src="<c:url value="/comp/img/NuevoIntegrante-Ext.gif"/>" onclick="com(21)">
 				</td>
 			</tr>
 		</table>
