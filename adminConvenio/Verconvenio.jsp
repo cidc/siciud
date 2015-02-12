@@ -124,6 +124,7 @@ function observacion(caja){
 			<option value="2" <c:if test="${sessionScope.datoConvenio.tipo==2}">selected</c:if>>Especifico</option>
 			<option value="3" <c:if test="${sessionScope.datoConvenio.tipo==3}">selected</c:if>>Acuerdo de cooperación</option>
 			<option value="4" <c:if test="${sessionScope.datoConvenio.tipo==4}">selected</c:if>>Contrato</option>
+			<option value="5" <c:if test="${sessionScope.datoConvenio.tipo==5}">selected</c:if>>Inter-Administrativo</option>
 		             </select></td>
 		             
 		               <td><select name="estado">

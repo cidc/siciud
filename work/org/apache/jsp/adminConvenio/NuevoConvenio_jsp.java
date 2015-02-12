@@ -161,10 +161,10 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\t\t\talert(\"El nombre del convenio no puede estar vacio\");\r\n");
       out.write("\t\t\treturn false;\r\n");
       out.write("\t\t}\r\n");
-      out.write("\t\tif(forma.fecha.value==\"\"){\r\n");
-      out.write("\t\t\talert(\"La fecha de registro del convenio no puede estar vacio\");\r\n");
-      out.write("\t\t\treturn false;\r\n");
-      out.write("\t\t}\r\n");
+      out.write("// \t\tif(forma.fecha.value==\"\"){\r\n");
+      out.write("// \t\t\talert(\"La fecha de registro del convenio no puede estar vacio\");\r\n");
+      out.write("// \t\t\treturn false;\r\n");
+      out.write("// \t\t}\r\n");
       out.write("\t\tif(forma.fechaInicio.value==\"\"){\r\n");
       out.write("\t\t\talert(\"La fecha de Inicio del convenio no puede estar vacio\");\r\n");
       out.write("\t\t\treturn false;\r\n");
@@ -174,7 +174,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\t\t\treturn false;\r\n");
       out.write("\t\t   }\r\n");
       out.write("\t\tif(forma.VAprobado.value<=1)\r\n");
-      out.write("\t\t   {  alert(\"La duración del proyecto no puede ser menor a 6 meses\");\r\n");
+      out.write("\t\t   {  alert(\"La el valor del convenio no puede ser menor a 1\");\r\n");
       out.write("\t\t\treturn false;\r\n");
       out.write("\t\t   }\r\n");
       out.write("\t\tif(forma.nombreproyecto.value==\"\"){\r\n");
@@ -292,6 +292,10 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       if (_jspx_meth_c_005fif_005f4(_jspx_page_context))
         return;
       out.write(">Contrato</option>\r\n");
+      out.write("\t\t\t<option value=\"5\" ");
+      if (_jspx_meth_c_005fif_005f5(_jspx_page_context))
+        return;
+      out.write(">Inter-Administrativo</option>\r\n");
       out.write("\t\t</select></td>\r\n");
       out.write("\t\t\r\n");
       out.write("\t\t\r\n");
@@ -300,35 +304,35 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\t\t<td class=\"renglones\"><b>Estado</b></td>\r\n");
       out.write("\t    <td><select name=\"estado\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t  <option value=\"0\" ");
-      if (_jspx_meth_c_005fif_005f5(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f6(_jspx_page_context))
         return;
       out.write(">------------</option>\r\n");
       out.write("\t\t\t                          <option value=\"1\" ");
-      if (_jspx_meth_c_005fif_005f6(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f7(_jspx_page_context))
         return;
       out.write(">Aprobado</option>\r\n");
       out.write("\t\t\t                          <option value=\"2\" ");
-      if (_jspx_meth_c_005fif_005f7(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f8(_jspx_page_context))
         return;
       out.write(">Vigente</option>\r\n");
       out.write("\t\t\t                          <option value=\"3\" ");
-      if (_jspx_meth_c_005fif_005f8(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f9(_jspx_page_context))
         return;
       out.write(">Finalizado</option>\r\n");
       out.write("\t\t\t                          <option value=\"4\" ");
-      if (_jspx_meth_c_005fif_005f9(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f10(_jspx_page_context))
         return;
       out.write(">Cancelado</option>\r\n");
       out.write("\t\t\t                          <option value=\"5\" ");
-      if (_jspx_meth_c_005fif_005f10(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f11(_jspx_page_context))
         return;
       out.write(">En Prueba</option>\r\n");
       out.write("\t\t\t                          <option value=\"6\" ");
-      if (_jspx_meth_c_005fif_005f11(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f12(_jspx_page_context))
         return;
       out.write(">Aplazado</option>\r\n");
       out.write("\t\t\t                          <option value=\"7\" ");
-      if (_jspx_meth_c_005fif_005f12(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f13(_jspx_page_context))
         return;
       out.write(">Proc. Finalización</option>\r\n");
       out.write("\t\t</select></td>\r\n");
@@ -388,7 +392,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\t\t\t\t<td style=\"width: 100px; \"><input type=\"text\" maxlength=\"3\" name=\"duracion\" style=\"text-align:right; width:80%\" value=\"0\" onkeypress=\"return numeros(event)\" size=\"2\">\r\n");
       out.write("\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t <td class=\"renglones\" style=\"width: 179px; \"><b>Valor Aprobado:</b></td>\r\n");
-      out.write("\t\t\t\t<td><input type=\"text\" maxlength=\"9\" name=\"VAprobado\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
+      out.write("\t\t\t\t<td><input type=\"text\" maxlength=\"10\" name=\"VAprobado\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
       out.write("\t\t\t\t</td>\r\n");
       out.write("\t\t\t\t\r\n");
       out.write("\t\t\t\t\r\n");
@@ -414,23 +418,23 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("    <td class=\"renglones\"><b>Estado Proyecto</b></td>\r\n");
       out.write("\t\t<td><select name=\"estadop\">\r\n");
       out.write("\t\t\t<option value=\"0\" ");
-      if (_jspx_meth_c_005fif_005f13(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f14(_jspx_page_context))
         return;
       out.write(">------------</option>\r\n");
       out.write("\t\t\t<option value=\"1\" ");
-      if (_jspx_meth_c_005fif_005f14(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f15(_jspx_page_context))
         return;
       out.write(">Vigente</option>\r\n");
       out.write("\t\t\t<option value=\"2\" ");
-      if (_jspx_meth_c_005fif_005f15(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f16(_jspx_page_context))
         return;
       out.write(">Indefinido</option>\r\n");
       out.write("\t\t\t<option value=\"3\" ");
-      if (_jspx_meth_c_005fif_005f16(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f17(_jspx_page_context))
         return;
       out.write(">Terminado</option>\r\n");
       out.write("\t\t\t<option value=\"4\" ");
-      if (_jspx_meth_c_005fif_005f17(_jspx_page_context))
+      if (_jspx_meth_c_005fif_005f18(_jspx_page_context))
         return;
       out.write(">Cancelado</option>\r\n");
       out.write("\t\t</select></td>\r\n");
@@ -530,7 +534,6 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
         if (out != null && out.getBufferSize() != 0)
           try { out.clearBuffer(); } catch (java.io.IOException e) {}
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
-        else log(t.getMessage(), t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
@@ -964,8 +967,8 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f5 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f5.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(169,29) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminConvenio/NuevoConvenio.jsp(162,21) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f5.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.tipo==5}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
     if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -991,8 +994,8 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f6 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f6.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f6.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(170,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f6.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    // /adminConvenio/NuevoConvenio.jsp(170,29) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f6.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f6 = _jspx_th_c_005fif_005f6.doStartTag();
     if (_jspx_eval_c_005fif_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1019,7 +1022,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f7.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(171,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f7.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f7 = _jspx_th_c_005fif_005f7.doStartTag();
     if (_jspx_eval_c_005fif_005f7 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1046,7 +1049,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f8.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(172,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f8.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==3}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f8.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f8 = _jspx_th_c_005fif_005f8.doStartTag();
     if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1073,11 +1076,11 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f9.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(173,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==4}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f9.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==3}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f9 = _jspx_th_c_005fif_005f9.doStartTag();
     if (_jspx_eval_c_005fif_005f9 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("selected ");
+        out.write("selected");
         int evalDoAfterBody = _jspx_th_c_005fif_005f9.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1100,11 +1103,11 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f10.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(174,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f10.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==5}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f10.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==4}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f10 = _jspx_th_c_005fif_005f10.doStartTag();
     if (_jspx_eval_c_005fif_005f10 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("selected");
+        out.write("selected ");
         int evalDoAfterBody = _jspx_th_c_005fif_005f10.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1127,7 +1130,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f11.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f11.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(175,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f11.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==6}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f11.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==5}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f11 = _jspx_th_c_005fif_005f11.doStartTag();
     if (_jspx_eval_c_005fif_005f11 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1154,7 +1157,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f12.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f12.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(176,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f12.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==7}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f12.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==6}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f12 = _jspx_th_c_005fif_005f12.doStartTag();
     if (_jspx_eval_c_005fif_005f12 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1172,6 +1175,33 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     return false;
   }
 
+  private boolean _jspx_meth_c_005fif_005f13(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f13 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f13.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f13.setParent(null);
+    // /adminConvenio/NuevoConvenio.jsp(177,47) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f13.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estado==7}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f13 = _jspx_th_c_005fif_005f13.doStartTag();
+    if (_jspx_eval_c_005fif_005f13 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("selected");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f13.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f13.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f13);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f13);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fout_005f4(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -1180,7 +1210,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f4.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f4.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(182,99) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(183,99) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.fecha}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f4 = _jspx_th_c_005fout_005f4.doStartTag();
     if (_jspx_th_c_005fout_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1199,7 +1229,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f5.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f5.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(202,103) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(203,103) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.nombreConvenio}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f5 = _jspx_th_c_005fout_005f5.doStartTag();
     if (_jspx_th_c_005fout_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1218,7 +1248,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f6.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f6.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(209,105) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(210,105) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.fechaInicio}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f6 = _jspx_th_c_005fout_005f6.doStartTag();
     if (_jspx_th_c_005fout_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1237,7 +1267,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f7.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f7.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(242,103) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(243,103) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.nombreproyecto}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f7 = _jspx_th_c_005fout_005f7.doStartTag();
     if (_jspx_th_c_005fout_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1245,33 +1275,6 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f7);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fif_005f13(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f13 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_005fif_005f13.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fif_005f13.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(247,21) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f13.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
-    int _jspx_eval_c_005fif_005f13 = _jspx_th_c_005fif_005f13.doStartTag();
-    if (_jspx_eval_c_005fif_005f13 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("selected");
-        int evalDoAfterBody = _jspx_th_c_005fif_005f13.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_005fif_005f13.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f13);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f13);
     return false;
   }
 
@@ -1284,7 +1287,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f14.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f14.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(248,21) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f14.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f14.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f14 = _jspx_th_c_005fif_005f14.doStartTag();
     if (_jspx_eval_c_005fif_005f14 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1311,7 +1314,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f15.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f15.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(249,21) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f15.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f15.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f15 = _jspx_th_c_005fif_005f15.doStartTag();
     if (_jspx_eval_c_005fif_005f15 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1338,7 +1341,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f16.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f16.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(250,21) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f16.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==3}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f16.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f16 = _jspx_th_c_005fif_005f16.doStartTag();
     if (_jspx_eval_c_005fif_005f16 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1365,7 +1368,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     _jspx_th_c_005fif_005f17.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f17.setParent(null);
     // /adminConvenio/NuevoConvenio.jsp(251,21) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005fif_005f17.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==4}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    _jspx_th_c_005fif_005f17.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==3}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f17 = _jspx_th_c_005fif_005f17.doStartTag();
     if (_jspx_eval_c_005fif_005f17 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -1383,6 +1386,33 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     return false;
   }
 
+  private boolean _jspx_meth_c_005fif_005f18(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f18 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_005fif_005f18.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fif_005f18.setParent(null);
+    // /adminConvenio/NuevoConvenio.jsp(252,21) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fif_005f18.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.estadop==4}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
+    int _jspx_eval_c_005fif_005f18 = _jspx_th_c_005fif_005f18.doStartTag();
+    if (_jspx_eval_c_005fif_005f18 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("selected");
+        int evalDoAfterBody = _jspx_th_c_005fif_005f18.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_005fif_005f18.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f18);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.reuse(_jspx_th_c_005fif_005f18);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fout_005f8(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -1391,7 +1421,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f8 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f8.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(288,84) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(289,84) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.objetivo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f8 = _jspx_th_c_005fout_005f8.doStartTag();
     if (_jspx_th_c_005fout_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1410,7 +1440,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f9 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f9.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(290,85) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(291,85) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.resumen}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f9 = _jspx_th_c_005fout_005f9.doStartTag();
     if (_jspx_th_c_005fout_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1429,7 +1459,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f10 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f10.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f10.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(296,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(297,71) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.datoConvenio.observaciones}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f10 = _jspx_th_c_005fout_005f10.doStartTag();
     if (_jspx_th_c_005fout_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1448,7 +1478,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f8 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f8.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f8.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(301,42) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(302,42) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f8.setValue("/comp/img/Guardar.gif");
     int _jspx_eval_c_005furl_005f8 = _jspx_th_c_005furl_005f8.doStartTag();
     if (_jspx_th_c_005furl_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -1467,7 +1497,7 @@ public final class NuevoConvenio_jsp extends org.apache.jasper.runtime.HttpJspBa
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f9 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f9.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f9.setParent(null);
-    // /adminConvenio/NuevoConvenio.jsp(315,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminConvenio/NuevoConvenio.jsp(316,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f9.setValue("/adminConvenio/Ajax.x");
     int _jspx_eval_c_005furl_005f9 = _jspx_th_c_005furl_005f9.doStartTag();
     if (_jspx_th_c_005furl_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
