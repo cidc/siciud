@@ -33,5 +33,6 @@ public class Parametros {
 	public static final int tipoContrato=26;
 	public static final int infoRubroSolicitado=27;
 	public static final int cargarInforme=28;
+	public static final int AJAXSUBESTADOS=29;
 }
 

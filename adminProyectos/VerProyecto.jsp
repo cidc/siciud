@@ -25,6 +25,19 @@
 		document.comandos.accion.value=accion;
 		document.comandos.submit();
 	}
+	function subEstados(){
+		var estado=document.frmEstado.estado.selectedIndex;
+		if(estado==7 ||estado==8){
+			document.frmEstado.subEstado.style.display="block";
+			document.getElementById("lsubEstado").style.display="block";
+			document.frmAjax.dato2.value=estado;
+			document.frmAjax.para.value='29';
+			document.frmAjax.submit();
+		}else{
+			document.frmEstado.subEstado.style.display="none";
+			document.getElementById("lsubEstado").style.display="none";
+		}
+	}
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -120,6 +133,7 @@
 							<th width="20px"><b></b></th>
 							<th ><b>Convocatoria</b></th>
 							<th width="125px"><b>Estado</b></th>
+							<th width="125px" id="lsubEstado" style="display:none"><b>Sub-Estado</b></th>
 						</tr>
 						<tr>
 							<td width="20px">
@@ -130,7 +144,7 @@
 							<td ><c:out value="${sessionScope.proyecto.numConvocatoria} - ${sessionScope.proyecto.convocatoria}"/></td>
 							<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
 							<td width="125px" align="center">
-								<select name="estado">
+								<select name="estado" onchange="subEstados()">
 									  <option value="0" <c:if test="${sessionScope.proyecto.estado==0}">selected</c:if>>------------</option>
 			                          <option value="1" <c:if test="${sessionScope.proyecto.estado==1}">selected</c:if>>En trámite</option>
 			                          <option value="2" <c:if test="${sessionScope.proyecto.estado==2}">selected</c:if>>Vigente</option>
@@ -158,6 +172,21 @@
 			                          <c:if test="${sessionScope.proyecto.estado==9}">Plazo Adicional</c:if>
 							</td>
 							</c:if>
+							<td width="125px" align="center">
+								<select name="subEstado" style="display:none">
+									  <option value="0" <c:if test="${sessionScope.proyecto.estado==0}">selected</c:if>>------------</option>
+									  <c:forEach begin="0" items="${sessionScope.ajaxsubestado}" var="sub" varStatus="st3">
+									  	<option value='<c:out value="${sub.subEstados}"/>' <c:if test="${sessionScope.proyecto.estado==sub.subEstados}">selected</c:if>><c:out value="${gsub.listaSubEstados}"/></option>
+									  </c:forEach>
+			                          <%-- <option value="1" <c:if test="${sessionScope.proyecto.estado==1}">selected</c:if>>Entrega de Productos</option>
+			                          <option value="2" <c:if test="${sessionScope.proyecto.estado==2}">selected</c:if>>Entrega de Inventarios</option>
+			                          <option value="3" <c:if test="${sessionScope.proyecto.estado==3}">selected</c:if>>Evaluación Informe Final</option>
+			                          <option value="4" <c:if test="${sessionScope.proyecto.estado==4}">selected </c:if>>Firma de Acta Cierre</option>
+			                          <option value="5" <c:if test="${sessionScope.proyecto.estado==5}">selected</c:if>>Pendiente Entrega Productos</option>
+			                          <option value="6" <c:if test="${sessionScope.proyecto.estado==6}">selected</c:if>>Pendiente Entrega Inventarios </option>
+			                          <option value="7" <c:if test="${sessionScope.proyecto.estado==7}">selected</c:if>>Firma Acta de Cierre</option> --%>
+								</select>
+							</td>
 						</tr>
 				</table>
 			</td>
@@ -171,7 +200,7 @@
 	</form>
 <br>
 
-	<%-- 
+	
 	
 		este bloque no se elimina debido a que se usara en el futuro para gestionar los subestados
 	
@@ -209,7 +238,7 @@
 	     		</c:if>
      			</tr>
      		</table>
-     	</form> --%>
+     	</form>
 
      	<form name="observProyect" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
      		<input type="hidden" name="accion" value="3">
@@ -242,5 +271,9 @@
 <br><br><br>
 <h4 align="center">No se logró encontrar la información del Proyecto de Investigación</h4>
 </c:if>
+<form method="post" name="frmAjax" action="<c:url value="/GestionProyectos/Ajax.x"/>">
+		<input type="hidden" name="dato2" value=''>
+		<input type="hidden" name="para" value=''>
+</form>
 </body>
 </html>

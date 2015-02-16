@@ -1604,5 +1604,38 @@ public class ProyectosGeneralDB extends BaseDB {
 		}
 		return true;
 	}
+	
+	/**
+	 * el metodo trae los subestados dependiendo del estado que se el envie
+	 * @param estado
+	 * @return
+	 */
+	public List<Proyecto> buscarSubEstado(int estado){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		List<Proyecto> lista=new ArrayList<Proyecto>();
+		try{
+			cn=cursor.getConnection(perfil);
+			ps=cn.prepareStatement(rb.getString("subEstados"));
+			ps.setInt(1, estado);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				int i=1;
+				Proyecto proy=new Proyecto();
+				proy.setListaSubEstados(rs.getString(i++));
+				proy.setSubEstados(rs.getInt(i++));
+				lista.add(proy);
+				
+			}
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return lista;
+	}
 }
 
