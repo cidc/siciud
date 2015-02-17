@@ -211,7 +211,7 @@
 	    			</script>
 				</td>
 				<td width="100px">
-				<input type="text" maxlength="9" name="valorAporte" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)">
+				<input type="text" maxlength="10" name="valorAporte" style="text-align:right; width: 90%" value="0" onkeypress="return numeros(event)">
 				</td>
 				<td width="100px">
 					<input type="text" name="personaOpcional" style="width: 100%;">
