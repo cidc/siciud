@@ -1479,9 +1479,9 @@ public final class EntidadConvenio_jsp extends org.apache.jasper.runtime.HttpJsp
         out.write("     <tr>\r\n");
         out.write("     \r\n");
         out.write("     <td class=\"renglones\"><b>Valor Especie:</b></td>\r\n");
-        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEspecieConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("          <td><input type=\"text\" maxlength=\"10\" name=\"VEspecieConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
         out.write("     <td class=\"renglones\"><b>Valor Efectivo:</b></td>\r\n");
-        out.write("          <td><input type=\"text\" maxlength=\"9\" name=\"VEfectivoConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("          <td><input type=\"text\" maxlength=\"10\" name=\"VEfectivoConv\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\"></td>\r\n");
         out.write("     \r\n");
         out.write("     </tr>\t\t\r\n");
         out.write("\t\t\t<tr>\r\n");
