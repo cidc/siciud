@@ -67,7 +67,7 @@ public final class Ajax_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("<script>\r\n");
-      out.write("<!--\r\n");
+      out.write("\r\n");
       out.write("\tfunction borrar_combo(combo){\r\n");
       out.write("\t\tfor(var i = combo.length - 1; i >= 0; i--) {\r\n");
       out.write("\t\t\tif(navigator.appName == \"Netscape\")\r\n");
@@ -88,7 +88,7 @@ public final class Ajax_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("  \t\r\n");
       out.write("\t\r\n");
-      out.write("//-->\r\n");
+      out.write("\r\n");
       out.write("</script>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

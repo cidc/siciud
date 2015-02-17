@@ -25,19 +25,7 @@
 		document.comandos.accion.value=accion;
 		document.comandos.submit();
 	}
-	function subEstados(){
-		var estado=document.frmEstado.estado.selectedIndex;
-		if(estado==7 ||estado==8){
-			document.frmEstado.subEstado.style.display="block";
-			document.getElementById("lsubEstado").style.display="block";
-			document.frmAjax.dato2.value=estado;
-			document.frmAjax.para.value='29';
-			document.frmAjax.submit();
-		}else{
-			document.frmEstado.subEstado.style.display="none";
-			document.getElementById("lsubEstado").style.display="none";
-		}
-	}
+
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
@@ -133,7 +121,6 @@
 							<th width="20px"><b></b></th>
 							<th ><b>Convocatoria</b></th>
 							<th width="125px"><b>Estado</b></th>
-							<th width="125px" id="lsubEstado" style="display:none"><b>Sub-Estado</b></th>
 						</tr>
 						<tr>
 							<td width="20px">
@@ -172,72 +159,36 @@
 			                          <c:if test="${sessionScope.proyecto.estado==9}">Plazo Adicional</c:if>
 							</td>
 							</c:if>
-							<td width="125px" align="center">
-								<select name="subEstado" style="display:none">
-									  <option value="0" <c:if test="${sessionScope.proyecto.estado==0}">selected</c:if>>------------</option>
-									  <c:forEach begin="0" items="${sessionScope.ajaxsubestado}" var="sub" varStatus="st3">
-									  	<option value='<c:out value="${sub.subEstados}"/>' <c:if test="${sessionScope.proyecto.estado==sub.subEstados}">selected</c:if>><c:out value="${gsub.listaSubEstados}"/></option>
-									  </c:forEach>
-			                          <%-- <option value="1" <c:if test="${sessionScope.proyecto.estado==1}">selected</c:if>>Entrega de Productos</option>
-			                          <option value="2" <c:if test="${sessionScope.proyecto.estado==2}">selected</c:if>>Entrega de Inventarios</option>
-			                          <option value="3" <c:if test="${sessionScope.proyecto.estado==3}">selected</c:if>>Evaluación Informe Final</option>
-			                          <option value="4" <c:if test="${sessionScope.proyecto.estado==4}">selected </c:if>>Firma de Acta Cierre</option>
-			                          <option value="5" <c:if test="${sessionScope.proyecto.estado==5}">selected</c:if>>Pendiente Entrega Productos</option>
-			                          <option value="6" <c:if test="${sessionScope.proyecto.estado==6}">selected</c:if>>Pendiente Entrega Inventarios </option>
-			                          <option value="7" <c:if test="${sessionScope.proyecto.estado==7}">selected</c:if>>Firma Acta de Cierre</option> --%>
-								</select>
-							</td>
 						</tr>
 				</table>
 			</td>
 		</tr>
-		
 		<tr>
   			<td colspan="3" align="center"><input type="image" src='<c:url value="/comp/img/Guardar.gif"/>'></td>
  		</tr>
- 		
 	</table>
 	</form>
 <br>
 
-	
-	
-		este bloque no se elimina debido a que se usara en el futuro para gestionar los subestados
-	
 		<form name="estadoBandera" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">
      	<input type="hidden" name="accion" value="5">
-     		<table width="95%" class="tablas" align="center">
-     			<CAPTION>Estado de revisión del proyecto</CAPTION>
-  					<tr>
-     				<th><b>Sin Revizar</b></th>
-     				<td><img src='<c:url value="/comp/img/flag0.gif"/>'></td>
-     				<td><input type="radio" name="flag" value="0" <c:if test="${sessionScope.proyecto.flag==0}">checked</c:if>></td>
-     				<td>El proyecto aun no tiene revisión</td>
-     			</tr>
-    				<tr>
-     				<th><b>Ok</b></th>
-     				<td><img src='<c:url value="/comp/img/flag1.gif"/>'></td>
-     				<td><input type="radio" name="flag" value="1" <c:if test="${sessionScope.proyecto.flag==1}">checked</c:if>></td>
-     				<td>El proyecto no presenta ninguna novedad</td>
-     				</tr>
-    				<tr>
-     				<th><b>N. Atención</b></th>
-     				<td ><img src='<c:url value="/comp/img/flag2.gif"/>'></td>
-     				<td><input type="radio" name="flag" value="2" <c:if test="${sessionScope.proyecto.flag==2}">checked</c:if>></td>
-     				<td>Necesita revisón detallada de estado académico o financiero<td></td>
-     			</tr>
-    				<tr>
-     				<th><b>Crítico</b></th>
-     				<td><img src='<c:url value="/comp/img/flag3.gif"/>'></td>
-     				<td><input type="radio" name="flag" value="3" <c:if test="${sessionScope.proyecto.flag==3}">checked</c:if>></td>
-     				<td>Necesita atención del Comité de investigaciones</td>
-     			</tr>
-     			<tr>
-     			<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
+     		<c:if test="${sessionScope.ajaxsubestado!=null}">
+				<table width="95%" class="tablas" align="center">
+     			<CAPTION>Sub-Estado del Proyecto</CAPTION>
+     				<c:forEach begin="0" items="${sessionScope.ajaxsubestado}" var="sub" varStatus="st"> 
+	     				<tr>
+	     				<th><b><c:out value="${sub.listaSubEstados}"></c:out></b></th>
+	     				<td><input type="radio" name="flag" value='${sub.subEstados}' <c:if test="${sessionScope.proyecto.flag==sub.subEstados}">checked</c:if>></td>
+	     				<td>El proyecto aun no tiene revisión</td>
+	     				</tr>
+     				</c:forEach>
+     				<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
+     				<tr>
 	     			<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Guardar.gif"/>'></td>
-	     		</c:if>
-     			</tr>
-     		</table>
+	     			</tr>
+	     			</c:if>
+   				</table>
+			</c:if>
      	</form>
 
      	<form name="observProyect" method="post" action="<c:url value='/GestionGeneralProyectos/AdminGeneralProyectos.x' />">

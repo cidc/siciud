@@ -1614,17 +1614,20 @@ public class ProyectosGeneralDB extends BaseDB {
 		Connection cn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		List<Proyecto> lista=new ArrayList<Proyecto>();
+		List<Proyecto> lista=null;
 		try{
 			cn=cursor.getConnection(perfil);
 			ps=cn.prepareStatement(rb.getString("subEstados"));
 			ps.setInt(1, estado);
 			rs=ps.executeQuery();
 			while(rs.next()){
+				if(lista==null){
+					lista=new ArrayList<Proyecto>();
+				}
 				int i=1;
 				Proyecto proy=new Proyecto();
 				proy.setListaSubEstados(rs.getString(i++));
-				proy.setSubEstados(rs.getInt(i++));
+				proy.setSubEstados(rs.getString(i++));
 				lista.add(proy);
 				
 			}

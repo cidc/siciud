@@ -55,6 +55,7 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				sesion.removeAttribute("proyecto");
 				sesion.removeAttribute("balanceProyecto");
 				proyecto=proyectosGeneralDB.buscarProyecto(req.getParameter("id"),req.getParameter("tipo"));
+				sesion.setAttribute("ajaxsubestado", proyectosGeneralDB.buscarSubEstado(proyecto.getEstado()));
 				sesion.setAttribute("proyecto",proyecto);
 				sesion.setAttribute("balanceProyecto",proyectosGeneralDB.getBalanceProyecto(proyecto));				
 				irA="/adminProyectos/VerProyecto.jsp";
@@ -72,7 +73,12 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				 irA="/adminProyectos/VerProyecto.jsp";
 			break;			
 			case ParametrosOBJ.cambioEstado:
-				 if (proyectosGeneralDB.cambiaEstado(proyecto.getId(),proyecto.getClaseProyecto(), req.getParameter("estado"))){
+				int estado=Integer.parseInt(req.getParameter("estado"));
+				 if (proyectosGeneralDB.cambiaEstado(proyecto.getId(),proyecto.getClaseProyecto(), String.valueOf(estado))){
+					 sesion.setAttribute("ajaxsubestado", proyectosGeneralDB.buscarSubEstado(estado));
+					 if(estado!=7 && estado!=8){
+							proyectosGeneralDB.actualizarFlag(proyecto.getId(),proyecto.getClaseProyecto(), "0");
+						}
 					 mensaje="Estado de proyecto actualizado correctamente";
 					 proyecto.setEstado(Integer.parseInt(req.getParameter("estado")));
 				 }
