@@ -1606,7 +1606,7 @@ public class ProyectosGeneralDB extends BaseDB {
 	}
 	
 	/**
-	 * el metodo trae los subestados dependiendo del estado que se el envie
+	 * el metodo trae los subestados dependiendo del estado que se el envíe
 	 * @param estado
 	 * @return
 	 */
@@ -1628,6 +1628,7 @@ public class ProyectosGeneralDB extends BaseDB {
 				Proyecto proy=new Proyecto();
 				proy.setListaSubEstados(rs.getString(i++));
 				proy.setSubEstados(rs.getString(i++));
+				proy.setSubEstadoDescrip(rs.getString(i++));
 				lista.add(proy);
 				
 			}

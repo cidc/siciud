@@ -93,6 +93,7 @@ public class Proyecto implements Serializable{
 	private int[] cumplido; //indica si el producto o compromiso fue culminado y entregado
 	private String listaSubEstados; //lista de los subestados de un proyecto
 	private String subEstados; //indica el subestado del proyecto
+	private String SubEstadoDescrip;
 	
 	////*********************************************************
 	
@@ -677,6 +678,14 @@ public class Proyecto implements Serializable{
 
 	public void setSubEstados(String subEstados) {
 		this.subEstados = subEstados;
+	}
+
+	public String getSubEstadoDescrip() {
+		return SubEstadoDescrip;
+	}
+
+	public void setSubEstadoDescrip(String subEstadoDescrip) {
+		SubEstadoDescrip = subEstadoDescrip;
 	}
 	
 }

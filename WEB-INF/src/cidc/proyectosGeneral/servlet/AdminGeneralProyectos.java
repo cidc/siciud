@@ -76,9 +76,7 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				int estado=Integer.parseInt(req.getParameter("estado"));
 				 if (proyectosGeneralDB.cambiaEstado(proyecto.getId(),proyecto.getClaseProyecto(), String.valueOf(estado))){
 					 sesion.setAttribute("ajaxsubestado", proyectosGeneralDB.buscarSubEstado(estado));
-					 if(estado!=7 && estado!=8){
-							proyectosGeneralDB.actualizarFlag(proyecto.getId(),proyecto.getClaseProyecto(), "0");
-						}
+					 proyectosGeneralDB.actualizarFlag(proyecto.getId(),proyecto.getClaseProyecto(), "0");
 					 mensaje="Estado de proyecto actualizado correctamente";
 					 proyecto.setEstado(Integer.parseInt(req.getParameter("estado")));
 				 }

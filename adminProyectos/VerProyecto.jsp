@@ -179,10 +179,10 @@
 	     				<tr>
 	     				<th><b><c:out value="${sub.listaSubEstados}"></c:out></b></th>
 	     				<td><input type="radio" name="flag" value='${sub.subEstados}' <c:if test="${sessionScope.proyecto.flag==sub.subEstados}">checked</c:if>></td>
-	     				<td>El proyecto aun no tiene revisión</td>
+	     				<td><c:out value="${sub.subEstadoDescrip}"></c:out></td>
 	     				</tr>
      				</c:forEach>
-     				<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}">
+     				<c:if test="${sessionScope.loginUsuario.idUsuario==5452 or sessionScope.loginUsuario.idUsuario==3944}"> 
      				<tr>
 	     			<td colspan="4" align="center"><input type="image" src='<c:url value="/comp/img/Guardar.gif"/>'></td>
 	     			</tr>

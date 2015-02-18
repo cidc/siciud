@@ -21,10 +21,6 @@
 		<c:forEach begin="0" items="${sessionScope.ajaxProyCur}" var="pro" varStatus="st2">
 			parent.document.filtro.proyCur.options[<c:out value="${st2.count}"/>] = new Option('<c:out value="${pro.nombre}"/>','<c:out value="${pro.codigo}"/>');
 		</c:forEach>
-	  	borrar_combo(parent.document.frmEstado.subEstado);
-	  	<c:forEach begin="0" items="${sessionScope.ajaxsubestado}" var="sub" varStatus="st3">
-			parent.document.frmEstado.subEstado.options[<c:out value="${st3.count}"/>] = new Option('<c:out value="${sub.subEstados}"/>','<c:out value="${sub.listaSubEstados}"/>');
-		</c:forEach>
   	
 	
 

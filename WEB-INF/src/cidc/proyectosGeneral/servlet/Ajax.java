@@ -41,11 +41,6 @@ public class Ajax extends ServletGeneral{
 						sesion.setAttribute("ajaxGrupos",proyectosGeneralDB.AjaxGruposInvestigacion(Integer.parseInt(datos[0])));
 						request.setAttribute("para",String.valueOf(Parametros.ajaxGrupos));
 				break;
-//				case Parametros.AJAXSUBESTADOS:
-//					int indice=Integer.parseInt(request.getParameter("dato2"));
-//					sesion.setAttribute("ajaxsubestado", proyectosGeneralDB.buscarSubEstado(indice));
-//					request.setAttribute("para",String.valueOf(Parametros.AJAXSUBESTADOS));
-//					break;
 			}
 		}catch(Exception e){e.printStackTrace();}
 		retorno[0]="unir";
