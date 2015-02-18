@@ -48,7 +48,7 @@
 	<table cellpadding="0" cellspacing="0">
 		<tr>
 			<td><img border="0" src='<c:url value="/comp/img/tabs/General1.gif"/>'></td>
-			<td><img border="0" src='<c:url value="/comp/img/tabs/Balance2.gif"/>' onclick="tabs(6)"></td>
+			<td><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>' onclick="tabs(6)"></td>
 		</tr>
 	</table>
 </form>

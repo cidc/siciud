@@ -37,7 +37,7 @@
 	<input type="hidden" name="tipo" value='<c:out value="${sessionScope.proyectoInvestigador.tipo}"/>'>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
-			<td><img border="0" src='<c:url value="/comp/img/tabs/General2.gif"/>' onclick="tabs(1)"></td>
+			<td><img border="0" src='<c:url value="/comp/img/tabs/General1.gif"/>' onclick="tabs(1)"></td>
 			<td><img border="0" src='<c:url value="/comp/img/tabs/Balance1.gif"/>'></td>
 		</tr>
 	</table>

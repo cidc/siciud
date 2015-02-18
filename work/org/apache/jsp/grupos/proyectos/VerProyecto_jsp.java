@@ -438,7 +438,7 @@ public final class VerProyecto_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_005furl_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f2.setParent(null);
     // /grupos/proyectos/VerProyecto.jsp(51,28) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f2.setValue("/comp/img/tabs/Balance2.gif");
+    _jspx_th_c_005furl_005f2.setValue("/comp/img/tabs/Balance1.gif");
     int _jspx_eval_c_005furl_005f2 = _jspx_th_c_005furl_005f2.doStartTag();
     if (_jspx_th_c_005furl_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f2);
