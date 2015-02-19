@@ -160,7 +160,6 @@ public class CargaDocumento extends ServletGeneral {
 			break;
 			case Parametros.insertarDocumentoExterno:				
 				nombre="DocAnexo__"+proyecto.getId()+"_";
-		//		System.out.println("---entra a externo-->"+nombre);
 				if(proyectoGeneralDB.nuevaCargaDocProyecto(cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertarDocumentoExterno,proyecto),proyecto,usuario.getIdUsuario()))
 					mensaje="Documento Cargado Satisfactoriamente";
 				else
@@ -182,6 +181,16 @@ public class CargaDocumento extends ServletGeneral {
 					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
 				sesion.setAttribute("proyecto",proyectoGeneralDB.buscarProyecto(""+proyecto.getId(),""+proyecto.getClaseProyecto()));
 			break;
+			case Parametros.INSERTARACTAS:
+				nombre="DocAnexo__"+proyecto.getId()+"_";
+				ExtraDocProyecto doc=cargaDocumento(path,nombre, carpeta+"/Otros",archivoAdj,docNuevo,Parametros.insertarDocumentoExterno,proyecto);
+				if(proyectoGeneralDB.nuevaCargaDocProyecto(doc,proyecto,usuario.getIdUsuario())){
+					proyectoGeneralDB.insertarFechaActas(doc, proyecto);
+					mensaje="Documento Cargado Satisfactoriamente";
+				}
+				else
+					mensaje="No se pudo completar la carga del documento \nFavor volver a intentar";
+				break;
 		}
 
 		retorno[0]="desviar";

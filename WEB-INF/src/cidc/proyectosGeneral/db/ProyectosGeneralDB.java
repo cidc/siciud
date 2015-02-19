@@ -1641,5 +1641,29 @@ public class ProyectosGeneralDB extends BaseDB {
 		}
 		return lista;
 	}
+	
+	public boolean insertarFechaActas(ExtraDocProyecto documento,Proyecto proy){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		try {
+			cn=cursor.getConnection(perfil);
+			if(documento.getNombreDocumento().equals("Acta de Inicio"))
+				ps=cn.prepareStatement(rb.getString("fechaActaInicio"));
+			if(documento.getNombreDocumento().equals("Acta Compromisoria"))
+				ps=cn.prepareStatement(rb.getString("fechaActaCompromisoria"));
+			ps.setInt(1, proy.getId());
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+		
+	}
 }
 
