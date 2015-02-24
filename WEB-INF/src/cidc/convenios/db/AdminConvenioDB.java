@@ -1316,7 +1316,8 @@ public List <CdpOBJ> getcdp(int id) {
              ps = cn.prepareStatement(rb.getString("consultarcdp"));
              ps.setInt(1, id);
              rs = ps.executeQuery();
-             
+             Globales glob=new Globales();
+             int total=0, ejecutado=0,reembolso=0,disponible=0;
              while (rs.next()){
             	 i=1;
             	CdpOBJ cdpOBJ=new CdpOBJ(); 
@@ -1326,23 +1327,31 @@ public List <CdpOBJ> getcdp(int id) {
             	cdpOBJ.setCodigo(rs.getString(i++));
             	cdpOBJ.setObservacion(rs.getString(i++));
             	cdpOBJ.setFechaRegistro(rs.getString(i++));
-            	cdpOBJ.setValortotal(rs.getInt(i++));
-            	cdpOBJ.setValorejecutado(rs.getInt(i++));
-            	cdpOBJ.setReembolsototal(rs.getInt(i++));
-            	int [] l = new int[n];
+            	total=rs.getInt(i++);
+            	ejecutado=rs.getInt(i++);
+            	reembolso=rs.getInt(i++);
+            	disponible=total-(ejecutado+reembolso);
+//            	cdpOBJ.setValortotal(rs.getInt(i++));
+//            	cdpOBJ.setValorejecutado(rs.getInt(i++));
+//            	cdpOBJ.setReembolsototal(rs.getInt(i++));
+            	cdpOBJ.setValorTotalString(glob.moneda(String.valueOf(total)));
+            	cdpOBJ.setValorEjecutadoString(glob.moneda(String.valueOf(ejecutado)));
+            	cdpOBJ.setReembolsoTotalString(glob.moneda(String.valueOf(reembolso)));
+            	cdpOBJ.setSaldoDisponible(glob.moneda(String.valueOf(disponible)));
+            	String [] l = new String[n];
             	int [] PK = new int[n];
             	int [] reembolsoEnt = new int[n];
             	for(int k=0;k<n;k++){
 
             		PK[k]=Integer.parseInt(String.valueOf(pkvalor.get(contador)));
-            		l[k]= Integer.parseInt(String.valueOf(valorunitario.get(contador)));
+            		l[k]= glob.moneda(String.valueOf(valorunitario.get(contador)));
             		reembolsoEnt[k]= Integer.parseInt(String.valueOf(reembolsoentidad.get(contador)));
                		//l[k]=v[contador];
             		contador++;
             	}
             	cdpOBJ.setIdcdpValores(PK);		
             	cdpOBJ.setReembolsoEntidad(reembolsoEnt);		
-            	cdpOBJ.setValores(l);
+            	cdpOBJ.setValoresString(l);
             	Listacdp.add(cdpOBJ);
             	
             	

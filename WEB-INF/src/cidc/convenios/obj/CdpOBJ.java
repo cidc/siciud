@@ -23,6 +23,12 @@ public class CdpOBJ implements Serializable{
 	private int [] valores;
 	private int [] reembolsoEntidad;
 	private int reembolsototal;
+	private String valorTotalString;
+	private String valorDisponible;
+	private String valorEjecutadoString;
+	private String reembolsoTotalString;
+	private String saldoDisponible;
+	private String[] valoresString;
 	
 	public int[] getValores() {
 		return valores;
@@ -97,4 +103,41 @@ public class CdpOBJ implements Serializable{
 	public void setReembolsoEntidad(int[] reembolsoEntidad) {
 		this.reembolsoEntidad = reembolsoEntidad;
 	}
+	public String getValorTotalString() {
+		return valorTotalString;
+	}
+	public void setValorTotalString(String valorTotalString) {
+		this.valorTotalString = valorTotalString;
+	}
+	public String getValorDisponible() {
+		return valorDisponible;
+	}
+	public void setValorDisponible(String valorDisponible) {
+		this.valorDisponible = valorDisponible;
+	}
+	public String getValorEjecutadoString() {
+		return valorEjecutadoString;
+	}
+	public void setValorEjecutadoString(String valorEjecutadoString) {
+		this.valorEjecutadoString = valorEjecutadoString;
+	}
+	public String getReembolsoTotalString() {
+		return reembolsoTotalString;
+	}
+	public void setReembolsoTotalString(String reembolsoTotalString) {
+		this.reembolsoTotalString = reembolsoTotalString;
+	}
+	public String getSaldoDisponible() {
+		return saldoDisponible;
+	}
+	public void setSaldoDisponible(String saldoDisponible) {
+		this.saldoDisponible = saldoDisponible;
+	}
+	public String[] getValoresString() {
+		return valoresString;
+	}
+	public void setValoresString(String[] valoresString) {
+		this.valoresString = valoresString;
+	}
+	
 }

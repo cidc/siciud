@@ -203,7 +203,7 @@ public final class NuevaEntidad_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t\t\t\t\t\t\t<td colspan=\"5\" class=\"renglones\"><b>Nombre Entidad</b></td>\r\n");
       out.write("\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<td colspan=\"5\"><input type=\"text\" name=\"nombre\" size=\"70\" maxlength=\"70\"></td>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<td colspan=\"5\"><input type=\"text\" name=\"nombre\" size=\"70\" maxlength=\"150\"></td>\r\n");
       out.write("\t\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t<td colspan=\"5\">\r\n");

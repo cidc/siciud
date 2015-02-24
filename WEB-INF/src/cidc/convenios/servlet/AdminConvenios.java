@@ -124,7 +124,7 @@ public class AdminConvenios extends ServletGeneral {
 				irA="/adminConvenio/Documentos.jsp";
 				
 			break;
-case Parametros.AdicionarTiempo:
+			case Parametros.AdicionarTiempo:
 				
 				if(adminConv.insertarTiempo((TiemposOBJ)sesion.getAttribute("tiempoConv"), objconv,usuario)){
 					mensaje="El tiempo adicional fue registrado satisfactoriamente";
@@ -324,8 +324,7 @@ case Parametros.AdicionarTiempo:
 					req.setAttribute("nombrecdp",req.getParameter("nombrecdp"));
 					req.setAttribute("valortotal",req.getParameter("valortotal"));
 					
-					
-				      if(adminConv.insertaCRP(Integer.parseInt(req.getParameter("idcdp")),Integer.parseInt(req.getParameter("valorcrp")) , req.getParameter("crp"),req.getParameter("codigocrp"), req.getParameter("clientecrp"), req.getParameter("observcrp"), año + "-" + (mes+1) + "-" +dia+"", usuario.getIdUsuario())){
+				      if(adminConv.insertaCRP(Integer.parseInt(req.getParameter("idcdp")),Integer.parseInt(req.getParameter("valorcrp")) , req.getParameter("crp"),req.getParameter("codigocrp"), req.getParameter("clientecrp"), req.getParameter("observcrp"),req.getParameter("fecha"), usuario.getIdUsuario())){
 				    	  mensaje="CRP almacenados satisfactoriamente";  
 				      }else{
 				    	  mensaje="El CRP NO  pudo ser almacenado";

@@ -125,7 +125,7 @@ function guardar()
 								<td colspan="5" class="renglones"><b>Nombre Entidad</b></td>
 							</tr>
 							<tr>
-								<td colspan="5"><input type="text" name="nombre" size="70" maxlength="70"></td>
+								<td colspan="5"><input type="text" name="nombre" size="70" maxlength="150"></td>
 							</tr>
 							<tr>
 								<td colspan="5">

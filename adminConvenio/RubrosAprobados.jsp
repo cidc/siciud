@@ -185,22 +185,22 @@ function suma(formulario1){
 					<td style="width:80px;" align="center">
 						  <c:out value="${lista.codigo}"/>
 					</td>
-					<c:forEach var="i" items="${lista.valores}" begin="0">
+					<c:forEach var="i" items="${lista.valoresString}" begin="0">
 						 <td style="width:100px;" align="center">
-					     	$<c:out value="${i}"/>
+					     	<c:out value="${i}"/>
 						</td>
 					</c:forEach>
 					<td style="width:80px;" align="center">
-					 	$<c:out value="${lista.valortotal}"/>
+					 	<c:out value="${lista.valorTotalString}"/>
 					</td>
 					<td style="width:80px;" align="center">
-						  $<c:out value="${lista.valorejecutado}"/>
+						  <c:out value="${lista.valorEjecutadoString}"/>
 					</td>
 					<td style="width:80px;" align="center">
-						$<c:out value="${lista.reembolsototal}"/>
+						<c:out value="${lista.reembolsoTotalString}"/>
 					</td>
 					<td style="width:80px;" align="center">
-						$<c:out value="${lista.valortotal-(lista.valorejecutado+lista.reembolsototal)}"/>
+						<c:out value="${lista.saldoDisponible}"/>
 					</td>
 					<td style="width:80px;" align="center">
 						  <c:out value="${lista.fechaRegistro}"/>

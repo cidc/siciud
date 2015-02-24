@@ -41,12 +41,12 @@
 			alert("El Valor Efectivo no puede estar vacio");	
 			return false;
 			}
-			if(document.formularioEnviar.VEfectivoConv.value=="0"){
-			alert("El Valor Efectivo no puede ser 0");
+			if(document.formularioEnviar.VEfectivoConv.value=="0"&&document.formularioEnviar.VEspecieConv.value=="0"){
+			alert("Por favor digite el valor en especie o efectivo");
 			return false;
 			}			
 			if(document.formularioEnviar.VEspecieConv.value==""){
-			alert("El Valor Efectivo no puede ser 0");
+			alert("El Valor Especie no puede ser 0");
 			return false;
 			}
 			return true;

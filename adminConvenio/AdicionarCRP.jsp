@@ -297,6 +297,7 @@ function validarReembolso(){
 
   <tr> <td class="renglones" width="115px"><b>CRP: </b></td>
        <td class="renglones"><b>Codigo:</b></td>
+       <td class="renglones"><b>Fecha</b></td>
        <td class="renglones"><b>Cliente:</b></td>
        <td class="renglones"><b>Valor $:</b></td>
  </tr>
@@ -306,6 +307,23 @@ function validarReembolso(){
   </td>
   <td style="width:115px;">
 			  <b><input type="text"  name="codigocrp" ></b>
+  </td>
+  <td style="width:90px;">
+  <table><tr>
+  <td> <input type='text' name='fecha' class='caj' readonly='true' id='f_date_a' /></td>
+  <td><button type='button' id='f_trigger_a'>...</button>
+  <script type='text/javascript'>
+				    			Calendar.setup({
+					    			inputField     :    'f_date_a',
+					    			ifFormat       :    '%Y-%m-%d',
+					    			showsTime      :    false,
+					    			button         :    'f_trigger_a',
+					    			singleClick    :    false,
+					    			step           :    1
+				    			})
+  </script>
+  </td>
+  </tr></table>
   </td>
   <td style="width:115px;">
 			  <b><input type="text"  name="clientecrp" ></b>
