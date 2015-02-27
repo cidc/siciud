@@ -23,7 +23,7 @@ public class Convenio implements Serializable{
 	private int V_Duradias;
 	private int V_Durameses;
 	private int duracion;
-	private int VAprobado;
+	private long VAprobado;
 	private float VAportado;
 	private String N_UsuDigita;
     private String estado;
@@ -212,10 +212,10 @@ public class Convenio implements Serializable{
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
-	public int getVAprobado() {
+	public long getVAprobado() {
 		return VAprobado;
 	}
-	public void setVAprobado(int vAprobado) {
+	public void setVAprobado(long vAprobado) {
 		VAprobado = vAprobado;
 	}
 	public float getVAportado() {
