@@ -78,6 +78,9 @@
 		if(document.nuevo.mailInst.value=="" && document.nuevo.mail.value==""){
 			ms=ms+"\n-) Al menos 1 correo";
 		}
+		if(document.nuevo.tel1.value==""){
+			ms=ms+"\n-) Teléfono";
+		}
 		if(document.nuevo.papel.selectedIndex==0){
 			ms=ms+"\n-) Papel en el grupo";
 		}
