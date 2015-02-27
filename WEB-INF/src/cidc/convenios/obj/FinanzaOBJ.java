@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class FinanzaOBJ implements Serializable{
 	
 	private int idfinanza;
-	private int VAprobado;
-	private int VAportado;
-	private int VComprometer;
-	private int VEjecutar;
-	private int VEfectivo;
-	private int VEspecie;
+	private long VAprobado;
+	private long VAportado;
+	private long VComprometer;
+	private long VEjecutar;
+	private long VEfectivo;
+	private long VEspecie;
 	private int idConvenioFinanza;
 	public int getIdfinanza() {
 		return idfinanza;
@@ -18,40 +18,40 @@ public class FinanzaOBJ implements Serializable{
 	public void setIdfinanza(int idfinanza) {
 		this.idfinanza = idfinanza;
 	}
-	public int getVAprobado() {
+	public long getVAprobado() {
 		return VAprobado;
 	}
-	public void setVAprobado(int vAprobado) {
+	public void setVAprobado(long vAprobado) {
 		VAprobado = vAprobado;
 	}
-	public int getVAportado() {
+	public long getVAportado() {
 		return VAportado;
 	}
-	public void setVAportado(int vAportado) {
+	public void setVAportado(long vAportado) {
 		VAportado = vAportado;
 	}
-	public int getVComprometer() {
+	public long getVComprometer() {
 		return VComprometer;
 	}
-	public void setVComprometer(int vComprometer) {
+	public void setVComprometer(long vComprometer) {
 		VComprometer = vComprometer;
 	}
-	public int getVEjecutar() {
+	public long getVEjecutar() {
 		return VEjecutar;
 	}
-	public void setVEjecutar(int vEjecutar) {
+	public void setVEjecutar(long vEjecutar) {
 		VEjecutar = vEjecutar;
 	}
-	public int getVEfectivo() {
+	public long getVEfectivo() {
 		return VEfectivo;
 	}
-	public void setVEfectivo(int vEfectivo) {
+	public void setVEfectivo(long vEfectivo) {
 		VEfectivo = vEfectivo;
 	}
-	public int getVEspecie() {
+	public long getVEspecie() {
 		return VEspecie;
 	}
-	public void setVEspecie(int vEspecie) {
+	public void setVEspecie(long vEspecie) {
 		VEspecie = vEspecie;
 	}
 	public int getIdConvenioFinanza() {

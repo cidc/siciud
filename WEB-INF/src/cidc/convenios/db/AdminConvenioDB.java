@@ -358,7 +358,7 @@ public class AdminConvenioDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("registrarFinanzas"));
-			ps.setInt(i++,Integer.parseInt(convenio.getVAprobado()));
+			ps.setLong(i++,Long.parseLong(convenio.getVAprobado()));
 			ps.setInt(i++,Integer.parseInt(convenio.getIdconvenio()));
 			ps.executeUpdate();
 		
@@ -1093,17 +1093,17 @@ public boolean registrarEntidadConvenio(GetConvenioOBJ convenio, EntidadAsociada
 			ps=cn.prepareStatement(rb.getString("registrarConvenioEntidad"));
 			ps.setInt(i++, Integer.parseInt(entidad.getEntidadid()));
 			ps.setInt(i++, Integer.parseInt(convenio.getIdconvenio()));
-			ps.setInt(i++, Integer.parseInt(entidad.getVEspecieConv()));
-			ps.setInt(i++, Integer.parseInt(entidad.getVEfectivoConv()));
-			ps.setInt(i++,(Integer.parseInt(entidad.getVEfectivoConv()))+Integer.parseInt(entidad.getVEspecieConv()));
+			ps.setLong(i++, Long.parseLong(entidad.getVEspecieConv()));
+			ps.setLong(i++, Long.parseLong(entidad.getVEfectivoConv()));
+			ps.setLong(i++,(Long.parseLong(entidad.getVEfectivoConv()))+Long.parseLong(entidad.getVEspecieConv()));
 			ps.executeUpdate();
 			
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("actualizarEspecieEfectivo"));
-			int valorespecie=(convenio.getFinanza().getVEspecie())+Integer.parseInt(entidad.getVEspecieConv());
-			int valorefectivo=(convenio.getFinanza().getVEfectivo())+Integer.parseInt(entidad.getVEfectivoConv());
-			ps.setInt(1,valorespecie);
-			ps.setInt(2,valorefectivo);
+			long valorespecie=(convenio.getFinanza().getVEspecie())+Long.parseLong(entidad.getVEspecieConv());
+			long valorefectivo=(convenio.getFinanza().getVEfectivo())+Long.parseLong(entidad.getVEfectivoConv());
+			ps.setLong(1,valorespecie);
+			ps.setLong(2,valorefectivo);
 			ps.setInt(3,convenio.getFinanza().getIdfinanza());
 			
 			ps.executeUpdate();
@@ -1423,12 +1423,12 @@ public FinanzaOBJ getfinanzas(int id) {
              while (rs.next()){
                 finanza=new FinanzaOBJ();
                 finanza.setIdfinanza(rs.getInt(1));
-                finanza.setVAprobado(rs.getInt(2));
-                finanza.setVAportado(rs.getInt(3));
+                finanza.setVAprobado(rs.getLong(2));
+                finanza.setVAportado(rs.getLong(3));
                 finanza.setVComprometer(rs.getInt(4));
-                finanza.setVEjecutar(rs.getInt(5));
-                finanza.setVEspecie(rs.getInt(6));
-                finanza.setVEfectivo(rs.getInt(7));
+                finanza.setVEjecutar(rs.getLong(5));
+                finanza.setVEspecie(rs.getLong(6));
+                finanza.setVEfectivo(rs.getLong(7));
                 finanza.setIdConvenioFinanza(rs.getInt(8));
              }
              
@@ -1664,7 +1664,7 @@ public boolean registrarAporte(GetConvenioOBJ convenio, AportesOBJ aporte){
 		ps.setString(i++, aporte.getTipoAporte());
 		ps.setString(i++, aporte.getAobservacion());
 		ps.setString(i++, aporte.getPersonaOpcional());
-		ps.setInt(i++, Integer.parseInt(aporte.getValorAporte()));
+		ps.setLong(i++, Long.parseLong(aporte.getValorAporte()));
 		ps.setString(i++, aporte.getFechaAporte());
 		ps.setString(i++, aporte.getUsudigita());
 		ps.setString(i++, aporte.getFechaDigita());
@@ -1680,9 +1680,9 @@ public boolean registrarAporte(GetConvenioOBJ convenio, AportesOBJ aporte){
 	
 		
 		
-		int valor=(convenio.getFinanza().getVAportado())+Integer.parseInt(aporte.getValorAporte());
+		long valor=(convenio.getFinanza().getVAportado())+Long.parseLong(aporte.getValorAporte());
 		
-		ps.setInt(1,valor);
+		ps.setLong(1,valor);
 		ps.setInt(2, convenio.getFinanza().getIdfinanza());
 		
 		ps.executeUpdate();

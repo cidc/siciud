@@ -550,7 +550,7 @@ public final class Aportes_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t    \t\t\t</script>\r\n");
         out.write("\t\t\t\t</td>\r\n");
         out.write("\t\t\t\t<td width=\"100px\">\r\n");
-        out.write("\t\t\t\t<input type=\"text\" maxlength=\"9\" name=\"valorAporte\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\">\r\n");
+        out.write("\t\t\t\t<input type=\"text\" maxlength=\"10\" name=\"valorAporte\" style=\"text-align:right; width: 90%\" value=\"0\" onkeypress=\"return numeros(event)\">\r\n");
         out.write("\t\t\t\t</td>\r\n");
         out.write("\t\t\t\t<td width=\"100px\">\r\n");
         out.write("\t\t\t\t\t<input type=\"text\" name=\"personaOpcional\" style=\"width: 100%;\">\r\n");
