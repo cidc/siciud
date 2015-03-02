@@ -3,6 +3,10 @@ package cidc.convenios.obj;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.poi.hssf.record.VCenterRecord;
+
+import cidc.general.obj.Globales;
+
 
 
 public class GetConvenioOBJ implements Serializable{
@@ -52,6 +56,10 @@ public class GetConvenioOBJ implements Serializable{
     private List<EntidadAsociadaOBJ> listaentidadesConv=null;
     private List<CdpOBJ> listacdpsConv=null;
     private List<CrpOBJ> listacrpsConv=null;
+    private String totalcdp=null;
+    private String ejecutado=null;
+    private String reembolsado=null;
+    private String disponible=null;
     
      
  
@@ -270,7 +278,50 @@ public class GetConvenioOBJ implements Serializable{
 	public void setInvestigador(String investigador) {
 		this.investigador = investigador;
 	}
+	public String getTotalcdp() {
+		return totalcdp;
+	}
+	public void setTotalcdp(String totalcdp) {
+		this.totalcdp = totalcdp;
+	}
+	public String getEjecutado() {
+		return ejecutado;
+	}
+	public void setEjecutado(String ejecutado) {
+		this.ejecutado = ejecutado;
+	}
+	public String getReembolsado() {
+		return reembolsado;
+	}
+	public void setReembolsado(String reembolsado) {
+		this.reembolsado = reembolsado;
+	}
+	public String getDisponible() {
+		return disponible;
+	}
+	public void setDisponible(String disponible) {
+		this.disponible = disponible;
+	}
 	
 	
+	public void calcularFinanzas(){
+		int total=0;
+		Globales glob=new Globales();
+		for (EntidadAsociadaOBJ lista: listaentidadesConv) {
+			total+=Integer.parseInt(lista.getVCdps());
+		}
+		this.totalcdp=glob.moneda(String.valueOf(total));
+		int ejecutado=0;
+		int reembolso=0;
+		int disponible=0;
+		for (CdpOBJ lista : listacdpsConv) {
+			ejecutado+=lista.getValorejecutado();
+			reembolso+=lista.getReembolsototal();
+			disponible+=lista.getValortotal()-(lista.getValorejecutado()+lista.getReembolsototal());
+		}
+		this.ejecutado=glob.moneda(String.valueOf(ejecutado));
+		this.reembolsado=glob.moneda(String.valueOf(reembolso));
+		this.disponible=glob.moneda(String.valueOf(disponible));		
+	}
 
 }

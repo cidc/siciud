@@ -598,7 +598,7 @@ public class AdminConvenioDB extends BaseDB{
 				conv.setListaentidadesConv(getListaEntidadesConv(id));	
 				conv.setFinanza(getfinanzas(id));
 				conv.setListacdpsConv(getcdp(id));
-				
+				conv.calcularFinanzas();
 				
 			}
 			return conv;
@@ -1138,6 +1138,8 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 		ps.setInt(1, id);
 		rs=ps.executeQuery();
 		//System.out.println("-->"+ps);
+		String vCdps=null;
+		Globales glbo=new Globales();
 		while(rs.next()){
 			i=1;
 			entid=new EntidadAsociadaOBJ();
@@ -1148,7 +1150,9 @@ public List<EntidadAsociadaOBJ> getListaEntidadesConv(int id){
 			entid.setVEfectivoConv(rs.getString(i++));
 			entid.setVTotal(rs.getString(i++));
 			entid.setVAportado(valorAporte(Integer.parseInt(entid.getIdentidadconvenio())));
-			entid.setVCdps(valorCdp(Integer.parseInt(entid.getIdentidadconvenio())));
+			vCdps=valorCdp(Integer.parseInt(entid.getIdentidadconvenio()));
+			entid.setVCdps(vCdps);
+			entid.setVCdpsString(global.moneda(vCdps));
 			entid.setVReembolsado(valorReembolsado(Integer.parseInt(entid.getIdentidadconvenio())));
 			ListaEntidadesConv.add(entid);
 			
@@ -1331,10 +1335,11 @@ public List <CdpOBJ> getcdp(int id) {
             	ejecutado=rs.getInt(i++);
             	reembolso=rs.getInt(i++);
             	disponible=total-(ejecutado+reembolso);
-//            	cdpOBJ.setValortotal(rs.getInt(i++));
-//            	cdpOBJ.setValorejecutado(rs.getInt(i++));
-//            	cdpOBJ.setReembolsototal(rs.getInt(i++));
+            	cdpOBJ.setValortotal(total);
+            	cdpOBJ.setValorejecutado(ejecutado);
+            	cdpOBJ.setReembolsototal(reembolso);
             	cdpOBJ.setValorTotalString(glob.moneda(String.valueOf(total)));
+            	cdpOBJ.setValortotal(total);
             	cdpOBJ.setValorEjecutadoString(glob.moneda(String.valueOf(ejecutado)));
             	cdpOBJ.setReembolsoTotalString(glob.moneda(String.valueOf(reembolso)));
             	cdpOBJ.setSaldoDisponible(glob.moneda(String.valueOf(disponible)));
@@ -1491,7 +1496,7 @@ public boolean insertaRubrosAprobrados(int idfinanza,String idRubro,String codig
 	return retorno;
 }
 
-public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String cliente,String observacion,String fecha ,long usuario){
+public boolean insertaCRP(int idcdp,Long valor,String nombre,String codigo,String cliente,String observacion,String fecha ,long usuario){
 	Connection cn=null;
 	PreparedStatement ps=null;
 	boolean retorno = false;
@@ -1501,7 +1506,7 @@ public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String
 		cn=cursor.getConnection(super.perfil);
 		ps=cn.prepareStatement(rb.getString("insertaCRP"));
 		ps.setInt(i++, idcdp);
-		ps.setInt(i++, valor);
+		ps.setLong(i++, valor);
 		ps.setString(i++, nombre);
 		ps.setString(i++, codigo);
 		ps.setString(i++, cliente);
@@ -1511,7 +1516,7 @@ public boolean insertaCRP(int idcdp,int valor,String nombre,String codigo,String
 		ps.executeUpdate();
 		cn=cursor.getConnection(super.perfil);
 		ps=cn.prepareStatement(rb.getString("actualizarEjecutadoCdp"));
-		ps.setInt(1,valor+valorEjecutadoCdp(idcdp));
+		ps.setLong(1,valor+valorEjecutadoCdp(idcdp));
 		ps.setInt(2, idcdp);
 		ps.executeUpdate();
 		retorno = true;
@@ -1752,20 +1757,20 @@ public boolean insertarReembolso(String []idconventd,String [] valores, int nent
 		cn=cursor.getConnection(super.perfil);
 		ps=cn.prepareStatement(rb.getString("actualizarReembolsoCDP"));
 		
-		int suma=0;
+		long suma=0;
 		for(int u=0;u<nentidades;u++){
 			suma=suma+Integer.parseInt(valores[u]);
 		}
 		
-		ps.setInt(1, suma);
+		ps.setLong(1, suma);
 		ps.setInt(2, idcdp);
 		ps.executeUpdate();
 	
 		
 		ps=cn.prepareStatement(rb.getString("actualizarReembolsoEntidad"));
 		for(int u=0;u<nentidades;u++){
-			ps.setInt(1,  Integer.parseInt(valores[u]));
-			ps.setInt(2, Integer.parseInt(idconventd[u]));
+			ps.setLong(1,  Long.parseLong(valores[u]));
+			ps.setLong(2, Long.parseLong(idconventd[u]));
 		
 			ps.addBatch();
 		}

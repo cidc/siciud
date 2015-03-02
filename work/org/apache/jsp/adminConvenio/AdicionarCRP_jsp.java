@@ -401,7 +401,7 @@ public final class AdicionarCRP_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t\t  <b><input type=\"text\"  name=\"clientecrp\" ></b>\r\n");
       out.write("  </td>\r\n");
       out.write("   <td style=\"width:115px;\">\r\n");
-      out.write("\t\t\t  <b><input type=\"text\"  name=\"valorcrp\"  maxlength=\"9\" onkeypress=\"return numeros(event)\"></b>\r\n");
+      out.write("\t\t\t  <b><input type=\"text\"  name=\"valorcrp\"  maxlength=\"10\" onkeypress=\"return numeros(event)\"></b>\r\n");
       out.write("  </td>\r\n");
       out.write(" <tr/>\r\n");
       out.write("\r\n");

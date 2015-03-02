@@ -196,6 +196,11 @@ public class Globales{
 
    }
 
+	/**
+	 * convierte un numero al formato de moneda
+	 * @param dato numero para dar formato
+	 * @return numero formateado
+	 */
 	public String moneda(String dato){
 		BigInteger convetir=new BigInteger(dato);
 		Locale locale = Locale.US;
@@ -203,6 +208,11 @@ public class Globales{
 		return cadena.substring(0, cadena.lastIndexOf("."));
 	}
 
+	/**
+	 * quita el formato de moneda a un numero
+	 * @param dato numero con formato
+	 * @return retoruna el numero sin el formato
+	 */
 	public String sinMoneda(String dato){
 		String []vect=dato.split(",");
 		String retorno="";

@@ -310,6 +310,7 @@ public class AdminConvenios extends ServletGeneral {
 					objconv=adminConv.buscarConvenio(Integer.parseInt(objconv.getIdconvenio()));
 					sesion.setAttribute("datoConvenio", objconv);
 					objconv.setListacrpsConv(null);
+					//System.out.println("idcdp "+req.getParameter("idcdp")+" nombrecdp "+req.getParameter("nombrecdp")+" valortotal "+req.getParameter("valor"));
 					req.setAttribute("idcdp",req.getParameter("idcdp"));
 					req.setAttribute("nombrecdp",req.getParameter("nombrecdp"));
 					req.setAttribute("valortotal",req.getParameter("valor"));
@@ -324,7 +325,7 @@ public class AdminConvenios extends ServletGeneral {
 					req.setAttribute("nombrecdp",req.getParameter("nombrecdp"));
 					req.setAttribute("valortotal",req.getParameter("valortotal"));
 					
-				      if(adminConv.insertaCRP(Integer.parseInt(req.getParameter("idcdp")),Integer.parseInt(req.getParameter("valorcrp")) , req.getParameter("crp"),req.getParameter("codigocrp"), req.getParameter("clientecrp"), req.getParameter("observcrp"),req.getParameter("fecha"), usuario.getIdUsuario())){
+				      if(adminConv.insertaCRP(Integer.parseInt(req.getParameter("idcdp")),Long.parseLong(req.getParameter("valorcrp")) , req.getParameter("crp"),req.getParameter("codigocrp"), req.getParameter("clientecrp"), req.getParameter("observcrp"),req.getParameter("fecha"), usuario.getIdUsuario())){
 				    	  mensaje="CRP almacenados satisfactoriamente";  
 				      }else{
 				    	  mensaje="El CRP NO  pudo ser almacenado";

@@ -218,14 +218,14 @@ function suma(formulario1){
 		    <th><b>Total</b></th>
 		    <c:forEach begin="0" items="${sessionScope.datoConvenio.listaentidadesConv}" var="lista" varStatus="st">
 			  <td style="width:100px;" align="center">
-				$<c:out value="${lista.VCdps}"/>
+				<c:out value="${lista.VCdpsString}"/>
 				</td>
 				<c:set var="totalcdp"  value="${totalcdp+lista.VCdps}"/>
 			</c:forEach>
-		   	<td width="100px" align="center">$<c:out value="${totalcdp}"/></td>
-		   	<td width="100px" align="center">$<c:out value="${ejecutado}"/></td>
-		   	<td width="100px" align="center">$<c:out value="${reembolsado}"/></td>
-		   	<td width="100px" align="center">$<c:out value="${disponible}"/></td>
+		   	<td width="100px" align="center"><c:out value="${sessionScope.datoConvenio.totalcdp}"/></td>
+		   	<td width="100px" align="center"><c:out value="${sessionScope.datoConvenio.ejecutado}"/></td>
+		   	<td width="100px" align="center"><c:out value="${sessionScope.datoConvenio.reembolsado}"/></td>
+		   	<td width="100px" align="center"><c:out value="${sessionScope.datoConvenio.disponible}"/></td>
 		    </tr>
 		    
 			   

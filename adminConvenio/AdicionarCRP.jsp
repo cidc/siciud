@@ -329,7 +329,7 @@ function validarReembolso(){
 			  <b><input type="text"  name="clientecrp" ></b>
   </td>
    <td style="width:115px;">
-			  <b><input type="text"  name="valorcrp"  maxlength="9" onkeypress="return numeros(event)"></b>
+			  <b><input type="text"  name="valorcrp"  maxlength="10" onkeypress="return numeros(event)"></b>
   </td>
  <tr/>
 
