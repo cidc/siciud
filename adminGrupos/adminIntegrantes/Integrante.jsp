@@ -75,7 +75,10 @@ function numeros(eve){
 			ms=ms+"\n-) Procedencia";
 		}
 		if(document.nuevo.mailInst.value=="" && document.nuevo.mail.value==""){
-			ms=ms+"\n-) Al menos 1 correo";
+			ms=ms+"\n-) Télefono 1 o Celular 1";
+		}
+		if(document.nuevo.tel1.value==""&&document.nuevo.cel1.value==""){
+			ms=ms+"\n-) Al menos un teléfono";
 		}
 		if(document.nuevo.papel.selectedIndex==0){
 			ms=ms+"\n-) Papel en el grupo";

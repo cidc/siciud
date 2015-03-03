@@ -191,8 +191,8 @@ public final class Integrante_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\tif(document.nuevo.mailInst.value==\"\" && document.nuevo.mail.value==\"\"){\r\n");
       out.write("\t\t\tms=ms+\"\\n-) Al menos 1 correo\";\r\n");
       out.write("\t\t}\r\n");
-      out.write("\t\tif(document.nuevo.tel1.value==\"\"){\r\n");
-      out.write("\t\t\tms=ms+\"\\n-) Teléfono\";\r\n");
+      out.write("\t\tif(document.nuevo.tel1.value==\"\"&&document.nuevo.cel1.value==\"\"){\r\n");
+      out.write("\t\t\tms=ms+\"\\n-) Al menos un teléfono\";\r\n");
       out.write("\t\t}\r\n");
       out.write("\t\tif(document.nuevo.papel.selectedIndex==0){\r\n");
       out.write("\t\t\tms=ms+\"\\n-) Papel en el grupo\";\r\n");
