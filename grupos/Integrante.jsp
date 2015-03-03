@@ -96,8 +96,9 @@
 		}
 		if(document.nuevo.cvlac.value!=""){
 			if(document.nuevo.cvlac.value.length>=64){
-				var dir=document.nuevo.cvlac.value.substring(0,68);
-				if(dir!="http://190.216.132.131:8081/cvlac/visualizador/generarCurriculoCv.do")
+				var dir=document.nuevo.cvlac.value.substring(0,67);
+				var dir2=document.nuevo.cvlac.value.substring(0,79);
+				if(dir!="http://190.242.114.26:8081/cvlac/visualizador/generarCurriculoCv.do" && dir2!="http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do")
 					ms=ms+"\n-) Dirección no válida para CvLac";
 			}else{
 				ms=ms+"\n-) Dirección no válida para CvLac";
