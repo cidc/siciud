@@ -73,10 +73,13 @@
 						<c:if test="${sessionScope.proyecto.cantCoInvest!=0}" >
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.cantCoInvest}"/></td>
 						</c:if>
-						<c:if test="${sessionScope.fecInicio!=null}">
+						<c:if test="${sessionScope.proyecto.cantCoInvest==0}" >
+						<td align="center" width="120px">0</td>
+						</c:if>
+						<c:if test="${sessionScope.proyecto.fecInicio!=null}">
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecInicio}"/></td>
 						</c:if>
-						<c:if test="${sessionScope.fecInicio==null}">
+						<c:if test="${sessionScope.proyecto.fecInicio==null}">
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecActaInicio}"/></td>
 						</c:if>
 						<td align="center" width="120px"><c:out value="${sessionScope.proyecto.fecAprobacion}"/></td>
