@@ -1,23 +1,18 @@
 package cidc.planAccion.db;
 
-import java.util.ResourceBundle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-import cidc.general.*;
 import cidc.general.db.BaseDB;
 import cidc.general.db.CursorDB;
-import cidc.general.mails.EnvioMail2;
-import cidc.general.mails.Reporte;
-import cidc.general.obj.*;
-import cidc.inscripSistema.obj.Persona;
-import cidc.planAccion.obj.PlanAccionDatos;
 import cidc.planAccion.obj.Actividades;
 import cidc.planAccion.obj.Criterios;
+import cidc.planAccion.obj.PlanAccionDatos;
 
 
 public class PlanAccionDB extends BaseDB{
@@ -178,7 +173,6 @@ public class PlanAccionDB extends BaseDB{
 		
 	}
 	public List <Criterios> consultaCriterios(){
-		boolean retorno=false;
 		Criterios criterio=null;
 		List <Criterios> lista= new ArrayList <Criterios>(); 
 		Connection cn=null;
@@ -356,9 +350,47 @@ public class PlanAccionDB extends BaseDB{
 			ps.execute();
 			retorno=true;
 		} catch (Exception e) {
-			// TODO: handle exception
+			lanzaExcepcion(e);
+			retorno = false;
+		} finally {
+			//obligatorio en todas las conexiones con la base de datos 
+			cerrar(ps);
+			cerrar(cn);
 		}
 		
 		return retorno;
 	}
+	
+	public List<PlanAccionDatos> ConsultaGruposPlan(String ano, String tipo, String facultad){
+    	List<PlanAccionDatos> lista = new ArrayList<PlanAccionDatos>();
+    	Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("ConsultaGruposPlan"));
+			ps.setString(i++, ano);
+			ps.setString(i++, ano);
+			ps.setInt(i++, Integer.parseInt(tipo));
+			ps.setInt(i++, Integer.parseInt(facultad));
+			rs=ps.executeQuery();
+			while(rs.next()){
+				i=1;
+				PlanAccionDatos pad=new PlanAccionDatos();
+				pad.setIdGrupo(rs.getInt(i++));
+				pad.setNombregrupo(rs.getString(i++));
+				pad.setDirector(rs.getString(i++));
+				pad.setIdPlan(rs.getLong(i++));
+				lista.add(pad);
+			}
+		} catch (Exception e) {
+			lanzaExcepcion(e);
+		} finally {
+			//obligatorio en todas las conexiones con la base de datos 
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return lista;
+    }
 }

@@ -6,6 +6,7 @@ public class PlanAccionDatos {
 	private String anoinicio="";
 	private String anofinal="";
 	private Long idPlan;
+	private String director;
 	
 	public Long getIdPlan() {
 		return idPlan;
@@ -37,4 +38,11 @@ public class PlanAccionDatos {
 	public void setAnofinal(String anofinal) {
 		this.anofinal = anofinal;
 	}
+	public String getDirector() {
+		return director;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	
 }

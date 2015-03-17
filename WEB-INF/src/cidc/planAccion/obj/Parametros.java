@@ -12,5 +12,7 @@ public class Parametros {
 	public static final int INGRESARINFORME=8;
 	public static final int ELIMINARPORCENTAJE=9;
 	public static final int CAMBIAINFORME=10;
+	public static final int CONSULTARANOS=11;
+	public static final int CONSULTAGRUPOSPLAN=12;
 }
 

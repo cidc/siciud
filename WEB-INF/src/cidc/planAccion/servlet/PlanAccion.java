@@ -20,6 +20,7 @@ import cidc.convMovilidad.db.MovilidadDB;
 import cidc.convMovilidad.obj.InfoGeneral;
 import cidc.general.db.CursorDB;
 import cidc.general.login.Usuario;
+import cidc.general.obj.Globales;
 import cidc.general.servlet.ServletGeneral;
 import cidc.logger.Log;
 import cidc.planAccion.db.PlanAccionDB;
@@ -61,8 +62,6 @@ public class PlanAccion extends ServletGeneral {
 //			sesion.setAttribute("corte", true);
 //		else
 //			sesion.setAttribute("corte", false);
-		Log log = new Log();
-		log.mostrarLog(mensaje);
 		switch(accion){
 			//Buscar Planes de Accion relacionados a este grupo de invsetigación.
 			case Parametros.BUSCARPLANES:
@@ -189,6 +188,22 @@ public class PlanAccion extends ServletGeneral {
 				sesion.setAttribute("anoActual", periodoActual-1);
 				irA="/planAccion/InformeGestion.jsp";
 				break;
+			case Parametros.CONSULTARANOS:
+				Globales gl=new Globales();
+				req.setAttribute("listaAnos", gl.listarAnos("2011"));
+				irA="/planAccion/ConsultaPlanAccion.jsp";
+				break;
+			case Parametros.CONSULTAGRUPOSPLAN:
+				String ano=String.valueOf(req.getParameter("ano"));
+				String boton=String.valueOf(req.getParameter("boton"));
+				String facultad=String.valueOf(req.getParameter("facultad"));
+				System.out.println(req.getParameter("boton"));
+				sesion.setAttribute("ListaGruposPlan", planaccionDB.ConsultaGruposPlan(ano, boton, facultad));
+				req.setAttribute("ano",  ano);
+				req.setAttribute("boton", boton);
+				req.setAttribute("facultad", facultad);
+				irA="/planAccion/ConsultaPlanAccion.jsp";
+				break;
 			default:
 				sesion.setAttribute("Informe", false);
 				sesion.setAttribute("anoActual", ""+periodoActual);
@@ -253,5 +268,6 @@ public class PlanAccion extends ServletGeneral {
 		}
         return null;
     }
+    
 
 }
