@@ -14,5 +14,6 @@ public class Parametros {
 	public static final int CAMBIAINFORME=10;
 	public static final int CONSULTARANOS=11;
 	public static final int CONSULTAGRUPOSPLAN=12;
+	public static final int CONSULTARPLANINDIVIDUAL=13;
 }
 

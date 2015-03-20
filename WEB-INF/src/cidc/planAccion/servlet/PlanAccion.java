@@ -191,6 +191,7 @@ public class PlanAccion extends ServletGeneral {
 			case Parametros.CONSULTARANOS:
 				Globales gl=new Globales();
 				req.setAttribute("listaAnos", gl.listarAnos("2011"));
+				sesion.removeAttribute("ListaGruposPlan");
 				irA="/planAccion/ConsultaPlanAccion.jsp";
 				break;
 			case Parametros.CONSULTAGRUPOSPLAN:
@@ -202,7 +203,20 @@ public class PlanAccion extends ServletGeneral {
 				req.setAttribute("ano",  ano);
 				req.setAttribute("boton", boton);
 				req.setAttribute("facultad", facultad);
+				Globales glo=new Globales();
+				req.setAttribute("listaAnos", glo.listarAnos("2011"));
 				irA="/planAccion/ConsultaPlanAccion.jsp";
+				break;
+			case Parametros.CONSULTARPLANINDIVIDUAL:
+				info=new PlanAccionDatos();
+				info.setIdPlan(Long.parseLong(String.valueOf(req.getParameter("idPlan"))));
+				info.setAnoinicio(String.valueOf(req.getParameter("ano")));
+				info.setAnofinal(String.valueOf(req.getParameter("ano")));
+				sesion.setAttribute("nombreGrupo", String.valueOf(req.getParameter("nombreGrupo")).toUpperCase());
+				sesion.setAttribute("listaActividades",planaccionDB.consultaPlanAccion(info));
+				sesion.setAttribute("listaCriterios",planaccionDB.consultaCriterios());
+				sesion.setAttribute("planaccion",planaccionDB.getPlanAccionDatos());
+				irA="/planAccion/PlanAccionIndividual.jsp";
 				break;
 			default:
 				sesion.setAttribute("Informe", false);

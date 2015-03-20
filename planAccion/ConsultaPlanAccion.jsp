@@ -30,7 +30,13 @@ function validar(){
 	}else
 		return true;
 }
-
+ function buscarPlan(id){
+	 alert("entre");
+	 document.grupo.idPlan.value=id;
+	 //document.grupo.nombreGrupo.value=nombre;
+	 document.grupo.submit();
+	 
+ }
 </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -47,23 +53,23 @@ function validar(){
 			<td>
 				<select name="facultad">
 					<option value="0">-------------</option>
-					<option value="1" >Tecnológica</option>
-					<option value="2" >Ingeniería</option>
-					<option value="3" >Medio Ambiente</option>
-					<option value="4" >Ciencias y Educación</option>
-					<option value="5" > Artes (Asab)</option>
+					<option value="1" <c:if test='${requestScope.facultad==1}'>selected</c:if> >Tecnológica</option>
+					<option value="2" <c:if test='${requestScope.facultad==2}'>selected</c:if> >Ingeniería</option>
+					<option value="3" <c:if test='${requestScope.facultad==3}'>selected</c:if> >Medio Ambiente</option>
+					<option value="4" <c:if test='${requestScope.facultad==4}'>selected</c:if> >Ciencias y Educación</option>
+					<option value="5" <c:if test='${requestScope.facultad==5}'>selected</c:if> > Artes (Asab)</option>
 				</select>
 			</td>
-			<td><b>Grupo</b><input type="radio" name="boton" value="1">
+			<td><b>Grupo</b><input type="radio" name="boton" value="1" <c:if test='${requestScope.boton==1}'>checked</c:if>>
 			</td>
-			<td><b>Semillero</b><input type="radio" name="boton" value="2"></td>
+			<td><b>Semillero</b><input type="radio" name="boton" value="2" <c:if test='${requestScope.boton==2}'>checked</c:if>></td>
 			<th>
 				<b>Año</b>
 			</th>
 			<td>
 				<select name="ano" style="width: 70px">
 					<c:forEach items="${requestScope.listaAnos}" var="lista">
-						<option value="${lista}"><c:out value="${lista}"/></option>
+						<option value="${lista}" <c:if test='${requestScope.ano==lista}'>selected</c:if> ><c:out value="${lista}"/></option>
 					</c:forEach>
 				</select>
 			</td>
@@ -71,11 +77,13 @@ function validar(){
 		</tr>
 	</table>
 </form>
-<form>
+<form name="grupo" method="post" action='<c:url value="/planAccion/PlanAccion.x"/>'>
 <input type="hidden" name="accion" value="13" />
+<input type="hidden" name="nombreGrupo"  />
+<input type="hidden" name="idPlan" />
 <c:if test="${sessionScope.ListaGruposPlan!=null}">
 <table align="center" class="tablas">
-<caption>Listado de Grupos de Investgación</caption>
+<caption>Listado de <c:if test="${requestScope.boton==1}">Grupos</c:if><c:if test="${requestScope.boton==2}">Semilleros</c:if> de Investigación</caption>
 <tr>
 	<td align="center" class="renglones"><b>Nombre</b></td>
 	<td align="center" class="renglones"><b>Director</b></td>
@@ -84,15 +92,14 @@ function validar(){
 </tr>
 <c:forEach items="${sessionScope.ListaGruposPlan}" var="lista" >
 <tr>
-	<td><input type="hidden" name="idGrupo" value="${lista.idPlan}">
-	<c:out value="${lista.nombregrupo}" /></td>
+	<td><c:out value="${lista.nombregrupo}" /></td>
 	<td><c:out value="${lista.director}" /></td>
 	<td align="center" width="10%">
 		<c:if test="${lista.idPlan==0}"><img src ='<c:url value="/comp/img/Equis.gif"/>'/></c:if>
 		<c:if test="${lista.idPlan!=0}"><img src ='<c:url value="/comp/img/ok.png"/>'/></c:if>
 	</td>
 	<td width="10%">
-		<c:if test="${lista.idPlan!=0}"><img src ='<c:url value="/comp/img/VerProy.gif"/>'/></c:if>
+		<c:if test="${lista.idPlan!=0}"><img src ='<c:url value="/comp/img/VerProy.gif"/>' onclick="buscarPlan(<c:out value="${lista.idPlan}" />)"/></c:if>
 	</td>
 </tr>
 </c:forEach>
