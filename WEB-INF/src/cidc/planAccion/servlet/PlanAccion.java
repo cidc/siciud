@@ -96,7 +96,7 @@ public class PlanAccion extends ServletGeneral {
 				System.out.println("Caso 2 ************");				
 				actividad=(Actividades)sesion.getAttribute("actividad");
 				System.out.println("Valor idPlan ***********" + req.getParameter("idPlan"));
-				planaccionDB.crearActividad(actividad);
+				planaccionDB.crearActividad(actividad,info);
 				//consultando nuevamente 
 				info=(PlanAccionDatos)sesion.getAttribute("planaccion");
 				sesion.setAttribute("listaActividades", planaccionDB.consultaPlanAccion(info));
@@ -140,7 +140,7 @@ public class PlanAccion extends ServletGeneral {
 				actividad=(Actividades)sesion.getAttribute("actividad");
 				//esta linea crea el plan si no existe, para que inserte la actividad, ademas consulta el id del plan
 				planaccionDB.consultaPlanAccion(info);
-				if(planaccionDB.ActualizarPLan(info.getIdPlan(), actividad.getIdActividad()))
+				if(planaccionDB.ActualizarPLan(info, actividad.getIdActividad()))
 					mensaje="La Actividad se ha insertado satisfactoriamente";
 				else
 					mensaje="La Actividad no se ha podido insertar";

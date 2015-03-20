@@ -79,18 +79,18 @@ public class PlanAccionDB extends BaseDB{
 					lista.add(actividades);
 				}	
 			}
-			else{
-				System.out.println("EL PLAN DE ACCIÓN NO EXISTE ***********");
-				agregarPlan(info);
-				ps=cn.prepareStatement(rb.getString("buscarplanAccion"));
-				ps.setInt(i++, info.getIdGrupo());
-				ps.setString(i++, info.getAnoinicio());
-				ps.setString(i++, info.getAnofinal());
-				rs=ps.executeQuery();
-				while(rs.next()){
-					planAccionDatos.setIdPlan(rs.getLong(1));
-				}
-			}
+//			else{
+//				System.out.println("EL PLAN DE ACCIÓN NO EXISTE ***********");
+//				agregarPlan(info);
+//				ps=cn.prepareStatement(rb.getString("buscarplanAccion"));
+//				ps.setInt(i++, info.getIdGrupo());
+//				ps.setString(i++, info.getAnoinicio());
+//				ps.setString(i++, info.getAnofinal());
+//				rs=ps.executeQuery();
+//				while(rs.next()){
+//					planAccionDatos.setIdPlan(rs.getLong(1));
+//				}
+//			}
 		}
 		catch (SQLException e){
 			lanzaExcepcion(e);	
@@ -116,9 +116,6 @@ public class PlanAccionDB extends BaseDB{
 		try {
 			cn=cursor.getConnection(super.perfil);
 			ps=cn.prepareStatement(rb.getString("insertaplanAccion"));
-			/*System.out.println("id grupo "+info.getIdGrupo());
-			System.out.println("id grupo "+info.getAnofinal());
-			System.out.println("id grupo "+info.getAnoinicio());*/
 			ps.setInt(i++, info.getIdGrupo());
 			ps.setString(i++, info.getAnoinicio());
 			ps.setString(i++, info.getAnofinal());
@@ -206,14 +203,29 @@ public class PlanAccionDB extends BaseDB{
 		return lista;
 	}
 
-	public boolean crearActividad(Actividades actividad) {
+	public boolean crearActividad(Actividades actividad,PlanAccionDatos info) {
 		// TODO Auto-generated method stub
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
+		ResultSet rs=null;
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
+			if (actividad.getIdPlan()==0){
+				System.out.println("EL PLAN DE ACCIÓN NO EXISTE ***********");
+				agregarPlan(info);
+				ps=cn.prepareStatement(rb.getString("buscarplanAccion"));
+				ps.setInt(i++, info.getIdGrupo());
+				ps.setString(i++, info.getAnoinicio());
+				ps.setString(i++, info.getAnofinal());
+				rs=ps.executeQuery();
+				while(rs.next()){
+					actividad.setIdPlan(rs.getLong(1));
+				}
+			}
+			
+			
 			ps=cn.prepareStatement(rb.getString("insertaActividadPlanAccion"));
 			ps.setLong(i++, actividad.getIdPlan());
 			ps.setLong(i++, actividad.getIdCriterio());
@@ -264,7 +276,7 @@ public class PlanAccionDB extends BaseDB{
 		return retorno;
 	}	
 	
-	public boolean ActualizarPLan(long idPlan, long idAct) {
+	public boolean ActualizarPLan(PlanAccionDatos info, long idAct) {
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
@@ -280,14 +292,14 @@ public class PlanAccionDB extends BaseDB{
 			
 			while(rs.next()){
 				i=1;
-				actividad.setIdPlan(idPlan);
+				actividad.setIdPlan(info.getIdPlan());
 				actividad.setIdCriterio((rs.getInt(i++)));
 				actividad.setActividad(rs.getString(i++));
 				actividad.setDescripcion(rs.getString(i++));
 				actividad.setMeta(rs.getString(i++));
 				retorno=true; 
 			}
-			crearActividad(actividad);
+			crearActividad(actividad,info);
 		}catch (SQLException e) {
 			lanzaExcepcion(e);
 		}		
