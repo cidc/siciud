@@ -209,7 +209,7 @@ public class PlanAccion extends ServletGeneral {
 				break;
 			case Parametros.CONSULTARPLANINDIVIDUAL:
 				info=new PlanAccionDatos();
-				info.setIdPlan(Long.parseLong(String.valueOf(req.getParameter("idPlan"))));
+				info.setIdGrupo(Integer.parseInt(String.valueOf(req.getParameter("idGrupo"))));
 				info.setAnoinicio(String.valueOf(req.getParameter("ano")));
 				info.setAnofinal(String.valueOf(req.getParameter("ano")));
 				sesion.setAttribute("nombreGrupo", String.valueOf(req.getParameter("nombreGrupo")).toUpperCase());

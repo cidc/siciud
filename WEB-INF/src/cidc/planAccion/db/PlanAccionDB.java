@@ -51,6 +51,7 @@ public class PlanAccionDB extends BaseDB{
 			ps.setInt(i++, info.getIdGrupo());
 			ps.setString(i++, info.getAnoinicio());
 			ps.setString(i++, info.getAnofinal());
+			System.out.println(ps.toString());
 			rs=ps.executeQuery();
 			
 			while(rs.next()){
@@ -65,6 +66,7 @@ public class PlanAccionDB extends BaseDB{
 				ps.setInt(i++, info.getIdGrupo());
 				ps.setString(i++, info.getAnoinicio());
 				ps.setString(i++, info.getAnofinal());
+				System.out.println(ps.toString());
 				rs=ps.executeQuery();				
 				while(rs.next()){
 					i=1;
@@ -384,6 +386,8 @@ public class PlanAccionDB extends BaseDB{
 			ps=cn.prepareStatement(rb.getString("ConsultaGruposPlan"));
 			ps.setString(i++, ano);
 			ps.setString(i++, ano);
+			ps.setString(i++, ano);
+			ps.setString(i++, ano);
 			ps.setInt(i++, Integer.parseInt(tipo));
 			ps.setInt(i++, Integer.parseInt(facultad));
 			rs=ps.executeQuery();
@@ -394,6 +398,7 @@ public class PlanAccionDB extends BaseDB{
 				pad.setNombregrupo(rs.getString(i++));
 				pad.setDirector(rs.getString(i++));
 				pad.setIdPlan(rs.getLong(i++));
+				pad.setContActividades(rs.getInt(i++));
 				lista.add(pad);
 			}
 		} catch (Exception e) {

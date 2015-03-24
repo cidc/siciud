@@ -7,6 +7,7 @@ public class PlanAccionDatos {
 	private String anofinal="";
 	private Long idPlan;
 	private String director;
+	private int contActividades;
 	
 	public Long getIdPlan() {
 		return idPlan;
@@ -43,6 +44,12 @@ public class PlanAccionDatos {
 	}
 	public void setDirector(String director) {
 		this.director = director;
+	}
+	public int getContActividades() {
+		return contActividades;
+	}
+	public void setContActividades(int contActividades) {
+		this.contActividades = contActividades;
 	}
 	
 }

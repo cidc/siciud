@@ -31,9 +31,9 @@ function validar(){
 		return true;
 }
  function buscarPlan(id){
-	 alert("entre");
-	 document.grupo.idPlan.value=id;
-	 //document.grupo.nombreGrupo.value=nombre;
+	 //alert("entre");
+	 document.grupo.idGrupo.value=id;
+	 //document.grupo.ano.value=nombre;
 	 document.grupo.submit();
 	 
  }
@@ -81,6 +81,8 @@ function validar(){
 <input type="hidden" name="accion" value="13" />
 <input type="hidden" name="nombreGrupo"  />
 <input type="hidden" name="idPlan" />
+<input type="hidden" name="ano" value="${requestScope.ano}" />
+<input type="hidden" name="idGrupo" />
 <c:if test="${sessionScope.ListaGruposPlan!=null}">
 <table align="center" class="tablas">
 <caption>Listado de <c:if test="${requestScope.boton==1}">Grupos</c:if><c:if test="${requestScope.boton==2}">Semilleros</c:if> de Investigación</caption>
@@ -95,11 +97,11 @@ function validar(){
 	<td><c:out value="${lista.nombregrupo}" /></td>
 	<td><c:out value="${lista.director}" /></td>
 	<td align="center" width="10%">
-		<c:if test="${lista.idPlan==0}"><img src ='<c:url value="/comp/img/Equis.gif"/>'/></c:if>
-		<c:if test="${lista.idPlan!=0}"><img src ='<c:url value="/comp/img/ok.png"/>'/></c:if>
+		<c:if test="${lista.contActividades==0}"><img src ='<c:url value="/comp/img/Equis.gif"/>'/></c:if>
+		<c:if test="${lista.contActividades!=0}"><img src ='<c:url value="/comp/img/ok.png"/>'/></c:if>
 	</td>
 	<td width="10%">
-		<c:if test="${lista.idPlan!=0}"><img src ='<c:url value="/comp/img/VerProy.gif"/>' onclick="buscarPlan(<c:out value="${lista.idPlan}" />)"/></c:if>
+		<c:if test="${lista.contActividades!=0}"><img src ='<c:url value="/comp/img/VerProy.gif"/>' onclick="buscarPlan(<c:out value="${lista.idGrupo}" />)"/></c:if>
 	</td>
 </tr>
 </c:forEach>
