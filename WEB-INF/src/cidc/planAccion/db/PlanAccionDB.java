@@ -386,8 +386,6 @@ public class PlanAccionDB extends BaseDB{
 			ps=cn.prepareStatement(rb.getString("ConsultaGruposPlan"));
 			ps.setString(i++, ano);
 			ps.setString(i++, ano);
-			ps.setString(i++, ano);
-			ps.setString(i++, ano);
 			ps.setInt(i++, Integer.parseInt(tipo));
 			ps.setInt(i++, Integer.parseInt(facultad));
 			rs=ps.executeQuery();
