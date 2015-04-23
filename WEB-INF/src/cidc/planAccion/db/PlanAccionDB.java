@@ -225,9 +225,8 @@ public class PlanAccionDB extends BaseDB{
 				while(rs.next()){
 					actividad.setIdPlan(rs.getLong(1));
 				}
+				i=1;
 			}
-			
-			
 			ps=cn.prepareStatement(rb.getString("insertaActividadPlanAccion"));
 			ps.setLong(i++, actividad.getIdPlan());
 			ps.setLong(i++, actividad.getIdCriterio());

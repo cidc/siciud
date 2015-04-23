@@ -223,6 +223,7 @@ public class PlanAccion extends ServletGeneral {
 				sesion.setAttribute("anoActual", ""+periodoActual);
 				sesion.removeAttribute("listaActividades");
 				sesion.removeAttribute("nombrePdf");
+				sesion.removeAttribute("listaCriterios");
 				sesion.setAttribute("consultar", false);
 				sesion.setAttribute("arregloAnos", crearhistorico(periodoActual));
 				irA="/planAccion/DatosPlanAccion.jsp";
