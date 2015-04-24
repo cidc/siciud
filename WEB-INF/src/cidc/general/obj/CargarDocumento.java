@@ -98,7 +98,11 @@ public class CargarDocumento{
 		System.out.println("nombreArchivo:"+nombreArchivo);
         String ruta=path+sep+"Documentos"+sep+carpeta+sep+nombreArchivo;
 		System.out.println("ruta:"+ruta);
-        archivo.write(new File(ruta));
+		File file=new File(ruta);
+		System.out.println(archivo.toString());
+        if (archivo!=null) {
+			archivo.write(file);
+		}
 		return nombreArchivo;
 	}
 
