@@ -307,7 +307,7 @@ public final class Integrante_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<!-- hidden para la bandera datoInt.flag -->\r\n");
       out.write("\r\n");
       out.write("\t\t\t<table class=\"tablas\" align=\"center\">\r\n");
-      out.write("\t\t<caption>Datos Personales</caption>\r\n");
+      out.write("\t\t<caption>Datos Personales :D</caption>\r\n");
       out.write("\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<th><b>Documento:</b></th>\r\n");

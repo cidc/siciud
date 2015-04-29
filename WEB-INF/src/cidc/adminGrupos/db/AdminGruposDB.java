@@ -1324,7 +1324,7 @@ public class AdminGruposDB extends BaseDB{
 		int i=1;
 		try {
 			cn=cursor.getConnection(super.perfil);
-			cn.setAutoCommit(false);
+			//cn.setAutoCommit(false);
 			ps=cn.prepareStatement(rb.getString("ActualizarPersona"));
 			ps.setInt(i++,integrante.getTipoCed());
 			ps.setString(i++,integrante.getNombres());
@@ -1351,7 +1351,7 @@ public class AdminGruposDB extends BaseDB{
 			ps.executeUpdate();
 			actualizarInvestigador(cn,integrante,idGrupo);
 
-			cn.commit();
+			//cn.commit();
 			retorno=true;
 		}catch (SQLException e) {
 			lanzaExcepcion(e);
@@ -1365,6 +1365,8 @@ public class AdminGruposDB extends BaseDB{
 	}
 
 	public boolean actualizarInvestigador(Connection cn,Integrante integrante,long idGrupo)throws SQLException{
+		quitarDirector(idGrupo);
+		int director=1;
 		boolean ss=false;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -1380,7 +1382,8 @@ public class AdminGruposDB extends BaseDB{
 		ps.setLong(i++,idGrupo);
 		System.out.println("---pss-s->"+ps.toString());
 		ps.executeUpdate();
-		
+		if(integrante.getPapel()==director)	
+			cambiarDirector( integrante.getId(), idGrupo);
 		ss=true;
 
 		cerrar(rs);cerrar(ps);
@@ -1634,6 +1637,56 @@ public class AdminGruposDB extends BaseDB{
 		ID = getidname(nombre)+ getidlastname(apellido) + numero;
 		
 		return ID;
+	}
+	
+	/**
+	 * asigna una persona como director de un grupo de investigacion 
+	 * @param idIntegrante id de la persona que sera director
+	 * @param idGrupo id del grupo o semillero
+	 */
+	public void cambiarDirector(long idIntegrante,long idGrupo){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("cambioDirector"));
+			ps.setLong(i++, idIntegrante);
+			ps.setLong(i++, idGrupo);
+			ps.executeUpdate();
+			
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+	}
+	
+	/**
+	 * cambia el rol de director a cualquiera que lo tenga por el de docente 
+	 * @param idGrupo identificacion del grupo o semillero de investigacion
+	 */
+	public void quitarDirector(long idGrupo){
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try {
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("quitarDirector"));
+			ps.setLong(i++, idGrupo);
+			ps.executeUpdate();
+			
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		}catch (Exception e) {
+			lanzaExcepcion(e);
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
 	}
 }
 

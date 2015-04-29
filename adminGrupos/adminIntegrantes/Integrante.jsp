@@ -168,7 +168,7 @@ function numeros(eve){
 		<!-- hidden para la bandera datoInt.flag -->
 
 			<table class="tablas" align="center">
-		<caption>Datos Personales</caption>
+		<caption>Datos Personales :D</caption>
 
 		<tr>
 			<th><b>Documento:</b></th>
