@@ -168,7 +168,7 @@ function numeros(eve){
 		<!-- hidden para la bandera datoInt.flag -->
 
 			<table class="tablas" align="center">
-		<caption>Datos Personales :D</caption>
+		<caption>Datos Personales</caption>
 
 		<tr>
 			<th><b>Documento:</b></th>
@@ -307,11 +307,11 @@ function numeros(eve){
 			<td colspan="4">
 				<table width="100%">
 					<tr>
+						<th><b>Dirección: </b></th>
 						<th><b>Papel: </b></th>
-						<th><b>Fecha de Ingreso Grupo</b></th>
-						<th><b>Fecha de Salida Grupo</b></th>
 					</tr>
 					<tr>
+					<td><input type="text" name="direccion" value='<c:out value="${sessionScope.integrante2.direccion}"/>'></td>
 						<td>
 							<select name="papel">
 								<option value="0">----------</option>
@@ -323,6 +323,11 @@ function numeros(eve){
 								<option <c:if test="${sessionScope.integrante2.papel==6}" >selected</c:if> value="6" >Invitado</option>
 							</select>
 						</td>
+					<tr>
+						<th><b>Fecha de Ingreso Grupo</b></th>
+						<th><b>Fecha de Salida Grupo</b></th>
+					</tr>
+					<tr>
 						<td>
 							<input type='text' name='fechaVinculacion' class='caj' readonly='true' id='f_date_b' size='13' value='<c:out value="${sessionScope.integrante2.fechaVinculacion}"/>'>
 							<button type="button" id='f_trigger_b' >...</button>

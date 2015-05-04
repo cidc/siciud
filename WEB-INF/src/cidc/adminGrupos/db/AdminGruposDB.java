@@ -719,6 +719,7 @@ public class AdminGruposDB extends BaseDB{
 				integrante.setCodareasnies(rs.getInt(i++));
 				integrante.setGenero(rs.getInt(i++));
 				integrante.setNombreGenero(rs.getString(i++));
+				integrante.setDireccion(rs.getString(i++));
 				integrante.setProyectosCurriculares(AjaxProyectoCur(integrante.getCodFacultad()));
 			}
 			integrante=consultarInfoIntegrante(cn,integrante,idPersona);

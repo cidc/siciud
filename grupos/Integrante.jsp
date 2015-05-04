@@ -312,11 +312,11 @@
 			<td colspan="4">
 				<table width="100%">
 					<tr>
+						<th><b>Dirección: </b></th>
 						<th><b>Papel: </b></th>
-						<th><b>Fecha de Ingreso Grupo</b></th>
-						<th><b>Fecha de Salida Grupo</b></th>
 					</tr>
 					<tr>
+						<td><input type="text" name="direccion" value='<c:out value="${sessionScope.integrante2.direccion}"/>'></td>
 						<td>
 							<select name="papel">
 								<option value="0">----------</option>
@@ -328,6 +328,12 @@
 								<option <c:if test="${sessionScope.integrante2.papel==6}" >selected</c:if> value="6" >Invitado</option>
 							</select>
 						</td>
+					</tr>
+					<tr>
+						<th><b>Fecha de Ingreso Grupo</b></th>
+						<th><b>Fecha de Salida Grupo</b></th>
+					</tr>
+					<tr>
 						<td>
 							<input type='text' name='fechaVinculacion' class='caj' id='f_date_b' size='13' readonly value='<c:out value="${sessionScope.integrante2.fechaVinculacion}" />'>
 <!-- 							<button type="button" id='f_trigger_b' >...</button> -->
