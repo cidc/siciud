@@ -115,7 +115,7 @@ public class GruposServlet extends ServletGeneral {
 					listaProy=adminGruposDB.AjaxProyectoCur(nuevo.getCodFacultad());
 					listaAreas=adminGruposDB.AjaxAreasSnies();
 					nuevo.setProyectosCurriculares(listaProy);
-					nuevo.setProyectosCurriculares(listaAreas);
+					//nuevo.setProyectosCurriculares(listaAreas);
 					nuevo.setCodareasnies(nuevo.getCodareasnies());
 					nuevo.setAreasSNIES(adminGruposDB.AjaxAreasSnies());
 					sesion.setAttribute("integrante2",nuevo);
