@@ -241,9 +241,11 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				irA="/adminProyectos/Coinvestigadores.jsp";
 			break;
 			case ParametrosOBJ.COMPROMISOS:
-				sesion.setAttribute("compromisos",proyectosGeneralDB.buscarCompromisos(proyecto.getIdPropuesta()));
-				irA="/adminProyectos/Productos.jsp";
-				break;
+			if (proyecto.getClaseProyecto()!=2) {
+				sesion.setAttribute("compromisos", proyectosGeneralDB.buscarCompromisos(proyecto.getIdPropuesta()));
+			}
+			irA = "/adminProyectos/Productos.jsp";
+			break;
 			case ParametrosOBJ.ENTREGACOMPROMISOS:
 				System.out.println("entre");
 				if(proyectosGeneralDB.guardarProductos(proyecto)){

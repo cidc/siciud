@@ -87,6 +87,9 @@
 		if(document.nuevo.genero.selectedIndex==0){
 			ms=ms+"\n-) Género";
 		}
+		if(document.nuevo.direccion.value==""){
+			ms=ms+"\n-) Dirección de correspondencia";
+		}
 		if(document.nuevo.codareasnies.selectedIndex==0){
 			ms=ms+"\n-) Área Snies";
 		}if(document.nuevo.fechaVinculacion.value==""){

@@ -83,6 +83,9 @@ function numeros(eve){
 		if(document.nuevo.papel.selectedIndex==0){
 			ms=ms+"\n-) Papel en el grupo";
 		}
+		if(document.nuevo.direccion.value==""){
+			ms=ms+"\n-) Dirección de correspondencia";
+		}
 		if(document.nuevo.genero.selectedIndex==0){
 			ms=ms+"\n-) Género";
 		}if(document.nuevo.codareasnies.selectedIndex==0){
