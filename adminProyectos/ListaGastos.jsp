@@ -20,6 +20,10 @@
 			document.gastos.submit();
 		}
 	}
+	function guardar(id,descripcion, codigo, observaciones){
+		alert(id);
+		alert(descripcion);
+	} 
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));"> 
@@ -72,6 +76,43 @@
 			    		<display:setProperty name="balance.pdf" value="true" />
 				</display:table>	
 			</table>
+			<table align="center" class="tablas" width="95%" >	        
+	        <caption >Listado de Gastos Rubro <c:out value="${sessionScope.nombreRubro}"/></caption>
+	        <tr>
+	        	<th style="width:100px;"><b>Fecha</b></th>
+	        	<th style="width:100px;"><b>Valor</b></th>
+	        	<th style="width:300px;"><b>Descripción</b></th>
+	        	<th style="width:100px;"><b>Código</b></th>
+	        	<th style="width:300px;"><b>Observación</b></th>
+	        	<th style="width:40px;"><b>Ubicación</b></th>
+	        	<th style="width:60px;"><b>Opciones</b></th>
+	        </tr>
+	        <c:forEach items="${requestScope.listaGastosRubro}" var="data" >
+	        <tr>
+	        	<td style="width:100px;"><c:out value="${data.fecha}"/></td>
+	        	<td style="width:100px;"><c:out value="${data.valorGasto}"/></td>
+	        	<td style="width:300px;"><textarea  name="descripcion" rows="2" cols="50"><c:out value="${data.descripcion}"/></textarea></td>
+	        	<td style="width:100px;"><input type="text" value="${data.codigo}"/></td>
+	        	<td style="width:300px;"><input type="text" value="${data.observaciones} - ${data.observacionEntrega}"/></td>
+	        	<td><c:if test="${data.ubicacion=='p'}">
+							<img src='<c:url value="/comp/img/proy.png"/>' alt="Proyecto Investigación" title="Proyecto Investigación">
+						</c:if>
+						<c:if test="${data.ubicacion=='b'}">
+							<img src='<c:url value="/comp/img/biblio.png"/>' alt="Biblioteca" title="Biblioteca">
+						</c:if>
+						<c:if test="${data.ubicacion=='g'}">
+							<img src='<c:url value="/comp/img/grupo.png"/>' alt="Grupo Investigación" title="Grupo Investigación">
+						</c:if>
+						<c:if test="${data.ubicacion=='a'}">
+							<img src='<c:url value="/comp/img/chart.png"/>' alt="Almacen" title="Almacen">
+				</c:if></td>
+				<c:if test="${sessionScope.proyecto.estado==2 and data.ubicacion==null}">
+								<td><img src='<c:url value="/comp/img/equis1.png"/>' title="Eliminar" onclick='eliminar("<c:out value="${data.idGasto}"/>")'>
+								    <img src='<c:url value="/comp/img/Editar.png"/>' title="Guardar" onClick='guardar(<c:out value="${data.idGasto}"/>,"<c:out value="${data.descripcion}"/>","<c:out value="${data.codigo}"/>","<c:out value='${data.observaciones}'/>")' /></td>
+				</c:if>	
+	        </tr>
+	        </c:forEach>
+	        </table>
 		</fieldset>
 		</c:if>
 		</div>
