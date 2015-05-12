@@ -20,9 +20,23 @@
 			document.gastos.submit();
 		}
 	}
-	function guardar(id,descripcion, codigo, observaciones){
+	function guardar(id){
 		alert(id);
-		alert(descripcion);
+		if(document.getElementById("codigoTXT"+id).value==null)
+			alert("esta vacion");
+		else 
+			alert("no esta vacio "+document.getElementById("codigoTXT"+id).value);
+		alert(document.gastos.descripcionTXT.value+" "+document.gastos.codigoTXT.value);
+		if(confirm("Desea actualizar este registro")){
+			document.gastos.idGasto.value=id;
+			document.gastos.descripcion.value=document.gastos.descripcionTXT.value;
+			document.gastos.codigo.value=document.gastos.codigoTXT.value;
+			document.gastos.observaciones.value=document.gastos.observacionesTXT.value;
+			document.gastos.action='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x"/>';
+			document.gastos.accion.value="24";
+			document.gastos.submit();
+		}
+		
 	} 
 </script>
 </head>
@@ -37,8 +51,11 @@
 			</tr>
 		</table>
 	</c:if>
-	<input type="hidden" name="accion" value='8'>
+	    <input type="hidden" name="accion" value='8'>
 		<input type="hidden" name="idGasto" value=''>
+		<input type="hidden" name="descripcion" value=''>
+		<input type="hidden" name="observaciones" value=''>
+		<input type="hidden" name="codigo" value=''>
 		<input type="hidden" name="id" value='<c:out value="${sessionScope.proyecto.id}"/>'>
 		<input type="hidden" name="idRub" value='<c:out value="${sessionScope.idRub}"/>'>
 		
@@ -91,9 +108,9 @@
 	        <tr>
 	        	<td style="width:100px;"><c:out value="${data.fecha}"/></td>
 	        	<td style="width:100px;"><c:out value="${data.valorGasto}"/></td>
-	        	<td style="width:300px;"><textarea  name="descripcion" rows="2" cols="50"><c:out value="${data.descripcion}"/></textarea></td>
-	        	<td style="width:100px;"><input type="text" value="${data.codigo}"/></td>
-	        	<td style="width:300px;"><input type="text" value="${data.observaciones} - ${data.observacionEntrega}"/></td>
+	        	<td style="width:300px;"><textarea id="descripcionTXT" name="descripcionTXT" rows="2" cols="50"><c:out value="${data.descripcion}"/></textarea></td>
+	        	<td style="width:100px;"><input type="text"  name="codigoTXT${data.idGasto}" id="codigoTXT"  value="${data.codigo}"/></td>
+	        	<td style="width:300px;"><input type="text" name="observacionesTXT" id="observacionesTXT" value="${data.observaciones} - ${data.observacionEntrega}"/></td>
 	        	<td><c:if test="${data.ubicacion=='p'}">
 							<img src='<c:url value="/comp/img/proy.png"/>' alt="Proyecto Investigación" title="Proyecto Investigación">
 						</c:if>
@@ -108,7 +125,7 @@
 				</c:if></td>
 				<c:if test="${sessionScope.proyecto.estado==2 and data.ubicacion==null}">
 								<td><img src='<c:url value="/comp/img/equis1.png"/>' title="Eliminar" onclick='eliminar("<c:out value="${data.idGasto}"/>")'>
-								    <img src='<c:url value="/comp/img/Editar.png"/>' title="Guardar" onClick='guardar(<c:out value="${data.idGasto}"/>,"<c:out value="${data.descripcion}"/>","<c:out value="${data.codigo}"/>","<c:out value='${data.observaciones}'/>")' /></td>
+								    <img src='<c:url value="/comp/img/Editar.png"/>' title="Guardar" onClick='guardar(<c:out value="${data.idGasto}"/>)' /></td>
 				</c:if>	
 	        </tr>
 	        </c:forEach>

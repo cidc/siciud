@@ -1665,5 +1665,29 @@ public class ProyectosGeneralDB extends BaseDB {
 		return retorno;
 		
 	}
+	
+	public boolean actualizarGastoRubro(int idGasto, String desc, String cod, String obser){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try{
+			cn=cursor.getConnection(perfil);
+			ps=cn.prepareStatement(rb.getString("ActualizarGasto"));
+			ps.setString(i++,desc);
+			ps.setString(i++,cod);
+			ps.setString(i++,obser);
+			ps.setInt(i++, idGasto);
+			ps.executeUpdate();
+			retorno=true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
 }
 

@@ -255,6 +255,12 @@ public class AdminGeneralProyectos extends ServletGeneral {
 					mensaje="Ha ocurrido un error por favor intente de nuevo";
 				irA="/adminProyectos/Productos.jsp";
 				break;
+			case ParametrosOBJ.ACTUALIZARGASTO:
+				if(proyectosGeneralDB.actualizarGastoRubro(Integer.parseInt(req.getParameter("idGasto")),req.getParameter("descripcion"),req.getParameter("codigo"),req.getParameter("observaciones"))){
+					System.out.println("todo bien");
+				}
+				irA="/adminProyectos/ListaGastos.jsp";
+				break;
 			default:
 				irA="/adminProyectos/FiltroProyectosGeneral.jsp";
 				Globales glob = new Globales();
