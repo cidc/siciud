@@ -20,18 +20,26 @@
 			document.gastos.submit();
 		}
 	}
-	function guardar(id){
-		alert(id);
-		if(document.getElementById("codigoTXT"+id).value==null)
-			alert("esta vacion");
-		else 
-			alert("no esta vacio "+document.getElementById("codigoTXT"+id).value);
-		alert(document.gastos.descripcionTXT.value+" "+document.gastos.codigoTXT.value);
+	function modificar(id,fecha,descrip,cod, obser,valor){
+		document.gastos.idGasto.value=id;
+		document.gastos.descripcionTXT.value=descrip;
+		document.gastos.codigoTXT.value=cod;
+		document.gastos.observacionesTXT.value=obser;
+		document.gastos.fecha.value=fecha;
+		document.gastos.valorTXT.value=valor;
+		document.gastos.descripcionTXT.style.display='block';
+		document.gastos.codigoTXT.style.display='block';
+		document.gastos.observacionesTXT.style.display='block';
+		document.gastos.valorTXT.style.display='block';
+	}
+	
+	function guardar(){
 		if(confirm("Desea actualizar este registro")){
-			document.gastos.idGasto.value=id;
+			//document.gastos.idGasto.value=id;
 			document.gastos.descripcion.value=document.gastos.descripcionTXT.value;
 			document.gastos.codigo.value=document.gastos.codigoTXT.value;
-			document.gastos.observaciones.value=document.gastos.observacionesTXT.value;
+			document.gastos.observaciones.value=document.gastos.observacionesTXT.value; 
+			document.gastos.valorGasto.value=document.gastos.descripcionTXT.value;
 			document.gastos.action='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x"/>';
 			document.gastos.accion.value="24";
 			document.gastos.submit();
@@ -56,13 +64,15 @@
 		<input type="hidden" name="descripcion" value=''>
 		<input type="hidden" name="observaciones" value=''>
 		<input type="hidden" name="codigo" value=''>
+		<input type="hidden" name="fecha" value=''>
+		<input type="hidden" name="valorGasto" value=''>
 		<input type="hidden" name="id" value='<c:out value="${sessionScope.proyecto.id}"/>'>
 		<input type="hidden" name="idRub" value='<c:out value="${sessionScope.idRub}"/>'>
 		
 		<div align="center" class="">
 		<c:if test="${!empty requestScope.listaGastosRubro}">
 		<fieldset style="width:1000px;">
-	        <table align="center" class="tablas" width="95%" >	        
+	        <%-- <table align="center" class="tablas" width="95%" >	        
 	        <caption >Listado de Gastos Rubro <c:out value="${sessionScope.nombreRubro}"/></caption>
 				<display:table export="true"  id="data" name="${requestScope.listaGastosRubro}" pagesize="20" class="tablas" style="width: 95%;" requestURI="">
 						<display:setProperty name="export.pdf.balance" value="balance.pdf"/>		 				 	
@@ -92,7 +102,7 @@
 						</display:column>					  				
 			    		<display:setProperty name="balance.pdf" value="true" />
 				</display:table>	
-			</table>
+			</table> --%>
 			<table align="center" class="tablas" width="95%" >	        
 	        <caption >Listado de Gastos Rubro <c:out value="${sessionScope.nombreRubro}"/></caption>
 	        <tr>
@@ -108,9 +118,9 @@
 	        <tr>
 	        	<td style="width:100px;"><c:out value="${data.fecha}"/></td>
 	        	<td style="width:100px;"><c:out value="${data.valorGasto}"/></td>
-	        	<td style="width:300px;"><textarea id="descripcionTXT" name="descripcionTXT" rows="2" cols="50"><c:out value="${data.descripcion}"/></textarea></td>
-	        	<td style="width:100px;"><input type="text"  name="codigoTXT${data.idGasto}" id="codigoTXT"  value="${data.codigo}"/></td>
-	        	<td style="width:300px;"><input type="text" name="observacionesTXT" id="observacionesTXT" value="${data.observaciones} - ${data.observacionEntrega}"/></td>
+	        	<td style="width:300px;"><c:out value="${data.descripcion}"/></td>
+	        	<td style="width:100px;"><c:out value="${data.codigo}"/></td>
+	        	<td style="width:300px;"><c:out value="${data.observaciones} - ${data.observacionEntrega}"/></td>
 	        	<td><c:if test="${data.ubicacion=='p'}">
 							<img src='<c:url value="/comp/img/proy.png"/>' alt="Proyecto Investigación" title="Proyecto Investigación">
 						</c:if>
@@ -125,11 +135,20 @@
 				</c:if></td>
 				<c:if test="${sessionScope.proyecto.estado==2 and data.ubicacion==null}">
 								<td><img src='<c:url value="/comp/img/equis1.png"/>' title="Eliminar" onclick='eliminar("<c:out value="${data.idGasto}"/>")'>
-								    <img src='<c:url value="/comp/img/Editar.png"/>' title="Guardar" onClick='guardar(<c:out value="${data.idGasto}"/>)' /></td>
+								    <img src='<c:url value="/comp/img/Editar.png"/>' title="Modificar" onClick='modificar(<c:out value="${data.idGasto}"/>,"<c:out value="${data.fecha}" />", "<c:out value="${data.descripcion}" />",
+								    "<c:out value="${data.codigo}" />","<c:out value="${data.observaciones}" />","<c:out value="${data.valorGasto}" />")' /></td>
 				</c:if>	
 	        </tr>
 	        </c:forEach>
+	        <tr>
+	        	<td style="width:100px;"><c:out value="" /></td>
+	        	<td style="width:100px;"><input type="text" id="valorTXT" style="display:none" /></td>
+	        	<td style="width:300px;"><textarea id="descripcionTXT" rows="2" cols="50" style="display:none"></textarea></td>
+	        	<td style="width:100px;"><input type="text" id="codigoTXT" style="display:none"/></td>
+	        	<td style="width:300px;"><input type="text" id="observacionesTXT" value="${data.observaciones} - ${data.observacionEntrega}" style="display:none"/></td>
+	        </tr>
 	        </table>
+	        <img alt="Guardar" src="<c:url value="/comp/img/Guardar.gif" />" title="Guardar" onClick="guardar()" style="align:center">
 		</fieldset>
 		</c:if>
 		</div>

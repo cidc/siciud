@@ -257,7 +257,7 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				break;
 			case ParametrosOBJ.ACTUALIZARGASTO:
 				if(proyectosGeneralDB.actualizarGastoRubro(Integer.parseInt(req.getParameter("idGasto")),req.getParameter("descripcion"),req.getParameter("codigo"),req.getParameter("observaciones"))){
-					System.out.println("todo bien");
+					req.setAttribute("listaGastosRubro",proyectosGeneralDB.getGastosRubro(proyectosGeneralDB.getBalanceProyecto(proyecto),req.getParameter("idRub")));
 				}
 				irA="/adminProyectos/ListaGastos.jsp";
 				break;
