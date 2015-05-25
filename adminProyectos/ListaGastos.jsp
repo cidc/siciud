@@ -25,12 +25,13 @@
 		document.gastos.descripcionTXT.value=descrip;
 		document.gastos.codigoTXT.value=cod;
 		document.gastos.observacionesTXT.value=obser;
-		document.gastos.fecha.value=fecha;
+		document.gastos.fechaTXT.value=fecha;
 		document.gastos.valorTXT.value=valor;
 		document.gastos.descripcionTXT.style.display='block';
 		document.gastos.codigoTXT.style.display='block';
 		document.gastos.observacionesTXT.style.display='block';
 		document.gastos.valorTXT.style.display='block';
+		document.gastos.fechaTXT.style.display='block';
 	}
 	
 	function guardar(){
@@ -132,7 +133,11 @@
 						</c:if>
 						<c:if test="${data.ubicacion=='a'}">
 							<img src='<c:url value="/comp/img/chart.png"/>' alt="Almacen" title="Almacen">
-				</c:if></td>
+						</c:if>
+						<c:if test="${data.ubicacion=='d'}">
+							<img src='<c:url value="/comp/img/persona.png"/>' alt="Director" title="Director">
+						</c:if>
+				</td>
 				<c:if test="${sessionScope.proyecto.estado==2 and data.ubicacion==null}">
 								<td><img src='<c:url value="/comp/img/equis1.png"/>' title="Eliminar" onclick='eliminar("<c:out value="${data.idGasto}"/>")'>
 								    <img src='<c:url value="/comp/img/Editar.png"/>' title="Modificar" onClick='modificar(<c:out value="${data.idGasto}"/>,"<c:out value="${data.fecha}" />", "<c:out value="${data.descripcion}" />",
@@ -141,11 +146,11 @@
 	        </tr>
 	        </c:forEach>
 	        <tr>
-	        	<td style="width:100px;"><c:out value="" /></td>
-	        	<td style="width:100px;"><input type="text" id="valorTXT" style="display:none" /></td>
+	        	<td style="width:100px;"><input type="text" id="fechaTXT" style="display:none"  disabled="disabled"/></td>
+	        	<td style="width:100px;"><input type="text" id="valorTXT" style="display:none" disabled="disabled" /></td>
 	        	<td style="width:300px;"><textarea id="descripcionTXT" rows="2" cols="50" style="display:none"></textarea></td>
 	        	<td style="width:100px;"><input type="text" id="codigoTXT" style="display:none"/></td>
-	        	<td style="width:300px;"><input type="text" id="observacionesTXT" value="${data.observaciones} - ${data.observacionEntrega}" style="display:none"/></td>
+	        	<td style="width:300px;"><input type="text" id="observacionesTXT" style="display:none"/></td>
 	        </tr>
 	        </table>
 	        <img alt="Guardar" src="<c:url value="/comp/img/Guardar.gif" />" title="Guardar" onClick="guardar()" style="align:center">
