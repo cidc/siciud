@@ -149,7 +149,7 @@
 							<option value="0">----</option>
 							<c:forEach begin="0" items="${sessionScope.listaMisGrupos}"
 								var="lista" varStatus="st">
-								<option value="<c:out value="${lista.idGrupo}"/>">
+								<option value="<c:out value="${lista.idGrupo}"/>" <c:if test="${lista.idGrupo==sessionScope.planaccion.idGrupo}">selected</c:if> >
 									<c:out value="${lista.nombreGrupo}" />
 								</option>
 							</c:forEach>

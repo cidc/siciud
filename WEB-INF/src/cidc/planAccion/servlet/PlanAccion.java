@@ -118,6 +118,9 @@ public class PlanAccion extends ServletGeneral {
 					consultarPlan=false;
 					sesion.setAttribute("anoActual",""+periodoActual );
 					sesion.removeAttribute("nombrePdf");
+					info.setIdPlan((long) 0);
+					sesion.setAttribute("planaccion", info);
+					
 				}
 				else{
 					consultarPlan=true;

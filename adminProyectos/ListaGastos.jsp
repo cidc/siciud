@@ -73,37 +73,6 @@
 		<div align="center" class="">
 		<c:if test="${!empty requestScope.listaGastosRubro}">
 		<fieldset style="width:1000px;">
-	        <%-- <table align="center" class="tablas" width="95%" >	        
-	        <caption >Listado de Gastos Rubro <c:out value="${sessionScope.nombreRubro}"/></caption>
-				<display:table export="true"  id="data" name="${requestScope.listaGastosRubro}" pagesize="20" class="tablas" style="width: 95%;" requestURI="">
-						<display:setProperty name="export.pdf.balance" value="balance.pdf"/>		 				 	
-						<display:column property="fecha" sortable="true" title="Fecha" style="width:100px;"></display:column>
-						<display:column property="valorGasto" sortable="true" title="Valor" style="width:100px;"></display:column>
-						<display:column property="descripcion" sortable="true" title="Descripcion" style="width:300px;"></display:column>
-						<display:column property="codigo" sortable="true" title="Código" style="width:100px;"></display:column>
-						<display:column sortable="true" title="Observación" style="width:300px;"><c:out value='${data.observaciones}'/> - <c:out value='${data.observacionEntrega}'/></display:column>
-						<display:column title="E" style="width:60px;">
-							<c:if test="${sessionScope.proyecto.estado==2 and lista.ubicacion==null}">
-								<img src='<c:url value="/comp/img/equis1.png"/>' onclick='eliminar("<c:out value="${data.idGasto}"/>")'>
-							</c:if>						
-						</display:column>
-						<display:column title="Ubicación" style="width:40px;">
-						<c:if test="${data.ubicacion=='p'}">
-							<img src='<c:url value="/comp/img/proy.png"/>' alt="Proyecto Investigación" title="Proyecto Investigación">
-						</c:if>
-						<c:if test="${data.ubicacion=='b'}">
-							<img src='<c:url value="/comp/img/biblio.png"/>' alt="Biblioteca" title="Biblioteca">
-						</c:if>
-						<c:if test="${data.ubicacion=='g'}">
-							<img src='<c:url value="/comp/img/grupo.png"/>' alt="Grupo Investigación" title="Grupo Investigación">
-						</c:if>
-						<c:if test="${data.ubicacion=='a'}">
-							<img src='<c:url value="/comp/img/chart.png"/>' alt="Almacen" title="Almacen">
-						</c:if>
-						</display:column>					  				
-			    		<display:setProperty name="balance.pdf" value="true" />
-				</display:table>	
-			</table> --%>
 			<table align="center" class="tablas" width="95%" >	        
 	        <caption >Listado de Gastos Rubro <c:out value="${sessionScope.nombreRubro}"/></caption>
 	        <tr>
