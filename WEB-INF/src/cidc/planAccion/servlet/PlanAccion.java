@@ -157,6 +157,7 @@ public class PlanAccion extends ServletGeneral {
 				sesion.setAttribute("Informe", true);
 				periodoActual-=1;
 				sesion.setAttribute("anoActual", ""+(periodoActual));
+				sesion.removeAttribute("listaCriterios");
 				irA="/planAccion/InformeGestion.jsp";
 				break;
 			case Parametros.INGRESARINFORME:
