@@ -241,6 +241,7 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				irA="/adminProyectos/Coinvestigadores.jsp";
 			break;
 			case ParametrosOBJ.COMPROMISOS:
+				System.out.println("clase proyecto: "+proyecto.getClaseProyecto());
 			if (proyecto.getClaseProyecto()!=2) {
 				sesion.setAttribute("compromisos", proyectosGeneralDB.buscarCompromisos(proyecto.getIdPropuesta()));
 			}

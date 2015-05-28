@@ -32,6 +32,7 @@
 		document.gastos.observacionesTXT.style.display='block';
 		document.gastos.valorTXT.style.display='block';
 		document.gastos.fechaTXT.style.display='block';
+		document.gastos.bGuardar.style.visibility='visible';
 	}
 	
 	function guardar(){
@@ -122,7 +123,7 @@
 	        	<td style="width:300px;"><input type="text" id="observacionesTXT" style="display:none"/></td>
 	        </tr>
 	        </table>
-	        <img alt="Guardar" src="<c:url value="/comp/img/Guardar.gif" />" title="Guardar" onClick="guardar()" style="align:center">
+	        <img id="bGuardar" alt="Guardar" src="<c:url value="/comp/img/Guardar.gif" />" title="Guardar" onClick="guardar()" style="align:center; visibility: hidden" >
 		</fieldset>
 		</c:if>
 		</div>
