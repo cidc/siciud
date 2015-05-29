@@ -262,6 +262,10 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				}
 				irA="/adminProyectos/ListaGastos.jsp";
 				break;
+			case ParametrosOBJ.INTERFAZCOMPROMETIDO:
+				req.setAttribute("rubro",proyectosGeneralDB.getRubro((BalanceGeneral)sesion.getAttribute("balanceProyecto"),req.getParameter("idRub")));
+				irA="/adminProyectos/IngresarPresupuestoComprometido.jsp";
+				break;
 			default:
 				irA="/adminProyectos/FiltroProyectosGeneral.jsp";
 				Globales glob = new Globales();

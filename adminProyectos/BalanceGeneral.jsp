@@ -18,6 +18,18 @@
 			alert("No se ha creado aun el contrato de este proyecto");
 		}
 	}
+	
+	function cambioComprometido(id){
+		if('<c:out value="${sessionScope.proyecto.consecContrato}" />'!='--'){
+			document.balance.accion.value="25";
+			document.balance.idRub.value=id;
+	 		document.balance.target="frameRegistro";
+			document.balance.submit();
+		}else{
+			alert("No se ha creado aun el contrato de este proyecto");
+		}
+	}
+	
 	function ver(accion){
 		document.balance.accion.value=accion;
 		document.balance.target="frameRegistro";
@@ -88,26 +100,32 @@
 				<td align="center" class="renglones"><b>Rubro</b></td>
 				<td align="center" class="renglones" width="75px"><b>Aprobado</b></td>
 				<td align="center" class="renglones" width="75px"><b>Comprometido</b></td>
+				<td align="center" class="renglones" width="75px"><b>Saldo Por Comprometer</b></td>
 				<td align="center" class="renglones" width="75px"><b>Ejecutado</b></td>
-				<td align="center" class="renglones" width="75px"><b>Saldo</b></td>
-				<td align="center" class="renglones" width="5px"><b>*</b></td>
+				<td align="center" class="renglones" width="75px"><b>Saldo Disponible</b></td>
+				<td align="center" class="renglones" width="50px"><b>Compr.</b></td>
+				<td align="center" class="renglones" width="50px"><b>Gasto</b></td>
 			</tr>
 			<c:forEach begin="0" items="${sessionScope.balanceProyecto.listaRubros}" var="lista" varStatus="st">
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td><c:out value="${lista.nombreRubro}"/></td>
 				<td class="listas" width="75px" align="right"><c:out value="${lista.valorRubro}"/></td>
 				<td width="75px" align="right"><c:out value=""/></td>
+				<td width="75px" align="right"><c:out value=""/></td>
 				<td width="75px" align="right"><c:out value="${lista.valorEjecutado}"/></td>
 				<td width="75px" align="right"><c:out value="${lista.valorSaldo}"/></td>
-				<td width="5px" align="center"><img src='<c:url value="/comp/img/find.png"/>' onclick='registros(<c:out value="${lista.idRubro}"/>)'></td>
+				<td width="50px" align="center"><img src='<c:url value="/comp/img/Editar.png"/>' onclick='cambioComprometido(<c:out value="${lista.idRubro}"/>)'></td>
+				<td width="50px" align="center"><img src='<c:url value="/comp/img/find.png"/>' onclick='registros(<c:out value="${lista.idRubro}"/>)'></td>
 			</tr>
 			</c:forEach>		
 			<tr>
 				<th align="right">Totales</th>
 				<th align="center"><span id="totalAprobado"><c:out value="${sessionScope.balanceProyecto.totalAprobado}"/></span></th>
 				<th align="center"><span id="totalComprometido"><c:out value=""/></span></th> 
+				<th align="center"><span id="totalxComprometer"><c:out value=""/></span></th> 
 				<th align="center"><span id="totalEjecutado"><c:out value="${sessionScope.balanceProyecto.totalEjecutado}"/></span></th>
 				<th align="center"><span id="totalSaldo"><c:out value="${sessionScope.balanceProyecto.totalSaldo}"/></span></th>
+				<th>&nbsp;</th>
 				<th>&nbsp;</th>
 			</tr>
 		</table>

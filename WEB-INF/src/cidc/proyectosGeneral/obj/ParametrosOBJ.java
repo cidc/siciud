@@ -33,4 +33,5 @@ public class ParametrosOBJ implements Serializable{
 	public static final int COMPROMISOS=22;
 	public static final int ENTREGACOMPROMISOS=23;
 	public static final int ACTUALIZARGASTO=24;
+	public static final int	INTERFAZCOMPROMETIDO=25;
 }
