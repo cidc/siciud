@@ -2,6 +2,9 @@ package cidc.proyectosGeneral.servlet;
 
 import java.io.IOException;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -266,6 +269,26 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				req.setAttribute("rubro",proyectosGeneralDB.getRubro((BalanceGeneral)sesion.getAttribute("balanceProyecto"),req.getParameter("idRub")));
 				irA="/adminProyectos/IngresarPresupuestoComprometido.jsp";
 				break;
+			case ParametrosOBJ.GUARDARCOMPROMETIDO:
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				Date parsed = format.parse(req.getParameter("fechaCDP"));
+				Date parsed2 =null;
+				int rp;
+				if((req.getParameter("fechaRP")!=""))
+					parsed2 = format.parse(req.getParameter("fechaRP"));
+				rp=(req.getParameter("nRP")!="")?Integer.parseInt(req.getParameter("nRP")):0;
+				if(proyectosGeneralDB.guardarComprometido(Integer.parseInt(req.getParameter("valor")), Integer.parseInt(req.getParameter("nCDP")), 
+						parsed, rp, parsed2, req.getParameter("observaciones"), Integer.parseInt(req.getParameter("idProyecto")),Integer.parseInt(req.getParameter("idRubro")))){
+					mensaje="Datos almacenados correctamente";
+				}
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				mensaje="Por favor verifique las fecha ingresadas";
+			}
+			irA="/adminProyectos/IngresarPresupuestoComprometido.jsp";
+			break;
 			default:
 				irA="/adminProyectos/FiltroProyectosGeneral.jsp";
 				Globales glob = new Globales();

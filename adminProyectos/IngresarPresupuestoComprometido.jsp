@@ -20,12 +20,24 @@ function numeros(eve){
 
 function guardar(){
 	if (validar()){
-		document.gastos.submit();
+		document.comprometido.submit();
 	}
 }
 
 function validar(){
 	var mensaje="";
+	var max=parseFloat(eliminaFormatoMoneda(document.comprometido.saldo.value));
+	var valor=parseFloat(document.comprometido.valor.value);
+	//alert(max);
+	//max=parseFloat(max.toString().replace(".",""));
+	//max=parseFloat(max.toString().replace(",",""));
+	//max=parseFloat(max.toString().replace("$",""));
+	//alert(max);
+	//alert("valor maximo "+max+" campo "+document.comprometido.saldo.value);
+	//alert("valor actual "+valor+" campo "+document.comprometido.valor.value);
+	if(valor>max){
+		mensaje="-) Esta Validacion no esta bien \n El valor a registrar no puede ser superior a "+document.comprometido.saldo.value+"\n";
+	}
 	if(document.comprometido.valor.value==""){
 		mensaje+="-) Valor a comprometer \n";
 	}
@@ -44,7 +56,8 @@ function validar(){
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-	<form name="comprometido" method="post" action="">
+	<form name="comprometido" method="post" action='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x"/>'>
+		<input type="hidden" name="accion" value='26'>
 		<input type="hidden" name="idRubro" value='<c:out value="${requestScope.rubro.idRubro}"/>'>
 		<input type="hidden" name="saldo" value='<c:out value="${requestScope.rubro.valorSaldo}"/>'>
 		<input type="hidden" name="idProyecto" value='<c:out value="${sessionScope.proyecto.id}"/>'>
@@ -59,8 +72,8 @@ function validar(){
 			<td class="renglones" align="center"><b>Fecha RP</b></td>
 		</tr>
 		<tr>
-			<td><input type="text" id="valor" onkeypress="return numeros(event)"></td>
-			<td><input type="text" id="nCDP" onkeypress="return numeros(event)"></td>
+			<td><input type="text" id="valor" name="valor" onkeypress="return numeros(event)"></td>
+			<td><input type="text" id="nCDP" name="nCDP" onkeypress="return numeros(event)"></td>
 			<td>
 					<input type='text' name='fechaCDP' style="width: 75%" readonly='true' id='f_date_a' size='12'>
 					<button type='button' id='f_trigger_a'>...</button>
@@ -75,7 +88,7 @@ function validar(){
 		    			})
 	    			</script>
 			</td>
-			<td><input type="text" id="nRP" onkeypress="return numeros(event)"></td>
+			<td><input type="text" id="nRP" name="nRP" onkeypress="return numeros(event)"></td>
 			<td>
 					<input type='text' name='fechaRP' style="width: 75%" readonly='true' id='f_date_b' size='12'>
 					<button type='button' id='f_trigger_b'>...</button>

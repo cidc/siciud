@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -1665,7 +1666,14 @@ public class ProyectosGeneralDB extends BaseDB {
 		return retorno;
 		
 	}
-	
+	/**
+	 * El metodo actualiza la informacion general de un gasto 
+	 * @param idGasto identificacion del gasto	
+	 * @param desc descripcion general
+	 * @param cod codigo del gasto en caso de que posea placa
+	 * @param obser observaciones que se le puedan hacer
+	 * @return
+	 */
 	public boolean actualizarGastoRubro(int idGasto, String desc, String cod, String obser){
 		boolean retorno=false;
 		Connection cn=null;
@@ -1679,6 +1687,37 @@ public class ProyectosGeneralDB extends BaseDB {
 			ps.setString(i++,obser);
 			ps.setInt(i++, idGasto);
 			ps.executeUpdate();
+			retorno=true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return retorno;
+	}
+	
+	public boolean guardarComprometido(int val, int cdp, Date fecCdp, int rp,Date fecRp,String obs, int idproy, int idrub){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		int i=1;
+		try{
+			cn=cursor.getConnection(perfil);
+			ps=cn.prepareStatement(rb.getString("guardarComprometido"));
+			ps.setInt(i++,val);
+			ps.setInt(i++,cdp);
+			ps.setDate(i++,new java.sql.Date(fecCdp.getTime()));
+			ps.setInt(i++, rp);
+			if(fecRp!=null)
+				ps.setDate(i++, new java.sql.Date(fecRp.getTime()));
+			else
+				ps.setDate(i++, null);
+			ps.setString(i++, obs);
+			ps.setInt(i++, idproy);
+			ps.setInt(i++, idrub);
+			ps.execute();
 			retorno=true;
 		} catch (Exception e) {
 			// TODO: handle exception

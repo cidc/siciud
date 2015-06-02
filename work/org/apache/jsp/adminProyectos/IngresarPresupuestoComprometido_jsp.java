@@ -104,12 +104,24 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
       out.write("\r\n");
       out.write("function guardar(){\r\n");
       out.write("\tif (validar()){\r\n");
-      out.write("\t\tdocument.gastos.submit();\r\n");
+      out.write("\t\tdocument.comprometido.submit();\r\n");
       out.write("\t}\r\n");
       out.write("}\r\n");
       out.write("\r\n");
       out.write("function validar(){\r\n");
       out.write("\tvar mensaje=\"\";\r\n");
+      out.write("\tvar max=parseFloat(eliminaFormatoMoneda(document.comprometido.saldo.value));\r\n");
+      out.write("\tvar valor=parseFloat(document.comprometido.valor.value);\r\n");
+      out.write("\t//alert(max);\r\n");
+      out.write("\t//max=parseFloat(max.toString().replace(\".\",\"\"));\r\n");
+      out.write("\t//max=parseFloat(max.toString().replace(\",\",\"\"));\r\n");
+      out.write("\t//max=parseFloat(max.toString().replace(\"$\",\"\"));\r\n");
+      out.write("\t//alert(max);\r\n");
+      out.write("\t//alert(\"valor maximo \"+max+\" campo \"+document.comprometido.saldo.value);\r\n");
+      out.write("\t//alert(\"valor actual \"+valor+\" campo \"+document.comprometido.valor.value);\r\n");
+      out.write("\tif(valor>max){\r\n");
+      out.write("\t\tmensaje=\"-) Esta Validacion no esta bien \\n El valor a registrar no puede ser superior a \"+document.comprometido.saldo.value+\"\\n\";\r\n");
+      out.write("\t}\r\n");
       out.write("\tif(document.comprometido.valor.value==\"\"){\r\n");
       out.write("\t\tmensaje+=\"-) Valor a comprometer \\n\";\r\n");
       out.write("\t}\r\n");
@@ -122,13 +134,17 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
       out.write("\tif(mensaje==\"\"){\r\n");
       out.write("\t\treturn true\r\n");
       out.write("\t}else{\r\n");
-      out.write("\t\talert(\"Los Siguientes campos deben ser corregidos:\\n\"+mensaje);\r\n");
+      out.write("\t\talert(\"Los Siguientes campos son obligatorios:\\n\"+mensaje);\r\n");
       out.write("\t}\r\n");
       out.write("}\r\n");
       out.write("</script>\r\n");
       out.write("</head>\r\n");
       out.write("<body onLoad=\"mensajeAlert(document.getElementById('msg'));\">\r\n");
-      out.write("\t<form name=\"comprometido\" method=\"post\" action=\"\">\r\n");
+      out.write("\t<form name=\"comprometido\" method=\"post\" action='");
+      if (_jspx_meth_c_005furl_005f6(_jspx_page_context))
+        return;
+      out.write("'>\r\n");
+      out.write("\t\t<input type=\"hidden\" name=\"accion\" value='26'>\r\n");
       out.write("\t\t<input type=\"hidden\" name=\"idRubro\" value='");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
@@ -306,6 +322,25 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
     return false;
   }
 
+  private boolean _jspx_meth_c_005furl_005f6(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f6 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f6.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f6.setParent(null);
+    // /adminProyectos/IngresarPresupuestoComprometido.jsp(59,49) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f6.setValue("/GestionGeneralProyectos/AdminGeneralProyectos.x");
+    int _jspx_eval_c_005furl_005f6 = _jspx_th_c_005furl_005f6.doStartTag();
+    if (_jspx_th_c_005furl_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f6);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f6);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fout_005f0(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -314,7 +349,7 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f0.setParent(null);
-    // /adminProyectos/IngresarPresupuestoComprometido.jsp(48,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/IngresarPresupuestoComprometido.jsp(61,45) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.rubro.idRubro}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
     if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -333,7 +368,7 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f1.setParent(null);
-    // /adminProyectos/IngresarPresupuestoComprometido.jsp(49,43) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/IngresarPresupuestoComprometido.jsp(62,43) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${requestScope.rubro.valorSaldo}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f1 = _jspx_th_c_005fout_005f1.doStartTag();
     if (_jspx_th_c_005fout_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -352,7 +387,7 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_005fout_005f2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_005fout_005f2.setPageContext(_jspx_page_context);
     _jspx_th_c_005fout_005f2.setParent(null);
-    // /adminProyectos/IngresarPresupuestoComprometido.jsp(50,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/IngresarPresupuestoComprometido.jsp(63,48) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fout_005f2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto.id}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005fout_005f2 = _jspx_th_c_005fout_005f2.doStartTag();
     if (_jspx_th_c_005fout_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -371,7 +406,7 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f0.setParent(null);
-    // /adminProyectos/IngresarPresupuestoComprometido.jsp(51,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/IngresarPresupuestoComprometido.jsp(64,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto.estado==2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f0 = _jspx_th_c_005fif_005f0.doStartTag();
     if (_jspx_eval_c_005fif_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
@@ -387,8 +422,8 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
         out.write("\t\t\t<td class=\"renglones\" align=\"center\"><b>Fecha RP</b></td>\r\n");
         out.write("\t\t</tr>\r\n");
         out.write("\t\t<tr>\r\n");
-        out.write("\t\t\t<td><input type=\"text\" id=\"valor\" onkeypress=\"return numeros(event)\"></td>\r\n");
-        out.write("\t\t\t<td><input type=\"text\" id=\"nCDP\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("\t\t\t<td><input type=\"text\" id=\"valor\" name=\"valor\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("\t\t\t<td><input type=\"text\" id=\"nCDP\" name=\"nCDP\" onkeypress=\"return numeros(event)\"></td>\r\n");
         out.write("\t\t\t<td>\r\n");
         out.write("\t\t\t\t\t<input type='text' name='fechaCDP' style=\"width: 75%\" readonly='true' id='f_date_a' size='12'>\r\n");
         out.write("\t\t\t\t\t<button type='button' id='f_trigger_a'>...</button>\r\n");
@@ -403,7 +438,7 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
         out.write("\t\t    \t\t\t})\r\n");
         out.write("\t    \t\t\t</script>\r\n");
         out.write("\t\t\t</td>\r\n");
-        out.write("\t\t\t<td><input type=\"text\" id=\"nRP\" onkeypress=\"return numeros(event)\"></td>\r\n");
+        out.write("\t\t\t<td><input type=\"text\" id=\"nRP\" name=\"nRP\" onkeypress=\"return numeros(event)\"></td>\r\n");
         out.write("\t\t\t<td>\r\n");
         out.write("\t\t\t\t\t<input type='text' name='fechaRP' style=\"width: 75%\" readonly='true' id='f_date_b' size='12'>\r\n");
         out.write("\t\t\t\t\t<button type='button' id='f_trigger_b'>...</button>\r\n");
@@ -427,7 +462,7 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
         out.write("\t\t</tr>\r\n");
         out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td align=\"center\" colspan=\"5\"><img src=\"");
-        if (_jspx_meth_c_005furl_005f6(_jspx_th_c_005fif_005f0, _jspx_page_context))
+        if (_jspx_meth_c_005furl_005f7(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("\" onclick=\"guardar()\"></td>\r\n");
         out.write("\t\t</tr>\r\n");
@@ -446,22 +481,22 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
     return false;
   }
 
-  private boolean _jspx_meth_c_005furl_005f6(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f0, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_005furl_005f7(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fif_005f0, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:url
-    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f6 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
-    _jspx_th_c_005furl_005f6.setPageContext(_jspx_page_context);
-    _jspx_th_c_005furl_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
-    // /adminProyectos/IngresarPresupuestoComprometido.jsp(101,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_c_005furl_005f6.setValue("/comp/img/Guardar.gif");
-    int _jspx_eval_c_005furl_005f6 = _jspx_th_c_005furl_005f6.doStartTag();
-    if (_jspx_th_c_005furl_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f6);
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f7 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_005furl_005f7.setPageContext(_jspx_page_context);
+    _jspx_th_c_005furl_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fif_005f0);
+    // /adminProyectos/IngresarPresupuestoComprometido.jsp(114,44) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005furl_005f7.setValue("/comp/img/Guardar.gif");
+    int _jspx_eval_c_005furl_005f7 = _jspx_th_c_005furl_005f7.doStartTag();
+    if (_jspx_th_c_005furl_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f7);
       return true;
     }
-    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f6);
+    _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.reuse(_jspx_th_c_005furl_005f7);
     return false;
   }
 
@@ -473,7 +508,7 @@ public final class IngresarPresupuestoComprometido_jsp extends org.apache.jasper
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_005fif_005f1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_005fif_005f1.setPageContext(_jspx_page_context);
     _jspx_th_c_005fif_005f1.setParent(null);
-    // /adminProyectos/IngresarPresupuestoComprometido.jsp(105,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /adminProyectos/IngresarPresupuestoComprometido.jsp(118,1) name = test type = boolean reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005fif_005f1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${sessionScope.proyecto.estado!=2}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null, false)).booleanValue());
     int _jspx_eval_c_005fif_005f1 = _jspx_th_c_005fif_005f1.doStartTag();
     if (_jspx_eval_c_005fif_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
