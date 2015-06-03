@@ -44,7 +44,7 @@
 					</td>
 				</c:if>
 				<td width="30px" align="center">
-					<a class="icono" href='<c:url value="/Documentos/Propuestas/${lista.id}Proy16_${lista.id}"/><c:out value="${lista.urlArchivo}"/>'>
+					<a class="icono" href='<c:url value="/Documentos/Propuestas/${lista.id}Proy16_${lista.id}.pdf"/><c:out value="${lista.urlArchivo}"/>'>
 						<img border="0" src='<c:url value="/comp/img/pdf.png"/>'>
 					</a>
 				</td>

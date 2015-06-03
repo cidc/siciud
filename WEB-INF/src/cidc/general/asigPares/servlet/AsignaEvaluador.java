@@ -50,10 +50,10 @@ public class AsignaEvaluador extends ServletGeneral {
 						System.out.println("tipeval= "+sesion.getAttribute("tipEval"));*/
 						if(asignacion.asignaEvaluadorPropuesta(""+sesion.getAttribute("prop"),req.getParameter("codEval"),""+sesion.getAttribute("tipEval"))){
 							retorno[0]="desviar";
-							irA="/adminPropuestas/EstadoPropuesta.x";
 							req.setAttribute("devolver","Evaluador Asignado Correctamente");
 						}else
 							mensaje=asignacion.getMensaje();
+						irA="/adminPropuestas/EstadoPropuesta.x";
 					break;
 					case Parametros.cmdVerEval:
 						req.setAttribute("datEvaluador",asignacion.datosEvaluador(req.getParameter("codEval"), Integer.parseInt(req.getParameter("tipEval"))));

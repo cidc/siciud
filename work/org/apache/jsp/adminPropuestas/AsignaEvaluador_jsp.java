@@ -504,7 +504,7 @@ public final class AsignaEvaluador_jsp extends org.apache.jasper.runtime.HttpJsp
       do {
         out.write("\r\n");
         out.write("\t<table align=\"center\" class=\"tablas\">\r\n");
-        out.write("\t<caption>Evaluadores Encontrados</caption>\r\n");
+        out.write("\t<caption>Evaluadores Encontrados este es</caption>\r\n");
         out.write("\t\t<tr>\r\n");
         out.write("\t\t\t<td class=\"renglones\"><b>Nombres</b></td>\r\n");
         out.write("\t\t\t<td class=\"renglones\"><b>Apellidos</b></td>\r\n");
