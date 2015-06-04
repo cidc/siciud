@@ -35,6 +35,7 @@ import cidc.inscripcionConv.obj.ResumenCompromOBJ;
 import cidc.inscripcionConv.obj.ResumenInscOBJ;
 import cidc.inscripcionConv.obj.ResumenRubrosOBJ;
 import cidc.proyectosAntiguos.obj.DatosAjax;
+import cidc.proyectosGeneral.obj.Comprometido;
 import cidc.proyectosGeneral.obj.Devolutivo;
 import cidc.proyectosGeneral.obj.CompromisosOBJ;
 import cidc.proyectosGeneral.obj.BalanceGeneral;
@@ -721,6 +722,7 @@ public class ProyectosGeneralDB extends BaseDB {
 				rubros.setNombreRubro(rs.getString(i++));
 				rubros.setValorRubro(rs.getString(i++));
 				rubros.setListaGastos(getGastosRubro(cn,rubros.getIdRubro(),proyecto,rubros));
+				rubros.setListComprometido(buscarComprometido(proyecto.getId(), (int) rubros.getIdRubro(),rubros));
 				listaRubros.add(rubros);
 			}
 			
@@ -741,19 +743,26 @@ public class ProyectosGeneralDB extends BaseDB {
 			BigInteger totalAprobado=new BigInteger("0");
 			BigInteger totalEjecutado=new BigInteger("0");
 			BigInteger totalSaldo=new BigInteger("0");
+			BigInteger totalComprometido=new BigInteger("0");
 			for(int x=0;x<listaRubros.size();x++){
 				rubros=listaRubros.get(x);
 				
 				//MODIFIQUÉ ESTA LÍNEA
 				totalAprobado=totalAprobado.add(new BigInteger(rubros.getValorRubro()));				
 				//totalAprobado=totalAprobado.add(new BigInteger(global.sinMoneda(rubros.getValorRubro())));
+				BigInteger totalXcomp=new BigInteger(rubros.getValorRubro());
 				rubros.setValorRubro(global.moneda(rubros.getValorRubro()));
+				rubros.setValorXcompr(global.moneda((totalXcomp.subtract(new BigInteger(global.sinMoneda(rubros.getValorCompr()))).toString())));
+				rubros.setValorSaldo(global.moneda((new BigInteger(global.sinMoneda(rubros.getValorCompr())).subtract(new BigInteger(global.sinMoneda(rubros.getValorEjecutado())))).toString()));
 				totalEjecutado=totalEjecutado.add(new BigInteger(global.sinMoneda(rubros.getValorEjecutado())));
 				totalSaldo=totalSaldo.add(new BigInteger(global.sinMoneda(rubros.getValorSaldo())));
+				totalComprometido=totalComprometido.add(new BigInteger(global.sinMoneda(rubros.getValorCompr())));
 			}
 			balance.setTotalAprobado(global.moneda(totalAprobado.toString()));
 			balance.setTotalEjecutado(global.moneda(totalEjecutado.toString()));
-			balance.setTotalSaldo(global.moneda(totalSaldo.toString()));			
+			balance.setTotalSaldo(global.moneda(totalComprometido.subtract(totalEjecutado).toString()));
+			balance.setTotalComprometido(global.moneda(totalComprometido.toString()));
+			balance.setTotalPorComp(global.moneda(totalAprobado.subtract(totalComprometido).toString()));
 			balance.setListaRubros(listaRubros);
 		}catch (SQLException e) {
 			lanzaExcepcion(e);
@@ -1698,6 +1707,18 @@ public class ProyectosGeneralDB extends BaseDB {
 		return retorno;
 	}
 	
+	/**
+	 * Almacena los datos necesarios para comprometer presupuesto
+	 * @param val valor a comprometer
+	 * @param cdp numero de CDP con el cual se compromete el presupuesto
+	 * @param fecCdp fecha del cdp
+	 * @param rp numero de rp que indica que el ya esta ejecutado
+	 * @param fecRp fecha del rp
+	 * @param obs observaciones
+	 * @param idproy numero del proyecto de investigacion
+	 * @param idrub id del rubro que se utiliza
+	 * @return
+	 */
 	public boolean guardarComprometido(int val, int cdp, Date fecCdp, int rp,Date fecRp,String obs, int idproy, int idrub){
 		boolean retorno=false;
 		Connection cn=null;
@@ -1727,6 +1748,53 @@ public class ProyectosGeneralDB extends BaseDB {
 			cerrar(cn);
 		}
 		return retorno;
+	}
+	
+	/**
+	 * 
+	 * @param idproy
+	 * @param idrubro
+	 * @param rubros
+	 * @return
+	 */
+	public List<Comprometido> buscarComprometido(int idproy, int idrubro, Rubros rubros){
+		boolean retorno=false;
+		Connection cn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		int i=1;
+		List<Comprometido> list=new ArrayList<Comprometido>();
+		try {
+			cn=cursor.getConnection(perfil);
+			ps=cn.prepareStatement(rb.getString("buscarComprometido"));
+			ps.setInt(i++, idproy);
+			ps.setInt(i++, idrubro);
+			System.out.println(ps.toString());
+			rs=ps.executeQuery();
+			int total=0;
+			while(rs.next()){
+				i=1;
+				Comprometido cp=new Comprometido();
+				cp.setIdCompr(rs.getInt(i++));
+				cp.setValorCompr(rs.getInt(i++));
+				cp.setNumCDP(rs.getInt(i++));
+				cp.setFechaCDP(rs.getDate(i++));
+				cp.setNumRP(rs.getInt(i++));
+				cp.setFechaRP(rs.getDate(i++));
+				cp.setObservaciones(rs.getString(i++));
+				total+=cp.getValorCompr();
+				
+				list.add(cp);
+			}
+			rubros.setValorCompr(global.moneda(""+total));
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			cerrar(ps);
+			cerrar(cn);
+		}
+		return list;
 	}
 }
 

@@ -10,6 +10,9 @@ public class Rubros implements Serializable{
 	String valorEjecutado;
 	String valorSaldo;
 	List listaGastos;
+	private List<Comprometido> listComprometido;
+	private String valorCompr;
+	private String valorXcompr;
 
 	public long getIdRubro() {
 		return idRubro;
@@ -47,7 +50,22 @@ public class Rubros implements Serializable{
 	public void setValorSaldo(String valorSaldo) {
 		this.valorSaldo = valorSaldo;
 	}
-
-
-
+	public List<Comprometido> getListComprometido() {
+		return listComprometido;
+	}
+	public void setListComprometido(List<Comprometido> listComprometido) {
+		this.listComprometido = listComprometido;
+	}
+	public String getValorCompr() {
+		return valorCompr;
+	}
+	public void setValorCompr(String valorCompr) {
+		this.valorCompr = valorCompr;
+	}
+	public String getValorXcompr() {
+		return valorXcompr;
+	}
+	public void setValorXcompr(String valorXcompr) {
+		this.valorXcompr = valorXcompr;
+	}
 }

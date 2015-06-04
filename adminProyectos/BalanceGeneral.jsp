@@ -110,8 +110,8 @@
 			<tr <c:if test="${(st.count mod 2)==0}">class="trb"</c:if> >
 				<td><c:out value="${lista.nombreRubro}"/></td>
 				<td class="listas" width="75px" align="right"><c:out value="${lista.valorRubro}"/></td>
-				<td width="75px" align="right"><c:out value=""/></td>
-				<td width="75px" align="right"><c:out value=""/></td>
+				<td width="75px" align="right"><c:out value="${lista.valorCompr}"/></td>
+				<td width="75px" align="right"><c:out value="${lista.valorXcompr}"/></td>
 				<td width="75px" align="right"><c:out value="${lista.valorEjecutado}"/></td>
 				<td width="75px" align="right"><c:out value="${lista.valorSaldo}"/></td>
 				<td width="50px" align="center"><img src='<c:url value="/comp/img/Editar.png"/>' onclick='cambioComprometido(<c:out value="${lista.idRubro}"/>)'></td>
@@ -121,8 +121,8 @@
 			<tr>
 				<th align="right">Totales</th>
 				<th align="center"><span id="totalAprobado"><c:out value="${sessionScope.balanceProyecto.totalAprobado}"/></span></th>
-				<th align="center"><span id="totalComprometido"><c:out value=""/></span></th> 
-				<th align="center"><span id="totalxComprometer"><c:out value=""/></span></th> 
+				<th align="center"><span id="totalComprometido"><c:out value="${sessionScope.balanceProyecto.totalComprometido}"/></span></th> 
+				<th align="center"><span id="totalxComprometer"><c:out value="${sessionScope.balanceProyecto.totalPorComp}"/></span></th> 
 				<th align="center"><span id="totalEjecutado"><c:out value="${sessionScope.balanceProyecto.totalEjecutado}"/></span></th>
 				<th align="center"><span id="totalSaldo"><c:out value="${sessionScope.balanceProyecto.totalSaldo}"/></span></th>
 				<th>&nbsp;</th>
