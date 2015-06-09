@@ -10,7 +10,6 @@ public class BalanceGeneral implements Serializable{
 	String totalEjecutado;
 	String totalSaldo;
 	String totalComprometido;
-	String totalPorComp;
 	
 	public String getTotalEjecutado() {
 		return totalEjecutado;
@@ -49,12 +48,6 @@ public class BalanceGeneral implements Serializable{
 	}
 	public void setTotalComprometido(String totalComprometido) {
 		this.totalComprometido = totalComprometido;
-	}
-	public String getTotalPorComp() {
-		return totalPorComp;
-	}
-	public void setTotalPorComp(String totalPorComp) {
-		this.totalPorComp = totalPorComp;
 	}
 	
 }

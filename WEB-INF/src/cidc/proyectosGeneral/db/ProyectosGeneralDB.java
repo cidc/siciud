@@ -760,9 +760,8 @@ public class ProyectosGeneralDB extends BaseDB {
 			}
 			balance.setTotalAprobado(global.moneda(totalAprobado.toString()));
 			balance.setTotalEjecutado(global.moneda(totalEjecutado.toString()));
-			balance.setTotalSaldo(global.moneda(totalComprometido.subtract(totalEjecutado).toString()));
+			balance.setTotalSaldo(global.moneda(totalAprobado.subtract(totalComprometido).toString()));
 			balance.setTotalComprometido(global.moneda(totalComprometido.toString()));
-			balance.setTotalPorComp(global.moneda(totalAprobado.subtract(totalComprometido).toString()));
 			balance.setListaRubros(listaRubros);
 		}catch (SQLException e) {
 			lanzaExcepcion(e);

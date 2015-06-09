@@ -68,8 +68,8 @@ function validar(){
 			<td class="renglones" align="center"><b>valor</b></td>
 			<td class="renglones" align="center"><b>No. CDP</b></td>
 			<td class="renglones" align="center"><b>Fecha CDP</b></td>
-			<td class="renglones" align="center"><b>No. RP</b></td>
-			<td class="renglones" align="center"><b>Fecha RP</b></td>
+			<td class="renglones" align="center"><b>No. CRP</b></td>
+			<td class="renglones" align="center"><b>Fecha CRP</b></td>
 		</tr>
 		<tr>
 			<td><input type="text" id="valor" name="valor" onkeypress="return numeros(event)"></td>
