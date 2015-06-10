@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -752,8 +753,8 @@ public class ProyectosGeneralDB extends BaseDB {
 				//totalAprobado=totalAprobado.add(new BigInteger(global.sinMoneda(rubros.getValorRubro())));
 				BigInteger totalXcomp=new BigInteger(rubros.getValorRubro());
 				rubros.setValorRubro(global.moneda(rubros.getValorRubro()));
-				rubros.setValorXcompr(global.moneda((totalXcomp.subtract(new BigInteger(global.sinMoneda(rubros.getValorCompr()))).toString())));
-				rubros.setValorSaldo(global.moneda((new BigInteger(global.sinMoneda(rubros.getValorCompr())).subtract(new BigInteger(global.sinMoneda(rubros.getValorEjecutado())))).toString()));
+				//rubros.setValorXcompr(global.moneda((totalXcomp.subtract(new BigInteger(global.sinMoneda(rubros.getValorCompr()))).toString())));
+				rubros.setValorSaldo(global.moneda((new BigInteger(global.sinMoneda(rubros.getValorRubro())).subtract(new BigInteger(global.sinMoneda(rubros.getValorCompr())))).toString()));
 				totalEjecutado=totalEjecutado.add(new BigInteger(global.sinMoneda(rubros.getValorEjecutado())));
 				totalSaldo=totalSaldo.add(new BigInteger(global.sinMoneda(rubros.getValorSaldo())));
 				totalComprometido=totalComprometido.add(new BigInteger(global.sinMoneda(rubros.getValorCompr())));
@@ -1718,25 +1719,32 @@ public class ProyectosGeneralDB extends BaseDB {
 	 * @param idrub id del rubro que se utiliza
 	 * @return
 	 */
-	public boolean guardarComprometido(int val, int cdp, Date fecCdp, int rp,Date fecRp,String obs, int idproy, int idrub){
+	public boolean guardarComprometido(int val, int cdp, String fecCdp, int rp,String fecRp,String obs, int idproy, int idrub, int necesidad, String fecNec){
 		boolean retorno=false;
 		Connection cn=null;
 		PreparedStatement ps=null;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date parsed=null;
 		int i=1;
 		try{
 			cn=cursor.getConnection(perfil);
 			ps=cn.prepareStatement(rb.getString("guardarComprometido"));
 			ps.setInt(i++,val);
 			ps.setInt(i++,cdp);
-			ps.setDate(i++,new java.sql.Date(fecCdp.getTime()));
+			if(fecCdp!=null)
+				ps.setDate(i++,new java.sql.Date((parsed=format.parse(fecCdp)).getTime()));
+			else
+				ps.setDate(i++, null);
 			ps.setInt(i++, rp);
 			if(fecRp!=null)
-				ps.setDate(i++, new java.sql.Date(fecRp.getTime()));
+				ps.setDate(i++, new java.sql.Date((parsed=format.parse(fecRp)).getTime()));
 			else
 				ps.setDate(i++, null);
 			ps.setString(i++, obs);
 			ps.setInt(i++, idproy);
 			ps.setInt(i++, idrub);
+			ps.setInt(i++, necesidad);
+			ps.setDate(i++, new java.sql.Date((parsed=format.parse(fecNec)).getTime()));
 			ps.execute();
 			retorno=true;
 		} catch (Exception e) {
@@ -1776,10 +1784,12 @@ public class ProyectosGeneralDB extends BaseDB {
 				Comprometido cp=new Comprometido();
 				cp.setIdCompr(rs.getInt(i++));
 				cp.setValorCompr(rs.getInt(i++));
-				cp.setNumCDP(rs.getInt(i++));
-				cp.setFechaCDP(rs.getDate(i++));
-				cp.setNumRP(rs.getInt(i++));
-				cp.setFechaRP(rs.getDate(i++));
+				cp.setNumNecesidad(rs.getString(i++));
+				cp.setFechaNecesidad_d(rs.getDate(i++));
+				cp.setNumCDP(rs.getString(i++));
+				cp.setFechaCDP_d(rs.getDate(i++));
+				cp.setNumRP(rs.getString(i++));
+				cp.setFechaRP_d(rs.getDate(i++));
 				cp.setObservaciones(rs.getString(i++));
 				total+=cp.getValorCompr();
 				

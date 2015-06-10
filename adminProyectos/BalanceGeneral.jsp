@@ -100,7 +100,6 @@
 				<td align="center" class="renglones"><b>Rubro</b></td>
 				<td align="center" class="renglones" width="75px"><b>Aprobado</b></td>
 				<td align="center" class="renglones" width="75px"><b>Comprometido</b></td>
-				<td align="center" class="renglones" width="75px"><b>Saldo Por Comprometer</b></td>
 				<td align="center" class="renglones" width="75px"><b>Ejecutado</b></td>
 				<td align="center" class="renglones" width="75px"><b>Saldo Disponible</b></td>
 				<td align="center" class="renglones" width="50px"><b>Compr.</b></td>

@@ -27,25 +27,18 @@ function guardar(){
 function validar(){
 	var mensaje="";
 	var max=parseFloat(eliminaFormatoMoneda(document.comprometido.saldo.value));
-	var valor=parseFloat(document.comprometido.valor.value);
-	//alert(max);
-	//max=parseFloat(max.toString().replace(".",""));
-	//max=parseFloat(max.toString().replace(",",""));
-	//max=parseFloat(max.toString().replace("$",""));
-	//alert(max);
-	//alert("valor maximo "+max+" campo "+document.comprometido.saldo.value);
-	//alert("valor actual "+valor+" campo "+document.comprometido.valor.value);
+	var valor=parseFloat(document.comprometido.valorCompr.value);
 	if(valor>max){
-		mensaje="-) Esta Validacion no esta bien \n El valor a registrar no puede ser superior a "+document.comprometido.saldo.value+"\n";
+		mensaje="-)El valor a registrar no puede ser superior a "+document.comprometido.saldo.value+"\n";
 	}
-	if(document.comprometido.valor.value==""){
+	if(document.comprometido.valorCompr.value==""){
 		mensaje+="-) Valor a comprometer \n";
 	}
-	if(document.comprometido.nCDP.value==""){
-		mensaje+="-) Número de CDP\n";
+	if(document.comprometido.numNecesidad.value==""){
+		mensaje+="-) Número de Necesidad\n";
 	}
-	if(document.comprometido.fechaCDP.value==""){
-		mensaje+="-) Fecha de CDP\n";
+	if(document.comprometido.fechaNecesidad.value==""){
+		mensaje+="-) Fecha de Necesidad\n";
 	}
 	if(mensaje==""){
 		return true
@@ -56,7 +49,7 @@ function validar(){
 </script>
 </head>
 <body onLoad="mensajeAlert(document.getElementById('msg'));">
-	<form name="comprometido" method="post" action='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x"/>'>
+	<form name="comprometido" method="post" action='<c:url value="/adminProyectos/llenarComprometido.jsp"/>'>
 		<input type="hidden" name="accion" value='26'>
 		<input type="hidden" name="idRubro" value='<c:out value="${requestScope.rubro.idRubro}"/>'>
 		<input type="hidden" name="saldo" value='<c:out value="${requestScope.rubro.valorSaldo}"/>'>
@@ -66,14 +59,31 @@ function validar(){
 		<caption>Ingresar Presupuesto Comprometido</caption>
 		<tr>
 			<td class="renglones" align="center"><b>valor</b></td>
+			<td class="renglones" align="center"><b>No. Necesidad</b></td>
+			<td class="renglones" align="center"><b>Fecha Necesidad</b></td>
 			<td class="renglones" align="center"><b>No. CDP</b></td>
 			<td class="renglones" align="center"><b>Fecha CDP</b></td>
 			<td class="renglones" align="center"><b>No. CRP</b></td>
 			<td class="renglones" align="center"><b>Fecha CRP</b></td>
 		</tr>
 		<tr>
-			<td><input type="text" id="valor" name="valor" onkeypress="return numeros(event)"></td>
-			<td><input type="text" id="nCDP" name="nCDP" onkeypress="return numeros(event)"></td>
+			<td><input type="text" id="valorCompr" name="valorCompr" onkeypress="return numeros(event)"></td>
+			<td><input type="text" id="numNecesidad" name="numNecesidad" onkeypress="return numeros(event)"></td>
+			<td>
+					<input type='text' name='fechaNecesidad' style="width: 75%" readonly='true' id='f_date_c' size='12'>
+					<button type='button' id='f_trigger_c'>...</button>
+					<script type='text/javascript'>
+		    			Calendar.setup({
+			    			inputField     :    'f_date_c',
+			    			ifFormat       :    '%Y-%m-%d',
+			    			showsTime      :    false,
+			    			button         :    'f_trigger_c',
+			    			singleClick    :    false,
+			    			step           :    1
+		    			})
+	    			</script>
+			</td>
+			<td><input type="text" id="numCDP" name="numCDP" onkeypress="return numeros(event)"></td>
 			<td>
 					<input type='text' name='fechaCDP' style="width: 75%" readonly='true' id='f_date_a' size='12'>
 					<button type='button' id='f_trigger_a'>...</button>
@@ -88,7 +98,7 @@ function validar(){
 		    			})
 	    			</script>
 			</td>
-			<td><input type="text" id="nRP" name="nRP" onkeypress="return numeros(event)"></td>
+			<td><input type="text" id="numRP" name="numRP" onkeypress="return numeros(event)"></td>
 			<td>
 					<input type='text' name='fechaRP' style="width: 75%" readonly='true' id='f_date_b' size='12'>
 					<button type='button' id='f_trigger_b'>...</button>
@@ -105,13 +115,13 @@ function validar(){
 			</td>
 		</tr>
 		<tr>
-			<td class="renglones" align="center" colspan="5"><b>Observaciones</b></td>
+			<td class="renglones" align="center" colspan="7"><b>Observaciones</b></td>
 		</tr>
 		<tr>
-			<td colspan="5"><textarea rows="3" name="observaciones"></textarea></td>
+			<td colspan="7"><textarea rows="3" name="observaciones"></textarea></td>
 		</tr>
 		<tr>
-			<td align="center" colspan="5"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()"></td>
+			<td align="center" colspan="7"><img src="<c:url value="/comp/img/Guardar.gif"/>" onclick="guardar()"></td>
 		</tr>
 		</table>
 	</c:if>

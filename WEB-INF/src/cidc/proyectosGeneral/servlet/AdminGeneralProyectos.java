@@ -20,6 +20,7 @@ import cidc.general.login.Usuario;
 import cidc.general.obj.Globales;
 import cidc.general.servlet.ServletGeneral;
 import cidc.proyectosGeneral.obj.CoInvest;
+import cidc.proyectosGeneral.obj.Comprometido;
 import cidc.proyectosGeneral.obj.Devolutivo;
 import cidc.proyectosGeneral.obj.GastosRubro;
 import cidc.proyectosGeneral.obj.BalanceGeneral;
@@ -270,22 +271,18 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				irA="/adminProyectos/IngresarPresupuestoComprometido.jsp";
 				break;
 			case ParametrosOBJ.GUARDARCOMPROMETIDO:
-				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			try {
-				Date parsed = format.parse(req.getParameter("fechaCDP"));
-				Date parsed2 =null;
-				int rp;
-				if((req.getParameter("fechaRP")!=""))
-					parsed2 = format.parse(req.getParameter("fechaRP"));
-				rp=(req.getParameter("nRP")!="")?Integer.parseInt(req.getParameter("nRP")):0;
-				if(proyectosGeneralDB.guardarComprometido(Integer.parseInt(req.getParameter("valor")), Integer.parseInt(req.getParameter("nCDP")), 
-						parsed, rp, parsed2, req.getParameter("observaciones"), Integer.parseInt(req.getParameter("idProyecto")),Integer.parseInt(req.getParameter("idRubro")))){
-					mensaje="Datos almacenados correctamente";
-				}
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				mensaje="Por favor verifique las fecha ingresadas";
+			Comprometido cpr=(Comprometido)sesion.getAttribute("llenarComprometido");
+//				if(cpr.getFechaNecesidad()!="")
+//					nec=format.parse(cpr.getFechaNecesidad());
+//				if(cpr.getFechaCDP()!=""){
+//					parsed = format.parse(cpr.getFechaCDP());}
+//				if(cpr.getFechaRP()!="")
+//					parsed2 =format.parse(cpr.getFechaRP());
+			//int rp;
+			//rp=(req.getParameter("nRP")!="")?Integer.parseInt(req.getParameter("nRP")):0;
+			if(proyectosGeneralDB.guardarComprometido(cpr.getValorCompr(),Integer.parseInt(cpr.getNumCDP()),cpr.getFechaCDP(),Integer.parseInt( cpr.getNumRP()), cpr.getFechaRP(),cpr.getObservaciones(),
+					Integer.parseInt(req.getParameter("idProyecto")),Integer.parseInt(req.getParameter("idRubro")),Integer.parseInt(cpr.getNumNecesidad()),cpr.getFechaNecesidad())){
+				mensaje="Datos almacenados correctamente";
 			}
 			irA="/adminProyectos/IngresarPresupuestoComprometido.jsp";
 			break;
