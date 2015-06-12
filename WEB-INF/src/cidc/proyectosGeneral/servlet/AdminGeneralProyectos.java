@@ -25,6 +25,7 @@ import cidc.proyectosGeneral.obj.Devolutivo;
 import cidc.proyectosGeneral.obj.GastosRubro;
 import cidc.proyectosGeneral.obj.BalanceGeneral;
 import cidc.proyectosGeneral.obj.ParametrosOBJ;
+import cidc.proyectosGeneral.obj.Rubros;
 import cidc.proyectosGeneral.obj.Tiempos;
 import cidc.proyectosGeneral.db.ProyectosGeneralDB;
 import cidc.proyectosGeneral.obj.FiltroGeneralProyecto;
@@ -266,25 +267,23 @@ public class AdminGeneralProyectos extends ServletGeneral {
 				}
 				irA="/adminProyectos/ListaGastos.jsp";
 				break;
-			case ParametrosOBJ.INTERFAZCOMPROMETIDO:
-				req.setAttribute("rubro",proyectosGeneralDB.getRubro((BalanceGeneral)sesion.getAttribute("balanceProyecto"),req.getParameter("idRub")));
-				irA="/adminProyectos/IngresarPresupuestoComprometido.jsp";
+			case ParametrosOBJ.LISTACOMPROMETIDO:
+				Rubros rub=proyectosGeneralDB.getRubro((BalanceGeneral)sesion.getAttribute("balanceProyecto"),req.getParameter("idRub"));
+				req.setAttribute("rubro",rub);
+				req.setAttribute("listaCompr", proyectosGeneralDB.buscarComprometido(proyecto.getId(), Integer.parseInt(req.getParameter("idRub")), rub));
+				irA="/adminProyectos/ListaComprometido.jsp";
 				break;
 			case ParametrosOBJ.GUARDARCOMPROMETIDO:
 			Comprometido cpr=(Comprometido)sesion.getAttribute("llenarComprometido");
-//				if(cpr.getFechaNecesidad()!="")
-//					nec=format.parse(cpr.getFechaNecesidad());
-//				if(cpr.getFechaCDP()!=""){
-//					parsed = format.parse(cpr.getFechaCDP());}
-//				if(cpr.getFechaRP()!="")
-//					parsed2 =format.parse(cpr.getFechaRP());
-			//int rp;
-			//rp=(req.getParameter("nRP")!="")?Integer.parseInt(req.getParameter("nRP")):0;
 			if(proyectosGeneralDB.guardarComprometido(cpr.getValorCompr(),Integer.parseInt(cpr.getNumCDP()),cpr.getFechaCDP(),Integer.parseInt( cpr.getNumRP()), cpr.getFechaRP(),cpr.getObservaciones(),
 					Integer.parseInt(req.getParameter("idProyecto")),Integer.parseInt(req.getParameter("idRubro")),Integer.parseInt(cpr.getNumNecesidad()),cpr.getFechaNecesidad())){
 				mensaje="Datos almacenados correctamente";
 			}
-			irA="/adminProyectos/IngresarPresupuestoComprometido.jsp";
+			irA="/adminProyectos/ListaComprometido.jsp";
+			break;
+			case ParametrosOBJ.NUEVOCOMPROMETIDO:
+				req.setAttribute("rubro",proyectosGeneralDB.getRubro((BalanceGeneral)sesion.getAttribute("balanceProyecto"),req.getParameter("idRubro")));
+				irA="/adminProyectos/IngresarPresupuestoComprometido.jsp";
 			break;
 			default:
 				irA="/adminProyectos/FiltroProyectosGeneral.jsp";
